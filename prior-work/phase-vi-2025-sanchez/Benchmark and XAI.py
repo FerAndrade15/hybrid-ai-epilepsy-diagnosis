@@ -1,64 +1,50 @@
-#!/usr/bin/env python
-"""Benchmark de métricas sobre el split de evaluación.
-
-Este script carga una corrida entrenada (directorio con ``model_final.pt`` y
-``config_used.json``), recupera o genera las predicciones del split ``eval`` y
-produce un informe con:
-
-* Matriz de confusión a nivel ventana.
-* Curvas ROC y Precision-Recall junto con sus áreas bajo la curva.
-* Sweep de umbrales que incluye falsos positivos por hora para cada valor.
-* Curvas de entrenamiento (loss y accuracy) extraídas de ``training_history.csv``.
-* Gráficos auxiliares y tablas guardadas en ``<run_dir>/benchmark_eval``.
-
-Uso típico::
-
-    python -m pt.benchmark_eval run_dir=runs/mi_experimento/20251005-123456
-    python -m pt.benchmark_eval run_dir=runs/mi_experimento/20251005-123456 weights_path=/ruta/pesos.pt
-
-Todos los parámetros se pasan como ``clave=valor`` y el script puede trabajar
-tanto con un checkpoint que contenga el modelo completo (``model_path``) como
-con archivos de pesos (``weights_path``). Si no se especifica ninguno, intentará
-cargar automáticamente el mejor checkpoint disponible para la métrica indicada
-con ``best_metric`` (por defecto ``pr_auc``).
-
+"""Benchmark and XAI Application Script
 """
+
 from __future__ import annotations
 
-import json
-import pickle
-import sys
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Iterable, Optional, Tuple
+# Estándar
+import json                                     # Configuraciones descritas en JSON
+import pickle                                   # Utilizar los archivos .pkl
+import sys                                      # Argumentos de la terminal
+from dataclasses import dataclass               # Clases de datos
+from pathlib import Path                        # Rutas de archivos
+from typing import Iterable, Optional, Tuple    # Type hinting
 
+# visualización
 import matplotlib
-
-matplotlib.use("Agg")  # Backend para entornos sin display.
+matplotlib.use("Agg")                           # Backend para entornos sin display, generando y guadando el contenido
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import torch
-import torch.nn as nn
+
+import numpy as np                              # Cálculos numéricos eficientes
+import pandas as pd                             # Manipulación de datos en DataFrames
+import torch                                    # PyTorch para modelos y cálculos tensoriales
+import torch.nn as nn                           # Módulo de redes neuronales de PyTorch 
+
+# Métricas de evaluación
 from sklearn.metrics import (
-    auc,
-    confusion_matrix,
-    precision_recall_curve,
-    roc_curve,
+    auc,                                        # Área debajo de la curva
+    confusion_matrix,                           # Matriz de confusión
+    precision_recall_curve,                     # Curva de precisión-recall
+    roc_curve,                                  # Curva ROC
 )
 
+# Módulos específicos del proyecto
 from dataset import (
-    build_torch_dataset_from_arrays,
-    build_windows_dataset,
-    collect_records_for_split,
+    build_torch_dataset_from_arrays,            # Función para construir un dataset de PyTorch a partir de arrays de secuencias, características y etiquetas
+    build_windows_dataset,                      # Función para construir un dataset de ventanas a partir de registros y configuraciones
+    collect_records_for_split,                  # Función para recolectar los registros correspondientes a un split específico (p.ej. 'eval')
 )
+
 from pipeline import (
-    _collect_predictions,
-    _compute_evaluation_metrics,
-    _window_predictions,
-    make_model,
-    _transformer_params_from_config,
+    _collect_predictions,                       # Predicciones del modelo sobre el dataset de evaluación
+    _compute_evaluation_metrics,                # Cálculo de métricas de evaluación a partir de las predicciones y etiquetas verdaderas
+    _window_predictions,                        # Predicciones spor ventana
+    make_model,                                 # Arquitectura del modelo según la configuración
+    _transformer_params_from_config,            # Extracción de parámetros específicos para modelos Transformer desde la configuración general del pipeline
 )
+
+
 from utils import PipelineConfig, load_config, resolve_preprocess_settings, validate_config
 from torch.utils.data import DataLoader
 

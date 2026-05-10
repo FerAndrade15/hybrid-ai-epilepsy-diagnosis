@@ -17,7 +17,7 @@ import pandas as pd
 import pyedflib
 from fastapi import HTTPException, UploadFile
 
-from classes.models import (
+from api.classes.models import (
     EvaluationSummary,
     NetworkEvaluationResponse,
     PredictionInterval,

@@ -6,7 +6,7 @@ import pandas as pd
 import pyedflib
 from fastapi import HTTPException
 
-from classes.models import ChannelSummary, SeizureEvent
+from api.classes.models import ChannelSummary, SeizureEvent
 
 
 def _parse_edf_file(edf_path: str):

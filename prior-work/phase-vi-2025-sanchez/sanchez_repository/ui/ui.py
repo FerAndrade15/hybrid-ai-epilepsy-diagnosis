@@ -53,9 +53,9 @@ except ImportError:
 LOGGER = logging.getLogger(__name__)
 
 # Fuentes y tamaños por defecto para una UI más legible
-DEFAULT_FONT = ("TkDefaultFont", 11)
-BOLD_FONT = ("TkDefaultFont", 12, "bold")
-SMALL_FONT = ("TkDefaultFont", 10)
+DEFAULT_FONT = ("TkDefaultFont", 8)		# Original a 11, 12, 10
+BOLD_FONT = ("TkDefaultFont", 8, "bold")
+SMALL_FONT = ("TkDefaultFont", 8)
 
 SEIZURE_LABEL = "seiz"
 PREDICTED_LABEL = "predicted_seizure"
