@@ -1,0 +1,237 @@
+{
+  "main": {
+    "id": "56e2219e154b886a",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc445e29bd19ed6e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dd9c4043d5ee2771",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "research/01-setup/Git and Git Bash.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Git and Git Bash"
+            }
+          },
+          {
+            "id": "9407a8f5431873bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "research/01-setup/Python Virtual Environment.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Python Virtual Environment"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8adc12a9e73a9829",
+    "type": "split",
+    "children": [
+      {
+        "id": "105b0862ef39fe75",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cbae19cc44210e13",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "90db32aa068aeab1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "7fe37f4ab82d4264",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a4a944d95c6d152e",
+    "type": "split",
+    "children": [
+      {
+        "id": "60454d5ab7678811",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e70d0527d678afd0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "research/01-setup/Git and Git Bash.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Git and Git Bash"
+            }
+          },
+          {
+            "id": "3ee94107dd97cc49",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "BrAinVision.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from BrAinVision"
+            }
+          },
+          {
+            "id": "133d25cb1313cdf0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0e0d0449dae25fc7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "5ffbc8b4092549c9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "BrAinVision.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of BrAinVision"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "dd9c4043d5ee2771",
+  "lastOpenFiles": [
+    "research/01-setup/Python Virtual Environment.md",
+    "research/01-setup/Git and Git Bash.md",
+    "research/00-index/INDEX.md",
+    "Untitled 1.md",
+    "research/02-datasets/EEG.md",
+    "research/05-research-notes/BrAinVision.md",
+    "research/05-research-notes/Ubuntu.md",
+    "MobaXterm terminal - ferch (09-05-26).md",
+    "research/04-xai/Deep Learning XAI Methods.md",
+    "Untitled.base",
+    "research/01-setup/MobaXterm.md",
+    "research/01-setup/SSH and rsync.md",
+    "research/_templates/technical_template.md",
+    "research/01-setup/python-environments.md",
+    "research/01-setup/git-basics.md",
+    "research/01-setup/ssh-rsync.md",
+    "SSH y rsync.md",
+    "research/_templates",
+    "research/00-index",
+    "research/README.md",
+    "research/05-research-notes/hybrid-previous-models.md",
+    "research/04-xai/saliency.md",
+    "research/05-research-notes",
+    "research/04-xai/integrated-gradients.md",
+    "research/04-xai/occlusion.md",
+    "research/03-models/matlab.md",
+    "research/03-models/pytorch.md",
+    "research/04-xai",
+    "research/03-models",
+    "research/models.md",
+    "research/02-datasets/tuh-eeg.md",
+    "research/02-datasets",
+    "research/01-setup",
+    "Welcome.md",
+    "research"
+  ]
+}
