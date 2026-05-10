@@ -1,5 +1,5 @@
 # Requested
-Some recommended or neededd to read (actually requested in wait D:)
+Some recommended or needed to read (actually requested in wait D:)
 - Provide an Improved Model for Detecting Persian SMS Spam by Integrating Deep Learning and Machine Learning Models
 - Symptomatic and Asymptomatic Carotid Plaques Classification using CT Images and Hybrid Deep Transfer Learning
 - Explainable artificial intelligence-Infused hybrid transfer learning framework with multiscale feature fusion for brain tumor detection and classification
