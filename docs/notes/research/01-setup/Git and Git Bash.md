@@ -35,6 +35,7 @@ git add .                           # Agregar todos los cambios
 git commit -m "Update: descripción" # Guardar cambios con mensaje
 git push                            # Subir al repositorio remoto
 git rm .                            # Eliminar archivos ya rastreados en el Git
+git rm -r .                         # Eliminar carpetas (borrar recursivamente)
 ```
 
 ### Actualización y revisión del Git
@@ -73,4 +74,4 @@ git push
 
 ## Fecha
 **Creación**: 2026-04-25
-**Última actualización**: 2026-05-09
+**Última actualización**: 2026-05-10

@@ -21,6 +21,7 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 ### 03-models — Modelos
 - [[PyTorch — Setup]]
 - [[MATLAB — Setup]]
+- [[Program analysis and design]]
 
 ### 04-xai — Métodos XAI
 - [[Deep Learning XAI Methods]]
