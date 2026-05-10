@@ -32,6 +32,9 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[Ideas fuera de tesis]]
 - [[BrAinVision]]
 - [[Ubuntu]]
+- [[Relevant Concepts]]
+- [[Performance Indicators or Metrics]]
+- [[Artificial Intelligence Design]]
 
 ---
 

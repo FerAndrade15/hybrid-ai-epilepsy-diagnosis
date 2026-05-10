@@ -22,7 +22,7 @@ ls                              # Ver contenido de la carpeta
 ls -R                           # Ver contenido recursivo
 ```
 
-### Repositorio
+### Manejo del repositorio
 ```bash
 git clone https://github.com/User/repo         # Clonar repositorio
 git config --global credential.helper store    # Guardar credenciales
@@ -34,9 +34,10 @@ git status                          # Ver estado actual
 git add .                           # Agregar todos los cambios
 git commit -m "Update: descripción" # Guardar cambios con mensaje
 git push                            # Subir al repositorio remoto
+git rm .                            # Eliminar archivos ya rastreados en el Git
 ```
 
-### Actualización y revisión de Commits
+### Actualización y revisión del Git
 ```bash
 #Contenido en el repositorio
 git ls-tree -r --name-only origin/margin  #--name-only para no ver la estructura
@@ -45,6 +46,13 @@ git ls-tree -r --name-only origin/margin  #--name-only para no ver la estructura
 git ls-files --others --exclude-standard
 ```
 
+### Mantener la estructura del repositorio
+```bash
+find . -type d -empty -not -path "./.git/*" -exec touch {}/.gitkeep \;
+git add .
+git commit -m "Add .gitkeep to preserve empty directories"
+git push 
+```
 
 ### Tipos de commits
 | Prefijo  | Cuándo usarlo                 |

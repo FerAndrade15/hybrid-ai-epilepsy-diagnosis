@@ -9,3 +9,9 @@
 - Integrated Gradientes: Generalmente aplicados a los LSTM
 - Attention Weigths: Para modelos con atención
 - LIME
+# X-AI methods
+
+- Grad-CAM
+- Permutation Features importance (PFI)
+- Partial Dependence Plots (PDP) 
+- Neuro-XAI
