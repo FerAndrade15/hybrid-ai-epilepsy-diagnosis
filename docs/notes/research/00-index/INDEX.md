@@ -30,12 +30,18 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[Saliency Maps]]
 
 ### 05-research-notes — Notas de investigación
-- [[Ideas fuera de tesis]]
+#### Hybrid focussed
 - [[BrAinVision]]
+#### General concepts
 - [[Ubuntu]]
 - [[Relevant Concepts]]
+#### Current implementation
 - [[Performance Indicators or Metrics]]
 - [[Artificial Intelligence Design]]
+- [[Resources - Data Adquisition]] 
+- [[Estructura]]
+#### Documentation
+- [[Marco teórico]]
 
 ---
 

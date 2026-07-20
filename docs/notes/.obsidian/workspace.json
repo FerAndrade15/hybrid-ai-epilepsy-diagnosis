@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fc17b20e75538b6b",
+            "id": "33fa9e7cf0879387",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "a4a944d95c6d152e",
@@ -94,9 +94,9 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/01-setup/Git and Git Bash.md",
-                "collapseAll": false,
-                "extraContext": false,
+                "file": "General notes.md",
+                "collapseAll": true,
+                "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Git and Git Bash"
+              "title": "Backlinks for General notes"
             }
           },
           {
@@ -156,16 +156,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "BrAinVision.md",
+                "file": "research/01-setup/Git and Git Bash.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of BrAinVision"
+              "title": "Outline of Git and Git Bash"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -182,43 +183,46 @@
       "bases:Create new base": false
     }
   },
-  "active": "fc17b20e75538b6b",
+  "active": "33fa9e7cf0879387",
   "lastOpenFiles": [
-    "research/README.md",
-    "Untitled.md",
+    "research/05-research-notes/Estructura.md",
+    "research/01-setup/Python Virtual Environment.md",
+    "research/01-setup/Git and Git Bash.md",
+    "General notes.md",
+    "Pasted image 20260617123711.png",
+    "Pasted image 20260523093230.png",
     "research/00-index/INDEX.md",
+    "research/01-setup/MobaXterm.md",
+    "research/05-research-notes/Marco teórico.md",
+    "research/_templates/Images/EEG-based seizure prediction studies.png",
+    "Pasted image 20260516123503.png",
+    "research/_templates/Images",
+    "Ideas fuera de tesis.md",
+    "research/05-research-notes/Resources - Data Adquisition.md",
+    "research/05-research-notes/BrAinVision.md",
+    "research/README.md",
     "research/03-models/Program analysis and design.md",
     "research/05-research-notes/Ubuntu.md",
     "research/05-research-notes/Relevant Concepts.md",
     "research/05-research-notes/hybrid-previous-models.md",
     "research/05-research-notes/Performance Indicators or Metrics.md",
-    "research/05-research-notes/BrAinVision.md",
     "research/05-research-notes/Artificial Intelligence Design.md",
-    "research/01-setup/Git and Git Bash.md",
     "Untitled 1.md",
-    "research/01-setup/MobaXterm.md",
     "research/04-xai/integrated-gradients.md",
     "research/04-xai/Deep Learning XAI Methods.md",
     "research/03-models/pytorch.md",
     "research/03-models/matlab.md",
     "research/01-setup/SSH and rsync.md",
-    "research/01-setup/Python Virtual Environment.md",
     "Performance Indicators/Metrics.md",
     "Performance Indicators",
     "research/02-datasets/EEG.md",
-    "MobaXterm terminal - ferch (09-05-26).md",
     "Untitled.base",
-    "research/_templates/technical_template.md",
-    "research/01-setup/python-environments.md",
-    "research/01-setup/git-basics.md",
-    "research/01-setup/ssh-rsync.md",
     "research/_templates",
     "research/00-index",
     "research/05-research-notes",
     "research/04-xai",
     "research/03-models",
     "research/02-datasets",
-    "research/01-setup",
-    "research"
+    "research/01-setup"
   ]
 }
