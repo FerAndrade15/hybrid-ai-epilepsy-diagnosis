@@ -74,4 +74,4 @@ git push
 
 ## Fecha
 **Creación**: 2026-04-25
-**Última actualización**: 2026-05-10
+**Última actualización**: 2026-08-21

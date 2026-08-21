@@ -27,16 +27,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/01-setup/Git and Git Bash.md",
+                "file": "research/01-setup/Python Virtual Environment.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git and Git Bash"
+              "title": "Python Virtual Environment"
+            }
+          },
+          {
+            "id": "5bbbe0e216446d8f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Main.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Main"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -171,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/01-setup/Git and Git Bash.md",
+                "file": "Main.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Git and Git Bash"
+              "title": "Outline of Main"
             }
           }
         ],
@@ -198,8 +212,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "7806381fd432b430",
+  "active": "5bbbe0e216446d8f",
   "lastOpenFiles": [
+    "research/01-setup/Python Virtual Environment.md",
+    "Main.md",
+    "research/01-setup/Git and Git Bash.md",
     "research/02-datasets/Temple University EEG.md",
     "NO THESIS/Untitled.md",
     "research/02-datasets/EEG.md",
@@ -211,9 +228,7 @@
     "General notes.md",
     "Pasted image 20260617123711.png",
     "Pasted image 20260523093230.png",
-    "research/01-setup/Python Virtual Environment.md",
     "research/01-setup/MobaXterm.md",
-    "research/01-setup/Git and Git Bash.md",
     "research/05-research-notes/Estructura.md",
     "research/05-research-notes/Marco teórico.md",
     "research/_templates/Images/EEG-based seizure prediction studies.png",
@@ -231,7 +246,6 @@
     "Untitled 1.md",
     "research/04-xai/integrated-gradients.md",
     "research/04-xai/Deep Learning XAI Methods.md",
-    "research/03-models/pytorch.md",
     "Performance Indicators",
     "Untitled.base",
     "research/_templates",
