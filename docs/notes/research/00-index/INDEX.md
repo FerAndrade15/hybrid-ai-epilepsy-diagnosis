@@ -42,6 +42,8 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[Estructura]]
 #### Documentation
 - [[Marco teórico]]
+- [[Fuentes]]
+- 
 
 ---
 
