@@ -210,3 +210,4 @@ tf_venv/
 .venv/
 ~$*
 outputs/artifact/splits/windowed_df_rf_artifact_class_v1.csv
+outputs/

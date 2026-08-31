@@ -10,7 +10,7 @@ Training of multi-output RF -> validation -> saves work.
 """
 
 import pickle
-import pandas as pd3
+import pandas as pd
 from pathlib import Path
 from pickle import dump
 from sklearn.metrics import classification_report
@@ -60,7 +60,6 @@ if all(p.exists() for p in feature_paths.values()):
     datasets = {s: pd.read_parquet(p) for s, p in feature_paths.items()}
 else:
     print(f"[1/4] Incompleted or not founded features for '{CORPUS_NAME}' corpus, generating...")
-
     csv_path = SPLIT_DIR / f"windowed_df_{WINDOW_REQUEST_NAME}_{SPLIT_VERSION}.csv"
     if csv_path.exists():
         print(f"      Reusando split existente: {csv_path}")
@@ -104,33 +103,15 @@ X_train, y_train = train_df[feature_cols], train_df[DEFAULT_TARGETS]
 w_train = train_df["sample_weight"]
 groups_train = train_df["Patient"]
 
-# Hyperparameters optimization by HBA ****************************************************************************
-hba_path = MODELS_DIR / "hba_result.pkl"
-if hba_path.exists():
-    print(f"[2/4] Resultado de HBA ya existe, cargando: {hba_path}")
-    with open(hba_path, "rb") as f:
-        hba_result = pickle.load(f)
-    hba_params, hba_score, hba_history = hba_result["params"], hba_result["score"], hba_result["history"]
-else:
-    print("[2/4] Corriendo optimización con Honey Badger Algorithm...")
-    hba_params, hba_score, hba_history = optimize_rf_hba(
-        X_train, y_train, groups_train, max_iter=15, n_agents=10, seed=42,
-    )
-    with open(hba_path, "wb") as f:
-        dump({"params": hba_params, "score": hba_score, "history": hba_history}, f)
-
-print(f"      HBA -> params={hba_params}, F1 macro CV={hba_score:.4f}")
-
-
 # Hyperparameters optimization by Grid Search ********************************************************************
 gs_path = MODELS_DIR / "gridsearch_result.pkl"
 if gs_path.exists():
-    print(f"[3/4] Resultado de Grid Search ya existe, cargando: {gs_path}")
+    print(f"[2/4] Grid search results already generated in {gs_path}, loading...")
     with open(gs_path, "rb") as f:
         gs_result = pickle.load(f)
     gs_params, gs_score = gs_result["params"], gs_result["score"]
 else:
-    print("[3/4] Corriendo optimización con Grid Search (puede tardar)...")
+    print("[2/4] Running Grid Search Optimization [this can take a while]")
     param_grid = {
         "estimator__n_estimators": [200, 400],
         "estimator__max_depth": [None, 20],
@@ -145,18 +126,12 @@ else:
 
 print(f"      GridSearch -> params={gs_params}, F1 macro CV={gs_score:.4f}")
 
-# ==============================================================
 # ETAPA 4: elegir mejor método, entrenar final, validar y guardar
-# ==============================================================
 
 final_model_path = MODELS_DIR / f"rf_ica_iclabel_{CORPUS_NAME}_v1.pkl"
 
-if hba_score >= gs_score:
-    print(f"[4/4] HBA ganó ({hba_score:.4f} vs {gs_score:.4f}), usando sus hiperparámetros")
-    best_params, best_method = hba_params, "hba"
-else:
-    print(f"[4/4] GridSearch ganó ({gs_score:.4f} vs {hba_score:.4f}), usando sus hiperparámetros")
-    best_params, best_method = gs_params, "gridsearch"
+print(f"[4/4] GridSearch: ({gs_score:.4f}, usando sus hiperparámetros")
+best_params, best_method = gs_params, "gridsearch"
 
 final_model = train_rf(X_train, y_train, sample_weight=w_train, **best_params)
 
@@ -174,9 +149,27 @@ with open(final_model_path, "wb") as f:
         "feature_cols": feature_cols,
         "params": best_params,
         "best_method": best_method,
-        "hba_score": hba_score,
         "gridsearch_score": gs_score,
         "corpus": CORPUS_NAME,
     }, f)
 
 print(f"\nModelo final guardado en: {final_model_path}")
+
+""" # Hyperparameters optimization by HBA ****************************************************************************
+hba_path = MODELS_DIR / "hba_result.pkl"
+if hba_path.exists():
+    print(f"[2/4] Resultado de HBA ya existe, cargando: {hba_path}")
+    with open(hba_path, "rb") as f:
+        hba_result = pickle.load(f)
+    hba_params, hba_score, hba_history = hba_result["params"], hba_result["score"], hba_result["history"]
+else:
+    print("[2/4] Corriendo optimización con Honey Badger Algorithm...")
+    hba_params, hba_score, hba_history = optimize_rf_hba(
+        X_train, y_train, groups_train, max_iter=15, n_agents=10, seed=42,
+    )
+    with open(hba_path, "wb") as f:
+        dump({"params": hba_params, "score": hba_score, "history": hba_history}, f)
+
+print(f"      HBA -> params={hba_params}, F1 macro CV={hba_score:.4f}")
+
+ """

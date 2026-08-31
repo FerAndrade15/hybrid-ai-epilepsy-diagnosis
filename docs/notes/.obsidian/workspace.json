@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Main.md",
+                "file": "research/01-setup/Git and Git Bash.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Main"
+              "title": "Git and Git Bash"
             }
           }
         ],
@@ -70,7 +70,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -185,13 +187,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Main.md",
+                "file": "research/01-setup/Git and Git Bash.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Main"
+              "title": "Outline"
             }
           }
         ],
@@ -214,8 +216,8 @@
   },
   "active": "5bbbe0e216446d8f",
   "lastOpenFiles": [
-    "research/01-setup/Python Virtual Environment.md",
     "Main.md",
+    "research/01-setup/Python Virtual Environment.md",
     "research/01-setup/Git and Git Bash.md",
     "research/02-datasets/Temple University EEG.md",
     "NO THESIS/Untitled.md",

@@ -14,8 +14,8 @@ from pathlib import Path
 
 # Current data path
 #BASE_PATH = Path(r"D:\tuh_eeg")
-BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
-# BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
+# BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
+BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
 
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
