@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/05-research-notes/Fuentes.md",
+                "file": "Main.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fuentes"
+              "title": "Main"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/01-setup/Git and Git Bash.md",
+                "file": "research/01-setup/Python Virtual Environment.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git and Git Bash"
+              "title": "Python Virtual Environment"
             }
           }
         ],
@@ -187,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/01-setup/Git and Git Bash.md",
+                "file": "research/01-setup/Python Virtual Environment.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -216,18 +216,18 @@
   },
   "active": "5bbbe0e216446d8f",
   "lastOpenFiles": [
-    "Main.md",
-    "research/01-setup/Python Virtual Environment.md",
     "research/01-setup/Git and Git Bash.md",
+    "Main.md",
+    "General notes.md",
+    "research/05-research-notes/Fuentes.md",
+    "research/01-setup/Python Virtual Environment.md",
     "research/02-datasets/Temple University EEG.md",
     "NO THESIS/Untitled.md",
     "research/02-datasets/EEG.md",
-    "research/05-research-notes/Fuentes.md",
     "NO THESIS",
     "research/00-index/INDEX.md",
     "research/05-research-notes/Artificial Intelligence Design.md",
     "research/01-setup/SSH and rsync.md",
-    "General notes.md",
     "Pasted image 20260617123711.png",
     "Pasted image 20260523093230.png",
     "research/01-setup/MobaXterm.md",
