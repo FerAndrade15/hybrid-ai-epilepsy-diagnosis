@@ -44,7 +44,7 @@ def macro_f1_multilabel(y_true, y_pred):
 
 # Grid search optimization 
 def optimize_rf_gridsearch(X, y, groups, targets=DEFAULT_TARGETS,
-                            param_grid=None, cv_splits=5, n_jobs=-1):
+                            param_grid=None, cv_splits=5, n_jobs=1, m_jobs=1):
     if param_grid is None:
         param_grid = {
             "estimator__n_estimators": [200, 400, 600],
@@ -55,17 +55,25 @@ def optimize_rf_gridsearch(X, y, groups, targets=DEFAULT_TARGETS,
         }
 
     base = MultiOutputClassifier(
-        RandomForestClassifier(class_weight="balanced_subsample", random_state=42, n_jobs=1)
+        RandomForestClassifier(class_weight="balanced_subsample", random_state=42, n_jobs=m_jobs)
     )
     gkf = GroupKFold(n_splits=cv_splits)
     scorer = make_scorer(macro_f1_multilabel)
 
+    cv_splits_list = list(gkf.split(X, y[targets], groups))
+
     search = GridSearchCV(
-        base, param_grid, scoring=scorer, cv=gkf.split(X, y[targets], groups),
-        n_jobs=n_jobs, verbose=1,
+        base, 
+        param_grid, 
+        scoring=scorer, 
+        cv=cv_splits_list,
+        n_jobs=n_jobs, 
+        verbose=3,
+        error_score='raise'
     )
     search.fit(X, y[targets])
     return search.best_estimator_, search.best_params_, search.best_score_
+
 
 # Honey Badger Algorithm (Hashim et al., 2022) — metaheurístico
 def _decode_position(pos, bounds):

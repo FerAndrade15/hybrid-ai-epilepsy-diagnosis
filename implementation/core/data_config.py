@@ -15,7 +15,8 @@ from pathlib import Path
 # Current data path
 #BASE_PATH = Path(r"D:\tuh_eeg")
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
-BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
+# BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
+BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
 
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
@@ -33,7 +34,8 @@ ALL_MONTAGES = [
     "05_tcp_ar_b", "06_tcp_le_b", "07_tcp_ar_c", "08_tcp_le_c"      # To complete standard montages
 ]
 
-# Artifact Corpus Keywords
+# Artifact labeling and resources
+## TUAR Corpus Keywords
 ARTIFACT_KEYWORDS = {
     "eye": {"eyem"},
     "muscle": {"musc", "shiv", "chew"},
@@ -41,6 +43,20 @@ ARTIFACT_KEYWORDS = {
 }
 ARTIFACT_ADDITIONAL_TOKENS = {"tcsz", "cpsz", "gnsz", "fnsz"}
 BACKGROUND_LABEL = "bckg"
+
+## Fixed categories mne-icalabel
+ICLABEL_CATEGORIES = [
+    "brain", "muscle artifact", "eye blink",
+    "heart beat", "line noise", "channel noise", "other",
+]
+
+## TUAR and MNE-icLABEL
+ICLABEL_TO_TARGET = {
+    "eye": ["eye_blink"],
+    "muscle": ["muscle_artifact"],
+    "non_physiological": ["channel_noise", "other"],
+}
+
 
 # Events Corpus Keywords
 EVENT_KEYWORDS = {
@@ -56,11 +72,7 @@ SEIZURE_KEYWORDS = {
     "focal_non_specific": {"fnsz"},
 }
 
-# Fixed categories mne-icalabel
-ICLABEL_CATEGORIES = [
-    "brain", "muscle artifact", "eye blink",
-    "heart beat", "line noise", "channel noise", "other",
-]
+
 
 # Channel names (10-20 and 10-10 system)
 CHANNELS = [
