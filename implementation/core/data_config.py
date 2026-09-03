@@ -29,7 +29,8 @@ else:
     BASE_DATA_DIR = Path("/mnt/d/")
 
 # Current data path
-BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
+# BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
+BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
 # BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
 # BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
@@ -60,6 +61,12 @@ ARTIFACT_KEYWORDS = {
 ARTIFACT_ADDITIONAL_TOKENS = {"tcsz", "cpsz", "gnsz", "fnsz"}
 BACKGROUND_LABEL = "bckg"
 
+## TUAR Corpus Windows labeling
+TUAR_Labels = [
+    "is_clean_window", "is_ambiguos", "sample_weight", 
+    "eye", "muscle", "non_physiological", "genuine_coocurrence"
+]
+
 ## Fixed categories mne-icalabel
 ICLABEL_CATEGORIES = [
     "brain", "muscle artifact", "eye blink",
@@ -71,6 +78,7 @@ ICLABEL_TO_TARGET = {
     "eye": ["eye_blink"],
     "muscle": ["muscle_artifact"],
     "non_physiological": ["channel_noise", "other"],
+    "clean": ["brain"],
 }
 
 # Events Corpus Keywords

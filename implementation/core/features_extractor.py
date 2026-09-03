@@ -16,7 +16,7 @@ import pandas as pd
 from scipy.signal import welch, find_peaks
 from scipy.stats import skew, kurtosis
 
-from implementation.core.data_config import ICLABEL_CATEGORIES, ICLABEL_TO_TARGET
+from implementation.core.data_config import ICLABEL_CATEGORIES, ICLABEL_TO_TARGET, TUAR_Labels
 from implementation.core.preprocessing import load_raw_edf, raw_data_preproccesing
 from implementation.models.ica_model import get_or_compute_ica, channel_contribution
 
@@ -110,68 +110,79 @@ def components_dynamics(source_window, comp_names):
         feats[f"{name}_baseline_shift"] = abs(sig[:half].mean() - sig[half:].mean())
     return feats
 
-def _ica_metadata_by_session(source_window, comp_names, probs, ICLABEL_CATEGORIES):
+def session_ica_metadata(comp_names, probs):
     """
-    Index and probabilities per category calculated and saved per session.
+    ICA components: Raw signal, category and probabilities per session
     """
-    feats = {}
     name_arr = np.array(comp_names)
     probs_arr = np.array(probs)
-    label_arr = np.array()
-    for cat in ICLABEL_CATEGORIES:
-        safe = cat.replace(" ", "_")
-        equivalent = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
-        idx = np.where(name_arr==cat)[0]
 
-        if equivalent != None:
-            sub_signal = source_window[idx]
-
-
-
-
-def _aggregate_by_iclabel_category(source_window, comp_names, mixing, ch_names, probs):
-    """
-    Adds statistics values per ICLabel category, fixed column agnostiv of ICs number.
-    """
-    feats = {}
-    name_arr = np.array(comp_names)
-    probs_arr = np.array(probs)
-    print("\n\t Componentes", name_arr)
-    print("\n\t Probabilities", probs_arr)
+    raw_to_target = {}
 
     for cat in ICLABEL_CATEGORIES:
         safe = cat.replace(" ", "_")
-        equivalent = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
-        idx = np.where(name_arr == cat)[0]
-        feats[f"n_ic_{safe}"] = len(idx)
+        target = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
 
-        if len(idx) == 0:
-            feats[f"{safe}_max_iclabel_prob"] = 0.0
-            feats[f"{safe}_line_length_max"] = 0.0
-            feats[f"{safe}_peak_to_mean_max"] = 0.0
-            feats[f"{safe}_baseline_shift_max"] = 0.0
-            feats[f"{safe}_contribution_mean"] = 0.0
-            continue
-            
-        sub_signal = source_window[idx]
-        dummy_names = [f"c{i}" for i in range(len(idx))]
+        raw_to_target[cat]=target
 
-        if equivalent != None:
-            print("SAFE", safe, "EQUIV", equivalent, "IDX", idx, "FEATS", feats)
-            print("SUBSIGNAL", sub_signal, "DUMMY", dummy_names)
+    target_labels = np.array([raw_to_target.get(name, None)] for name in name_arr)
+    keep_idx = np.where(target_labels != None)[0]
 
-        t = temporal_features(sub_signal, dummy_names)
-        dyn = components_dynamics(sub_signal, dummy_names)
-        contrib = channel_contribution(sub_signal, mixing[:, idx], ch_names, dummy_names)
+    return{
+        "raw_labels": name_arr,
+        "probs": probs_arr,
+        "target_labels": target_labels,
+        "keep_idx": keep_idx
+    }
 
-        feats[f"{safe}_max_iclabel_prob"] = float(probs_arr[idx].max())
-        feats[f"{safe}_line_length_max"] = max(t[f"{n}_line_length"] for n in dummy_names)
-        feats[f"{safe}_peak_to_mean_max"] = max(dyn[f"{n}_peak_to_mean"] for n in dummy_names)
-        feats[f"{safe}_baseline_shift_max"] = max(dyn[f"{n}_baseline_shift"] for n in dummy_names)
-        feats[f"{safe}_contribution_mean"] = float(np.mean(list(contrib.values())))
+def component_features_by_window(component_window, session_ica_metadata, mixing, ch_names):
+    """
+    Returns a dataframe with a row per ICA component for the current window.
+    """
+    idx = session_ica_metadata["keep_idx"]
+    if len(idx)==0:
+        return pd.DataFrame()
 
-    return feats
+    # Components windowing
+    sub_signal = component_window[idx]
+    provisional_names = [f"c{i}" for i in range(len(idx))]
 
+    # Features generation
+    tp_feat = temporal_features(sub_signal, provisional_names)
+    dyn_feat = components_dynamics(sub_signal, provisional_names)
+    contribution = channel_contribution(sub_signal, mixing[:,idx], ch_names, provisional_names)
+
+    # Extraction of ICA session metadata
+    raw_labels = session_ica_metadata["raw_labels"]
+    target_labels = session_ica_metadata["target_labels"]
+    probs = session_ica_metadata["probs"]
+
+    #
+    rows = []
+    for j, comp_idx in enumerate(idx):
+        n = provisional_names[j]
+        prefix = f"{n}_"
+
+        row_data = {
+            "ic_index": int(comp_idx),
+            "ic_raw_label": raw_labels[comp_idx],
+            "ic_target_label": target_labels[comp_idx],
+            "ic_iclabel_prob": float(probs[comp_idx]),
+            "ic_contribution": contribution[n],
+        }
+
+        for key, value in temporal_features.items():
+            if key.startswith(prefix):
+                row_data[key.replace(prefix, "ic_")] = value
+
+        for key, value in dyn_feat.items():
+            if key.startswith(prefix):
+                new_key = key.replace(prefix, "ic_")
+                row_data[new_key] = value
+
+        rows.append(row_data)
+
+    return pd.DataFrame(rows)
 
 def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica"):
     """
@@ -186,7 +197,6 @@ def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/
         ch_names = signal.ch_names
         data = signal.get_data()
 
-        comp_names = mixing = sources_full = probs = None
         if use_ica:
             try: 
                 ica, ic_labels, probs = get_or_compute_ica(signal, patient, session, ica_cache_dir)
@@ -194,26 +204,38 @@ def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/
                 mixing = ica.get_components()
                 sources_full = ica.get_sources(signal).get_data()
             except RuntimeError as e:
+                del raw, signal, data
                 print(f"[SKIP] Session {patient}_{session} discarded by ICA error {e}")
                 continue
 
+        # General ICA components characteristics
+        ic_components_map = session_ica_metadata(comp_names, probs)
+
         for row in group.itertuples():
-            start = int(round(row.Start * sfreq))
+            start = int(round(row.Start*sfreq))
             end = int(round(row.end * sfreq))
 
-            yield {
-                "Patient": patient, "Session": session, 
-                "Start": row.Start, "End": row.end,
+            if end > data.shape[1]:
+                continue
+
+            tuar_metadata = {f"tuar_{col}":getattr(row, col, 0) for col in TUAR_Labels if hasattr(row, col)}
+            window_paquet = {
+                "Patient": patient,
+                "Session": session,
+                "Start": row.Start,
+                "End": row.end,
                 "channel_window": data[:, start:end],
-                "component_window": sources_full[:, start:end] if use_ica else None,
-                "ch_names": ch_names, "comp_names": comp_names,
-                "mixing": mixing, "probs": probs, "sfreq": sfreq,
+                "component_window": sources_full[:, start:end],
+                "ch_names": ch_names,
+                "mixing": mixing,
+                "ic_map": ic_components_map,
+                "sfreq": sfreq,
             }
+            window_paquet.update(tuar_metadata)
 
-        del raw, signal, data
-        if use_ica:
-            del ica, sources_full
-
+            yield window_paquet
+            del raw, signal, data, ica, sources_full
+        
 
 def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica"):
     """
@@ -221,19 +243,53 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
     """
     rows = []
     for w in iter_session_windows(label_windowing_df, use_ica, ica_cache_dir):
-        feats = {}
-        feats.update(temporal_features(w["channel_window"], w["ch_names"]))
-        feats.update(frequency_features(w["channel_window"], w["sfreq"], w["ch_names"]))
+        channel_feats = {}
+        channel_feats.update(temporal_features(w["channel_window"], w["ch_names"]))
+        channel_feats.update(frequency_features(w["channel_window"], w["sfreq"], w["ch_names"]))
+
         if use_ica:
-            feats.update(_aggregate_by_iclabel_category(
-                w["component_window"], w["comp_names"], w["mixing"], w["ch_names"], w["probs"]
-            ))
+            comp_df = component_features_by_window(
+                w["component_window"],
+                w["ic_map"],
+                w["mixing"],
+                w["ch_names"],
+            )
+            if comp_df.empty:
+                continue
 
-        feats["Patient"] = w["Patient"]; feats["Session"] = w["Session"]
-        feats["Start"] = w["Start"]
-        rows.append(feats)
+            for key, val in channel_feats.itemts():
+                comp_df[key] = val
+            comp_df["Patient"] = w["Patient"]
+            comp_df["Session"] = w["Session"]
+            comp_df["Start"] = w["Start"]
 
-    return pd.DataFrame(rows)
+            for key, value in w.items():
+                if key.startswith("tuar_"):
+                    comp_df[key] = value
+
+            rows.append(comp_df)
+
+    return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
+
+def build_rf_dataset(long_df, artefact_target, negative_label="clean"):
+    """
+    Returs the categories according to the target:
+    -   "eye"
+    -   "muscle"
+    -   "non_physiological"
+    -   "brain"
+    """
+    # Clean ambiguous windows
+    clean_df = long_df[long_df["tuar_is_ambiguous"]==0].copy()
+    subset = clean_df[clean_df["ic_target_label"].isin([artefact_target, negative_label])].copy()
+
+    # Confirmation of positive target
+    tuar_column = f"tuar_{artefact_target}"
+    comp = subset["ic_target_label"] == artefact_target
+    ocurrence = subset[tuar_column] == 1
+
+    subset["is_positive"] = (comp & ocurrence).astype(int)
+    return subset
 
 if __name__ == "__main__":
 
@@ -258,66 +314,26 @@ if __name__ == "__main__":
     for d in (FEATURES_DIR, ICA_CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
 
+    print("Loading 1 artifact session for testing...")
     database_corpus_patient = build_annotations_index("artifact", n_patients=1, max_sessions=1, paths=True)
+    display(database_corpus_patient.head(5))
+
+    print("Generating windows...")
     windowed_df = label_windowing(
                     database_corpus_patient, WINDOW_REQUESTS["rf_artifact_class"],
                     ARTIFACT_KEYWORDS, unreviewd_tokens=True,
                 )
-    display(windowed_df)
+    display(windowed_df.head(5))
 
-    # ICA 
-    windows = build_feature_dataset(windowed_df, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR))
-    display(windows)
+    print("Starting features extraction from channels and ICA components...")
+    featured_windows = build_feature_dataset(windowed_df, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR))
+    display(featured_windows.head(5))
 
-    print("ICA Inspection")
-    print(windows.columns.tolist())
-    """
-    probs = windows[["probs"]]
-    print(f"Patient/Session: {windows[['Patient']]} / {windows[['Session']]}")
-    print(f"N componentes ICA: {len(comp_names)}")
-    print(f"Labels crudos devueltos por mne-icalabel: {comp_names}")
-    print(f"Probabilidades (max por componente): {[round(float(p), 3) for p in probs]}")
-
-    # ICLABELS
-    labels_encontrados = set(comp_names)
-    labels_esperados = set(ICLABEL_CATEGORIES)
-    print(f"\nCategorías esperadas (data_config.py): {labels_esperados}")
-    print(f"Categorías encontradas en esta sesión:   {labels_encontrados}")
-    inesperadas = labels_encontrados - labels_esperados
-    if inesperadas:
-        print(f"\n[WARNING] Labels NOT recognized by ICLABEL_CATEGORIES: {inesperadas}")
-        print("\t\t\t-> _aggregate_by_iclabel_category ignore")
-        print("\t\t\t   (columns in 0).")
+    if not featured_windows.empty:
+        print("Successful features extraction")
+        rf_features_dataset = build_rf_dataset(featured_windows, artefact_target="eye")
+        print(rf_features_dataset.head(5))
+        print("Positive count:")
+        print(rf_features_dataset["is_positive"].value_counts())
     else:
-        print("\n[OK] All coincident with ICLABEL_CATEGORIES.")
-
-    print("\n Components by cathegory")
-    for cat in ICLABEL_CATEGORIES:
-        n = sum(1 for c in comp_names if c == cat)
-        print(f"  {cat:20s}: {n}")
-
-    print("\n Features")
-    feats = {}
-    feats.update(temporal_features(first_window["channel_window"], first_window["ch_names"]))
-    feats.update(frequency_features(
-        first_window["channel_window"], first_window["sfreq"], first_window["ch_names"]
-    ))
-    feats.update(_aggregate_by_iclabel_category(
-        first_window["component_window"], first_window["comp_names"],
-        first_window["mixing"], first_window["ch_names"], first_window["probs"]
-    ))
-
-    feats_df = pd.DataFrame([feats])
-    print(f"N features generados: {feats_df.shape[1]}")
-
-    iclabel_cols = [c for c in feats_df.columns if any(
-        c.startswith(f"{cat.replace(' ', '_')}_") or c.startswith("n_ic_")
-        for cat in ICLABEL_CATEGORIES
-    )]
-    display(feats_df[iclabel_cols].T)
-
-    print("\n Channel features")
-    normal_cols = [c for c in feats_df.columns if c not in iclabel_cols]
-    print(f"N features normales: {len(normal_cols)}")
-    display(feats_df[normal_cols].T.head(15))
-    """
+        print("Resulting empty dataset")
