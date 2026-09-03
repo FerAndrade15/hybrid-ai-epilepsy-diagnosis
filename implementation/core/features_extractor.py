@@ -21,7 +21,9 @@ from implementation.core.preprocessing import load_raw_edf, raw_data_preproccesi
 from implementation.models.ica_model import get_or_compute_ica, channel_contribution
 
 def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewness=True, Kurtosis=True, Zero_crossing_rate=True, Hjorth=True, Line_length=True, Peak_to_peak=True):
-    #
+    """
+    Extraction of temporal features from a raw signal window.
+    """
     eps = 1e-10 
     feats = {}
 
@@ -58,6 +60,9 @@ def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewne
     return feats
 
 def frequency_features(raw, sfreq, ch_names, powerbands=True, Wavelets=True):
+    """
+    Extraction of frequency features from a raw signal window.
+    """
     freqs, psd = welch(raw, sfreq, axis=1, nperseg=min(256, raw.shape[1]))
     feats = {}
     if powerbands:
@@ -88,6 +93,10 @@ def frequency_features(raw, sfreq, ch_names, powerbands=True, Wavelets=True):
     return feats
 
 def components_dynamics(source_window, comp_names):
+    """
+    Extraction of dynamics features from ICA components, including:
+    peak-to-mean ratio, peak position, number of peaks, and baseline shift.
+    """
     feats = {}
     for i, name in enumerate(comp_names):
         sig = source_window[i]
@@ -103,7 +112,7 @@ def components_dynamics(source_window, comp_names):
 
 def _ica_metadata_by_session(source_window, comp_names, probs, ICLABEL_CATEGORIES):
     """
-    Index and probabilities per cathegory calculated and saved per session.
+    Index and probabilities per category calculated and saved per session.
     """
     feats = {}
     name_arr = np.array(comp_names)

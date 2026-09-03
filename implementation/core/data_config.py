@@ -11,12 +11,28 @@ Shared data configuration for the data processing:
 """
 # Data integration libraries
 from pathlib import Path
+import platform
+
+def find_project_root(marker="implementation"):
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / marker).is_dir():
+            return parent
+    return current.parent
+
+BASE_DIR = find_project_root()
+
+# Operative system
+if platform.system() == "Windows":
+    BASE_DATA_DIR = Path("D:/")
+else:
+    BASE_DATA_DIR = Path("/mnt/d/")
 
 # Current data path
-#BASE_PATH = Path(r"D:\tuh_eeg")
+BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
 # BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
-BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
+# BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
 
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
@@ -56,7 +72,6 @@ ICLABEL_TO_TARGET = {
     "muscle": ["muscle_artifact"],
     "non_physiological": ["channel_noise", "other"],
 }
-
 
 # Events Corpus Keywords
 EVENT_KEYWORDS = {
