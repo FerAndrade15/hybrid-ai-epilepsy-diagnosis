@@ -83,9 +83,11 @@ def get_or_compute_ica(signal, patient, session, cache_dir="cache/ica"):
 def channel_contribution(sources_window, mixing, ch_names, comp_names):
     feats = {}
     activity = np.abs(sources_window).mean(axis=1)
-    for ch_idx, ch in enumerate(ch_names):
-        for comp_idx, comp in enumerate(comp_names):
-            feats[f"{ch}_{comp}_contribution"] = activity[comp_idx] * abs(mixing[ch_idx, comp_idx])
+    for comp_idx, comp in enumerate(comp_names):
+        comp_feats = {}
+        for ch_idx, ch in enumerate(ch_names):
+            comp_feats[f"ic_contrib_{ch}"] = activity[comp_idx] *  abs(mixing[ch_idx, comp_idx])
+        feats[comp]= comp_feats
     return feats
 
 if __name__ == "__main__":

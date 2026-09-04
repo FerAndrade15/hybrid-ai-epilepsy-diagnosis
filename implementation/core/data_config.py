@@ -63,8 +63,14 @@ BACKGROUND_LABEL = "bckg"
 
 ## TUAR Corpus Windows labeling
 TUAR_Labels = [
-    "is_clean_window", "is_ambiguos", "sample_weight", 
-    "eye", "muscle", "non_physiological", "genuine_coocurrence"
+    "is_clean_window", 
+    "is_ambiguous",        
+    "sample_weight", 
+    "eye", 
+    "muscle", 
+    "non_physiological", 
+    "genuine_cooccurrence", 
+    "weak_overlap"          
 ]
 
 ## Fixed categories mne-icalabel
@@ -81,6 +87,12 @@ ICLABEL_TO_TARGET = {
     "clean": ["brain"],
 }
 
+RAW_TO_TARGET = {}
+for cat in ICLABEL_CATEGORIES:
+    safe = cat.replace(" ", "_")
+    target = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
+    RAW_TO_TARGET[cat] = target
+
 # Events Corpus Keywords
 EVENT_KEYWORDS = {
     "epilepsy": {"gped", "pled"},
@@ -94,8 +106,6 @@ SEIZURE_KEYWORDS = {
     "generalized_non_specific": {"gnsz"},
     "focal_non_specific": {"fnsz"},
 }
-
-
 
 # Channel names (10-20 and 10-10 system)
 CHANNELS = [

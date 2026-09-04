@@ -8,7 +8,6 @@ Agnostic functions for the extraction of diverse features:
 - Espectral: PSD, power per band, DWT, entropy
 
 """
-
 import pywt
 import numpy as np
 import pandas as pd
@@ -16,7 +15,8 @@ import pandas as pd
 from scipy.signal import welch, find_peaks
 from scipy.stats import skew, kurtosis
 
-from implementation.core.data_config import ICLABEL_CATEGORIES, ICLABEL_TO_TARGET, TUAR_Labels
+from implementation.core.data_config import RAW_TO_TARGET, TUAR_Labels
+from implementation.core.session_cache import get_or_compute_session
 from implementation.core.preprocessing import load_raw_edf, raw_data_preproccesing
 from implementation.models.ica_model import get_or_compute_ica, channel_contribution
 
@@ -46,17 +46,16 @@ def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewne
     p2p = (raw.max(axis=1) - raw.min(axis=1)) if Peak_to_peak else np.full(raw.shape[0], np.nan)
 
     for i, ch in enumerate(ch_names):
-        feats[f"{ch}_mean"] = mean_[i]
-        feats[f"{ch}_variance"] = var_[i]
-        feats[f"{ch}_rms"] = rms_[i]
-        feats[f"{ch}_skewness"] = skew_[i]
-        feats[f"{ch}_kurtosis"] = kurt_[i]
-        feats[f"{ch}_zcr"] = zcr_[i]
-        feats[f"{ch}_hjorth_mobility"] = mobility[i]
-        feats[f"{ch}_hjorth_complexity"] = complexity[i]
-        feats[f"{ch}_line_length"] = line_len[i]
-        feats[f"{ch}_peak_to_peak"] = p2p[i]
-
+        if Mean: feats[f"{ch}_mean"] = mean_[i]
+        if Variance: feats[f"{ch}_variance"] = var_[i]
+        if RMS: feats[f"{ch}_rms"] = rms_[i]
+        if Skewness: feats[f"{ch}_skewness"] = skew_[i]
+        if Kurtosis: feats[f"{ch}_kurtosis"] = kurt_[i]
+        if Zero_crossing_rate: feats[f"{ch}_zcr"] = zcr_[i]
+        if Hjorth: feats[f"{ch}_hjorth_mobility"] = mobility[i]
+        if Hjorth: feats[f"{ch}_hjorth_complexity"] = complexity[i]
+        if Line_length: feats[f"{ch}_line_length"] = line_len[i]
+        if Peak_to_peak: feats[f"{ch}_peak_to_peak"] = p2p[i]
     return feats
 
 def frequency_features(raw, sfreq, ch_names, powerbands=True, Wavelets=True):
@@ -116,16 +115,7 @@ def session_ica_metadata(comp_names, probs):
     """
     name_arr = np.array(comp_names)
     probs_arr = np.array(probs)
-
-    raw_to_target = {}
-
-    for cat in ICLABEL_CATEGORIES:
-        safe = cat.replace(" ", "_")
-        target = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
-
-        raw_to_target[cat]=target
-
-    target_labels = np.array([raw_to_target.get(name, None)] for name in name_arr)
+    target_labels = np.array([RAW_TO_TARGET.get(name, None) for name in name_arr])
     keep_idx = np.where(target_labels != None)[0]
 
     return{
@@ -135,7 +125,7 @@ def session_ica_metadata(comp_names, probs):
         "keep_idx": keep_idx
     }
 
-def component_features_by_window(component_window, session_ica_metadata, mixing, ch_names):
+def component_features_by_window(component_window, session_ica_metadata, mixing, ch_names, sfreq):
     """
     Returns a dataframe with a row per ICA component for the current window.
     """
@@ -148,7 +138,8 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
     provisional_names = [f"c{i}" for i in range(len(idx))]
 
     # Features generation
-    tp_feat = temporal_features(sub_signal, provisional_names)
+    tp_feat = temporal_features(sub_signal, provisional_names,)
+    freq_feat = frequency_features(sub_signal, sfreq, provisional_names)
     dyn_feat = components_dynamics(sub_signal, provisional_names)
     contribution = channel_contribution(sub_signal, mixing[:,idx], ch_names, provisional_names)
 
@@ -157,7 +148,7 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
     target_labels = session_ica_metadata["target_labels"]
     probs = session_ica_metadata["probs"]
 
-    #
+    # Data tabulation for future analysis
     rows = []
     for j, comp_idx in enumerate(idx):
         n = provisional_names[j]
@@ -168,10 +159,9 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
             "ic_raw_label": raw_labels[comp_idx],
             "ic_target_label": target_labels[comp_idx],
             "ic_iclabel_prob": float(probs[comp_idx]),
-            "ic_contribution": contribution[n],
         }
 
-        for key, value in temporal_features.items():
+        for key, value in tp_feat.items():
             if key.startswith(prefix):
                 row_data[key.replace(prefix, "ic_")] = value
 
@@ -180,6 +170,12 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
                 new_key = key.replace(prefix, "ic_")
                 row_data[new_key] = value
 
+        for key, value in freq_feat.items():
+            if key.startswith(prefix):
+                new_key = key.replace(prefix, "ic_")
+                row_data[new_key] = value
+
+        row_data.update(contribution[n])
         rows.append(row_data)
 
     return pd.DataFrame(rows)
@@ -191,6 +187,9 @@ def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/
     for (patient, session, path_edf), group in label_windowing_df.groupby(
         ["Patient", "Session", "EDF_path"]
     ):
+        try:
+            s = get_or_compute_session(patient, session, path_edf,
+                                       cache_dir=session_cache_dir,)
         raw = load_raw_edf(path_edf, preloaD=True)
         signal = raw_data_preproccesing(raw)
         sfreq = signal.info["sfreq"]
@@ -234,18 +233,25 @@ def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/
             window_paquet.update(tuar_metadata)
 
             yield window_paquet
-            del raw, signal, data, ica, sources_full
+        del raw, signal, data, ica, sources_full
         
 
 def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica"):
     """
     Returns signal + ICA features added by ICLabel cathegories.
-    """
+    """        
     rows = []
+
     for w in iter_session_windows(label_windowing_df, use_ica, ica_cache_dir):
         channel_feats = {}
-        channel_feats.update(temporal_features(w["channel_window"], w["ch_names"]))
-        channel_feats.update(frequency_features(w["channel_window"], w["sfreq"], w["ch_names"]))
+        channel_feats.update(
+            temporal_features(
+                w["channel_window"], w["ch_names"],
+                Variance=True, Line_length=True, Peak_to_peak=True,
+                Mean=False, RMS=False, Skewness=False, Kurtosis=False, 
+                Zero_crossing_rate=False, Hjorth=False
+                )
+            )
 
         if use_ica:
             comp_df = component_features_by_window(
@@ -253,20 +259,24 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
                 w["ic_map"],
                 w["mixing"],
                 w["ch_names"],
+                w["sfreq"]
             )
             if comp_df.empty:
                 continue
 
-            for key, val in channel_feats.itemts():
-                comp_df[key] = val
-            comp_df["Patient"] = w["Patient"]
-            comp_df["Session"] = w["Session"]
-            comp_df["Start"] = w["Start"]
+            add_cols = {}
+            add_cols.update(channel_feats)
+            add_cols["Patient"] = w["Patient"]
+            add_cols["Session"] = w["Session"]
+            add_cols["Start"] = w["Start"]
 
             for key, value in w.items():
                 if key.startswith("tuar_"):
-                    comp_df[key] = value
+                    add_cols[key] = value
 
+            add_cols = pd.DataFrame([add_cols]*len(comp_df))
+            comp_df.reset_index(drop=True, inplace=True)
+            comp_df = pd.concat([comp_df, add_cols], axis=1)
             rows.append(comp_df)
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
@@ -281,7 +291,7 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean"):
     """
     # Clean ambiguous windows
     clean_df = long_df[long_df["tuar_is_ambiguous"]==0].copy()
-    subset = clean_df[clean_df["ic_target_label"].isin([artefact_target, negative_label])].copy()
+    subset = clean_df.copy()
 
     # Confirmation of positive target
     tuar_column = f"tuar_{artefact_target}"
@@ -294,7 +304,7 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean"):
 if __name__ == "__main__":
 
     from implementation.core.data_loader import build_annotations_index
-    from implementation.core.data_config import ICLABEL_CATEGORIES, ARTIFACT_KEYWORDS, WINDOW_REQUESTS
+    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS
     from implementation.core.windowing import label_windowing
     from IPython.display import display
     from pathlib import Path
@@ -305,7 +315,7 @@ if __name__ == "__main__":
         for parent in current.parents:
             if (parent / marker).is_dir():
                 return parent
-        raise RuntimeError(f"No se encontró la raíz del proyecto (buscando carpeta '{marker}')")
+        raise RuntimeError(f"Main folder path not found (looking for '{marker}' folder)")
 
     BASE_DIR = find_project_root()
     CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
@@ -314,8 +324,8 @@ if __name__ == "__main__":
     for d in (FEATURES_DIR, ICA_CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
 
-    print("Loading 1 artifact session for testing...")
-    database_corpus_patient = build_annotations_index("artifact", n_patients=1, max_sessions=1, paths=True)
+    print("Loading 2 artifact session for testing...")
+    database_corpus_patient = build_annotations_index("artifact", n_patients=1, max_sessions=2, paths=True)
     display(database_corpus_patient.head(5))
 
     print("Generating windows...")
@@ -326,8 +336,10 @@ if __name__ == "__main__":
     display(windowed_df.head(5))
 
     print("Starting features extraction from channels and ICA components...")
+
     featured_windows = build_feature_dataset(windowed_df, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR))
     display(featured_windows.head(5))
+    print(featured_windows.columns.tolist())
 
     if not featured_windows.empty:
         print("Successful features extraction")
