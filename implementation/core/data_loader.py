@@ -14,6 +14,15 @@ import numpy as np
 # Shared config data for EEG preprocessing
 from implementation.core.data_config import ALL_MONTAGES, CORPUS_PATHS, BASE_PATH
 
+# General function to find the project root directory
+def find_project_root(marker="implementation"):
+        current = Path(__file__).resolve()
+        for parent in current.parents:
+            if (parent / marker).is_dir():
+                return parent
+        raise RuntimeError(f"Main folder path not found (looking for '{marker}' folder)")
+
+# Funtions for EEG data analysis and dataframe generation
 def get_session_data(corpus_name, n_patients=None, min_sessions=None, max_sessions=None, montages=None):
     """
     Pair EDF and CSV files and extract patient and montage and saves important data from edfs:

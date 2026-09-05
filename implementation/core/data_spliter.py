@@ -10,9 +10,7 @@ based on the parameters extracted from the EDA.
 # Data managment libraries
 import json
 from datetime import datetime
-import numpy as np
 import pandas as pd
-from pathlib import Path
 
 def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", include_clean=True, 
                              drop_excluded=True, drop_ambiguous=True, 
@@ -29,7 +27,6 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
     if include_clean:
         label_cols = label_cols + ["is_clean_window"]
 
-    rng = np.random.default_rng(seed)
     patient_counts = df.groupby(group_col)[label_cols].sum()
     patient_counts["total_weight"] = patient_counts.sum(axis=1)
     order = patient_counts.sample(frac=1, random_state=seed).sort_values(
@@ -102,35 +99,70 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
 
     current_config = {
         "target_taxonomy_keys": list(target_taxonomy.keys()),
+        "target_taxonomy_values": list(target_taxonomy.values()),
         "seed": seed,
         "ratios": ratios,
         "n_windows_total": len(windowed_df),
-        "patients": windowed_df[group_col].unique(),
-    }
-
-    metadata = {
-        "target_taxonomy_keys": list(target_taxonomy.keys()),
-        "seed": seed,
-        "ratios": ratios,
-        "n_windows_total": len(windowed_df),
-        "patients": windowed_df[group_col].unique(),
-        "generated_at": datetime.now().strftime("%Y-%m-%d"),
+        "patients": sorted(windowed_df[group_col].unique().tolist()),
+        "version": version,
     }
     
+    compute_new_split = True
+
     if saving_parquet.exists() and saving_json.exists():
         with open(saving_json, "r") as f:
-            metadata = json.load(f)
+            saved_metadata = json.load(f)
+            comp_metadata = saved_metadata.copy()
+            comp_metadata.pop("generated_at", None)
+            comp_metadata.pop("notes", None)
+            comp_metadata.pop("n_patients", None)
+            comp_metadata.pop("patient_assignments", None)
+            comp_metadata.pop("split_report", None)
 
-    print("Patients", windowed_df[group_col].unique())
+        if comp_metadata == current_config:
+            print(f"[INFO] Loading existing split from {saving_parquet} and {saving_json}")
+            windowed_df = pd.read_parquet(saving_parquet)
+            assignment = saved_metadata.get("patient_assignments", {})
+            report = pd.DataFrame(saved_metadata.get("split_report", {})).T
+            compute_new_split = False
+        else:
+            print(f"[INFO] Existing split metadata does not match current configuration.")
 
+    if compute_new_split:
+        print(f"[INFO] Existing split metadata does not match current configuration.")
+        print(f"[INFO] Computing and saving new split...")
+        windowed_df, assignment, report = grouped_multilabel_split(windowed_df, target_taxonomy, group_col, include_clean,
+                                                                    drop_excluded, drop_ambiguous, 
+                                                                    ratios, seed)
+        with open(saving_json, "w") as f:
+            metadata_to_save = current_config.copy()
+            metadata_to_save["generated_at"] = datetime.now().strftime("%Y-%m-%d")
+            metadata_to_save["n_patients"] = pd.Series(assignment).value_counts().to_dict()
+            metadata_to_save["patient_assignments"] = assignment
+            metadata_to_save["split_report"] = report.to_dict()
+            json.dump(metadata_to_save, f, indent=4)
+        windowed_df.to_parquet(saving_parquet, index=False)
+        print(f"[INFO] Saved new split to {str(saving_parquet)} and {str(saving_json)}")
+
+    return windowed_df, assignment, report
 
 if __name__ == "__main__":
+    
+    # Data integration libraries / project modules
     from implementation.core.data_config import ARTIFACT_KEYWORDS, ARTIFACT_ADDITIONAL_TOKENS, BACKGROUND_LABEL, WINDOW_REQUESTS
     from implementation.core.data_loader import build_annotations_index
     from implementation.core.windowing import label_windowing
+    from implementation.core.data_config import find_project_root
 
     # Data visualization libraries
     from IPython.display import display
+    from pathlib import Path
+
+
+    # Paths for loading and saving data
+    BASE_DIR = find_project_root()
+    CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
+    SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "splits"
     
     database_corpus_patient = build_annotations_index("artifact", paths=True, n_patients=50, max_sessions=1)
     display(database_corpus_patient)
@@ -143,8 +175,9 @@ if __name__ == "__main__":
     display(windowed_annotations_corpus_patient)
 
     ratios_ = {"train": 0.7, "val": 0.15, "test": 0.15}
-    """windowed_df, assignment, report = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
-
+    # windowed_df, assignment, report = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
+    windowed_df, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=SPLIT_CACHE_DIR, version="v1", ratios=ratios_)
+    
     print("[DEBUG] Report with ratios:", ratios_, "\n", report)
     print("[DEBUG] Assignment value:", assignment)
 
@@ -155,29 +188,8 @@ if __name__ == "__main__":
     print("[DEBUG] is_clean_window: ",len(windowed_df[(windowed_df["is_clean_window"]==1)]))
     print("[DEBUG] is_unreviewed: ",len(windowed_df[(windowed_df["is_unreviewed"]==1)]))
     print("[DEBUG] is_excluded: ",len(windowed_df[(windowed_df["is_excluded"]==1)]))
-    """
-    get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
-
-    """
-    save_split_outputs(
-        windowed_df=windowed_df,
-        assignment=assignment,
-        target_taxonomy=ARTIFACT_KEYWORDS,
-        ratios=ratios_,         # currently used, default
-        seed=42,                # default
-        window_request_name="rf_artifact_class",
-        version="v1",
-        notes="",
-    )
-    
-  pd.set_option("display.max_columns", None)
-    pd.set_option("display.width", 120)  
-    pd.set_option("display.expand_frame_repr", True)
-    pd.set_option("display.max_colwidth", 25)
-    print(windowed_df.head())
-    print(windowed_df.shape)
-    
-    # Para entrenamiento, ahí sí filtrás excluidas/ambiguas
+        
+    # Para entrenamiento, con filtro de excluidas/ambiguas
     train_df = windowed_df[
         (windowed_df["split"] == "train") &
         (windowed_df["is_excluded"] == 0) &
@@ -198,4 +210,3 @@ if __name__ == "__main__":
         (windowed_df["is_ambiguous"] == 0)
     ]
     print(len(train_df), len(train_df_rest), len(val_df), len(test_df))
-    """

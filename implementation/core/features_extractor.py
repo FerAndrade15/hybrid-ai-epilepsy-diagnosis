@@ -306,19 +306,14 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_
 
 if __name__ == "__main__":
 
-    from implementation.core.data_loader import build_annotations_index
+    # Data integration libraries / project modules
     from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS
+    from implementation.core.data_loader import build_annotations_index, find_project_root
     from implementation.core.windowing import label_windowing
+
+    # Data visualization and search libraries
     from IPython.display import display
     from pathlib import Path
-
-    # Location of project path to prevent rupture due to cmd running
-    def find_project_root(marker="implementation"):
-        current = Path(__file__).resolve()
-        for parent in current.parents:
-            if (parent / marker).is_dir():
-                return parent
-        raise RuntimeError(f"Main folder path not found (looking for '{marker}' folder)")
 
     BASE_DIR = find_project_root()
     CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
@@ -329,7 +324,7 @@ if __name__ == "__main__":
         d.mkdir(parents=True, exist_ok=True)
 
     print("Loading 2 artifact session for testing...")
-    database_corpus_patient = build_annotations_index("artifact", n_patients=1, max_sessions=2, paths=True)
+    database_corpus_patient = build_annotations_index("artifact", n_patients=5, max_sessions=2, paths=True)
     display(database_corpus_patient.head(5))
 
     print("Generating windows...")
