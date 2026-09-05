@@ -72,9 +72,9 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
 
     saving_dir = Path(dataset_division_dir)
     saving_dir.mkdir(parents=True, exist_ok=True)
-    split_train70_val15_test15_p25_v1
-    saving_parquet = saving_dir / f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}.parquet"
-    saving_json = saving_dir / f"split_test{ratios['test']*100}_val{ratios['val']*100}_train{ratios['train']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}.json"
+    base_name = f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}"
+    saving_parquet = saving_dir / f"{base_name}.parquet"
+    saving_json = saving_dir / f"{base_name}.json"
 
     
     compute_new_split = True
