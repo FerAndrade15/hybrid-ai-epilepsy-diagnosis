@@ -72,8 +72,9 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
 
     saving_dir = Path(dataset_division_dir)
     saving_dir.mkdir(parents=True, exist_ok=True)
-    saving_parquet = saving_dir / f"test({ratios['test']})_val({ratios['val']})_train({ratios['train']})_patients({len(sorted(windowed_df[group_col].unique().tolist()))})_v{version}.pkl"
-    saving_json = saving_dir / f"test({ratios['test']})_val({ratios['val']})_train({ratios['train']})_patients({len(sorted(windowed_df[group_col].unique().tolist()))})_v{version}.json"
+    split_train70_val15_test15_p25_v1
+    saving_parquet = saving_dir / f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}.parquet"
+    saving_json = saving_dir / f"split_test{ratios['test']*100}_val{ratios['val']*100}_train{ratios['train']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}.json"
 
     
     compute_new_split = True
@@ -96,10 +97,13 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
             compute_new_split = False
         else:
             print(f"[INFO] Existing split metadata does not match current configuration.")
-            version += 1
-            saving_parquet = saving_dir / f"test{ratios['test']}_val{ratios['val']}_train{ratios['train']}_{len(sorted(windowed_df[group_col].unique().tolist()))}patients_v{version}.pkl"
-            saving_json = saving_dir / f"test{ratios['test']}_val{ratios['val']}_train{ratios['train']}_{len(sorted(windowed_df[group_col].unique().tolist()))}patients_v{version}.json"
-
+            raise ValueError(
+                f"\n[PELIGRO] El archivo {basename} ya existe, pero la configuración actual "
+                f"ha cambiado \n"
+                f"Para no sobreescribir tus datos anteriores, cambia el parámetro "
+                f"'version={version + 1}' (o mayor) en tu script principal."
+            )
+           
     if compute_new_split:
         print(f"[INFO] Existing split metadata does not match current configuration.")
         print(f"[INFO] Computing and saving new split...")
