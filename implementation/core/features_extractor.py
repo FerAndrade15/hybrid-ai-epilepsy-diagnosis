@@ -288,7 +288,8 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_
     -   "tuar_labels" (genuine_cooccurrence, weak_overlap, clean...)
     """
     # Clean ambiguous windows
-    clean_df = long_df[long_df["tuar_is_ambiguous"]==0].copy()
+    clean_df = long_df[ (long_df["tuar_is_ambiguous"] == 0) & 
+                        (long_df["is_excluded"] == 0)].copy()
     subset = clean_df.copy()
 
     # Confirmation of positive target
@@ -310,6 +311,7 @@ if __name__ == "__main__":
     from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS
     from implementation.core.data_loader import build_annotations_index, find_project_root
     from implementation.core.windowing import label_windowing
+    from implementation.core.data_spliter import get_or_compute_split
 
     # Data visualization and search libraries
     from IPython.display import display
@@ -320,23 +322,26 @@ if __name__ == "__main__":
     ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "cache" / "ica"
     SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "cache" / "sessions"
     FEATURES_DIR = CORPUS_OUTPUTS_DIR / "individual_tests"/ "features"
-    for d in (FEATURES_DIR, ICA_CACHE_DIR):
+    SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "splits"
+
+    for d in (FEATURES_DIR, ICA_CACHE_DIR, SPLIT_CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
 
-    print("Loading 2 artifact session for testing...")
+    print("Loading 5 artifact patients, 2 sessions per patient for testing...")
     database_corpus_patient = build_annotations_index("artifact", n_patients=5, max_sessions=2, paths=True)
     display(database_corpus_patient.head(5))
 
     print("Generating windows...")
-    windowed_df = label_windowing(
+    windowed_annotations_corpus_patient = label_windowing(
                     database_corpus_patient, WINDOW_REQUESTS["rf_artifact_class"],
                     ARTIFACT_KEYWORDS, unreviewd_tokens=True,
                 )
-    display(windowed_df.head(5))
+    display(windowed_annotations_corpus_patient.head(5))
+
+    windowed_annotated_splited, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_)
 
     print("Starting features extraction from channels and ICA components...")
-
-    featured_windows = build_feature_dataset(windowed_df, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
+    featured_windows = build_feature_dataset(windowed_annotated_splited, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
     display(featured_windows.head(5))
     print(featured_windows.columns.tolist())
 
