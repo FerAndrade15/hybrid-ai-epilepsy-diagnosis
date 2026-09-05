@@ -29,8 +29,8 @@ else:
     BASE_DATA_DIR = Path("/mnt/d/")
 
 # Current data path
-BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
-#BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
+#BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
+BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
 # BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
 # BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")

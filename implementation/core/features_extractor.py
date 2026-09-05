@@ -6,7 +6,7 @@
 Agnostic functions for the extraction of diverse features:
 - Temporal: RMS, variance, skewness, kurtosis, line_length, zero_crossing_rate, peak_to_peak
 - Espectral: PSD, power per band, DWT, entropy
-
+- ICA components dynamics and metadata extraction
 """
 import pywt
 import numpy as np
@@ -17,8 +17,7 @@ from scipy.stats import skew, kurtosis
 
 from implementation.core.data_config import RAW_TO_TARGET, TUAR_Labels
 from implementation.core.session_cache import get_or_compute_session
-from implementation.core.preprocessing import load_raw_edf, raw_data_preproccesing
-from implementation.models.ica_model import get_or_compute_ica, channel_contribution
+from implementation.models.ica_model import channel_contribution
 
 def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewness=True, Kurtosis=True, Zero_crossing_rate=True, Hjorth=True, Line_length=True, Peak_to_peak=True):
     """
@@ -235,10 +234,12 @@ def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="ca
 def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica", session_cache_dir="cache/sessions"):
     """
     Returns signal + ICA features added by ICLabel cathegories.
-    """        
+    """    
+    print("ICA CACHE DIR", ica_cache_dir)
+    print("SESSIOM CACHE DIR", session_cache_dir)    
     rows = []
 
-    for w in iter_session_windows(label_windowing_df, use_ica,session_cache_dir, ica_cache_dir):
+    for w in iter_session_windows(label_windowing_df, use_ica, session_cache_dir, ica_cache_dir):
         channel_feats = {}
         channel_feats.update(
             temporal_features(
@@ -340,7 +341,7 @@ if __name__ == "__main__":
 
     print("Starting features extraction from channels and ICA components...")
 
-    featured_windows = build_feature_dataset(windowed_df, use_ica=True, session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR))
+    featured_windows = build_feature_dataset(windowed_df, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
     display(featured_windows.head(5))
     print(featured_windows.columns.tolist())
 

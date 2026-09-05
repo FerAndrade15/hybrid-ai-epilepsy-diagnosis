@@ -30,17 +30,11 @@ def train_binary_rf(X, y, model_name="model", test_size=0.2, random_state=42,
     rf_params.setdefault("random_state", random_state)
     rf_params.setdefault("n_jobs", -1)
     
-    model = RandomForestClassifier(
-        class_weight="balanced_subsample",
-        n_jobs=-1,
-        random_state=42,
-        **rf_params,
-    )
-    if sample_weight is not None:
-        model.fit(X, y, sample_weight=sample_weight)
-    else:
-        model.fit(X, y)
-    return model
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size)
+    
+
+
+
 # Multilabel training
 def train_rf(X, y, sample_weight=None, targets=DEFAULT_TARGETS, **rf_params):
     """

@@ -14,7 +14,6 @@ import numpy as np
 # Shared config data for EEG preprocessing
 from implementation.core.data_config import ALL_MONTAGES, CORPUS_PATHS, BASE_PATH
 
-
 def get_session_data(corpus_name, n_patients=None, min_sessions=None, max_sessions=None, montages=None):
     """
     Pair EDF and CSV files and extract patient and montage and saves important data from edfs:

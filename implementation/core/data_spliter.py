@@ -14,7 +14,6 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
-
 def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", include_clean=True, 
                              drop_excluded=True, drop_ambiguous=True, 
                              ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42):
@@ -51,16 +50,12 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
         assignment[patient] = best_split
         split_totals[best_split] += counts
 
-    # El assignment se mapea sobre el df ORIGINAL sin filtrar,
-    # para que las ventanas excluidas/ambiguas también queden marcadas
-    # (para medir falsos positivos en val/test)
     windowed_df = windowed_df.copy()
     windowed_df["split"] = windowed_df[group_col].map(assignment)
 
     report = pd.DataFrame(split_totals).T
     report["n_patients"] = pd.Series(assignment).value_counts()
-    print(report)
-    return windowed_df, assignment
+    return windowed_df, assignment, report
 
 
 def save_split_outputs(windowed_df, assignment, target_taxonomy, ratios, seed,
@@ -72,6 +67,7 @@ def save_split_outputs(windowed_df, assignment, target_taxonomy, ratios, seed,
     basename = f"windowed_df_{window_request_name}_{version}"
     csv_path = out_dir / f"{basename}.csv"
     json_path = out_dir / f"{basename}.json"
+    
 
     # 1. Dataframe completo con la columna split ya pegada
     windowed_df.to_csv(csv_path, index=False)
@@ -88,27 +84,81 @@ def save_split_outputs(windowed_df, assignment, target_taxonomy, ratios, seed,
         "generated_at": datetime.now().strftime("%Y-%m-%d"),
         "notes": notes,
     }
-    with open(json_path, "w") as f:
-        json.dump(metadata, f, indent=2)
+
 
     print(f"Guardado: {csv_path}")
     print(f"Guardado: {json_path}")
     return csv_path, json_path
 
+def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
+                        include_clean=True, drop_excluded=True, drop_ambiguous=True, 
+                        ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, 
+                        dataset_division_dir="splits", version="v1"):
+    
+    saving_dir = Path(dataset_division_dir)
+    saving_dir.mkdir(parents=True, exist_ok=True)
+    saving_parquet = saving_dir / f"test{ratios['train']}_val{ratios['val']}_train{ratios['test']}_{version}.pkl"
+    saving_json = saving_dir / f"test{ratios['train']}_val{ratios['val']}_train{ratios['test']}_{version}.json"
+
+    current_config = {
+        "target_taxonomy_keys": list(target_taxonomy.keys()),
+        "seed": seed,
+        "ratios": ratios,
+        "n_windows_total": len(windowed_df),
+        "patients": windowed_df[group_col].unique(),
+    }
+
+    metadata = {
+        "target_taxonomy_keys": list(target_taxonomy.keys()),
+        "seed": seed,
+        "ratios": ratios,
+        "n_windows_total": len(windowed_df),
+        "patients": windowed_df[group_col].unique(),
+        "generated_at": datetime.now().strftime("%Y-%m-%d"),
+    }
+    
+    if saving_parquet.exists() and saving_json.exists():
+        with open(saving_json, "r") as f:
+            metadata = json.load(f)
+
+    print("Patients", windowed_df[group_col].unique())
+
+
 if __name__ == "__main__":
     from implementation.core.data_config import ARTIFACT_KEYWORDS, ARTIFACT_ADDITIONAL_TOKENS, BACKGROUND_LABEL, WINDOW_REQUESTS
     from implementation.core.data_loader import build_annotations_index
     from implementation.core.windowing import label_windowing
+
+    # Data visualization libraries
+    from IPython.display import display
     
-    database_corpus_patient = build_annotations_index("artifact", paths=True) # n_patients=10, max_sessions=1,
+    database_corpus_patient = build_annotations_index("artifact", paths=True, n_patients=50, max_sessions=1)
+    display(database_corpus_patient)
+
     windowed_annotations_corpus_patient = label_windowing(database_corpus_patient, 
                                                           WINDOW_REQUESTS["rf_artifact_class"], 
                                                           ARTIFACT_KEYWORDS, 
                                                           unreviewd_tokens=True)
 
-    ratios_ = {"train": 0.7, "val": 0.15, "test": 0.15}
-    windowed_df, assignment = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
+    display(windowed_annotations_corpus_patient)
 
+    ratios_ = {"train": 0.7, "val": 0.15, "test": 0.15}
+    """windowed_df, assignment, report = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
+
+    print("[DEBUG] Report with ratios:", ratios_, "\n", report)
+    print("[DEBUG] Assignment value:", assignment)
+
+    print("Windowed dataframe:")
+    display(windowed_df.head(5))
+    print(windowed_df.columns.tolist())
+    print("[DEBUG] is_excluded_unreviewed: ",len(windowed_df[(windowed_df["is_excluded_unreviewed"]==1)]))
+    print("[DEBUG] is_clean_window: ",len(windowed_df[(windowed_df["is_clean_window"]==1)]))
+    print("[DEBUG] is_unreviewed: ",len(windowed_df[(windowed_df["is_unreviewed"]==1)]))
+    print("[DEBUG] is_excluded: ",len(windowed_df[(windowed_df["is_excluded"]==1)]))
+    """
+    get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
+
+    """
     save_split_outputs(
         windowed_df=windowed_df,
         assignment=assignment,
@@ -120,12 +170,12 @@ if __name__ == "__main__":
         notes="",
     )
     
-    """pd.set_option("display.max_columns", None)
+  pd.set_option("display.max_columns", None)
     pd.set_option("display.width", 120)  
     pd.set_option("display.expand_frame_repr", True)
     pd.set_option("display.max_colwidth", 25)
     print(windowed_df.head())
-    print(windowed_df.shape)"""
+    print(windowed_df.shape)
     
     # Para entrenamiento, ahí sí filtrás excluidas/ambiguas
     train_df = windowed_df[
@@ -148,3 +198,4 @@ if __name__ == "__main__":
         (windowed_df["is_ambiguous"] == 0)
     ]
     print(len(train_df), len(train_df_rest), len(val_df), len(test_df))
+    """

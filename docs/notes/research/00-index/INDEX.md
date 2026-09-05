@@ -43,13 +43,13 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 #### Documentation
 - [[Marco teórico]]
 - [[Fuentes]]
-- 
+- [[Completed_models]]
 
 ---
 
 ## Estado actual
-- [ ] Acceso SSH al servidor TUH configurado
-- [ ] Descarga del dataset en proceso
-- [ ] Documentar entornos virtuales
+- [x] Acceso SSH al servidor TUH configurado
+- [x] Descarga del dataset en proceso
+- [x] Documentar entornos virtuales
 - [ ] Documentar modelos PyTorch
 - [ ] 
