@@ -11,6 +11,7 @@ based on the parameters extracted from the EDA.
 import json
 from datetime import datetime
 import pandas as pd
+from pathlib import Path
 
 def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", include_clean=True, 
                              drop_excluded=True, drop_ambiguous=True, 
@@ -54,58 +55,26 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
     report["n_patients"] = pd.Series(assignment).value_counts()
     return windowed_df, assignment, report
 
-
-def save_split_outputs(windowed_df, assignment, target_taxonomy, ratios, seed,
-                        window_request_name, out_dir="splits", version="v1",
-                        notes=""):
-    out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    basename = f"windowed_df_{window_request_name}_{version}"
-    csv_path = out_dir / f"{basename}.csv"
-    json_path = out_dir / f"{basename}.json"
-    
-
-    # 1. Dataframe completo con la columna split ya pegada
-    windowed_df.to_csv(csv_path, index=False)
-
-    # 2. Sidecar con lo necesario para reproducir/auditar
-    n_patients = pd.Series(assignment).value_counts().to_dict()
-    metadata = {
-        "source_window_request": window_request_name,
-        "target_taxonomy_keys": list(target_taxonomy.keys()),
-        "seed": seed,
-        "ratios": ratios,
-        "n_patients": n_patients,
-        "n_windows_total": len(windowed_df),
-        "generated_at": datetime.now().strftime("%Y-%m-%d"),
-        "notes": notes,
-    }
-
-
-    print(f"Guardado: {csv_path}")
-    print(f"Guardado: {json_path}")
-    return csv_path, json_path
-
 def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
                         include_clean=True, drop_excluded=True, drop_ambiguous=True, 
                         ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, 
-                        dataset_division_dir="splits", version="v1"):
+                        dataset_division_dir="splits", version=1):
     
-    saving_dir = Path(dataset_division_dir)
-    saving_dir.mkdir(parents=True, exist_ok=True)
-    saving_parquet = saving_dir / f"test{ratios['train']}_val{ratios['val']}_train{ratios['test']}_{version}.pkl"
-    saving_json = saving_dir / f"test{ratios['train']}_val{ratios['val']}_train{ratios['test']}_{version}.json"
-
     current_config = {
         "target_taxonomy_keys": list(target_taxonomy.keys()),
-        "target_taxonomy_values": list(target_taxonomy.values()),
+        "target_taxonomy_values": [list(v) if isinstance(v, set) else v for v in target_taxonomy.values()],
         "seed": seed,
         "ratios": ratios,
         "n_windows_total": len(windowed_df),
         "patients": sorted(windowed_df[group_col].unique().tolist()),
         "version": version,
     }
+
+    saving_dir = Path(dataset_division_dir)
+    saving_dir.mkdir(parents=True, exist_ok=True)
+    saving_parquet = saving_dir / f"test({ratios['test']})_val({ratios['val']})_train({ratios['train']})_patients({len(sorted(windowed_df[group_col].unique().tolist()))})_v{version}.pkl"
+    saving_json = saving_dir / f"test({ratios['test']})_val({ratios['val']})_train({ratios['train']})_patients({len(sorted(windowed_df[group_col].unique().tolist()))})_v{version}.json"
+
     
     compute_new_split = True
 
@@ -127,6 +96,9 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
             compute_new_split = False
         else:
             print(f"[INFO] Existing split metadata does not match current configuration.")
+            version += 1
+            saving_parquet = saving_dir / f"test{ratios['test']}_val{ratios['val']}_train{ratios['train']}_{len(sorted(windowed_df[group_col].unique().tolist()))}patients_v{version}.pkl"
+            saving_json = saving_dir / f"test{ratios['test']}_val{ratios['val']}_train{ratios['train']}_{len(sorted(windowed_df[group_col].unique().tolist()))}patients_v{version}.json"
 
     if compute_new_split:
         print(f"[INFO] Existing split metadata does not match current configuration.")
@@ -141,6 +113,14 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
             metadata_to_save["patient_assignments"] = assignment
             metadata_to_save["split_report"] = report.to_dict()
             json.dump(metadata_to_save, f, indent=4)
+
+        if "EDF_path" in windowed_df.columns:
+            windowed_df["EDF_path"] = windowed_df["EDF_path"].astype(str)
+            
+        # Si la columna 'CSV' (que vi en tu log) también tiene rutas Path, agrégala:
+        if "CSV" in windowed_df.columns:
+            windowed_df["CSV"] = windowed_df["CSV"].astype(str)
+
         windowed_df.to_parquet(saving_parquet, index=False)
         print(f"[INFO] Saved new split to {str(saving_parquet)} and {str(saving_json)}")
 
@@ -156,7 +136,6 @@ if __name__ == "__main__":
 
     # Data visualization libraries
     from IPython.display import display
-    from pathlib import Path
 
 
     # Paths for loading and saving data
@@ -164,7 +143,7 @@ if __name__ == "__main__":
     CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
     SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "splits"
     
-    database_corpus_patient = build_annotations_index("artifact", paths=True, n_patients=50, max_sessions=1)
+    database_corpus_patient = build_annotations_index("artifact", paths=True, n_patients=25, max_sessions=1)
     display(database_corpus_patient)
 
     windowed_annotations_corpus_patient = label_windowing(database_corpus_patient, 
@@ -176,7 +155,7 @@ if __name__ == "__main__":
 
     ratios_ = {"train": 0.7, "val": 0.15, "test": 0.15}
     # windowed_df, assignment, report = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
-    windowed_df, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=SPLIT_CACHE_DIR, version="v1", ratios=ratios_)
+    windowed_df, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_)
     
     print("[DEBUG] Report with ratios:", ratios_, "\n", report)
     print("[DEBUG] Assignment value:", assignment)
@@ -188,6 +167,7 @@ if __name__ == "__main__":
     print("[DEBUG] is_clean_window: ",len(windowed_df[(windowed_df["is_clean_window"]==1)]))
     print("[DEBUG] is_unreviewed: ",len(windowed_df[(windowed_df["is_unreviewed"]==1)]))
     print("[DEBUG] is_excluded: ",len(windowed_df[(windowed_df["is_excluded"]==1)]))
+    print("[DEBUG] is_ambiguous: ",len(windowed_df[(windowed_df["is_ambiguous"]==1)]))
         
     # Para entrenamiento, con filtro de excluidas/ambiguas
     train_df = windowed_df[
