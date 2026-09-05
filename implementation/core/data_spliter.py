@@ -90,7 +90,7 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
             comp_metadata.pop("split_report", None)
 
         if comp_metadata == current_config:
-            print(f"[INFO] Loading existing split from {saving_parquet} and {saving_json}")
+            print(f"[INFO] Loading existing split from {str(base_name)} parquet and json")
             windowed_df = pd.read_parquet(saving_parquet)
             assignment = saved_metadata.get("patient_assignments", {})
             report = pd.DataFrame(saved_metadata.get("split_report", {})).T
@@ -98,7 +98,7 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
         else:
             print(f"[INFO] Existing split metadata does not match current configuration.")
             raise ValueError(
-                f"\n[PELIGRO] El archivo {basename} ya existe, pero la configuración actual "
+                f"\n[PELIGRO] El archivo {str(base_name)} ya existe, pero la configuración actual "
                 f"ha cambiado \n"
                 f"Para no sobreescribir tus datos anteriores, cambia el parámetro "
                 f"'version={version + 1}' (o mayor) en tu script principal."
@@ -126,7 +126,7 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
             windowed_df["CSV"] = windowed_df["CSV"].astype(str)
 
         windowed_df.to_parquet(saving_parquet, index=False)
-        print(f"[INFO] Saved new split to {str(saving_parquet)} and {str(saving_json)}")
+        print(f"[INFO] Saved new split to {str(base_name)}")
 
     return windowed_df, assignment, report
 
