@@ -78,7 +78,6 @@ def get_or_compute_ica(signal, patient, session, cache_dir="cache/ica"):
     with open(cache_file, "wb") as f:
         dump((ica, ic_labels, probs), f)
     return ica, ic_labels, probs
-        
 
 def channel_contribution(sources_window, mixing, ch_names, comp_names):
     feats = {}

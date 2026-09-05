@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 echo "Verifying uv ..."
 if ! command -v uv &> /dev/null; then
     echo "uv not found. Downloading..."
@@ -27,6 +26,10 @@ echo "Installing dependencies..."
 uv pip install -r requirements.txt
 
 echo ""
-echo "Completed, activate the environment with:"
-echo "  source .venv/Scripts/activate   (Windows/Git Bash)"
-echo "  source .venv/bin/activate       (Mac/Linux)"
+echo "Completed! You have two options to run your code:"
+echo "  1. Use uv directly (Recommended):"
+echo "     uv run direction/code_file.py"
+echo ""
+echo "  2. Or activate the environment manually:"
+echo "     source .venv/Scripts/activate   (Windows/Git Bash)"
+echo "     source .venv/bin/activate       (Mac/Linux/WSL)"

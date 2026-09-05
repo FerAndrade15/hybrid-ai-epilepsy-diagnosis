@@ -180,7 +180,7 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
 
     return pd.DataFrame(rows)
 
-def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica"):
+def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="cache/sessions",ica_cache_dir="cache/ica"):
     """
     Window generator with added categories.
     """
@@ -189,26 +189,20 @@ def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/
     ):
         try:
             s = get_or_compute_session(patient, session, path_edf,
-                                       cache_dir=session_cache_dir,)
-        raw = load_raw_edf(path_edf, preloaD=True)
-        signal = raw_data_preproccesing(raw)
-        sfreq = signal.info["sfreq"]
-        ch_names = signal.ch_names
-        data = signal.get_data()
+                                       cache_dir=session_cache_dir,
+                                       ica_cache_dir=ica_cache_dir,
+                                       use_ica=use_ica)
+        except RuntimeError as e:
+            print(f"[SKIP] Session {patient}_{session} discarted by ICA error {e}")
+            continue
 
+        data = s["data"]
+        sfreq = s["sfreq"]
+        ch_names = s["ch_names"]
+
+        ic_components_map = None
         if use_ica:
-            try: 
-                ica, ic_labels, probs = get_or_compute_ica(signal, patient, session, ica_cache_dir)
-                comp_names = ic_labels["labels"]
-                mixing = ica.get_components()
-                sources_full = ica.get_sources(signal).get_data()
-            except RuntimeError as e:
-                del raw, signal, data
-                print(f"[SKIP] Session {patient}_{session} discarded by ICA error {e}")
-                continue
-
-        # General ICA components characteristics
-        ic_components_map = session_ica_metadata(comp_names, probs)
+            ic_components_map = session_ica_metadata(s["comp_names"], s["probs"])
 
         for row in group.itertuples():
             start = int(round(row.Start*sfreq))
@@ -224,25 +218,27 @@ def iter_session_windows(label_windowing_df, use_ica=True, ica_cache_dir="cache/
                 "Start": row.Start,
                 "End": row.end,
                 "channel_window": data[:, start:end],
-                "component_window": sources_full[:, start:end],
                 "ch_names": ch_names,
-                "mixing": mixing,
-                "ic_map": ic_components_map,
                 "sfreq": sfreq,
             }
             window_paquet.update(tuar_metadata)
 
-            yield window_paquet
-        del raw, signal, data, ica, sources_full
-        
+            if use_ica:
+                window_paquet.update({
+                    "component_window": s["sources_full"][:, start:end],
+                    "mixing": s["mixing"],
+                    "ic_map": ic_components_map,
+                })
 
-def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica"):
+            yield window_paquet
+
+def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica", session_cache_dir="cache/sessions"):
     """
     Returns signal + ICA features added by ICLabel cathegories.
     """        
     rows = []
 
-    for w in iter_session_windows(label_windowing_df, use_ica, ica_cache_dir):
+    for w in iter_session_windows(label_windowing_df, use_ica,session_cache_dir, ica_cache_dir):
         channel_feats = {}
         channel_feats.update(
             temporal_features(
@@ -269,6 +265,7 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
             add_cols["Patient"] = w["Patient"]
             add_cols["Session"] = w["Session"]
             add_cols["Start"] = w["Start"]
+            add_cols["split"] = w.get("split")
 
             for key, value in w.items():
                 if key.startswith("tuar_"):
@@ -281,13 +278,13 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
 
-def build_rf_dataset(long_df, artefact_target, negative_label="clean"):
+def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_dir="features"):
     """
     Returs the categories according to the target:
     -   "eye"
     -   "muscle"
     -   "non_physiological"
-    -   "brain"
+    -   "tuar_labels" (genuine_cooccurrence, weak_overlap, clean...)
     """
     # Clean ambiguous windows
     clean_df = long_df[long_df["tuar_is_ambiguous"]==0].copy()
@@ -299,6 +296,11 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean"):
     ocurrence = subset[tuar_column] == 1
 
     subset["is_positive"] = (comp & ocurrence).astype(int)
+
+    output_path = Path(features_dir) / f"rf_dataset_{artefact_target}.parquet"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    subset.to_parquet(output_path, index=False)
+
     return subset
 
 if __name__ == "__main__":
@@ -319,8 +321,9 @@ if __name__ == "__main__":
 
     BASE_DIR = find_project_root()
     CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
-    ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / "features_extractor_test" / "cache"
-    FEATURES_DIR = CORPUS_OUTPUTS_DIR / "features_extractor_test"/ "features"
+    ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "cache" / "ica"
+    SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "cache" / "sessions"
+    FEATURES_DIR = CORPUS_OUTPUTS_DIR / "individual_tests"/ "features"
     for d in (FEATURES_DIR, ICA_CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
 
@@ -337,13 +340,13 @@ if __name__ == "__main__":
 
     print("Starting features extraction from channels and ICA components...")
 
-    featured_windows = build_feature_dataset(windowed_df, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR))
+    featured_windows = build_feature_dataset(windowed_df, use_ica=True, session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR))
     display(featured_windows.head(5))
     print(featured_windows.columns.tolist())
 
     if not featured_windows.empty:
         print("Successful features extraction")
-        rf_features_dataset = build_rf_dataset(featured_windows, artefact_target="eye")
+        rf_features_dataset = build_rf_dataset(featured_windows, artefact_target="eye", features_dir=str(FEATURES_DIR))
         print(rf_features_dataset.head(5))
         print("Positive count:")
         print(rf_features_dataset["is_positive"].value_counts())

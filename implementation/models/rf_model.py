@@ -13,8 +13,34 @@ from sklearn.multioutput import MultiOutputClassifier
 from sklearn.model_selection import GridSearchCV, GroupKFold, cross_val_score
 from sklearn.metrics import make_scorer, f1_score
 
-DEFAULT_TARGETS = ["eye", "muscle", "non_physiological"]
-
+# Binary RF
+def train_binary_rf(X, y, model_name="model", test_size=0.2, random_state=42,
+                    rf_params=None, verbose=True):
+    """
+    Generic function to train a binary Random Forest classifier.
+    y: DataFrame with a binary column (0/1) / Series with binary labels.
+    """
+    rf_params = rf_params or {}
+    rf_params.setdefault("n_estimators", 200)
+    rf_params.setdefault("max_depth", None)
+    rf_params.setdefault("min_samples_split", 2)
+    rf_params.setdefault("min_samples_leaf", 1)
+    rf_params.setdefault("max_features", "sqrt")
+    rf_params.setdefault("class_weight", "balanced_subsample")
+    rf_params.setdefault("random_state", random_state)
+    rf_params.setdefault("n_jobs", -1)
+    
+    model = RandomForestClassifier(
+        class_weight="balanced_subsample",
+        n_jobs=-1,
+        random_state=42,
+        **rf_params,
+    )
+    if sample_weight is not None:
+        model.fit(X, y, sample_weight=sample_weight)
+    else:
+        model.fit(X, y)
+    return model
 # Multilabel training
 def train_rf(X, y, sample_weight=None, targets=DEFAULT_TARGETS, **rf_params):
     """

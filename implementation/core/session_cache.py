@@ -15,7 +15,7 @@ from implementation.core.preprocessing import raw_data_preproccesing
 from implementation.models.ica_model import get_or_compute_ica
 
 def get_or_compute_session(patient, session, path_edf, cache_dir="cache/sessions",
-                           ica_cache_dir="cache/ica", use_ica=True)
+                           ica_cache_dir="cache/ica", use_ica=True):
     """
     Load EDF, preprocessing and ICA once per session.
     Save as .npz the results for future executions of the models.
