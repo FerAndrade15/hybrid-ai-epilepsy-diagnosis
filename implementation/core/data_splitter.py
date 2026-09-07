@@ -62,8 +62,7 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
     
     current_config = {
         "target_taxonomy_keys": list(target_taxonomy.keys()),
-        "target_taxonomy_values": [list(v) if isinstance(v, set) else v for v in target_taxonomy.values()],
-        "seed": seed,
+        "target_taxonomy_values": [sorted(v) if isinstance(v, set) else v for v in target_taxonomy.values()],        "seed": seed,
         "ratios": ratios,
         "n_windows_total": len(windowed_df),
         "patients": sorted(windowed_df[group_col].unique().tolist()),

@@ -11,6 +11,7 @@ Agnostic functions for the extraction of diverse features:
 import pywt
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
 from scipy.signal import welch, find_peaks
 from scipy.stats import skew, kurtosis
@@ -235,8 +236,6 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
     """
     Returns signal + ICA features added by ICLabel cathegories.
     """    
-    print("ICA CACHE DIR", ica_cache_dir)
-    print("SESSIOM CACHE DIR", session_cache_dir)    
     rows = []
 
     for w in iter_session_windows(label_windowing_df, use_ica, session_cache_dir, ica_cache_dir):
@@ -288,8 +287,7 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_
     -   "tuar_labels" (genuine_cooccurrence, weak_overlap, clean...)
     """
     # Clean ambiguous windows
-    clean_df = long_df[ (long_df["tuar_is_ambiguous"] == 0) & 
-                        (long_df["is_excluded"] == 0)].copy()
+    clean_df = long_df[long_df["tuar_is_ambiguous"] == 0].copy()
     subset = clean_df.copy()
 
     # Confirmation of positive target
@@ -308,14 +306,13 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_
 if __name__ == "__main__":
 
     # Data integration libraries / project modules
-    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS
+    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS, RATIOS, VERSION
     from implementation.core.data_loader import build_annotations_index, find_project_root
     from implementation.core.windowing import label_windowing
-    from implementation.core.data_spliter import get_or_compute_split
+    from implementation.core.data_splitter import get_or_compute_split
 
     # Data visualization and search libraries
     from IPython.display import display
-    from pathlib import Path
 
     BASE_DIR = find_project_root()
     CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
@@ -327,8 +324,8 @@ if __name__ == "__main__":
     for d in (FEATURES_DIR, ICA_CACHE_DIR, SPLIT_CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
 
-    print("Loading 5 artifact patients, 2 sessions per patient for testing...")
-    database_corpus_patient = build_annotations_index("artifact", n_patients=5, max_sessions=2, paths=True)
+    print("Loading 25 artifact patients, 1 sessions per patient for testing...")
+    database_corpus_patient = build_annotations_index("artifact", n_patients=25, max_sessions=1, paths=True)
     display(database_corpus_patient.head(5))
 
     print("Generating windows...")
@@ -338,7 +335,7 @@ if __name__ == "__main__":
                 )
     display(windowed_annotations_corpus_patient.head(5))
 
-    windowed_annotated_splited, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_)
+    windowed_annotated_splited, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=RATIOS, version=VERSION)
 
     print("Starting features extraction from channels and ICA components...")
     featured_windows = build_feature_dataset(windowed_annotated_splited, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))

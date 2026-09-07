@@ -29,8 +29,8 @@ else:
     BASE_DATA_DIR = Path("/mnt/d/")
 
 # Current data path
-BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
-#BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
+#BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
+BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
 # BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
 # BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
@@ -87,11 +87,16 @@ ICLABEL_TO_TARGET = {
     "clean": ["brain"],
 }
 
+## Dict to convert ICA outputs into TUAR equivalent labels
 RAW_TO_TARGET = {}
 for cat in ICLABEL_CATEGORIES:
     safe = cat.replace(" ", "_")
     target = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
     RAW_TO_TARGET[cat] = target
+
+
+
+
 
 # Events Corpus Keywords
 EVENT_KEYWORDS = {
@@ -125,3 +130,9 @@ WINDOW_REQUESTS = {
     "cnn_muscle":        {"window_size_sec": 5,  "stride_sec": 2},
     "cnn_non_phys":      {"window_size_sec": 1,  "stride_sec": 1},
 }
+
+# General models configuration
+## Train, validation and test proportion of the dataset
+RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
+## Split version
+VERSION = 1

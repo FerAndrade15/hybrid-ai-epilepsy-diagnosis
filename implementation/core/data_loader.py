@@ -10,6 +10,7 @@ Load EDFs and annotations, preloading the full signal into memory.
 import mne
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 # Shared config data for EEG preprocessing
 from implementation.core.data_config import ALL_MONTAGES, CORPUS_PATHS, BASE_PATH
@@ -156,7 +157,6 @@ if __name__ == "__main__":
 
     # Data integration libraries
     from tabulate import tabulate
-    from pathlib import Path
 
     # Data analysis libraries
     from IPython.display import display
