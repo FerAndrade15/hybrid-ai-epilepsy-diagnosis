@@ -123,16 +123,21 @@ CHANNELS = [
 ]
 
 # Windowing
-WINDOW_REQUESTS = {
-    "rf_artifact_class":      {"window_size_sec": 1,  "stride_sec": 1},
-    "xgboost_features":  {"window_size_sec": 1,  "stride_sec": 1},
-    "cnn_eye":           {"window_size_sec": 20, "stride_sec": 20},
-    "cnn_muscle":        {"window_size_sec": 5,  "stride_sec": 2},
-    "cnn_non_phys":      {"window_size_sec": 1,  "stride_sec": 1},
+WINDOW_REQUESTS_ARTIFACTS = {
+    "eye":                        {"window_size_sec": 20,  "stride_sec": 20},
+    "muscle":                     {"window_size_sec": 5,  "stride_sec": 5},
+    "non_physiological":          {"window_size_sec": 1,  "stride_sec": 1},
 }
 
 # General models configuration
 ## Train, validation and test proportion of the dataset
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 ## Split version
-VERSION = 1
+VERSION = 2
+## Identifiers metadata and target not required for the models
+LEAKAGE_COLS = [
+    "ic_index", "ic_raw_label", "ic_target_label",
+    "Patient", "Session", "Start", "split",
+    "is_positive",
+]
+

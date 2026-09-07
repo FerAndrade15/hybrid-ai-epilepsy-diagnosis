@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-models/Completed_models.md",
+                "file": "03-models/Results.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Completed_models"
+              "title": "Results"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -185,8 +187,12 @@
   },
   "active": "cfe1d610441a02c7",
   "lastOpenFiles": [
-    "01-setup/Git and Git Bash.md",
+    "_templates/technical_template.md",
+    "03-models/Results.md",
+    "Untitled.md",
     "03-models/Completed_models.md",
+    "Untitled",
+    "01-setup/Git and Git Bash.md",
     "00-index/INDEX.md"
   ]
 }

@@ -217,6 +217,7 @@ def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="ca
                 "Session": session,
                 "Start": row.Start,
                 "End": row.end,
+                "split": getattr(row,  "split", None),
                 "channel_window": data[:, start:end],
                 "ch_names": ch_names,
                 "sfreq": sfreq,
@@ -278,7 +279,7 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
 
-def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_dir="features"):
+def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_dir="features"):
     """
     Returs the categories according to the target:
     -   "eye"
@@ -291,13 +292,13 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_
     subset = clean_df.copy()
 
     # Confirmation of positive target
-    tuar_column = f"tuar_{artefact_target}"
-    comp = subset["ic_target_label"] == artefact_target
+    tuar_column = f"tuar_{target_artifact}"
+    comp = subset["ic_target_label"] == target_artifact
     ocurrence = subset[tuar_column] == 1
 
     subset["is_positive"] = (comp & ocurrence).astype(int)
 
-    output_path = Path(features_dir) / f"rf_dataset_{artefact_target}.parquet"
+    output_path = Path(features_dir) / f"rf_dataset_{target_artifact}.parquet"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     subset.to_parquet(output_path, index=False)
 
@@ -306,7 +307,7 @@ def build_rf_dataset(long_df, artefact_target, negative_label="clean", features_
 if __name__ == "__main__":
 
     # Data integration libraries / project modules
-    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS, RATIOS, VERSION
+    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION
     from implementation.core.data_loader import build_annotations_index, find_project_root
     from implementation.core.windowing import label_windowing
     from implementation.core.data_splitter import get_or_compute_split
@@ -330,7 +331,7 @@ if __name__ == "__main__":
 
     print("Generating windows...")
     windowed_annotations_corpus_patient = label_windowing(
-                    database_corpus_patient, WINDOW_REQUESTS["rf_artifact_class"],
+                    database_corpus_patient, WINDOW_REQUESTS_ARTIFACTS["eye"],
                     ARTIFACT_KEYWORDS, unreviewd_tokens=True,
                 )
     display(windowed_annotations_corpus_patient.head(5))

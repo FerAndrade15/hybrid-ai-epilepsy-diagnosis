@@ -6,6 +6,7 @@
 Distribute the data from the original dataset to create a uniform partition 
 based on the parameters extracted from the EDA.
 """
+## file: data_spliter.py
 
 # Data managment libraries
 import json
@@ -58,7 +59,7 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
 def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
                         include_clean=True, drop_excluded=True, drop_ambiguous=True, 
                         ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, 
-                        dataset_division_dir="splits", version=1):
+                        dataset_division_dir="splits", version=1, target="all"):
     
     current_config = {
         "target_taxonomy_keys": list(target_taxonomy.keys()),
@@ -71,7 +72,7 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
 
     saving_dir = Path(dataset_division_dir)
     saving_dir.mkdir(parents=True, exist_ok=True)
-    base_name = f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}"
+    base_name = f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}_{target}"
     saving_parquet = saving_dir / f"{base_name}.parquet"
     saving_json = saving_dir / f"{base_name}.json"
 
@@ -128,6 +129,24 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
         print(f"[INFO] Saved new split to {str(base_name)}")
 
     return windowed_df, assignment, report
+
+def split_features_target(df, split_name, leakage_columns, exclude_probs=False):
+    """
+    Function to filter the split configuration separating features and target (input for training and  output to validate)
+    """
+    subset = df[df["split"]== split_name].copy()
+
+    #Columns
+    tuar_cols = [c for c in subset.columns if c.startswith("tuar_")]
+    if exclude_probs:
+        iclabel_prob_col = ["ic_iclabel_prob"]
+    else:
+        iclabel_prob_col = []
+
+    drop_cols = [c for c in leakage_columns + tuar_cols + iclabel_prob_col]
+    X = subset.drop(columns=drop_cols)
+    y = subset["is_positive"]
+    return X, y
 
 if __name__ == "__main__":
     
