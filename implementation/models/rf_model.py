@@ -39,13 +39,15 @@ def build_rf_model(balanced_bootstrap=False, **overrides):
         "n_jobs": -1,
     }
 
-    params.update(overrides)
     if balanced_bootstrap:
+        params["sampling_strategy"] = "all"
+        params.update(overrides)
         return BalancedRandomForestClassifier(
-            sampling_strategy="all", replacement=True, bootstrap=True, **params
+            replacement=True, bootstrap=True, **params
         )
     else:
         params["class_weight"] = "balanced"
+        params.update(overrides)
         return RandomForestClassifier(**params)
 
 def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="model"):
@@ -126,7 +128,7 @@ def select_threshold(y_val, y_prob_val,window_size_sec, beta=2, max_fp_per_day=1
 
 def binary_rf(df, model_name, window_size_sec, search_data=None, models_dir="models", 
               verbose=True, leakage_cols=[], search_method="grid", search_kwargs=None,
-              force_retrain = False, balanced_bootstrap=False
+              force_retrain = False, balanced_bootstrap=False, max_fp_per_day=100
              ):
     """
     Generic function to train a binary Random Forest classifier.
@@ -175,7 +177,7 @@ def binary_rf(df, model_name, window_size_sec, search_data=None, models_dir="mod
 
         # Best threshold results
         y_prob_val = best_model.predict_proba(X_val)[:,1]
-        chosen_threshold, chosen_name, threshold_details = select_threshold(y_val, y_prob_val, window_size_sec['window_size_sec'])
+        chosen_threshold, chosen_name, threshold_details = select_threshold(y_val, y_prob_val, window_size_sec['window_size_sec'], max_fp_per_day=max_fp_per_day)
 
         y_prob_test =  best_model.predict_proba(X_test)[:,1]
         y_test_predict = (y_prob_test >= chosen_threshold).astype(int)
@@ -264,7 +266,7 @@ def _search_random(X_train, y_train, X_val, y_val, kwargs, space, verbose, balan
         }
         extra = {}
         if balanced_bootstrap:
-            extra["samplign_strategy"] = rng.choice(space["sampling_strategy"])
+            extra["sampling_strategy"] = rng.choice(space["sampling_strategy"])
         
         rf = build_rf_model(balanced_bootstrap, **params, **extra)
         rf.fit(X_train, y_train)
@@ -520,12 +522,42 @@ if __name__ == "__main__":
         "max_depth": [None, 20]
     }
     RANDOM_SPACE = {
-        "n_estimators": randint(150, 600),
-        "max_depth": randint(5, 30),
-        "min_samples_split": randint(5, 30),
-        "min_samples_leaf": randint(2, 15),
-        "max_features": ["sqrt", "log2", 0.3, 0.5],
-        # "sampling_strategy": [0.3, 0.5, 0.7, 1.0],
+        "eye": {
+            "space":{
+                "n_estimators": randint(150, 600),
+                "max_depth": randint(5, 30),
+                "min_samples_split": randint(5, 30),
+                "min_samples_leaf": randint(2, 15),
+                "max_features": ["sqrt", "log2", 0.3, 0.5],
+                "sampling_strategy": [0.3, 0.5, 0.7, 1.0],
+            },
+            "max_fp_per_day": 50,
+            "n_iter": 60,
+        },
+        "muscle": {
+            "space":{
+                "n_estimators": randint(150, 600),
+                "max_depth": randint(5, 30),
+                "min_samples_split": randint(2, 15),
+                "min_samples_leaf": randint(1, 8),
+                "max_features": ["sqrt", "log2", 0.3, 0.5],
+                "sampling_strategy": [0.3, 0.5, 0.7, 1.0],
+            },
+            "max_fp_per_day": 300,
+            "n_iter": 60,
+        },
+        "non_physiological": {
+            "space":{
+                "n_estimators": randint(150, 600),
+                "max_depth": randint(5, 35),
+                "min_samples_split": randint(2, 15),
+                "min_samples_leaf": randint(1, 8),
+                "max_features": ["sqrt", "log2", 0.3, 0.5],
+                "sampling_strategy": [0.3, 0.5, 0.7, 1.0],
+            },
+            "max_fp_per_day": 1000,
+            "n_iter": 60,
+        },
     }
 
     print("\nLoading 25 artifact patients, 1 sessions per patient for testing...")
@@ -580,12 +612,14 @@ if __name__ == "__main__":
 
         print(f"\nStarting training of Random Forest ({artifact})")
 
+        config = RANDOM_SPACE[artifact]
         results[artifact] = binary_rf(rf_dataset, window_size_sec=WINDOW_REQUESTS_ARTIFACTS[artifact], model_name=f"rf_{artifact}", 
                                       models_dir=str(MODELS_DIR), leakage_cols= LEAKAGE_COLS,
                                       search_method="random",
-                                      search_data=RANDOM_SPACE,
-                                      search_kwargs={"n_trials":60},
-                                      force_retrain=True
+                                      search_data=config["space"],
+                                      search_kwargs={"n_iter": config["n_iter"]},
+                                      force_retrain=True, balanced_bootstrap=True,
+                                      max_fp_per_day=config["max_fp_per_day"]
                                      )
 
     print("\n"+"*-" * 25)
