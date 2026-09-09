@@ -13,13 +13,9 @@ from pathlib import Path
 from scipy.stats import randint
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.multioutput import MultiOutputClassifier
 from imblearn.ensemble import BalancedRandomForestClassifier
 from sklearn.model_selection import (
     ParameterGrid, 
-    GridSearchCV, 
-    GroupKFold, 
-    cross_val_score,
 )
 from sklearn.metrics import (
     f1_score, 
@@ -32,7 +28,6 @@ from sklearn.metrics import (
     precision_recall_curve, 
     fbeta_score,
 )
-from sklearn.metrics import make_scorer, fbeta_score
 
 # Functions from modules
 from implementation.core.data_splitter import split_features_target
@@ -344,7 +339,7 @@ if __name__ == "__main__":
     from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
     from implementation.core.data_loader import build_annotations_index, find_project_root
     from implementation.core.windowing import label_windowing
-    from implementation.core.data_splitter import get_or_compute_split, split_features_target
+    from implementation.core.data_splitter import get_or_compute_labeled_split, split_features_target
     from implementation.core.feature_extractor import build_feature_dataset, build_rf_dataset
 
     # Data visualization and search libraries
@@ -404,8 +399,8 @@ if __name__ == "__main__":
         },
     }
 
-    print("\nLoading 25 artifact patients, 1 sessions per patient for testing...")
-    database_corpus_patient = build_annotations_index("artifact", n_patients=25, max_sessions=1, paths=True)
+    print("\nLoading 30 artifact patients, 1 sessions per patient for testing...")
+    database_corpus_patient = build_annotations_index("artifact", n_patients=30, max_sessions=1, paths=True)
     display(database_corpus_patient.head(5))
 
     results = {}
@@ -427,6 +422,7 @@ if __name__ == "__main__":
                         )
             display(windowed_annotations_corpus_patient.head(5))
 
+            """
             windowed_annotated_splited, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, 
                                                                                   target_taxonomy=ARTIFACT_KEYWORDS, 
                                                                                   dataset_division_dir=str(SPLIT_CACHE_DIR), 
@@ -435,15 +431,16 @@ if __name__ == "__main__":
                                                                                   target=artifact)
             print("[INFO] Split report")
             print(report)
-
+            """
             print("\nStarting features extraction from channels and ICA components...")
-            featured_windows = build_feature_dataset(windowed_annotated_splited, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
+            featured_windows = build_feature_dataset(windowed_annotations_corpus_patient, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
             display(featured_windows.head(5))
 
             if not featured_windows.empty:
                 print("[INFO] Successful features extraction")
                 rf_features_dataset = build_rf_dataset(featured_windows, target_artifact=artifact, features_dir=str(FEATURES_DIR))
                 print(rf_features_dataset.head(5))
+                print(rf_features_dataset.columns.tolist())
                 print("[INFO] Positive count:")
                 print(rf_features_dataset["is_positive"].value_counts())
             else:
@@ -451,13 +448,15 @@ if __name__ == "__main__":
 
             rf_dataset = build_rf_dataset(featured_windows, target_artifact=artifact, features_dir=str(FEATURES_DIR))
 
+            #rf_dataset, assignment, report = get_or_compute_labeled_split()
+
         split_counts = rf_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
 
         print(f"\nStarting training of Random Forest ({artifact})")
 
         config = RANDOM_SPACE[artifact]
-        results[artifact] = binary_rf(rf_dataset, window_size_sec=WINDOW_REQUESTS_ARTIFACTS[artifact], model_name=f"rf_{artifact}", 
+        """results[artifact] = binary_rf(rf_dataset, window_size_sec=WINDOW_REQUESTS_ARTIFACTS[artifact], model_name=f"rf_{artifact}", 
                                       models_dir=str(MODELS_DIR), leakage_cols= LEAKAGE_COLS,
                                       search_method="random",
                                       search_data=config["space"],
@@ -473,4 +472,4 @@ if __name__ == "__main__":
         print(f"\t\t F1(val)={res['val_f1']:.4f}")
         print(f"\t\t best_params={res['params']}")
         print("\t\t Confusion matrix:", res['confusion_matrix'])
-        print("\t\t Metrics results:", res['metrics_results'])
+        print("\t\t Metrics results:", res['metrics_results'])"""

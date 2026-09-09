@@ -56,14 +56,54 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
     report["n_patients"] = pd.Series(assignment).value_counts()
     return windowed_df, assignment, report
 
-def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
+
+def grouped_split_from_labels(windowed_df, target_col="is_positve", group_col="Patient", 
+                              include_clean=True, drop_excluded=True, drop_ambiguous=True, 
+                             ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42):
+
+    df = windowed_df.copy()
+
+    if drop_excluded and "is_excluded" in df.columns:
+        df = df[df["is_excluded"] == 0]
+    if drop_ambiguous and "is_ambiguous" in df.columns:
+        df = df[df["is_ambiguous"] == 0]
+        
+    counts = df.groupby(group_col)[target_col].sum()
+    order = counts.sample(frac=1, random_state=seed).sort_values(ascending=False).index
+
+    target_total = counts.sum()
+    split_totals = {s: 0.0 for s in ratios}
+    split_target = {s: target_total * r for s, r in ratios.items()}
+    assignment = {}
+
+    for patient in order:
+        c = counts.loc[patient]
+        def deficit(split_name):
+            projected = split_totals[split_name] + c
+            return ((projected - split_target[split_name]) / (split_target[split_name] + 1e-9))
+        best_split = min(ratios.keys(), key=deficit)
+        assignment[patient] = best_split
+        split_totals[best_split] += c
+
+    windowed_df = windowed_df.copy()
+    windowed_df["split"] = windowed_df[group_col].map(assignment)
+
+    for split_name, total in split_totals.items():
+        if total == 0:
+            raise ValueError(f"[ERROR] Invalid split '{split_name}' has 0 real positives.")
+
+    report = pd.DataFrame(split_totals).T
+    report["n_patients"] = pd.Series(assignment).value_counts()
+    return windowed_df, assignment, report
+
+
+def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
                         include_clean=True, drop_excluded=True, drop_ambiguous=True, 
                         ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, 
                         dataset_division_dir="splits", version=1, target="all"):
     
     current_config = {
-        "target_taxonomy_keys": list(target_taxonomy.keys()),
-        "target_taxonomy_values": [sorted(v) if isinstance(v, set) else v for v in target_taxonomy.values()],        "seed": seed,
+        "target_taxonomy": label_col,
         "ratios": ratios,
         "n_windows_total": len(windowed_df),
         "patients": sorted(windowed_df[group_col].unique().tolist()),
@@ -75,9 +115,6 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
     base_name = f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}_{target}"
     saving_parquet = saving_dir / f"{base_name}.parquet"
     saving_json = saving_dir / f"{base_name}.json"
-
-    
-    compute_new_split = True
 
     if saving_parquet.exists() and saving_json.exists():
         with open(saving_json, "r") as f:
@@ -91,10 +128,7 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
 
         if comp_metadata == current_config:
             print(f"[INFO] Loading existing split from {str(base_name)} parquet and json")
-            windowed_df = pd.read_parquet(saving_parquet)
-            assignment = saved_metadata.get("patient_assignments", {})
-            report = pd.DataFrame(saved_metadata.get("split_report", {})).T
-            compute_new_split = False
+            return pd.read_parquet(saving_parquet), saved_metadata.get("patient_assignments", {}), pd.DataFrame(saved_metadata.get("split_report", {})).T
         else:
             print(f"[INFO] Existing split metadata does not match current configuration.")
             raise ValueError(
@@ -104,29 +138,28 @@ def get_or_compute_split(windowed_df, target_taxonomy, group_col="Patient",
                 f"'version={version + 1}' (o mayor) en tu script principal."
             )
            
-    if compute_new_split:
-        print(f"[INFO] Existing split metadata does not match current configuration.")
-        print(f"[INFO] Computing and saving new split...")
-        windowed_df, assignment, report = grouped_multilabel_split(windowed_df, target_taxonomy, group_col, include_clean,
-                                                                    drop_excluded, drop_ambiguous, 
-                                                                    ratios, seed)
-        with open(saving_json, "w") as f:
-            metadata_to_save = current_config.copy()
-            metadata_to_save["generated_at"] = datetime.now().strftime("%Y-%m-%d")
-            metadata_to_save["n_patients"] = pd.Series(assignment).value_counts().to_dict()
-            metadata_to_save["patient_assignments"] = assignment
-            metadata_to_save["split_report"] = report.to_dict()
-            json.dump(metadata_to_save, f, indent=4)
+    print(f"[INFO] Existing split metadata does not match current configuration.")
+    print(f"[INFO] Computing and saving new split...")
+    windowed_df, assignment, report = grouped_split_from_labels(windowed_df, label_col, group_col, include_clean,
+                                                                drop_excluded, drop_ambiguous, 
+                                                                ratios, seed)
+    with open(saving_json, "w") as f:
+        metadata_to_save = current_config.copy()
+        metadata_to_save["generated_at"] = datetime.now().strftime("%Y-%m-%d")
+        metadata_to_save["n_patients"] = pd.Series(assignment).value_counts().to_dict()
+        metadata_to_save["patient_assignments"] = assignment
+        metadata_to_save["split_report"] = report.to_dict()
+        json.dump(metadata_to_save, f, indent=4)
 
-        if "EDF_path" in windowed_df.columns:
-            windowed_df["EDF_path"] = windowed_df["EDF_path"].astype(str)
-            
-        # Si la columna 'CSV' (que vi en tu log) también tiene rutas Path, agrégala:
-        if "CSV" in windowed_df.columns:
-            windowed_df["CSV"] = windowed_df["CSV"].astype(str)
+    if "EDF_path" in windowed_df.columns:
+        windowed_df["EDF_path"] = windowed_df["EDF_path"].astype(str)
+        
+    # Si la columna 'CSV' (que vi en tu log) también tiene rutas Path, agrégala:
+    if "CSV" in windowed_df.columns:
+        windowed_df["CSV"] = windowed_df["CSV"].astype(str)
 
-        windowed_df.to_parquet(saving_parquet, index=False)
-        print(f"[INFO] Saved new split to {str(base_name)}")
+    windowed_df.to_parquet(saving_parquet, index=False)
+    print(f"[INFO] Saved new split to {str(base_name)}")
 
     return windowed_df, assignment, report
 
@@ -177,7 +210,7 @@ if __name__ == "__main__":
 
     ratios_ = {"train": 0.7, "val": 0.15, "test": 0.15}
     # windowed_df, assignment, report = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
-    windowed_df, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_)
+    windowed_df, assignment, report = get_or_compute_labeled_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_)
     
     print("[DEBUG] Report with ratios:", ratios_, "\n", report)
     print("[DEBUG] Assignment value:", assignment)

@@ -120,8 +120,8 @@ CHANNELS = [
 
 # Windowing
 WINDOW_REQUESTS_ARTIFACTS = {
-    "eye":                        {"window_size_sec": 20,  "stride_sec": 20},
-    "muscle":                     {"window_size_sec": 5,  "stride_sec": 5},
+    #"eye":                        {"window_size_sec": 20,  "stride_sec": 20},
+    #"muscle":                     {"window_size_sec": 5,  "stride_sec": 5},
     "non_physiological":          {"window_size_sec": 1,  "stride_sec": 1},
 }
 
@@ -129,7 +129,7 @@ WINDOW_REQUESTS_ARTIFACTS = {
 ## Train, validation and test proportion of the dataset
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 ## Split version
-VERSION = 2
+VERSION = 3
 ## Identifiers metadata and target not required for the models
 LEAKAGE_COLS = [
     "ic_index", "ic_raw_label", "ic_target_label",

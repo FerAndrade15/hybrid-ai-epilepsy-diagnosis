@@ -2342,6 +2342,697 @@ PS C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnos
 
 
 
+PS C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis> uv run python -m implementation.models.rf_model
+
+Loading 25 artifact patients, 1 sessions per patient for testing...
+  channel  ...                                                CSV
+0  FP1-F7  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+1  FP1-F7  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+2  FP1-F7  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+3   F7-T3  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+4   F7-T3  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+
+[5 rows x 13 columns]
+
+--------------------------------------------------
+ARTIFACT: eye | windows: 20s
+
+--------------------------------------------------
+
+Generating windows...
+    Patient Session Section    Montage  ...  genuine_cooccurrence  weak_overlap  is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+1  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+2  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+3  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+4  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+
+[5 rows x 30 columns]
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p25_v2_eye
+[INFO] Split report
+         eye  muscle  non_physiological  is_clean_window  n_patients
+train  151.0   184.0              118.0            490.0          15
+val     19.0    36.0               12.0            105.0           5
+test    17.0    41.0               11.0            106.0           5
+
+Starting features extraction from channels and ICA components...
+   ic_index ic_raw_label ic_target_label  ...  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap
+0         0        brain           clean  ...                       0                          0                  0
+1         1    eye blink             eye  ...                       0                          0                  0
+2         2        brain           clean  ...                       0                          0                  0
+3         3        brain           clean  ...                       0                          0                  0
+4         4        brain           clean  ...                       0                          0                  0
+
+[5 rows x 131 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label ic_target_label  ...  tuar_genuine_cooccurrence  tuar_weak_overlap  is_positive
+0         0        brain           clean  ...                          0                  0            0
+1         1    eye blink             eye  ...                          0                  0            0
+2         2        brain           clean  ...                          0                  0            0
+3         3        brain           clean  ...                          0                  0            0
+4         4        brain           clean  ...                          0                  0            0
+
+[5 rows x 132 columns]
+[INFO] Positive count:
+is_positive
+0    12018
+1      356
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    8102
+test     2198
+val      2074
+Name: count, dtype: int64
+
+Starting training of Random Forest (eye)
+
+============================================================
+Modelo: rf_eye
+Train: 8102 (pos=303) | Val: 2074 (pos = 29) | Test: 2198 (pos=24)
+[DEBUG] y_val dist (rf_eye): {0: 2045, 1: 29}
+[DEBUG] y_val hash (rf_eye): 7804922415054979772
+[DEBUG] X_val hash (rf_eye): 8229069989726269113
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 21, 'min_samples_leaf': 7, 'max_features': 'sqrt'}
+        f2 score:0.4069767441860465
+        params:{'n_estimators': 536, 'max_depth': 7, 'min_samples_split': 22, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.38563829787234044
+        params:{'n_estimators': 386, 'max_depth': 29, 'min_samples_split': 23, 'min_samples_leaf': 11, 'max_features': 0.3}
+        f2 score:0.29713114754098363
+        params:{'n_estimators': 503, 'max_depth': 17, 'min_samples_split': 8, 'min_samples_leaf': 12, 'max_features': 'log2'}
+        f2 score:0.3159041394335512
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 9, 'min_samples_leaf': 14, 'max_features': 'log2'}
+        f2 score:0.1570964247020585
+        params:{'n_estimators': 439, 'max_depth': 15, 'min_samples_split': 25, 'min_samples_leaf': 9, 'max_features': 'log2'}
+        f2 score:0.36523929471032746
+        params:{'n_estimators': 352, 'max_depth': 10, 'min_samples_split': 7, 'min_samples_leaf': 9, 'max_features': 'sqrt'}
+        f2 score:0.26556776556776557
+        params:{'n_estimators': 178, 'max_depth': 26, 'min_samples_split': 25, 'min_samples_leaf': 5, 'max_features': 'sqrt'}
+        f2 score:0.37333333333333335
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 22, 'min_samples_leaf': 6, 'max_features': 0.5}
+        f2 score:0.41055718475073316
+        params:{'n_estimators': 586, 'max_depth': 16, 'min_samples_split': 27, 'min_samples_leaf': 10, 'max_features': 'sqrt'}
+        f2 score:0.23462783171521034
+        params:{'n_estimators': 491, 'max_depth': 9, 'min_samples_split': 14, 'min_samples_leaf': 8, 'max_features': 'sqrt'}
+        f2 score:0.3785900783289817
+        params:{'n_estimators': 169, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 11, 'max_features': 'sqrt'}
+        f2 score:0.2905811623246493
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 14, 'min_samples_leaf': 14, 'max_features': 'log2'}
+        f2 score:0.2882703777335984
+        params:{'n_estimators': 296, 'max_depth': 27, 'min_samples_split': 14, 'min_samples_leaf': 2, 'max_features': 'log2'}
+        f2 score:0.4878048780487805
+        params:{'n_estimators': 508, 'max_depth': 9, 'min_samples_split': 16, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.34688995215311
+        params:{'n_estimators': 364, 'max_depth': 13, 'min_samples_split': 10, 'min_samples_leaf': 9, 'max_features': 'log2'}
+        f2 score:0.2865612648221344
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 9, 'min_samples_leaf': 12, 'max_features': 0.5}
+        f2 score:0.23274478330658105
+        params:{'n_estimators': 465, 'max_depth': 7, 'min_samples_split': 12, 'min_samples_leaf': 11, 'max_features': 'log2'}
+        f2 score:0.17323775388291518
+        params:{'n_estimators': 345, 'max_depth': 25, 'min_samples_split': 26, 'min_samples_leaf': 7, 'max_features': 0.5}
+        f2 score:0.24744027303754265
+        params:{'n_estimators': 279, 'max_depth': 10, 'min_samples_split': 22, 'min_samples_leaf': 10, 'max_features': 0.3}
+        f2 score:0.40114613180515757
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 25, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.2828282828282828
+        params:{'n_estimators': 504, 'max_depth': 24, 'min_samples_split': 21, 'min_samples_leaf': 8, 'max_features': 'log2'}
+        f2 score:0.30655391120507397
+        params:{'n_estimators': 274, 'max_depth': 24, 'min_samples_split': 18, 'min_samples_leaf': 7, 'max_features': 0.5}
+        f2 score:0.3063457330415755
+        params:{'n_estimators': 405, 'max_depth': 5, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.30145530145530147
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 21, 'min_samples_leaf': 8, 'max_features': 0.3}
+        f2 score:0.26220614828209765
+        params:{'n_estimators': 404, 'max_depth': 6, 'min_samples_split': 24, 'min_samples_leaf': 9, 'max_features': 'log2'}
+        f2 score:0.20251396648044692
+        params:{'n_estimators': 404, 'max_depth': 18, 'min_samples_split': 7, 'min_samples_leaf': 9, 'max_features': 'log2'}
+        f2 score:0.22342064714946072
+        params:{'n_estimators': 286, 'max_depth': 20, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.417910447761194
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 'sqrt'}
+        f2 score:0.2871287128712871
+        params:{'n_estimators': 534, 'max_depth': 5, 'min_samples_split': 10, 'min_samples_leaf': 12, 'max_features': 'sqrt'}
+        f2 score:0.2804642166344294
+        params:{'n_estimators': 535, 'max_depth': 12, 'min_samples_split': 27, 'min_samples_leaf': 5, 'max_features': 0.5}
+        f2 score:0.35443037974683544
+        params:{'n_estimators': 447, 'max_depth': 8, 'min_samples_split': 18, 'min_samples_leaf': 8, 'max_features': 'sqrt'}
+        f2 score:0.25846702317290554
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 15, 'min_samples_leaf': 7, 'max_features': 0.3}
+        f2 score:0.39215686274509803
+        params:{'n_estimators': 516, 'max_depth': 13, 'min_samples_split': 9, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.4666666666666667
+        params:{'n_estimators': 197, 'max_depth': 7, 'min_samples_split': 24, 'min_samples_leaf': 11, 'max_features': 0.3}
+        f2 score:0.2871287128712871
+        params:{'n_estimators': 357, 'max_depth': 22, 'min_samples_split': 9, 'min_samples_leaf': 13, 'max_features': 'sqrt'}
+        f2 score:0.26605504587155965
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 17, 'min_samples_leaf': 11, 'max_features': 0.5}
+        f2 score:0.3118279569892473
+        params:{'n_estimators': 350, 'max_depth': 9, 'min_samples_split': 14, 'min_samples_leaf': 5, 'max_features': 'sqrt'}
+        f2 score:0.3753351206434316
+        params:{'n_estimators': 457, 'max_depth': 20, 'min_samples_split': 20, 'min_samples_leaf': 6, 'max_features': 0.5}
+        f2 score:0.2580071174377224
+        params:{'n_estimators': 189, 'max_depth': 13, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.303347280334728
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 17, 'min_samples_leaf': 11, 'max_features': 0.3}
+        f2 score:0.33816425120772947
+        params:{'n_estimators': 269, 'max_depth': 24, 'min_samples_split': 29, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.3008298755186722
+        params:{'n_estimators': 267, 'max_depth': 22, 'min_samples_split': 24, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.3258426966292135
+        params:{'n_estimators': 272, 'max_depth': 6, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 'sqrt'}
+        f2 score:0.2126099706744868
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 22, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.4034582132564842
+        params:{'n_estimators': 287, 'max_depth': 25, 'min_samples_split': 19, 'min_samples_leaf': 9, 'max_features': 'log2'}
+        f2 score:0.45454545454545453
+        params:{'n_estimators': 358, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 11, 'max_features': 0.3}
+        f2 score:0.3389830508474576
+        params:{'n_estimators': 473, 'max_depth': 21, 'min_samples_split': 15, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.37433155080213903
+        params:{'n_estimators': 213, 'max_depth': 19, 'min_samples_split': 7, 'min_samples_leaf': 10, 'max_features': 'log2'}
+        f2 score:0.27358490566037735
+        params:{'n_estimators': 187, 'max_depth': 23, 'min_samples_split': 15, 'min_samples_leaf': 12, 'max_features': 'sqrt'}
+        f2 score:0.4444444444444444
+        params:{'n_estimators': 230, 'max_depth': 17, 'min_samples_split': 9, 'min_samples_leaf': 6, 'max_features': 0.5}
+        f2 score:0.3286384976525822
+        params:{'n_estimators': 215, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 4, 'max_features': 0.3}
+        f2 score:0.425531914893617
+        params:{'n_estimators': 507, 'max_depth': 9, 'min_samples_split': 12, 'min_samples_leaf': 14, 'max_features': 0.5}
+        f2 score:0.16801853997682503
+        params:{'n_estimators': 411, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 9, 'max_features': 0.3}
+        f2 score:0.3200883002207506
+        params:{'n_estimators': 282, 'max_depth': 5, 'min_samples_split': 8, 'min_samples_leaf': 14, 'max_features': 'log2'}
+        f2 score:0.17533252720677148
+        params:{'n_estimators': 367, 'max_depth': 16, 'min_samples_split': 24, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.4180602006688963
+        params:{'n_estimators': 274, 'max_depth': 17, 'min_samples_split': 21, 'min_samples_leaf': 8, 'max_features': 0.3}
+        f2 score:0.3723404255319149
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 19, 'min_samples_leaf': 9, 'max_features': 'log2'}
+        f2 score:0.32954545454545453
+        params:{'n_estimators': 513, 'max_depth': 11, 'min_samples_split': 28, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.330188679245283
+        params:{'n_estimators': 384, 'max_depth': 26, 'min_samples_split': 15, 'min_samples_leaf': 5, 'max_features': 'sqrt'}
+        f2 score:0.5035971223021583
+[INFO] Threshold decision based on validation:
+        thr05: threshold=0.5000 | F2(val)=0.5036 | fp_per_day_val(val)=279.1128 <- choosen
+        adjusted: threshold=0.6856 | F2(val)=0.5991 | fp_per_day_val(val)=156.2199
+[INFO] Best configuration found with validation: {'n_estimators': 384, 'max_depth': 26, 'min_samples_split': 15, 'min_samples_leaf': 5, 'max_features': 'sqrt'} | F1(val)=0.5036
+Final report -------------------------
+              precision    recall  f1-score   support
+
+   no_rf_eye       1.00      0.97      0.98      2174
+      rf_eye       0.19      0.75      0.31        24
+
+    accuracy                           0.96      2198
+   macro avg       0.60      0.86      0.64      2198
+weighted avg       0.99      0.96      0.97      2198
+
+Confusion matrix -------------------------
+[[2099   75]
+ [   6   18]]
+General metrics -------------------------
+model                 rf_eye
+sensitivity             0.75
+specificity           0.9655
+precision             0.1935
+accuracy              0.9631
+f1_score              0.3077
+auc_roc               0.9836
+false_alar_rate       0.0345
+fp_per_day            147.41
+TP                        18
+FP                        75
+TN                      2099
+FN                         6
+n_test_windows          2198
+covered_test_hours     12.21
+Model saved in C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\outputs\artifact\individual_tests\models\rf_rf_eye_random.joblib
+Model with metrics saved in C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\outputs\artifact\individual_tests\models\rf_rf_eye_and_analysis_random.joblib
+
+--------------------------------------------------
+ARTIFACT: muscle | windows: 5s
+
+--------------------------------------------------
+
+Generating windows...
+    Patient Session Section    Montage  ...  genuine_cooccurrence  weak_overlap  is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+1  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+2  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+3  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+4  aaaaaaju    s005    t000  01_tcp_ar  ...                     0             0              0            0
+
+[5 rows x 30 columns]
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p25_v2_muscle
+[INFO] Split report
+         eye  muscle  non_physiological  is_clean_window  n_patients
+train  444.0   554.0              424.0           2277.0          15
+val     67.0   110.0               18.0            480.0           6
+test   108.0   130.0               59.0            518.0           4
+
+Starting features extraction from channels and ICA components...
+   ic_index ic_raw_label ic_target_label  ...  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap
+0         0        brain           clean  ...                       0                          0                  0
+1         1    eye blink             eye  ...                       0                          0                  0
+2         2        brain           clean  ...                       0                          0                  0
+3         3        brain           clean  ...                       0                          0                  0
+4         4        brain           clean  ...                       0                          0                  0
+
+[5 rows x 131 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label ic_target_label  ...  tuar_genuine_cooccurrence  tuar_weak_overlap  is_positive
+0         0        brain           clean  ...                          0                  0            0
+1         1    eye blink             eye  ...                          0                  0            0
+2         2        brain           clean  ...                          0                  0            0
+3         3        brain           clean  ...                          0                  0            0
+4         4        brain           clean  ...                          0                  0            0
+
+[5 rows x 132 columns]
+[INFO] Positive count:
+is_positive
+0    50600
+1     2162
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    34363
+test      9342
+val       9057
+Name: count, dtype: int64
+
+Starting training of Random Forest (muscle)
+
+============================================================
+Modelo: rf_muscle
+Train: 34363 (pos=1525) | Val: 9057 (pos = 245) | Test: 9342 (pos=392)
+[DEBUG] y_val dist (rf_muscle): {0: 8812, 1: 245}
+[DEBUG] y_val hash (rf_muscle): 12511970339566809940
+[DEBUG] X_val hash (rf_muscle): 4384082254703263464
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.5103480714957667
+        params:{'n_estimators': 536, 'max_depth': 7, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.4074326628025912
+        params:{'n_estimators': 386, 'max_depth': 29, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.44581911262798635
+        params:{'n_estimators': 503, 'max_depth': 17, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'log2'}
+        f2 score:0.490360435875943
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.4074326628025912
+        params:{'n_estimators': 439, 'max_depth': 15, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.4593929450369155
+        params:{'n_estimators': 352, 'max_depth': 10, 'min_samples_split': 3, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.3534457261165336
+        params:{'n_estimators': 178, 'max_depth': 26, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.4555860805860806
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.44471153846153844
+        params:{'n_estimators': 586, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 5, 'max_features': 'sqrt'}
+        f2 score:0.4276911924610366
+        params:{'n_estimators': 491, 'max_depth': 9, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.4064625850340136
+        params:{'n_estimators': 169, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.47551020408163264
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.5002110595187843
+        params:{'n_estimators': 296, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 1, 'max_features': 'log2'}
+        f2 score:0.5267379679144385
+        params:{'n_estimators': 508, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'sqrt'}
+        f2 score:0.37117903930131
+        params:{'n_estimators': 364, 'max_depth': 13, 'min_samples_split': 4, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.43207616257781034
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.5}
+        f2 score:0.37486611924312746
+        params:{'n_estimators': 465, 'max_depth': 7, 'min_samples_split': 6, 'min_samples_leaf': 6, 'max_features': 'log2'}
+        f2 score:0.23199378761405554
+        params:{'n_estimators': 345, 'max_depth': 25, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.38779527559055116
+        params:{'n_estimators': 279, 'max_depth': 10, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.4166666666666667
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 'sqrt'}
+        f2 score:0.32992821645499726
+        params:{'n_estimators': 504, 'max_depth': 24, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.4963155613350672
+        params:{'n_estimators': 274, 'max_depth': 24, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5}
+        f2 score:0.42951541850220265
+        params:{'n_estimators': 405, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.3883652908677283
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.3}
+        f2 score:0.4056715242221347
+        params:{'n_estimators': 404, 'max_depth': 6, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'log2'}
+        f2 score:0.22853318034040926
+        params:{'n_estimators': 404, 'max_depth': 18, 'min_samples_split': 3, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.4598145285935085
+        params:{'n_estimators': 286, 'max_depth': 20, 'min_samples_split': 2, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.3976559229803265
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.3452277342616768
+        params:{'n_estimators': 534, 'max_depth': 5, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.355866587254318
+        params:{'n_estimators': 535, 'max_depth': 12, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.3826342899190581
+        params:{'n_estimators': 447, 'max_depth': 8, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.28906627963231735
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.4039115646258503
+        params:{'n_estimators': 516, 'max_depth': 13, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.4141776184786937
+        params:{'n_estimators': 197, 'max_depth': 7, 'min_samples_split': 12, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.30981515230408746
+        params:{'n_estimators': 357, 'max_depth': 22, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sqrt'}
+        f2 score:0.46557120500782473
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5}
+        f2 score:0.3865378207264245
+        params:{'n_estimators': 350, 'max_depth': 9, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.4061862678450034
+        params:{'n_estimators': 457, 'max_depth': 20, 'min_samples_split': 9, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.35028449502133713
+        params:{'n_estimators': 189, 'max_depth': 13, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.39140976792518184
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.46533713200379867
+        params:{'n_estimators': 269, 'max_depth': 24, 'min_samples_split': 14, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.36282499029879706
+        params:{'n_estimators': 267, 'max_depth': 22, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.48346055979643765
+        params:{'n_estimators': 272, 'max_depth': 6, 'min_samples_split': 3, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.21434977578475337
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.43133462282398455
+        params:{'n_estimators': 287, 'max_depth': 25, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.5662839248434238
+        params:{'n_estimators': 358, 'max_depth': 26, 'min_samples_split': 2, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.4673762147154095
+        params:{'n_estimators': 473, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.48274355613805153
+        params:{'n_estimators': 213, 'max_depth': 19, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 'log2'}
+        f2 score:0.486341059602649
+        params:{'n_estimators': 187, 'max_depth': 23, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.5575726141078838
+        params:{'n_estimators': 230, 'max_depth': 17, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.3504497751124438
+        params:{'n_estimators': 215, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.37117903930131
+        params:{'n_estimators': 507, 'max_depth': 9, 'min_samples_split': 5, 'min_samples_leaf': 7, 'max_features': 0.5}
+        f2 score:0.21667950693374421
+        params:{'n_estimators': 411, 'max_depth': 16, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.39200904636260836
+        params:{'n_estimators': 282, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.23118074130683988
+        params:{'n_estimators': 367, 'max_depth': 16, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.3}
+        f2 score:0.41014799154334036
+        params:{'n_estimators': 274, 'max_depth': 17, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.3}
+        f2 score:0.4025508170585891
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.40868673050615595
+        params:{'n_estimators': 513, 'max_depth': 11, 'min_samples_split': 14, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.35904255319148937
+        params:{'n_estimators': 384, 'max_depth': 26, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.5130486358244365
+[INFO] Threshold decision based on validation:
+        thr05: threshold=0.5000 | F2(val)=0.5663 | fp_per_day_val(val)=1371.7920 <- choosen
+        adjusted: threshold=0.6507 | F2(val)=0.5935 | fp_per_day_val(val)=595.2700
+[INFO] Best configuration found with validation: {'n_estimators': 287, 'max_depth': 25, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'log2'} | F1(val)=0.5663
+Final report -------------------------
+              precision    recall  f1-score   support
+
+no_rf_muscle       1.00      0.95      0.97      8950
+   rf_muscle       0.46      0.94      0.62       392
+
+    accuracy                           0.95      9342
+   macro avg       0.73      0.95      0.80      9342
+weighted avg       0.97      0.95      0.96      9342
+
+Confusion matrix -------------------------
+[[8521  429]
+ [  24  368]]
+General metrics -------------------------
+model                 rf_muscle
+sensitivity              0.9388
+specificity              0.9521
+precision                0.4617
+accuracy                 0.9515
+f1_score                  0.619
+auc_roc                  0.9808
+false_alar_rate          0.0479
+fp_per_day               793.53
+TP                          368
+FP                          429
+TN                         8521
+FN                           24
+n_test_windows             9342
+covered_test_hours        12.97
+Model saved in C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\outputs\artifact\individual_tests\models\rf_rf_muscle_random.joblib
+Model with metrics saved in C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\outputs\artifact\individual_tests\models\rf_rf_muscle_and_analysis_random.joblib
+
+--------------------------------------------------
+ARTIFACT: non_physiological | windows: 1s
+
+--------------------------------------------------
+
+Generating windows...
+    Patient Session Section    Montage  Window_size  ...  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar            1  ...            0                     0             0             0           0
+1  aaaaaaju    s005    t000  01_tcp_ar            1  ...            0                     0             0             0           0
+2  aaaaaaju    s005    t000  01_tcp_ar            1  ...            0                     0             0             0           0
+3  aaaaaaju    s005    t000  01_tcp_ar            1  ...            0                     0             0             0           0
+4  aaaaaaju    s005    t000  01_tcp_ar            1  ...            0                     0             0             0           0
+
+[5 rows x 30 columns]
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p25_v2_non_physiological
+[INFO] Split report
+          eye  muscle  non_physiological  is_clean_window  n_patients
+train  1746.0  2499.0             2154.0          12617.0          16
+val     167.0   367.0               75.0           2554.0           5
+test    291.0   485.0              119.0           2540.0           4
+
+Starting features extraction from channels and ICA components...
+   ic_index ic_raw_label ic_target_label  ...  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap
+0         0        brain           clean  ...                       0                          0                  0
+1         1    eye blink             eye  ...                       0                          0                  0
+2         2        brain           clean  ...                       0                          0                  0
+3         3        brain           clean  ...                       0                          0                  0
+4         4        brain           clean  ...                       0                          0                  0
+
+[5 rows x 131 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label ic_target_label  ...  tuar_genuine_cooccurrence  tuar_weak_overlap  is_positive
+0         0        brain           clean  ...                          0                  0            0
+1         1    eye blink             eye  ...                          0                  0            0
+2         2        brain           clean  ...                          0                  0            0
+3         3        brain           clean  ...                          0                  0            0
+4         4        brain           clean  ...                          0                  0            0
+
+[5 rows x 132 columns]
+[INFO] Positive count:
+is_positive
+0    266944
+1       766
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    193908
+val       44898
+test      28904
+Name: count, dtype: int64
+
+Starting training of Random Forest (non_physiological)
+
+============================================================
+Modelo: rf_non_physiological
+Train: 193908 (pos=766) | Val: 44898 (pos = 0) | Test: 28904 (pos=0)
+[DEBUG] y_val dist (rf_non_physiological): {0: 44898}
+[DEBUG] y_val hash (rf_non_physiological): 3334106548820030755
+[DEBUG] X_val hash (rf_non_physiological): 15213358964848113464
+        params:{'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 536, 'max_depth': 7, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 386, 'max_depth': 34, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 503, 'max_depth': 20, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 375, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 439, 'max_depth': 17, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 352, 'max_depth': 11, 'min_samples_split': 3, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 178, 'max_depth': 30, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 224, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 586, 'max_depth': 18, 'min_samples_split': 13, 'min_samples_leaf': 5, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 491, 'max_depth': 10, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 169, 'max_depth': 21, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 296, 'max_depth': 32, 'min_samples_split': 6, 'min_samples_leaf': 1, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 508, 'max_depth': 10, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 364, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 573, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 465, 'max_depth': 7, 'min_samples_split': 6, 'min_samples_leaf': 6, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 345, 'max_depth': 29, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 279, 'max_depth': 12, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 524, 'max_depth': 10, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 504, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 274, 'max_depth': 28, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 405, 'max_depth': 6, 'min_samples_split': 3, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 347, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 404, 'max_depth': 7, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 404, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 286, 'max_depth': 23, 'min_samples_split': 2, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 592, 'max_depth': 11, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 534, 'max_depth': 6, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 535, 'max_depth': 13, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 447, 'max_depth': 8, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 598, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 516, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 197, 'max_depth': 7, 'min_samples_split': 12, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 357, 'max_depth': 26, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 350, 'max_depth': 9, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 457, 'max_depth': 23, 'min_samples_split': 9, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 189, 'max_depth': 15, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 314, 'max_depth': 32, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 269, 'max_depth': 27, 'min_samples_split': 14, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 267, 'max_depth': 26, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 272, 'max_depth': 7, 'min_samples_split': 3, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 207, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 287, 'max_depth': 29, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 358, 'max_depth': 30, 'min_samples_split': 2, 'min_samples_leaf': 6, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 473, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 213, 'max_depth': 22, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 187, 'max_depth': 27, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt'}
+        f2 score:0.0
+        params:{'n_estimators': 230, 'max_depth': 19, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 215, 'max_depth': 25, 'min_samples_split': 3, 'min_samples_leaf': 2, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 507, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 7, 'max_features': 0.5}
+        f2 score:0.0
+        params:{'n_estimators': 411, 'max_depth': 18, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 282, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 7, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 367, 'max_depth': 19, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 274, 'max_depth': 19, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'log2'}
+        f2 score:0.0
+        params:{'n_estimators': 513, 'max_depth': 13, 'min_samples_split': 14, 'min_samples_leaf': 3, 'max_features': 0.3}
+        f2 score:0.0
+        params:{'n_estimators': 384, 'max_depth': 30, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sqrt'}
+        f2 score:0.0
+C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\.venv\Lib\site-packages\sklearn\metrics\_ranking.py:1131: UserWarning: No positive class found in y_true, recall is set to one for all thresholds.
+  warnings.warn(
+C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\.venv\Lib\site-packages\sklearn\metrics\_classification.py:1833: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\.venv\Lib\site-packages\sklearn\metrics\_classification.py:1833: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\.venv\Lib\site-packages\sklearn\metrics\_classification.py:1833: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\.venv\Lib\site-packages\sklearn\metrics\_ranking.py:442: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+[INFO] Threshold decision based on validation:
+        thr05: threshold=0.5000 | F2(val)=0.0000 | fp_per_day_val(val)=261.7132 <- choosen
+        adjusted: threshold=0.0000 | F2(val)=0.0000 | fp_per_day_val(val)=86400.0000
+[INFO] Best configuration found with validation: {'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt'} | F1(val)=0.0000
+Final report -------------------------
+                         precision    recall  f1-score   support
+
+no_rf_non_physiological       1.00      0.99      1.00     28904
+   rf_non_physiological       0.00      0.00      0.00         0
+
+               accuracy                           0.99     28904
+              macro avg       0.50      0.50      0.50     28904
+           weighted avg       1.00      0.99      1.00     28904
+
+Confusion matrix -------------------------
+[[28655   249]
+ [    0     0]]
+General metrics -------------------------
+model                 rf_non_physiological
+sensitivity                            0.0
+specificity                         0.9914
+precision                              0.0
+accuracy                            0.9914
+f1_score                               0.0
+auc_roc                                NaN
+false_alar_rate                     0.0086
+fp_per_day                          744.31
+TP                                       0
+FP                                     249
+TN                                   28655
+FN                                       0
+n_test_windows                       28904
+covered_test_hours                    8.03
+Model saved in C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\outputs\artifact\individual_tests\models\rf_rf_non_physiological_random.joblib
+Model with metrics saved in C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis\outputs\artifact\individual_tests\models\rf_rf_non_physiological_and_analysis_random.joblib
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- eye ----------
+                 F1(val)=0.5036
+                 best_params={'n_estimators': 384, 'max_depth': 26, 'min_samples_split': 15, 'min_samples_leaf': 5, 'max_features': 'sqrt'}
+                 Confusion matrix: [[2099   75]
+ [   6   18]]
+                 Metrics results: {'model': 'rf_eye', 'sensitivity': 0.75, 'specificity': np.float64(0.9655), 'precision': 0.1935, 'accuracy': 0.9631, 'f1_score': 0.3077, 'auc_roc': 0.9836, 'false_alar_rate': np.float64(0.0345), 'fp_per_day': np.float64(147.41), 'TP': 18, 'FP': 75, 'TN': 2099, 'FN': 6, 'n_test_windows': 2198, 'covered_test_hours': 12.21}
+---------- muscle ----------
+                 F1(val)=0.5663
+                 best_params={'n_estimators': 287, 'max_depth': 25, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 'log2'}
+                 Confusion matrix: [[8521  429]
+ [  24  368]]
+                 Metrics results: {'model': 'rf_muscle', 'sensitivity': 0.9388, 'specificity': np.float64(0.9521), 'precision': 0.4617, 'accuracy': 0.9515, 'f1_score': 0.619, 'auc_roc': 0.9808, 'false_alar_rate': np.float64(0.0479), 'fp_per_day': np.float64(793.53), 'TP': 368, 'FP': 429, 'TN': 8521, 'FN': 24, 'n_test_windows': 9342, 'covered_test_hours': 12.97}
+---------- non_physiological ----------
+                 F1(val)=0.0000
+                 best_params={'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt'}
+                 Confusion matrix: [[28655   249]
+ [    0     0]]
+                 Metrics results: {'model': 'rf_non_physiological', 'sensitivity': 0.0, 'specificity': np.float64(0.9914), 'precision': 0.0, 'accuracy': 0.9914, 'f1_score': 0.0, 'auc_roc': nan, 'false_alar_rate': np.float64(0.0086), 'fp_per_day': np.float64(744.31), 'TP': 0, 'FP': 249, 'TN': 28655, 'FN': 0, 'n_test_windows': 28904, 'covered_test_hours': 8.03}
+PS C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis>
 
 
 ## Uso
