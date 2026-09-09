@@ -30,7 +30,7 @@ def channel_standard_nomenclature(ch_name):
     name = str(name[0]).capitalize() if name else None
     return name
 
-def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=60.0, presaved_raw=True, verbose=False, resamplig_freq=256):
+def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0, 60.0], presaved_raw=True, verbose=False, resamplig_freq=256):
     """
     Preprocessing pipeline for all EDF raw signals.
     """
@@ -51,7 +51,8 @@ def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=60.0, 
 
     ## Filtering 
     raw.filter(l_freq, h_freq, verbose="WARNING" if not verbose else None)
-    raw.notch_filter(freqs=notch_freq, verbose="WARNING" if not verbose else None)
+    if notch_freq is not None:
+        raw.notch_filter(freqs=notch_freq, verbose="WARNING" if not verbose else None)
 
     # Resampling
     raw.resample(resamplig_freq, verbose="WARNING" if not verbose else None)

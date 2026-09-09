@@ -83,7 +83,7 @@ ICLABEL_CATEGORIES = [
 ICLABEL_TO_TARGET = {
     "eye": ["eye_blink"],
     "muscle": ["muscle_artifact"],
-    "non_physiological": ["channel_noise", "other"],
+    "non_physiological": ["channel_noise"],
     "clean": ["brain"],
 }
 
@@ -93,10 +93,6 @@ for cat in ICLABEL_CATEGORIES:
     safe = cat.replace(" ", "_")
     target = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
     RAW_TO_TARGET[cat] = target
-
-
-
-
 
 # Events Corpus Keywords
 EVENT_KEYWORDS = {
