@@ -296,7 +296,7 @@ def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_
     comp = subset["ic_target_label"] == target_artifact
     ocurrence = subset[tuar_column] == 1
 
-    subset["is_positive"] = (comp & ocurrence).astype(int)
+    subset["is_positive"] = (subset[tuar_column] == 1).astype(int)
 
     output_path = Path(features_dir) / f"rf_dataset_{target_artifact}.parquet"
     output_path.parent.mkdir(parents=True, exist_ok=True)

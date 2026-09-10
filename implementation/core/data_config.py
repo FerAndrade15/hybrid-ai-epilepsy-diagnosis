@@ -9,6 +9,8 @@ Shared data configuration for the data processing:
 - All corpus keyword (Artifact, event, seizures)
 - Standard EEG Channel names
 """
+# data_config.py
+
 # Data integration libraries
 from pathlib import Path
 import platform
@@ -136,4 +138,3 @@ LEAKAGE_COLS = [
     "Patient", "Session", "Start", "split",
     "is_positive",
 ]
-

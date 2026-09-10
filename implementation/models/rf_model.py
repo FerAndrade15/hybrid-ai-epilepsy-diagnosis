@@ -448,7 +448,8 @@ if __name__ == "__main__":
 
             rf_dataset = build_rf_dataset(featured_windows, target_artifact=artifact, features_dir=str(FEATURES_DIR))
 
-            #rf_dataset, assignment, report = get_or_compute_labeled_split()
+            rf_dataset, assignment, report = get_or_compute_labeled_split(rf_dataset, "is_positive", group_col="Patient",
+                                                                            ratios=RATIOS, dataset_division_dir=SPLIT_CACHE_DIR, version=VERSION, target="all")
 
         split_counts = rf_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
