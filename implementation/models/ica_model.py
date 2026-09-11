@@ -8,6 +8,7 @@ including ICALabel. Provides functions for preliminary visual exploration,
 automated artifact detection (EOG/EMG), and EEG signal denoising prior to 
 model training.
 """
+# ica_model.py
 
 # Data analysis libraries
 import numpy as np
