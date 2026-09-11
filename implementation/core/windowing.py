@@ -95,27 +95,31 @@ def label_windowing(annotations_df, window_requests,
             row["is_clean"] = 0
             row["is_excluded_unreviewed"] = 0
  
-            cobertura = {cat: 0.0 for cat in target_taxonomy}
+            coverage  = {cat: 0.0 for cat in target_taxonomy}
+            channels_by_cat = {cat: set() for cat in target_taxonomy}
             for span in label_spans:
                 tokens = split_compound_label(span["label"])
                 duracion = span["end_in_window"] - span["start_in_window"]
                 for cat, keywords in target_taxonomy.items():
                     if tokens & keywords:
-                        cobertura[cat] += duracion
-            cobertura = {cat: min(v / window_size_sec, 1.0) for cat, v in cobertura.items()}
+                        coverage[cat] += duracion
+                        matching_rows = overlapping[overlapping["label"]==span["label"]]
+                        channels_by_cat[cat].update(matching_rows["channel"].tolist())
+            coverage = {cat: min(v / window_size_sec, 1.0) for cat, v in coverage.items()}
  
             for cat in target_taxonomy:
-                row[f"coverage_{cat}"] = round(cobertura[cat], 3)
+                row[f"coverage_{cat}"] = round(coverage[cat], 3)
+                row[f"channels_{cat}"] = sorted(channels_by_cat[cat])
  
-            cobertura_total = sum(cobertura.values())
+            coverage_total = sum(coverage.values())
  
-            if cobertura_total <= umbral_background:
+            if coverage_total <= umbral_background:
                 row["is_clean_window"] = 1
                 for cat in target_taxonomy:
                     row[cat] = 0
-            elif any(v >= umbral_artefacto for v in cobertura.values()):
+            elif any(v >= umbral_artefacto for v in coverage.values()):
                 row["is_clean_window"] = 0
-                for cat, ratio in cobertura.items():
+                for cat, ratio in coverage.items():
                     row[cat] = int(ratio >= umbral_artefacto)
             else:
                 row["is_clean_window"] = 0
@@ -123,15 +127,15 @@ def label_windowing(annotations_df, window_requests,
                     row[cat] = 0
  
             row["is_ambiguous"] = int(
-                cobertura_total > umbral_background and
-                not any(v >= umbral_artefacto for v in cobertura.values())
+                coverage_total > umbral_background and
+                not any(v >= umbral_artefacto for v in coverage.values())
             )
 
             if row["is_clean_window"] == 1:
-                margen = (umbral_background - cobertura_total) / umbral_background
+                margen = (umbral_background - coverage_total) / umbral_background
                 row["sample_weight"] = round(float(np.clip(margen, 0.2, 1.0)), 3)
-            elif any(v >= umbral_artefacto for v in cobertura.values()):
-                margen = (max(cobertura.values()) - umbral_artefacto) / (1 - umbral_artefacto)
+            elif any(v >= umbral_artefacto for v in coverage.values()):
+                margen = (max(coverage.values()) - umbral_artefacto) / (1 - umbral_artefacto)
                 row["sample_weight"] = round(float(np.clip(0.4 + 0.6 * margen, 0.4, 1.0)), 3)
             else:
                 row["sample_weight"] = 0.1

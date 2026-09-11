@@ -1,18 +1,27 @@
 """
-# File: data_spliter.py
+# File: data_splitter.py
 # Project: Trabajo de graduación
 # Author: Maria Fernanda Andrade Recinos
 
 Distribute the data from the original dataset to create a uniform partition 
 based on the parameters extracted from the EDA.
 """
-## file: data_spliter.py
+## file: data_splitter.py
 
 # Data managment libraries
 import json
 from datetime import datetime
 import pandas as pd
 from pathlib import Path
+
+def split_balance_report(windowed_df, target_col="is_positive", split_col="split"):
+    summary = windowed_df.groupby(split_col).agg(
+        n_total=(target_col, "size"),
+        n_positive=(target_col, "sum"),
+    )
+    summary["n_negative"] = summary["n_total"] - summary["n_positive"]
+    summary["positive_rate"] = summary["n_positive"]/summary["n_total"]
+    return summary
 
 def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", include_clean=True, 
                              drop_excluded=True, drop_ambiguous=True, 
@@ -57,33 +66,43 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
     return windowed_df, assignment, report
 
 
-def grouped_split_from_labels(windowed_df, target_col="is_positve", group_col="Patient", 
+def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="Patient", 
                               include_clean=True, drop_excluded=True, drop_ambiguous=True, 
-                             ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42):
+                             ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42,
+                             size_weight=1):
 
     df = windowed_df.copy()
 
-    if drop_excluded and "is_excluded" in df.columns:
-        df = df[df["is_excluded"] == 0]
-    if drop_ambiguous and "is_ambiguous" in df.columns:
-        df = df[df["is_ambiguous"] == 0]
+    if drop_excluded and "tuar_is_excluded" in df.columns:
+        df = df[df["tuar_is_excluded"] == 0]
+    if drop_ambiguous and "tuar_is_ambiguous" in df.columns:
+        df = df[df["tuar_is_ambiguous"] == 0]
         
     counts = df.groupby(group_col)[target_col].sum()
+    sizes = df.groupby(group_col).size()
     order = counts.sample(frac=1, random_state=seed).sort_values(ascending=False).index
 
     target_total = counts.sum()
+    size_total = sizes.sum()
     split_totals = {s: 0.0 for s in ratios}
+    split_sizes = {s: 0.0 for s in ratios}
     split_target = {s: target_total * r for s, r in ratios.items()}
+    split_size_target = {s: size_total * r for s, r in ratios.items()}
     assignment = {}
 
     for patient in order:
         c = counts.loc[patient]
+        n = sizes.loc[patient]
+
         def deficit(split_name):
-            projected = split_totals[split_name] + c
-            return ((projected - split_target[split_name]) / (split_target[split_name] + 1e-9))
+            pos_deficit = ((split_totals[split_name] + c) - split_target[split_name])/(split_target[split_name]+1e-9)
+            size_deficit = ((split_sizes[split_name] + n) - split_size_target[split_name])/(split_size_target[split_name]+1e-9)
+            return (1- size_weight) * pos_deficit + size_weight * size_deficit
+
         best_split = min(ratios.keys(), key=deficit)
         assignment[patient] = best_split
         split_totals[best_split] += c
+        split_sizes[best_split] += n
 
     windowed_df = windowed_df.copy()
     windowed_df["split"] = windowed_df[group_col].map(assignment)
@@ -92,14 +111,14 @@ def grouped_split_from_labels(windowed_df, target_col="is_positve", group_col="P
         if total == 0:
             raise ValueError(f"[ERROR] Invalid split '{split_name}' has 0 real positives.")
 
-    report = pd.DataFrame(split_totals).T
+    report = pd.Series(split_totals, name="n_positive").to_frame()
     report["n_patients"] = pd.Series(assignment).value_counts()
     return windowed_df, assignment, report
 
 
 def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
                         include_clean=True, drop_excluded=True, drop_ambiguous=True, 
-                        ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, 
+                        ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, size_weight=0, 
                         dataset_division_dir="splits", version=1, target="all"):
     
     current_config = {
@@ -108,11 +127,16 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
         "n_windows_total": len(windowed_df),
         "patients": sorted(windowed_df[group_col].unique().tolist()),
         "version": version,
+        "size_weight": size_weight,
     }
 
     saving_dir = Path(dataset_division_dir)
     saving_dir.mkdir(parents=True, exist_ok=True)
-    base_name = f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}_{target}"
+    base_name = (
+        f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}"
+        f"_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}_{target}"
+        f"_sw{size_weight}"
+    )
     saving_parquet = saving_dir / f"{base_name}.parquet"
     saving_json = saving_dir / f"{base_name}.json"
 
@@ -128,7 +152,7 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
 
         if comp_metadata == current_config:
             print(f"[INFO] Loading existing split from {str(base_name)} parquet and json")
-            return pd.read_parquet(saving_parquet), saved_metadata.get("patient_assignments", {}), pd.DataFrame(saved_metadata.get("split_report", {})).T
+            return pd.read_parquet(saving_parquet), saved_metadata.get("patient_assignments", {}), pd.DataFrame(saved_metadata.get("split_report", {}))
         else:
             print(f"[INFO] Existing split metadata does not match current configuration.")
             raise ValueError(
@@ -142,7 +166,7 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
     print(f"[INFO] Computing and saving new split...")
     windowed_df, assignment, report = grouped_split_from_labels(windowed_df, label_col, group_col, include_clean,
                                                                 drop_excluded, drop_ambiguous, 
-                                                                ratios, seed)
+                                                                ratios, seed, size_weight)
     with open(saving_json, "w") as f:
         metadata_to_save = current_config.copy()
         metadata_to_save["generated_at"] = datetime.now().strftime("%Y-%m-%d")
@@ -171,12 +195,13 @@ def split_features_target(df, split_name, leakage_columns, exclude_probs=False):
 
     #Columns
     tuar_cols = [c for c in subset.columns if c.startswith("tuar_")]
+    channel_cols = [c for c in subset.columns if c.startswith("channels_")]
     if exclude_probs:
         iclabel_prob_col = ["ic_iclabel_prob"]
     else:
         iclabel_prob_col = []
 
-    drop_cols = [c for c in leakage_columns + tuar_cols + iclabel_prob_col]
+    drop_cols = [c for c in leakage_columns + tuar_cols + iclabel_prob_col + channel_cols]
     X = subset.drop(columns=drop_cols)
     y = subset["is_positive"]
     return X, y
@@ -210,7 +235,7 @@ if __name__ == "__main__":
 
     ratios_ = {"train": 0.7, "val": 0.15, "test": 0.15}
     # windowed_df, assignment, report = grouped_multilabel_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS)
-    windowed_df, assignment, report = get_or_compute_labeled_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_)
+    windowed_df, assignment, report = get_or_compute_labeled_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=ratios_, size_weight=0.5)
     
     print("[DEBUG] Report with ratios:", ratios_, "\n", report)
     print("[DEBUG] Assignment value:", assignment)

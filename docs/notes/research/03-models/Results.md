@@ -3035,6 +3035,235 @@ Final report
 PS C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis>
 
 
+### Split conflicts
+[INFO] Positive count:
+is_positive
+0    415406
+1      2584
+Name: count, dtype: int64
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v3_all parquet and json
+[INFO] Split distribution:  split
+test     205044
+train    157436
+val       55510
+
+
+## Splits results
+Loading 30 artifact patients, 1 sessions per patient for testing...
+  channel  start_time  stop_time label  confidence   Patient Session Section    Montage  NoChannels  Duration                                                EDF                                                CSV
+0  FP1-F7     22.9737    30.0688  eyem         1.0  aaaaaaju    s005    t000  01_tcp_ar          36  1441.996  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+1  FP1-F7    136.7987   140.1117  eyem         1.0  aaaaaaju    s005    t000  01_tcp_ar          36  1441.996  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+2  FP1-F7    145.0133   148.0498  eyem         1.0  aaaaaaju    s005    t000  01_tcp_ar          36  1441.996  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+3   F7-T3     22.9737    30.0688  eyem         1.0  aaaaaaju    s005    t000  01_tcp_ar          36  1441.996  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+4   F7-T3    136.7987   140.1117  eyem         1.0  aaaaaaju    s005    t000  01_tcp_ar          36  1441.996  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+
+--------------------------------------------------
+ARTIFACT: eye | windows: 20s
+
+--------------------------------------------------
+
+Generating windows...
+    Patient Session Section    Montage  Window_size  stride  Start  end Raw_labels                                        Label_spans  N_channels_annotated  ...  is_clean_window  eye muscle  non_physiological  is_ambiguous  sample_weight distinguish  genuine_cooccurrence weak_overlap  is_unreviewed is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar           20      20      0   20         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+1  aaaaaaju    s005    t000  01_tcp_ar           20      20     20   40     [eyem]  [{'label': 'eyem', 'start_in_window': 2.974, '...                     8  ...                0    1      0                  0             0            1.0           0                     0            0              0           0
+2  aaaaaaju    s005    t000  01_tcp_ar           20      20     40   60         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+3  aaaaaaju    s005    t000  01_tcp_ar           20      20     60   80         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+4  aaaaaaju    s005    t000  01_tcp_ar           20      20     80  100         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+
+[5 rows x 33 columns]
+
+Starting features extraction from channels and ICA components...
+   ic_index ic_raw_label ic_target_label  ic_iclabel_prob   ic_mean  ic_variance    ic_rms  ic_skewness  ic_kurtosis    ic_zcr  ...  tuar_sample_weight  tuar_eye  tuar_muscle  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap  tuar_is_excluded  channels_eye  channels_muscle  channels_non_physiological
+0         0        brain           clean         0.668147 -0.543517    67.881789  8.256949    -1.203878    14.060019  0.290096  ...                 1.0         0            0                       0                          0                  0                 0            []               []                          []
+1         1    eye blink             eye         0.974591 -0.019422     1.173228  1.083331    -1.352785    13.611691  0.202188  ...                 1.0         0            0                       0                          0                  0                 0            []               []                          []
+2         2        brain           clean         0.998497  0.001357     0.581291  0.762426    -0.340861     7.290907  0.219379  ...                 1.0         0            0                       0                          0                  0                 0            []               []                          []
+3         3        brain           clean         0.985737  0.035036    48.080807  6.934121    -9.597875   259.658194  0.304747  ...                 1.0         0            0                       0                          0                  0                 0            []               []                          []
+4         4        brain           clean         0.998654 -0.001120     0.448729  0.669873    -0.519709    13.046675  0.236570  ...                 1.0         0            0                       0                          0                  0                 0            []               []                          []
+
+[5 rows x 135 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label ic_target_label  ic_iclabel_prob   ic_mean  ic_variance    ic_rms  ic_skewness  ic_kurtosis    ic_zcr  ...  tuar_eye  tuar_muscle  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap  tuar_is_excluded  channels_eye  channels_muscle  channels_non_physiological  is_positive
+0         0        brain           clean         0.668147 -0.543517    67.881789  8.256949    -1.203878    14.060019  0.290096  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+1         1    eye blink             eye         0.974591 -0.019422     1.173228  1.083331    -1.352785    13.611691  0.202188  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+2         2        brain           clean         0.998497  0.001357     0.581291  0.762426    -0.340861     7.290907  0.219379  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+3         3        brain           clean         0.985737  0.035036    48.080807  6.934121    -9.597875   259.658194  0.304747  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+4         4        brain           clean         0.998654 -0.001120     0.448729  0.669873    -0.519709    13.046675  0.236570  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+
+[5 rows x 136 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_Fp1', 'ic_contrib_Fp2', 'ic_contrib_F3', 'ic_contrib_F4', 'ic_contrib_C3', 'ic_contrib_C4', 'ic_contrib_P3', 'ic_contrib_P4', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_contrib_P7', 'ic_contrib_P8', 'ic_contrib_Fz', 'ic_contrib_Cz', 'ic_contrib_Pz', 'ic_contrib_Ft9', 'ic_contrib_Ft10', 'Fp1_variance', 'Fp1_line_length', 'Fp1_peak_to_peak', 'Fp2_variance', 'Fp2_line_length', 'Fp2_peak_to_peak', 'F3_variance', 'F3_line_length', 'F3_peak_to_peak', 'F4_variance', 'F4_line_length', 'F4_peak_to_peak', 'C3_variance', 'C3_line_length', 'C3_peak_to_peak', 'C4_variance', 'C4_line_length', 'C4_peak_to_peak', 'P3_variance', 'P3_line_length', 'P3_peak_to_peak', 'P4_variance', 'P4_line_length', 'P4_peak_to_peak', 'O1_variance', 'O1_line_length', 'O1_peak_to_peak', 'O2_variance', 'O2_line_length', 'O2_peak_to_peak', 'F7_variance', 'F7_line_length', 'F7_peak_to_peak', 'F8_variance', 'F8_line_length', 'F8_peak_to_peak', 'T7_variance', 'T7_line_length', 'T7_peak_to_peak', 'T8_variance', 'T8_line_length', 'T8_peak_to_peak', 'P7_variance', 'P7_line_length', 'P7_peak_to_peak', 'P8_variance', 'P8_line_length', 'P8_peak_to_peak', 'Fz_variance', 'Fz_line_length', 'Fz_peak_to_peak', 'Cz_variance', 'Cz_line_length', 'Cz_peak_to_peak', 'Pz_variance', 'Pz_line_length', 'Pz_peak_to_peak', 'Ft9_variance', 'Ft9_line_length', 'Ft9_peak_to_peak', 'Ft10_variance', 'Ft10_line_length', 'Ft10_peak_to_peak', 'Patient', 'Session', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'channels_eye', 'channels_muscle', 'channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+0    19073
+1      331
+Name: count, dtype: int64
+Size weight: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v3_eye_sw0.0 parquet and json
+Size weight: 0.3
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v3_eye_sw0.3 parquet and json
+Size weight: 0.5
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v3_eye_sw0.5 parquet and json
+Size weight: 0.7
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v3_eye_sw0.7 parquet and json
+Size weight: 1.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v3_eye_sw1.0 parquet and json
+
+[INFO] Sweep size weight results for eye:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.5             0.0176      0.0171    0.0164       0.0013     0.7212   0.1415    0.1372    0.0212          0.0225
+0.7             0.0184      0.0169    0.0166       0.0017     0.7287   0.1394    0.1319    0.0287          0.0304
+1.0             0.0166      0.0164    0.0214       0.0050     0.7369   0.1324    0.1307    0.0369          0.0419
+0.3             0.0191      0.0177    0.0132       0.0060     0.6882   0.1800    0.1319    0.0300          0.0359
+0.0             0.0128      0.0238    0.0085       0.0153     0.5047   0.2981    0.1972    0.1953          0.2106
+[INFO] Best suggested size weight for eye: 0.5
+
+Starting training of Random Forest (eye)
+
+--------------------------------------------------
+ARTIFACT: muscle | windows: 5s
+
+--------------------------------------------------
+
+Generating windows...
+    Patient Session Section    Montage  Window_size  stride  Start  end Raw_labels                                        Label_spans  N_channels_annotated  ...  is_clean_window  eye muscle  non_physiological  is_ambiguous  sample_weight distinguish  genuine_cooccurrence weak_overlap  is_unreviewed is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar            5       5      0    5         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+1  aaaaaaju    s005    t000  01_tcp_ar            5       5      5   10         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+2  aaaaaaju    s005    t000  01_tcp_ar            5       5     10   15         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+3  aaaaaaju    s005    t000  01_tcp_ar            5       5     15   20         []                                                 []                     0  ...                1    0      0                  0             0            1.0           0                     0            0              0           0
+4  aaaaaaju    s005    t000  01_tcp_ar            5       5     20   25     [eyem]  [{'label': 'eyem', 'start_in_window': 2.974, '...                     8  ...                0    1      0                  0             0            1.0           0                     0            0              0           0
+
+[5 rows x 33 columns]
+
+Starting features extraction from channels and ICA components...
+   ic_index ic_raw_label ic_target_label  ic_iclabel_prob   ic_mean  ic_variance     ic_rms  ic_skewness  ic_kurtosis  ...  tuar_eye  tuar_muscle  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap  tuar_is_excluded  channels_eye  channels_muscle  channels_non_physiological
+0         0        brain           clean         0.668147 -2.197917   261.640990  16.323965    -0.314650     1.379253  ...         0            0                       0                          0                  0                 0            []               []                          []
+1         1    eye blink             eye         0.974591 -0.115596     0.833358   0.920174    -5.166184    67.773189  ...         0            0                       0                          0                  0                 0            []               []                          []
+2         2        brain           clean         0.998497 -0.001832     0.052856   0.229912     1.855521    53.937937  ...         0            0                       0                          0                  0                 0            []               []                          []
+3         3        brain           clean         0.985737  0.133040   178.135610  13.347408    -5.306066    73.338145  ...         0            0                       0                          0                  0                 0            []               []                          []
+4         4        brain           clean         0.998654  0.000667     0.040675   0.201681    -9.748730   192.314913  ...         0            0                       0                          0                  0                 0            []               []                          []
+
+[5 rows x 135 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label ic_target_label  ic_iclabel_prob   ic_mean  ic_variance     ic_rms  ic_skewness  ic_kurtosis    ic_zcr  ...  tuar_eye  tuar_muscle  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap  tuar_is_excluded  channels_eye  channels_muscle  channels_non_physiological  is_positive
+0         0        brain           clean         0.668147 -2.197917   261.640990  16.323965    -0.314650     1.379253  0.225958  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+1         1    eye blink             eye         0.974591 -0.115596     0.833358   0.920174    -5.166184    67.773189  0.225958  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+2         2        brain           clean         0.998497 -0.001832     0.052856   0.229912     1.855521    53.937937  0.262705  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+3         3        brain           clean         0.985737  0.133040   178.135610  13.347408    -5.306066    73.338145  0.308053  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+4         4        brain           clean         0.998654  0.000667     0.040675   0.201681    -9.748730   192.314913  0.265051  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+
+[5 rows x 136 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_Fp1', 'ic_contrib_Fp2', 'ic_contrib_F3', 'ic_contrib_F4', 'ic_contrib_C3', 'ic_contrib_C4', 'ic_contrib_P3', 'ic_contrib_P4', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_contrib_P7', 'ic_contrib_P8', 'ic_contrib_Fz', 'ic_contrib_Cz', 'ic_contrib_Pz', 'ic_contrib_Ft9', 'ic_contrib_Ft10', 'Fp1_variance', 'Fp1_line_length', 'Fp1_peak_to_peak', 'Fp2_variance', 'Fp2_line_length', 'Fp2_peak_to_peak', 'F3_variance', 'F3_line_length', 'F3_peak_to_peak', 'F4_variance', 'F4_line_length', 'F4_peak_to_peak', 'C3_variance', 'C3_line_length', 'C3_peak_to_peak', 'C4_variance', 'C4_line_length', 'C4_peak_to_peak', 'P3_variance', 'P3_line_length', 'P3_peak_to_peak', 'P4_variance', 'P4_line_length', 'P4_peak_to_peak', 'O1_variance', 'O1_line_length', 'O1_peak_to_peak', 'O2_variance', 'O2_line_length', 'O2_peak_to_peak', 'F7_variance', 'F7_line_length', 'F7_peak_to_peak', 'F8_variance', 'F8_line_length', 'F8_peak_to_peak', 'T7_variance', 'T7_line_length', 'T7_peak_to_peak', 'T8_variance', 'T8_line_length', 'T8_peak_to_peak', 'P7_variance', 'P7_line_length', 'P7_peak_to_peak', 'P8_variance', 'P8_line_length', 'P8_peak_to_peak', 'Fz_variance', 'Fz_line_length', 'Fz_peak_to_peak', 'Cz_variance', 'Cz_line_length', 'Cz_peak_to_peak', 'Pz_variance', 'Pz_line_length', 'Pz_peak_to_peak', 'Ft9_variance', 'Ft9_line_length', 'Ft9_peak_to_peak', 'Ft10_variance', 'Ft10_line_length', 'Ft10_peak_to_peak', 'Patient', 'Session', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'channels_eye', 'channels_muscle', 'channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+0    81477
+1     1012
+Name: count, dtype: int64
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_muscle_sw0.0
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_muscle_sw0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_muscle_sw0.5
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_muscle_sw0.7
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_muscle_sw1.0
+
+[INFO] Sweep size weight results for muscle:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.3             0.0184      0.0113    0.0126       0.0071     0.7488   0.1454    0.1058    0.0488          0.0559
+1.0             0.0159      0.0105    0.0188       0.0084     0.7389   0.1262    0.1350    0.0389          0.0472
+0.7             0.0190      0.0105    0.0188       0.0085     0.7865   0.1057    0.1078    0.0865          0.0950
+0.5             0.0196      0.0108    0.0155       0.0088     0.7782   0.1187    0.1031    0.0782          0.0871
+0.0             0.0103      0.0162    0.0063       0.0099     0.5318   0.2890    0.1791    0.1682          0.1781
+[INFO] Best suggested size weight for muscle: 1.0
+
+Starting training of Random Forest (muscle)
+
+--------------------------------------------------
+ARTIFACT: non_physiological | windows: 1s
+
+--------------------------------------------------
+
+Generating windows...
+    Patient Session Section    Montage  Window_size  stride  Start  end Raw_labels Label_spans  N_channels_annotated  No_channels  ...  channels_non_physiological is_clean_window  eye  muscle  non_physiological is_ambiguous  sample_weight distinguish  genuine_cooccurrence weak_overlap  is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar            1       1      0    1         []          []                     0           36  ...                          []               1    0       0                  0            0            1.0           0                     0            0              0            0
+1  aaaaaaju    s005    t000  01_tcp_ar            1       1      1    2         []          []                     0           36  ...                          []               1    0       0                  0            0            1.0           0                     0            0              0            0
+2  aaaaaaju    s005    t000  01_tcp_ar            1       1      2    3         []          []                     0           36  ...                          []               1    0       0                  0            0            1.0           0                     0            0              0            0
+3  aaaaaaju    s005    t000  01_tcp_ar            1       1      3    4         []          []                     0           36  ...                          []               1    0       0                  0            0            1.0           0                     0            0              0            0
+4  aaaaaaju    s005    t000  01_tcp_ar            1       1      4    5         []          []                     0           36  ...                          []               1    0       0                  0            0            1.0           0                     0            0              0            0
+
+[5 rows x 33 columns]
+
+Starting features extraction from channels and ICA components...
+   ic_index ic_raw_label ic_target_label  ic_iclabel_prob    ic_mean  ic_variance     ic_rms  ic_skewness  ic_kurtosis  ...  tuar_eye  tuar_muscle  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap  tuar_is_excluded  channels_eye  channels_muscle  channels_non_physiological
+0         0        brain           clean         0.668147 -20.668835   655.548249  32.905151     1.616157     1.098681  ...         0            0                       0                          0                  0                 0            []               []                          []
+1         1    eye blink             eye         0.974591  -0.587446     3.884727   2.056653    -1.835610    11.179733  ...         0            0                       0                          0                  0                 0            []               []                          []
+2         2        brain           clean         0.998497  -0.046700     0.258632   0.510698     1.122352     9.239635  ...         0            0                       0                          0                  0                 0            []               []                          []
+3         3        brain           clean         0.985737   1.221418   888.058062  29.825324    -2.492942    12.714024  ...         0            0                       0                          0                  0                 0            []               []                          []
+4         4        brain           clean         0.998654   0.024583     0.199335   0.447146    -4.654840    38.642001  ...         0            0                       0                          0                  0                 0            []               []                          []
+
+[5 rows x 135 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label ic_target_label  ic_iclabel_prob    ic_mean  ic_variance     ic_rms  ic_skewness  ic_kurtosis    ic_zcr  ...  tuar_eye  tuar_muscle  tuar_non_physiological  tuar_genuine_cooccurrence  tuar_weak_overlap  tuar_is_excluded  channels_eye  channels_muscle  channels_non_physiological  is_positive
+0         0        brain           clean         0.668147 -20.668835   655.548249  32.905151     1.616157     1.098681  0.015686  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+1         1    eye blink             eye         0.974591  -0.587446     3.884727   2.056653    -1.835610    11.179733  0.062745  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+2         2        brain           clean         0.998497  -0.046700     0.258632   0.510698     1.122352     9.239635  0.050980  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+3         3        brain           clean         0.985737   1.221418   888.058062  29.825324    -2.492942    12.714024  0.039216  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+4         4        brain           clean         0.998654   0.024583     0.199335   0.447146    -4.654840    38.642001  0.082353  ...         0            0                       0                          0                  0                 0            []               []                          []            0
+
+[5 rows x 136 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_Fp1', 'ic_contrib_Fp2', 'ic_contrib_F3', 'ic_contrib_F4', 'ic_contrib_C3', 'ic_contrib_C4', 'ic_contrib_P3', 'ic_contrib_P4', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_contrib_P7', 'ic_contrib_P8', 'ic_contrib_Fz', 'ic_contrib_Cz', 'ic_contrib_Pz', 'ic_contrib_Ft9', 'ic_contrib_Ft10', 'Fp1_variance', 'Fp1_line_length', 'Fp1_peak_to_peak', 'Fp2_variance', 'Fp2_line_length', 'Fp2_peak_to_peak', 'F3_variance', 'F3_line_length', 'F3_peak_to_peak', 'F4_variance', 'F4_line_length', 'F4_peak_to_peak', 'C3_variance', 'C3_line_length', 'C3_peak_to_peak', 'C4_variance', 'C4_line_length', 'C4_peak_to_peak', 'P3_variance', 'P3_line_length', 'P3_peak_to_peak', 'P4_variance', 'P4_line_length', 'P4_peak_to_peak', 'O1_variance', 'O1_line_length', 'O1_peak_to_peak', 'O2_variance', 'O2_line_length', 'O2_peak_to_peak', 'F7_variance', 'F7_line_length', 'F7_peak_to_peak', 'F8_variance', 'F8_line_length', 'F8_peak_to_peak', 'T7_variance', 'T7_line_length', 'T7_peak_to_peak', 'T8_variance', 'T8_line_length', 'T8_peak_to_peak', 'P7_variance', 'P7_line_length', 'P7_peak_to_peak', 'P8_variance', 'P8_line_length', 'P8_peak_to_peak', 'Fz_variance', 'Fz_line_length', 'Fz_peak_to_peak', 'Cz_variance', 'Cz_line_length', 'Cz_peak_to_peak', 'Pz_variance', 'Pz_line_length', 'Pz_peak_to_peak', 'Ft9_variance', 'Ft9_line_length', 'Ft9_peak_to_peak', 'Ft10_variance', 'Ft10_line_length', 'Ft10_peak_to_peak', 'Patient', 'Session', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'channels_eye', 'channels_muscle', 'channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+0    415406
+1      2584
+Name: count, dtype: int64
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_non_physiological_sw0.0
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_non_physiological_sw0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_non_physiological_sw0.5
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_non_physiological_sw0.7
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p30_v3_non_physiological_sw1.0
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.7             0.0051      0.0067    0.0047       0.0020     0.6930   0.1556    0.1514    0.0070          0.0090
+0.5             0.0057      0.0068    0.0042       0.0027     0.6737   0.1751    0.1512    0.0263          0.0290
+0.3             0.0041      0.0076    0.0039       0.0037     0.6053   0.1980    0.1967    0.0947          0.0983
+1.0             0.0033      0.0072    0.0045       0.0039     0.6984   0.1530    0.1486    0.0030          0.0069
+0.0             0.0019      0.0115    0.0070       0.0096     0.3767   0.1328    0.4905    0.3405          0.3502
+[INFO] Best suggested size weight for non_physiological: 1.0
+
+Starting training of Random Forest (non_physiological)
+
+
 ## Uso
 En qué situación necesito esto.
 

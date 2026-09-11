@@ -21,6 +21,9 @@ py -3.11 -m venv .venv
 # Activación del entorno
 source .venv/Scripts/activate 
 
+# Usando Windows Powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass # Autorización para la ejecución de scripts
+.\.venv\Scripts\Activate.ps1                # Activación del entorno con la ruta
 # Eliminación del entorno
 rm -rf .venv                                # .venv es el nombre genérico     
 

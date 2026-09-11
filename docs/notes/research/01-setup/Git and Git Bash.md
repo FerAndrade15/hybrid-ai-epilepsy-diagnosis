@@ -55,6 +55,13 @@ git commit -m "Add .gitkeep to preserve empty directories"
 git push 
 ```
 
+### Crear versiones o hitos
+```bash
+ git tag -a vx.x.x -m "Comment to describe the version x.x.x"
+ git push origin --tagas # For all tags
+ git push origin vx.x.x  # Just the selected tag
+```
+
 ### Tipos de commits
 | Prefijo  | Cuándo usarlo                 |
 | -------- | ----------------------------- |

@@ -8,7 +8,7 @@ Agnostic functions for the extraction of diverse features:
 - Espectral: PSD, power per band, DWT, entropy
 - ICA components dynamics and metadata extraction
 """
-# features_extractor.py
+# feature_extractor.py
 
 import pywt
 import numpy as np
@@ -117,8 +117,8 @@ def session_ica_metadata(comp_names, probs):
     """
     name_arr = np.array(comp_names)
     probs_arr = np.array(probs)
-    target_labels = np.array([RAW_TO_TARGET.get(name, None) for name in name_arr])
-    keep_idx = np.where(target_labels != None)[0]
+    target_labels = np.array([RAW_TO_TARGET.get(name, "unclassified") for name in name_arr])
+    keep_idx = np.arange(len(name_arr))
 
     return{
         "raw_labels": name_arr,
@@ -182,7 +182,23 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
 
     return pd.DataFrame(rows)
 
-def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="cache/sessions",ica_cache_dir="cache/ica"):
+def fetch_positive_contributions(labeled_windows_df, target_channels, contrib_prefix="ic_contrib_"):
+    contrib_cols_target= []
+    for ch_pair in target_channels:
+        for electrode in ch_pair.replace("-", " ").split():
+            col = f"{contrib_prefix}{electrode}"
+            if col in labeled_windows_df.columns:
+                contrib_cols_target.append(col)
+
+    if contrib_cols_target:
+        score = labeled_windows_df[contrib_cols_target].sum(axis=1)
+    else:
+        all_contrib_cols = [c for c in labeled_windows_df if c.startswith(contrib_prefix)]
+        score = labeled_windows_df[all_contrib_cols].max(axis=1)
+
+    return score.idxmax()
+
+def iter_session_windows(label_windowing_df, target_labels, use_ica=True, session_cache_dir="cache/sessions",ica_cache_dir="cache/ica"):
     """
     Window generator with added categories.
     """
@@ -213,7 +229,14 @@ def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="ca
             if end > data.shape[1]:
                 continue
 
-            tuar_metadata = {f"tuar_{col}":getattr(row, col, 0) for col in TUAR_Labels if hasattr(row, col)}
+            tuar_metadata = {
+                f"tuar_{col}":getattr(row, col, 0) for col in TUAR_Labels if hasattr(row, col)
+            }
+            channels_metadata = {
+                f"channels_{cat}": getattr(row, f"channels_{cat}", [])
+                for cat in target_labels
+                if hasattr(row, f"channels_{cat}")
+            }
             window_paquet = {
                 "Patient": patient,
                 "Session": session,
@@ -225,6 +248,7 @@ def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="ca
                 "sfreq": sfreq,
             }
             window_paquet.update(tuar_metadata)
+            window_paquet.update(channels_metadata)
 
             if use_ica:
                 window_paquet.update({
@@ -235,13 +259,13 @@ def iter_session_windows(label_windowing_df, use_ica=True, session_cache_dir="ca
 
             yield window_paquet
 
-def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache/ica", session_cache_dir="cache/sessions"):
+def build_feature_dataset(label_windowing_df, target_labels,  use_ica=True, ica_cache_dir="cache/ica", session_cache_dir="cache/sessions"):
     """
     Returns signal + ICA features added by ICLabel cathegories.
     """    
     rows = []
 
-    for w in iter_session_windows(label_windowing_df, use_ica, session_cache_dir, ica_cache_dir):
+    for w in iter_session_windows(label_windowing_df, target_labels, use_ica, session_cache_dir, ica_cache_dir):
         channel_feats = {}
         channel_feats.update(
             temporal_features(
@@ -271,7 +295,7 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
             add_cols["split"] = w.get("split")
 
             for key, value in w.items():
-                if key.startswith("tuar_"):
+                if key.startswith("tuar_") or key.startswith("channels_"):
                     add_cols[key] = value
 
             add_cols = pd.DataFrame([add_cols]*len(comp_df))
@@ -281,7 +305,7 @@ def build_feature_dataset(label_windowing_df, use_ica=True, ica_cache_dir="cache
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
 
-def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_dir="features"):
+def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_dir="features", version=1):
     """
     Returs the categories according to the target:
     -   "eye"
@@ -292,15 +316,23 @@ def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_
     # Clean ambiguous windows
     clean_df = long_df[long_df["tuar_is_ambiguous"] == 0].copy()
     subset = clean_df.copy()
+    subset["is_positive"] = 0
 
     # Confirmation of positive target
     tuar_column = f"tuar_{target_artifact}"
-    comp = subset["ic_target_label"] == target_artifact
-    ocurrence = subset[tuar_column] == 1
+    channels_column = f"channels_{target_artifact}"
 
-    subset["is_positive"] = (subset[tuar_column] == 1).astype(int)
+    positive_windows = subset[subset[tuar_column]==1]
 
-    output_path = Path(features_dir) / f"rf_dataset_{target_artifact}.parquet"
+    group_cols = ["Patient", "Session", "Start"]
+    for keys, group in positive_windows.groupby(group_cols):
+        target_channels = group[channels_column].iloc[0] if channels_column in group.columns else []
+        if not target_channels:
+            continue
+        best_idx = fetch_positive_contributions(group, target_channels)
+        subset.loc[best_idx, "is_positive"]=1
+
+    output_path = Path(features_dir) / f"rf_dataset_{target_artifact}_v{version}.parquet"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     subset.to_parquet(output_path, index=False)
 
@@ -341,7 +373,7 @@ if __name__ == "__main__":
     windowed_annotated_splited, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=RATIOS, version=VERSION)
 
     print("Starting features extraction from channels and ICA components...")
-    featured_windows = build_feature_dataset(windowed_annotated_splited, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
+    featured_windows = build_feature_dataset(windowed_annotated_splited, list(ARTIFACT_KEYWORDS.keys()), use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
     display(featured_windows.head(5))
     print(featured_windows.columns.tolist())
 

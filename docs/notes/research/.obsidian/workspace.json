@@ -187,12 +187,13 @@
   },
   "active": "cfe1d610441a02c7",
   "lastOpenFiles": [
-    "_templates/technical_template.md",
+    "01-setup/Python Virtual Environment.md",
+    "01-setup/Git and Git Bash.md",
     "03-models/Results.md",
+    "_templates/technical_template.md",
     "Untitled.md",
     "03-models/Completed_models.md",
     "Untitled",
-    "01-setup/Git and Git Bash.md",
     "00-index/INDEX.md"
   ]
 }
