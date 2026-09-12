@@ -32,7 +32,8 @@ else:
 
 # Current data path
 #BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
-BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
+#BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
+BASE_PATH = Path("/workspace/data")
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
 # BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
 # BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
@@ -40,7 +41,8 @@ BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_E
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
     "all_corpus": Path("tuh_eeg") / "v2.0.2",
-    "artifact":   Path("tuh_eeg_artifact") / "v3.0.1",
+    "artifact":   Path("v3.0.1"),
+    #"artifact":   Path("tuh_eeg_artifact") / "v3.0.1",
     "epilepsy":   Path("tuh_eeg_epilepsy") / "v3.1.0",
     "seizure":    Path("tuh_eeg_seizure") / "v2.0.6",
     "events":     Path("tuh_eeg_events") / "v2.0.1",
