@@ -8,10 +8,9 @@ Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 
 import torch
 import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
 import torchvision
 import torchvision.transforms as transforms
-
-
 
 batch_size = 64
 num_classes = 10
@@ -32,6 +31,32 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 2. Weighted cross-entropy loss: -w_c * log(p_c), donde w_c es el peso de la clase c, que puede ser inversamente proporcional a la frecuencia de la clase en el dataset.
 3. 
 2. """
+
+class FocalLossWithClassWeights(nn.Module):
+    """
+    
+    """
+
+
+class EEG_windows_dataset(Dataset):
+    """
+    Generic dataset for pytorch structure.
+    """
+    def __init__(self, windows_array, labels_array):
+        self.X = torch.tensor(windows_array, dtype=torch.float32)
+        self.X = torch.tensor(labels_array, dtype=torch.float32)
+
+    def __len__(self):
+        return len(self.X)
+
+    def __getitem__(self, idx):
+        return self.X[idx], self.y[idx]
+
+class CNN_model(nn.Module):
+    """
+    
+    """
+    def __init__(selt, n_channels, input_length, conv_channels=(16))
 
 
 def build_cnn_model(input_shape, num_classes):

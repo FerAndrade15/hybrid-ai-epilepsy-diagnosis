@@ -13,13 +13,13 @@ import pandas as pd
 from pathlib import Path
 
 # Utils libraries
-from random import randint
+from scipy.stats import randint
 
 # Data integration libraries / project modules
 from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
 from implementation.core.data_loader import build_annotations_index, find_project_root
 from implementation.core.windowing import label_windowing
-from implementation.core.data_splitter import get_or_compute_labeled_split, split_features_target, split_balance_report
+from implementation.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
 from implementation.core.feature_extractor import build_feature_dataset, build_rf_dataset
 from implementation.models.rf_model import binary_rf
 
@@ -116,6 +116,8 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
             print(rf_features_dataset["is_positive"].value_counts())
         else:
             raise ValueError(f"Error: Resulting empty dataset")
+
+        rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset )
 
         sweep_results = []
         for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
