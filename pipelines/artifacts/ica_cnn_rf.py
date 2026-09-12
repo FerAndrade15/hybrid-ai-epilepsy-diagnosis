@@ -117,7 +117,7 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
         else:
             raise ValueError(f"Error: Resulting empty dataset")
 
-        rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset )
+        rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset, protect_cols=LEAKAGE_COLS + ["is_positive", "split"] )
 
         sweep_results = []
         for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:

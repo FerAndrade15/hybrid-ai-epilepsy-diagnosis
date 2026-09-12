@@ -23,15 +23,17 @@ def split_balance_report(windowed_df, target_col="is_positive", split_col="split
     summary["positive_rate"] = summary["n_positive"]/summary["n_total"]
     return summary
 
-def drop_inconsistent_channel_columns(df, verbose=True):
-	"""
+def drop_inconsistent_channel_columns(df, verbose=True, protect_cols=None):
+    """
 	Drop  columns containing NaN values caused by incosisntent montages.
-	"""
-	cols_with_nan = df.columns[df.isna().any()].tolist()
-	if verbose and cols_with_nan:
-		print(f"[INFO] Droppint {cols_with_nan} due to montage variations")
-		print(cols_with_nan)
-	return df.drop(columns=cols_with_nan)
+    """
+    protect_cols = set(protect_cols or [])
+    candidate_cols = [col for col in df.columns if col not in protect_cols]
+    cols_with_nan = df[candidate_cols].columns[df[candidate_cols].isna().any()].tolist()
+    if verbose and cols_with_nan:
+        print(f"[INFO] Dropping {cols_with_nan} due to montage variations")
+        print(cols_with_nan)
+    return df.drop(columns=cols_with_nan)
 
 def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", include_clean=True, 
                              drop_excluded=True, drop_ambiguous=True, 
