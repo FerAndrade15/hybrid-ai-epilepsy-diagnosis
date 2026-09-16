@@ -6,14 +6,14 @@
 Functions for saving the data extracted for each session and reusing it without reloading continuously.
 
 """
-# session_cache.py
+# File: session_cache.py
 
 import numpy as np
 from pathlib import Path
 
-from implementation.core.data_loader import load_raw_edf
-from implementation.core.preprocessing import raw_data_preproccesing
-from implementation.models.ica_model import get_or_compute_ica
+from src.core.data_loader import load_raw_edf
+from src.core.preprocessing import raw_data_preproccesing
+from src.models.ica_model import get_or_compute_ica
 
 def get_or_compute_session(patient, session, path_edf, cache_dir="cache/sessions",
                            ica_cache_dir="cache/ica", use_ica=True):

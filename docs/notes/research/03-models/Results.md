@@ -1,4 +1,4 @@
-# Artifacts
+it# Artifacts
 
 ## ICA+ICLabel + RF
 PS C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis> uv run python -m implementation.models.rf_model

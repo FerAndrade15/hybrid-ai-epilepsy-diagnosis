@@ -8,7 +8,7 @@ Agnostic functions for the extraction of diverse features:
 - Espectral: PSD, power per band, DWT, entropy
 - ICA components dynamics and metadata extraction
 """
-# feature_extractor.py
+# File: feature_extractor.py
 
 import pywt
 import numpy as np
@@ -18,9 +18,9 @@ from pathlib import Path
 from scipy.signal import welch, find_peaks
 from scipy.stats import skew, kurtosis
 
-from implementation.core.data_config import RAW_TO_TARGET, TUAR_Labels
-from implementation.core.session_cache import get_or_compute_session
-from implementation.models.ica_model import channel_contribution
+from src.core.data_config import RAW_TO_TARGET, TUAR_Labels
+from src.core.session_cache import get_or_compute_session
+from src.models.ica_model import channel_contribution
 
 def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewness=True, Kurtosis=True, Zero_crossing_rate=True, Hjorth=True, Line_length=True, Peak_to_peak=True):
     """
@@ -327,10 +327,13 @@ def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_
     group_cols = ["Patient", "Session", "Start"]
     for keys, group in positive_windows.groupby(group_cols):
         target_channels = group[channels_column].iloc[0] if channels_column in group.columns else []
+        print(target_channels)
         if not target_channels:
             continue
         best_idx = fetch_positive_contributions(group, target_channels)
+        print(best_idx)
         subset.loc[best_idx, "is_positive"]=1
+        print(subset.loc[best_idx, "is_positive"])
 
     output_path = Path(features_dir) / f"rf_dataset_{target_artifact}_v{version}.parquet"
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -341,10 +344,10 @@ def build_rf_dataset(long_df, target_artifact, negative_label="clean", features_
 if __name__ == "__main__":
 
     # Data integration libraries / project modules
-    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION
-    from implementation.core.data_loader import build_annotations_index, find_project_root
-    from implementation.core.windowing import label_windowing
-    from implementation.core.data_splitter import get_or_compute_split
+    from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION
+    from src.core.data_loader import build_annotations_index, find_project_root
+    from src.core.windowing import label_windowing
+    from src.core.data_splitter import get_or_compute_labeled_split
 
     # Data visualization and search libraries
     from IPython.display import display
@@ -370,18 +373,38 @@ if __name__ == "__main__":
                 )
     display(windowed_annotations_corpus_patient.head(5))
 
-    windowed_annotated_splited, assignment, report = get_or_compute_split(windowed_annotations_corpus_patient, target_taxonomy=ARTIFACT_KEYWORDS, dataset_division_dir=str(SPLIT_CACHE_DIR), ratios=RATIOS, version=VERSION)
-
     print("Starting features extraction from channels and ICA components...")
-    featured_windows = build_feature_dataset(windowed_annotated_splited, list(ARTIFACT_KEYWORDS.keys()), use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
+    featured_windows = build_feature_dataset(windowed_annotations_corpus_patient, list(ARTIFACT_KEYWORDS.keys()), use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
     display(featured_windows.head(5))
-    print(featured_windows.columns.tolist())
+
+    #print(featured_windows.columns.tolist())
 
     if not featured_windows.empty:
         print("Successful features extraction")
-        rf_features_dataset = build_rf_dataset(featured_windows, artefact_target="eye", features_dir=str(FEATURES_DIR))
+        rf_features_dataset = build_rf_dataset(featured_windows, target_artifact="eye", features_dir=str(FEATURES_DIR))
+        print(rf_features_dataset.columns.tolist())
+        print(rf_features_dataset["channels_eye"].apply(tuple).unique())
         print(rf_features_dataset.head(5))
         print("Positive count:")
         print(rf_features_dataset["is_positive"].value_counts())
     else:
         print("Resulting empty dataset")
+
+    rf_dataset, assignment, report = get_or_compute_labeled_split(
+                                    rf_features_dataset, 
+                                    "is_positive", 
+                                    group_col="Patient",
+                                    ratios=RATIOS,
+                                    size_weight=0.5, 
+                                    dataset_division_dir=SPLIT_CACHE_DIR, 
+                                    version=VERSION, 
+                                    target="eye"
+                                )
+
+    # ¿Existen columnas con mayúsculas tipo TUAR crudo?
+    cols_mayusculas = [c for c in rf_dataset.columns if c.startswith("ic_contrib_") and c[len("ic_contrib_"):].isupper()]
+    print("Columnas con nombre todo mayúsculas:", cols_mayusculas)
+
+    # ¿Existen columnas con Capitalize (Fp1, F7, etc.)?
+    cols_capitalize = [c for c in rf_dataset.columns if c.startswith("ic_contrib_")]
+    print("Todas las columnas ic_contrib_:", cols_capitalize)

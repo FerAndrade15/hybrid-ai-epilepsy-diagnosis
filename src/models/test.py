@@ -3,11 +3,11 @@ from random import randint
 from pathlib import Path
 
 # Data integration libraries / project modules
-from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
-from implementation.core.data_loader import build_annotations_index, find_project_root
-from implementation.core.windowing import label_windowing
-from implementation.core.data_splitter import get_or_compute_labeled_split, split_features_target
-from implementation.core.feature_extractor import build_feature_dataset, build_rf_dataset
+from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
+from src.core.data_loader import build_annotations_index, find_project_root
+from src.core.windowing import label_windowing
+from src.core.data_splitter import get_or_compute_labeled_split, split_features_target
+from src.core.feature_extractor import build_feature_dataset, build_rf_dataset
 
 # Data visualization and search libraries
 from IPython.display import display

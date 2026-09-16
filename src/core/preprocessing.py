@@ -9,21 +9,21 @@ Required preprocessing steps for raw signal analysis:
 - Notch filtering at 50/60 Hz to remove mains power noise
 - Standard channel renaming
 """
-# preprocessing.py
+# File: preprocessing.py
 
 # Data analysis libraries
 import mne
 import pandas as pd
 
 # Shared config data for EEG preprocessing
-from implementation.core.data_config import CHANNELS
-from implementation.core.data_loader import get_session_data, load_raw_edf
+from src.core.data_config import CHANNELS
+from src.core.data_loader import get_session_data, load_raw_edf
 
 def channel_standard_nomenclature(ch_name):
     """
     Considering that various academic datasets and commercial EEG machines export signals
     with channel names that vary from the standard, this function renames channels to 
-    match the 10-20 and 10-10 systems.
+    match to the current standard (incorporing 10-20, 10-10 and 10-05 systems).
     """
     text = "".join(x if x.isalnum() or x.isspace() else " " for x in ch_name)
     text = text.upper().split()

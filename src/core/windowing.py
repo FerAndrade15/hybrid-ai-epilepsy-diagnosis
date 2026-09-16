@@ -14,9 +14,9 @@ import numpy as np
 import pandas as pd
 from torch import utils, tensor, float32
 
-from implementation.core.data_loader import load_raw_edf
-from implementation.core.preprocessing import raw_data_preproccesing
-from implementation.models.ica_model import get_or_compute_ica
+from src.core.data_loader import load_raw_edf
+from src.core.preprocessing import raw_data_preproccesing, channel_standard_nomenclature
+from src.models.ica_model import get_or_compute_ica
 
 # Process to analyze data
 def split_compound_label(label):
@@ -218,8 +218,8 @@ class eeg_window_dataset(utils.data.Dataset):
         return channel_window, tensor(row.is_clean_window, dtype=float32)
 
 if __name__ == "__main__":
-    from implementation.core.data_config import ARTIFACT_KEYWORDS, ARTIFACT_ADDITIONAL_TOKENS, BACKGROUND_LABEL, WINDOW_REQUESTS
-    from implementation.core.data_loader import build_annotations_index
+    from src.core.data_config import ARTIFACT_KEYWORDS, ARTIFACT_ADDITIONAL_TOKENS, BACKGROUND_LABEL, WINDOW_REQUESTS_ARTIFACTS
+    from src.core.data_loader import build_annotations_index
     
     database_corpus_patient = build_annotations_index("artifact", n_patients=5, max_sessions=1, paths=True)
     windowed_annotations_corpus_patient = label_windowing(database_corpus_patient, 

@@ -5,7 +5,7 @@
 
 Reusable RF (Random Forest) modules for the AI pipeline.
 """
-# rf_model.py
+# File: rf_model.py
 
 import numpy as np
 import pandas as pd
@@ -32,7 +32,7 @@ from sklearn.metrics import (
 )
 
 # Functions from modules
-from implementation.core.data_splitter import split_features_target
+from src.core.data_splitter import split_features_target
 
 # Binary RF
 def build_rf_model(balanced_bootstrap=False, **overrides):
@@ -339,11 +339,11 @@ def _search_hba_binary(X_train, y_train, X_val, y_val, kwargs, verbose, balanced
 if __name__ == "__main__":
     
     # Data integration libraries / project modules
-    from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
-    from implementation.core.data_loader import build_annotations_index, find_project_root
-    from implementation.core.windowing import label_windowing
-    from implementation.core.data_splitter import get_or_compute_labeled_split, split_features_target, split_balance_report
-    from implementation.core.feature_extractor import build_feature_dataset, build_rf_dataset
+    from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
+    from src.core.data_loader import build_annotations_index, find_project_root
+    from src.core.windowing import label_windowing
+    from src.core.data_splitter import get_or_compute_labeled_split, split_features_target, split_balance_report
+    from src.core.feature_extractor import build_feature_dataset, build_rf_dataset
 
     # Data visualization and search libraries
     from IPython.display import display

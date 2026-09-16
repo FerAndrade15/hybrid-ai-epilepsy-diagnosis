@@ -8,7 +8,7 @@ including ICALabel. Provides functions for preliminary visual exploration,
 automated artifact detection (EOG/EMG), and EEG signal denoising prior to 
 model training.
 """
-# ica_model.py
+# File: ica_model.py
 
 # Data analysis libraries
 import numpy as np
@@ -21,8 +21,8 @@ from mne_icalabel.iclabel import iclabel_label_components
 from IPython.display import display
 
 # Data extraction functions EEG preprocessing
-from implementation.core.data_loader import load_raw_edf, get_session_data
-from implementation.core.preprocessing import raw_data_preproccesing
+from src.core.data_loader import load_raw_edf, get_session_data
+from src.core.preprocessing import raw_data_preproccesing
 
 def explore_ica(raw, preprocessed_signal, variance_explained=0.95, random_seed=97):
     """
