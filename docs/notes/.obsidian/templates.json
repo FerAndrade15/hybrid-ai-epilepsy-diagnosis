@@ -1,3 +1,4 @@
 {
-  "folder": "research/_templates"
+  "folder": "research/_templates",
+  "dateFormat": "YYYY-MM-DD"
 }

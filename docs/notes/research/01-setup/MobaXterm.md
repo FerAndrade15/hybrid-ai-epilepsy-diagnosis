@@ -1,22 +1,76 @@
-# Título del tema
+# MobaXterm, SSH and rsync
 
 ## ¿Qué es?
-Explicación breve en tus palabras.
+- **MobaXterm**: Es una herramienta que provee servicios como SSH, VNC, MOSH o FTP y Unix comandos desde Windows.
+- **SSH**: Protocolo para conectarse de forma segura a servidores remotos. Usa un par de llaves: una privada (solo tú) y una pública (la das al servidor).
+- **rsync**: Herramienta para transferir y sincronizar archivos entre computadoras. Usa SSH como transporte seguro. Solo transfiere lo que ha cambiado.
 
 ## Uso
-En qué situación necesito esto.
+Se empleó para la sincronización y/o descarga del dataset proporcionado por Temple University Hospital, los cuales mantienen la información en un servidor que requiere autorización (user and key).
 
-## Comandos / Código
+---
+
+## Configuración de SSH Keys
+
+### Ubicación de mis keys
+- Llave funcional (registrada en el servidor): `C:\Users\ferch\.ssh\id_ed25519`
+- En MobaXterm se accede como: `/mnt/c/Users/ferch/.ssh/id_ed25519`
+
+### Verificar key fingerprint 
 ```bash
-# comando aquí
+ssh-keygen -lf /mnt/c/Users/ferch/.ssh/id_ed25519.pub
 ```
 
-## Errores comunes 
-- Error: descripción → Solución: cómo lo resolví
+### Probar conexión al servidor
+```bash
+ssh -i /mnt/c/Users/ferch/.ssh/id_ed25519 -v nedc-tuh-eeg@www.isip.piconepress.com
+```
+
+---
+
+## Comandos rsync
+
+### Descarga sin descargar (dry run)
+```bash
+rsync -auvxLn --stats -e "ssh -i /mnt/c/Users/ferch/.ssh/id_ed25519" nedc-tuh-eeg@www.isip.piconepress.com:data/tuh_eeg /ruta/destino/
+```
+
+### Descarga del dataset completo
+```bash
+rsync -auvxL -e "ssh -i /mnt/c/Users/ferch/.ssh/id_ed25519" nedc-tuh-eeg@www.isip.piconepress.com:data/tuh_eeg /ruta/destino/
+```
+
+### Test de acceso
+```bash
+rsync -auvxL -e "ssh -i /mnt/c/Users/ferch/.ssh/id_ed25519" nedc-tuh-eeg@www.isip.piconepress.com:data/tuh_eeg/TEST .
+```
+
+### Flags explicadas
+| Flag | Significado |
+|------|-------------|
+| `-a` | Archive: preserva permisos y fechas |
+| `-u` | Update: no sobreescribe archivos más nuevos |
+| `-v` | Verbose: muestra lo que transfiere |
+| `-x` | No sale del sistema de archivos actual |
+| `-L` | Sigue links simbólicos |
+| `-n` | Dry run: simula sin descargar |
+| `--stats` | Muestra resumen de tamaño total |
+
+---
+
+## Errores comunes
+
+- **Permission denied (publickey)** → verificar que la llave correcta es `/mnt/c/Users/ferch/.ssh/` y no `/home/mobaxterm/.ssh/`. MobaXterm tiene dos homes distintos.
+- **no identity pubkey loaded** → el `.pub` no estaba junto a la privada o eran llaves diferentes.
+- **receiver change_dir failed** → el comando rsync estaba en múltiples líneas con `\`. Escribirlo en una sola línea.
+
+---
 
 ## Referencias
-- Fuente, link, paper, o conversación de donde salió esto o para el que es base para usar después
+- Dataset TUH EEG: https://isip.piconepress.com/projects/nedc/html/tuh_eeg/
 
-## Fecha
-**Creación**: YYYY-MM-DD
-**Última actualización**: YYYY-MM-DD
+## Fecha 
+**Creación**: 2026-05-09
+**Última actualización**: 2026-09-16
+
+*(YYYY-MM-DD)*

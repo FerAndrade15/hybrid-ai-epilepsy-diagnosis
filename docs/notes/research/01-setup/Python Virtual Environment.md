@@ -29,6 +29,11 @@ rm -rf .venv                                # .venv es el nombre
 
 # Desactivación del entorno
 deactivate
+
+# Recurso para simplificación de uso del entorno: uv
+# No requiere la activación del entorno, se puede crear el venv con el setup incluido
+bash setup.sh
+uv run python doc
 ```
 
 ### Manejo de librerías
@@ -47,11 +52,11 @@ pip unistall nombre-librería                
 pip install -r requirenemts.txt
 ```
 ## Errores comunes 
-- Error: descripción → Solución: cómo lo resolví
+*Sin registro*
 
 ## Referencias
-- Fuente, link, paper, o conversación de donde salió esto o para el que es base para usar después
+- Setup.sh: https://www.ibm.com/docs/es/aix/7.3.0?topic=files-setupsh-file
 
 ## Fecha
-**Creación**: YYYY-MM-DD
-**Última actualización**: YYYY-MM-DD
+**Creación**: 2026-05-09
+**Última actualización**: 2026-09-16

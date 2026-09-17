@@ -1,0 +1,4 @@
+{
+  "askBeforeMerging": true,
+  "template": "research/_templates/technical_template.md"
+}

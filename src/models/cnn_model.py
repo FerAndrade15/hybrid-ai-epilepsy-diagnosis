@@ -56,7 +56,8 @@ class CNN_model(nn.Module):
     """
     
     """
-    def __init__(selt, n_channels, input_length, conv_channels=(16))
+    def __init__(selt, n_channels, input_length, conv_channels=(16)):
+        continue
 
 
 def build_cnn_model(input_shape, num_classes):

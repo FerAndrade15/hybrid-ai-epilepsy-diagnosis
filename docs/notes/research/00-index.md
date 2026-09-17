@@ -8,15 +8,13 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 ## Vault
 
 ### 01-setup: Herramientas y configuración
-- [[SSH and rsync]]
 - [[MobaXterm]]
 - [[Git and Git Bash]]
 - [[Python Virtual Environment]]
  
 ### 02-datasets — Datos
 - [[EEG]]
-- [[TUH EEG — Descripción general]]
-- [[TUH EEG — Descarga y acceso]]
+- [[Temple University EEG]]
 
 ### 03-models — Modelos
 - [[PyTorch — Setup]]
@@ -29,7 +27,11 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[Integrated Gradients]]
 - [[Saliency Maps]]
 
-### 05-research-notes — Notas de investigación
+### 05-software — Requerimientos y consideraciones de diseño
+- [[Backend]]
+- [[Frontend]]
+
+### 06-research-notes — Notas de investigación
 #### Hybrid focussed
 - [[BrAinVision]]
 #### General concepts
@@ -51,5 +53,5 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [x] Acceso SSH al servidor TUH configurado
 - [x] Descarga del dataset en proceso
 - [x] Documentar entornos virtuales
-- [ ] Documentar modelos PyTorch
-- [ ] 
+- [ ] Documentación modelos PyTorch
+- [ ] Documentación del desarrollo del software

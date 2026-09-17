@@ -1,0 +1,35 @@
+# Inteligencia Artificial y Machine Learning
+tensorflow
+torch
+scikit-learn
+imbalanced-learn
+optuna
+
+# Procesamiento de Señales y Datos
+mne
+PyWavelets
+numpy
+pandas
+scipy
+
+# Visualización
+matplotlib
+seaborn
+
+# API
+fastapi
+uvicorn
+
+# GUI
+PySide6
+pyqtgraph
+requests
+QT-PyQt-PySide-Custom-Widgets
+
+# Files automation
+watchdog
+
+# Utilidades y Entorno
+jupyter
+ipython
+PyYAML
