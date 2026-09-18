@@ -16,7 +16,7 @@ from src.core.preprocessing import raw_data_preproccesing
 from src.models.ica_model import get_or_compute_ica
 
 def get_or_compute_session(patient, session, path_edf, cache_dir="cache/sessions",
-                           ica_cache_dir="cache/ica", use_ica=True):
+                           ica_cache_dir="cache/ica", use_ica=True, montage=False):
     """
     Load EDF, preprocessing and ICA once per session.
     Save as .npz the results for future executions of the models.
@@ -38,7 +38,7 @@ def get_or_compute_session(patient, session, path_edf, cache_dir="cache/sessions
         }
 
     raw = load_raw_edf(path_edf, preloaD=True)
-    signal = raw_data_preproccesing(raw)
+    signal = raw_data_preproccesing(raw, montage=montage)
     data = signal.get_data()
     sfreq = signal.info["sfreq"]
     ch_names = signal.ch_names

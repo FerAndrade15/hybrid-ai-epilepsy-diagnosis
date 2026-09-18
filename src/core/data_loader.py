@@ -17,12 +17,12 @@ from pathlib import Path
 from src.core.data_config import ALL_MONTAGES, CORPUS_PATHS, BASE_PATH
 
 # General function to find the project root directory
-def find_project_root(marker="implementation"):
-        current = Path(__file__).resolve()
-        for parent in current.parents:
-            if (parent / marker).is_dir():
-                return parent
-        raise RuntimeError(f"Main folder path not found (looking for '{marker}' folder)")
+def find_project_root(marker):
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / marker).is_dir():
+            return parent
+    raise RuntimeError(f"Main folder path not found (looking for '{marker}' folder)")
 
 # Funtions for EEG data analysis and dataframe generation
 def get_session_data(corpus_name, n_patients=None, min_sessions=None, max_sessions=None, montages=None):

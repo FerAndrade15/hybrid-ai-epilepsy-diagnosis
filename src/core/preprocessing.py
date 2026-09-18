@@ -13,10 +13,9 @@ Required preprocessing steps for raw signal analysis:
 
 # Data analysis libraries
 import mne
-import pandas as pd
 
 # Shared config data for EEG preprocessing
-from src.core.data_config import CHANNELS
+from src.core.data_config import CHANNELS, BIPOLAR_MONTAGE
 from src.core.data_loader import get_session_data, load_raw_edf
 
 def channel_standard_nomenclature(ch_name):
@@ -28,12 +27,15 @@ def channel_standard_nomenclature(ch_name):
     text = "".join(x if x.isalnum() or x.isspace() else " " for x in ch_name)
     text = text.upper().split()
     name = [ch.split("/")[-1] for x in text for ch in CHANNELS if x in ch.split("/")]
-    name = str(name[0]).capitalize() if name else None
+    name = str(name[0]).upper() if name else None
     return name
 
-def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0, 60.0], presaved_raw=True, verbose=False, resamplig_freq=256):
+def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0, 60.0], montage=False, verbose=False, resamplig_freq=256):
     """
     Preprocessing pipeline for all EDF raw signals.
+
+    Parameters
+        montage: False: Monopolar | True: Bipolar
     """
     raw = raw_data.copy()
 
@@ -58,16 +60,22 @@ def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0,
     # Resampling
     raw.resample(resamplig_freq, verbose="WARNING" if not verbose else None)
 
-    # Common average reference
-    raw.set_eeg_reference("average", verbose="WARNING" if not verbose else None)
-
+    # Montage configuration
+    if montage:
+        # Bipolar reference
+        raw = mne.set_bipolar_reference(raw, 
+                                  anode=BIPOLAR_MONTAGE["anode"], 
+                                  cathode=BIPOLAR_MONTAGE["cathode"],
+                                  ch_name=BIPOLAR_MONTAGE["names"],
+                                  drop_refs=True)
+    else:
+        # Common average reference
+        raw.set_eeg_reference("average", verbose="WARNING" if not verbose else None)
     return raw
 
 
 if __name__ == "__main__":
-
     # Shared config data for EEG preprocessing
-
     sessions = get_session_data("artifact", n_patients=1, max_sessions=1)
     if sessions.empty:
         print("No sessions found")
@@ -86,38 +94,43 @@ if __name__ == "__main__":
             print(f">> Channels: {len(ch_names)} - {ch_preview}")
 
             # Procesed signal
-            preprocessed_raw = raw_data_preproccesing(raw)
+            preprocessed_raw = raw_data_preproccesing(raw, montage=True)
             ch_names = preprocessed_raw.ch_names
             ch_preview = ", ".join(ch_names[:10])
             if len(ch_names) > 10:
                 ch_preview += ", ..."
             print(f">> Channels: {len(ch_names)} - {ch_preview}")
+            print(f">> {ch_names}")
 
             # Visualization
             preprocessed_renamed = preprocessed_raw.copy()
             preprocessed_renamed.rename_channels(
-                {ch: f"{ch}_pre" for ch in preprocessed_renamed.ch_names}
+                {ch: f"{ch}" for ch in preprocessed_renamed.ch_names}
             )
 
             combined = raw.copy()
             combined.resample(preprocessed_raw.info['sfreq'], npad='auto')
             combined.add_channels([preprocessed_renamed], force_update_info=True)
 
+            """
             # Plot interleaved signals for comparison
             original_order = list(raw.ch_names)
             interleaved = []
             for ch in original_order:
                 interleaved.append(ch)
                 standard_name = channel_standard_nomenclature(ch)
-                pre_ch = f"{standard_name}_pre" if standard_name is not None else None
+                pre_ch = f"{standard_name}" if standard_name is not None else None
                 if pre_ch and pre_ch in combined.ch_names:
                     interleaved.append(pre_ch)
 
             combined.reorder_channels(interleaved)
+
+            """
+
             combined.plot(
                 n_channels=2,
-                duration=20,
+                duration=30,
                 start=0,
-                scalings={'eeg': 1500e-6},          # fija la altura en 1500 µV
+                scalings={'eeg': 1500e-6},
                 block=True
             )

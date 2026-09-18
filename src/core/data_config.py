@@ -32,8 +32,8 @@ else:
 
 # Current data path
 #BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
-#BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
-BASE_PATH = Path("/workspace/data")
+BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
+#BASE_PATH = Path("/workspace/data")
 # BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
 # BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
 # BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
@@ -41,8 +41,8 @@ BASE_PATH = Path("/workspace/data")
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
     "all_corpus": Path("tuh_eeg") / "v2.0.2",
-    "artifact":   Path("v3.0.1"),
-    #"artifact":   Path("tuh_eeg_artifact") / "v3.0.1",
+    #"artifact":   Path("v3.0.1"),
+    "artifact":   Path("tuh_eeg_artifact") / "v3.0.1",
     "epilepsy":   Path("tuh_eeg_epilepsy") / "v3.1.0",
     "seizure":    Path("tuh_eeg_seizure") / "v2.0.6",
     "events":     Path("tuh_eeg_events") / "v2.0.1",
@@ -121,11 +121,47 @@ CHANNELS = [
     "O1", "OZ", "O2",                                   # Occipital
     "T3/T7", "T4/T8", "T5/P7", "T6/P8",                 # Temporal
     "AT1/T1/FT9", "AT2/T2/FT10",                        # Additional: Inferior anterotemporal electrodes
+    "A1", "A2",                                         # Additional: Ear electrodes (Reference)
 ]
 
+BIPOLAR_MONTAGE = {
+    "anode": [
+        # Left Parasagittal
+        'FP1', 'F3', 'C3', 'P3',
+        # Right Parasagittal
+        'FP2', 'F4', 'C4', 'P4',
+        # Left Temporal
+        'FP1', 'F7', 'T7', 'P7',
+        # Right Temporal
+        'FP2', 'F8', 'T8', 'P8',
+        # Middle line
+        'FZ', 'CZ'
+    ],
+    "cathode": [
+        #  Left Parasagittal
+        'F3', 'C3', 'P3', 'O1',
+        # Parasagital Derecho
+        'F4', 'C4', 'P4', 'O2',
+        # Left Temporal
+        'F7', 'T7', 'P7', 'O1',
+        # Right Temporal
+        'F8', 'T8', 'P8', 'O2',
+        # Middle line
+        'CZ', 'PZ'
+    ],
+}
+BIPOLAR_MONTAGE["names"]= [f"{a}-{c}" for a, c in zip(BIPOLAR_MONTAGE["anode"], BIPOLAR_MONTAGE["cathode"])]
+
+
 # Windowing
+WINDOW_STRIDE_SWEEP = {
+    "eye":                        [(1, 0.25), (2, 0.5), (2, 1), (5, 2)],
+    "muscle":                     [(2, 0.5), (5, 1), (5, 2)],
+    "non_physiological":          [(0.5, 0.125), (1, 0.25), (1, 0.5)],
+}
+
 WINDOW_REQUESTS_ARTIFACTS = {
-    "eye":                        {"window_size_sec": 20,  "stride_sec": 20},
+    "eye":                        {"window_size_sec": 1,  "stride_sec": 1},
     "muscle":                     {"window_size_sec": 5,  "stride_sec": 5},
     "non_physiological":          {"window_size_sec": 1,  "stride_sec": 1},
 }

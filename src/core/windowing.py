@@ -9,7 +9,6 @@ sections and tags according to a given taxonomy with all the passed in data.
 # File: windowing.py
 
 # Data integration libraries
-import mne
 import numpy as np
 import pandas as pd
 from torch import utils, tensor, float32
@@ -96,7 +95,8 @@ def label_windowing(annotations_df, window_requests,
             row["is_excluded_unreviewed"] = 0
  
             coverage  = {cat: 0.0 for cat in target_taxonomy}
-            channels_by_cat = {cat: set() for cat in target_taxonomy}
+            monopolar_channels_by_cat = {cat: set() for cat in target_taxonomy}
+            bipolar_channels_by_cat = {cat: set() for cat in target_taxonomy}
             for span in label_spans:
                 tokens = split_compound_label(span["label"])
                 duracion = span["end_in_window"] - span["start_in_window"]
@@ -104,12 +104,30 @@ def label_windowing(annotations_df, window_requests,
                     if tokens & keywords:
                         coverage[cat] += duracion
                         matching_rows = overlapping[overlapping["label"]==span["label"]]
-                        channels_by_cat[cat].update(matching_rows["channel"].tolist())
+                        ch_names = [name.split("-") for name in matching_rows["channel"].tolist()]
+                        rename_map = [
+                            new_name1 + "-" + new_name2 
+                            for ch in ch_names 
+                            if len(ch) == 2
+                            if (new_name1 := channel_standard_nomenclature(ch[0])) is not None
+                            if (new_name2 := channel_standard_nomenclature(ch[1])) is not None
+                        ]
+                        bipolar_channels_by_cat[cat].update(rename_map)
+
+                        ch_names_flat = [item for sublist in ch_names for item in sublist]
+                        rename_map_mono = [
+                            new_name 
+                            for ch in ch_names_flat 
+                            if (new_name := channel_standard_nomenclature(ch)) is not None
+                        ] 
+                        monopolar_channels_by_cat[cat].update(rename_map_mono)
+                        
             coverage = {cat: min(v / window_size_sec, 1.0) for cat, v in coverage.items()}
  
             for cat in target_taxonomy:
                 row[f"coverage_{cat}"] = round(coverage[cat], 3)
-                row[f"channels_{cat}"] = sorted(channels_by_cat[cat])
+                row[f"monopolar_channels_{cat}"] = sorted(monopolar_channels_by_cat[cat])
+                row[f"bipolar_channels_{cat}"] = sorted(bipolar_channels_by_cat[cat])
  
             coverage_total = sum(coverage.values())
  
@@ -218,14 +236,14 @@ class eeg_window_dataset(utils.data.Dataset):
         return channel_window, tensor(row.is_clean_window, dtype=float32)
 
 if __name__ == "__main__":
-    from src.core.data_config import ARTIFACT_KEYWORDS, ARTIFACT_ADDITIONAL_TOKENS, BACKGROUND_LABEL, WINDOW_REQUESTS_ARTIFACTS
+    from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS
     from src.core.data_loader import build_annotations_index
-    
+
     database_corpus_patient = build_annotations_index("artifact", n_patients=5, max_sessions=1, paths=True)
     windowed_annotations_corpus_patient = label_windowing(database_corpus_patient, 
-                                                          WINDOW_REQUESTS["rf_artifact_class"], 
-                                                          ARTIFACT_KEYWORDS, 
-                                                          unreviewd_tokens=True)
+                                                            WINDOW_REQUESTS_ARTIFACTS["eye"], 
+                                                            ARTIFACT_KEYWORDS, 
+                                                            unreviewd_tokens=True)
 
     pd.set_option("display.max_columns", None)
     pd.set_option("display.width", 120)  
@@ -234,24 +252,6 @@ if __name__ == "__main__":
     print(windowed_annotations_corpus_patient.head(50))
     print(windowed_annotations_corpus_patient.shape)
 
-    # Probar el Dataset
-    dataset = eeg_window_dataset(windowed_annotations_corpus_patient, use_ica=False)
-    print(f"Dataset length: {len(dataset)}")
-
-
-    # Verification of cache function
-    channel_window, target = dataset[0]
-    print(f"channel_window shape: {channel_window.shape}, dtype: {channel_window.dtype}")
-    print(f"target: {target}")
-    
-    ch_names = dataset._cache["ch_names"]
-    sfreq = dataset._cache["sfreq"]
-
-    data = channel_window.numpy()
-
-    info = mne.create_info(ch_names=ch_names, sfreq=sfreq, ch_types="eeg")
-    raw_window = mne.io.RawArray(data, info)
-
-    raw_window.plot(scalings="auto", title=f"Ventana idx=0, target={target.item()}", block=True)
-
-    #    print(f"Segunda ventana, misma sesión (debería reusar cache): {channel_window_2.shape}")
+    sample = windowed_annotations_corpus_patient[windowed_annotations_corpus_patient["monopolar_channels_eye"].map(len)>0]
+    print(sample["monopolar_channels_eye"].iloc[0])
+    print(sample["bipolar_channels_eye"].iloc[0])

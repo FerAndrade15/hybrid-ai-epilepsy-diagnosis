@@ -207,7 +207,7 @@ def split_features_target(df, split_name, leakage_columns, exclude_probs=False):
 
     #Columns
     tuar_cols = [c for c in subset.columns if c.startswith("tuar_")]
-    channel_cols = [c for c in subset.columns if c.startswith("channels_")]
+    channel_cols = [c for c in subset.columns if ("_channels_") in c]
     if exclude_probs:
         iclabel_prob_col = ["ic_iclabel_prob"]
     else:
