@@ -213,7 +213,7 @@ class eeg_window_dataset(utils.data.Dataset):
         if self._cached_session == key:
             return self._cache
         raw = load_raw_edf(path_edf, preloaD=True)
-        signal = raw_data_preproccesing(raw)
+        signal = raw_data_preproccesing(raw, bipolar_montage=True)
         data = signal.get_data()
         sources_full = None
         if self.use_ica:

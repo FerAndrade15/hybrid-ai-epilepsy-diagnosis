@@ -121,7 +121,7 @@ CHANNELS = [
     "O1", "OZ", "O2",                                   # Occipital
     "T3/T7", "T4/T8", "T5/P7", "T6/P8",                 # Temporal
     "AT1/T1/FT9", "AT2/T2/FT10",                        # Additional: Inferior anterotemporal electrodes
-    "A1", "A2",                                         # Additional: Ear electrodes (Reference)
+    #"A1", "A2",                                         # Additional: Ear electrodes (Reference)
 ]
 
 BIPOLAR_MONTAGE = {

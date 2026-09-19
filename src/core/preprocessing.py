@@ -30,12 +30,13 @@ def channel_standard_nomenclature(ch_name):
     name = str(name[0]).upper() if name else None
     return name
 
-def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0, 60.0], montage=False, verbose=False, resamplig_freq=256):
+def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0, 60.0], bipolar_montage=False, verbose=False, resamplig_freq=256):
     """
     Preprocessing pipeline for all EDF raw signals.
 
     Parameters
-        montage: False: Monopolar | True: Bipolar
+        bipolar_montage:
+            False: Monopolar | True: Bipolar
     """
     raw = raw_data.copy()
 
@@ -61,7 +62,7 @@ def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0,
     raw.resample(resamplig_freq, verbose="WARNING" if not verbose else None)
 
     # Montage configuration
-    if montage:
+    if bipolar_montage:
         # Bipolar reference
         raw = mne.set_bipolar_reference(raw, 
                                   anode=BIPOLAR_MONTAGE["anode"], 
@@ -94,7 +95,7 @@ if __name__ == "__main__":
             print(f">> Channels: {len(ch_names)} - {ch_preview}")
 
             # Procesed signal
-            preprocessed_raw = raw_data_preproccesing(raw, montage=True)
+            preprocessed_raw = raw_data_preproccesing(raw, bipolar_montage=True)
             ch_names = preprocessed_raw.ch_names
             ch_preview = ", ".join(ch_names[:10])
             if len(ch_names) > 10:

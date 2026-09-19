@@ -8,6 +8,7 @@ Windowing -> split -> features (ICA+ICLabel agregado) ->
 Hiperparameter optimization (Grid Search y Honey Badger) -> 
 Training of multi-output RF -> validation -> saves work.
 """
+# file: ica_cnn_rf.py (pipeline)
 # Data managment libraries
 import pandas as pd
 from pathlib import Path
@@ -16,12 +17,12 @@ from pathlib import Path
 from scipy.stats import randint
 
 # Data integration libraries / project modules
-from implementation.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
-from implementation.core.data_loader import build_annotations_index, find_project_root
-from implementation.core.windowing import label_windowing
-from implementation.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
-from implementation.core.feature_extractor import build_feature_dataset, build_rf_dataset
-from implementation.models.rf_model import binary_rf
+from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
+from src.core.data_loader import build_annotations_index, find_project_root
+from src.core.windowing import label_windowing
+from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
+from src.core.feature_extractor import build_feature_dataset, build_rf_dataset
+from src.models.rf_model import binary_rf
 
 # Data visualization and search libraries
 from IPython.display import display

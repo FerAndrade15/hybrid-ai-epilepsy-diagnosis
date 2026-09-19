@@ -63,10 +63,12 @@ def classification_iclabel(preprocessed_signal, variance=0.99, random_seed=97):
     return ica, ic_labels, labels_pred_prob
 
 
-def get_or_compute_ica(signal, patient, session, cache_dir="cache/ica"):
+def get_or_compute_ica(signal, patient, session, bipolar_montage=False, cache_dir="cache/ica"):
+    montage = "bipolar" if bipolar_montage else "monopolar"
+
     cache_dir = Path(cache_dir)
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cache_file = cache_dir / f"{patient}_{session}_ica.pkl"
+    cache_file = cache_dir / f"{patient}_{session}_{montage}_ica.pkl"
 
     if cache_file.exists():
         with open(cache_file, "rb") as f:

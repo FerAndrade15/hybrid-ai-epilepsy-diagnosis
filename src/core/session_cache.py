@@ -16,14 +16,15 @@ from src.core.preprocessing import raw_data_preproccesing
 from src.models.ica_model import get_or_compute_ica
 
 def get_or_compute_session(patient, session, path_edf, cache_dir="cache/sessions",
-                           ica_cache_dir="cache/ica", use_ica=True, montage=False):
+                           ica_cache_dir="cache/ica", use_ica=True, bipolar_montage=False):
     """
     Load EDF, preprocessing and ICA once per session.
     Save as .npz the results for future executions of the models.
     """
+    montage = "bipolar" if bipolar_montage else "monopolar"
     cache_dir = Path(cache_dir)
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cache_file = cache_dir/f"{patient}_{session}.npz"
+    cache_file = cache_dir/f"{patient}_{session}_{montage}.npz"
 
     if cache_file.exists():
         npz = np.load(cache_file, allow_pickle=True)
@@ -38,7 +39,7 @@ def get_or_compute_session(patient, session, path_edf, cache_dir="cache/sessions
         }
 
     raw = load_raw_edf(path_edf, preloaD=True)
-    signal = raw_data_preproccesing(raw, montage=montage)
+    signal = raw_data_preproccesing(raw, bipolar_montage=montage)
     data = signal.get_data()
     sfreq = signal.info["sfreq"]
     ch_names = signal.ch_names
