@@ -40,6 +40,16 @@ def merge_annotated_ranges(session_group):
             merged.append((start, end))
     return merged
 
+def overall_interval(intv):
+    total, cs, ce = 0.0, None, None
+    for a, b in sorted(intv):
+        if ce is None or a > ce: 
+            if ce is not None: total += ce - cs
+            cs, ce = a, b
+        else:
+            ce = max(ce, b)
+    return total + (ce - cs if ce is not None else 0.0)
+
 # Labeled windows creation
 def label_windowing(annotations_df, window_requests,
                      target_taxonomy, distinguish_taxonomy=None,
@@ -102,15 +112,16 @@ def label_windowing(annotations_df, window_requests,
             row["is_clean"] = 0
             row["is_excluded_unreviewed"] = 0
  
-            coverage  = {cat: 0.0 for cat in target_taxonomy}
+            intervals  = {cat: [] for cat in target_taxonomy}
             monopolar_channels_by_cat = {cat: set() for cat in target_taxonomy}
             bipolar_channels_by_cat = {cat: set() for cat in target_taxonomy}
+
             for span in label_spans:
                 tokens = split_compound_label(span["label"])
-                duracion = span["end_in_window"] - span["start_in_window"]
+                interval = (span["end_in_window"],span["start_in_window"])
                 for cat, keywords in target_taxonomy.items():
                     if tokens & keywords:
-                        coverage[cat] += duracion
+                        intervals[cat].append(interval)
                         matching_rows = overlapping[overlapping["label"]==span["label"]]
                         ch_names = [name.split("-") for name in matching_rows["channel"].tolist()]
                         rename_map = [
@@ -130,7 +141,10 @@ def label_windowing(annotations_df, window_requests,
                         ] 
                         monopolar_channels_by_cat[cat].update(rename_map_mono)
                         
-            coverage = {cat: min(v / window_size_sec, 1.0) for cat, v in coverage.items()}
+            coverage = {
+                cat: min(overall_interval(intervals)/window_size_sec, 1.0) 
+                for cat, interval in intervals.items()
+                }
  
             for cat in target_taxonomy:
                 row[f"coverage_{cat}"] = round(coverage[cat], 3)

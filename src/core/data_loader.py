@@ -120,7 +120,7 @@ def load_annotations(csv_path):
     """
     return pd.read_csv(csv_path, sep=",", comment="#")
 
-def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, max_sessions=None, montages=None, paths=False):
+def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, max_sessions=None, montages=None, paths=False, refresh=False):
     """
     Creates the dataframe according to the annotations metadata:
     - Patient
@@ -128,6 +128,28 @@ def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, ma
     - Section
     - Montage
     """
+    from src.core.data_config import BASE_DIR
+    cache_dir = BASE_DIR / "outputs" / "cache" / "annotations"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_file = cache_dir / f"annotations_index_{corpus_name}_p{n_patients}_s{min_sessions}to{max_sessions}.parquet"
+
+    if cache_file.exists() and not refresh:
+        ann = pd.read_parquet(cache_file)
+
+        if n_patients is not None:
+            selected_patients = ann['Patient'].drop_duplicates().head(n_patients).tolist()
+            ann = ann[ann['Patient'].isin(selected_patients)]
+        if max_sessions is not None:
+            ann = ann.groupby('Patient').apply(
+                lambda x: x[x['Session'].isin(x['Session'].drop_duplicates().head(max_sessions))]
+            ).reset_index(drop=True)
+
+        if not paths:
+            ann = ann.drop(columns=["EDF", "CSV"], errors="ignore")
+
+        return ann
+
+    print(f"[INFO] Creating '{corpus_name}' annotations, it could take long...")
     sessions_df = get_session_data(corpus_name,  n_patients, min_sessions, max_sessions, montages)
     frames = []
     for _, s in sessions_df.iterrows():
@@ -146,7 +168,25 @@ def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, ma
                 CSV=s["csv"],
             )
         frames.append(ann)
-    return pd.concat(frames, ignore_index=True)
+
+    full_ann = pd.concat(frames, ignore_index=True)
+    
+    full_ann.to_parquet(cache_file, index=False)
+    print(f"[INFO] Index saved in: {cache_file}")
+
+    ann_to_return = full_ann.copy()
+    if n_patients is not None:
+        selected_patients = ann_to_return['Patient'].drop_duplicates().head(n_patients).tolist()
+        ann_to_return = ann_to_return[ann_to_return['Patient'].isin(selected_patients)]
+    if max_sessions is not None:
+        ann_to_return = ann_to_return.groupby('Patient').apply(
+            lambda x: x[x['Session'].isin(x['Session'].drop_duplicates().head(max_sessions))]
+        ).reset_index(drop=True)
+        
+    if not paths:
+        ann_to_return = ann_to_return.drop(columns=["EDF", "CSV"], errors="ignore")
+        
+    return ann_to_return
 
 # Select sessions for testing
 def pick_test_session(corpus="artifact", n_patients=3, index=0, min_duration=120):
