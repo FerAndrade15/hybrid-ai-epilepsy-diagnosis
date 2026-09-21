@@ -6,7 +6,7 @@
 Corpus-agnostic windowing for continuous annotations into fixed-size
 sections and tags according to a given taxonomy with all the passed in data.
 """
-# File: windowing.py
+# windowing.py
 
 # Data integration libraries
 import numpy as np
@@ -44,13 +44,13 @@ def label_windowing(annotations_df, window_requests,
                      unreviewd_tokens=False, umbral_artefacto=0.7, umbral_background=0.1):
     rows = []
     group_cols = ["Patient", "Session", "Section", "Montage", "NoChannels",
-                  "Duration", "EDF"]
+                  "Duration", "EDF", "Partition"]
     window_size_sec = window_requests["window_size_sec"]
     stride_sec = window_requests["stride_sec"]
     win_start_inicial = window_requests.get("win_start", 0)
  
-    for keys, session_group in annotations_df.groupby(group_cols):
-        patient, session, section, montage, no_channels, duration, edf = keys
+    for keys, session_group in annotations_df.groupby(group_cols, dropna=False):
+        patient, session, section, montage, no_channels, duration, edf, partition = keys
         n = 0
 
         while (win_start_inicial + n * stride_sec + window_size_sec) <= duration:
@@ -79,10 +79,15 @@ def label_windowing(annotations_df, window_requests,
                 all_tokens |= split_compound_label(lbl)
  
             row = {
-                "Patient": patient, "Session": session,
-                "Section": section, "Montage": montage,
-                "Window_size": window_size_sec, "stride": stride_sec,
-                "Start": win_start, "end": win_end,
+                "Patient": patient, 
+                "Session": session,
+                "Section": section, 
+                "Montage": montage,
+                "Partition": partition,
+                "Window_size": window_size_sec, 
+                "stride": stride_sec,
+                "Start": win_start, 
+                "end": win_end,
                 "Raw_labels": raw_labels,
                 "Label_spans": label_spans,
                 "N_channels_annotated": channels_involved,
@@ -217,7 +222,7 @@ class eeg_window_dataset(utils.data.Dataset):
         data = signal.get_data()
         sources_full = None
         if self.use_ica:
-            ica, ic_labels, probs = get_or_compute_ica(signal, patient, session, self.ica_cache_dir)
+            ica, ic_labels, probs = get_or_compute_ica(signal, patient, session, cache_dir=self.ica_cache_dir)
             sources_full = ica.get_sources(signal).get_data()
         self._cache = {
             "data": data, 
@@ -235,23 +240,60 @@ class eeg_window_dataset(utils.data.Dataset):
         channel_window = tensor(s["data"][:, start:end], dtype=float32)
         return channel_window, tensor(row.is_clean_window, dtype=float32)
 
+# General testing for windowing functions
 if __name__ == "__main__":
     from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS
     from src.core.data_loader import build_annotations_index
 
-    database_corpus_patient = build_annotations_index("artifact", n_patients=5, max_sessions=1, paths=True)
-    windowed_annotations_corpus_patient = label_windowing(database_corpus_patient, 
-                                                            WINDOW_REQUESTS_ARTIFACTS["eye"], 
-                                                            ARTIFACT_KEYWORDS, 
-                                                            unreviewd_tokens=True)
+    def union_len(iv):
+        total, cs, ce = 0.0, None, None
+        for a, b in sorted(iv):
+            if ce is None or a > ce:
+                if ce is not None: total += ce - cs
+                cs, ce = a, b
+            else:
+                ce = max(ce, b)
+        return total + (ce - cs if ce is not None else 0.0)
 
-    pd.set_option("display.max_columns", None)
-    pd.set_option("display.width", 120)  
-    pd.set_option("display.expand_frame_repr", True)
-    pd.set_option("display.max_colwidth", 25)
-    print(windowed_annotations_corpus_patient.head(50))
-    print(windowed_annotations_corpus_patient.shape)
+    ann = build_annotations_index("artifact", n_patients=3, max_sessions=1, paths=True)
+    key = ["Patient", "Session", "Section"]
+    n_sessions = ann.groupby(key).ngroups
+    durations = ann.drop_duplicates(key)["Duration"]
+    cats = list(ARTIFACT_KEYWORDS)
 
-    sample = windowed_annotations_corpus_patient[windowed_annotations_corpus_patient["monopolar_channels_eye"].map(len)>0]
-    print(sample["monopolar_channels_eye"].iloc[0])
-    print(sample["bipolar_channels_eye"].iloc[0])
+    for artifact, req in WINDOW_REQUESTS_ARTIFACTS.items():
+        size, stride = req["window_size_sec"], req["stride_sec"]
+        w = label_windowing(ann, req, ARTIFACT_KEYWORDS, unreviewd_tokens=True)
+        print(f"\n=== {artifact}: ventana {size}s / paso {stride}s → {len(w)} ventanas ===")
+
+        # 1) Integridad
+        assert w[key].notna().all().all(), "hay Patient/Session/Section nulos"
+        assert w.groupby(key).ngroups == n_sessions, "se perdieron sesiones (usa dropna=False en el groupby)"
+        expected = sum(int((d - size) // stride) + 1 for d in durations)
+        assert abs(len(w) - expected) <= n_sessions, (len(w), expected)
+
+        # 2) Clases exclusivas: limpia XOR ambigua XOR artefacto
+        total = w["is_clean_window"] + w["is_ambiguous"] + w[cats].max(axis=1)
+        assert (total == 1).all(), w[total != 1][["Start", *cats, "is_clean_window", "is_ambiguous"]].head()
+        assert w["sample_weight"].between(0.1, 1.0).all()
+
+        # 3) Conteos
+        print(w[["is_clean_window", "is_ambiguous", *cats]].sum().to_string())
+
+        # 4) Canales mapeados en positivas
+        for cat in cats:
+            pos = w[w[cat] == 1]
+            empty = int((pos[f"monopolar_channels_{cat}"].map(len) == 0).sum())
+            print(f"  {cat}: {len(pos)} positivas, {empty} sin canales monopolares mapeados")
+
+        # 5) Diagnóstico de cobertura: suma por canal (actual) vs unión temporal, umbral 0.7
+        for cat, kws in ARTIFACT_KEYWORDS.items():
+            changes = 0
+            for spans in w["Label_spans"]:
+                iv = [(x["start_in_window"], x["end_in_window"]) for x in spans
+                      if split_compound_label(x["label"]) & kws]
+                if iv:
+                    summed = min(sum(e - s for s, e in iv) / size, 1.0)
+                    changes += (summed >= 0.7) != (union_len(iv) / size >= 0.7)
+            print(f"  {cat}: ventanas cuya etiqueta positiva cambiaría con la unión temporal: {changes}")
+    print("\n[OK] windowing")

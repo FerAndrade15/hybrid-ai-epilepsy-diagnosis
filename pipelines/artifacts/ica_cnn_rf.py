@@ -9,6 +9,7 @@ Hiperparameter optimization (Grid Search y Honey Badger) ->
 Training of multi-output RF -> validation -> saves work.
 """
 # file: ica_cnn_rf.py (pipeline)
+
 # Data managment libraries
 import pandas as pd
 from pathlib import Path
@@ -17,17 +18,17 @@ from pathlib import Path
 from scipy.stats import randint
 
 # Data integration libraries / project modules
-from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
-from src.core.data_loader import build_annotations_index, find_project_root
 from src.core.windowing import label_windowing
+from src.core.data_loader import build_annotations_index, find_project_root
+from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
-from src.core.feature_extractor import build_feature_dataset, build_rf_dataset
+from src.core.feature_extractor import build_feature_dataset, build_ml_dataset
 from src.models.rf_model import binary_rf
 
 # Data visualization and search libraries
 from IPython.display import display
 
-BASE_DIR = find_project_root()
+BASE_DIR = find_project_root("src")
 CORPUS_OUTPUTS_DIR = BASE_DIR / Path("outputs/artifact")
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
@@ -35,7 +36,7 @@ FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 
-for d in (FEATURES_DIR, ICA_CACHE_DIR, SPLIT_CACHE_DIR):
+for d in (FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 PARAM_GRID = {
@@ -92,10 +93,12 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
     print(f"ARTIFACT: {artifact} | windows: {window ['window_size_sec']}s")
     print("\n" + "-"*50)
 
-    rf_dataset_path = FEATURES_DIR/f"rf_dataset_{artifact}.parquet"
+    rf_dataset_path = FEATURES_DIR / (
+        f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}_v{VERSION}.parquet"
+    )
     if rf_dataset_path.exists():
         print(f"[INFO] Existing dataset, loading: {rf_dataset_path}")
-        rf_dataset = pd.read_parquet(rf_dataset_path)
+        rf_features_dataset = pd.read_parquet(rf_dataset_path)
     else:
         print("\nGenerating windows...")
         windowed_annotations_corpus_patient = label_windowing(
@@ -103,56 +106,62 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
                         ARTIFACT_KEYWORDS, unreviewd_tokens=True,
                     )
         display(windowed_annotations_corpus_patient.head(5))
+"""
 
         print("\nStarting features extraction from channels and ICA components...")
-        featured_windows = build_feature_dataset(windowed_annotations_corpus_patient, target_labels=list(ARTIFACT_KEYWORDS.keys()), use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
+        featured_windows = build_feature_dataset(   windowed_annotations_corpus_patient, 
+                                                    target_labels=list(ARTIFACT_KEYWORDS.keys()), 
+                                                    bipolar_montage=False, 
+                                                    use_ica=True, 
+                                                    ica_cache_dir=str(ICA_CACHE_DIR), 
+                                                    session_cache_dir=str(SESSION_CACHE_DIR))
         display(featured_windows.head(5))
 
         if not featured_windows.empty:
             print("[INFO] Successful features extraction")
-            rf_features_dataset = build_rf_dataset(featured_windows, target_artifact=artifact, features_dir=str(FEATURES_DIR))
-            print(rf_features_dataset.head(5))
-            print(rf_features_dataset.columns.tolist())
-            print("[INFO] Positive count:")
-            print(rf_features_dataset["is_positive"].value_counts())
+            rf_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact, bipolar_montage=False, features_dir=str(FEATURES_DIR))
         else:
             raise ValueError(f"Error: Resulting empty dataset")
 
         rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset, protect_cols=LEAKAGE_COLS + ["is_positive", "split"] )
+        print(rf_features_dataset.head(5))
+        print(rf_features_dataset.columns.tolist())
+        print("[INFO] Positive count:")
+        print(rf_features_dataset["is_positive"].value_counts())
 
-        sweep_results = []
-        for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
-            print(f"Size weight: {sw}")
-            candidate_dataset, assignment, report = get_or_compute_labeled_split(
-                rf_features_dataset, 
-                "is_positive", 
-                group_col="Patient",
-                ratios=RATIOS,
-                size_weight=sw, 
-                dataset_division_dir=SPLIT_CACHE_DIR, 
-                version=VERSION, 
-                target=str(artifact)
-            )
-            #print("[DEBUG] Report with ratios:", RATIOS, "\n", report)
-            #print("[DEBUG] Assigment value:", assignment)
-            balance = split_balance_report(candidate_dataset, target_col="is_positive")
-            spread = balance["positive_rate"].max() - balance["positive_rate"].min()
-            size_pct = balance["n_total"]/balance["n_total"].sum()
-            size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
-            #print("[DEBUG] Split balance (positive rate):\n", balance)
+    sweep_results = []
+    for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
+        print(f"Size weight: {sw}")
+        candidate_dataset, assignment, report = get_or_compute_labeled_split(
+            rf_features_dataset, 
+            "is_positive", 
+            group_col="Patient",
+            ratios=RATIOS,
+            size_weight=sw, 
+            dataset_division_dir=SPLIT_CACHE_DIR, 
+            version=VERSION, 
+            target=str(artifact)
+        )
+        #print("[DEBUG] Report with ratios:", RATIOS, "\n", report)
+        #print("[DEBUG] Assigment value:", assignment)
+        balance = split_balance_report(candidate_dataset, target_col="is_positive")
+        spread = balance["positive_rate"].max() - balance["positive_rate"].min()
+        size_pct = balance["n_total"]/balance["n_total"].sum()
+        size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
+        #print("[DEBUG] Split balance (positive rate):\n", balance)
 
-            sweep_results.append({
-                "size_weight": sw,
-                "test_rate": balance.loc["test", "positive_rate"],
-                "train_rate": balance.loc["train", "positive_rate"],
-                "val_rate": balance.loc["val", "positive_rate"],
-                "rate_spread": spread,
-                "train_pct": size_pct["train"],
-                "val_pct": size_pct["val"],
-                "test_pct": size_pct["test"],
-                "size_dev": size_dev,
-                "combined_score": spread + size_dev,
-            })
+        sweep_results.append({
+            "size_weight": sw,
+            "test_rate": balance.loc["test", "positive_rate"],
+            "train_rate": balance.loc["train", "positive_rate"],
+            "val_rate": balance.loc["val", "positive_rate"],
+            "rate_spread": spread,
+            "train_pct": size_pct["train"],
+            "val_pct": size_pct["val"],
+            "test_pct": size_pct["test"],
+            "size_dev": size_dev,
+            "combined_score": spread + size_dev,
+        })
 
         sweep_report = pd.DataFrame(sweep_results).set_index("size_weight")
         print(f"\n[INFO] Sweep size weight results for {artifact}:")
@@ -194,3 +203,4 @@ for artifact, res in results.items():
     print(f"\t\t best_params={res['params']}")
     print("\t\t Confusion matrix:", res['confusion_matrix'])
     print("\t\t Metrics results:", res['metrics_results'])  
+    """

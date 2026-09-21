@@ -5,7 +5,7 @@
 
 Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 """
-
+# cnn_artifact_detector.py
 # General imports
 import json
 import time
@@ -28,7 +28,7 @@ from sklearn.metrics import (
     recall_score, f1_score, auc,
 )
 
-from implementation.core.session_cache import get_or_compute_session
+from src.core.session_cache import get_or_compute_session
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -229,19 +229,22 @@ class EEGWindowDataset(Dataset):
     def __len__(self) -> int:
         return len(self.df)
 
-    def _get_session(self, patient, session, path_edf):
+    def _get_session(self, patient, session, section, path_edf):
         key = (patient, session)
         if self._cached_key != key:
             self._cache = get_or_compute_session(
-                patient, session, path_edf,
-                cache_dir=self.session_cache_dir, ica_cache_dir=self.ica_cache_dir, use_ica=False,
+                patient, session, section, path_edf,
+                cache_dir=self.session_cache_dir, 
+                ica_cache_dir=self.ica_cache_dir, 
+                use_ica=False,
+                bipolar_montage=True
             )
             self._cached_key = key
         return self._cache
 
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
-        s = self._get_session(row.Patient, row.Session, row.EDF_path)
+        s = self._get_session(row.Patient, row.Session, row.Section, row.EDF_path)
         start = int(round(row.Start * s["sfreq"]))
         end = int(round(row.end * s["sfreq"]))
         window = s["data"][:, start:end]

@@ -7,6 +7,8 @@ optuna
 
 # Procesamiento de Señales y Datos
 mne
+mne-icalabel
+pyarrow
 PyWavelets
 numpy
 pandas
@@ -30,6 +32,10 @@ QT-PyQt-PySide-Custom-Widgets
 watchdog
 
 # Utilidades y Entorno
-jupyter
 ipython
 PyYAML
+
+# Notebooks
+jupyter
+jupyterlab
+ipykernel

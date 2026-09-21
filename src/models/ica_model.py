@@ -63,12 +63,11 @@ def classification_iclabel(preprocessed_signal, variance=0.99, random_seed=97):
     return ica, ic_labels, labels_pred_prob
 
 
-def get_or_compute_ica(signal, patient, session, bipolar_montage=False, cache_dir="cache/ica"):
-    montage = "bipolar" if bipolar_montage else "monopolar"
+def get_or_compute_ica(signal, patient, session, cache_dir="cache/ica"):
 
     cache_dir = Path(cache_dir)
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cache_file = cache_dir / f"{patient}_{session}_{montage}_ica.pkl"
+    cache_file = cache_dir / f"{patient}_{session}_ica.pkl"
 
     if cache_file.exists():
         with open(cache_file, "rb") as f:
@@ -92,6 +91,49 @@ def channel_contribution(sources_window, mixing, ch_names, comp_names):
         feats[comp]= comp_feats
     return feats
 
+
+### Test ICA functions
+if __name__ == "__main__":
+    import time
+    from collections import Counter
+    from src.core.data_config import DEBUG_DIR, MONOPOLAR_CHANNELS, ICLABEL_CATEGORIES, RAW_TO_TARGET
+    from src.core.data_loader import pick_test_session
+
+    row = pick_test_session()
+    p, s, sec = row["patient"], row["session"], row["section"]
+    print(f"Sesión: {p}_{s}_{sec} ({row['duration_s']:.0f} s)")
+
+    signal = raw_data_preproccesing(load_raw_edf(row["edf"]), bipolar_montage=False)
+    assert signal.ch_names == MONOPOLAR_CHANNELS
+
+    t0 = time.time()
+    ica, ic_labels, probs = get_or_compute_ica(signal, p, f"{s}_{sec}", DEBUG_DIR / "cache" / "ica")
+    print(f"ICA + ICLabel: {time.time() - t0:.0f} s (la 2ª corrida debe ser instantánea)")
+
+    labels, n_ic = list(ic_labels["labels"]), ica.n_components_
+    print(f"Componentes: {n_ic} de {len(MONOPOLAR_CHANNELS)} canales")
+    print("ICLabel :", dict(Counter(labels)))
+    print("→ TUAR  :", dict(Counter(RAW_TO_TARGET[l] for l in labels)))
+    assert len(labels) == len(probs) == n_ic
+    assert set(labels) <= set(ICLABEL_CATEGORIES), set(labels) - set(ICLABEL_CATEGORIES)
+    assert ica.ch_names == MONOPOLAR_CHANNELS
+
+    sources = ica.get_sources(signal).get_data()
+    mixing = ica.get_components()
+    assert sources.shape == (n_ic, signal.n_times) and mixing.shape == (19, n_ic)
+
+    contrib = channel_contribution(sources[:, :256], mixing, MONOPOLAR_CHANNELS, [f"c{i}" for i in range(n_ic)])
+    assert len(contrib["c0"]) == 19 and "ic_contrib_FP1" in contrib["c0"]
+
+    # Sanidad: los ICs 'eye blink' deben pesar sobre los canales frontales
+    for i, l in enumerate(labels):
+        if l == "eye blink":
+            top = np.array(MONOPOLAR_CHANNELS)[np.argsort(-np.abs(mixing[:, i]))[:3]]
+            print(f"  IC{i} eye blink (p={probs[i]:.2f}): top-3 canales = {list(top)}")
+    print("[OK] ica_model")
+
+"""
+
 if __name__ == "__main__":
     # Definition of ammount of patients analyzed and edf path register
     sessions = pd.DataFrame(get_session_data("artifact", n_patients=1, max_sessions=1))
@@ -113,3 +155,4 @@ if __name__ == "__main__":
             else:
                 classification_iclabel(signal)
             print("Inspection completed.")
+"""

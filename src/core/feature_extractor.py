@@ -8,16 +8,19 @@ Agnostic functions for the extraction of diverse features:
 - Espectral: PSD, power per band, DWT, entropy
 - ICA components dynamics and metadata extraction
 """
-# File: feature_extractor.py
+# feature_extractor.py
 
+# Data libraries
 import pywt
 import numpy as np
 import pandas as pd
 from pathlib import Path
 
+# Mathematical features libraries
 from scipy.signal import welch, find_peaks
 from scipy.stats import skew, kurtosis
 
+# Project modules
 from src.core.data_config import RAW_TO_TARGET, TUAR_Labels
 from src.core.session_cache import get_or_compute_session
 from src.models.ica_model import channel_contribution
@@ -205,16 +208,17 @@ def iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use
     Window generator with added categories.
     """
     montage = "bipolar" if bipolar_montage else "monopolar"
-    for (patient, session, path_edf), group in label_windowing_df.groupby(
-        ["Patient", "Session", "EDF_path"]
+    for (patient, session, section, path_edf), group in label_windowing_df.groupby(
+        ["Patient", "Session", "Section", "EDF_path"], dropna=False
     ):
         try:
-            s = get_or_compute_session(patient, session, path_edf,
+            s = get_or_compute_session(patient, session, section, path_edf,
                                        cache_dir=session_cache_dir,
                                        ica_cache_dir=ica_cache_dir,
-                                       use_ica=use_ica)
+                                       use_ica=use_ica,
+                                       bipolar_montage=bipolar_montage)
         except RuntimeError as e:
-            print(f"[SKIP] Session {patient}_{session} discarted by ICA error {e}")
+            print(f"[SKIP] Session {patient}_{session}_{section} discarted by ICA error {e}")
             continue
 
         data = s["data"]
@@ -236,19 +240,22 @@ def iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use
                 f"tuar_{col}":getattr(row, col, 0) for col in TUAR_Labels if hasattr(row, col)
             }
             channels_metadata = {
-                f"{montage}_channels_{cat}": getattr(row, f"{montage}_channels_{cat}", [])
-                for cat in target_labels
-                if hasattr(row, f"{montage}_channels_{cat}")
+                f"{m}_channels_{cat}": getattr(row, f"{m}_channels_{cat}", [])
+                for m in ("monopolar", "bipolar") for cat in target_labels
+                if hasattr(row, f"{m}_channels_{cat}")
             }
 
             window_paquet = {
                 "Patient": patient,
                 "Session": session,
+                "Section": section,
                 "Start": row.Start,
                 "End": row.end,
+                "Partition": getattr(row, "Partition", ""),
                 "split": getattr(row,  "split", None),
                 "channel_window": data[:, start:end],
                 "ch_names": ch_names,
+                "ica_ch_names": s["ica_ch_names"],
                 "sfreq": sfreq,
             }
             window_paquet.update(tuar_metadata)
@@ -286,7 +293,7 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
                 w["component_window"],
                 w["ic_map"],
                 w["mixing"],
-                w["ch_names"],
+                w["ica_ch_names"],
                 w["sfreq"]
             )
             if comp_df.empty:
@@ -296,11 +303,13 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
             add_cols.update(channel_feats)
             add_cols["Patient"] = w["Patient"]
             add_cols["Session"] = w["Session"]
+            add_cols["Section"] = w["Section"]
+            add_cols["Partition"] = w["Partition"]
             add_cols["Start"] = w["Start"]
             add_cols["split"] = w.get("split")
 
             for key, value in w.items():
-                if key.startswith("tuar_") or key.startswith(f"{montage}_channels_"):
+                if key.startswith("tuar_") or ("_channels_") in key:
                     add_cols[key] = value
 
             add_cols = pd.DataFrame([add_cols]*len(comp_df))
@@ -310,15 +319,16 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
 
-def build_rf_dataset(long_df, target_artifact, bipolar_montage, negative_label="clean", features_dir="features", version=1):
+def build_ml_dataset(long_df, ml_model, target_artifact, output_path, negative_label="clean", features_dir="features", version=1):
     """
     Returs the categories according to the target:
     -   "eye"
     -   "muscle"
     -   "non_physiological"
     -   "tuar_labels" (genuine_cooccurrence, weak_overlap, clean...)
+
+    Montage: Monopolar to execute ICA
     """
-    montage = "bipolar" if bipolar_montage else "monopolar"
 
     # Clean ambiguous windows
     clean_df = long_df[long_df["tuar_is_ambiguous"] == 0].copy()
@@ -327,27 +337,93 @@ def build_rf_dataset(long_df, target_artifact, bipolar_montage, negative_label="
 
     # Confirmation of positive target
     tuar_column = f"tuar_{target_artifact}"
-    channels_column = f"{montage}_channels_{target_artifact}"
+    channels_column = f"monopolar_channels_{target_artifact}"
 
     positive_windows = subset[subset[tuar_column]==1]
 
-    group_cols = ["Patient", "Session", "Start"]
+    group_cols = ["Patient", "Session", "Section", "Start"]
     for _, group in positive_windows.groupby(group_cols):
-        target_channels = group[channels_column].iloc[0] if channels_column in group.columns else []
+        target_channels = group[channels_column].iloc[0]
         #print(target_channels)
-        if not target_channels:
-            continue
+        if len(target_channels) == 0:
+            continue 
         best_idx = fetch_positive_contributions(group, target_channels)
         #print(">>", best_idx)
         subset.loc[best_idx, "is_positive"]=1
         #print(">>", subset.loc[best_idx, "is_positive"])
 
-    output_path = Path(features_dir) / f"rf_dataset_{target_artifact}_v{version}.parquet"
+    output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     subset.to_parquet(output_path, index=False)
 
     return subset
 
+# General feature extractor functions
+if __name__ == "__main__":
+    import time
+    from src.core.data_config import (ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, DEBUG_DIR,
+                                      BIPOLAR_MONTAGE, MONOPOLAR_CHANNELS)
+    from src.core.data_loader import build_annotations_index
+    from src.core.windowing import label_windowing
+
+    ARTIFACT, N_PATIENTS = "eye", 3
+    ICA_DIR = DEBUG_DIR / "cache" / "ica"
+    SESSION_DIR = DEBUG_DIR / "cache" / "sessions"
+    OUT = DEBUG_DIR / "features" / f"rf_dataset_{ARTIFACT}_smoke.parquet"
+
+    # 1) Extractores con señal sintética (sin datos ni ICA)
+    rng = np.random.default_rng(0)
+    x, names = rng.normal(0, 1e-5, (4, 256)), ["a", "b", "c", "d"]
+    for label, feats in [("temporales", temporal_features(x, names)),
+                         ("frecuencia", frequency_features(x, 256, names)),
+                         ("dinámica IC", components_dynamics(x, names))]:
+        assert np.isfinite(list(feats.values())).all(), label
+        print(f"[OK] {label}: {len(feats) // 4} features por canal")
+
+    # 2) Sesión real con más ventanas positivas
+    ann = build_annotations_index("artifact", n_patients=N_PATIENTS, max_sessions=1, paths=True)
+    windowed = label_windowing(ann, WINDOW_REQUESTS_ARTIFACTS[ARTIFACT], ARTIFACT_KEYWORDS, unreviewd_tokens=True)
+    key = ["Patient", "Session", "Section"]
+    best = windowed.groupby(key)[ARTIFACT].sum().idxmax()
+    sess = windowed[(windowed["Patient"] == best[0]) & (windowed["Session"] == best[1]) & (windowed["Section"] == best[2])]
+    pos = sess[sess[ARTIFACT] == 1].head(30)
+    assert len(pos) > 0, "ninguna ventana positiva: sube N_PATIENTS"
+    n_clean = int(sess["is_clean_window"].sum())
+    neg = sess[sess["is_clean_window"] == 1].sample(min(100, n_clean), random_state=0)
+    sample = pd.concat([pos, neg]).sort_values("Start")
+    print(f"\nSesión {best}: {len(pos)} ventanas positivas + {len(neg)} limpias")
+
+    t0 = time.time()
+    long_df = build_feature_dataset(sample, list(ARTIFACT_KEYWORDS), bipolar_montage=True, use_ica=True,
+                                    ica_cache_dir=str(ICA_DIR), session_cache_dir=str(SESSION_DIR))
+    print(f"build_feature_dataset: {time.time() - t0:.0f} s (incluye la ICA si no estaba en caché)")
+    assert not long_df.empty
+
+    # Estructura del dataset largo
+    n_ic = long_df["ic_index"].nunique()
+    assert len(long_df) == long_df["Start"].nunique() * n_ic, "filas ≠ ventanas × ICs"
+    bad = {"channel_window", "component_window", "mixing", "ic_map", "End", "sfreq", "ch_names", "ica_ch_names"}
+    assert not (bad & set(long_df.columns)), bad & set(long_df.columns)
+    assert f"{BIPOLAR_MONTAGE['names'][0]}_variance" in long_df.columns, "faltan features de canal bipolar"
+    contrib = sorted(c[len("ic_contrib_"):] for c in long_df.columns if c.startswith("ic_contrib_"))
+    assert contrib == sorted(MONOPOLAR_CHANNELS), contrib
+    print("Columnas object:", [c for c in long_df.columns if long_df[c].dtype == object])
+    nan = long_df.isna().sum()
+    print("Columnas con NaN:", nan[nan > 0].to_dict())
+
+    # 3) Etiqueta is_positive
+    ds = build_ml_dataset(long_df, "rf", ARTIFACT, output_path=OUT)
+    n_pos_win, n_pos_rows = len(pos), int(ds["is_positive"].sum())
+    print(f"\nVentanas positivas: {n_pos_win} | filas is_positive=1: {n_pos_rows}")
+    assert OUT.exists() and 0 < n_pos_rows <= n_pos_win
+    tgt = ds[ds[f"tuar_{ARTIFACT}"] == 1].drop_duplicates("Start")[f"monopolar_channels_{ARTIFACT}"]
+    print("Ventanas positivas sin canales anotados (quedan sin IC positivo):", int((tgt.map(len) == 0).sum()))
+    print("\n¿Qué ICs quedaron como positivos según ICLabel?")
+    print(pd.crosstab(ds["is_positive"], ds["ic_raw_label"]).to_string())
+    print("[OK] feature_extractor")
+
+
+"""
 if __name__ == "__main__":
 
     # Data integration libraries / project modules
@@ -410,7 +486,6 @@ if __name__ == "__main__":
     else:
         print("Resulting empty dataset")
 
-    """
 
 
     rf_dataset, assignment, report = get_or_compute_labeled_split(

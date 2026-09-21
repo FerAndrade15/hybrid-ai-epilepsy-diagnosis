@@ -12,17 +12,18 @@ Shared data configuration for the data processing:
 # data_config.py
 
 # Data integration libraries
-from pathlib import Path
 import platform
+from pathlib import Path
 
-def find_project_root(marker="implementation"):
+# Project paths
+def find_project_root(marker):
     current = Path(__file__).resolve()
     for parent in current.parents:
         if (parent / marker).is_dir():
             return parent
     return current.parent
-
-BASE_DIR = find_project_root()
+BASE_DIR = find_project_root("src")
+DEBUG_DIR = BASE_DIR / "outputs" / "artifact" / "individual_tests"
 
 # Operative system
 if platform.system() == "Windows":
@@ -30,33 +31,44 @@ if platform.system() == "Windows":
 else:
     BASE_DATA_DIR = Path("/mnt/d/")
 
-# Current data path
-#BASE_PATH = BASE_DATA_DIR / "tuh_eeg"
-BASE_PATH = BASE_DATA_DIR / "Users" / "disenoeinnovacion" / "Datasets" / "DATA_EEG_TUH"
-#BASE_PATH = Path("/workspace/data")
-# BASE_PATH = Path(r"\\Cit114pc07\DATA_EEG_TUH")
-# BASE_PATH = Path(r"C:\Users\ferch\Documents\Various\EngineeringDesignAndInnovation")
-# BASE_PATH = Path(r"D:\Users\disenoeinnovacion\Datasets\DATA_EEG_TUH")
+# Data paths
+ALL_DATA_POSSIBLE_PATHS = [
+    Path("/workspace/data"),                                                    # RunPod
+    BASE_DATA_DIR / "tuh_eeg",                                                  # Hard disk
+    Path(r"\\Cit114pc07\DATA_EEG_TUH"),                                         # Shared network
+    BASE_DATA_DIR / Path("Users/disenoeinnovacion/Datasets/DATA_EEG_TUH"),      # PC07 CIT-114
+]
+BASE_PATH = None
+for path in ALL_DATA_POSSIBLE_PATHS:
+    if path.exists() and path.is_dir():
+        BASE_PATH = path
+        break
+if BASE_PATH is None:
+    raise FileNotFoundError("No valid data path found")
 
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
-    "all_corpus": Path("tuh_eeg") / "v2.0.2",
-    #"artifact":   Path("v3.0.1"),
-    "artifact":   Path("tuh_eeg_artifact") / "v3.0.1",
-    "epilepsy":   Path("tuh_eeg_epilepsy") / "v3.1.0",
-    "seizure":    Path("tuh_eeg_seizure") / "v2.0.6",
-    "events":     Path("tuh_eeg_events") / "v2.0.1",
+    "all_corpus":   Path("tuh_eeg") / "v2.0.2",
+    "artifact":     Path("tuh_eeg_artifact") / "v3.0.1",
+    "epilepsy":     Path("tuh_eeg_epilepsy") / "v3.1.0",
+    "seizure":      Path("tuh_eeg_seizure") / "v2.0.6",
+    "events":       Path("tuh_eeg_events") / "v2.0.1",
 }
 
-# Montages registered in the TUSZ server nomenclature as of late 2026
-# + Standard montages
+# Montages registered in the TUH server nomenclature as of late 2026 + Standard montages
 ALL_MONTAGES = [
-    "01_tcp_ar", "02_tcp_le", "03_tcp_ar_a", "04_tcp_le_a",         # TUSZ Corpus
+    "01_tcp_ar", "02_tcp_le", "03_tcp_ar_a", "04_tcp_le_a",         # TUH Corpus
     "05_tcp_ar_b", "06_tcp_le_b", "07_tcp_ar_c", "08_tcp_le_c"      # To complete standard montages
 ]
 
-# Artifact labeling and resources
-## TUAR Corpus Keywords
+# Data partitions
+PARTITION_TO_SPLIT = {
+    "train": "train",
+    "dev": "val",
+    "eval": "test",
+}
+
+# TUAR CORPUS: Labeling and resources ---------------------------------------------------
 ARTIFACT_KEYWORDS = {
     "eye": {"eyem"},
     "muscle": {"musc", "shiv", "chew"},
@@ -65,7 +77,7 @@ ARTIFACT_KEYWORDS = {
 ARTIFACT_ADDITIONAL_TOKENS = {"tcsz", "cpsz", "gnsz", "fnsz"}
 BACKGROUND_LABEL = "bckg"
 
-## TUAR Corpus Windows labeling
+## Windows labeling
 TUAR_Labels = [
     "is_clean_window", 
     "is_ambiguous",        
@@ -99,7 +111,20 @@ for cat in ICLABEL_CATEGORIES:
     target = next((key for key, values in ICLABEL_TO_TARGET.items() if safe in values), None)
     RAW_TO_TARGET[cat] = target
 
-# Events Corpus Keywords
+# TUSZ CORPUS: Labeling and resources ---------------------------------------------------
+# Seizure Corpus Keywords
+SEIZURE_KEYWORDS = {
+    "focal": {"spsz", "cpsz", "fnsz"},
+    "generalized_toniclonic": {"absz", "mysz", "tnsz", "gnsz", "tcsz"},
+    # tonic_clonic_unspecified = tcsz
+}
+
+SEIZURE_START_CONFIDENCE = {
+    "high": {"absz", "mysz", "tnsz", "spsz", "cpsz"},
+    "low":  {"fnsz", "gnsz", "tcsz"},
+}
+
+# TUEV CORPUS: Labeling and resources ---------------------------------------------------
 EVENT_KEYWORDS = {
     "epilepsy": {"gped", "pled"},
     "artifacts": {"artifact"},
@@ -152,6 +177,8 @@ BIPOLAR_MONTAGE = {
 }
 BIPOLAR_MONTAGE["names"]= [f"{a}-{c}" for a, c in zip(BIPOLAR_MONTAGE["anode"], BIPOLAR_MONTAGE["cathode"])]
 
+MONOPOLAR_CHANNELS = list(dict.fromkeys(BIPOLAR_MONTAGE["anode"] + BIPOLAR_MONTAGE["cathode"]))
+
 
 # Windowing
 WINDOW_STRIDE_SWEEP = {
@@ -174,6 +201,42 @@ VERSION = 3
 ## Identifiers metadata and target not required for the models
 LEAKAGE_COLS = [
     "ic_index", "ic_raw_label", "ic_target_label",
-    "Patient", "Session", "Start", "split",
-    "is_positive",
+    "Patient", "Session", "Section", "Start", "split",
+    "is_positive", "Partition",
 ]
+
+### Test of current configurations
+if __name__ == "__main__":
+
+    # Project root
+    print(f"BASE_DIR: {BASE_DIR}")
+    assert (BASE_DIR / "src").is_dir(), "BASE_DIR must have src/ according to file location"
+    
+    # Dataset root
+    print(f"\nBASE_PATH: {BASE_PATH}")
+    assert BASE_PATH.exists(), f"Dataset not found in current BASE_PATH."
+
+    # Checking subdirectories
+    for name, rel in CORPUS_PATHS.items():
+        print(f"  corpus {name:<10} {'OK   ' if (BASE_PATH / rel).exists() else 'MISSING'} {BASE_PATH / rel}")
+    assert (BASE_PATH / CORPUS_PATHS["artifact"]).exists()
+
+    # Montage configuration
+    assert len(MONOPOLAR_CHANNELS) == 19 and len(set(MONOPOLAR_CHANNELS)) == 19
+    assert len(BIPOLAR_MONTAGE["names"]) == 18
+    assert all(c in MONOPOLAR_CHANNELS for c in BIPOLAR_MONTAGE["anode"] + BIPOLAR_MONTAGE["cathode"])
+    
+    # Verification of data split ratios distribution
+    assert abs(sum(RATIOS.values()) - 1) < 1e-9
+
+    # Check corpus labeling
+    assert set(WINDOW_REQUESTS_ARTIFACTS) == set(ARTIFACT_KEYWORDS)
+    assert RAW_TO_TARGET["eye blink"] == "eye" and RAW_TO_TARGET["muscle artifact"] == "muscle"
+    assert RAW_TO_TARGET["channel noise"] == "non_physiological"
+
+    # Check version and debug direction
+    print(f"\nVERSION={VERSION} | DEBUG_DIR={DEBUG_DIR}")
+
+    # File functions verification
+    current_script = Path(__file__).name
+    print(f"\n[OK] {current_script}")

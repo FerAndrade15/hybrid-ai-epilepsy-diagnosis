@@ -70,10 +70,30 @@ tuh_eeg/
 ## Preprocesamiento
 
 ### Exploratory Data Analysis - EDA
-#### Univariate Analysis
-Distribución de la información y categorías (histogramas, diagramas de barras y bar charts):
-- 
+#### Labels
+| Etiqueta  | Significado          | Interpretación                                           |
+| --------- | -------------------- | -------------------------------------------------------- |
+| eyem      | Eye movement         | Artefacto por movimiento ocular                          |
+| musc_elec | Muscle and electrode | Artefacto muscular combinado con artefacto del electrodo |
+| musc      | Muscle artifact      | Artefacto muscular o electromiográfico                   |
+|           |                      |                                                          |
 
+
+##### *Seizure*
+
+| Index | Label |
+| :---: | :---: |
+|   0   | gnsz  |
+|   1   | fnsz  |
+|   2   | bckg  |
+|   3   | absz  |
+|   4   | cpsz  |
+|   5   | tcsz  |
+|   6   | tnsz  |
+|   7   | mysz  |
+|   8   | spsz  |
+
+-------------
 ## AI System Proposed Method
 Analizando la variabilidad y dependencia del análisis de los electroencefalogramas (alta dimensionalidad) en lugar de proponer o implementar un modelo que trabaje cn todo el análisis y clasificación
 ### 
