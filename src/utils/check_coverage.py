@@ -9,6 +9,7 @@ from src.core.windowing import get_or_build_windows
 # General configuration
 UMBRAL = 0.7  
 WINDOWS_DIR = find_project_root("src") / "outputs" / "artifact" / "windows"
+CACHE_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
 
 def union_len(iv):
     """
@@ -41,7 +42,7 @@ if __name__ == "__main__":
 
     # 1. Cargar las anotaciones originales (Ahora ultra rápido gracias a la caché)
     print("[1/4] Cargando el índice de anotaciones maestro...")
-    ann = build_annotations_index("artifact", paths=True)
+    ann = build_annotations_index("artifact", paths=True, CACHE_DIR=CACHE_DIR)
     labs = ann["label"].astype(str)
     tok = {l: set(l.lower().split("_")) for l in labs.unique()}
 

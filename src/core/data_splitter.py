@@ -15,7 +15,7 @@ import pandas as pd
 from pathlib import Path
 
 # Import modules
-from src.core.patient_registry import load_registry, forced_for, REG_PATH
+from src.utils.patient_registry import load_registry, forced_for, REG_PATH
 
 def split_balance_report(windowed_df, target_col="is_positive", split_col="split"):
     summary = windowed_df.groupby(split_col).agg(

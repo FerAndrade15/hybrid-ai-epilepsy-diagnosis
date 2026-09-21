@@ -5,11 +5,13 @@
 """
 import numpy as np
 import pandas as pd
-from src.core.data_config import ARTIFACT_KEYWORDS
+from src.core.data_config import ARTIFACT_KEYWORDS, find_project_root
 from src.core.data_loader import build_annotations_index
 
+CACHE_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
+
 print("[INFO] Loading annotations to analyze sensitivity...")
-ann = build_annotations_index("artifact", paths=True)
+ann = build_annotations_index("artifact", paths=True, CACHE_DIR=CACHE_DIR)
 labs = ann["label"].astype(str)
 tok = {l: set(l.lower().split("_")) for l in labs.unique()}
 dur = ann.drop_duplicates(["Patient", "Session", "Section"]).set_index(["Patient", "Session", "Section"])["Duration"]

@@ -40,15 +40,20 @@ def merge_annotated_ranges(session_group):
             merged.append((start, end))
     return merged
 
-def overall_interval(intv):
-    total, cs, ce = 0.0, None, None
-    for a, b in sorted(intv):
-        if ce is None or a > ce: 
-            if ce is not None: total += ce - cs
-            cs, ce = a, b
+def overall_interval(intervals):
+    total, cur_s, cur_e = 0.0, None, None
+    for s, e in sorted(intervals):
+        if e <= s:
+            continue
+        if cur_e is None or s > cur_e:
+            if cur_e is not None:
+                total += cur_e - cur_s
+            cur_s, cur_e = s, e
         else:
-            ce = max(ce, b)
-    return total + (ce - cs if ce is not None else 0.0)
+            cur_e = max(cur_e, e)
+    if cur_e is not None:
+        total += cur_e - cur_s
+    return total
 
 # Labeled windows creation
 def label_windowing(annotations_df, window_requests,
@@ -118,7 +123,7 @@ def label_windowing(annotations_df, window_requests,
 
             for span in label_spans:
                 tokens = split_compound_label(span["label"])
-                interval = (span["end_in_window"],span["start_in_window"])
+                interval = (span["start_in_window"], span["end_in_window"])
                 for cat, keywords in target_taxonomy.items():
                     if tokens & keywords:
                         intervals[cat].append(interval)
@@ -142,8 +147,8 @@ def label_windowing(annotations_df, window_requests,
                         monopolar_channels_by_cat[cat].update(rename_map_mono)
                         
             coverage = {
-                cat: min(overall_interval(intervals)/window_size_sec, 1.0) 
-                for cat, interval in intervals.items()
+                cat: min(overall_interval(iv)/window_size_sec, 1.0) 
+                for cat, iv in intervals.items()
                 }
  
             for cat in target_taxonomy:

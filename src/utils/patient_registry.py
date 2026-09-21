@@ -133,7 +133,7 @@ if __name__ == "__main__":
         sys.exit()
 
     import pandas as pd
-    from src.core.corpus_inventory import scan_all
+    from src.utils.corpus_inventory import scan_all
 
     print(f"Registro: {REG_PATH}   (comprueba que cuelga de la raíz de tu proyecto)")
     inv = scan_all()

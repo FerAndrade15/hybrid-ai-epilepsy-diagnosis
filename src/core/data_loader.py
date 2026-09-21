@@ -11,6 +11,7 @@ Load EDFs and annotations, preloading the full signal into memory.
 import mne
 import pandas as pd
 import numpy as np
+
 from pathlib import Path
 
 # Shared config data for EEG preprocessing
@@ -120,7 +121,7 @@ def load_annotations(csv_path):
     """
     return pd.read_csv(csv_path, sep=",", comment="#")
 
-def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, max_sessions=None, montages=None, paths=False, refresh=False):
+def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, max_sessions=None, montages=None, paths=False, refresh=False, CACHE_DIR="annotations"):
     """
     Creates the dataframe according to the annotations metadata:
     - Patient
@@ -128,10 +129,9 @@ def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, ma
     - Section
     - Montage
     """
-    from src.core.data_config import BASE_DIR
-    cache_dir = BASE_DIR / "outputs" / "cache" / "annotations"
+    cache_dir = CACHE_DIR
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cache_file = cache_dir / f"annotations_index_{corpus_name}_p{n_patients}_s{min_sessions}to{max_sessions}.parquet"
+    cache_file = cache_dir / f"annotations_index_{corpus_name}.parquet"
 
     if cache_file.exists() and not refresh:
         ann = pd.read_parquet(cache_file)
@@ -164,8 +164,8 @@ def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, ma
                                             )
         if paths:
             ann = ann.assign(
-                EDF=s["edf"],
-                CSV=s["csv"],
+                EDF=str(s["edf"]),
+                CSV=str(s["csv"]),
             )
         frames.append(ann)
 

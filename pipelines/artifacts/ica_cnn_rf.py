@@ -22,7 +22,7 @@ from src.core.windowing import get_or_build_windows
 from src.core.data_loader import build_annotations_index, find_project_root
 from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
-from src.core.patient_registry import load_registry, forced_for
+from src.utils.patient_registry import load_registry, forced_for
 from src.core.feature_extractor import build_feature_dataset, build_ml_dataset
 
 # Data visualization and search libraries
@@ -37,6 +37,7 @@ SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
 FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
+ANNOTATIONS_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 
@@ -87,7 +88,7 @@ RANDOM_SPACE = {
 }
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", paths=True)
+database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 
 results = {}
@@ -111,10 +112,10 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
     else:
         print("\n"+("*"*60))
         print("Generating windows...")
-        windowed_annotations_corpus_patient = get_or_build_windows(database_corpus_patient, 
-                                                                   window, 
-                                                                   ARTIFACT_KEYWORDS, 
-                                                                   WINDOWS_CACHE_DIR,
+        windowed_annotations_corpus_patient = get_or_build_windows(annotations_df=database_corpus_patient, 
+                                                                   window=window, 
+                                                                   taxonomy=ARTIFACT_KEYWORDS, 
+                                                                   cache_dir=WINDOWS_CACHE_DIR,
                                                                    refresh=False
                                                                    )
         display(windowed_annotations_corpus_patient.head(5))
@@ -123,6 +124,9 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
         win_annotations_corpus_patient = windowed_annotations_corpus_patient.loc[windowed_annotations_corpus_patient["is_ambiguous"] == 0, ["Patient", "Session", "Section", "Start", artifact]].reset_index(drop=True)
         print(f"Ventanas: {len(windowed_annotations_corpus_patient)} -> sin ambiguas: {len(win_annotations_corpus_patient)} | positivas: {int(win_annotations_corpus_patient[artifact].sum())}") 
 
+        display(win_annotations_corpus_patient.head(25))
+
+        
         print("\n"+("*"*60))
         sweep_results = []
         for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
@@ -166,16 +170,16 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
         selected_sw = sweep_report['combined_score'].idxmin()
         print(f"[INFO] Best suggested size weight for {artifact}: {selected_sw}")
 
-        rf_dataset, assignment, report = get_or_compute_labeled_split(
-                            win_annotations_corpus_patient, 
-                            artifact, 
-                            group_col="Patient",
-                            ratios=RATIOS,
-                            size_weight=selected_sw, 
-                            dataset_division_dir=SPLIT_CACHE_DIR, 
-                            version=VERSION, 
-                            target=str(artifact)
-                        )
+        rf_dataset, assignment, report = get_or_compute_labeled_split(  win_annotations_corpus_patient, 
+                                                                        artifact, 
+                                                                        group_col="Patient",
+                                                                        ratios=RATIOS,
+                                                                        size_weight=selected_sw, 
+                                                                        dataset_division_dir=SPLIT_CACHE_DIR, 
+                                                                        version=VERSION, 
+                                                                        target=str(artifact),
+                                                                        forced=FORCED,
+                                                                )
         balance = split_balance_report(rf_dataset, target_col=artifact)
         spread = balance["positive_rate"].max() - balance["positive_rate"].min()
         size_pct = balance["n_total"]/balance["n_total"].sum()
