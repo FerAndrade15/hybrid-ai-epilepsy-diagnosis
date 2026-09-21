@@ -211,7 +211,7 @@ WINDOW_REQUESTS_ARTIFACTS = {
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
 ## Split version
-VERSION = 2
+VERSION = 1
 LABEL_VERSION = 1
 
 ## Identifiers metadata and target not required for the models

@@ -37,13 +37,14 @@ CORPUS_OUTPUTS_DIR = BASE_DIR / Path("outputs/artifact")
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
-FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
+GENERAL_FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features/data")
+FINAL_FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features/outputs")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
 ANNOTATIONS_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 
-for d in (FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR, WINDOWS_CACHE_DIR):
+for d in (GENERAL_FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR, WINDOWS_CACHE_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 PARAM_GRID = {
@@ -100,17 +101,20 @@ if not reg["patients"]:
 FORCED = forced_for(reg, database_corpus_patient["Patient"].unique(), source_prefix=("folder:", "shared:"))
 print(pd.Series(FORCED).value_counts().to_dict())
 
+base_forced = FORCED.copy()
 
 for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
     print("\n" + "="*50)
     print(f"ARTIFACT: {artifact}")
     print("\n" + "="*50)
 
-    for window in window_settings:
+    current_forced = base_forced.copy()
+
+    for i, window in enumerate(window_settings):
         print("*"*50)
         print(f">> {artifact} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
 
-        rf_dataset_path = FEATURES_DIR / (
+        rf_dataset_path = GENERAL_FEATURES_DIR / (
             f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}_v{VERSION}.parquet"
         )
         if rf_dataset_path.exists():
@@ -128,11 +132,12 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                     refresh=False
                                                                     )
             display(windowed_annotations_corpus_patient.head(5))
-            #print(windowed_annotations_corpus_patient.columns.tolist())
+            print(windowed_annotations_corpus_patient.columns.tolist())
 
             win_annotations_corpus_patient = windowed_annotations_corpus_patient.loc[windowed_annotations_corpus_patient["is_ambiguous"] == 0, ["Patient", "Session", "Section", "Start", artifact]].reset_index(drop=True)
             print(f"Ventanas: {len(windowed_annotations_corpus_patient)} -> sin ambiguas: {len(win_annotations_corpus_patient)} | positivas: {int(win_annotations_corpus_patient[artifact].sum())}") 
             #display(win_annotations_corpus_patient.head(25))
+            print(win_annotations_corpus_patient.columns.tolist())
 
             """ SIZE WEIGHT SWEEP """
             print("\n"+("*"*60))
@@ -140,7 +145,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
                 print(f"Size weight: {sw}")
                 candidate_dataset, assignment, report = get_or_compute_labeled_split(
-                    win_annotations_corpus_patient, 
+                    windowed_annotations_corpus_patient, 
                     artifact, 
                     group_col="Patient",
                     ratios=RATIOS,
@@ -148,7 +153,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                     dataset_division_dir=SPLIT_CACHE_DIR, 
                     version=VERSION, 
                     target=str(artifact),
-                    forced=FORCED,
+                    forced=current_forced,
                 )
                 # print("[DEBUG] Report with ratios:", RATIOS, "\n", report)
                 # print("[DEBUG] Assigment value:", assignment)
@@ -178,7 +183,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             selected_sw = sweep_report['combined_score'].idxmin()
             print(f"[INFO] Best suggested size weight for {artifact}: {selected_sw}")
 
-            splitted_dataset, assignment, report = get_or_compute_labeled_split(  win_annotations_corpus_patient, 
+            splitted_dataset, assignment, report = get_or_compute_labeled_split(  windowed_annotations_corpus_patient, 
                                                                                     artifact, 
                                                                                     group_col="Patient",
                                                                                     ratios=RATIOS,
@@ -186,9 +191,13 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                     dataset_division_dir=SPLIT_CACHE_DIR, 
                                                                                     version=VERSION, 
                                                                                     target=str(artifact),
-                                                                                    forced=FORCED,
+                                                                                    forced=current_forced,
                                                                                 )
-            
+
+            if i == 0:
+                print(f"[INFO] Saving patient asignation for {artifact}")
+                current_forced.update(assignment)
+
             balance = split_balance_report(splitted_dataset, target_col=artifact)
             spread = balance["positive_rate"].max() - balance["positive_rate"].min()
             size_pct = balance["n_total"]/balance["n_total"].sum()
@@ -196,6 +205,9 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             print("[DEBUG] Split balance (positive rate):\n", balance)
             bad = {p: (s, assignment[p]) for p, s in FORCED.items() if p in assignment and assignment[p] != s}
             print("Broken rules:", len(bad), "| splits per patient:", pd.Series(assignment).value_counts().to_dict())
+            display(splitted_dataset.head(10))
+            print(splitted_dataset.columns.to_list())
+
 
             """ FEATURES EXTRACTION """
             print("\nStarting features extraction from channels and ICA components...")
@@ -210,7 +222,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
             if not featured_windows.empty:
                 print("[INFO] Successful features extraction")
-                rf_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact, bipolar_montage=False, features_dir=str(FEATURES_DIR))
+                rf_features_dataset = build_ml_dataset(featured_windows, "rf", target_artifact=artifact, output_path=FINAL_FEATURES_DIR, features_dir=str(GENERAL_FEATURES_DIR))
             else:
                 raise ValueError(f"Error: Resulting empty dataset")
 
@@ -224,7 +236,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         split_counts = rf_features_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
 
-        print(f"\nStarting training of Random Forest ({artifact})")
+        print("\n" + ("="*50))
+        print(f"Starting training of Random Forest - {artifact}")
 
         config = RANDOM_SPACE[artifact]
         results.setdefault(artifact, []).append(  train_binary_model( df=rf_features_dataset,
