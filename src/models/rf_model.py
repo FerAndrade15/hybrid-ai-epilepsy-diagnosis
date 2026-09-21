@@ -7,17 +7,12 @@ Reusable RF (Random Forest) modules for the AI pipeline.
 """
 # File: rf_model.py
 
-import numpy as np
 import pandas as pd
 from pathlib import Path
 from scipy.stats import randint
 
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.ensemble import BalancedRandomForestClassifier
-
-# Functions from modules
-from src.core.data_splitter import split_features_target
-from src.models.ml_models import train_binary_model
 
 # Imported model
 def build_rf_model(balanced=False, **overrides):
@@ -53,8 +48,8 @@ if __name__ == "__main__":
     from src.core.data_loader import build_annotations_index, find_project_root
     from src.core.windowing import get_or_build_windows
     from src.core.data_splitter import get_or_compute_labeled_split, split_features_target, split_balance_report
-    from src.core.patient_registry import load_registry, forced_for
-    from src.core.feature_extractor import build_feature_dataset, build_rf_dataset
+    from src.utils.patient_registry import load_registry, forced_for
+    from src.core.feature_extractor import build_feature_dataset, build_ml_dataset
 
     # Data visualization and search libraries
     from IPython.display import display

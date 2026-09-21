@@ -207,7 +207,6 @@ def iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use
     """
     Window generator with added categories.
     """
-    montage = "bipolar" if bipolar_montage else "monopolar"
     for (patient, session, section, path_edf), group in label_windowing_df.groupby(
         ["Patient", "Session", "Section", "EDF_path"], dropna=False
     ):
@@ -275,7 +274,6 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
     Returns signal + ICA features added by ICLabel cathegories.
     """    
     rows = []
-    montage = "bipolar" if bipolar_montage else "monopolar"
 
     for w in iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use_ica, session_cache_dir, ica_cache_dir):
         channel_feats = {}

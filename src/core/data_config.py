@@ -188,9 +188,22 @@ WINDOW_STRIDE_SWEEP = {
 }
 
 WINDOW_REQUESTS_ARTIFACTS = {
-    "eye":                        {"window_size_sec": 1, "stride_sec": 1},
-    "muscle":                     {"window_size_sec": 1,  "stride_sec": 1},
-    "non_physiological":          {"window_size_sec": 1,  "stride_sec": 1},
+    "eye":                        [{"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.15},
+                                   {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 0.5, "stride_sec": 0.5, "artifact_umbral": 0.6},
+                                   {"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.6},
+                                   ],
+    "muscle":                     [{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 5, "stride_sec": 2, "artifact_umbral": 0.2},
+                                   ],
+    "non_physiological":          [{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.2},
+                                   {"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   ],
 }
 
 # General models configuration
@@ -198,7 +211,7 @@ WINDOW_REQUESTS_ARTIFACTS = {
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
 ## Split version
-VERSION = 1
+VERSION = 2
 LABEL_VERSION = 1
 
 ## Identifiers metadata and target not required for the models

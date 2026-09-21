@@ -166,10 +166,11 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
 
 
 def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
-                        include_clean=True, drop_excluded=True, drop_ambiguous=True, 
-                        ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, size_weight=0, 
-                        dataset_division_dir="splits", version=1, 
-                        target="all", forced=None, registry_path=None):
+                                include_clean=True, drop_excluded=True, drop_ambiguous=True, 
+                                ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, size_weight=0, 
+                                dataset_division_dir="splits", version=1, artifact_umbral=0.7,
+                                target="all", forced=None, registry_path=None
+                                ):
     
     forced = resolve_forced_split(forced, windowed_df[group_col].unique(), ratios, registry_path)
 
@@ -190,7 +191,7 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
     base_name = (
         f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}"
         f"_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}_{target}"
-        f"_sw{size_weight}"
+        f"_sw{size_weight}_ua{artifact_umbral}"
     )
     saving_parquet = saving_dir / f"{base_name}.parquet"
     saving_json = saving_dir / f"{base_name}.json"

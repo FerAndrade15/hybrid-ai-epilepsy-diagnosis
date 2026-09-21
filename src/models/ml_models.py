@@ -14,7 +14,6 @@ import joblib
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from scipy.stats import randint
 
 # AI required functions
 import optuna

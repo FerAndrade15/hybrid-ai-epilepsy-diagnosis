@@ -62,7 +62,7 @@ if __name__ == "__main__":
         
         # 3. Cargar las ventanas generadas por el pipeline actual
         print("[2/4] Cargando dataset de ventanas generadas por el modelo...")
-        windowed = get_or_build_windows(ann, req, ARTIFACT_KEYWORDS, WINDOWS_DIR)
+        windowed = get_or_build_windows(ann,    , ARTIFACT_KEYWORDS, WINDOWS_DIR)
         
         # 4. Aislar anotaciones que pertenezcan a este artefacto específico
         kws = ARTIFACT_KEYWORDS[artifact]
