@@ -35,8 +35,8 @@ else:
 ALL_DATA_POSSIBLE_PATHS = [
     Path("/workspace/data"),                                                    # RunPod
     BASE_DATA_DIR / "tuh_eeg",                                                  # Hard disk
-    Path(r"\\Cit114pc07\DATA_EEG_TUH"),                                         # Shared network
     BASE_DATA_DIR / Path("Users/disenoeinnovacion/Datasets/DATA_EEG_TUH"),      # PC07 CIT-114
+    Path(r"\\Cit114pc07\DATA_EEG_TUH"),                                         # Shared network
 ]
 BASE_PATH = None
 for path in ALL_DATA_POSSIBLE_PATHS:
@@ -188,8 +188,8 @@ WINDOW_STRIDE_SWEEP = {
 }
 
 WINDOW_REQUESTS_ARTIFACTS = {
-    "eye":                        {"window_size_sec": 1,  "stride_sec": 1},
-    "muscle":                     {"window_size_sec": 5,  "stride_sec": 5},
+    "eye":                        {"window_size_sec": 1, "stride_sec": 1},
+    "muscle":                     {"window_size_sec": 1,  "stride_sec": 1},
     "non_physiological":          {"window_size_sec": 1,  "stride_sec": 1},
 }
 
@@ -198,7 +198,7 @@ WINDOW_REQUESTS_ARTIFACTS = {
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
 ## Split version
-VERSION = 3
+VERSION = 1
 LABEL_VERSION = 1
 
 ## Identifiers metadata and target not required for the models

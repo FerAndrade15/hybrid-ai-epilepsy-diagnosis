@@ -18,25 +18,30 @@ from pathlib import Path
 from scipy.stats import randint
 
 # Data integration libraries / project modules
-from src.core.windowing import label_windowing
+from src.core.windowing import label_windowing, get_or_build_windows
 from src.core.data_loader import build_annotations_index, find_project_root
 from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
+from src.core.patient_registry import load_registry, forced_for
 from src.core.feature_extractor import build_feature_dataset, build_ml_dataset
 from src.models.rf_model import binary_rf
 
 # Data visualization and search libraries
 from IPython.display import display
 
+# Pipeline directions
 BASE_DIR = find_project_root("src")
 CORPUS_OUTPUTS_DIR = BASE_DIR / Path("outputs/artifact")
+
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
+WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
 FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
+
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 
-for d in (FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR):
+for d in (FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR, WINDOWS_CACHE_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 PARAM_GRID = {
@@ -87,10 +92,15 @@ database_corpus_patient = build_annotations_index("artifact", paths=True)
 display(database_corpus_patient.head(5))
 
 results = {}
+reg = load_registry()
+if not reg["patients"]:
+    raise RuntimeError("Empty fixed registry, run patient registry first.")
+FORCED = forced_for(reg, database_corpus_patient["Patient"].unique(), source_prefix=("folder:", "shared:"))
+print(pd.Series(FORCED).value_counts().to_dict())
 
 for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
     print("\n" + "-"*50)
-    print(f"ARTIFACT: {artifact} | windows: {window ['window_size_sec']}s")
+    print(f"ARTIFACT: {artifact} | windows: {window['window_size_sec']}s ({window['stride_sec']} s overlap)")
     print("\n" + "-"*50)
 
     rf_dataset_path = FEATURES_DIR / (
@@ -100,12 +110,82 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"[INFO] Existing dataset, loading: {rf_dataset_path}")
         rf_features_dataset = pd.read_parquet(rf_dataset_path)
     else:
-        print("\nGenerating windows...")
-        windowed_annotations_corpus_patient = label_windowing(
-                        database_corpus_patient, WINDOW_REQUESTS_ARTIFACTS[artifact],
-                        ARTIFACT_KEYWORDS, unreviewd_tokens=True,
-                    )
+        print("\n"+("*"*60))
+        print("Generating windows...")
+        windowed_annotations_corpus_patient = get_or_build_windows(database_corpus_patient, 
+                                                                   window, 
+                                                                   ARTIFACT_KEYWORDS, 
+                                                                   WINDOWS_CACHE_DIR,
+                                                                   refresh=False
+                                                                   )
         display(windowed_annotations_corpus_patient.head(5))
+        #print(windowed_annotations_corpus_patient.columns.tolist())
+
+        win_annotations_corpus_patient = windowed_annotations_corpus_patient.loc[windowed_annotations_corpus_patient["is_ambiguous"] == 0, ["Patient", "Session", "Section", "Start", artifact]].reset_index(drop=True)
+        print(f"Ventanas: {len(windowed_annotations_corpus_patient)} -> sin ambiguas: {len(win_annotations_corpus_patient)} | positivas: {int(win_annotations_corpus_patient[artifact].sum())}") 
+
+        print("\n"+("*"*60))
+        sweep_results = []
+        for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
+            print(f"Size weight: {sw}")
+            candidate_dataset, assignment, report = get_or_compute_labeled_split(
+                win_annotations_corpus_patient, 
+                artifact, 
+                group_col="Patient",
+                ratios=RATIOS,
+                size_weight=sw, 
+                dataset_division_dir=SPLIT_CACHE_DIR, 
+                version=VERSION, 
+                target=str(artifact),
+                forced=FORCED,
+            )
+            # print("[DEBUG] Report with ratios:", RATIOS, "\n", report)
+            # print("[DEBUG] Assigment value:", assignment)
+            balance = split_balance_report(candidate_dataset, target_col=artifact)
+            spread = balance["positive_rate"].max() - balance["positive_rate"].min()
+            size_pct = balance["n_total"]/balance["n_total"].sum()
+            size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
+            # print("[DEBUG] Split balance (positive rate):\n", balance)
+
+            sweep_results.append({
+                "size_weight": sw,
+                "test_rate": balance.loc["test", "positive_rate"],
+                "train_rate": balance.loc["train", "positive_rate"],
+                "val_rate": balance.loc["val", "positive_rate"],
+                "rate_spread": spread,
+                "train_pct": size_pct["train"],
+                "val_pct": size_pct["val"],
+                "test_pct": size_pct["test"],
+                "size_dev": size_dev,
+                "combined_score": spread + size_dev,
+            })
+
+        print("\n"+("*"*60))
+        sweep_report = pd.DataFrame(sweep_results).set_index("size_weight")
+        print(f"\n[INFO] Sweep size weight results for {artifact}:")
+        print(sweep_report.round(4).sort_values("rate_spread"))
+        selected_sw = sweep_report['combined_score'].idxmin()
+        print(f"[INFO] Best suggested size weight for {artifact}: {selected_sw}")
+
+        rf_dataset, assignment, report = get_or_compute_labeled_split(
+                            win_annotations_corpus_patient, 
+                            artifact, 
+                            group_col="Patient",
+                            ratios=RATIOS,
+                            size_weight=selected_sw, 
+                            dataset_division_dir=SPLIT_CACHE_DIR, 
+                            version=VERSION, 
+                            target=str(artifact)
+                        )
+        balance = split_balance_report(rf_dataset, target_col=artifact)
+        spread = balance["positive_rate"].max() - balance["positive_rate"].min()
+        size_pct = balance["n_total"]/balance["n_total"].sum()
+        size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
+        print("[DEBUG] Split balance (positive rate):\n", balance)
+
+        bad = {p: (s, assignment[p]) for p, s in FORCED.items() if p in assignment and assignment[p] != s}
+        print("Reglas violadas:", len(bad), "| pacientes por split:", pd.Series(assignment).value_counts().to_dict())
+
 """
 
         print("\nStarting features extraction from channels and ICA components...")
@@ -129,56 +209,6 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
         print("[INFO] Positive count:")
         print(rf_features_dataset["is_positive"].value_counts())
 
-    sweep_results = []
-    for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
-        print(f"Size weight: {sw}")
-        candidate_dataset, assignment, report = get_or_compute_labeled_split(
-            rf_features_dataset, 
-            "is_positive", 
-            group_col="Patient",
-            ratios=RATIOS,
-            size_weight=sw, 
-            dataset_division_dir=SPLIT_CACHE_DIR, 
-            version=VERSION, 
-            target=str(artifact)
-        )
-        #print("[DEBUG] Report with ratios:", RATIOS, "\n", report)
-        #print("[DEBUG] Assigment value:", assignment)
-        balance = split_balance_report(candidate_dataset, target_col="is_positive")
-        spread = balance["positive_rate"].max() - balance["positive_rate"].min()
-        size_pct = balance["n_total"]/balance["n_total"].sum()
-        size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
-        #print("[DEBUG] Split balance (positive rate):\n", balance)
-
-        sweep_results.append({
-            "size_weight": sw,
-            "test_rate": balance.loc["test", "positive_rate"],
-            "train_rate": balance.loc["train", "positive_rate"],
-            "val_rate": balance.loc["val", "positive_rate"],
-            "rate_spread": spread,
-            "train_pct": size_pct["train"],
-            "val_pct": size_pct["val"],
-            "test_pct": size_pct["test"],
-            "size_dev": size_dev,
-            "combined_score": spread + size_dev,
-        })
-
-        sweep_report = pd.DataFrame(sweep_results).set_index("size_weight")
-        print(f"\n[INFO] Sweep size weight results for {artifact}:")
-        print(sweep_report.round(4).sort_values("rate_spread"))
-        selected_sw = sweep_report['combined_score'].idxmin()
-        print(f"[INFO] Best suggested size weight for {artifact}: {selected_sw}")
-
-        rf_dataset, assignment, report = get_or_compute_labeled_split(
-                            rf_features_dataset, 
-                            "is_positive", 
-                            group_col="Patient",
-                            ratios=RATIOS,
-                            size_weight=selected_sw, 
-                            dataset_division_dir=SPLIT_CACHE_DIR, 
-                            version=VERSION, 
-                            target=str(artifact)
-                        )
 
     split_counts = rf_dataset["split"].value_counts(dropna=False)
     print("[INFO] Split distribution: ", split_counts)

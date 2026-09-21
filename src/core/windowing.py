@@ -11,6 +11,8 @@ sections and tags according to a given taxonomy with all the passed in data.
 # Data integration libraries
 import numpy as np
 import pandas as pd
+import os,  hashlib, json
+from pathlib import Path
 from torch import utils, tensor, float32
 
 from src.core.data_config import LABEL_VERSION, KEYS
@@ -42,7 +44,7 @@ def merge_annotated_ranges(session_group):
 def label_windowing(annotations_df, window_requests,
                      target_taxonomy, distinguish_taxonomy=None,
                      exclude_tokens=None, clean_label=None,
-                     unreviewd_tokens=False, umbral_artefacto=0.7, umbral_background=0.1):
+                     unreviewed_tokens=False, umbral_artefacto=0.7, umbral_background=0.1):
     rows = []
     group_cols = ["Patient", "Session", "Section", "Montage", "NoChannels",
                   "Duration", "EDF", "Partition"]
@@ -180,11 +182,11 @@ def label_windowing(annotations_df, window_requests,
  
             row["is_unreviewed"] = int(len(all_tokens) == 0)
  
-            if row["is_unreviewed"] and unreviewd_tokens:
+            if row["is_unreviewed"] and unreviewed_tokens:
                 row["is_clean"] = 1
                 row["is_unreviewed"] = 0
                 row["is_excluded_unreviewed"] = 0
-            elif row["is_unreviewed"] and not unreviewd_tokens:
+            elif row["is_unreviewed"] and not unreviewed_tokens:
                 row["is_clean"] = 0
                 row["is_unreviewed"] = 1
                 row["is_excluded_unreviewed"] = 1
@@ -244,11 +246,11 @@ class eeg_window_dataset(utils.data.Dataset):
 def file_keys(df, keys=KEYS):
     return set(map(tuple, df[keys].astype(str).drop_duplicates().itertuples(index=False)))
 
-def lists(windows):
-    for column in windows.columns:
-        if "_channels_" in column:
-            windows[column] = windows[column].map(list)
-    return windows
+def list_data(w):
+    for c in w.columns:
+        if c.startswith("monopolar_channels") or c.startswith("bipolar_channels"):
+            w[c] = w[c].map(lambda x: list(x) if x is not None else [])
+    return w
 
 def get_or_build_windows(   annotations_df, window, taxonomy, cache_dir, unreviewed_tokens=True,
                             artifact_umbral=0.7, background_umbral=0.1, refresh=True):
@@ -262,14 +264,14 @@ def get_or_build_windows(   annotations_df, window, taxonomy, cache_dir, unrevie
         w = pd.read_parquet(path)
         if file_keys(w) == file_keys(annotations_df):
             print(f"[INFO] Windows loaded from cache: {path.name} ({len(w)} rows)")
-            return lists(w)
+            return list_data(w)
         print(f"[NOTICE] {path.name} not found in current annotations")
     
     w = label_windowing(annotations_df, window, taxonomy, unreviewed_tokens=unreviewed_tokens,
                         umbral_artefacto=artifact_umbral, umbral_background=background_umbral)
-    w = w.drop(columns["Label_spans"])
+    w = w.drop(columns=["Label_spans"])
     w["Raw_labels"] = w["Raw_labels"].map("|".join)
-    w["EDF_path"] = w["EDF_path"].astype(str)
+    w["EDF_path"] = w["EDF_path"].astype(str)   
 
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(".tmp")
@@ -301,7 +303,7 @@ if __name__ == "__main__":
 
     for artifact, req in WINDOW_REQUESTS_ARTIFACTS.items():
         size, stride = req["window_size_sec"], req["stride_sec"]
-        w = label_windowing(ann, req, ARTIFACT_KEYWORDS, unreviewd_tokens=True)
+        w = label_windowing(ann, req, ARTIFACT_KEYWORDS, unreviewed_tokens=True)
         print(f"\n=== {artifact}: ventana {size}s / paso {stride}s → {len(w)} ventanas ===")
 
         # 1) Integridad
