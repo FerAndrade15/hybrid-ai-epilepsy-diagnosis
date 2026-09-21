@@ -4,6 +4,7 @@ torch
 scikit-learn
 imbalanced-learn
 optuna
+xgboost
 
 # Procesamiento de Señales y Datos
 mne

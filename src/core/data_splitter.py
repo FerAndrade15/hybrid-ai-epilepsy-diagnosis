@@ -86,6 +86,9 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
             split_totals[s] += patient_counts.loc[p, label_cols]
 
     for patient in order:
+        if patient in assignment:
+            continue
+        
         counts = patient_counts.loc[patient, label_cols]
         def deficit(split_name):
             projected = split_totals[split_name] + counts
