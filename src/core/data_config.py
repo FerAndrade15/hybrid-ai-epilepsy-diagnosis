@@ -196,9 +196,14 @@ WINDOW_REQUESTS_ARTIFACTS = {
 # General models configuration
 ## Train, validation and test proportion of the dataset
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
+
 ## Split version
 VERSION = 3
+LABEL_VERSION = 1
+
 ## Identifiers metadata and target not required for the models
+KEYS = ["Patient", "Session", "Section"]
+
 LEAKAGE_COLS = [
     "ic_index", "ic_raw_label", "ic_target_label",
     "Patient", "Session", "Section", "Start", "split",

@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 from torch import utils, tensor, float32
 
+from src.core.data_config import LABEL_VERSION, KEYS
 from src.core.data_loader import load_raw_edf
 from src.core.preprocessing import raw_data_preproccesing, channel_standard_nomenclature
 from src.models.ica_model import get_or_compute_ica
@@ -239,6 +240,43 @@ class eeg_window_dataset(utils.data.Dataset):
         end = int(round(row.end * s["sfreq"]))
         channel_window = tensor(s["data"][:, start:end], dtype=float32)
         return channel_window, tensor(row.is_clean_window, dtype=float32)
+
+def file_keys(df, keys=KEYS):
+    return set(map(tuple, df[keys].astype(str).drop_duplicates().itertuples(index=False)))
+
+def lists(windows):
+    for column in windows.columns:
+        if "_channels_" in column:
+            windows[column] = windows[column].map(list)
+    return windows
+
+def get_or_build_windows(   annotations_df, window, taxonomy, cache_dir, unreviewed_tokens=True,
+                            artifact_umbral=0.7, background_umbral=0.1, refresh=True):
+    tax = hashlib.md5(json.dumps({k: sorted(v) for k, v in sorted(taxonomy.items())}).encode()).hexdigest()[:6]
+    path = Path(cache_dir) / (  f"windows_w{window['window_size_sec']}_s{window['stride_sec']}"
+                                f"_ua{artifact_umbral}_ub{background_umbral}_ur{unreviewed_tokens}"
+                                f"_{tax}_L{LABEL_VERSION}.parquet"
+                            )
+    
+    if path.exists() and not refresh:
+        w = pd.read_parquet(path)
+        if file_keys(w) == file_keys(annotations_df):
+            print(f"[INFO] Windows loaded from cache: {path.name} ({len(w)} rows)")
+            return lists(w)
+        print(f"[NOTICE] {path.name} not found in current annotations")
+    
+    w = label_windowing(annotations_df, window, taxonomy, unreviewed_tokens=unreviewed_tokens,
+                        umbral_artefacto=artifact_umbral, umbral_background=background_umbral)
+    w = w.drop(columns["Label_spans"])
+    w["Raw_labels"] = w["Raw_labels"].map("|".join)
+    w["EDF_path"] = w["EDF_path"].astype(str)
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    w.to_parquet(tmp, index=False)
+    os.replace(tmp, path)
+
+    return w
 
 # General testing for windowing functions
 if __name__ == "__main__":
