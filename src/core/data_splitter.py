@@ -179,7 +179,7 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
         "size_weight": size_weight,
         "forced": dict(sorted(forced.items())),
         "columns": list(windowed_df.columns),
-        "content_hash": int(pd.utils.hash_pandas_object(windowed_df[[group_col, label_col]], index=False).sum()),
+        "content_hash": int(pd.util.hash_pandas_object(windowed_df[[group_col, label_col]], index=False).sum()),
     }
 
     saving_dir = Path(dataset_division_dir)
