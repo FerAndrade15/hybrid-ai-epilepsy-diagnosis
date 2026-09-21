@@ -1,18 +1,25 @@
+"""
+# File: cnn_detectors.py
+# Project: Trabajo de graduación
+# Author: Maria Fernanda Andrade Recinos
+
+Pipeline to train 1D CNN for each artifact
+"""
+
 # pipelines/artifacts/ica_cnn_pipeline.py
 
-import pandas as pd
-from pathlib import Path
+
 from IPython.display import display
 
-from implementation.core.data_config import (
+from src.core.data_config import (
     ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, find_project_root,
 )
-from implementation.core.data_loader import build_annotations_index
-from implementation.core.windowing import label_windowing
-from implementation.core.data_splitter import get_or_compute_labeled_split, split_balance_report
-from implementation.models.cnn_artifact_detector import binary_cnn
+from src.core.data_loader import build_annotations_index
+from src.core.windowing import label_windowing
+from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report
+from src.models.cnn_artifact_detector import binary_cnn
 
-BASE_DIR = find_project_root()
+BASE_DIR = find_project_root("src")
 CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / "cache" / "sessions"
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / "cache" / "ica"
@@ -45,7 +52,7 @@ for artifact, window in WINDOW_REQUESTS_ARTIFACTS.items():
     print("Generando ventanas...")
     windowed_df = label_windowing(
         database_corpus_patient, WINDOW_REQUESTS_ARTIFACTS[artifact],
-        ARTIFACT_KEYWORDS, unreviewd_tokens=True,
+        ARTIFACT_KEYWORDS, unreviewed_tokens=True,
     )
 
     target_col = f"tuar_{artifact}" if not f"tuar_{artifact}" in windowed_df.columns else artifact

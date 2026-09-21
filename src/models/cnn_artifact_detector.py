@@ -16,6 +16,7 @@ from typing import Optional, Dict, Any, Tuple, Literal
 # Data libraries
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Model imports
 import torch
@@ -283,10 +284,25 @@ class ArtifactDetector:
               class_weights: Optional[Dict[int, float]] = None,
               focal_params: Optional[Dict[str, float]] = None) -> Dict[str, list]:
 
-        focal_params = focal_params or {"alpha": 0.25, "gamma": 2.0}
-        class_weights = class_weights or {0: 1.0, 1: 1.0}
+        all_train_labels = []
+        for _, y_batch in train_loader:
+            all_train_labels.append(y_batch.numpy())
+        all_train_labels = np.concatenate(all_train_labels)
 
-        criterion = FocalLossWithClassWeights(**focal_params, class_weights=class_weights)
+        neg_count = (all_train_labels == 0).sum()
+        pos_count = (all_train_labels == 1).sum()
+        total = neg_count + pos_count
+
+        calculated_class_weights = {
+            0: total / (2.0 * neg_count) if neg_count > 0 else 1.0,
+            1: total / (2.0 * pos_count) if pos_count > 0 else 1.0
+        }
+        self.logger.info(f"Pesos de clase calculados para el entrenamiento: {calculated_class_weights}")
+
+        focal_params = focal_params or {"alpha": 0.25, "gamma": 2.0}
+        class_weights = class_weights or calculated_class_weights
+
+        criterion = FocalLossWithClassWeights(**focal_params, class_weights=calculated_class_weights)
         optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
             optimizer, mode="min", factor=0.7, patience=patience_lr, min_lr=1e-7
@@ -304,6 +320,7 @@ class ArtifactDetector:
         for epoch in range(epochs):
             self.model.train()
             train_loss = 0.0
+
             for X_batch, y_batch in train_loader:
                 X_batch, y_batch = X_batch.to(self.device), y_batch.to(self.device)
                 optimizer.zero_grad()
@@ -312,6 +329,7 @@ class ArtifactDetector:
                 loss.backward()
                 optimizer.step()
                 train_loss += loss.item()
+
             train_loss /= len(train_loader)
 
             self.model.eval()
@@ -396,6 +414,32 @@ class ArtifactDetector:
             "metrics_results": full_metrics,
         }
 
+    def plot_and_save_history(self):
+        plt.figure(figsize=(10, 4))
+
+        # Loss (Train vs Val)
+        plt.subplot(1, 2, 1)
+        plt.plot(self.history["loss"], label="Train Loss")
+        plt.plot(self.history["val_loss"], label="Val Loss")
+        plt.title(f"Loss - {self.artifact_name}")
+        plt.xlabel("Épocas")
+        plt.ylabel("Loss")
+        plt.legend()
+
+        # Gráfica de F1 Score (Val)
+        plt.subplot(1, 2, 2)
+        plt.plot(self.history["val_f1"], label="Val F1 Score", color="green")
+        plt.title(f"F1 Score - {self.artifact_name}")
+        plt.xlabel("Épocas")
+        plt.ylabel("F1")
+        plt.legend()
+
+        plt.tight_layout()
+        plot_path = self.results_dir / f"cnn_{self.artifact_name}_learning_curves.png"
+        plt.savefig(plot_path)
+        plt.close()
+        self.logger.info(f"Gráfica de evolución guardada en: {plot_path}")
+
     def save(self, filepath: Optional[str] = None) -> None:
         filepath = Path(filepath) if filepath else self.results_dir / f"cnn_{self.artifact_name}.pt"
         torch.save({"state_dict": self.model.state_dict(), "model_type": self.model_type}, filepath)
@@ -403,6 +447,7 @@ class ArtifactDetector:
         with open(hist_path, "w", encoding="utf-8") as f:
             json.dump(self.history, f, indent=2)
         self.logger.info(f"Model saved in {self.results_dir}")
+        plot_and_save_history()
 
 
 def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,
