@@ -5,9 +5,7 @@
 
 Pipeline to train 1D CNN for each artifact
 """
-
-# pipelines/artifacts/ica_cnn_pipeline.py
-
+# file: cnn_detectors.py
 
 from IPython.display import display
 from pathlib import Path
@@ -125,25 +123,9 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print("\n" + ("="*50))
         print(f"Starting training of CNN_{artifact}")
 
-        results.setdefault(artifact, []).append(  train_binary_model(   df=rf_features_dataset,
-                                                                        model_name=f"rf_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
-                                                                        window_size_sec=window,
-                                                                        build_model_fn=build_rf_model,
-                                                                        search_data=config["space"],
-                                                                        models_dir=str(MODELS_DIR),
-                                                                        leakage_cols=LEAKAGE_COLS,
-                                                                        search_method="random",
-                                                                        search_kwargs={"n_iter": config["n_iter"]},
-                                                                        force_retrain=True,
-                                                                        balanced=True,
-                                                                        max_fp_per_day=config["max_fp_per_day"] 
-                                                                    )
-                                                 )
-
-
         config = CNN_CONFIG[artifact]
         results.setdefault(artifact, []).append( binary_cnn(
-                                                            windowed_df_split, target_col=target_col, model_name=f"cnn_{artifact}",
+                                                            splitted_dataset, target_col=target_col, model_name=f"cnn_{artifact}",
                                                             window_size_sec=window["window_size_sec"], sfreq=SFREQ, n_channels=N_CHANNELS,
                                                             session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR),
                                                             models_dir=str(MODELS_DIR), model_type=config["model_type"],
