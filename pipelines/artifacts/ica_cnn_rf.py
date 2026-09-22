@@ -20,7 +20,7 @@ from scipy.stats import randint
 # Data integration libraries / project modules
 from src.core.windowing import get_or_build_windows
 from src.core.data_loader import build_annotations_index, find_project_root
-from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
+from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS, OUTPUTS_DIR
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
 from src.utils.patient_registry import load_registry, forced_for
 from src.core.feature_extractor import build_ml_dataset, get_or_build_features
@@ -32,7 +32,7 @@ from IPython.display import display
 
 # Pipeline directions
 BASE_DIR = find_project_root("src")
-CORPUS_OUTPUTS_DIR = BASE_DIR / Path("outputs/artifact")
+CORPUS_OUTPUTS_DIR = OUTPUTS_DIR / Path("artifact")
 
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
@@ -40,11 +40,11 @@ WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
 FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
 DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
-ANNOTATIONS_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
+ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 
-for d in (FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR, WINDOWS_CACHE_DIR):
+for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 PARAM_GRID = {
@@ -263,7 +263,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                         leakage_cols=LEAKAGE_COLS,
                                                                         search_method="random",
                                                                         search_kwargs={"n_iter": config["n_iter"]},
-                                                                        force_retrain=True,
+                                                                        force_retrain=False,
                                                                         balanced=True,
                                                                         max_fp_per_day=config["max_fp_per_day"] 
                                                                     )

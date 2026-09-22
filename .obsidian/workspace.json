@@ -1,56 +1,41 @@
 {
   "main": {
-    "id": "dde69bf887c92c24",
+    "id": "2e1abc50eb0756f8",
     "type": "split",
     "children": [
       {
-        "id": "ac13a42d33195ea4",
+        "id": "217f5d85e8a00c77",
         "type": "tabs",
         "children": [
           {
-            "id": "cfe1d610441a02c7",
+            "id": "5f7bc63a5d005493",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-models/Results - all.md",
+                "file": "outputs/artifact/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Results - all"
-            }
-          },
-          {
-            "id": "413073af84569424",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03-models/Results - ML.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Results - ML"
+              "title": "README"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "97706fd09f804691",
+    "id": "3e985f93e46069de",
     "type": "split",
     "children": [
       {
-        "id": "3ad817efa1a46fe4",
+        "id": "add730a7d0430bf2",
         "type": "tabs",
         "children": [
           {
-            "id": "13548f5ea16b7a05",
+            "id": "1c60aa3f73140bed",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -65,7 +50,7 @@
             }
           },
           {
-            "id": "43bad20cd04a8d8c",
+            "id": "a80a223938606407",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -82,11 +67,14 @@
             }
           },
           {
-            "id": "25a9b93f6e89e9ff",
+            "id": "44326992295a2e27",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
@@ -98,20 +86,20 @@
     "width": 300
   },
   "right": {
-    "id": "f978e265c015e431",
+    "id": "73b1466ac3d41a11",
     "type": "split",
     "children": [
       {
-        "id": "9d7f9c87fed54baf",
+        "id": "e0437d457f402f43",
         "type": "tabs",
         "children": [
           {
-            "id": "e64ff92c4a0be2a0",
+            "id": "d6ca533aa4723411",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "03-models/Completed_models.md",
+                "file": "outputs/artifact/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,25 +109,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Completed_models"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "99bbb4d8e768e54d",
+            "id": "1c9b330b59020d3f",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "03-models/Completed_models.md",
+                "file": "outputs/artifact/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Completed_models"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "bba0f947b5cf09d2",
+            "id": "e8f9f4ba4b179109",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -154,7 +142,7 @@
             }
           },
           {
-            "id": "84edd1e7da9c09af",
+            "id": "2f6e0f4f5940498a",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -168,18 +156,18 @@
             }
           },
           {
-            "id": "f6a88dd381ab6060",
+            "id": "efc85f64c14557cc",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "03-models/Completed_models.md",
+                "file": "outputs/artifact/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Completed_models"
+              "title": "Outline"
             }
           }
         ]
@@ -200,20 +188,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "413073af84569424",
+  "active": "5f7bc63a5d005493",
   "lastOpenFiles": [
-    "03-models/Results - all.md",
-    "03-models/Results - ML.md",
-    "00-index.md",
-    "07-github_annotations/WINDOWS.md",
-    "07-github_annotations",
-    "REGISTER.md",
-    "03-models/Results.md",
-    "01-setup/Python Virtual Environment.md",
-    "01-setup/Git and Git Bash.md",
-    "_templates/technical_template.md",
-    "03-models/Completed_models.md",
+    "outputs/artifact/features/README.md",
+    "outputs/artifact/annotations/README.md",
+    "outputs/artifact/cache/CACHE.md",
+    "outputs/artifact/dataset/README.md",
+    "outputs/artifact/models/README.md",
+    "outputs/artifact/splits/README.md",
+    "outputs/artifact/windows/README.md",
+    "outputs/artifact/README.md",
+    "README.md",
     "Untitled",
-    "00-index/INDEX.md"
+    "SETUP.md"
   ]
 }

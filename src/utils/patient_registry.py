@@ -15,9 +15,9 @@ from pathlib import Path
 from datetime import datetime
 
 # Project modules
-from src.core.data_config import BASE_DIR
+from src.core.data_config import OUTPUTS_DIR
 
-REG_PATH = BASE_DIR / "outputs" / "patients_corpus_registry.json"
+REG_PATH = OUTPUTS_DIR / Path("patients_corpus_registry.json")
 SPLIT_PRIORITY = {  "train":0,
                     "val": 1,
                     "test": 2,

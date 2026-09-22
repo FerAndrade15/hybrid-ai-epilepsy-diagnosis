@@ -47,6 +47,11 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[Fuentes]]
 - [[Completed_models]]
 
+
+### 07-github_annotations — Recopilación de readmes del repositorio
+- [[WINDOWS]]
+- 
+- 
 ---
 
 ## Estado actual

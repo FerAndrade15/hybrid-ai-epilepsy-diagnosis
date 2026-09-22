@@ -38,6 +38,13 @@ ALL_DATA_POSSIBLE_PATHS = [
     BASE_DATA_DIR / Path("Users/disenoeinnovacion/Datasets/DATA_EEG_TUH"),      # PC07 CIT-114
     Path(r"\\Cit114pc07\DATA_EEG_TUH"),                                         # Shared network
 ]
+# Data paths
+ALL_OUTPUTS_POSSIBLE_PATHS = [
+    Path("/workspace/data/results"),                                            # RunPod
+    BASE_DATA_DIR / "ml-outputs",                                               # Hard disk
+    BASE_DATA_DIR / Path("Users/disenoeinnovacion/ml-outputs"),      # PC07 CIT-114
+]
+
 BASE_PATH = None
 for path in ALL_DATA_POSSIBLE_PATHS:
     if path.exists() and path.is_dir():
@@ -45,6 +52,14 @@ for path in ALL_DATA_POSSIBLE_PATHS:
         break
 if BASE_PATH is None:
     raise FileNotFoundError("No valid data path found")
+
+OUTPUTS_DIR = None
+for path in ALL_OUTPUTS_POSSIBLE_PATHS:
+    if path.exists() and path.is_dir():
+        OUTPUTS_DIR = path
+        break
+if OUTPUTS_DIR is None:
+    raise FileNotFoundError("No valid outputs path found")
 
 # Available corpus matching the TUSZ server nomenclature as of late 2026
 CORPUS_PATHS = {
@@ -54,6 +69,9 @@ CORPUS_PATHS = {
     "seizure":      Path("tuh_eeg_seizure") / "v2.0.6",
     "events":       Path("tuh_eeg_events") / "v2.0.1",
 }
+
+## Preprocessing restrictions
+SFREQ = 256                     # According to all corpus majority
 
 # Montages registered in the TUH server nomenclature as of late 2026 + Standard montages
 ALL_MONTAGES = [

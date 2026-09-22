@@ -6,6 +6,7 @@
 Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 """
 # cnn_artifact_detector.py
+
 # General imports
 import json
 import time
