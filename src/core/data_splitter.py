@@ -168,7 +168,8 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
 def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
                                 include_clean=True, drop_excluded=True, drop_ambiguous=True, 
                                 ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, size_weight=0, 
-                                dataset_division_dir="splits", version=1, artifact_umbral=0.7,
+                                dataset_division_dir="splits", version=1, 
+                                artifact_umbral=0.7, window_size_sec=None, stride_sec=None,
                                 target="all", forced=None, registry_path=None
                                 ):
     
@@ -181,6 +182,9 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
         "patients": sorted(windowed_df[group_col].unique().tolist()),
         "version": version,
         "size_weight": size_weight,
+        "window_size_sec": window_size_sec,      
+        "stride_sec": stride_sec,             
+        "artifact_umbral": artifact_umbral,
         "forced": dict(sorted(forced.items())),
         "columns": list(windowed_df.columns),
         "content_hash": int(pd.util.hash_pandas_object(windowed_df[[group_col, label_col]], index=False).sum()),
@@ -191,6 +195,7 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
     base_name = (
         f"split_train{ratios['train']*100}_val{ratios['val']*100}_test{ratios['test']*100}"
         f"_p{len(sorted(windowed_df[group_col].unique().tolist()))}_v{version}_{target}"
+        f"_w{window_size_sec}_s{stride_sec}"       
         f"_sw{size_weight}_ua{artifact_umbral}"
     )
     saving_parquet = saving_dir / f"{base_name}.parquet"

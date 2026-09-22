@@ -23,7 +23,7 @@ from src.core.data_loader import build_annotations_index, find_project_root
 from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
 from src.utils.patient_registry import load_registry, forced_for
-from src.core.feature_extractor import build_feature_dataset, build_ml_dataset
+from src.core.feature_extractor import build_ml_dataset, get_or_build_features
 from src.models.rf_model import build_rf_model
 from src.models.ml_models import train_binary_model
 
@@ -37,14 +37,14 @@ CORPUS_OUTPUTS_DIR = BASE_DIR / Path("outputs/artifact")
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
-GENERAL_FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features/data")
-FINAL_FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features/outputs")
+FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
+DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
 ANNOTATIONS_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 
-for d in (GENERAL_FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR, WINDOWS_CACHE_DIR):
+for d in (FEATURES_DIR, ICA_CACHE_DIR, SESSION_CACHE_DIR, SPLIT_CACHE_DIR, MODELS_DIR, WINDOWS_CACHE_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 PARAM_GRID = {
@@ -91,8 +91,9 @@ RANDOM_SPACE = {
 }
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", n_patients=10, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", n_patients=50, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
+n_patients = len(database_corpus_patient["Patient"].unique())
 
 results = {}
 reg = load_registry()
@@ -114,8 +115,9 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print("*"*50)
         print(f">> {artifact} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
 
-        rf_dataset_path = GENERAL_FEATURES_DIR / (
-            f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}_v{VERSION}.parquet"
+        rf_dataset_path = DATASET_DIR / (
+            f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"
+            f"_ua{window['artifact_umbral']}_p{n_patients}_v{VERSION}.parquet"
         )
         if rf_dataset_path.exists():
             print(f"[INFO] Existing dataset, loading: {rf_dataset_path}")
@@ -152,6 +154,9 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                     size_weight=sw, 
                     dataset_division_dir=SPLIT_CACHE_DIR, 
                     version=VERSION, 
+                    artifact_umbral=window['artifact_umbral'],
+                    window_size_sec=window['window_size_sec'],
+                    stride_sec=window['stride_sec'],
                     target=str(artifact),
                     forced=current_forced,
                 )
@@ -192,6 +197,9 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                     version=VERSION, 
                                                                                     target=str(artifact),
                                                                                     forced=current_forced,
+                                                                                    artifact_umbral=window['artifact_umbral'],
+                                                                                    window_size_sec=window['window_size_sec'],
+                                                                                    stride_sec=window['stride_sec'],
                                                                                 )
 
             if i == 0:
@@ -211,18 +219,24 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
             """ FEATURES EXTRACTION """
             print("\nStarting features extraction from channels and ICA components...")
-            featured_windows = build_feature_dataset(   splitted_dataset, 
-                                                        target_labels=list(ARTIFACT_KEYWORDS.keys()), 
-                                                        bipolar_montage=False, 
-                                                        use_ica=True, 
-                                                        ica_cache_dir=str(ICA_CACHE_DIR), 
-                                                        session_cache_dir=str(SESSION_CACHE_DIR)
+            featured_windows = get_or_build_features(   splitted_dataset,
+                                                        target_labels=list(ARTIFACT_KEYWORDS.keys()),
+                                                        bipolar_montage=False,
+                                                        artifact=artifact,
+                                                        window_size_sec=window['window_size_sec'],
+                                                        stride_sec=window['stride_sec'],
+                                                        use_ica=True,
+                                                        cache_dir=FEATURES_DIR,
+                                                        ica_cache_dir=str(ICA_CACHE_DIR),
+                                                        session_cache_dir=str(SESSION_CACHE_DIR),
+                                                        version=VERSION,
+                                                        refresh=False,
                                                     )
             display(featured_windows.head(25))
 
             if not featured_windows.empty:
                 print("[INFO] Successful features extraction")
-                rf_features_dataset = build_ml_dataset(featured_windows, "rf", target_artifact=artifact, output_path=FINAL_FEATURES_DIR, features_dir=str(GENERAL_FEATURES_DIR))
+                rf_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact, output_path=rf_dataset_path)
             else:
                 raise ValueError(f"Error: Resulting empty dataset")
 
@@ -240,26 +254,27 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of Random Forest - {artifact}")
 
         config = RANDOM_SPACE[artifact]
-        results.setdefault(artifact, []).append(  train_binary_model( df=rf_features_dataset,
-                                            model_name=f"rf_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
-                                            window_size_sec=window,
-                                            build_model_fn=build_rf_model,
-                                            search_data=config["space"],
-                                            models_dir=str(MODELS_DIR),
-                                            leakage_cols=LEAKAGE_COLS,
-                                            search_method="random",
-                                            search_kwargs={"n_iter": config["n_iter"]},
-                                            force_retrain=True,
-                                            balanced=True,
-                                            max_fp_per_day=config["max_fp_per_day"] 
-                                        )
-                                    )
+        results.setdefault(artifact, []).append(  train_binary_model(   df=rf_features_dataset,
+                                                                        model_name=f"rf_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
+                                                                        window_size_sec=window,
+                                                                        build_model_fn=build_rf_model,
+                                                                        search_data=config["space"],
+                                                                        models_dir=str(MODELS_DIR),
+                                                                        leakage_cols=LEAKAGE_COLS,
+                                                                        search_method="random",
+                                                                        search_kwargs={"n_iter": config["n_iter"]},
+                                                                        force_retrain=True,
+                                                                        balanced=True,
+                                                                        max_fp_per_day=config["max_fp_per_day"] 
+                                                                    )
+                                                 )
 
-    print("\n"+"*-" * 25)
-    print("Final report")
-    for artifact, res in results.items():
-        print(('-'*10),artifact,('-'*10))
+print("\n"+"*-" * 25)
+print("Final report")
+for artifact, res_list in results.items():
+    print(('-'*10), artifact, ('-'*10))
+    for res in res_list:
         print(f"\t\t F1(val)={res['val_f1']:.4f}")
         print(f"\t\t best_params={res['params']}")
         print("\t\t Confusion matrix:", res['confusion_matrix'])
-        print("\t\t Metrics results:", res['metrics_results'])  
+        print("\t\t Metrics results:", res['metrics_results'])

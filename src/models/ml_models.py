@@ -144,7 +144,12 @@ def _search_random(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
         for param_name, param_space in space.items():
             if hasattr(param_space, "rvs"):
                 val = param_space.rvs(random_state=rng)
-                params[param_name] = int(val) if isinstance(val, np.integer) else float(val)
+                if isinstance(val, (int, np.integer)):
+                    params[param_name] = int(val)
+                elif isinstance(val, (float, np.floating)):
+                    params[param_name] = float(val)
+                else: 
+                    params[param_name] = val
             else:
                 params[param_name] = py_rng.choice(param_space)
         
@@ -256,7 +261,25 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
 
     if model_path.exists() and analysis_path.exists() and not force_retrain:
         print(f"[INFO] Pretrained model found, loading: {analysis_path}")
-        return joblib.load(analysis_path)
+        model = joblib.load(analysis_path)
+        print("Final report", "-"*25)
+        print(model["test_report"])
+        print("Confusion matrix", "-"*25)
+        print(model["confusion_matrix"])
+        print("General metrics", "-"*25)
+        print(pd.Series(model["metrics_results"]).to_string())
+
+        return{
+            "model":            model["model"],
+            "params":           model["params"],
+            "feature_col":      model["feature_col"],
+            "val_f1":           model["val_f1"],
+            "test_report":      model["test_report"],
+            "confusion_matrix": model["confusion_matrix"],
+            "metrics_results":  model["metrics_results"],
+            "importances":      model["importances"]
+        }
+    
     else:
         X_train, y_train = split_features_target(df, "train", leakage_cols)
         X_val, y_val = split_features_target(df, "val", leakage_cols)

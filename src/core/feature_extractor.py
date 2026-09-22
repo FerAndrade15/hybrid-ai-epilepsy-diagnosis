@@ -15,6 +15,7 @@ import pywt
 import numpy as np
 import pandas as pd
 from pathlib import Path
+import os, hashlib, json
 
 # Mathematical features libraries
 from scipy.signal import welch, find_peaks
@@ -24,6 +25,7 @@ from scipy.stats import skew, kurtosis
 from src.core.data_config import RAW_TO_TARGET, TUAR_Labels
 from src.core.session_cache import get_or_compute_session
 from src.models.ica_model import channel_contribution
+from src.core.windowing import file_keys, list_data
 
 def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewness=True, Kurtosis=True, Zero_crossing_rate=True, Hjorth=True, Line_length=True, Peak_to_peak=True):
     """
@@ -317,7 +319,7 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
 
-def build_ml_dataset(long_df, ml_model, target_artifact, output_path, negative_label="clean", features_dir="features", version=1):
+def build_ml_dataset(long_df, target_artifact, output_path):
     """
     Returs the categories according to the target:
     -   "eye"
@@ -355,6 +357,43 @@ def build_ml_dataset(long_df, ml_model, target_artifact, output_path, negative_l
     subset.to_parquet(output_path, index=False)
 
     return subset
+
+
+def get_or_build_features(splitted_dataset, target_labels, bipolar_montage,
+                            cache_dir, artifact, window_size_sec, stride_sec,
+                            use_ica=True, ica_cache_dir="cache/ica",
+                            session_cache_dir="cache/sessions",
+                            version=1, refresh=True):
+    tax = hashlib.md5(
+        json.dumps(sorted(target_labels)).encode()
+    ).hexdigest()[:6]
+
+    path = Path(cache_dir) / (
+        f"featured_{artifact}_w{window_size_sec}_s{stride_sec}"
+        f"_bip{bipolar_montage}_ica{use_ica}_{tax}_v{version}.parquet"
+    )
+
+    if path.exists() and not refresh:
+        w = pd.read_parquet(path)
+        w = list_data(w)
+        if file_keys(w) == file_keys(splitted_dataset):
+            print(f"[INFO] Featured windows loaded from cache: {path.name} ({len(w)} rows)")
+            return w
+        faltantes = file_keys(splitted_dataset) - file_keys(w)
+        print(f"[NOTICE] {path.name} no coincide: {len(faltantes)} keys faltantes en cache")
+
+    w = build_feature_dataset(
+        splitted_dataset, target_labels, bipolar_montage,
+        use_ica=use_ica, ica_cache_dir=ica_cache_dir, session_cache_dir=session_cache_dir
+    )
+
+    if not w.empty:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(".tmp")
+        w.to_parquet(tmp, index=False)
+        os.replace(tmp, path)
+
+    return w
 
 # General feature extractor functions
 if __name__ == "__main__":

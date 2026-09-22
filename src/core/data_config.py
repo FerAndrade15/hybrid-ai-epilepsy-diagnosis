@@ -100,7 +100,7 @@ ICLABEL_CATEGORIES = [
 ICLABEL_TO_TARGET = {
     "eye": ["eye_blink"],
     "muscle": ["muscle_artifact"],
-    "non_physiological": ["channel_noise"],
+    "non_physiological": ["channel_noise", "other", "heart_beat"],
     "clean": ["brain"],
 }
 
@@ -181,18 +181,13 @@ MONOPOLAR_CHANNELS = list(dict.fromkeys(BIPOLAR_MONTAGE["anode"] + BIPOLAR_MONTA
 
 
 # Windowing
-WINDOW_STRIDE_SWEEP = {
-    "eye":                        [(1, 0.25), (2, 0.5), (2, 1), (5, 2)],
-    "muscle":                     [(2, 0.5), (5, 1), (5, 2)],
-    "non_physiological":          [(0.5, 0.125), (1, 0.25), (1, 0.5)],
-}
-
 WINDOW_REQUESTS_ARTIFACTS = {
-    "eye":                        [{"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.15},
-                                   {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
-                                   {"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
-                                   {"window_size_sec": 0.5, "stride_sec": 0.5, "artifact_umbral": 0.6},
-                                   {"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.6},
+    "eye":                        [ {"window_size_sec": 5, "stride_sec": 2, "artifact_umbral": 0.1},
+                                    {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.15},
+                                   #{"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   #{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+                                   #{"window_size_sec": 0.5, "stride_sec": 0.5, "artifact_umbral": 0.6},
+                                   #{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.6},
                                    ],
     "muscle":                     [{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
                                    {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
@@ -211,8 +206,8 @@ WINDOW_REQUESTS_ARTIFACTS = {
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
 ## Split version
-VERSION = 1
-LABEL_VERSION = 1
+VERSION = 2
+LABEL_VERSION = 2
 
 ## Identifiers metadata and target not required for the models
 KEYS = ["Patient", "Session", "Section"]
@@ -251,6 +246,8 @@ if __name__ == "__main__":
     assert set(WINDOW_REQUESTS_ARTIFACTS) == set(ARTIFACT_KEYWORDS)
     assert RAW_TO_TARGET["eye blink"] == "eye" and RAW_TO_TARGET["muscle artifact"] == "muscle"
     assert RAW_TO_TARGET["channel noise"] == "non_physiological"
+    assert RAW_TO_TARGET["other"] == "non_physiological"
+    assert RAW_TO_TARGET["heart beat"] == "non_physiological"
 
     # Check version and debug direction
     print(f"\nVERSION={VERSION} | DEBUG_DIR={DEBUG_DIR}")
