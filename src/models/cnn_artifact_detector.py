@@ -447,7 +447,7 @@ class ArtifactDetector:
         with open(hist_path, "w", encoding="utf-8") as f:
             json.dump(self.history, f, indent=2)
         self.logger.info(f"Model saved in {self.results_dir}")
-        plot_and_save_history()
+        self.plot_and_save_history()
 
 
 def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,

@@ -7050,29 +7050,29 @@ Final report
 ---------- eye ----------
                  F1(val)=0.3727
                  best_params={'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
-                 Confusion matrix: [[30667   160]
- [    7    28]]
+                 Confusion matrix: [[30667   160]  [    7    28]]
                  Metrics results: {'model': 'rf_eye_w2s1_1', 'sensitivity': 0.8, 'specificity': np.float64(0.9948), 'precision': 0.1489, 'accuracy': 0.9946, 'f1_score': 0.2511, 'auc_roc': 0.9608, 'false_alar_rate': np.float64(0.0052), 'fp_per_day': np.float64(223.96), 'TP': 28, 'FP': 160, 'TN': 30667, 'FN': 7, 'n_test_windows': 30862, 'covered_test_hours': 17.15}
+                 
                  F1(val)=0.3158
                  best_params={'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
-                 Confusion matrix: [[30479   289]
- [    6    19]]
+                 Confusion matrix: [[30479   289]  [    6    19]]
                  Metrics results: {'model': 'rf_eye_w1s1_1', 'sensitivity': 0.76, 'specificity': np.float64(0.9906), 'precision': 0.0617, 'accuracy': 0.9904, 'f1_score': 0.1141, 'auc_roc': 0.9519, 'false_alar_rate': np.float64(0.0094), 'fp_per_day': np.float64(810.89), 'TP': 19, 'FP': 289, 'TN': 30479, 'FN': 6, 'n_test_windows': 30793, 'covered_test_hours': 8.55}
+                 
                  F1(val)=0.3295
                  best_params={'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
-                 Confusion matrix: [[61077   543]
- [   17    38]]
+                 Confusion matrix: [[61077   543]  [   17    38]]
                  Metrics results: {'model': 'rf_eye_w1s0.5_1', 'sensitivity': 0.6909, 'specificity': np.float64(0.9912), 'precision': 0.0654, 'accuracy': 0.9909, 'f1_score': 0.1195, 'auc_roc': 0.9528, 'false_alar_rate': np.float64(0.0088), 'fp_per_day': np.float64(760.68), 'TP': 38, 'FP': 543, 'TN': 61077, 'FN': 17, 'n_test_windows': 61675, 'covered_test_hours': 17.13}
+                 
                  F1(val)=0.2994
                  best_params={'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
-                 Confusion matrix: [[60526  1075]
- [   16    29]]
+                 Confusion matrix: [[60526  1075]  [   16    29]]
                  Metrics results: {'model': 'rf_eye_w0.5s0.5_1', 'sensitivity': 0.6444, 'specificity': np.float64(0.9825), 'precision': 0.0263, 'accuracy': 0.9823, 'f1_score': 0.0505, 'auc_roc': 0.9469, 'false_alar_rate': np.float64(0.0175), 'fp_per_day': np.float64(3013.33), 'TP': 29, 'FP': 1075, 'TN': 60526, 'FN': 16, 'n_test_windows': 61646, 'covered_test_hours': 8.56}
+                 
                  F1(val)=0.2993
                  best_params={'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 21, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
-                 Confusion matrix: [[120546   2672]
- [    24     66]]
+                 Confusion matrix: [[120546   2672]  [    24     66]]
                  Metrics results: {'model': 'rf_eye_w0.5s0.25_1', 'sensitivity': 0.7333, 'specificity': np.float64(0.9783), 'precision': 0.0241, 'accuracy': 0.9781, 'f1_score': 0.0467, 'auc_roc': 0.9507, 'false_alar_rate': np.float64(0.0217), 'fp_per_day': np.float64(3744.46), 'TP': 66, 'FP': 2672, 'TN': 120546, 'FN': 24, 'n_test_windows': 123308, 'covered_test_hours': 17.13}
+                 
 ---------- muscle ----------
                  F1(val)=0.1928
                  best_params={'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3}

@@ -13,12 +13,9 @@ import numpy as np
 import pandas as pd
 import os,  hashlib, json
 from pathlib import Path
-from torch import utils, tensor, float32
 
 from src.core.data_config import LABEL_VERSION, KEYS
-from src.core.data_loader import load_raw_edf
-from src.core.preprocessing import raw_data_preproccesing, channel_standard_nomenclature
-from src.models.ica_model import get_or_compute_ica
+from src.core.preprocessing import channel_standard_nomenclature
 
 # Process to analyze data
 def split_compound_label(label):
@@ -222,45 +219,6 @@ def label_windowing(annotations_df, window_requests,
             n += 1
  
     return pd.DataFrame(rows)
-
-# EEG signal windows creation (Dataset)
-class eeg_window_dataset(utils.data.Dataset):
-    def __init__(self, label_windowing_df, use_ica=True, ica_cache_dir="cache/ica"):
-        self.df = label_windowing_df.reset_index(drop=True)
-        self.use_ica = use_ica
-        self.ica_cache_dir = ica_cache_dir
-        self._cached_session = None                 # Loaded (patient, session)
-        self._cache = {}
-
-    def __len__(self):
-        return len(self.df)
-
-    def _load_session(self, patient, session, path_edf):
-        key = (patient, session)
-        if self._cached_session == key:
-            return self._cache
-        raw = load_raw_edf(path_edf, preloaD=True)
-        signal = raw_data_preproccesing(raw, bipolar_montage=True)
-        data = signal.get_data()
-        sources_full = None
-        if self.use_ica:
-            ica, ic_labels, probs = get_or_compute_ica(signal, patient, session, cache_dir=self.ica_cache_dir)
-            sources_full = ica.get_sources(signal).get_data()
-        self._cache = {
-            "data": data, 
-            "sources_full": sources_full, 
-            "sfreq": signal.info["sfreq"],
-            "ch_names": signal.ch_names, }
-        self._cached_session = key
-        return self._cache
-
-    def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-        s = self._load_session(row.Patient, row.Session, row.EDF_path)
-        start = int(round(row.Start * s["sfreq"]))
-        end = int(round(row.end * s["sfreq"]))
-        channel_window = tensor(s["data"][:, start:end], dtype=float32)
-        return channel_window, tensor(row.is_clean_window, dtype=float32)
 
 def file_keys(df, keys=KEYS):
     return set(map(tuple, df[keys].astype(str).drop_duplicates().itertuples(index=False)))
