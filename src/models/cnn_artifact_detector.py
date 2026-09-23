@@ -9,10 +9,11 @@ Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 
 # General imports
 import json
-import time
+import psutil
 import logging
 from pathlib import Path
 from typing import Optional, Dict, Any, Tuple, Literal
+from collections import OrderedDict
 
 # Data libraries
 import numpy as np
@@ -27,17 +28,17 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import (
     classification_report, confusion_matrix, roc_curve,
     precision_recall_curve, accuracy_score, precision_score,
-    recall_score, f1_score, auc,
+    recall_score, f1_score,
 )
+from tqdm import tqdm
 
-from src.core.session_cache import get_or_compute_session
+from src.utils.session_cache import get_or_compute_session
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"[INFO] Using device: {device}")
 
 # Loss
-
 class FocalLossWithClassWeights(nn.Module):
     """Binary focal loss with class weights."""
 
@@ -61,7 +62,7 @@ class FocalLossWithClassWeights(nn.Module):
 
 # Early stopping
 class F1EarlyStopping:
-    """Stops training according to F1 validation improvement by epocsh `patience`."""
+    """Stops training according to F1 validation improvement by epochs `patience`."""
 
     def __init__(self, patience: int = 10, restore_best_weights: bool = True, verbose: bool = True):
         self.patience = patience
@@ -220,30 +221,57 @@ class EEGWindowDataset(Dataset):
     """
 
     def __init__(self, windowed_df: pd.DataFrame, target_col: str,
-                 session_cache_dir: str = "cache/sessions", ica_cache_dir: str = "cache/ica"):
+                 session_cache_dir: str = "cache/sessions", 
+                 ica_cache_dir: str = "cache/ica",
+                 max_cached_sessions: Optional[int] = None,
+                 cache_memory_fraction: float = 0.3):
         self.df = windowed_df.reset_index(drop=True)
         self.target_col = target_col
         self.session_cache_dir = session_cache_dir
         self.ica_cache_dir = ica_cache_dir
-        self._cached_key = None
-        self._cache = None
+        self.cache_memory_fraction = cache_memory_fraction
+        self.max_cached_sessions = max_cached_sessions
+        self._session_cache: "OrderedDict[tuple, dict]" = OrderedDict()
+        self._estimated_session_bytes: Optional[int] = None
 
     def __len__(self) -> int:
         return len(self.df)
 
     def _get_session(self, patient, session, section, path_edf):
         key = (patient, session)
-        if self._cached_key != key:
-            self._cache = get_or_compute_session(
-                patient, session, section, path_edf,
-                cache_dir=self.session_cache_dir, 
-                ica_cache_dir=self.ica_cache_dir, 
-                use_ica=False,
-                bipolar_montage=True
-            )
-            self._cached_key = key
-        return self._cache
+        if key in self._session_cache:
+            self._session_cache.move_to_end(key)
+            self._cache_hits = getattr(self, "_cache_hits", 0) + 1
+            return self._session_cache[key]
 
+        self._cache_misses = getattr(self, "_cache_misses", 0) + 1
+        data = get_or_compute_session(
+            patient, session, section, path_edf,
+            cache_dir=self.session_cache_dir,
+            ica_cache_dir = self.ica_cache_dir,
+            use_ica=False,
+            bipolar_montage=True,
+        )
+
+        if self._estimated_session_bytes is None:
+            self._estimated_session_bytes = data["data"].nbytes
+            if self.max_cached_sessions is None:
+                available_bytes = psutil.virtual_memory().available
+                budget = available_bytes * self.cache_memory_fraction
+                self.max_cached_sessions = max(1, int(budget // self._estimated_session_bytes))
+                self.logger_max_cached_sessions_msg = (
+                    f"[INFO] Calculated max_cached_sessions:"
+                    f"{self.max_cached_sessions} (session={self._estimated_session_bytes/1e6:.1f}MB,)"
+                    f"budget: {budget/1e9:.2f}GB"
+                )
+                print(self.logger_max_cached_sessions_msg)
+
+        self._session_cache[key] = data
+        if len(self._session_cache) > self.max_cached_sessions:
+            self._session_cache.popitem(last=False)
+
+        return data
+    
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
         s = self._get_session(row.Patient, row.Session, row.Section, row.EDF_path)
@@ -275,6 +303,7 @@ class ArtifactDetector:
         self.results_dir.mkdir(parents=True, exist_ok=True)
 
     def build_model(self, n_channels: int, n_timesteps: int) -> nn.Module:
+        self.input_shape = (n_channels, n_timesteps)
         self.model = build_model_for_artifact((n_channels, n_timesteps), self.model_type).to(self.device)
         n_params = sum(p.numel() for p in self.model.parameters())
         self.logger.info(f"Model({self.model_type}). Parameters: {n_params:,}")
@@ -283,12 +312,19 @@ class ArtifactDetector:
     def train(self, train_loader: DataLoader, val_loader: DataLoader,
               epochs: int = 100, lr: float = 1e-3, patience_f1: int = 10, patience_lr: int = 3,
               class_weights: Optional[Dict[int, float]] = None,
-              focal_params: Optional[Dict[str, float]] = None) -> Dict[str, list]:
+              focal_params: Optional[Dict[str, float]] = None,
+              checkpoints_dir: str = "/workspace/checkpoints") -> Dict[str, list]:
 
         all_train_labels = []
         for _, y_batch in train_loader:
             all_train_labels.append(y_batch.numpy())
         all_train_labels = np.concatenate(all_train_labels)
+
+        hits = getattr(train_loader.dataset, "_cache_hits", 0)
+        misses = getattr(train_loader.dataset, "_cache_misses", 0)
+        total = hits + misses
+        if total > 0:
+            print(f"[CACHE] hits={hits} | misses={misses} | hit_rate={hits/total:.2%}")
 
         neg_count = (all_train_labels == 0).sum()
         pos_count = (all_train_labels == 1).sum()
@@ -303,26 +339,49 @@ class ArtifactDetector:
         focal_params = focal_params or {"alpha": 0.25, "gamma": 2.0}
         class_weights = class_weights or calculated_class_weights
 
-        criterion = FocalLossWithClassWeights(**focal_params, class_weights=calculated_class_weights)
+        criterion = FocalLossWithClassWeights(**focal_params, class_weights=class_weights)
         optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
             optimizer, mode="min", factor=0.7, patience=patience_lr, min_lr=1e-7
         )
         early_stopper = F1EarlyStopping(patience=patience_f1, verbose=self.verbose)
 
-        run_id = int(time.time())
-        ckpt_dir = Path("checkpoints") / self.artifact_name
+        ckpt_dir = Path(checkpoints_dir) / f"cnn_{self.artifact_name}"
         ckpt_dir.mkdir(parents=True, exist_ok=True)
-        ckpt_path = ckpt_dir / f"cnn_{self.artifact_name}_best_{run_id}.pt"
-        best_val_loss = float("inf")
+        latest_path = ckpt_dir / "latest.pt"
+        best_path = ckpt_dir / "best_f1.pt"
 
-        self.logger.info(f"Iniciando entrenamiento: epochs={epochs}")
+        start_epoch = 0
+        if latest_path.exists():
+            ckpt = torch.load(latest_path, map_location=self.device, weights_only=False)
+            self.model.load_state_dict(ckpt["model_state"])
+            optimizer.load_state_dict(ckpt["optimizer_state"])
+            scheduler.load_state_dict(ckpt["scheduler_state"])
+            early_stopper.best_f1 = ckpt["early_stopper_best_f1"]
+            early_stopper.wait = ckpt["early_stopper_wait"]
+            early_stopper.best_state = ckpt["early_stopper_best_state"]
+            self.history = ckpt["history"]
+            start_epoch = ckpt["epoch"] + 1
+            self.logger.info(f"Resuming from {start_epoch} epoch (best_f1={early_stopper.best_f1:.4f})")
 
-        for epoch in range(epochs):
+        self.logger.info(f"Starting training: epochs={epochs}")
+
+        import signal
+        _interrupted = {"flag": False}
+        def _handle_sigterm(signum, frame):
+            _interrupted["flag"] = True
+        signal.signal(signal.SIGTERM, _handle_sigterm)
+
+        for epoch in range(start_epoch, epochs):
+            if _interrupted["flag"]:
+                self.logger.warning(f"SIGTERM received, stopping at {epoch} epoch")
+                break
+
             self.model.train()
             train_loss = 0.0
-
-            for X_batch, y_batch in train_loader:
+            train_bar = tqdm(train_loader, desc=f"[{self.artifact_name}] Epoch {epoch+1}/{epochs} [train]", leave=False)
+            
+            for X_batch, y_batch in train_bar:
                 X_batch, y_batch = X_batch.to(self.device), y_batch.to(self.device)
                 optimizer.zero_grad()
                 logits = self.model(X_batch)
@@ -330,18 +389,23 @@ class ArtifactDetector:
                 loss.backward()
                 optimizer.step()
                 train_loss += loss.item()
+                train_bar.set_postfix(loss=f"{loss.item():.4f}")
+
 
             train_loss /= len(train_loader)
 
             self.model.eval()
             val_loss, all_probs, all_true = 0.0, [], []
+            val_bar = tqdm(val_loader, desc=f"[{self.artifact_name}] Epoch {epoch+1}/{epochs} [val]", leave=False)
+
             with torch.no_grad():
-                for X_batch, y_batch in val_loader:
+                for X_batch, y_batch in val_bar:
                     X_batch, y_batch = X_batch.to(self.device), y_batch.to(self.device)
                     logits = self.model(X_batch)
                     val_loss += criterion(logits, y_batch).item()
                     all_probs.append(torch.sigmoid(logits).cpu().numpy())
                     all_true.append(y_batch.cpu().numpy())
+                    val_bar.set_postfix(loss=f"{batch_val_loss:.4f}")
             val_loss /= len(val_loader)
 
             y_proba_val = np.concatenate(all_probs)
@@ -357,16 +421,32 @@ class ArtifactDetector:
                       f"- loss={train_loss:.4f} val_loss={val_loss:.4f} val_f1={val_f1:.4f}")
 
             scheduler.step(val_loss)
-            if val_loss < best_val_loss:
-                best_val_loss = val_loss
-                torch.save(self.model.state_dict(), ckpt_path)
 
+            was_best = val_f1 > early_stopper.best_f1
             early_stopper.step(val_f1, self.model, epoch)
+            if was_best:
+                torch.save(self.model.state_dict(), best_path)
+
+            torch.save({
+                "epoch": epoch,
+                "model_state": self.model.state_dict(),
+                "optimizer_state": optimizer.state_dict(),
+                "scheduler_state": scheduler.state_dict(),
+                "early_stopper_best_f1": early_stopper.best_f1,
+                "early_stopper_wait": early_stopper.wait,
+                "early_stopper_best_state": early_stopper.best_state,
+                "history": self.history,
+            }, latest_path)
+
             if early_stopper.should_stop:
                 break
 
-        self.model.load_state_dict(torch.load(ckpt_path, map_location=self.device))
-        self.logger.info("Entrenamiento completado.")
+        if early_stopper.best_state is not None:
+            self.model.load_state_dict(early_stopper.best_state)
+        elif best_path.exists():
+            self.model.load_state_dict(torch.load(best_path, map_location=self.device, weights_only=True))
+
+        self.logger.info("Training completed.")
         return self.history
 
     def _predict_proba(self, loader: DataLoader) -> Tuple[np.ndarray, np.ndarray]:
@@ -443,7 +523,11 @@ class ArtifactDetector:
 
     def save(self, filepath: Optional[str] = None) -> None:
         filepath = Path(filepath) if filepath else self.results_dir / f"cnn_{self.artifact_name}.pt"
-        torch.save({"state_dict": self.model.state_dict(), "model_type": self.model_type}, filepath)
+        torch.save({
+            "state_dict": self.model.state_dict(), 
+            "model_type": self.model_type, 
+            "input_shape": self.input_shape,
+            }, filepath)
         hist_path = self.results_dir / f"cnn_{self.artifact_name}_history.json"
         with open(hist_path, "w", encoding="utf-8") as f:
             json.dump(self.history, f, indent=2)
@@ -470,7 +554,8 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
                window_size_sec: float, sfreq: float, n_channels: int,
                session_cache_dir: str, ica_cache_dir: str, models_dir: str = "models_cnn",
                model_type: str = "lightweight", epochs: int = 100, batch_size: int = 64,
-               max_fp_per_day: float = 100, force_retrain: bool = False) -> Dict[str, Any]:
+               max_fp_per_day: float = 100, force_retrain: bool = False,
+               checkpoints_dir: str="/workspace/checkpoints") -> Dict[str, Any]:
     """
     Evaluation of each artefact.
     """
@@ -490,7 +575,7 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
     n_timesteps = int(window_size_sec * sfreq)
     detector = ArtifactDetector(artifact_name=model_name, model_type=model_type)
     detector.build_model(n_channels=n_channels, n_timesteps=n_timesteps)
-    detector.train(train_loader, val_loader, epochs=epochs)
+    detector.train(train_loader, val_loader, epochs=epochs, checkpoints_dir=checkpoints_dir)
 
     results = detector.evaluate(val_loader, test_loader, window_size_sec=window_size_sec,
                                  max_fp_per_day=max_fp_per_day)

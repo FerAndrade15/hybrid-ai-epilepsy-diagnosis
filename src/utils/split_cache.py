@@ -33,5 +33,6 @@ def load_selected_sw(registry_path, artifact, window, n_patients, version):
     registry = _load(registry_path)
     key = _key(artifact, window, n_patients, version)
     if key not in registry:
-        raise KeyError(f"Falta sw para {key}. Corre RF con esa config primero.")
+        print(f"[INFO]: Split for {key} not found")
+        return None 
     return registry[key]

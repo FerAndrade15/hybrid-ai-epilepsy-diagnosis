@@ -20,16 +20,19 @@ from src.core.windowing import get_or_build_windows
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report
 from src.models.cnn_artifact_detector import binary_cnn
 from src.utils.patient_registry import load_registry, forced_for
+from src.utils.split_cache import load_selected_sw, save_selected_sw
 
 BASE_DIR = find_project_root("src")
 CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
-
+ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
+
 ANNOTATIONS_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
+SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 for d in (SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
@@ -88,11 +91,67 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         #display(win_annotations_corpus_patient.head(25))
         print(win_annotations_corpus_patient.columns.tolist())
 
+        selected_sw = load_selected_sw(SPLIT_REGISTRY_PATH, artifact, window, n_patients, VERSION)
+
+        if selected_sw is None:
+            raise ValueError("Not available register, searched at RF models cache files")
+            """ SIZE WEIGHT SWEEP 
+            print("\n"+("*"*60))
+            sweep_results = []
+            for sw in [0.0, 0.3, 0.5, 0.7, 1.0]:
+                print(f"Size weight: {sw}")
+                candidate_dataset, assignment, report = get_or_compute_labeled_split(
+                    windowed_annotations_corpus_patient, 
+                    artifact, 
+                    group_col="Patient",
+                    ratios=RATIOS,
+                    size_weight=sw, 
+                    dataset_division_dir=SPLIT_CACHE_DIR, 
+                    version=VERSION, 
+                    artifact_umbral=window['artifact_umbral'],
+                    window_size_sec=window['window_size_sec'],
+                    stride_sec=window['stride_sec'],
+                    target=str(artifact),
+                    forced=current_forced,
+                )
+                # print("[DEBUG] Report with ratios:", RATIOS, "\n", report)
+                # print("[DEBUG] Assigment value:", assignment)
+                balance = split_balance_report(candidate_dataset, target_col=artifact)
+                spread = balance["positive_rate"].max() - balance["positive_rate"].min()
+                size_pct = balance["n_total"]/balance["n_total"].sum()
+                size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
+                # print("[DEBUG] Split balance (positive rate):\n", balance)
+
+                sweep_results.append({
+                    "size_weight": sw,
+                    "test_rate": balance.loc["test", "positive_rate"],
+                    "train_rate": balance.loc["train", "positive_rate"],
+                    "val_rate": balance.loc["val", "positive_rate"],
+                    "rate_spread": spread,
+                    "train_pct": size_pct["train"],
+                    "val_pct": size_pct["val"],
+                    "test_pct": size_pct["test"],
+                    "size_dev": size_dev,
+                    "combined_score": spread + size_dev,
+                })
+
+            print("\n"+("*"*60))
+            sweep_report = pd.DataFrame(sweep_results).set_index("size_weight")
+            print(f"\n[INFO] Sweep size weight results for {artifact}:")
+            print(sweep_report.round(4).sort_values("rate_spread"))
+            selected_sw = sweep_report['combined_score'].idxmin()
+            print(f"[INFO] Best suggested size weight for {artifact}: {selected_sw}")
+            save_selected_sw(SPLIT_REGISTRY_PATH, artifact, window, n_patients, VERSION, selected_sw)
+            """
+
+        else:
+            print(f"[INFO] Best suggested and saved size weight for {artifact}: {selected_sw}")        
+
         splitted_dataset, assignment, report = get_or_compute_labeled_split(  windowed_annotations_corpus_patient, 
-                                                                                artifact, 
+                                                                                label_col=artifact, 
                                                                                 group_col="Patient",
                                                                                 ratios=RATIOS,
-                                                                                size_weight=selected_sw,        # tendré que dejar un registro json para poder verificar esta categoría para que solo se calcule en rf y ya solo se lea en cnn
+                                                                                size_weight=selected_sw, 
                                                                                 dataset_division_dir=SPLIT_CACHE_DIR, 
                                                                                 version=VERSION, 
                                                                                 target=str(artifact),
@@ -111,25 +170,34 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         size_pct = balance["n_total"]/balance["n_total"].sum()
         size_dev = (size_pct - pd.Series(RATIOS)).abs().max()
         print("[DEBUG] Split balance (positive rate):\n", balance)
+
         bad = {p: (s, assignment[p]) for p, s in FORCED.items() if p in assignment and assignment[p] != s}
         print("Broken rules:", len(bad), "| splits per patient:", pd.Series(assignment).value_counts().to_dict())
-        display(splitted_dataset.head(10))
-        print(splitted_dataset.columns.to_list())
 
+        #display(splitted_dataset.head(10))
+        #print(splitted_dataset.columns.to_list())
+  
         split_counts = splitted_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
-
 
         print("\n" + ("="*50))
         print(f"Starting training of CNN_{artifact}")
 
         config = CNN_CONFIG[artifact]
+
         results.setdefault(artifact, []).append( binary_cnn(
-                                                            splitted_dataset, target_col=target_col, model_name=f"cnn_{artifact}",
-                                                            window_size_sec=window["window_size_sec"], sfreq=SFREQ, n_channels=N_CHANNELS,
-                                                            session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR),
-                                                            models_dir=str(MODELS_DIR), model_type=config["model_type"],
-                                                            epochs=config["epochs"], max_fp_per_day=config["max_fp_per_day"],
+                                                            windowed_df=splitted_dataset, 
+                                                            target_col=artifact, 
+                                                            model_name=f"cnn_{artifact}",
+                                                            window_size_sec=window["window_size_sec"], 
+                                                            sfreq=SFREQ, 
+                                                            n_channels=N_CHANNELS,
+                                                            session_cache_dir=str(SESSION_CACHE_DIR), 
+                                                            ica_cache_dir=str(ICA_CACHE_DIR),
+                                                            models_dir=str(MODELS_DIR), 
+                                                            model_type=config["model_type"],
+                                                            epochs=config["epochs"], 
+                                                            max_fp_per_day=config["max_fp_per_day"],
                                                             force_retrain=True,
                                                         )
                                                 )

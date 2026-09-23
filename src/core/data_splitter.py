@@ -111,11 +111,16 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
                              size_weight=1, forced=None, registry_path=None):
 
     df = windowed_df.copy()
-
+    
     if drop_excluded and "tuar_is_excluded" in df.columns:
         df = df[df["tuar_is_excluded"] == 0]
     if drop_ambiguous and "tuar_is_ambiguous" in df.columns:
         df = df[df["tuar_is_ambiguous"] == 0]
+
+    if drop_excluded and "is_excluded" in df.columns:
+        df = df[df["is_excluded"] == 0]
+    if drop_ambiguous and "is_ambiguous" in df.columns:
+        df = df[df["is_ambiguous"] == 0]
         
     counts = df.groupby(group_col)[target_col].sum()
     sizes = df.groupby(group_col).size()

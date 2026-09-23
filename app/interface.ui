@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>800</height>
+    <width>1243</width>
+    <height>861</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -30,7 +30,7 @@ background-color: #1b1b27;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QSplitter" name="main_splitter">
       <property name="orientation">
@@ -52,6 +52,26 @@ background-color: #1b1b27;
        <property name="frameShadow">
         <enum>QFrame::Shadow::Raised</enum>
        </property>
+       <widget class="QLabel" name="channelsTitleLabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Monospace</family>
+          <pointsize>14</pointsize>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Canales - EEG</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QFrame" name="eeg_plot">
        <property name="minimumSize">

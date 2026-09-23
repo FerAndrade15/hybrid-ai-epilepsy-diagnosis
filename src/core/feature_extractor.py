@@ -23,7 +23,7 @@ from scipy.stats import skew, kurtosis
 
 # Project modules
 from src.core.data_config import RAW_TO_TARGET, TUAR_Labels
-from src.core.session_cache import get_or_compute_session
+from src.utils.session_cache import get_or_compute_session
 from src.models.ica_model import channel_contribution
 from src.core.windowing import file_keys, list_data
 

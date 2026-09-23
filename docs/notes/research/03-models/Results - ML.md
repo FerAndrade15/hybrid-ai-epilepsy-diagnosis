@@ -1,4 +1,7 @@
 
+## A
+
+``` bash
 Loading all dataset for training...
   channel  start_time  stop_time label  confidence  ... Partition NoChannels  Duration                                                EDF                                                CSV
 0  FP1-F7     22.9737    30.0688  eyem         1.0  ...                   36  1441.996  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
@@ -6200,3 +6203,1161 @@ Traceback (most recent call last):
     time.sleep(0.01)
 KeyboardInterrupt
 PS C:\Users\diseñoeinnovacion\Docume
+```
+
+## B
+
+``` bash
+PS C:\Users\diseñoeinnovacion\Documents\MariaAndrade\hybrid-ai-epilepsy-diagnosis> uv run python -m pipelines.artifacts.ica_cnn_rf
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+1  FP1-F7  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+2  FP1-F7  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+3   F7-T3  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+4   F7-T3  ...  D:\Users\disenoeinnovacion\Datasets\DATA_EEG_T...
+
+[5 rows x 14 columns]
+{'train': 13, 'test': 3}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | windows: 5s (2s stride)
+[INFO] Existing dataset, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\dataset\rf_dataset_eye_w5_s2_ua0.1_p50_v2.parquet
+[INFO] Split distribution:  split
+train    342499
+test      84801
+val       63082
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_eye_w5s2_2_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w5s2_2       0.99      0.97      0.98     83099
+   rf_eye_w5s2_2       0.33      0.75      0.46      1702
+
+        accuracy                           0.96     84801
+       macro avg       0.66      0.86      0.72     84801
+    weighted avg       0.98      0.96      0.97     84801
+
+Confusion matrix -------------------------
+[[80525  2574]
+ [  432  1270]]
+General metrics -------------------------
+model                 rf_eye_w5s2_2
+sensitivity                  0.7462
+specificity                   0.969
+precision                    0.3304
+accuracy                     0.9646
+f1_score                      0.458
+auc_roc                      0.9423
+false_alar_rate               0.031
+fp_per_day                   524.51
+TP                             1270
+FP                             2574
+TN                            80525
+FN                              432
+n_test_windows                84801
+covered_test_hours           117.78
+**************************************************
+>> eye | windows: 2s (1s stride)
+[INFO] Existing dataset, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\dataset\rf_dataset_eye_w2_s1_ua0.15_p50_v2.parquet
+[INFO] Split distribution:  split
+train    683723
+test     169331
+val      125961
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_eye_w2s1_2_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w2s1_2       1.00      0.97      0.98    166442
+   rf_eye_w2s1_2       0.33      0.75      0.46      2889
+
+        accuracy                           0.97    169331
+       macro avg       0.66      0.86      0.72    169331
+    weighted avg       0.98      0.97      0.98    169331
+
+Confusion matrix -------------------------
+[[162027   4415]
+ [   708   2181]]
+General metrics -------------------------
+model                 rf_eye_w2s1_2
+sensitivity                  0.7549
+specificity                  0.9735
+precision                    0.3307
+accuracy                     0.9697
+f1_score                     0.4599
+auc_roc                      0.9667
+false_alar_rate              0.0265
+fp_per_day                  1126.36
+TP                             2181
+FP                             4415
+TN                           162027
+FN                              708
+n_test_windows               169331
+covered_test_hours            94.07
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | windows: 1s (0.5s stride)
+[INFO] Existing dataset, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\dataset\rf_dataset_muscle_w1_s0.5_ua0.3_p50_v2.parquet
+[INFO] Split distribution:  split
+train    1384774
+test      317303
+val       249517
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - muscle
+[INFO] Pretrained model found, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_muscle_w1s0.5_2_and_analysis_random.joblib
+Final report -------------------------
+                       precision    recall  f1-score   support
+
+no_rf_muscle_w1s0.5_2       0.99      0.90      0.95    312601
+   rf_muscle_w1s0.5_2       0.08      0.56      0.14      4702
+
+             accuracy                           0.90    317303
+            macro avg       0.54      0.73      0.54    317303
+         weighted avg       0.98      0.90      0.93    317303
+
+Confusion matrix -------------------------
+[[282112  30489]
+ [  2069   2633]]
+General metrics -------------------------
+model                 rf_muscle_w1s0.5_2
+sensitivity                         0.56
+specificity                       0.9025
+precision                         0.0795
+accuracy                          0.8974
+f1_score                          0.1392
+auc_roc                           0.8932
+false_alar_rate                   0.0975
+fp_per_day                        8302.0
+TP                                  2633
+FP                                 30489
+TN                                282112
+FN                                  2069
+n_test_windows                    317303
+covered_test_hours                 88.14
+**************************************************
+>> muscle | windows: 1s (1s stride)
+[INFO] Existing dataset, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\dataset\rf_dataset_muscle_w1_s1_ua0.3_p50_v2.parquet
+[INFO] Split distribution:  split
+train    691479
+test     158576
+val      124305
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - muscle
+[INFO] Pretrained model found, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_muscle_w1s1_2_and_analysis_random.joblib
+Final report -------------------------
+                     precision    recall  f1-score   support
+
+no_rf_muscle_w1s1_2       0.99      0.91      0.95    156230
+   rf_muscle_w1s1_2       0.08      0.55      0.14      2346
+
+           accuracy                           0.90    158576
+          macro avg       0.54      0.73      0.54    158576
+       weighted avg       0.98      0.90      0.94    158576
+
+Confusion matrix -------------------------
+[[141599  14631]
+ [  1046   1300]]
+General metrics -------------------------
+model                 rf_muscle_w1s1_2
+sensitivity                     0.5541
+specificity                     0.9063
+precision                       0.0816
+accuracy                        0.9011
+f1_score                        0.1423
+auc_roc                          0.893
+false_alar_rate                 0.0937
+fp_per_day                     7971.69
+TP                                1300
+FP                               14631
+TN                              141599
+FN                                1046
+n_test_windows                  158576
+covered_test_hours               44.05
+**************************************************
+>> muscle | windows: 2s (1s stride)
+[INFO] Existing dataset, loading: D:\Users\disenoeinnovacion\ml-outputs\artifact\dataset\rf_dataset_muscle_w2_s1_ua0.3_p50_v2.parquet
+[INFO] Split distribution:  split
+train    685044
+test     156725
+val      123177
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - muscle
+
+============================================================
+Modelo: rf_muscle_w2s1_2
+Train: 685044 (pos=12135) | Val: 123177 (pos = 2762) | Test: 156725 (pos=2397)
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.4034090909090909
+        params:{'n_estimators': 344, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.3065309666216477
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.12336250426782153
+        params:{'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.4098867897055076
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.16246735747588328
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.2533741744041352
+        params:{'n_estimators': 501, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.32874460653379906
+        params:{'n_estimators': 395, 'max_depth': 16, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.2289583727693552
+        params:{'n_estimators': 191, 'max_depth': 18, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.2126669981235265
+        params:{'n_estimators': 536, 'max_depth': 25, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.2402372444815265
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.319480988495073
+        params:{'n_estimators': 180, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.28132573524595533
+        params:{'n_estimators': 455, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.2754838572007767
+        params:{'n_estimators': 313, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.193250792477505
+        params:{'n_estimators': 395, 'max_depth': 8, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.14746956249797802
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.31071349023684014
+        params:{'n_estimators': 334, 'max_depth': 13, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.15953955080414498
+        params:{'n_estimators': 184, 'max_depth': 16, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.26286387551546914
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.16258899985664452
+        params:{'n_estimators': 298, 'max_depth': 10, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.1816100571673383
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.16937635588359973
+        params:{'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.40547511145499426
+        params:{'n_estimators': 495, 'max_depth': 25, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.3531044853813008
+        params:{'n_estimators': 528, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.23295082836784128
+        params:{'n_estimators': 257, 'max_depth': 22, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.38709456216142085
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.13869710015433354
+        params:{'n_estimators': 508, 'max_depth': 24, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.22808617544825688
+        params:{'n_estimators': 362, 'max_depth': 22, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.29215080758036927
+        params:{'n_estimators': 400, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.2031686717705675
+        params:{'n_estimators': 166, 'max_depth': 8, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.15999765657039078
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.3279583875162549
+        params:{'n_estimators': 534, 'max_depth': 19, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.1950364795771816
+        params:{'n_estimators': 408, 'max_depth': 20, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.19459819746718057
+        params:{'n_estimators': 190, 'max_depth': 18, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.2182655510151132
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.11879143007769626
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.13721851647524952
+        params:{'n_estimators': 596, 'max_depth': 26, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.24007075385681462
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.12175540691588453
+        params:{'n_estimators': 562, 'max_depth': 12, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.1690382606099806
+        params:{'n_estimators': 206, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.15919576570879881
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.24075777082950156
+        params:{'n_estimators': 338, 'max_depth': 25, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.27839353240318165
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.11599295531342957
+        params:{'n_estimators': 497, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.18137807102242248
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.14974922903016935
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.11980663705252156
+        params:{'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.29159892839969775
+        params:{'n_estimators': 257, 'max_depth': 12, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.17399524770689082
+        params:{'n_estimators': 423, 'max_depth': 14, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.14649483652568882
+        params:{'n_estimators': 304, 'max_depth': 7, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 1.0}
+        f2 score:0.1190527728473094
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.21478521478521478
+        params:{'n_estimators': 355, 'max_depth': 11, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.19372416653556257
+        params:{'n_estimators': 268, 'max_depth': 24, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.2972245236122618
+        params:{'n_estimators': 505, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.25598010578668984
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3, 'sampling_strategy': 1.0}
+        f2 score:0.1231040184027029
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.16397878558285528
+        params:{'n_estimators': 474, 'max_depth': 12, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.15349866840467014
+        params:{'n_estimators': 396, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.15246111823401529
+        params:{'n_estimators': 158, 'max_depth': 23, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.277088948787062
+        params:{'n_estimators': 448, 'max_depth': 15, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.18256108852300632
+[INFO] Threshold decision based on validation:
+        thr05: threshold=0.5000 | F2(val)=0.4099 | fp_per_day_val(val)=4969.9798 <- choosen
+        adjusted: threshold=0.5556 | F2(val)=0.4386 | fp_per_day_val(val)=3736.5157
+[INFO] Best configuration found with validation: {'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3} | F1(val)=0.4099
+Final report -------------------------
+                     precision    recall  f1-score   support
+
+no_rf_muscle_w2s1_2       0.99      0.91      0.95    154328
+   rf_muscle_w2s1_2       0.08      0.54      0.14      2397
+
+           accuracy                           0.90    156725
+          macro avg       0.54      0.73      0.55    156725
+       weighted avg       0.98      0.90      0.94    156725
+
+Confusion matrix -------------------------
+[[140043  14285]
+ [  1094   1303]]
+General metrics -------------------------
+model                 rf_muscle_w2s1_2
+sensitivity                     0.5436
+specificity                     0.9074
+precision                       0.0836
+accuracy                        0.9019
+f1_score                        0.1449
+auc_roc                         0.8901
+false_alar_rate                 0.0926
+fp_per_day                     3937.55
+TP                                1303
+FP                               14285
+TN                              140043
+FN                                1094
+n_test_windows                  156725
+covered_test_hours               87.07
+Model saved in D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_muscle_w2s1_2_random.joblib
+Model with metrics saved in D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_muscle_w2s1_2_and_analysis_random.joblib
+**************************************************
+>> muscle | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+    Patient Session Section    Montage Partition  Window_size  stride  Start  ...  non_physiological is_ambiguous  sample_weight  distinguish  genuine_cooccurrence weak_overlap  is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                      5       2      0  ...                  0            0            1.0            0                     0            0              0            0
+1  aaaaaaju    s005    t000  01_tcp_ar                      5       2      2  ...                  0            0            1.0            0                     0            0              0            0
+2  aaaaaaju    s005    t000  01_tcp_ar                      5       2      4  ...                  0            0            1.0            0                     0            0              0            0
+3  aaaaaaju    s005    t000  01_tcp_ar                      5       2      6  ...                  0            0            1.0            0                     0            0              0            0
+4  aaaaaaju    s005    t000  01_tcp_ar                      5       2      8  ...                  0            0            1.0            0                     0            0              0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 38834 -> sin ambiguas: 37860 | positivas: 9393
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_muscle_w5_s2_sw0.0_ua0.2
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_muscle_w5_s2_sw0.3_ua0.2
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_muscle_w5_s2_sw0.5_ua0.2
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_muscle_w5_s2_sw0.7_ua0.2
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_muscle_w5_s2_sw1.0_ua0.2
+
+************************************************************
+
+[INFO] Sweep size weight results for muscle:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.3             0.2040      0.2399    0.3026       0.0986     0.7076   0.1266    0.1657    0.0234          0.1219
+0.0             0.1740      0.2785    0.1975       0.1045     0.6081   0.1837    0.2082    0.0919          0.1964
+0.5             0.2110      0.2236    0.4078       0.1968     0.7329   0.1098    0.1573    0.0402          0.2370
+0.7             0.2169      0.2139    0.4568       0.2429     0.7385   0.1134    0.1480    0.0385          0.2814
+1.0             0.1350      0.2157    0.4792       0.3443     0.7078   0.1445    0.1477    0.0078          0.3521
+[INFO] Best suggested size weight for muscle: 0.3
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p50_v2_muscle_w5_s2_sw0.3_ua0.2 parquet and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test      6436        1313        5123       0.204009
+train    27480        6592       20888       0.239884
+val       4918        1488        3430       0.302562
+Broken rules: 0 | splits per patient: {'train': 33, 'test': 10, 'val': 7}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  ...  is_ambiguous sample_weight  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed  is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                      5       2      0  ...             0         1.000            0                     0             0             0            0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                      5       2      2  ...             0         1.000            0                     0             0             0            0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                      5       2      4  ...             0         1.000            0                     0             0             0            0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                      5       2      6  ...             0         1.000            0                     0             0             0            0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                      5       2      8  ...             0         1.000            0                     0             0             0            0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                      5       2     10  ...             0         1.000            0                     0             0             0            0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                      5       2     12  ...             0         1.000            0                     0             0             0            0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                      5       2     14  ...             0         1.000            0                     0             0             0            0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                      5       2     16  ...             0         1.000            0                     0             0             0            0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                      5       2     18  ...             0         0.948            0                     0             0             0            0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[WARN] ICA failed for aaaaaimu_s008_t000: One PCA component captures most of the explained variance (99.4121647598012%), your threshold results in 1 component. You should select a higher value.
+[SKIP] Session aaaaaimu_s008_t000 discarted by ICA error One PCA component captures most of the explained variance (99.4121647598012%), your threshold results in 1 component. You should select a higher value.
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob  ...  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological
+0          0        brain              clean         0.687185  ...                                    []                    []                       []                                  []
+1          1    eye blink                eye         0.949668  ...                                    []                    []                       []                                  []
+2          2        brain              clean         0.994398  ...                                    []                    []                       []                                  []
+3          3        other  non_physiological         0.726641  ...                                    []                    []                       []                                  []
+4          4        brain              clean         0.999643  ...                                    []                    []                       []                                  []
+5          5        brain              clean         0.993584  ...                                    []                    []                       []                                  []
+6          6        brain              clean         0.999535  ...                                    []                    []                       []                                  []
+7          7        brain              clean         0.978230  ...                                    []                    []                       []                                  []
+8          8    eye blink                eye         0.823060  ...                                    []                    []                       []                                  []
+9          9        brain              clean         0.773097  ...                                    []                    []                       []                                  []
+10        10        brain              clean         0.919012  ...                                    []                    []                       []                                  []
+11        11        brain              clean         0.936563  ...                                    []                    []                       []                                  []
+12         0        brain              clean         0.687185  ...                                    []                    []                       []                                  []
+13         1    eye blink                eye         0.949668  ...                                    []                    []                       []                                  []
+14         2        brain              clean         0.994398  ...                                    []                    []                       []                                  []
+15         3        other  non_physiological         0.726641  ...                                    []                    []                       []                                  []
+16         4        brain              clean         0.999643  ...                                    []                    []                       []                                  []
+17         5        brain              clean         0.993584  ...                                    []                    []                       []                                  []
+18         6        brain              clean         0.999535  ...                                    []                    []                       []                                  []
+19         7        brain              clean         0.978230  ...                                    []                    []                       []                                  []
+20         8    eye blink                eye         0.823060  ...                                    []                    []                       []                                  []
+21         9        brain              clean         0.773097  ...                                    []                    []                       []                                  []
+22        10        brain              clean         0.919012  ...                                    []                    []                       []                                  []
+23        11        brain              clean         0.936563  ...                                    []                    []                       []                                  []
+24         0        brain              clean         0.687185  ...                                    []                    []                       []                                  []
+
+[25 rows x 132 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob   ic_mean  ...  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean         0.687185 -2.295624  ...                                    []                    []                       []                                  []            0
+1         1    eye blink                eye         0.949668 -0.078697  ...                                    []                    []                       []                                  []            0
+2         2        brain              clean         0.994398  0.010555  ...                                    []                    []                       []                                  []            0
+3         3        other  non_physiological         0.726641 -2.448747  ...                                    []                    []                       []                                  []            0
+4         4        brain              clean         0.999643  0.005801  ...                                    []                    []                       []                                  []            0
+
+[5 rows x 133 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'FP1_variance', 'FP1_line_length', 'FP1_peak_to_peak', 'F3_variance', 'F3_line_length', 'F3_peak_to_peak', 'C3_variance', 'C3_line_length', 'C3_peak_to_peak', 'P3_variance', 'P3_line_length', 'P3_peak_to_peak', 'FP2_variance', 'FP2_line_length', 'FP2_peak_to_peak', 'F4_variance', 'F4_line_length', 'F4_peak_to_peak', 'C4_variance', 'C4_line_length', 'C4_peak_to_peak', 'P4_variance', 'P4_line_length', 'P4_peak_to_peak', 'F7_variance', 'F7_line_length', 'F7_peak_to_peak', 'T7_variance', 'T7_line_length', 'T7_peak_to_peak', 'P7_variance', 'P7_line_length', 'P7_peak_to_peak', 'F8_variance', 'F8_line_length', 'F8_peak_to_peak', 'T8_variance', 'T8_line_length', 'T8_peak_to_peak', 'P8_variance', 'P8_line_length', 'P8_peak_to_peak', 'FZ_variance', 'FZ_line_length', 'FZ_peak_to_peak', 'CZ_variance', 'CZ_line_length', 'CZ_peak_to_peak', 'O1_variance', 'O1_line_length', 'O1_peak_to_peak', 'O2_variance', 'O2_line_length', 'O2_peak_to_peak', 'PZ_variance', 'PZ_line_length', 'PZ_peak_to_peak', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+0    469358
+1      9344
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    340810
+test      75474
+val       62418
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - muscle
+
+============================================================
+Modelo: rf_muscle_w5s2_2
+Train: 340810 (pos=6543) | Val: 62418 (pos = 1488) | Test: 75474 (pos=1313)
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.4571572580645161
+        params:{'n_estimators': 344, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.4258315450643777
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.17617629541393687
+        params:{'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.45832488339079297
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.23987345900463114
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.4000587889476778
+        params:{'n_estimators': 501, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.45866364665911663
+        params:{'n_estimators': 395, 'max_depth': 16, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.3553286469290369
+        params:{'n_estimators': 191, 'max_depth': 18, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.30620308178585537
+        params:{'n_estimators': 536, 'max_depth': 25, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.32404098165356204
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.4425846063884219
+        params:{'n_estimators': 180, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.3817705299941759
+        params:{'n_estimators': 455, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.3874014835419564
+        params:{'n_estimators': 313, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.3248338532483385
+        params:{'n_estimators': 395, 'max_depth': 8, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.24566860659575893
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.4354090525723925
+        params:{'n_estimators': 334, 'max_depth': 13, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.2309679858835392
+        params:{'n_estimators': 184, 'max_depth': 16, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.39964317573595004
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.24002351250734766
+        params:{'n_estimators': 298, 'max_depth': 10, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.27616391664730033
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.24997442280803464
+        params:{'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.46106773580924243
+        params:{'n_estimators': 495, 'max_depth': 25, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.4701676149469476
+        params:{'n_estimators': 528, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.34942233632862646
+        params:{'n_estimators': 257, 'max_depth': 22, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.4683129159834089
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.19507676019057701
+        params:{'n_estimators': 508, 'max_depth': 24, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.31669910110277083
+        params:{'n_estimators': 362, 'max_depth': 22, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.41602654704111103
+        params:{'n_estimators': 400, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.3137513751375138
+        params:{'n_estimators': 166, 'max_depth': 8, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.25217600715588123
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.46135933634114396
+        params:{'n_estimators': 534, 'max_depth': 19, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.3239775097487984
+        params:{'n_estimators': 408, 'max_depth': 20, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.28170688220610957
+        params:{'n_estimators': 190, 'max_depth': 18, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.35748841472730053
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.15254690585911784
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.21048723367795738
+        params:{'n_estimators': 596, 'max_depth': 26, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.32414521705724164
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.16873647032015496
+        params:{'n_estimators': 562, 'max_depth': 12, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.25767389467755564
+        params:{'n_estimators': 206, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.22617199627444892
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.3320177602368032
+        params:{'n_estimators': 338, 'max_depth': 25, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.4091388837151549
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.13978838767979518
+        params:{'n_estimators': 497, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.2615005971985957
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.21514806045192786
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.16203450613369486
+        params:{'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.428101724485003
+        params:{'n_estimators': 257, 'max_depth': 12, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.28779404181046453
+        params:{'n_estimators': 423, 'max_depth': 14, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.234514687100894
+        params:{'n_estimators': 304, 'max_depth': 7, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 1.0}
+        f2 score:0.15567226890756303
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.3078411539645543
+        params:{'n_estimators': 355, 'max_depth': 11, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.307044343575419
+        params:{'n_estimators': 268, 'max_depth': 24, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.4187625754527163
+        params:{'n_estimators': 505, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.39414083181363607
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3, 'sampling_strategy': 1.0}
+        f2 score:0.17236961636113765
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.2659651933299352
+        params:{'n_estimators': 474, 'max_depth': 12, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.24567439374707728
+        params:{'n_estimators': 396, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.26339446242358866
+        params:{'n_estimators': 158, 'max_depth': 23, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.4076687116564417
+        params:{'n_estimators': 448, 'max_depth': 15, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.3131655583083409
+[INFO] Threshold decision based on validation:
+        thr05: threshold=0.5000 | F2(val)=0.4702 | fp_per_day_val(val)=1614.2728 <- choosen
+        adjusted: threshold=0.5531 | F2(val)=0.4834 | fp_per_day_val(val)=1220.8786
+[INFO] Best configuration found with validation: {'n_estimators': 495, 'max_depth': 25, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.5} | F1(val)=0.4702
+Final report -------------------------
+                     precision    recall  f1-score   support
+
+no_rf_muscle_w5s2_2       0.99      0.91      0.95     74161
+   rf_muscle_w5s2_2       0.09      0.56      0.16      1313
+
+           accuracy                           0.90     75474
+          macro avg       0.54      0.73      0.55     75474
+       weighted avg       0.98      0.90      0.93     75474
+
+Confusion matrix -------------------------
+[[67133  7028]
+ [  583   730]]
+General metrics -------------------------
+model                 rf_muscle_w5s2_2
+sensitivity                      0.556
+specificity                     0.9052
+precision                       0.0941
+accuracy                        0.8992
+f1_score                         0.161
+auc_roc                         0.8878
+false_alar_rate                 0.0948
+fp_per_day                     1609.08
+TP                                 730
+FP                                7028
+TN                               67133
+FN                                 583
+n_test_windows                   75474
+covered_test_hours              104.83
+Model saved in D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_muscle_w5s2_2_random.joblib
+Model with metrics saved in D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_muscle_w5s2_2_and_analysis_random.joblib
+
+==================================================
+ARTIFACT: non_physiological
+
+==================================================
+**************************************************
+>> non_physiological | windows: 0.5s (0.25s stride)
+
+************************************************************
+Generating windows...
+    Patient Session Section    Montage Partition  Window_size  stride  Start  ...  non_physiological is_ambiguous  sample_weight  distinguish  genuine_cooccurrence weak_overlap  is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.00  ...                  0            0            1.0            0                     0            0              0            0
+1  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.25  ...                  0            0            1.0            0                     0            0              0            0
+2  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.50  ...                  0            0            1.0            0                     0            0              0            0
+3  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.75  ...                  0            0            1.0            0                     0            0              0            0
+4  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   1.00  ...                  0            0            1.0            0                     0            0              0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 311930 -> sin ambiguas: 311057 | positivas: 29648
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w0.5_s0.25_sw0.0_ua0.2
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w0.5_s0.25_sw0.3_ua0.2
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w0.5_s0.25_sw0.5_ua0.2
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w0.5_s0.25_sw0.7_ua0.2
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w0.5_s0.25_sw1.0_ua0.2
+
+************************************************************
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.5             0.0645      0.0944    0.1447       0.0803     0.7036   0.1184    0.1780    0.0316          0.1119
+0.3             0.0780      0.0902    0.1587       0.0807     0.7312   0.1007    0.1682    0.0493          0.1300
+0.7             0.0701      0.0899    0.1564       0.0863     0.7198   0.1237    0.1565    0.0263          0.1126
+1.0             0.0406      0.0903    0.1677       0.1271     0.7099   0.1505    0.1396    0.0104          0.1375
+0.0             0.0463      0.1060    0.2197       0.1734     0.6279   0.0649    0.3072    0.1572          0.3306
+[INFO] Best suggested size weight for non_physiological: 0.5
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w0.5_s0.25_sw0.5_ua0.2 parquet and json
+[INFO] Saving patient asignation for non_physiological
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     55524        3580       51944       0.064477
+train   219486       20724      198762       0.094421
+val      36920        5344       31576       0.144745
+Broken rules: 0 | splits per patient: {'train': 32, 'test': 10, 'val': 8}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  ...  is_ambiguous sample_weight  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed  is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.00  ...             0           1.0            0                     0             0             0            0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.25  ...             0           1.0            0                     0             0             0            0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.50  ...             0           1.0            0                     0             0             0            0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   0.75  ...             0           1.0            0                     0             0             0            0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   1.00  ...             0           1.0            0                     0             0             0            0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   1.25  ...             0           1.0            0                     0             0             0            0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   1.50  ...             0           1.0            0                     0             0             0            0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   1.75  ...             0           1.0            0                     0             0             0            0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   2.00  ...             0           1.0            0                     0             0             0            0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                    0.5    0.25   2.25  ...             0           1.0            0                     0             0             0            0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[WARN] ICA failed for aaaaaimu_s008_t000: One PCA component captures most of the explained variance (99.4121647598012%), your threshold results in 1 component. You should select a higher value.
+[SKIP] Session aaaaaimu_s008_t000 discarted by ICA error One PCA component captures most of the explained variance (99.4121647598012%), your threshold results in 1 component. You should select a higher value.
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob  ...  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological
+0          0        brain              clean         0.687185  ...                                    []                    []                       []                                  []
+1          1    eye blink                eye         0.949668  ...                                    []                    []                       []                                  []
+2          2        brain              clean         0.994398  ...                                    []                    []                       []                                  []
+3          3        other  non_physiological         0.726641  ...                                    []                    []                       []                                  []
+4          4        brain              clean         0.999643  ...                                    []                    []                       []                                  []
+5          5        brain              clean         0.993584  ...                                    []                    []                       []                                  []
+6          6        brain              clean         0.999535  ...                                    []                    []                       []                                  []
+7          7        brain              clean         0.978230  ...                                    []                    []                       []                                  []
+8          8    eye blink                eye         0.823060  ...                                    []                    []                       []                                  []
+9          9        brain              clean         0.773097  ...                                    []                    []                       []                                  []
+10        10        brain              clean         0.919012  ...                                    []                    []                       []                                  []
+11        11        brain              clean         0.936563  ...                                    []                    []                       []                                  []
+12         0        brain              clean         0.687185  ...                                    []                    []                       []                                  []
+13         1    eye blink                eye         0.949668  ...                                    []                    []                       []                                  []
+14         2        brain              clean         0.994398  ...                                    []                    []                       []                                  []
+15         3        other  non_physiological         0.726641  ...                                    []                    []                       []                                  []
+16         4        brain              clean         0.999643  ...                                    []                    []                       []                                  []
+17         5        brain              clean         0.993584  ...                                    []                    []                       []                                  []
+18         6        brain              clean         0.999535  ...                                    []                    []                       []                                  []
+19         7        brain              clean         0.978230  ...                                    []                    []                       []                                  []
+20         8    eye blink                eye         0.823060  ...                                    []                    []                       []                                  []
+21         9        brain              clean         0.773097  ...                                    []                    []                       []                                  []
+22        10        brain              clean         0.919012  ...                                    []                    []                       []                                  []
+23        11        brain              clean         0.936563  ...                                    []                    []                       []                                  []
+24         0        brain              clean         0.687185  ...                                    []                    []                       []                                  []
+
+[25 rows x 132 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob    ic_mean  ...  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean         0.687185 -21.031338  ...                                    []                    []                       []                                  []            0
+1         1    eye blink                eye         0.949668  -0.947051  ...                                    []                    []                       []                                  []            0
+2         2        brain              clean         0.994398   0.271020  ...                                    []                    []                       []                                  []            0
+3         3        other  non_physiological         0.726641 -30.377848  ...                                    []                    []                       []                                  []            0
+4         4        brain              clean         0.999643  -0.071157  ...                                    []                    []                       []                                  []            0
+
+[5 rows x 133 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'FP1_variance', 'FP1_line_length', 'FP1_peak_to_peak', 'F3_variance', 'F3_line_length', 'F3_peak_to_peak', 'C3_variance', 'C3_line_length', 'C3_peak_to_peak', 'P3_variance', 'P3_line_length', 'P3_peak_to_peak', 'FP2_variance', 'FP2_line_length', 'FP2_peak_to_peak', 'F4_variance', 'F4_line_length', 'F4_peak_to_peak', 'C4_variance', 'C4_line_length', 'C4_peak_to_peak', 'P4_variance', 'P4_line_length', 'P4_peak_to_peak', 'F7_variance', 'F7_line_length', 'F7_peak_to_peak', 'T7_variance', 'T7_line_length', 'T7_peak_to_peak', 'P7_variance', 'P7_line_length', 'P7_peak_to_peak', 'F8_variance', 'F8_line_length', 'F8_peak_to_peak', 'T8_variance', 'T8_line_length', 'T8_peak_to_peak', 'P8_variance', 'P8_line_length', 'P8_peak_to_peak', 'FZ_variance', 'FZ_line_length', 'FZ_peak_to_peak', 'CZ_variance', 'CZ_line_length', 'CZ_peak_to_peak', 'O1_variance', 'O1_line_length', 'O1_peak_to_peak', 'O2_variance', 'O2_line_length', 'O2_peak_to_peak', 'PZ_variance', 'PZ_line_length', 'PZ_peak_to_peak', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+0    3904246
+1      29507
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    2817744
+test      647678
+val       468331
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - non_physiological
+
+============================================================
+Modelo: rf_non_physiological_w0.5s0.25_2
+Train: 2817744 (pos=20583) | Val: 468331 (pos = 5344) | Test: 647678 (pos=3580)
+        params:{'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.11974880900822867
+        params:{'n_estimators': 344, 'max_depth': 30, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.10807348047618766
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.055786840819598886
+        params:{'n_estimators': 481, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.11729943454785086
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.06636860816282432
+        params:{'n_estimators': 375, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.0999328294802959
+        params:{'n_estimators': 501, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.11776357304788838
+        params:{'n_estimators': 395, 'max_depth': 18, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.09051637454944851
+        params:{'n_estimators': 191, 'max_depth': 21, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.08106901931567126
+        params:{'n_estimators': 536, 'max_depth': 29, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.08957265977307408
+        params:{'n_estimators': 224, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.10512930506189484
+        params:{'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.10928308247769064
+        params:{'n_estimators': 455, 'max_depth': 28, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.09720925248381121
+        params:{'n_estimators': 313, 'max_depth': 19, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.08465152087595612
+        params:{'n_estimators': 395, 'max_depth': 9, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.06591719492868463
+        params:{'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.11707170373340589
+        params:{'n_estimators': 334, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.0697899927965867
+        params:{'n_estimators': 184, 'max_depth': 19, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.09145920519522564
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.0662189578571612
+        params:{'n_estimators': 298, 'max_depth': 11, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.07307472767920849
+        params:{'n_estimators': 573, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.07610181388303965
+        params:{'n_estimators': 433, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.12403641134984418
+        params:{'n_estimators': 495, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.11376349449531478
+        params:{'n_estimators': 528, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.08575594676088082
+        params:{'n_estimators': 257, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.12180695722893793
+        params:{'n_estimators': 524, 'max_depth': 10, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.0648315482620934
+        params:{'n_estimators': 508, 'max_depth': 28, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.0860849868917424
+        params:{'n_estimators': 362, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.11563683738039456
+        params:{'n_estimators': 400, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.07867409348333461
+        params:{'n_estimators': 166, 'max_depth': 9, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.0679441442735643
+        params:{'n_estimators': 347, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.1177393112441189
+        params:{'n_estimators': 534, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.09070576540755468
+        params:{'n_estimators': 408, 'max_depth': 24, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.07885415495333409
+        params:{'n_estimators': 190, 'max_depth': 21, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.09245122643903657
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.055291834107943236
+        params:{'n_estimators': 592, 'max_depth': 11, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.06278972163144815
+        params:{'n_estimators': 596, 'max_depth': 30, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.08778058664363114
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.05565982514649241
+        params:{'n_estimators': 562, 'max_depth': 13, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.07296283767178144
+        params:{'n_estimators': 206, 'max_depth': 21, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.07613697683301704
+        params:{'n_estimators': 598, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.08575075279743244
+        params:{'n_estimators': 338, 'max_depth': 29, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.10115414700076092
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.05491851629571319
+        params:{'n_estimators': 497, 'max_depth': 26, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.08011393095013361
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.06267349167480504
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.055952021978758336
+        params:{'n_estimators': 373, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.1066853816287066
+        params:{'n_estimators': 257, 'max_depth': 14, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.074978856780835
+        params:{'n_estimators': 423, 'max_depth': 15, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.0666060890541107
+        params:{'n_estimators': 304, 'max_depth': 8, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 1.0}
+        f2 score:0.05631679912304741
+        params:{'n_estimators': 314, 'max_depth': 32, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.0868690673195203
+        params:{'n_estimators': 355, 'max_depth': 12, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.07497494048364867
+        params:{'n_estimators': 268, 'max_depth': 28, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.1167334378447425
+        params:{'n_estimators': 505, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.09264521483405952
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3, 'sampling_strategy': 1.0}
+        f2 score:0.05707115334007989
+        params:{'n_estimators': 207, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.07419864884289205
+        params:{'n_estimators': 474, 'max_depth': 14, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.0706343555325733
+        params:{'n_estimators': 396, 'max_depth': 10, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.06820114970589218
+        params:{'n_estimators': 158, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.09929143419252702
+        params:{'n_estimators': 448, 'max_depth': 17, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.08036630252734323
+[INFO] Threshold decision based on validation:
+        thr05: threshold=0.5000 | F2(val)=0.1240 | fp_per_day_val(val)=35988.9463 <- choosen
+        adjusted: threshold=0.8449 | F2(val)=0.1941 | fp_per_day_val(val)=7553.9189
+[INFO] Best configuration found with validation: {'n_estimators': 433, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.3} | F1(val)=0.1240
+Final report -------------------------
+                                     precision    recall  f1-score   support
+
+no_rf_non_physiological_w0.5s0.25_2       1.00      0.80      0.89    644098
+   rf_non_physiological_w0.5s0.25_2       0.02      0.74      0.04      3580
+
+                           accuracy                           0.80    647678
+                          macro avg       0.51      0.77      0.46    647678
+                       weighted avg       0.99      0.80      0.88    647678
+
+Confusion matrix -------------------------
+[[514537 129561]
+ [   930   2650]]
+General metrics -------------------------
+model                 rf_non_physiological_w0.5s0.25_2
+sensitivity                                     0.7402
+specificity                                     0.7988
+precision                                         0.02
+accuracy                                        0.7985
+f1_score                                         0.039
+auc_roc                                         0.8483
+false_alar_rate                                 0.2012
+fp_per_day                                    34566.78
+TP                                                2650
+FP                                              129561
+TN                                              514537
+FN                                                 930
+n_test_windows                                  647678
+covered_test_hours                               89.96
+Model saved in D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_non_physiological_w0.5s0.25_2_random.joblib
+Model with metrics saved in D:\Users\disenoeinnovacion\ml-outputs\artifact\models\rf_non_physiological_w0.5s0.25_2_and_analysis_random.joblib
+**************************************************
+>> non_physiological | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L2.parquet (155890 rows)
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end  ... muscle  non_physiological  is_ambiguous  sample_weight distinguish  genuine_cooccurrence  weak_overlap  is_unreviewed is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.0  1.0  ...      0                  0             0            1.0           0                     0             0              0           0
+1  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.5  1.5  ...      0                  0             0            1.0           0                     0             0              0           0
+2  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.0  2.0  ...      0                  0             0            1.0           0                     0             0              0           0
+3  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.5  2.5  ...      0                  0             0            1.0           0                     0             0              0           0
+4  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    2.0  3.0  ...      0                  0             0            1.0           0                     0             0              0           0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 155890 -> sin ambiguas: 154307 | positivas: 14854
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w1_s0.5_sw0.0_ua0.3
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w1_s0.5_sw0.3_ua0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w1_s0.5_sw0.5_ua0.3
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w1_s0.5_sw0.7_ua0.3
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w1_s0.5_sw1.0_ua0.3
+
+************************************************************
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.0              0.065      0.0945    0.1453       0.0803     0.7037   0.1183     0.178    0.0317          0.1119
+0.3              0.065      0.0945    0.1453       0.0803     0.7037   0.1183     0.178    0.0317          0.1119
+0.5              0.065      0.0945    0.1453       0.0803     0.7037   0.1183     0.178    0.0317          0.1119
+0.7              0.065      0.0945    0.1453       0.0803     0.7037   0.1183     0.178    0.0317          0.1119
+1.0              0.065      0.0945    0.1453       0.0803     0.7037   0.1183     0.178    0.0317          0.1119
+[INFO] Best suggested size weight for non_physiological: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p50_v2_non_physiological_w1_s0.5_sw0.0_ua0.3 parquet and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     27750        1804       25946       0.065009
+train   109692       10370       99322       0.094537
+val      18448        2680       15768       0.145273
+Broken rules: 0 | splits per patient: {'train': 32, 'test': 10, 'val': 8}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end  ... non_physiological  is_ambiguous  sample_weight  distinguish genuine_cooccurrence  weak_overlap  is_unreviewed  is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.0  1.0  ...                 0             0            1.0            0                    0             0              0            0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.5  1.5  ...                 0             0            1.0            0                    0             0              0            0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.0  2.0  ...                 0             0            1.0            0                    0             0              0            0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.5  2.5  ...                 0             0            1.0            0                    0             0              0            0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    2.0  3.0  ...                 0             0            1.0            0                    0             0              0            0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    2.5  3.5  ...                 0             0            1.0            0                    0             0              0            0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    3.0  4.0  ...                 0             0            1.0            0                    0             0              0            0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    3.5  4.5  ...                 0             0            1.0            0                    0             0              0            0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    4.0  5.0  ...                 0             0            1.0            0                    0             0              0            0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    4.5  5.5  ...                 0             0            1.0            0                    0             0              0            0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[WARN] ICA failed for aaaaaimu_s008_t000: One PCA component captures most of the explained variance (99.4121647598012%), your threshold results in 1 component. You should select a higher value.
+[SKIP] Session aaaaaimu_s008_t000 discarted by ICA error One PCA component captures most of the explained variance (99.4121647598012%), your threshold results in 1 component. You should select a higher value.
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob    ic_mean  ...  monopolar_channels_muscle  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological
+0          0        brain              clean         0.687185 -21.157149  ...                         []                                    []                    []                       []                                  []
+1          1    eye blink                eye         0.949668  -0.418452  ...                         []                                    []                    []                       []                                  []
+2          2        brain              clean         0.994398   0.014797  ...                         []                                    []                    []                       []                                  []
+3          3        other  non_physiological         0.726641 -12.346357  ...                         []                                    []                    []                       []                                  []
+4          4        brain              clean         0.999643   0.066017  ...                         []                                    []                    []                       []                                  []
+5          5        brain              clean         0.993584   6.095223  ...                         []                                    []                    []                       []                                  []
+6          6        brain              clean         0.999535  -0.061540  ...                         []                                    []                    []                       []                                  []
+7          7        brain              clean         0.978230  -0.551214  ...                         []                                    []                    []                       []                                  []
+8          8    eye blink                eye         0.823060  -0.025609  ...                         []                                    []                    []                       []                                  []
+9          9        brain              clean         0.773097   0.031989  ...                         []                                    []                    []                       []                                  []
+10        10        brain              clean         0.919012  -1.369515  ...                         []                                    []                    []                       []                                  []
+11        11        brain              clean         0.936563   0.046924  ...                         []                                    []                    []                       []                                  []
+12         0        brain              clean         0.687185  -0.681473  ...                         []                                    []                    []                       []                                  []
+13         1    eye blink                eye         0.949668   0.054157  ...                         []                                    []                    []                       []                                  []
+14         2        brain              clean         0.994398  -0.094578  ...                         []                                    []                    []                       []                                  []
+15         3        other  non_physiological         0.726641   3.021981  ...                         []                                    []                    []                       []                                  []
+16         4        brain              clean         0.999643   0.116980  ...                         []                                    []                    []                       []                                  []
+17         5        brain              clean         0.993584   0.586572  ...                         []                                    []                    []                       []                                  []
+18         6        brain              clean         0.999535   0.009813  ...                         []                                    []                    []                       []                                  []
+19         7        brain              clean         0.978230   0.226806  ...                         []                                    []                    []                       []                                  []
+20         8    eye blink                eye         0.823060  -0.003268  ...                         []                                    []                    []                       []                                  []
+21         9        brain              clean         0.773097  -0.453420  ...                         []                                    []                    []                       []                                  []
+22        10        brain              clean         0.919012  -0.634592  ...                         []                                    []                    []                       []                                  []
+23        11        brain              clean         0.936563   0.169795  ...                         []                                    []                    []                       []                                  []
+24         0        brain              clean         0.687185  10.011926  ...                         []                                    []                    []                       []                                  []
+
+[25 rows x 132 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob    ic_mean  ...  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean         0.687185 -21.157149  ...                                    []                    []                       []                                  []            0
+1         1    eye blink                eye         0.949668  -0.418452  ...                                    []                    []                       []                                  []            0
+2         2        brain              clean         0.994398   0.014797  ...                                    []                    []                       []                                  []            0
+3         3        other  non_physiological         0.726641 -12.346357  ...                                    []                    []                       []                                  []            0
+4         4        brain              clean         0.999643   0.066017  ...                                    []                    []                       []                                  []            0
+
+[5 rows x 133 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'FP1_variance', 'FP1_line_length', 'FP1_peak_to_peak', 'F3_variance', 'F3_line_length', 'F3_peak_to_peak', 'C3_variance', 'C3_line_length', 'C3_peak_to_peak', 'P3_variance', 'P3_line_length', 'P3_peak_to_peak', 'FP2_variance', 'FP2_line_length', 'FP2_peak_to_peak', 'F4_variance', 'F4_line_length', 'F4_peak_to_peak', 'C4_variance', 'C4_line_length', 'C4_peak_to_peak', 'P4_variance', 'P4_line_length', 'P4_peak_to_peak', 'F7_variance', 'F7_line_length', 'F7_peak_to_peak', 'T7_variance', 'T7_line_length', 'T7_peak_to_peak', 'P7_variance', 'P7_line_length', 'P7_peak_to_peak', 'F8_variance', 'F8_line_length', 'F8_peak_to_peak', 'T8_variance', 'T8_line_length', 'T8_peak_to_peak', 'P8_variance', 'P8_line_length', 'P8_peak_to_peak', 'FZ_variance', 'FZ_line_length', 'FZ_peak_to_peak', 'CZ_variance', 'CZ_line_length', 'CZ_peak_to_peak', 'O1_variance', 'O1_line_length', 'O1_peak_to_peak', 'O2_variance', 'O2_line_length', 'O2_peak_to_peak', 'PZ_variance', 'PZ_line_length', 'PZ_peak_to_peak', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+0    1936811
+1      14783
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    1398557
+test      319795
+val       233242
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - non_physiological
+
+============================================================
+Modelo: rf_non_physiological_w1s0.5_2
+Train: 1398557 (pos=10299) | Val: 233242 (pos = 2680) | Test: 319795 (pos=1804)
+        params:{'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.12612882215219956
+        params:{'n_estimators': 344, 'max_depth': 30, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.11371107161119093
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.05667423732971295
+        params:{'n_estimators': 481, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.1312738044858231
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.06672353430636307
+        params:{'n_estimators': 375, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.0975240893574731
+        params:{'n_estimators': 501, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.12420862597685231
+        params:{'n_estimators': 395, 'max_depth': 18, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.08712865347989743
+        params:{'n_estimators': 191, 'max_depth': 21, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.08325598000714031
+        params:{'n_estimators': 536, 'max_depth': 29, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.09861567256418406
+        params:{'n_estimators': 224, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.11707269680114644
+        params:{'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.11897370921761166
+        params:{'n_estimators': 455, 'max_depth': 28, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.09510424888820437
+        params:{'n_estimators': 313, 'max_depth': 19, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.08467675692663729
+        params:{'n_estimators': 395, 'max_depth': 9, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'sampling_strategy': 0.3}
+        f2 score:0.0652349320247441
+        params:{'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.12043108934451177
+        params:{'n_estimators': 334, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.06938055192377017
+        params:{'n_estimators': 184, 'max_depth': 19, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.09525716823251805
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.06669830359983103
+        params:{'n_estimators': 298, 'max_depth': 11, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.3}
+        f2 score:0.07089211134811522
+        params:{'n_estimators': 573, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3, 'sampling_strategy': 0.7}
+        f2 score:0.07668871173976617
+        params:{'n_estimators': 433, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.1373593333906022
+        params:{'n_estimators': 495, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.13267802902463718
+        params:{'n_estimators': 528, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.08619458248441882
+        params:{'n_estimators': 257, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.3}
+        f2 score:0.1296567682221365
+        params:{'n_estimators': 524, 'max_depth': 10, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.06239775760300772
+        params:{'n_estimators': 508, 'max_depth': 28, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.09422665353127017
+        params:{'n_estimators': 362, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.11822575077666551
+        params:{'n_estimators': 400, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.07898746358023041
+        params:{'n_estimators': 166, 'max_depth': 9, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3, 'sampling_strategy': 0.3}
+        f2 score:0.0674644759489822
+        params:{'n_estimators': 347, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'log2', 'sampling_strategy': 0.5}
+        f2 score:0.12733707778718165
+        params:{'n_estimators': 534, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'log2', 'sampling_strategy': 1.0}
+        f2 score:0.0926992034212938
+        params:{'n_estimators': 408, 'max_depth': 24, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.08416065767931166
+        params:{'n_estimators': 190, 'max_depth': 21, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.09309372569354421
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.05592561059080817
+        params:{'n_estimators': 592, 'max_depth': 11, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sqrt', 'sampling_strategy': 0.7}
+        f2 score:0.06358148507154716
+        params:{'n_estimators': 596, 'max_depth': 30, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5, 'sampling_strategy': 0.7}
+        f2 score:0.09155802557468157
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'sampling_strategy': 0.5}
+        f2 score:0.05633021275164682
+        params:{'n_estimators': 562, 'max_depth': 13, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.0716896100108092
+        params:{'n_estimators': 206, 'max_depth': 21, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5, 'sampling_strategy': 1.0}
+        f2 score:0.07462686567164178
+        params:{'n_estimators': 598, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5, 'sampling_strategy': 0.5}
+        f2 score:0.08992139428497793
+        params:{'n_estimators': 338, 'max_depth': 29, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3, 'sampling_strategy': 0.5}
+        f2 score:0.09742809707019794
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log2', 'sampling_strategy': 0.7}
+        f2 score:0.05552631906085933
+```
