@@ -13,30 +13,33 @@ import pandas as pd
 
 from src.core.data_config import (  ARTIFACT_KEYWORDS, BIPOLAR_MONTAGE,
                                     WINDOW_REQUESTS_ARTIFACTS, SFREQ,
-                                    RATIOS, VERSION, find_project_root,
+                                    RATIOS, VERSION, OUTPUTS_DIR,
+                                    find_project_root,
                                 )
 from src.core.data_loader import build_annotations_index
 from src.core.windowing import get_or_build_windows
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report
 from src.models.cnn_artifact_detector import binary_cnn
 from src.utils.patient_registry import load_registry, forced_for
-from src.utils.split_cache import load_selected_sw, save_selected_sw
+from src.utils.split_cache import load_selected_sw
 
+# Pipeline directions
 BASE_DIR = find_project_root("src")
-CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
+CORPUS_OUTPUTS_DIR = OUTPUTS_DIR / Path("artifact")
+
 ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
+FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
+DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
-
-ANNOTATIONS_DIR = find_project_root("src") / "outputs" / "artifact" /  "annotations"
+ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
-for d in (SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
+for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
-
 
 CNN_CONFIG = {
     "eye": {"model_type": "standard", "max_fp_per_day": 50, "epochs": 100},
@@ -48,7 +51,7 @@ CNN_CONFIG = {
 N_CHANNELS = len(BIPOLAR_MONTAGE["names"])
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", n_patients=50, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 n_patients = len(database_corpus_patient["Patient"].unique())
 
@@ -202,46 +205,11 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                         )
                                                 )
 
-
-
-
-
-
-
-
 print("\n"+"*-" * 25)
 print("Final report")
 for artifact, res_list in results.items():
     print(('-'*10), artifact, ('-'*10))
     for res in res_list:
-        print(f"\t\t F1(val)={res['val_f1']:.4f}")
-        print(f"\t\t best_params={res['params']}")
-        print("\t\t Confusion matrix:", res['confusion_matrix'])
-        print("\t\t Metrics results:", res['metrics_results'])
-
-
-
-
-
-
-
-
-------
-
-
-    config = CNN_CONFIG[artifact]
-    results[artifact] = binary_cnn(
-        windowed_df_split, target_col=target_col, model_name=f"cnn_{artifact}",
-        window_size_sec=window["window_size_sec"], sfreq=SFREQ, n_channels=N_CHANNELS,
-        session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR),
-        models_dir=str(MODELS_DIR), model_type=config["model_type"],
-        epochs=config["epochs"], max_fp_per_day=config["max_fp_per_day"],
-        force_retrain=True,
-    )
-
-print("\n" + "=" * 60)
-print("RESUMEN FINAL — CNN por artefacto")
-for artifact, res in results.items():
-    print(f"\n{artifact}:")
-    print(f"  Threshold: {res['chosen_threshold']:.3f} ({res['chosen_mode']})")
-    print(f"  Métricas: {res['metrics_results']}")
+        print(f"\t\t Threshold: {res['chosen_threshold']:.3f} ({res['chosen_mode']})")
+        print(f"\t\t Confusion matrix:\n{res['confusion_matrix']}")
+        print(f"\t\t Metrics results: {res['metrics_results']}")

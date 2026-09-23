@@ -93,7 +93,7 @@ RANDOM_SPACE = {
 }
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", n_patients=50, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", n_patients=10, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 n_patients = len(database_corpus_patient["Patient"].unique())
 
@@ -115,7 +115,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
     for i, window in enumerate(window_settings):
         print("*"*50)
-        print(f">> {artifact} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
+        print(f">> {artifact} | patients:{n_patients} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
 
         rf_dataset_path = DATASET_DIR / (
             f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"
@@ -196,7 +196,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
             else:
                 print(f"[INFO] Best suggested and saved size weight for {artifact}: {selected_sw}")
-                current_forced = # BUSCA ESTO CON LOS DATOS ANTERIORES, CONCÉNTRATE EN QUE LO PUEDA EXTRAER ¿O PUEDO OBTENER EL 
             
 
             splitted_dataset, assignment, report = get_or_compute_labeled_split(  windowed_annotations_corpus_patient, 

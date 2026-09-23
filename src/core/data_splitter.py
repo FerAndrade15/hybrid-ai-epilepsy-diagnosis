@@ -97,7 +97,7 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
         assignment[patient] = best_split
         split_totals[best_split] += counts
 
-    windowed_df = windowed_df.copy()
+    windowed_df = df.copy()
     windowed_df["split"] = windowed_df[group_col].map(assignment)
 
     report = pd.DataFrame(split_totals).T
@@ -158,8 +158,7 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
         split_totals[best_split] += c
         split_sizes[best_split] += n
 
-    windowed_df = windowed_df.copy()
-    windowed_df["split"] = windowed_df[group_col].map(assignment)
+    df["split"] = df[group_col].map(assignment)
 
     for split_name, total in split_totals.items():
         if total == 0:
@@ -167,7 +166,7 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
 
     report = pd.Series(split_totals, name="n_positive").to_frame()
     report["n_patients"] = pd.Series(assignment).value_counts()
-    return windowed_df, assignment, report
+    return df, assignment, report
 
 
 def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",

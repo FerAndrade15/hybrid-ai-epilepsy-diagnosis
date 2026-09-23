@@ -402,7 +402,8 @@ class ArtifactDetector:
                 for X_batch, y_batch in val_bar:
                     X_batch, y_batch = X_batch.to(self.device), y_batch.to(self.device)
                     logits = self.model(X_batch)
-                    val_loss += criterion(logits, y_batch).item()
+                    batch_val_loss = criterion(logits, y_batch).item()
+                    val_loss += batch_val_loss
                     all_probs.append(torch.sigmoid(logits).cpu().numpy())
                     all_true.append(y_batch.cpu().numpy())
                     val_bar.set_postfix(loss=f"{batch_val_loss:.4f}")
