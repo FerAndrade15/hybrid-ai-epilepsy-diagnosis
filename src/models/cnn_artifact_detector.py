@@ -592,7 +592,7 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
         return joblib.load(analysis_path)
 
     n_timesteps = int(window_size_sec * sfreq)
-    detector = ArtifactDetector(artifact_name=model_name, model_type=model_type)
+    detector = ArtifactDetector(artifact_name=model_name, model_type=model_type, results_dir=models_dir)
     detector.build_model(n_channels=n_channels, n_timesteps=n_timesteps)
 
     train_loader, val_loader, test_loader = build_cnn_dataloaders(windowed_df, 

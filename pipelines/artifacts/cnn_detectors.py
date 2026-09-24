@@ -51,7 +51,7 @@ CNN_CONFIG = {
 N_CHANNELS = len(BIPOLAR_MONTAGE["names"])
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", n_patients=10, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 n_patients = len(database_corpus_patient["Patient"].unique())
 
@@ -191,7 +191,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         results.setdefault(artifact, []).append( binary_cnn(
                                                             windowed_df=splitted_dataset, 
                                                             target_col=artifact, 
-                                                            model_name=f"cnn_{artifact}",
+                                                            model_name=f"cnn_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}",
                                                             window_size_sec=window["window_size_sec"], 
                                                             sfreq=SFREQ, 
                                                             n_channels=N_CHANNELS,
@@ -202,6 +202,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                             epochs=config["epochs"], 
                                                             max_fp_per_day=config["max_fp_per_day"],
                                                             force_retrain=True,
+                                                            checkpoints_dir=str(CORPUS_OUTPUTS_DIR / "checkpoints" / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"),
                                                         )
                                                 )
 
