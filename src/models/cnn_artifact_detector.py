@@ -117,6 +117,7 @@ class ArtifactCNN(nn.Module):
                     nn.MaxPool1d(2),
                 ]
                 in_ch = out_c
+            self.conv = nn.Sequential(*blocks)
             out_ch = out_c
         elif model_type == "standard":
             blocks, in_ch = [], n_channels
