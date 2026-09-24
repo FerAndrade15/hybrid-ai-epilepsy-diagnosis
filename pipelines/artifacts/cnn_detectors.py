@@ -219,7 +219,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                             force_retrain=True,
                                                             lr=config["lr"],
                                                             focal_params=config["focal_params"],
-                                                            checkpoints_dir=str(CORPUS_OUTPUTS_DIR / "checkpoints" / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"),
+                                                            checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
                                                         )
                                                 )
 
