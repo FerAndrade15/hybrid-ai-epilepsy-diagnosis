@@ -363,7 +363,7 @@ def get_or_build_features(splitted_dataset, target_labels, bipolar_montage,
                             cache_dir, artifact, window_size_sec, stride_sec,
                             use_ica=True, ica_cache_dir="cache/ica",
                             session_cache_dir="cache/sessions",
-                            version=1, refresh=True):
+                            version=1, refresh=True, manually_checked=False):
     tax = hashlib.md5(
         json.dumps(sorted(target_labels)).encode()
     ).hexdigest()[:6]
@@ -381,6 +381,9 @@ def get_or_build_features(splitted_dataset, target_labels, bipolar_montage,
             return w
         faltantes = file_keys(splitted_dataset) - file_keys(w)
         print(f"[NOTICE] {path.name} no coincide: {len(faltantes)} keys faltantes en cache")
+        print(faltantes)
+        if manually_checked:
+            return w
 
     w = build_feature_dataset(
         splitted_dataset, target_labels, bipolar_montage,

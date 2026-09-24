@@ -225,9 +225,14 @@ WINDOW_REQUESTS_ARTIFACTS = {
 ## Train, validation and test proportion of the dataset
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
+# Key factor to compare two versions or slightly changed model
+COMPARISON = True
+
 ## Split version
-VERSION = 3
-LABEL_VERSION = 3
+VERSION = 4
+
+# Labeling version, related to current split version for easier tracking
+LABEL_VERSION = VERSION
 
 ## Identifiers metadata and target not required for the models
 KEYS = ["Patient", "Session", "Section"]

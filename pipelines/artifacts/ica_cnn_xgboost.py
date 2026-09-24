@@ -5,10 +5,10 @@
 
 End-to-end pipeline for 'artifact' corpus, process:
 Windowing -> split -> features (ICA+ICLabel agregado) -> 
-Hiperparameter optimization (Grid Search y Honey Badger) -> 
-Training of multi-output RF -> validation -> saves work.
+Hiperparameter optimization (Random Search, Grid Search y Honey Badger) -> 
+Training of several XGBoost, one per artifact -> validation -> saves work.
 """
-# file: ica_cnn_rf.py (pipeline)
+# file: ica_cnn_xgboost.py (pipeline)
 
 # Data managment libraries
 import pandas as pd
@@ -20,10 +20,10 @@ from scipy.stats import randint
 # Data integration libraries / project modules
 from src.core.windowing import get_or_build_windows
 from src.core.data_loader import build_annotations_index, find_project_root
-from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS, OUTPUTS_DIR, NORMALIZE, COMPARISON
+from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS, OUTPUTS_DIR, NORMALIZE
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
 from src.core.feature_extractor import build_ml_dataset, get_or_build_features
-from src.models.rf_model import build_rf_model
+from src.models.xgboost_model import build_xgb_model
 from src.models.ml_models import train_binary_model
 from src.utils.split_cache import load_selected_sw, save_selected_sw
 from src.utils.patient_registry import load_registry, forced_for
@@ -39,17 +39,12 @@ ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
 FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
-DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset") 
+DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
 ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
-
-if COMPARISON:
-    DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
-    MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models/_comparison")
-
 
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
@@ -126,7 +121,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"
             f"_ua{window['artifact_umbral']}_p{n_patients}_v{VERSION}.parquet"
         )
-        #print("[DEBUG] Looking for {rf_dataset_path}, it is {rf_dataset_path.exists()} it exists")
         if rf_dataset_path.exists():
             print(f"[INFO] Existing dataset, loading: {rf_dataset_path}")
             rf_features_dataset = pd.read_parquet(rf_dataset_path)
@@ -247,7 +241,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                         session_cache_dir=str(SESSION_CACHE_DIR),
                                                         version=VERSION,
                                                         refresh=False,
-                                                        manually_checked=True
                                                     )
             display(featured_windows.head(25))
 
@@ -261,7 +254,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             print(rf_features_dataset.head(5))
             print(rf_features_dataset.columns.tolist())
 
-            if not NORMALIZE:
+            if NORMALIZE:
                 exclude_cols_to_feats = ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob']
                 feature_col = [c for c in rf_features_dataset.columns
                                if (c.startswith('ic_') and c not in exclude_cols_to_feats) or c.endswith(('_variance', '_line_length', '_peak_to_peak'))]
