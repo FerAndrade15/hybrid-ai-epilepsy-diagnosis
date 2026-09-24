@@ -33,6 +33,7 @@ from sklearn.metrics import (
 from tqdm import tqdm
 
 from src.utils.session_cache import get_or_compute_session
+from src.core.data_config import NORMALIZE, NORMALIZE_CLIP
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -290,6 +291,15 @@ class EEGWindowDataset(Dataset):
             self._session_cache.popitem(last=False)
 
         return data
+
+    def _normalize_stats(self, s):
+        if "_norm" not in s:
+            x = s["data"][:, ::10]
+            med = np.median(x, axis=1, keepdims=True)
+            q75, q25 = np.percentile(x, [75,25], axis=1)
+            scale = np.maximum((q75, q25)[:, None]/1.349, 1e-12)
+            s["_norm"] = (med.astype(np.float32), scale.astype(np.float32))
+        return s["norm"]
     
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
@@ -297,6 +307,11 @@ class EEGWindowDataset(Dataset):
         start = int(round(row.Start * s["sfreq"]))
         end = int(round(row.end * s["sfreq"]))
         window = s["data"][:, start:end]
+
+        if NORMALIZE: 
+            med, scale = self._normalize_stats(s)
+            window = (window - med) / scale
+            window = np.clip(window, -NORMALIZE_CLIP, NORMALIZE_CLIP)
 
         if self.expected_n_timesteps is not None and window.shape[1] != self.expected_n_timesteps:
             self._truncated_count += 1

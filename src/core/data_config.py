@@ -72,6 +72,8 @@ CORPUS_PATHS = {
 
 ## Preprocessing restrictions
 SFREQ = 256                     # According to all corpus majority
+NORMALIZE = True
+NORMALIZE_CLIP = 20.0
 
 # Montages registered in the TUH server nomenclature as of late 2026 + Standard montages
 ALL_MONTAGES = [
