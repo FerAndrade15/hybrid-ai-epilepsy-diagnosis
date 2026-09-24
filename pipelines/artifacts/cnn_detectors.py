@@ -42,9 +42,24 @@ for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DAT
     d.mkdir(parents=True, exist_ok=True)
 
 CNN_CONFIG = {
-    "eye": {"model_type": "standard", "max_fp_per_day": 50, "epochs": 100},
-    "muscle": {"model_type": "lightweight", "max_fp_per_day": 300, "epochs": 100},
-    "non_physiological": {"model_type": "lightweight", "max_fp_per_day": 1000, "epochs": 100},
+    "eye":                  {"model_type": "standard", 
+                             "max_fp_per_day": 50, 
+                             "epochs": 100,
+                             "lr": 3e-4,
+                             "focal_params": {"alpha":0.5, "gamma":0.0}
+                             },
+    "muscle":               {"model_type": "lightweight", 
+                             "max_fp_per_day": 300, 
+                             "epochs": 100,
+                             "lr": 3e-4,
+                             "focal_params": {"alpha":0.5, "gamma":0.0}
+                             },
+    "non_physiological":    {"model_type": "lightweight", 
+                             "max_fp_per_day": 1000, 
+                             "epochs": 100,
+                             "lr": 3e-4,
+                             "focal_params": {"alpha":0.5, "gamma":0.0}
+                             },
 }
 
 # Configurations for the model according to general settings
@@ -202,6 +217,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                             epochs=config["epochs"], 
                                                             max_fp_per_day=config["max_fp_per_day"],
                                                             force_retrain=True,
+                                                            lr=config["lr"],
+                                                            focal_params=config["focal_params"],
                                                             checkpoints_dir=str(CORPUS_OUTPUTS_DIR / "checkpoints" / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"),
                                                         )
                                                 )

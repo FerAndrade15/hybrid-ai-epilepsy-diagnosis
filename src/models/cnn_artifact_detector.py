@@ -426,7 +426,12 @@ class ArtifactDetector:
 
             y_proba_val = np.concatenate(all_probs)
             y_true_val = np.concatenate(all_true)
-            val_f1 = f1_score(y_true_val, (y_proba_val >= 0.5).astype(int), zero_division=0)
+
+            if y_true_val.sum() > 0:
+                best_thr, _ = select_f1_optimal_threshold(y_true_val, y_proba_val)
+                val_f1 = f1_score(y_true_val, (y_proba_val >= best_thr).astype(int), zero_division=0)
+            else:
+                val_f1 = 0.0
 
             self.history["loss"].append(train_loss)
             self.history["val_loss"].append(val_loss)
@@ -440,6 +445,8 @@ class ArtifactDetector:
             n_trunc_val = getattr(val_loader.dataset, "_truncated_count", 0)
             if n_trunc_train or n_trunc_val:
                 self.logger.warning(f"Small windows (padding): train={n_trunc_train}, val={n_trunc_val}")
+            train_loader.dataset._truncated_count = 0
+            val_loader.dataset._truncated_count = 0
 
             scheduler.step(val_loss)
 
@@ -578,7 +585,11 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
                session_cache_dir: str, ica_cache_dir: str, models_dir: str = "models_cnn",
                model_type: str = "lightweight", epochs: int = 100, batch_size: int = 64,
                max_fp_per_day: float = 100, force_retrain: bool = False,
-               checkpoints_dir: str="/workspace/checkpoints") -> Dict[str, Any]:
+               checkpoints_dir: str="/workspace/checkpoints",
+               lr: float = 1e-3,
+               class_weigths: Optional[Dict[int, float]] = None,
+               focal_params: Optional[Dict[str, float]] = None,
+               ) -> Dict[str, Any]:
     """
     Evaluation of each artefact.
     """
@@ -603,7 +614,14 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
                                                                   expected_n_timesteps=n_timesteps
                                                                 )
 
-    detector.train(train_loader, val_loader, epochs=epochs, checkpoints_dir=checkpoints_dir)
+    detector.train(train_loader, 
+                   val_loader, 
+                   epochs=epochs, 
+                   lr=lr,
+                   class_weights=class_weigths,
+                   focal_params=focal_params,
+                   checkpoints_dir=checkpoints_dir,
+                   )
 
     results = detector.evaluate(val_loader, test_loader, window_size_sec=window_size_sec,
                                  max_fp_per_day=max_fp_per_day)
