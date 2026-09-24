@@ -297,7 +297,7 @@ class EEGWindowDataset(Dataset):
             x = s["data"][:, ::10]
             med = np.median(x, axis=1, keepdims=True)
             q75, q25 = np.percentile(x, [75,25], axis=1)
-            scale = np.maximum((q75, q25)[:, None]/1.349, 1e-12)
+            scale = np.maximum((q75 - q25)[:, None]/1.349, 1e-12)
             s["_norm"] = (med.astype(np.float32), scale.astype(np.float32))
         return s["norm"]
     
