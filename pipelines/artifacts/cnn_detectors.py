@@ -89,7 +89,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
     for i, window in enumerate(window_settings):
         print("*"*50)
-        print(f">> {artifact} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
+        print(f">> {artifact} | patients:{n_patients} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
 
         """ ANNOTATIONS WINDOWS """
         print("\n"+("*"*60))
