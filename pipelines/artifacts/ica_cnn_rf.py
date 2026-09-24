@@ -216,9 +216,10 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                     artifact_umbral=window['artifact_umbral'],
                                                                                     window_size_sec=window['window_size_sec'],
                                                                                     stride_sec=window['stride_sec'],
+                                                                                    manually_checked=COMPARISON
                                                                                 )
 
-            if i == 0:
+            if i == 0 and not COMPARISON:
                 print(f"[INFO] Saving patient asignation for {artifact}")
                 current_forced.update(assignment)
 
@@ -247,7 +248,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                         session_cache_dir=str(SESSION_CACHE_DIR),
                                                         version=VERSION,
                                                         refresh=False,
-                                                        manually_checked=True
+                                                        manually_checked=COMPARISON
                                                     )
             display(featured_windows.head(25))
 
@@ -261,7 +262,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             print(rf_features_dataset.head(5))
             print(rf_features_dataset.columns.tolist())
 
-            if not NORMALIZE:
+            if NORMALIZE and not COMPARISON:
                 exclude_cols_to_feats = ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob']
                 feature_col = [c for c in rf_features_dataset.columns
                                if (c.startswith('ic_') and c not in exclude_cols_to_feats) or c.endswith(('_variance', '_line_length', '_peak_to_peak'))]

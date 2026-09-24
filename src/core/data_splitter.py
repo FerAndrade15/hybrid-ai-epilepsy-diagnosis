@@ -174,7 +174,7 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
                                 ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, size_weight=0, 
                                 dataset_division_dir="splits", version=1, 
                                 artifact_umbral=0.7, window_size_sec=None, stride_sec=None,
-                                target="all", forced=None, registry_path=None
+                                target="all", forced=None, registry_path=None, manually_checked=False
                                 ):
     
     forced = resolve_forced_split(forced, windowed_df[group_col].unique(), ratios, registry_path)
@@ -220,9 +220,12 @@ def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
             return pd.read_parquet(saving_parquet), saved_metadata.get("patient_assignments", {}), pd.DataFrame(saved_metadata.get("split_report", {}))
         else:
             print(f"[INFO] Existing split metadata does not match current configuration.")
+            if manually_checked:
+                return pd.read_parquet(saving_parquet), saved_metadata.get("patient_assignments", {}), pd.DataFrame(saved_metadata.get("split_report", {}))
+
             raise ValueError(
-                f"\n[PELIGRO] El archivo {str(base_name)} ya existe, pero la configuración actual "
-                f"ha cambiado \n"
+                f"\n[PELIGRO] El archivo {str(base_name)} ya existe, pero la configuración actual ha cambiado\n"
+                f"[CAMBIOS] saved: {comp_metadata} | current: {current_config}\n"
                 f"Para no sobreescribir tus datos anteriores, cambia el parámetro "
                 f"'version={version + 1}' (o mayor) en tu script principal."
             )
