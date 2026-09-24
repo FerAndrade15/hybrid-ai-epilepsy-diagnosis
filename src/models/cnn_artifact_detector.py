@@ -108,6 +108,16 @@ class ArtifactCNN(nn.Module):
                 nn.MaxPool1d(2),
             )
             out_ch = 16
+        elif model_type == "paper":
+            blocks, in_ch = [], n_channels
+            for out_c in (16, 32, 64, 128):
+                blocks += [
+                    nn.Conv1d(in_ch, out_c, kernel_size=5, padding=2),
+                    nn.ReLU(),
+                    nn.MaxPool1d(2),
+                ]
+                in_ch = out_c
+            out_ch = out_c
         elif model_type == "standard":
             blocks, in_ch = [], n_channels
             for out_c in (32, 64, 128):
@@ -128,6 +138,8 @@ class ArtifactCNN(nn.Module):
 
         if model_type == "lightweight":
             self.classifier = nn.Sequential(nn.Flatten(), nn.Linear(out_ch, 16), nn.ReLU(), nn.Linear(16, 1))
+        elif model_type == "paper":
+            self.classifier = nn.Sequential(nn.Flatten(), nn.Linear(out_ch, 16), nn.ReLU(), nn.Linear(16,1))
         else:
             self.classifier = nn.Sequential(
                 nn.Flatten(),
