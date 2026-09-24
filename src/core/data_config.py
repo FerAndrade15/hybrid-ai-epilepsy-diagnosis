@@ -40,7 +40,7 @@ ALL_DATA_POSSIBLE_PATHS = [
 ]
 # Data paths
 ALL_OUTPUTS_POSSIBLE_PATHS = [
-    Path("/workspace/data/results"),                                            # RunPod
+    Path("/workspace/ml-outputs"),                                            # RunPod
     BASE_DATA_DIR / "ml-outputs",                                               # Hard disk
     BASE_DATA_DIR / Path("Users/disenoeinnovacion/ml-outputs"),      # PC07 CIT-114
 ]

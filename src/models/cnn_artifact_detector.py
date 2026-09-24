@@ -224,15 +224,18 @@ class EEGWindowDataset(Dataset):
                  session_cache_dir: str = "cache/sessions", 
                  ica_cache_dir: str = "cache/ica",
                  max_cached_sessions: Optional[int] = None,
-                 cache_memory_fraction: float = 0.3):
+                 cache_memory_fraction: float = 0.3,
+                 expected_n_timesteps: Optional[int] = None):
         self.df = windowed_df.reset_index(drop=True)
         self.target_col = target_col
         self.session_cache_dir = session_cache_dir
         self.ica_cache_dir = ica_cache_dir
         self.cache_memory_fraction = cache_memory_fraction
         self.max_cached_sessions = max_cached_sessions
+        self.expected_n_timesteps = expected_n_timesteps
         self._session_cache: "OrderedDict[tuple, dict]" = OrderedDict()
         self._estimated_session_bytes: Optional[int] = None
+        self._truncated_count = 0
 
     def __len__(self) -> int:
         return len(self.df)
@@ -278,6 +281,15 @@ class EEGWindowDataset(Dataset):
         start = int(round(row.Start * s["sfreq"]))
         end = int(round(row.end * s["sfreq"]))
         window = s["data"][:, start:end]
+
+        if self.expected_n_timesteps is not None and window.shape[1] != self.expected_n_timesteps:
+            self._truncated_count += 1
+            n_channels = window.shape[0] 
+            padded = np.zeros((n_channels, self.expected_n_timesteps), dtype=window.dtype)
+            n_copy = min(window.shape[1], self.expected_n_timesteps)
+            padded[:, :n_copy] = window[:, :n_copy]
+            window = padded
+
         label = float(getattr(row, self.target_col))
         return torch.tensor(window, dtype=torch.float32), torch.tensor(label, dtype=torch.float32)
 
@@ -421,6 +433,11 @@ class ArtifactDetector:
                 print(f"[{self.artifact_name}] Epoch {epoch+1}/{epochs} "
                       f"- loss={train_loss:.4f} val_loss={val_loss:.4f} val_f1={val_f1:.4f}")
 
+            n_trunc_train = getattr(train_loader.dataset, "_truncated_count", 0)
+            n_trunc_val = getattr(val_loader.dataset, "_truncated_count", 0)
+            if n_trunc_train or n_trunc_val:
+                self.logger.warning(f"Small windows (padding): train={n_trunc_train}, val={n_trunc_val}")
+
             scheduler.step(val_loss)
 
             was_best = val_f1 > early_stopper.best_f1
@@ -538,14 +555,16 @@ class ArtifactDetector:
 
 def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,
                            session_cache_dir: str, ica_cache_dir: str,
-                           batch_size: int = 64) -> Tuple[DataLoader, DataLoader, DataLoader]:
+                           batch_size: int = 64,
+                           expected_n_timesteps: Optional[int] = None) -> Tuple[DataLoader, DataLoader, DataLoader]:
     """
     Structures the 3 DataLoaders (train/val/test) with windowed dataframes.
     """
     def _loader_for(split_name, shuffle):
         subset = rf_dataset[rf_dataset["split"] == split_name]
         ds = EEGWindowDataset(subset, target_col=target_col,
-                              session_cache_dir=session_cache_dir, ica_cache_dir=ica_cache_dir)
+                              session_cache_dir=session_cache_dir, ica_cache_dir=ica_cache_dir,
+                              expected_n_timesteps=expected_n_timesteps)
         return DataLoader(ds, batch_size=batch_size, shuffle=shuffle, num_workers=0)
 
     return _loader_for("train", True), _loader_for("val", False), _loader_for("test", False)
@@ -569,13 +588,18 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
         print(f"[INFO] Pretrained model found: {analysis_path}")
         return joblib.load(analysis_path)
 
-    train_loader, val_loader, test_loader = build_cnn_dataloaders(
-        windowed_df, target_col, session_cache_dir, ica_cache_dir, batch_size=batch_size
-    )
-
     n_timesteps = int(window_size_sec * sfreq)
     detector = ArtifactDetector(artifact_name=model_name, model_type=model_type)
     detector.build_model(n_channels=n_channels, n_timesteps=n_timesteps)
+
+    train_loader, val_loader, test_loader = build_cnn_dataloaders(windowed_df, 
+                                                                  target_col, 
+                                                                  session_cache_dir, 
+                                                                  ica_cache_dir, 
+                                                                  batch_size=batch_size,
+                                                                  expected_n_timesteps=n_timesteps
+                                                                )
+
     detector.train(train_loader, val_loader, epochs=epochs, checkpoints_dir=checkpoints_dir)
 
     results = detector.evaluate(val_loader, test_loader, window_size_sec=window_size_sec,
