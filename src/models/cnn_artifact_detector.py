@@ -181,6 +181,9 @@ def select_operating_threshold(
         else:
             chosen_mode = "youden(fallback)"
 
+    if not np.isfinite(chosen_thr):
+        chosen_thr, chosen_mode = 0.5, f"thr05({chosen_mode}_inf)"
+
     return float(chosen_thr), chosen_mode
 
 
