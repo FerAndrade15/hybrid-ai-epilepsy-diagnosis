@@ -209,14 +209,14 @@ WINDOW_REQUESTS_ARTIFACTS = {
                                    #{"window_size_sec": 0.5, "stride_sec": 0.5, "artifact_umbral": 0.6},
                                    #{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.6},
                                    ],
-    "muscle":                     [{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
-                                   {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
-                                   {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
+    "muscle":                     [#{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+                                   #{"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+                                   #{"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
                                    {"window_size_sec": 5, "stride_sec": 2, "artifact_umbral": 0.2},
                                    ],
-    "non_physiological":          [{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.2},
-                                   {"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
-                                   {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+    "non_physiological":          [#{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.2},
+                                   #{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+                                   #{"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
                                    {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
                                    ],
 }
@@ -226,10 +226,10 @@ WINDOW_REQUESTS_ARTIFACTS = {
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
 # Key factor to compare two versions or slightly changed model
-COMPARISON = True
+COMPARISON = False
 
 ## Split version
-VERSION = 4
+VERSION = 5
 
 # Labeling version, related to current split version for easier tracking
 LABEL_VERSION = VERSION
