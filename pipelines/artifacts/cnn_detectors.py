@@ -19,7 +19,7 @@ from src.core.data_config import (  ARTIFACT_KEYWORDS, BIPOLAR_MONTAGE,
 from src.core.data_loader import build_annotations_index
 from src.core.windowing import get_or_build_windows
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report
-from src.models.cnn_artifact_detector import binary_cnn
+from models.artifacts.cnn_artifact_detector import binary_cnn
 from src.utils.patient_registry import load_registry, forced_for
 from src.utils.split_cache import load_selected_sw
 

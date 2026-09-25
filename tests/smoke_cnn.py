@@ -1,7 +1,7 @@
 # smoke_test_cnn.py
 import pandas as pd
 from pathlib import Path
-from src.models.cnn_artifact_detector import binary_cnn
+from models.artifacts.cnn_artifact_detector import binary_cnn
 
 OUT = Path("/workspace/ml-outputs/artifact")
 split_dir = OUT / "splits"

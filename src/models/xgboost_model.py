@@ -14,7 +14,6 @@ from scipy.stats import randint, uniform
 
 from xgboost import XGBClassifier
 
-
 # Functions from modules
 from src.core.data_splitter import split_features_target
 
