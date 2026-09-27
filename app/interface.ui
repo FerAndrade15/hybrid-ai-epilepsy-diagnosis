@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1243</width>
-    <height>861</height>
+    <height>798</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -20,92 +20,396 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">*{
-background: none;
-background-color: transparent;
-padding: 0;
+   <string notr="true">/* Color base general para la ventana principal */
+QMainWindow {
+    background-color: #1b1b27;
 }
-centralwidget{
-background-color: #1b1b27;
+
+/* Contenedor central */
+QWidget#centralwidget {
+    background-color: #1b1b27;
+}
+
+/* Panel lateral de controles (DockWidget) */
+QDockWidget {
+    background-color: #212130;
+    color: #ffffff;
+    border: 1px solid #2a2a3c;
+}
+
+QDockWidget::title {
+    background: #2a2a3c;
+    padding: 6px;
+}
+
+/* Pestañas y áreas de trazado */
+QTabWidget::pane {
+    border: 1px solid #2a2a3c;
+    background-color: #1b1b27;
+}
+
+QTabBar::tab {
+    background-color: #232334;
+    color: #a0a0b0;
+    padding: 8px 16px;
+}
+
+QTabBar::tab:selected {
+    background-color: #1b1b27;
+    color: #ffffff;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QSplitter" name="main_splitter">
+     <widget class="QSplitter" name="splitter">
       <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
+       <enum>Qt::Orientation::Vertical</enum>
       </property>
-      <widget class="QFrame" name="channels_panel">
-       <property name="enabled">
-        <bool>true</bool>
+      <widget class="PlotWidget" name="eeg_graphicsView"/>
+      <widget class="QTabWidget" name="assistant_eeg_view">
+       <property name="currentIndex">
+        <number>1</number>
        </property>
-       <property name="minimumSize">
-        <size>
-         <width>500</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="channelsTitleLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Monospace</family>
-          <pointsize>14</pointsize>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Canales - EEG</string>
-        </property>
+       <widget class="QWidget" name="artifact_module">
+        <attribute name="title">
+         <string>Tab 1</string>
+        </attribute>
        </widget>
-      </widget>
-      <widget class="QFrame" name="eeg_plot">
-       <property name="minimumSize">
-        <size>
-         <width>280</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-      </widget>
-      <widget class="QFrame" name="analysis_panel">
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
+       <widget class="QWidget" name="seizure_module">
+        <attribute name="title">
+         <string>Tab 2</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="events_module">
+        <attribute name="title">
+         <string>Page</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="epilepsy_module">
+        <attribute name="title">
+         <string>Page</string>
+        </attribute>
+       </widget>
       </widget>
      </widget>
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1243</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Montages">
+    <property name="title">
+     <string>&amp;Montages</string>
+    </property>
+    <addaction name="actionMonopolar_Standard_Reference"/>
+    <addaction name="actionBipolar_Double_Banana"/>
+    <addaction name="actionEar_Average_or_Common_Reference"/>
+   </widget>
+   <widget class="QMenu" name="menu_Files">
+    <property name="title">
+     <string>&amp;Files</string>
+    </property>
+    <addaction name="actionLoad_EDF_File_3"/>
+    <addaction name="actionSave_Annotations_2"/>
+    <addaction name="actionExport_Annotations_to_CSV"/>
+    <addaction name="actionExport_Clinical_Report"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Assistance">
+    <property name="title">
+     <string>&amp;Assistance</string>
+    </property>
+    <addaction name="actionRun_Model_Inference"/>
+    <addaction name="actionAdjust_Confidence_Threshold"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_updated_labels"/>
+    <addaction name="actionReadjust_model"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <widget class="QMenu" name="menuShow_AI_Overlays">
+     <property name="title">
+      <string>Show AI Overlays</string>
+     </property>
+     <addaction name="actionShow_All"/>
+     <addaction name="actionShow_Artifact_Zones"/>
+     <addaction name="actionShow_Seizure_Zones"/>
+     <addaction name="actionShow_Events_Zones"/>
+    </widget>
+    <addaction name="actionShow_Manual_Markers"/>
+    <addaction name="menuShow_AI_Overlays"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_Controls"/>
+   </widget>
+   <widget class="QMenu" name="menu_Tools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <widget class="QMenu" name="menuLanguages">
+     <property name="title">
+      <string>Languages</string>
+     </property>
+     <addaction name="actionEspa_ol"/>
+     <addaction name="actionEnglish"/>
+    </widget>
+    <addaction name="actionConfigure_Digital_Filters"/>
+    <addaction name="menuLanguages"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionKeyboard_Shortcuts_Guide"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menu_Files"/>
+   <addaction name="menu_Montages"/>
+   <addaction name="menu_Assistance"/>
+   <addaction name="menu_View"/>
+   <addaction name="menu_Tools"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Display settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QComboBox" name="cmb_gain"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Sensitivity</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QSpinBox" name="spn_time_window"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Time base (s)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QScrollArea" name="scroll_channels">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>150</width>
+          <height>632</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSave_Annotations">
+   <property name="text">
+    <string>Save Annotations</string>
+   </property>
+  </action>
+  <action name="actionLoad_EDF_File">
+   <property name="text">
+    <string>Save Annotations File</string>
+   </property>
+  </action>
+  <action name="actiona">
+   <property name="text">
+    <string>a</string>
+   </property>
+  </action>
+  <action name="actionLoad_EDF_File_2">
+   <property name="text">
+    <string>Save Annotations</string>
+   </property>
+  </action>
+  <action name="actionLoad_EDF_File_3">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Load EDF File</string>
+   </property>
+  </action>
+  <action name="actionSave_Annotations_2">
+   <property name="text">
+    <string>Save Annotations</string>
+   </property>
+  </action>
+  <action name="actionExport_Annotations_to_CSV">
+   <property name="text">
+    <string>Export Annotations to CSV</string>
+   </property>
+  </action>
+  <action name="actionExport_Clinical_Report">
+   <property name="text">
+    <string>Export Clinical Report (PDF)</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionMonopolar_Standard_Reference">
+   <property name="text">
+    <string>Monopolar (Standard Reference)</string>
+   </property>
+  </action>
+  <action name="actionBipolar_Double_Banana">
+   <property name="text">
+    <string>Bipolar (Double Banana)</string>
+   </property>
+  </action>
+  <action name="actionEar_Average_or_Common_Reference">
+   <property name="text">
+    <string>Ear Average or Common Reference</string>
+   </property>
+  </action>
+  <action name="actionRun_Model_Inference">
+   <property name="text">
+    <string>Run Model Inference</string>
+   </property>
+  </action>
+  <action name="actionAdjust_Confidence_Threshold">
+   <property name="text">
+    <string>Adjust Confidence Threshold</string>
+   </property>
+  </action>
+  <action name="actionSave_updated_labels">
+   <property name="text">
+    <string>Save updated labels</string>
+   </property>
+  </action>
+  <action name="actionReadjust_model">
+   <property name="text">
+    <string>Readjust model</string>
+   </property>
+  </action>
+  <action name="actionShow_Manual_Markers">
+   <property name="text">
+    <string>Show Manual Markers</string>
+   </property>
+  </action>
+  <action name="actionShow_All">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show All</string>
+   </property>
+  </action>
+  <action name="actionShow_Artifact_Zones">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Artifact Zones</string>
+   </property>
+  </action>
+  <action name="actionShow_Seizure_Zones">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Seizure Zones</string>
+   </property>
+  </action>
+  <action name="actionShow_Events_Zones">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Events Zones</string>
+   </property>
+  </action>
+  <action name="actionConfigure_Digital_Filters">
+   <property name="text">
+    <string>Configure Digital Filters</string>
+   </property>
+  </action>
+  <action name="actionEspa_ol">
+   <property name="text">
+    <string>Español</string>
+   </property>
+  </action>
+  <action name="actionEnglish">
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionKeyboard_Shortcuts_Guide">
+   <property name="text">
+    <string>Keyboard Shortcuts Guide</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionOpen_General_Controls">
+   <property name="text">
+    <string>Open General Controls</string>
+   </property>
+  </action>
+  <action name="actionOpen_Controls">
+   <property name="text">
+    <string>Open Controls </string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
