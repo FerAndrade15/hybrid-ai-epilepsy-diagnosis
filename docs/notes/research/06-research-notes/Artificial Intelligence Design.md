@@ -24,6 +24,5 @@
 - Visual Geometry Group (VGG)
 
 ## Hybrid models data
-
 - Multi-level explainability
 - Explore a new medical dataset while validating the framework on a well known database.

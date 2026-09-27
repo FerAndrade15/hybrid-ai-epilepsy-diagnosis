@@ -36,12 +36,12 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[BrAinVision]]
 #### General concepts
 - [[Ubuntu]]
-- [[Relevant Concepts]]
+- [[Relevant_Consideration]]
 #### Current implementation
 - [[Performance Indicators or Metrics]]
 - [[Artificial Intelligence Design]]
 - [[Resources - Data Adquisition]] 
-- [[Estructura]]
+- [[Estructura_EEG]]
 #### Documentation
 - [[Marco teórico]]
 - [[Fuentes]]
