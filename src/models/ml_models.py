@@ -31,6 +31,7 @@ from sklearn.metrics import (
 )
 
 # Functions from modules
+from src.core.data_config import SCORER
 from src.core.data_splitter import split_features_target
 
 ## Metric analysis functions
@@ -75,7 +76,7 @@ def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="mo
         "covered_test_hours": round(total_time_sec / 3600, 2),
     }
 
-def find_best_threshold(y_val, y_prob_val, beta=2, smooth_window=0.02):
+def find_best_threshold(y_val, y_prob_val, beta=SCORER, smooth_window=0.02):
     precisions, recalls, thresholds = precision_recall_curve(y_val, y_prob_val)
     fbeta = (1 + beta**2) * (precisions *  recalls)/(beta**2 * precisions + recalls + 1e-12)
     fbeta = fbeta[:-1]
@@ -86,10 +87,11 @@ def find_best_threshold(y_val, y_prob_val, beta=2, smooth_window=0.02):
     best_idx = np.argmax(smoothed)
     return thresholds[best_idx], fbeta[best_idx]
 
-def f2_scorer(y_true, y_pred):
-    return fbeta_score(y_true, y_pred, beta=2, pos_label=1, zero_division=0)
+# Scorers
+def fbeta_scorer(y_true, y_pred, beta=SCORER):
+    return fbeta_score(y_true, y_pred, beta=beta, pos_label=1, zero_division=0)
 
-def select_threshold(y_val, y_prob_val,window_size_sec, beta=2, max_fp_per_day=100):
+def select_threshold(y_val, y_prob_val,window_size_sec, beta=SCORER, max_fp_per_day=100):
     adjusted_threshold, _ = find_best_threshold(y_val, y_prob_val, beta=beta)
     candidates = {"thr05":0.5, "adjusted":adjusted_threshold}
     scores, details = {}, {}
@@ -98,7 +100,7 @@ def select_threshold(y_val, y_prob_val,window_size_sec, beta=2, max_fp_per_day=1
 
     for name, thr in candidates.items():
         y_pred = (y_prob_val >= thr).astype(int)
-        fbeta = f2_scorer(y_val, y_pred)
+        fbeta = fbeta_scorer(y_val, y_pred, beta=beta)
         fp = ((y_pred==1) & (y_val==0)).sum()
         fp_per_day_val = fp / total_time_days if total_time_days > 0 else np.inf
         details[name] = {"threshold": thr, "fbeta":fbeta, "fp_per_day_val": fp_per_day_val}
@@ -119,12 +121,10 @@ def _search_grid(X_train, y_train, X_val, y_val, param_grid, verbose, build_mode
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
         
-        # Asumiendo que prefieres f1_score aquí, como en tu código original
-        score = f1_score(y_val, model.predict(X_val), pos_label=1, zero_division=0)
+        score = fbeta_scorer(y_val, model.predict(X_val))
         
         if verbose:
-            print(f"\tparams:{params}\n\tf1 score:{score}")
-            
+            print(f"\tparams:{params}\n\tF{SCORER} score:{score}")            
         if score > best_score:
             best_score, best_params, best_model = score, params, model
             
@@ -156,11 +156,10 @@ def _search_random(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
         
-        # Aquí usabas f2_scorer en tu código original
-        score = f2_scorer(y_val, model.predict(X_val))
+        score = fbeta_scorer(y_val, model.predict(X_val))
         
         if verbose:
-            print(f"\tparams:{params}\n\tf2 score:{score}")
+            print(f"\tparams:{params}\n\tf{SCORER} score:{score}")
             
         if score > best_score:
             best_score, best_params, best_model = score, params, model
@@ -193,8 +192,10 @@ def _search_optuna(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
 
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
+
+        score = fbeta_scorer(y_val, model.predict(X_val))
         
-        return f1_score(y_val, model.predict(X_val), pos_label=1, zero_division=0)
+        return score
 
     optuna.logging.set_verbosity(optuna.logging.WARNING if not verbose else optuna.logging.INFO)
     study = optuna.create_study(direction="maximize")
@@ -222,8 +223,10 @@ def _search_hba_binary(X_train, y_train, X_val, y_val, kwargs, space, verbose, b
         params = parser_fn(vec)
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
+
+        score = fbeta_scorer(y_val, model.predict(X_val))
         
-        return f1_score(y_val, model.predict(X_val), pos_label=1, zero_division=0)
+        return score
 
     best_vec, best_score, _ = honey_badger_optimizer(
         fitness_fn, bounds,
@@ -236,6 +239,7 @@ def _search_hba_binary(X_train, y_train, X_val, y_val, kwargs, space, verbose, b
     best_params = parser_fn(best_vec)
     best_model = build_model_fn(balanced=balanced, **best_params)
     best_model.fit(X_train, y_train)
+    
     
     return best_model, best_params, best_score
 
@@ -305,9 +309,9 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         elif search_method == "random":
             best_model, best_params, best_score = _search_random(X_train, y_train, X_val, y_val, search_kwargs, search_data, verbose, build_model_fn, balanced)
         elif search_method == "optuna":
-            best_model, best_params, best_score = _search_optuna(X_train, y_train, X_val, y_val, search_kwargs, verbose, build_model_fn, balanced)
+            best_model, best_params, best_score = _search_optuna(X_train, y_train, X_val, y_val, search_kwargs, search_data, verbose, build_model_fn, balanced)
         elif search_method == "hba":
-            best_model, best_params, best_score = _search_hba_binary(X_train, y_train, X_val, y_val, search_kwargs, verbose,build_model_fn, balanced)
+            best_model, best_params, best_score = _search_hba_binary(X_train, y_train, X_val, y_val, search_kwargs, search_data, verbose, build_model_fn, balanced)
         else:
             raise ValueError(f"Unknown search_method: {search_method}")
 
@@ -327,7 +331,7 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
             print(f"[INFO] Threshold decision based on validation:")
             for name, d in threshold_details.items():
                 flag = " <- choosen" if name==chosen_name else ""
-                print(f"\t{name}: threshold={d['threshold']:.4f} | F2(val)={d['fbeta']:.4f} | fp_per_day_val(val)={d['fp_per_day_val']:.4f}{flag}")
+                print(f"\t{name}: threshold={d['threshold']:.4f} | F{SCORER}(val)={d['fbeta']:.4f} | fp_per_day_val(val)={d['fp_per_day_val']:.4f}{flag}")
             print(f"[INFO] Best configuration found with validation: {best_params} | F1(val)={best_score:.4f}")
             print("Final report", "-"*25)
             print(class_report)
