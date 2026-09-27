@@ -203,20 +203,20 @@ MONOPOLAR_CHANNELS = list(dict.fromkeys(BIPOLAR_MONTAGE["anode"] + BIPOLAR_MONTA
 # Windowing
 WINDOW_REQUESTS_ARTIFACTS = {
     "eye":                        [ {"window_size_sec": 5, "stride_sec": 2, "artifact_umbral": 0.1},
-                                    #{"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.15},
+                                    {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.15},
                                     #{"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
                                     #{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
                                     #{"window_size_sec": 0.5, "stride_sec": 0.5, "artifact_umbral": 0.6},
                                     #{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.6},
                                    ],
-    "muscle":                     [ #{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
+    "muscle":                     [ {"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
                                     #{"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
                                     #{"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
                                     {"window_size_sec": 5, "stride_sec": 2, "artifact_umbral": 0.2},
                                    ],
     "non_physiological":          [ #{"window_size_sec": 0.5, "stride_sec": 0.25, "artifact_umbral": 0.2},
                                     #{"window_size_sec": 1, "stride_sec": 0.5, "artifact_umbral": 0.3},
-                                    #{"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
+                                    {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
                                     {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
                                    ],
 }
@@ -226,7 +226,7 @@ WINDOW_REQUESTS_ARTIFACTS = {
 RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 
 # Key factor to compare two versions or slightly changed model
-COMPARISON = False
+COMPARISON = True
 
 ## Split version
 VERSION = 5
