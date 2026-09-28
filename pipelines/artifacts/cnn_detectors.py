@@ -177,6 +177,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                 artifact_umbral=window['artifact_umbral'],
                                                                                 window_size_sec=window['window_size_sec'],
                                                                                 stride_sec=window['stride_sec'],
+                                                                                manually_checked=True,
                                                                             )
 
         if i == 0:
