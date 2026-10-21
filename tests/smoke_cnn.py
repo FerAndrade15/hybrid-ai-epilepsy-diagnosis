@@ -1,7 +1,8 @@
 # smoke_test_cnn.py
 import pandas as pd
 from pathlib import Path
-from models.artifacts.cnn_artifact_detector import binary_cnn
+from src.core.data_config import BIPOLAR_MONTAGE, SFREQ
+from src.models.cnn_artifact_detector import binary_cnn
 
 OUT = Path("/workspace/ml-outputs/artifact")
 split_dir = OUT / "splits"
@@ -34,17 +35,25 @@ results = binary_cnn(
     target_col="eye",
     model_name="smoke_test_eye",
     window_size_sec=5.0,
-    sfreq=256,
-    n_channels=18,
+    stride_sec=2.0,
+    sfreq=SFREQ,
+    n_channels=len(BIPOLAR_MONTAGE["names"]),
     session_cache_dir=str(OUT / "cache/sessions"),
     ica_cache_dir=str(OUT / "cache/ica"),
     models_dir="models_cnn_smoke_test",
     model_type="lightweight",
     epochs=1,
     batch_size=8,
+    max_fp_per_day=50,          # ejercita también la ruta del tope
     checkpoints_dir="./checkpoints_smoke_test",
     force_retrain=True,
 )
 
 print("\n[SMOKE TEST OK]")
 print(results["metrics_results"])
+
+test_tbl = pd.read_parquet(results["pred_paths"]["test"])
+assert len(test_tbl) == results["metrics_results"]["n_test_windows"]
+assert {"Patient", "Session", "Section", "Start", "y", "p"} <= set(test_tbl.columns)
+assert results["capped"] is not None
+print("[PREDS + CAPPED OK]")

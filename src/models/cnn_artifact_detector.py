@@ -10,6 +10,7 @@ Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 # General imports
 import json
 import psutil
+import random
 import logging
 import hashlib, shutil
 from pathlib import Path
@@ -42,6 +43,12 @@ print(f"[INFO] Using device: {device}")
 
 class TrainingInterrupted(RuntimeError):
     """Checkpoint saved, training stopped"""
+
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
 
 def covered_days(n_windows: int, stride_sec: float) -> float:
     return n_windows * stride_sec / 86400
@@ -549,30 +556,55 @@ class ArtifactDetector:
                 trues.append(y_batch.numpy())
         return np.concatenate(probs), np.concatenate(trues)
 
-    def evaluate(self, val_loader: DataLoader, 
+    
+    def evaluate(self, val_loader: DataLoader,
                  test_loader: DataLoader,
-                 window_size_sec: float, 
-                 stride_sec: float, 
-                 max_fp_per_day: float = 100,
+                 window_size_sec: float,
+                 stride_sec: float,
+                 max_fp_per_day: Optional[float] = None,
                  threshold_mode: str = "youden"
         ) -> Dict[str, Any]:
 
         y_proba_val, y_val = self._predict_proba(val_loader)
         y_proba_test, y_test = self._predict_proba(test_loader)
 
+        # Predicciones por ventana (para bootstrap por paciente y re-umbralizar)
+        key_cols = ["Patient", "Session", "Section", "Start"]
+        pred_paths = {}
+        for name, loader, y, p in (("val", val_loader, y_val, y_proba_val),
+                                   ("test", test_loader, y_test, y_proba_test)):
+            tbl = loader.dataset.df[key_cols].copy()
+            tbl["y"] = y.astype(int)
+            tbl["p"] = p
+            path = self.results_dir / f"preds_{name}.parquet"
+            tbl.to_parquet(path, index=False)
+            pred_paths[name] = str(path)
+
         best_threshold, _ = select_f1_optimal_threshold(y_val, y_proba_val)
         chosen_thr, chosen_mode = select_operating_threshold(y_val, y_proba_val, mode=threshold_mode)
-        chosen_thr, capped = cap_threshold_for_fp(y_val, y_proba_val, chosen_thr, max_fp_per_day, stride_sec)
-        if capped:
-            chosen_mode += "+fp_cap"
 
-        val_days = covered_days(len(y_val), stride_sec)
-        fp_per_day_val = (((y_proba_val >= chosen_thr) & (y_val == 0)).sum()) / val_days
-        y_pred_test = (y_proba_test >= chosen_thr).astype(int)
+        def _metrics_at(thr: float):
+            y_pred = (y_proba_test >= thr).astype(int)
+            m = compute_full_metrics(y_test, y_pred, y_proba_test,
+                                     stride_sec=stride_sec, model_name=self.artifact_name)
+            fp_val = ((y_proba_val >= thr) & (y_val == 0)).sum()
+            m["val_fp_per_day"] = round(float(fp_val / covered_days(len(y_val), stride_sec)), 2)
+            return y_pred, m
 
-        full_metrics = compute_full_metrics(y_test, y_pred_test, y_proba_test,
-                                            stride_sec=stride_sec, model_name=self.artifact_name)
-        full_metrics["val_fp_per_day"] = round(float(fp_per_day_val), 2)
+        # Punto principal: Youden, sin tope de FP/día
+        y_pred_test, full_metrics = _metrics_at(chosen_thr)
+
+        # Punto secundario: Youden + tope de FP/día (solo si lo pides)
+        capped_result = None
+        if max_fp_per_day is not None:
+            thr_cap, capped = cap_threshold_for_fp(y_val, y_proba_val, chosen_thr, max_fp_per_day, stride_sec)
+            _, m_cap = _metrics_at(thr_cap)
+            capped_result = {
+                "threshold": thr_cap,
+                "mode": chosen_mode + ("+fp_cap" if capped else "(cap_not_binding)"),
+                "max_fp_per_day": max_fp_per_day,
+                "metrics_results": m_cap,
+            }
 
         class_report = classification_report(y_test, y_pred_test, target_names=["no_" + self.artifact_name, self.artifact_name])
         conf_matrix = confusion_matrix(y_test, y_pred_test)
@@ -583,13 +615,19 @@ class ArtifactDetector:
             print(class_report)
             print(conf_matrix)
             print(pd.Series(full_metrics).to_string())
+            if capped_result is not None:
+                print(f"\n-- With FP cap ({max_fp_per_day}/day): thr={capped_result['threshold']:.3f} "
+                      f"({capped_result['mode']})")
+                print(pd.Series(capped_result["metrics_results"]).to_string())
 
         return {
             "chosen_threshold": chosen_thr, "chosen_mode": chosen_mode,
             "test_report": class_report, "confusion_matrix": conf_matrix,
             "metrics_results": full_metrics,
+            "capped": capped_result,
+            "pred_paths": pred_paths,
         }
-
+    
     def plot_and_save_history(self):
         plt.figure(figsize=(10, 4))
 
@@ -632,7 +670,7 @@ class ArtifactDetector:
 
 def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,
                            session_cache_dir: str, ica_cache_dir: str,
-                           batch_size: int = 64,
+                           batch_size: int = 64, seed: int = 0,
                            expected_n_timesteps: Optional[int] = None) -> Tuple[DataLoader, DataLoader, DataLoader]:
     """
     Structures the 3 DataLoaders (train/val/test) with windowed dataframes.
@@ -642,7 +680,8 @@ def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,
         ds = EEGWindowDataset(subset, target_col=target_col,
                               session_cache_dir=session_cache_dir, ica_cache_dir=ica_cache_dir,
                               expected_n_timesteps=expected_n_timesteps)
-        return DataLoader(ds, batch_size=batch_size, shuffle=shuffle, num_workers=0)
+        gen = torch.Generator().manual_seed(seed) if shuffle else None
+        return DataLoader(ds, batch_size=batch_size, shuffle=shuffle, num_workers=0, generator=gen)
 
     return _loader_for("train", True), _loader_for("val", False), _loader_for("test", False)
 
@@ -660,7 +699,9 @@ def binary_cnn(windowed_df: pd.DataFrame,
                model_type: str = "lightweight", 
                epochs: int = 100, 
                batch_size: int = 64,
-               max_fp_per_day: float = 100, 
+               max_fp_per_day: Optional[float] = None,
+               seed: int = 0,
+               code_version: str = "v1",
                force_retrain: bool = False,
                use_class_weights: bool = True,
                checkpoints_dir: str="/workspace/checkpoints",
@@ -671,9 +712,15 @@ def binary_cnn(windowed_df: pd.DataFrame,
     """
     Evaluation of each artefact.
     """
+    split_fp = hashlib.md5(
+        windowed_df[["Patient", "split"]].drop_duplicates().sort_values(["Patient", "split"])
+        .to_csv(index=False).encode()
+        ).hexdigest()[:8]
     cfg = dict(model_type=model_type, epochs=epochs, lr=lr, batch_size=batch_size,
-           focal_params=focal_params, use_class_weights=use_class_weights,
-           window=window_size_sec, stride=stride_sec, max_fp=max_fp_per_day)
+               focal_params=focal_params, use_class_weights=use_class_weights,
+               window=window_size_sec, stride=stride_sec,
+               seed=seed, code_version=code_version, split=split_fp)
+    
     tag = hashlib.md5(json.dumps(cfg, sort_keys=True, default=str).encode()).hexdigest()[:8]
     model_name = f"{model_name}_{tag}"
 

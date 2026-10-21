@@ -37,6 +37,9 @@ ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models_v2")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
+SEEDS = [0]            # [0, 1, 2] triplica el tiempo
+CODE_VERSION = "v1"    
+
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
@@ -196,27 +199,31 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
 
         for variant, loss_cfg in LOSS_VARIANTS.items():
-            try:
-                res = binary_cnn(
-                    windowed_df=splitted_dataset,
-                    target_col=artifact,
-                    model_name=f"cnn_{artifact}_{variant}_w{window['window_size_sec']}_s{window['stride_sec']}",
-                    window_size_sec=window["window_size_sec"],
-                    stride_sec=window["stride_sec"],
-                    sfreq=SFREQ, n_channels=N_CHANNELS,
-                    session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR),
-                    models_dir=str(MODELS_DIR),
-                    model_type=config["model_type"], epochs=config["epochs"], lr=config["lr"],
-                    max_fp_per_day=config["max_fp_per_day"],
-                    focal_params=loss_cfg["focal_params"],
-                    use_class_weights=loss_cfg["use_class_weights"],
-                    force_retrain=False,
-                    checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
-                )
-            except TrainingInterrupted:
-                print("[WARN] Interrumpido por SIGTERM; al relanzar se reanuda.")
-                raise SystemExit(143)
-            results.setdefault(artifact, []).append(res)
+            for seed in SEEDS:
+                try:
+                    res = binary_cnn(
+                        windowed_df=splitted_dataset,
+                        target_col=artifact,
+                        model_name=f"cnn_{artifact}_{variant}_w{window['window_size_sec']}_s{window['stride_sec']}",
+                        window_size_sec=window["window_size_sec"],
+                        stride_sec=window["stride_sec"],
+                        sfreq=SFREQ, n_channels=N_CHANNELS,
+                        session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR),
+                        models_dir=str(MODELS_DIR),
+                        model_type=config["model_type"], epochs=config["epochs"], lr=config["lr"],
+                        max_fp_per_day=config["max_fp_per_day"],
+                        focal_params=loss_cfg["focal_params"],
+                        use_class_weights=loss_cfg["use_class_weights"],
+                        seed=seed,
+                        code_version=CODE_VERSION,
+                        max_fp_per_day=config["max_fp_per_day"],
+                        force_retrain=False,
+                        checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
+                    )
+                except TrainingInterrupted:
+                    print("[WARN] Interrumpido por SIGTERM; al relanzar se reanuda.")
+                    raise SystemExit(143)
+                results.setdefault(artifact, []).append(res)
 
 print("\n"+"*-" * 25)
 print("Final report")
