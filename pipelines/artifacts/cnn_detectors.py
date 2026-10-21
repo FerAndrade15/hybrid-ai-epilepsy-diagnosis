@@ -196,8 +196,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
         config = CNN_CONFIG[artifact]
 
-
-
         for variant, loss_cfg in LOSS_VARIANTS.items():
             for seed in SEEDS:
                 try:

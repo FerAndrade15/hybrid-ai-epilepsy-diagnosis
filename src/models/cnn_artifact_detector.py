@@ -288,7 +288,7 @@ class EEGWindowDataset(Dataset):
         return len(self.df)
 
     def _get_session(self, patient, session, section, path_edf):
-        key = (patient, session)
+        key = (patient, session, section)
         if key in self._session_cache:
             self._session_cache.move_to_end(key)
             self._cache_hits = getattr(self, "_cache_hits", 0) + 1
