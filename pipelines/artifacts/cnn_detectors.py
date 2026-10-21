@@ -216,7 +216,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                         use_class_weights=loss_cfg["use_class_weights"],
                         seed=seed,
                         code_version=CODE_VERSION,
-                        max_fp_per_day=config["max_fp_per_day"],
                         force_retrain=False,
                         checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
                     )

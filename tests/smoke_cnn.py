@@ -16,6 +16,7 @@ df_full["EDF_path"] = (
     .str.replace("\\", "/", regex=False)
     .str.replace(r"^.*?tuh_eeg_artifact/", "/workspace/data/tuh_eeg_artifact/", regex=True)
 )
+print(df_full[df_full["split"] == "train"]["is_ambiguous"].value_counts())
 missing = [p for p in df_full["EDF_path"].unique() if not Path(p).exists()]
 print("EDF no encontrados:", len(missing), missing[:3])
 assert not missing, "Revisa la regex de rutas"
