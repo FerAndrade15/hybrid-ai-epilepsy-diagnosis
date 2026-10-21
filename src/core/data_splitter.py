@@ -28,7 +28,7 @@ def split_balance_report(windowed_df, target_col="is_positive", split_col="split
 
 def drop_inconsistent_channel_columns(df, verbose=True, protect_cols=None):
     """
-	Drop  columns containing NaN values caused by incosisntent montages.
+	Drop columns containing NaN values caused by incosisntent montages.
     """
     protect_cols = set(protect_cols or [])
     candidate_cols = [col for col in df.columns if col not in protect_cols]
@@ -104,7 +104,6 @@ def grouped_multilabel_split(windowed_df, target_taxonomy, group_col="Patient", 
     report["n_patients"] = pd.Series(assignment).value_counts()
     return windowed_df, assignment, report
 
-
 def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="Patient", 
                               include_clean=True, drop_excluded=True, drop_ambiguous=True, 
                              ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42,
@@ -167,7 +166,6 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
     report = pd.Series(split_totals, name="n_positive").to_frame()
     report["n_patients"] = pd.Series(assignment).value_counts()
     return df, assignment, report
-
 
 def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
                                 include_clean=True, drop_excluded=True, drop_ambiguous=True, 

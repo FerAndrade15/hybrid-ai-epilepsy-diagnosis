@@ -1,0 +1,28 @@
+% Antecedentes
+La epilepsia es un trastorno neurológico caracterizado por la aparición de crisis epilépticas recurrentes y no provocadas \cite{thijs_epilepsy_2019}. En la práctica clínica, su diagnóstico se fundamenta en la valoración exhaustiva de datos como el historial clínico y la exploración médica, y se sustenta principalmente en la evaluación de los registros de la actividad cerebral mediante electroencefalogramas, que permiten identificar los patrones epileptiformes y delimitar los estados clínicos asociados.
+
+No obstante, el análisis de las señales registradas en un electroencefalograma es un proceso complejo debido a su alta dimensionalidad, no linealidad y presencia de ruido \cite{aung_what_2025}. En la última década, el desarrollo de sistemas y técnicas basadas en inteligencia artificial ha permitido automatizar la detección, extracción y selección de características relevantes, reduciendo la dependencia del análisis manual \cite{rasheed_ml_2021}.
+
+\section{Inteligencia artificial aplicada en el diagnóstico y predicción de la epilepsia}
+
+Los avances recientes en inteligencia artificial (IA) han permitido una evolución significativa en el análisis, predicción, detección y clasificación de la epilepsia. La disponibilidad de grandes conjuntos de datos y técnicas avanzadas de análisis ha facilitado el desarrollo de sistemas capaces de proporcionar información más precisa y oportuna sobre los episodios convulsivos.
+
+Inicialmente, se emplearon métodos estadísticos y de aprendizaje automático tradicionales \cite{munsell2015svm}. Recientemente, con el desarrollo del aprendizaje profundo, se consolidó el uso de redes neuronales convolucionales (CNN), recurrentes (RNN) \cite{lee2017riscv}, redes de memoria a corto y largo plazo (LSTM) \cite{najafi2022rnn} y transformadores.
+
+El estudio realizado por la Universidad de Thanh Dong \cite{wu_review_2025} destaca cinco desafíos críticos en la evolución de la IA para epilepsia (2018-2025): primero, una migración masiva hacia el aprendizaje profundo (107 de 149 estudios); segundo, un sesgo demográfico derivado del uso extensivo del \textit{dataset} CHB-MIT; tercero, la falta de realismo clínico en el preprocesamiento y manejo del desbalance de datos; cuarto, una validación limitada que no prioriza la reducción de falsos positivos; y finalmente, una notable ausencia de explicabilidad, donde solo el 7\% de las investigaciones aplicaron métodos para interpretar el comportamiento del modelo.
+
+Dentro de los 149 estudios analizados, 11 presentaron arquitecturas híbridas que integran aprendizaje automático y aprendizaje profundo. Estas combinaciones permiten desempeños superiores en entornos controlados, sin embargo, carecen de una evaluación sistemática de generalización entre individuos y de un análisis de estabilidad orientado a su implementación clínica.
+
+
+\section{Evolución de la línea de investigación en UVG}
+La línea de investigación en la Universidad del Valle de Guatemala ha mostrado una evolución significativa en la complejidad arquitectónica y el manejo de información. En 2020, en colaboración con el Centro de Epilepsia y Neurocirugía Funcional (HUMANA) \cite{HUMANA}, María Pineda \cite{Pineda_2020} implementó la infraestructura original de la base de datos, integrando MySQL con MATLAB, mientras que María Jesús Angulo desarrolló el flujo de preprocesamiento y clasificación supervisada \cite{Angulo_2020}. Mediante ANN y SVM se logró diagnosticar epilepsia con precisiones superiores al 95\%, limitadas por el tamaño de la muestra inicial.
+
+En 2021, David Vela \cite{Vela_2021} expandió el problema hacia la clasificación multiclase, categorizando las señales en cuatro estados clínicos (ictal, sano, preictal e interictal), alcanzando precisiones del 77.1\%. Ese mismo año, Jorge Manrique \cite{Manrique_2021} optimizó la arquitectura del software para su transición hacia el uso clínico dentro de HUMANA.
+
+Para 2022, la investigación incorporó un enfoque no supervisado y multimodal. Camila Lemus \cite{Lemus_2022} combinó electroencefalogramas y electrocardiogramas (ECG), validando resultados supervisados con una precisión del 99\%. Propuso un modelo basado en K-vecinos cercanos para la reducción de tiempos de entrenamiento. Paralelamente, Samuel Silvestre \cite{Silvestre_2022} estructuró y publicó el repositorio institucional de señales EEG.
+
+Durante 2023, la robustez del sistema aumentó. Katherine Caceros \cite{Caceros_2023} amplió el repositorio, Diego Méndez \cite{Mendez_2023} migró el sistema hacia un entorno ejecutable autónomo y Christofer Patzán \cite{Patzan_2023} fortaleció el preprocesamiento mediante wavelets y el algoritmo de enjambre de camaleones para el análisis conjunto de EEG y EMG.
+
+En 2024, Javier Pérez \cite{Perez_2024} impulsó la transición definitiva hacia arquitecturas profundas (RNN, CNN y TCN) bajo una evaluación inter-paciente, logrando precisiones cercanas al 81\%. En paralelo, Dylan Ixcayau \cite{Ixcayau_2024} implementó algoritmos de agrupamiento combinados con PCA y normalización de puntuación Z, optimizando los resultados intra-sujeto.
+
+Finalmente, en 2025, Santiago Sánchez \cite{Sanchez_2025} profesionalizó el entorno experimental al migrar de MATLAB a Python (TensorFlow y PyTorch) y adoptar la base de datos clínica TUSZ. Evaluó arquitecturas de aprendizaje profundo híbrido (CNN + BiLSTM + Atención) y un Transformador Temporal. Aunque consolidó una plataforma moderna y escalable, identificó limitaciones críticas en el desbalance de clases y la precisión por ventana temporal, enfatizando la necesidad de una validación clínica prospectiva.

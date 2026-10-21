@@ -6,8 +6,6 @@
 Corpus-agnostic windowing for continuous annotations into fixed-size
 sections and tags according to a given taxonomy with all the passed in data.
 """
-# windowing.py
-
 # Data integration libraries
 import numpy as np
 import pandas as pd

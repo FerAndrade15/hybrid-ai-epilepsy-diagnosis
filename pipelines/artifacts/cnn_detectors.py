@@ -5,8 +5,7 @@
 
 Pipeline to train 1D CNN for each artifact
 """
-# file: cnn_detectors.py
-
+#file : cnn_detectors
 from IPython.display import display
 from pathlib import Path
 import pandas as pd
@@ -19,7 +18,7 @@ from src.core.data_config import (  ARTIFACT_KEYWORDS, BIPOLAR_MONTAGE,
 from src.core.data_loader import build_annotations_index
 from src.core.windowing import get_or_build_windows
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report
-from src.models.cnn_artifact_detector import binary_cnn
+from src.models.cnn_artifact_detector import binary_cnn, TrainingInterrupted
 from src.utils.patient_registry import load_registry, forced_for
 from src.utils.split_cache import load_selected_sw
 
@@ -35,31 +34,21 @@ DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset")
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
 ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 
-MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
+MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models_v2")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 CNN_CONFIG = {
-    "eye":                  {"model_type": "standard", 
-                             "max_fp_per_day": 50, 
-                             "epochs": 100,
-                             "lr": 3e-4,
-                             "focal_params": {"alpha":0.5, "gamma":0.0}
-                             },
-    "muscle":               {"model_type": "lightweight", 
-                             "max_fp_per_day": 300, 
-                             "epochs": 100,
-                             "lr": 3e-4,
-                             "focal_params": {"alpha":0.5, "gamma":0.0}
-                             },
-    "non_physiological":    {"model_type": "lightweight", 
-                             "max_fp_per_day": 1000, 
-                             "epochs": 100,
-                             "lr": 3e-4,
-                             "focal_params": {"alpha":0.5, "gamma":0.0}
-                             },
+    "eye":               {"model_type": "lightweight", "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
+    "muscle":            {"model_type": "lightweight", "max_fp_per_day": 100,   "epochs": 100, "lr": 3e-4},
+    "non_physiological": {"model_type": "lightweight", "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
+}
+
+LOSS_VARIANTS = {
+    "A1": dict(focal_params={"alpha": 0.25, "gamma": 2.0}, use_class_weights=False),
+    "A2": dict(focal_params={"alpha": 0.5,  "gamma": 0.0}, use_class_weights=True),
 }
 
 # Configurations for the model according to general settings
@@ -204,25 +193,30 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
         config = CNN_CONFIG[artifact]
 
-        results.setdefault(artifact, []).append( binary_cnn(
-                                                            windowed_df=splitted_dataset, 
-                                                            target_col=artifact, 
-                                                            model_name=f"cnn_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}",
-                                                            window_size_sec=window["window_size_sec"], 
-                                                            sfreq=SFREQ, 
-                                                            n_channels=N_CHANNELS,
-                                                            session_cache_dir=str(SESSION_CACHE_DIR), 
-                                                            ica_cache_dir=str(ICA_CACHE_DIR),
-                                                            models_dir=str(MODELS_DIR), 
-                                                            model_type=config["model_type"],
-                                                            epochs=config["epochs"], 
-                                                            max_fp_per_day=config["max_fp_per_day"],
-                                                            force_retrain=True,
-                                                            lr=config["lr"],
-                                                            focal_params=config["focal_params"],
-                                                            checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
-                                                        )
-                                                )
+
+
+        for variant, loss_cfg in LOSS_VARIANTS.items():
+            try:
+                res = binary_cnn(
+                    windowed_df=splitted_dataset,
+                    target_col=artifact,
+                    model_name=f"cnn_{artifact}_{variant}_w{window['window_size_sec']}_s{window['stride_sec']}",
+                    window_size_sec=window["window_size_sec"],
+                    stride_sec=window["stride_sec"],
+                    sfreq=SFREQ, n_channels=N_CHANNELS,
+                    session_cache_dir=str(SESSION_CACHE_DIR), ica_cache_dir=str(ICA_CACHE_DIR),
+                    models_dir=str(MODELS_DIR),
+                    model_type=config["model_type"], epochs=config["epochs"], lr=config["lr"],
+                    max_fp_per_day=config["max_fp_per_day"],
+                    focal_params=loss_cfg["focal_params"],
+                    use_class_weights=loss_cfg["use_class_weights"],
+                    force_retrain=False,
+                    checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
+                )
+            except TrainingInterrupted:
+                print("[WARN] Interrumpido por SIGTERM; al relanzar se reanuda.")
+                raise SystemExit(143)
+            results.setdefault(artifact, []).append(res)
 
 print("\n"+"*-" * 25)
 print("Final report")

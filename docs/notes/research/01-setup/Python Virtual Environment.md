@@ -51,6 +51,12 @@ pip freeze --local > requirements.txt      
 pip unistall nombre-librería                
 pip install -r requirenemts.txt
 ```
+
+### Manejo de librerías en el entorno simplificado
+```bash
+uv pip compile requirements.in -o requirements.txt
+uv pip sync requirements.txt
+```
 ## Errores comunes 
 *Sin registro*
 

@@ -9,8 +9,6 @@ Shared data configuration for the data processing:
 - All corpus keyword (Artifact, event, seizures)
 - Standard EEG Channel names
 """
-# data_config.py
-
 # Data integration libraries
 import platform
 from pathlib import Path

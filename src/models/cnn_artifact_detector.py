@@ -11,6 +11,7 @@ Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 import json
 import psutil
 import logging
+import hashlib, shutil
 from pathlib import Path
 from typing import Optional, Dict, Any, Tuple, Literal
 from collections import OrderedDict
@@ -28,7 +29,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import (
     classification_report, confusion_matrix, roc_curve,
     precision_recall_curve, accuracy_score, precision_score,
-    recall_score, f1_score,
+    recall_score, f1_score, average_precision_score, balanced_accuracy_score, roc_auc_score,
 )
 from tqdm import tqdm
 
@@ -39,6 +40,20 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(level
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"[INFO] Using device: {device}")
 
+class TrainingInterrupted(RuntimeError):
+    """Checkpoint saved, training stopped"""
+
+def covered_days(n_windows: int, stride_sec: float) -> float:
+    return n_windows * stride_sec / 86400
+
+def cap_threshold_for_fp(y_val, p_val, thr, max_fp_per_day, stride_sec):
+    days = covered_days(len(y_val), stride_sec)
+    k = int(np.floor(max_fp_per_day * days))          # FP permitidos
+    neg = np.sort(p_val[y_val == 0].astype(np.float64))
+    if k >= len(neg):
+        return thr, False
+    t = float(np.nextafter(neg[len(neg) - k - 1], np.inf))  # deja <= k negativos con p >= t
+    return (t, True) if t > thr else (thr, False)
 # Loss
 class FocalLossWithClassWeights(nn.Module):
     """Binary focal loss with class weights."""
@@ -201,7 +216,7 @@ def select_operating_threshold(
     return float(chosen_thr), chosen_mode
 
 
-def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="model"):
+def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model"):
     """SzCore metrics set for general comparison between models."""
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred, labels=[0, 1]).ravel()
     sensitivity = recall_score(y_true, y_pred, pos_label=1, zero_division=0)
@@ -212,13 +227,19 @@ def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="mo
     false_alarm_rate = fp / (fp + tn) if (fp + tn) > 0 else np.nan
 
     try:
-        from sklearn.metrics import roc_auc_score
         auc_roc = roc_auc_score(y_true, y_prob)
     except ValueError:
         auc_roc = np.nan
 
-    total_time_sec = len(y_true) * window_size_sec
+    try:
+        pr_auc = average_precision_score(y_true, y_prob)
+    except ValueError:
+        pr_auc = np.nan
+    bal_acc = balanced_accuracy_score(y_true, y_pred)
+
+    total_time_sec = len(y_true) * stride_sec         
     total_time_days = total_time_sec / 86400
+
     fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
 
     return {
@@ -228,6 +249,8 @@ def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="mo
         "false_alarm_rate": round(false_alarm_rate, 4), "fp_per_day": round(fp_per_day, 2),
         "TP": int(tp), "FP": int(fp), "TN": int(tn), "FN": int(fn),
         "n_test_windows": len(y_true), "covered_test_hours": round(total_time_sec / 3600, 2),
+        "pr_auc": round(pr_auc, 4) if not np.isnan(pr_auc) else np.nan,
+        "balanced_accuracy": round(bal_acc, 4),
     }
 
 
@@ -352,16 +375,20 @@ class ArtifactDetector:
         self.logger.info(f"Model({self.model_type}). Parameters: {n_params:,}")
         return self.model
 
-    def train(self, train_loader: DataLoader, val_loader: DataLoader,
-              epochs: int = 100, lr: float = 1e-3, patience_f1: int = 10, patience_lr: int = 3,
+    def train(self, train_loader: DataLoader, 
+              val_loader: DataLoader,
+              epochs: int = 100, 
+              lr: float = 1e-3, 
+              patience_f1: int = 10, 
+              patience_lr: int = 3,
               class_weights: Optional[Dict[int, float]] = None,
               focal_params: Optional[Dict[str, float]] = None,
-              checkpoints_dir: str = "/workspace/checkpoints") -> Dict[str, list]:
+              checkpoints_dir: str = "/workspace/checkpoints",
+              use_class_weights = True,
+        ) -> Dict[str, list]:
 
-        all_train_labels = []
-        for _, y_batch in train_loader:
-            all_train_labels.append(y_batch.numpy())
-        all_train_labels = np.concatenate(all_train_labels)
+        ds = train_loader.dataset
+        all_train_labels = ds.df[ds.target_col].to_numpy().astype(int)
 
         hits = getattr(train_loader.dataset, "_cache_hits", 0)
         misses = getattr(train_loader.dataset, "_cache_misses", 0)
@@ -380,7 +407,10 @@ class ArtifactDetector:
         self.logger.info(f"Pesos de clase calculados para el entrenamiento: {calculated_class_weights}")
 
         focal_params = focal_params or {"alpha": 0.25, "gamma": 2.0}
-        class_weights = class_weights or calculated_class_weights
+        if use_class_weights:
+            class_weights = class_weights or calculated_class_weights
+        else:
+            class_weights = None 
 
         criterion = FocalLossWithClassWeights(**focal_params, class_weights=class_weights)
         optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
@@ -502,6 +532,10 @@ class ArtifactDetector:
         elif best_path.exists():
             self.model.load_state_dict(torch.load(best_path, map_location=self.device, weights_only=True))
 
+        if _interrupted["flag"]:
+            self.logger.warning("Interrumpido por SIGTERM: checkpoint guardado, sin evaluar.")
+            raise TrainingInterrupted(self.artifact_name)
+
         self.logger.info("Training completed.")
         return self.history
 
@@ -511,30 +545,35 @@ class ArtifactDetector:
         with torch.no_grad():
             for X_batch, y_batch in loader:
                 logits = self.model(X_batch.to(self.device))
-                probs.append(torch.sigmoid(logits).cpu().numpy())
+                probs.append(torch.sigmoid(logits).cpu().numpy().astype(np.float64))
                 trues.append(y_batch.numpy())
         return np.concatenate(probs), np.concatenate(trues)
 
-    def evaluate(self, val_loader: DataLoader, test_loader: DataLoader,
-                 window_size_sec: float, max_fp_per_day: float = 100,
-                 threshold_mode: str = "youden") -> Dict[str, Any]:
+    def evaluate(self, val_loader: DataLoader, 
+                 test_loader: DataLoader,
+                 window_size_sec: float, 
+                 stride_sec: float, 
+                 max_fp_per_day: float = 100,
+                 threshold_mode: str = "youden"
+        ) -> Dict[str, Any]:
 
         y_proba_val, y_val = self._predict_proba(val_loader)
         y_proba_test, y_test = self._predict_proba(test_loader)
 
         best_threshold, _ = select_f1_optimal_threshold(y_val, y_proba_val)
         chosen_thr, chosen_mode = select_operating_threshold(y_val, y_proba_val, mode=threshold_mode)
+        chosen_thr, capped = cap_threshold_for_fp(y_val, y_proba_val, chosen_thr, max_fp_per_day, stride_sec)
+        if capped:
+            chosen_mode += "+fp_cap"
 
-        total_time_days = len(y_val) * window_size_sec / 86400
-        fp_at_thr = ((y_proba_val >= chosen_thr).astype(int) == 1) & (y_val == 0)
-        fp_per_day_val = fp_at_thr.sum() / total_time_days if total_time_days > 0 else np.inf
-        if fp_per_day_val > max_fp_per_day:
-            chosen_thr, chosen_mode = 0.5, "thr05(fp_per_day_exceeded)"
-
+        val_days = covered_days(len(y_val), stride_sec)
+        fp_per_day_val = (((y_proba_val >= chosen_thr) & (y_val == 0)).sum()) / val_days
         y_pred_test = (y_proba_test >= chosen_thr).astype(int)
 
         full_metrics = compute_full_metrics(y_test, y_pred_test, y_proba_test,
-                                             window_size_sec=window_size_sec, model_name=self.artifact_name)
+                                            stride_sec=stride_sec, model_name=self.artifact_name)
+        full_metrics["val_fp_per_day"] = round(float(fp_per_day_val), 2)
+
         class_report = classification_report(y_test, y_pred_test, target_names=["no_" + self.artifact_name, self.artifact_name])
         conf_matrix = confusion_matrix(y_test, y_pred_test)
 
@@ -578,12 +617,12 @@ class ArtifactDetector:
         self.logger.info(f"Gráfica de evolución guardada en: {plot_path}")
 
     def save(self, filepath: Optional[str] = None) -> None:
-        filepath = Path(filepath) if filepath else self.results_dir / f"cnn_{self.artifact_name}.pt"
+        save_path = Path(filepath) if filepath else self.results_dir / f"cnn_{self.artifact_name}.pt"
         torch.save({
             "state_dict": self.model.state_dict(), 
             "model_type": self.model_type, 
             "input_shape": self.input_shape,
-            }, filepath)
+            }, save_path)
         hist_path = self.results_dir / f"cnn_{self.artifact_name}_history.json"
         with open(hist_path, "w", encoding="utf-8") as f:
             json.dump(self.history, f, indent=2)
@@ -608,11 +647,22 @@ def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,
     return _loader_for("train", True), _loader_for("val", False), _loader_for("test", False)
 
 
-def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
-               window_size_sec: float, sfreq: float, n_channels: int,
-               session_cache_dir: str, ica_cache_dir: str, models_dir: str = "models_cnn",
-               model_type: str = "lightweight", epochs: int = 100, batch_size: int = 64,
-               max_fp_per_day: float = 100, force_retrain: bool = False,
+def binary_cnn(windowed_df: pd.DataFrame, 
+               target_col: str, 
+               model_name: str,
+               window_size_sec: float, 
+               stride_sec: float,
+               sfreq: float, 
+               n_channels: int,
+               session_cache_dir: str, 
+               ica_cache_dir: str, 
+               models_dir: str = "models_cnn",
+               model_type: str = "lightweight", 
+               epochs: int = 100, 
+               batch_size: int = 64,
+               max_fp_per_day: float = 100, 
+               force_retrain: bool = False,
+               use_class_weights: bool = True,
                checkpoints_dir: str="/workspace/checkpoints",
                lr: float = 1e-3,
                class_weigths: Optional[Dict[int, float]] = None,
@@ -621,6 +671,15 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
     """
     Evaluation of each artefact.
     """
+    cfg = dict(model_type=model_type, epochs=epochs, lr=lr, batch_size=batch_size,
+           focal_params=focal_params, use_class_weights=use_class_weights,
+           window=window_size_sec, stride=stride_sec, max_fp=max_fp_per_day)
+    tag = hashlib.md5(json.dumps(cfg, sort_keys=True, default=str).encode()).hexdigest()[:8]
+    model_name = f"{model_name}_{tag}"
+
+    if force_retrain:
+        shutil.rmtree(Path(checkpoints_dir) / f"cnn_{model_name}", ignore_errors=True)
+
     model_dir = Path(models_dir)
     model_dir.mkdir(parents=True, exist_ok=True)
     analysis_path = model_dir / f"cnn_{model_name}_analysis.joblib"
@@ -649,9 +708,10 @@ def binary_cnn(windowed_df: pd.DataFrame, target_col: str, model_name: str,
                    class_weights=class_weigths,
                    focal_params=focal_params,
                    checkpoints_dir=checkpoints_dir,
+                   use_class_weights=use_class_weights,
                    )
 
-    results = detector.evaluate(val_loader, test_loader, window_size_sec=window_size_sec,
+    results = detector.evaluate(val_loader, test_loader, window_size_sec=window_size_sec, stride_sec=stride_sec,
                                  max_fp_per_day=max_fp_per_day)
     detector.save()
 

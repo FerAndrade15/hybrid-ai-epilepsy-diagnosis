@@ -1,0 +1,14 @@
+{
+  "run_id": "sanchez_v1",
+  "method": "occlusion",
+  "threshold": 0.5,
+  "ig_steps": null,
+  "ig_joint": false,
+  "baseline": 0.0,
+  "occlusion_window_sec": 0.5,
+  "attn_grad": false,
+  "model_path": "/mnt/c/Users/ferch/Documents/Various/EngineeringDesignAndInnovation/hybrid-ai-epilepsy-diagnosis/src/xai/models/temporal_transformer/sanchez_transformer_final_model.pt",
+  "config_path": "/mnt/c/Users/ferch/Documents/Various/EngineeringDesignAndInnovation/hybrid-ai-epilepsy-diagnosis/src/xai/models/temporal_transformer/sanchez_transformer_config_used.json",
+  "dataset_path": "/mnt/c/Users/ferch/Documents/Various/EngineeringDesignAndInnovation/hybrid-ai-epilepsy-diagnosis/src/xai/models/temporal_transformer/_data",
+  "output": "logits; reduce=logit of mean prob"
+}

@@ -8,8 +8,6 @@ Agnostic functions for the extraction of diverse features:
 - Espectral: PSD, power per band, DWT, entropy
 - ICA components dynamics and metadata extraction
 """
-# feature_extractor.py
-
 # Data libraries
 import pywt
 import numpy as np

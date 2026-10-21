@@ -28,14 +28,22 @@ from sklearn.metrics import (
     precision_recall_curve, 
     fbeta_score,
     classification_report, 
+    average_precision_score
 )
 
 # Functions from modules
-from src.core.data_config import SCORER
+from src.core.data_config import SCORER, KEY
 from src.core.data_splitter import split_features_target
 
+def to_window_level(df_split, prob, target_col):
+    t = df_split[KEY].copy()
+    t["p"] = np.asarray(prob)
+    t["y"] = df_split[target_col].values
+    w = t.groupby(KEY, sort=False).agg(y=("y", "max"), s=("p", "max")).reset_index()
+    return w["y"].astype(int).values, w["s"].values
+
 ## Metric analysis functions
-def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="model"):
+def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model"):
     """
     Calculation of SzCore metrics set.
     """
@@ -53,7 +61,7 @@ def compute_full_metrics(y_true, y_pred, y_prob, window_size_sec, model_name="mo
     except ValueError:
         auc_roc = np.nan
 
-    total_time_sec = len(y_true) * window_size_sec
+    total_time_sec = len(y_true) * stride_sec
     total_time_days = total_time_sec / 86400
 
     fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
@@ -94,6 +102,7 @@ def fbeta_scorer(y_true, y_pred, beta=SCORER):
 def select_threshold(y_val, y_prob_val,window_size_sec, beta=SCORER, max_fp_per_day=100):
     adjusted_threshold, _ = find_best_threshold(y_val, y_prob_val, beta=beta)
     candidates = {"thr05":0.5, "adjusted":adjusted_threshold}
+    total_time_days = len(y_val) * stride_sec / 86400
     scores, details = {}, {}
 
     total_time_days = len(y_val)*window_size_sec / 86400
@@ -248,7 +257,8 @@ def _search_hba_binary(X_train, y_train, X_val, y_val, kwargs, space, verbose, b
 def train_binary_model( df, model_name, window_size_sec, build_model_fn,
                        search_data=None, models_dir="models", verbose=True, 
                        leakage_cols=[], search_method="grid", search_kwargs=None,
-                       force_retrain=False, balanced=False, max_fp_per_day=100
+                       force_retrain=False, balanced=False, max_fp_per_day=100, 
+                       target_col = None
                     ):
     """
     Generic function to train a binary classifier.
@@ -316,17 +326,24 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
             raise ValueError(f"Unknown search_method: {search_method}")
 
         # Best threshold results
+        stride = window_size_sec["stride_sec"]
+        df_val = df[df["split"]=="val"]
+        df_test = df[df["split"]=="test"]
+        assert len(df_val) == len(X_val) and len(df_test) == len(X_test)
+
         y_prob_val = best_model.predict_proba(X_val)[:,1]
-        chosen_threshold, chosen_name, threshold_details = select_threshold(y_val, y_prob_val, window_size_sec['window_size_sec'], max_fp_per_day=max_fp_per_day)
-
         y_prob_test =  best_model.predict_proba(X_test)[:,1]
-        y_test_predict = (y_prob_test >= chosen_threshold).astype(int)
 
-        class_report = classification_report(y_test, y_test_predict, target_names=["no_"+model_name, model_name])
-        conf_matrix = confusion_matrix(y_test, y_test_predict)
-        full_metrics = compute_full_metrics(y_test.values, y_test_predict, y_prob_test,
-                                            window_size_sec=window_size_sec['window_size_sec'], model_name=model_name)
+        yv, sv = to_window_level(df_val,  y_prob_val,  target_col)
+        yt, st = to_window_level(df_test, y_prob_test, target_col)
 
+        chosen_threshold, chosen_name, threshold_details = select_threshold(yv, sv, stride, max_fp_per_day=max_fp_per_day)
+        y_test_predict = (st >= chosen_threshold).astype(int)
+        class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
+        conf_matrix = confusion_matrix(yt, y_test_predict)
+        full_metrics = compute_full_metrics(yt, y_test_predict, st, stride, model_name)
+        full_metrics["AP"] = round(average_precision_score(yt, st), 4)
+        
         if verbose:
             print(f"[INFO] Threshold decision based on validation:")
             for name, d in threshold_details.items():

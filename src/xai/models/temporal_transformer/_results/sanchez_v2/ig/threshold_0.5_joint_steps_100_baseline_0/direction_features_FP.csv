@@ -1,0 +1,17 @@
+,rho_median,n_patients,mean_abs_attr
+rms_eeg,,0,0.33532566
+line_length,,0,1.5194337
+tkeo_mean,,0,1.6908145
+hjorth_activity,,0,0.05190511
+hjorth_mobility,,0,1.7282287
+hjorth_complexity,,0,0.32320943
+bp_rel_delta,,0,0.77069294
+bp_rel_theta,,0,0.384242
+bp_rel_alpha,,0,0.3961534
+bp_rel_beta,,0,0.56041414
+bp_rel_gamma,,0,0.5372626
+spectral_entropy,,0,0.70204765
+sef95,,0,0.09463032
+beta_alpha_ratio,,0,2.22353
+theta_alpha_ratio,,0,0.13439386
+std_eeg,,0,0.10347459

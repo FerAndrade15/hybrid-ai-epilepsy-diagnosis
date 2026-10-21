@@ -11,7 +11,8 @@ Temas: EEG, Deep Learning, XAI, herramientas de desarrollo.
 - [[MobaXterm]]
 - [[Git and Git Bash]]
 - [[Python Virtual Environment]]
- 
+- [[Runpod]]
+- 
 ### 02-datasets — Datos
 - [[EEG]]
 - [[Temple University EEG]]

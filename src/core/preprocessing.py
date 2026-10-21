@@ -9,8 +9,6 @@ Required preprocessing steps for raw signal analysis:
 - Notch filtering at 50/60 Hz to remove mains power noise
 - Standard channel renaming
 """
-# prerprocessing.py
-
 # Data analysis libraries
 import mne
 import numpy as np

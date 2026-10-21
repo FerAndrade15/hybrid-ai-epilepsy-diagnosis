@@ -1,0 +1,160 @@
+En estos anexos, se incluyen recursos adicionales para la interpretación de los resultados presentados. Principalmente, recursos gráficos y complementarios de los modelos analizados. La primera parte presenta los resultados de la aplicación de los métodos de saliencia, oclusión y gradientes integrales a los modelos analizados.
+
+\section{Resultados de la aplicación de los métodos de explicabilidad}
+
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Suma de los efectos por familia frente al efecto de ablar toda la rama de features.}
+\label{tab:aditividad}
+\begin{tabular}{lrrrr}
+\toprule
+Grupo & Suma familias (0) & Rama (0) & Suma familias (inter.) & Rama (inter.) \\
+\midrule
+VP & 13.50 & 4.18 & 11.10 & 6.30 \\
+FP & 12.19 & 3.48 & 9.25 & 5.21 \\
+VN & $-$3.92 & $-$5.01 & $-$0.90 & $-$1.13 \\
+FN & $-$4.24 & $-$5.46 & $-$0.72 & $-$1.05 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Ablación por grupo de canales (caída del logit).}
+\label{tab:canales}
+\begin{tabular}{lrrrr}
+\toprule
+Grupo de canales & VP & FP & VN & FN \\
+\midrule
+Temporal izq. & $-$0.008 & 0.000 & 0.000 & 0.000 \\
+Temporal der. & $-$0.006 & 0.000 & 0.000 & 0.000 \\
+Parasagital izq. & $-$0.005 & 0.000 & 0.000 & 0.000 \\
+Parasagital der. & $-$0.012 & 0.001 & 0.000 & 0.000 \\
+Central + auriculares & $-$0.026 & 0.000 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Oclusión de features individuales: mediana por paciente de la caída del logit (baseline 0). VP y FP son descriptivos (4 y 2 pacientes).}
+\label{tab:feat_med}
+\begin{tabular}{lrrrr}
+\toprule
+Feature & VP & FP & VN & FN \\
+\midrule
+Valor RMS & $-$1.24 & $-$0.53 & $-$0.40 & $-$1.64 \\
+Longitud de línea & 1.50 & 1.45 & $-$0.32 & $-$0.36 \\
+Energía de Teager--Kaiser (media) & 1.35 & 2.80 & $-$0.16 & $-$0.19 \\
+Actividad de Hjorth & 0.10 & $-$0.04 & $-$0.22 & $-$0.53 \\
+Movilidad de Hjorth & $-$0.01 & 2.05 & $-$0.21 & $-$0.08 \\
+Complejidad de Hjorth & $-$0.62 & $-$0.10 & $-$0.07 & $-$0.11 \\
+Potencia relativa delta & 1.28 & 1.18 & $-$0.50 & $-$0.07 \\
+Potencia relativa theta & 8.94 & 0.04 & 0.00 & $-$0.01 \\
+Potencia relativa alfa & 0.44 & $-$0.42 & $-$0.51 & $-$0.47 \\
+Potencia relativa beta & 0.04 & 0.83 & $-$0.20 & 0.13 \\
+Potencia relativa gamma & $-$0.01 & 0.51 & $-$0.21 & $-$0.07 \\
+Entropía espectral & 0.05 & 1.18 & $-$0.25 & 0.01 \\
+Frecuencia de borde espectral (95\%) & $-$0.02 & 0.26 & $-$0.17 & $-$0.03 \\
+Razón beta/alfa & 0.43 & $-$1.83 & $-$0.04 & $-$0.04 \\
+Razón theta/alfa & 0.00 & 0.04 & $-$0.04 & $-$0.19 \\
+Desviación estándar & 1.50 & $-$0.03 & $-$0.37 & $-$0.99 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Features individuales en VN (19 pacientes) y FN (20 pacientes): mediana [IC95\% bootstrap sobre pacientes] y frecuencia en el top-3 de $|$atribución$|$.}
+\label{tab:feat_ic}
+\begin{tabular}{lrrrr}
+\toprule
+Feature & VN & top-3 & FN & top-3 \\
+\midrule
+Valor RMS & $-$0.40 [$-$1.00, $-$0.21] & 0.33 & $-$1.64 [$-$2.68, $-$0.55] & 0.60 \\
+Longitud de línea & $-$0.32 [$-$0.47, $-$0.10] & 0.20 & $-$0.36 [$-$0.70, $-$0.26] & 0.12 \\
+Energía de Teager--Kaiser (media) & $-$0.16 [$-$0.24, $-$0.06] & 0.08 & $-$0.19 [$-$0.40, $-$0.01] & 0.28 \\
+Actividad de Hjorth & $-$0.22 [$-$0.41, $-$0.05] & 0.03 & $-$0.53 [$-$0.90, $-$0.20] & 0.16 \\
+Movilidad de Hjorth & $-$0.21 [$-$0.94, $-$0.08] & 0.36 & $-$0.08 [$-$0.28, 0.57] & 0.18 \\
+Complejidad de Hjorth & $-$0.07 [$-$0.16, $-$0.03] & 0.02 & $-$0.11 [$-$0.27, $-$0.06] & 0.01 \\
+Potencia relativa delta & $-$0.50 [$-$0.81, $-$0.22] & 0.40 & $-$0.07 [$-$0.26, 0.43] & 0.24 \\
+Potencia relativa theta & 0.00 [$-$0.23, 0.15] & 0.20 & $-$0.01 [$-$0.27, 0.65] & 0.36 \\
+Potencia relativa alfa & $-$0.51 [$-$0.99, $-$0.39] & 0.27 & $-$0.47 [$-$0.86, $-$0.10] & 0.21 \\
+Potencia relativa beta & $-$0.20 [$-$0.49, $-$0.03] & 0.13 & 0.13 [$-$0.05, 0.28] & 0.09 \\
+Potencia relativa gamma & $-$0.21 [$-$0.43, $-$0.04] & 0.03 & $-$0.07 [$-$0.25, 0.04] & 0.00 \\
+Entropía espectral & $-$0.25 [$-$0.61, $-$0.11] & 0.19 & 0.01 [$-$0.17, 0.18] & 0.08 \\
+Frecuencia de borde espectral (95\%) & $-$0.17 [$-$0.45, $-$0.03] & 0.13 & $-$0.03 [$-$0.17, 0.07] & 0.01 \\
+Razón beta/alfa & $-$0.04 [$-$0.21, 0.05] & 0.19 & $-$0.04 [$-$0.16, 0.04] & 0.09 \\
+Razón theta/alfa & $-$0.04 [$-$0.25, 0.02] & 0.08 & $-$0.19 [$-$0.35, $-$0.03] & 0.17 \\
+Desviación estándar & $-$0.37 [$-$0.87, $-$0.09] & 0.37 & $-$0.99 [$-$1.38, $-$0.42] & 0.41 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Correlación de Spearman entre el valor $z$ de cada feature y su atribución, mediana entre pacientes (VN: 19 pacientes; FN: 16). No se calculó para VP (1 paciente con $\geq$10 ventanas) ni FP (ninguno).}
+\label{tab:direccion}
+\begin{tabular}{lrr}
+\toprule
+Feature & VN & FN \\
+\midrule
+Valor RMS & $-$0.66 & $-$0.96 \\
+Longitud de línea & 0.61 & $-$0.27 \\
+Energía de Teager--Kaiser (media) & 0.60 & $-$0.01 \\
+Actividad de Hjorth & 0.17 & $-$0.66 \\
+Movilidad de Hjorth & 0.76 & 0.97 \\
+Complejidad de Hjorth & 0.12 & 0.38 \\
+Potencia relativa delta & $-$0.74 & $-$0.97 \\
+Potencia relativa theta & 0.56 & 0.80 \\
+Potencia relativa alfa & 0.87 & 0.90 \\
+Potencia relativa beta & 0.44 & 0.89 \\
+Potencia relativa gamma & 0.28 & 0.66 \\
+Entropía espectral & 0.37 & 0.69 \\
+Frecuencia de borde espectral (95\%) & 0.46 & 0.72 \\
+Razón beta/alfa & $-$0.58 & $-$0.47 \\
+Razón theta/alfa & $-$0.70 & $-$0.30 \\
+Desviación estándar & 0.60 & $-$0.63 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Grupo VP por paciente: número de ventanas y mediana de la caída del logit en features seleccionadas.}
+\label{tab:vp_pac}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Paciente & Ventanas & \shortstack{Pot. rel.\\theta} & \shortstack{Pot. rel.\\delta} & \shortstack{Pot. rel.\\alfa} & \shortstack{Valor\\RMS} & \shortstack{Desv.\\estándar} & \shortstack{Energía\\Teager--Kaiser} \\
+\midrule
+aaaaaarq & 6 & 8.74 & 1.40 & 0.51 & $-$1.12 & 2.68 & 1.84 \\
+aaaaajru & 4 & 4.05 & 1.17 & 0.20 & $-$1.36 & 0.48 & 2.36 \\
+aaaaasoc & 1 & 10.19 & 1.55 & 0.44 & $-$3.29 & 0.01 & $-$0.78 \\
+aaaaatdt & 19 & 9.14 & 0.89 & 0.43 & $-$0.74 & 2.52 & 0.86 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ---------------------- GUÍA -----------------------------
+Los anexos constituyen otro capítulo. Con base en el Diccionario de la Lengua Española, se entiende que es un agregado, es decir, aquello importante para entender el contexto del trabajo. Es necesario redactar un párrafo de introducción que describa el contenido de los anexos. No es necesario explicarlos, solo mencionar qué se incluye en este capítulo, por ejemplo:  
+
+\begin{itemize}
+    \item[] En estos anexos, se incluye información adicional para entender el contexto del trabajo. La primera parte presenta [...]. Luego, se muestran [...]. Además, se incluye [...]. Por último, se proporciona [...]-
+
+\end{itemize}
+
+Esto guiará al lector, ya que no debe asumirse que sabe lo mismo que el autor, por algo está leyendo el trabajo. Así que sólo copiar y pegar una serie de figuras y cuadros sin un contexto es una falta de cortesía.
+
+Los anexos incluyen material relevante para mayor claridad y profundidad de la investigación, pero distraen al lector si se colocan en el texto del informe. Pueden agregarse cartas, manuales, guías, etc. Es necesario asignar un número a cada anexo de acuerdo con el orden de mención en el desarrollo del trabajo. 
+
+\section{Sección de ejemplo}
+
+Esta corresponde a una sección de ejemplo dentro de los Anexos.

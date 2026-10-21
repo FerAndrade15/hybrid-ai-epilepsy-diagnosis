@@ -5,8 +5,6 @@
 
 Load EDFs and annotations, preloading the full signal into memory. 
 """
-# data_loader.py
-
 # Data analysis libraries
 import mne
 import pandas as pd

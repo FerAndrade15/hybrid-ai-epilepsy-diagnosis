@@ -1,0 +1,43 @@
+\chapter{XAI - Analysis evolution}
+\subsubsection{Transformador temporal implementado en UVG}
+\begin{table}[h!]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{2.0}
+    \setlength{\tabcolsep}{4pt}
+    \captionsetup{width=0.95\linewidth}
+    \caption{Síntesis del análisis de saliencia para el \textit{transformador} temporal.}
+    \begin{tabular}{p{2cm} | p{7cm} p{3cm} p{2cm}}
+    \hline
+    \textbf{Caso}     
+    & \textbf{Patrón de sensibilidad temporal}
+    & \textbf{Características}$^a$       
+    & \textbf{Canales}$^a$\\ \hline
+    
+    VN \newline Ventana 0 
+    & Distribución persistente y de magnitudes muy pequeñas en canales concretos.
+    & $\sigma$, $P_{\alpha}$, $P_{\beta}/P_{\alpha}$
+    & T5-O1, C4-T4 y T4-A2\\
+
+    FN \newline Ventana 127
+    & Sensibilidad con variaciones locales, máximos sostenidos con una escala temporal mayor en determinados canales.
+    & $P_{\alpha}$, $\sigma$, $P_{\theta}/P_{\alpha}$
+    & C4-P4, T3-T5 y FP2-F4\\
+
+    FP \newline Ventana 165
+    & Los valores altos están concentrados en intervalos breves, con magnitudes superiores a las ventanas negativas (VN y FN).
+    & $RMS$, $P_{\theta}$, $H_{mob}$
+    & CZ-C4, FP1-F7 y FP2-F4\\
+
+    VP \newline Ventana 415
+    & Incremento en los segmentos de concentración de sensibilidad y con máximos mayores a FP.
+    & $P_{\alpha}$, $P_{\beta}/P_{\alpha}$, $\sigma$
+    & F8-T4, CZ-C4 y FP1-F7 \\
+    \hline
+    \end{tabular}
+    \vspace{2mm}
+    
+    \small \textit{Nota:} VN = Verdadero Negativo; FN = Falso Negativo; FP = Falso Positivo; VP = Verdadero Positivo. 
+    $^a$Observación: Los atributos y canales listados no representan la totalidad de las entradas del modelo, sino únicamente aquellos que concentraron la mayor magnitud de saliencia para la decisión en la ventana evaluada. Elaboración propia.
+    \label{tab:transformer_temporal_saliencia_resumen}  
+\end{table}

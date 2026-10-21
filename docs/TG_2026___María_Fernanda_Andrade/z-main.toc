@@ -1,0 +1,60 @@
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Prefacio}{\es@scroman {i}}{section*.6}%
+\contentsline {chapter}{Índice de figuras}{\es@scroman {iii}}{section*.8}%
+\contentsline {chapter}{Índice de cuadros}{\es@scroman {iv}}{section*.9}%
+\contentsline {chapter}{Resumen}{\es@scroman {v}}{section*.10}%
+\contentsline {chapter}{Abstract}{\es@scroman {vi}}{section*.11}%
+\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.12}%
+\contentsline {chapter}{\numberline {2}Antecedentes}{2}{chapter.13}%
+\contentsline {section}{\numberline {2.1}Inteligencia artificial aplicada en el diagnóstico y predicción de la epilepsia}{2}{section.14}%
+\contentsline {section}{\numberline {2.2}Evolución de la línea de investigación en UVG}{3}{section.15}%
+\contentsline {chapter}{\numberline {3}Justificación}{5}{chapter.16}%
+\contentsline {chapter}{\numberline {4}Objetivos}{6}{chapter.17}%
+\contentsline {section}{\numberline {4.1}Objetivo general}{6}{section.18}%
+\contentsline {section}{\numberline {4.2}Objetivos específicos}{6}{section.19}%
+\contentsline {chapter}{\numberline {5}Definición del problema}{7}{chapter.20}%
+\contentsline {chapter}{\numberline {6}Marco teórico}{8}{chapter.21}%
+\contentsline {section}{\numberline {6.1}Electroencefalografía y análisis de señales}{9}{section.22}%
+\contentsline {subsubsection}{Fundamentos del EEG}{9}{section*.23}%
+\contentsline {subsubsection}{Canales, referencias y montajes}{9}{section*.24}%
+\contentsline {subsubsection}{Artefactos en EEG}{9}{section*.25}%
+\contentsline {subsubsection}{Crisis epilepticas y su manifestación en EEG}{9}{section*.26}%
+\contentsline {subsubsection}{Segmentación temporal y anotaciones}{9}{section*.27}%
+\contentsline {section}{\numberline {6.2}Representación y extracción de características del EEG}{9}{section.28}%
+\contentsline {subsection}{\numberline {6.2.1}Características temporales}{9}{subsection.29}%
+\contentsline {subsection}{\numberline {6.2.2}Características espectrales}{9}{subsection.30}%
+\contentsline {subsection}{\numberline {6.2.3}Sistemas dinámicos y linealización}{9}{subsection.31}%
+\contentsline {subsubsection}{Análisis de componentes independientes (ICA) (ICA)}{9}{section*.32}%
+\contentsline {section}{\numberline {6.3}Aprendizaje automático supervisado}{9}{section.33}%
+\contentsline {subsection}{\numberline {6.3.1}Aprendizaje automático tradicional}{9}{subsection.34}%
+\contentsline {subsubsection}{Máquina de vectores de soporte}{9}{section*.35}%
+\contentsline {subsubsection}{XGBoost}{9}{section*.36}%
+\contentsline {subsubsection}{Random Forest}{9}{section*.37}%
+\contentsline {subsection}{\numberline {6.3.2}Aprendizaje profundo}{9}{subsection.38}%
+\contentsline {subsubsection}{Redes convolucionales}{9}{section*.39}%
+\contentsline {subsubsection}{Mecanismo de atención y Transformers}{9}{section*.40}%
+\contentsline {subsection}{\numberline {6.3.3}Interpretabilidad}{9}{subsection.41}%
+\contentsline {subsubsection}{Gradientes integrados}{9}{section*.42}%
+\contentsline {subsubsection}{Oclusión}{10}{section*.43}%
+\contentsline {subsubsection}{LIME}{10}{section*.44}%
+\contentsline {chapter}{\numberline {7}Estado del arte}{11}{chapter.45}%
+\contentsline {section}{\numberline {7.1}Enfoque integral y arquitecturas híbridas en la implementación de inteligencia artificial}{11}{section.46}%
+\contentsline {subsection}{\numberline {7.1.1}Descomposición e ingeniería de características}{13}{subsection.48}%
+\contentsline {subsection}{\numberline {7.1.2}Aprendizaje de \textit {end-to-end}}{13}{subsection.49}%
+\contentsline {subsection}{\numberline {7.1.3}Enfoque híbrido}{13}{subsection.50}%
+\contentsline {subsubsection}{Híbrido espacio-temporal}{13}{section*.51}%
+\contentsline {subsubsection}{Híbrido topológico y de conectividad}{13}{section*.52}%
+\contentsline {subsubsection}{Híbridos de reducción y dominio explicable}{14}{section*.53}%
+\contentsline {subsubsection}{Híbridos de incertidumbre metaheurística}{14}{section*.54}%
+\contentsline {subsubsection}{Híbridos de fusión de representaciones}{14}{section*.55}%
+\contentsline {section}{\numberline {7.2}Detección y remoción de artefactos}{14}{section.56}%
+\contentsline {subsection}{\numberline {7.2.1}Módulos dedicados y pre-filtros}{14}{subsection.57}%
+\contentsline {subsection}{\numberline {7.2.2}Descomposición estadística y separación ciega de fuentes}{15}{subsection.58}%
+\contentsline {subsection}{\numberline {7.2.3}Contexto temporal extendido}{15}{subsection.59}%
+\contentsline {subsection}{\numberline {7.2.4}Fusión multimodal}{15}{subsection.60}%
+\contentsline {subsection}{\numberline {7.2.5}Postprocesamiento y antirrebotes}{15}{subsection.61}%
+\contentsline {section}{\numberline {7.3}Clasificación de eventos y convulsiones}{15}{section.62}%
+\contentsline {section}{\numberline {7.4}Relevancia de la inteligencia artificial explicable (XAI)}{16}{section.63}%
+\contentsline {section}{\numberline {7.5}Estandarización de la evaluación de los modelos}{16}{section.64}%
+\contentsline {chapter}{\numberline {8}Metodología y arquitectura propuesta}{18}{chapter.69}%

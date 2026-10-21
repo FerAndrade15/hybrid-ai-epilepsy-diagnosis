@@ -6,6 +6,11 @@ scikit-learn
 imbalanced-learn
 optuna
 xgboost
+pyedflib
+
+# XAI
+captum
+shap
 
 # Procesamiento de Señales y Datos
 mne
@@ -28,10 +33,16 @@ uvicorn
 PySide6
 pyqtgraph
 requests
-QT-PyQt-PySide-Custom-Widgets
+pyqtdarktheme
+
+# DATABASE
+sqlalchemy
+cryptography
+pymysql
 
 # Files automation
 watchdog
+pyinstaller
 
 # Utilidades y Entorno
 ipython
