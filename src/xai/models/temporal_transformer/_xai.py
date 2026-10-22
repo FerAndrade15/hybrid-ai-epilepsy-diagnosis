@@ -53,11 +53,11 @@ from src.xai.models.temporal_transformer.sanchez_transformer_pipeline import (
 # Configuración: todas las ventanas, sin muestreo.
 XAI_METHOD = "ig"  # "ig" u "occlusion"
 
-BATCH_SIZE = 4
+BATCH_SIZE = 8      #4
 THRESHOLD = 0.5
 
 IG_STEPS = 100
-IG_INTERNAL_BS = 25
+IG_INTERNAL_BS = 64 #25
 DELTA_REL_TOL = 0.05
 
 COMPUTE_ATTN = True
@@ -83,7 +83,8 @@ RUN_ID = "sanchez_full_v3"
 
 BASE_DIR = Path(__file__).resolve().parent
 
-DATA_PATH = Path("/mnt/d/xai_results/data_extractor")
+DATA_PATH = Path("/workspace/xai_results/data_extractor")
+# DATA_PATH = Path("/mnt/d/xai_results/data_extractor")
 RESULTS_ROOT = Path("/mnt/d/xai_results/temporal_transformer")
 
 MODEL_PATH = BASE_DIR / "sanchez_transformer_final_model.pt"
