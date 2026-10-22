@@ -51,7 +51,7 @@ from src.xai.models.temporal_transformer.sanchez_transformer_pipeline import (
 
 
 # Configuración: todas las ventanas, sin muestreo.
-XAI_METHOD = "ig"  # "ig" u "occlusion"
+XAI_METHOD = "oclussion"  # "ig" u "occlusion"
 
 BATCH_SIZE = 8      #4
 THRESHOLD = 0.5
