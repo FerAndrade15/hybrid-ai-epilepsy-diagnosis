@@ -223,6 +223,38 @@ def select_operating_threshold(
     return float(chosen_thr), chosen_mode
 
 
+def partial_roc_auc(y_true, y_score, max_fpr=0.1):
+    """Calcula el área bajo la curva ROC truncada a un FPR máximo sin normalizar."""
+    fpr, tpr, _ = roc_curve(y_true, y_score)
+    
+    # Filtrar hasta el max_fpr
+    stop_index = np.searchsorted(fpr, max_fpr, side='right')
+    fpr_partial = fpr[:stop_index]
+    tpr_partial = tpr[:stop_index]
+    
+    # Interpolar el punto exacto en max_fpr para mayor precisión
+    if len(fpr_partial) > 0 and fpr_partial[-1] < max_fpr:
+        tpr_interp = np.interp(max_fpr, fpr, tpr)
+        fpr_partial = np.append(fpr_partial, max_fpr)
+        tpr_partial = np.append(tpr_partial, tpr_interp)
+        
+    return auc(fpr_partial, tpr_partial)
+
+def prevalence_adjusted_pr_auc(y_true, y_score):
+    """Calcula el PR-AUC estandarizado a una prevalencia del 50% (1:1)."""
+    fpr, tpr, _ = roc_curve(y_true, y_score)
+    # Al estandarizar a prevalencia 1:1, TP = TPR y FP = FPR
+    # Por lo tanto, Precision_adj = TPR / (TPR + FPR)
+    with np.errstate(divide='ignore', invalid='ignore'):
+        precision_adj = np.divide(tpr, tpr + fpr)
+    
+    # Corregir los casos donde TPR+FPR == 0 (inicio de la curva)
+    precision_adj[np.isnan(precision_adj)] = 1.0 
+    
+    # El área se calcula bajo la curva Recall (TPR) vs Precision ajustada
+    return auc(tpr, precision_adj)
+
+
 def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model"):
     """SzCore metrics set for general comparison between models."""
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred, labels=[0, 1]).ravel()
@@ -232,6 +264,8 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
     accuracy = accuracy_score(y_true, y_pred)
     f1 = f1_score(y_true, y_pred, pos_label=1, zero_division=0)
     false_alarm_rate = fp / (fp + tn) if (fp + tn) > 0 else np.nan
+    pROC_0_1 = partial_roc_auc(y_true, y_prob, max_fpr=0.1)
+    adj_PR_AUC = prevalence_adjusted_pr_auc(y_true, y_prob)
 
     try:
         auc_roc = roc_auc_score(y_true, y_prob)
@@ -248,16 +282,24 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
     total_time_days = total_time_sec / 86400
 
     fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
-
+    
     return {
-        "model": model_name, "sensitivity": round(sensitivity, 4), "specificity": round(specificity, 4),
-        "precision": round(precision, 4), "accuracy": round(accuracy, 4), "f1_score": round(f1, 4),
+        "model": model_name, 
+        "sensitivity": round(float(sensitivity), 4), 
+        "specificity": round(float(specificity), 4),
+        "precision": round(float(precision), 4), 
+        "accuracy": round(float(accuracy), 4), 
+        "f1_score": round(float(f1), 4),
         "auc_roc": round(auc_roc, 4) if not np.isnan(auc_roc) else np.nan,
-        "false_alarm_rate": round(false_alarm_rate, 4), "fp_per_day": round(fp_per_day, 2),
+        "false_alarm_rate": round(false_alarm_rate, 4), 
+        "fp_per_day": round(fp_per_day, 2),
         "TP": int(tp), "FP": int(fp), "TN": int(tn), "FN": int(fn),
-        "n_test_windows": len(y_true), "covered_test_hours": round(total_time_sec / 3600, 2),
+        "n_test_windows": len(y_true), 
+        "covered_test_hours": round(total_time_sec / 3600, 2),
         "pr_auc": round(pr_auc, 4) if not np.isnan(pr_auc) else np.nan,
         "balanced_accuracy": round(bal_acc, 4),
+        "pROC_0.1": round(pROC_0_1, 4),
+        "adj_PR_AUC": round(adj_PR_AUC, 4)
     }
 
 
