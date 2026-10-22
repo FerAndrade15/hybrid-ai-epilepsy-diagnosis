@@ -1,19 +1,49 @@
-# Sanchez - Temporal transformer: Data extractor
-# File: data_extractor.py
+"""Extraccion XAI de TUSZ, con bloques por EDF y reanudacion.
 
-import json, pickle
-import numpy as np
-import scipy.signal as scipy_signal
-from pathlib import Path
+Reemplaza src/xai/models/temporal_transformer/_data/data_extractor.py.
+Ejecutar desde la raiz del repositorio con python -m y el mismo modulo.
 
-import io
+Conserva filtros, features y regla original: una anotacion seiz debe
+solaparse al menos min_overlap_sec con la ventana para marcarla positiva.
+Una etiqueta 0 NO implica ausencia total de actividad ictal ni de artefactos.
+No modifica ni vuelve a entrenar el modelo o su scaler.
+
+Cada EDF se guarda en _shards/ antes de continuar. Al final se exportan los
+mismos cuatro NPY y meta.json, sin acumular todo el corpus en RAM.
+Usar una sola instancia de este extractor por directorio de salida.
+"""
+
+import argparse
 import csv
 import hashlib
-import random
-from collections import defaultdict
+import inspect
+import io
+import json
+import os
+import pickle
+import shutil
+import tempfile
+from pathlib import Path
+
+import numpy as np
+import scipy
+import scipy.signal as scipy_signal
+from fastapi import HTTPException
 
 from src.xai.models.temporal_transformer.sanchez_transformer_network_eval import (
     _load_bipolar_signals, _iter_windows, _compute_feature_vector,
+)
+
+PIPELINE_VERSION = "xai-edf-shards-v1"
+ARRAY_FILES = {
+    "windows": "windows_np.npy",
+    "features_raw": "features_raw.npy",
+    "features_scaled": "features_scaled.npy",
+    "labels": "labels_np.npy",
+}
+META_KEYS = (
+    "times", "paths", "records", "window_metadata", "feature_names",
+    "extraction_config", "label_rule", "filters",
 )
 
 def apply_filters(signals_np, fs):
@@ -26,33 +56,6 @@ def apply_filters(signals_np, fs):
         filtered[:, ch] = scipy_signal.filtfilt(b_notch, a_notch, filtered[:, ch])
     return filtered
 
-def parse_csv_bi(csv_bi_path):
-    """Lee el .csv_bi de TUSZ y devuelve [(t_ini, t_fin), ...] solo de filas 'seiz'."""
-    intervals = []
-    with open(csv_bi_path, 'r', encoding='utf-8', errors='ignore') as f:
-        lines = f.readlines()
-
-    header_idx = next((i for i, l in enumerate(lines) if l.strip().startswith('channel,')), None)
-    if header_idx is None:
-        return []
-
-    header = lines[header_idx].strip().split(',')
-    i_start, i_stop, i_label = header.index('start_time'), header.index('stop_time'), header.index('label')
-
-    for line in lines[header_idx + 1:]:
-        line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-        parts = line.split(',')
-        if len(parts) <= max(i_start, i_stop, i_label):
-            continue
-        if 'seiz' in parts[i_label].strip().lower():
-            try:
-                intervals.append((float(parts[i_start]), float(parts[i_stop])))
-            except ValueError:
-                continue
-    return intervals
-
 
 def label_window(t_start, t_end, seizure_intervals, min_overlap_sec=1.0):
     """1 (ictal) si la ventana se solapa >= 1 s con alguna crisis; 0 (fondo) si no."""
@@ -62,21 +65,6 @@ def label_window(t_start, t_end, seizure_intervals, min_overlap_sec=1.0):
             return 1
     return 0
 
-def find_seizure_edfs(tusz_root):
-    selected = []
-
-    for edf_path in sorted(Path(tusz_root).rglob("*.edf")):
-        annotation_path = edf_path.with_suffix(".csv_bi")
-
-        if not annotation_path.exists():
-            continue
-
-        annotations = read_annotations(annotation_path)
-
-        if any("seiz" in a["label"] for a in annotations):
-            selected.append(edf_path.resolve())
-
-    return selected
 
 def build_dataset(
     edf_paths,
@@ -93,6 +81,18 @@ def build_dataset(
     if min_overlap_sec <= 0:
         raise ValueError("min_overlap_sec debe ser positivo.")
 
+    if min_overlap_sec > win_sec:
+        raise ValueError("min_overlap_sec no puede superar window_sec.")
+    if win_sec <= 0 or hop_sec <= 0 or fs_target <= 120:
+        raise ValueError(
+            "window_sec y hop_sec deben ser positivos; target_fs debe ser > 120 "
+            "para conservar el notch original de 60 Hz."
+        )
+    if int(hop_sec * fs_target) < 1 or n_samples < 1:
+        raise ValueError("La ventana o el paso no alcanzan una muestra.")
+    if not feature_names or len(feature_names) != len(set(feature_names)):
+        raise ValueError("selected_features debe ser una lista no vacia sin duplicados.")
+
     windows, feats, labels = [], [], []
     times, paths = [], []
 
@@ -101,14 +101,21 @@ def build_dataset(
 
     for input_path in edf_paths:
         edf_path = Path(input_path).resolve()
+        if verbose:
+            print(f"Procesando: {edf_path}", flush=True)
         annotation_path = edf_path.with_suffix(".csv_bi")
 
         if not annotation_path.exists():
             raise FileNotFoundError(annotation_path)
 
         annotations = read_annotations(annotation_path)
+        if not annotations:
+            raise ValueError(f"Anotaciones vacias: {annotation_path}")
+        unexpected = {a["label"] for a in annotations} - {"seiz", "bckg"}
+        if unexpected:
+            raise ValueError(f"Etiquetas inesperadas en csv_bi: {unexpected}")
         seizure_annotations = [
-            a for a in annotations if "seiz" in a["label"]
+            a for a in annotations if a["label"] == "seiz"
         ]
 
         # Si falla la carga, detenemos la extracción para no omitir
@@ -248,7 +255,7 @@ def build_dataset(
         "feature_names": list(feature_names),
         "extraction_config": config,
         "label_rule": {
-            "positive_label_match": "contiene 'seiz'",
+            "positive_label_match": "seiz",
             "min_overlap_sec": min_overlap_sec,
             "aggregation": "alguna anotación individual alcanza el umbral",
         },
@@ -261,64 +268,6 @@ def build_dataset(
         },
     }
 
-def save_dataset(ds, scaler, save_dir):
-    save_dir = Path(save_dir)
-    save_dir.mkdir(parents=True, exist_ok=True)
-
-    features_scaled = np.asarray(
-        scaler.transform(ds["features"]),
-        dtype=np.float32,
-    )
-
-    if not np.isfinite(features_scaled).all():
-        raise ValueError("Las features escaladas contienen NaN o infinitos.")
-
-    # Arreglos numéricos.
-    np.save(save_dir / "windows_np.npy", ds["windows"])
-    np.save(save_dir / "features_raw.npy", ds["features"])
-    np.save(save_dir / "features_scaled.npy", features_scaled)
-    np.save(save_dir / "labels_np.npy", ds["labels"])
-
-    # Metadatos: incluye la información de cada ventana y anotación.
-    metadata_keys = [
-        "times",
-        "paths",
-        "records",
-        "window_metadata",
-        "feature_names",
-        "extraction_config",
-        "label_rule",
-        "filters",
-    ]
-
-    meta = {key: ds[key] for key in metadata_keys}
-    meta["provenance"] = ds.get("provenance", {})
-
-    with open(save_dir / "meta.json", "w", encoding="utf-8") as f:
-        json.dump(meta, f, indent=2, ensure_ascii=False)
-
-
-def load_dataset(save_dir):
-    save_dir = Path(save_dir)
-
-    with open(save_dir / "meta.json", encoding="utf-8") as f:
-        meta = json.load(f)
-
-    # Conserva todos los metadatos del JSON.
-    ds = dict(meta)
-
-    ds.update({
-        "windows": np.load(save_dir / "windows_np.npy"),
-        "features": np.load(save_dir / "features_scaled.npy"),
-        "labels": np.load(save_dir / "labels_np.npy"),
-    })
-
-    raw_path = save_dir / "features_raw.npy"
-    if raw_path.exists():
-        ds["features_raw"] = np.load(raw_path)
-
-    return ds
-
 
 def file_sha256(path):
     """Huella del contenido; permite detectar si el archivo cambió."""
@@ -329,6 +278,7 @@ def file_sha256(path):
             digest.update(block)
 
     return digest.hexdigest()
+
 
 def read_annotations(csv_bi_path):
     """Lee las filas de anotación conservando sus campos originales."""
@@ -396,74 +346,426 @@ def read_annotations(csv_bi_path):
 
     return annotations
 
-
 def parse_csv_bi(csv_bi_path):
-    """Compatibilidad con tu función anterior."""
+    """Compatibilidad con consumidores anteriores."""
     return [
         (a["start_sec"], a["end_sec"])
         for a in read_annotations(csv_bi_path)
-        if "seiz" in a["label"]
+        if a["label"] == "seiz"
     ]
 
-if __name__ == "__main__":
-    base_dir = Path(__file__).resolve().parent.parent
-    AMOUNT_PATIENTS = 20
 
-    CONFIG_PATH = base_dir / "sanchez_transformer_config_used.json"
-    SCALER_PATH = base_dir / "sanchez_transformer_feature_scaler.pkl"
+def find_seizure_edfs(tusz_root):
+    """Compatibilidad: main usa TODOS los EDF, no esta seleccion."""
+    return [
+        p.resolve() for p in sorted(Path(tusz_root).rglob("*.edf"))
+        if p.with_suffix(".csv_bi").is_file()
+        and parse_csv_bi(p.with_suffix(".csv_bi"))
+    ]
 
-    TUSZ_ROOT = Path(
-        "/mnt/d/tuh_eeg/tuh_eeg_seizure/v2.0.6/edf/eval"
+
+def write_json(path, value):
+    """Escribe JSON con reemplazo atomico en el mismo sistema de archivos."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=path.name + ".", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(value, f, ensure_ascii=False, indent=2, allow_nan=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
+
+def json_digest(value):
+    encoded = json.dumps(value, sort_keys=True, allow_nan=False).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def dataset_metadata(ds):
+    meta = {key: ds[key] for key in META_KEYS}
+    meta["provenance"] = ds.get("provenance", {})
+    return meta
+
+
+def save_dataset(ds, scaler, save_dir):
+    """Guarda un bloque. El coordinador lo publica por rename de directorio."""
+    save_dir = Path(save_dir)
+    save_dir.mkdir(parents=True, exist_ok=True)
+    raw_features = np.asarray(
+        ds.get("features_raw", ds["features"]), dtype=np.float32
     )
+    scaled = np.asarray(scaler.transform(raw_features), dtype=np.float32)
+    if scaled.shape != raw_features.shape or not np.isfinite(scaled).all():
+        raise ValueError("Features escaladas invalidas o con dimensiones distintas.")
+    arrays = {
+        "windows": np.asarray(ds["windows"], dtype=np.float32),
+        "features_raw": raw_features,
+        "features_scaled": scaled,
+        "labels": np.asarray(ds["labels"], dtype=np.int8),
+    }
+    n = len(arrays["labels"])
+    if any(len(a) != n for a in arrays.values()):
+        raise ValueError("Cantidad de ventanas, features y etiquetas inconsistente.")
+    for key, filename in ARRAY_FILES.items():
+        np.save(save_dir / filename, arrays[key], allow_pickle=False)
+    write_json(save_dir / "meta.json", dataset_metadata(ds))
 
-    SAVE_DIR = base_dir / "_data"
 
-    with open(CONFIG_PATH, encoding="utf-8") as f:
-        config = json.load(f)
+def load_dataset(save_dir, mmap_mode=None):
+    """Contrato anterior: features escaladas; features_raw conserva las crudas.
 
-    with open(SCALER_PATH, "rb") as f:
-        scaler = pickle.load(f)
+    mmap_mode='r' permite leer los NPY sin cargarlos completos en RAM.
+    """
+    save_dir = Path(save_dir)
+    if (save_dir / "_shards").exists():
+        marker_path = save_dir / "dataset_complete.json"
+        if not marker_path.exists():
+            raise RuntimeError("Exportacion incompleta. Reejecuta el extractor.")
+        marker = json.loads(marker_path.read_text(encoding="utf-8"))
+        run = json.loads((save_dir / "run_manifest.json").read_text(encoding="utf-8"))
+        if marker["run_digest"] != json_digest(run):
+            raise RuntimeError("La exportacion corresponde a otra seleccion de EDF.")
+    with (save_dir / "meta.json").open(encoding="utf-8") as f:
+        ds = json.load(f)
+    for key, filename in ARRAY_FILES.items():
+        output_key = "features" if key == "features_scaled" else key
+        if key == "features_raw" and not (save_dir / filename).exists():
+            continue  # Compatibilidad con datasets antiguos.
+        ds[output_key] = np.load(
+            save_dir / filename, mmap_mode=mmap_mode, allow_pickle=False
+        )
+    return ds
 
-    edfs = find_seizure_edfs(TUSZ_ROOT)
-    edfs_by_patient = defaultdict(list)
-    for edf in edfs:
-        patient_id = edf.parents[2].name
-        edfs_by_patient[patient_id].append(edf)
 
-    available_patients = list(edfs_by_patient.keys())
-    n_patients = min(AMOUNT_PATIENTS, len(available_patients))
-    sampled_patients = random.sample(available_patients, n_patients)
-
-    selected_edfs = []
-    for patient in sampled_patients:
-        patient_edfs = edfs_by_patient[patient]
-        selected_edfs.append(random.choice(patient_edfs))
-
-    edfs = selected_edfs
-
-    print("Registros seleccionados:")
-    for edf in edfs:
-        print(edf)
-
-    ds = build_dataset(
-        edfs,
-        config,
-        config["selected_features"],
-        min_overlap_sec=1.0,
-    )
-
-    ds["provenance"] = {
-        "config_path": str(CONFIG_PATH.resolve()),
-        "config_sha256": file_sha256(CONFIG_PATH),
-        "scaler_path": str(SCALER_PATH.resolve()),
-        "scaler_sha256": file_sha256(SCALER_PATH),
-        "dataset_root": str(TUSZ_ROOT.resolve()),
-        "selection": "primeros 5 EDF ordenados con etiqueta que contiene seiz",
-        "selected_edfs": [str(path.resolve()) for path in edfs],
+def file_identity(edf_path):
+    """El EDF se identifica por ruta, tamano y mtime; su CSV por SHA-256."""
+    edf_path = Path(edf_path).resolve()
+    stat = edf_path.stat()
+    ann = edf_path.with_suffix(".csv_bi")
+    return {
+        "edf_path": str(edf_path),
+        "edf_size_bytes": stat.st_size,
+        "edf_mtime_ns": stat.st_mtime_ns,
+        "annotation_path": str(ann),
+        "annotation_sha256": file_sha256(ann),
     }
 
-    save_dataset(ds, scaler, SAVE_DIR)
 
-    print("Dataset guardado en:", SAVE_DIR)
-    print("Señal:", ds["windows"].shape)
-    print("Features:", ds["features"].shape)
+def shard_description(shard_dir):
+    description = {}
+    for key, filename in ARRAY_FILES.items():
+        path = Path(shard_dir) / filename
+        arr = np.load(path, mmap_mode="r", allow_pickle=False)
+        description[key] = {
+            "shape": list(arr.shape), "dtype": str(arr.dtype),
+            "size_bytes": path.stat().st_size,
+        }
+        del arr
+    return description
+
+
+def validate_shard(shard_dir, identity, run_digest):
+    """No reutiliza un bloque de otra entrada o un bloque incompleto."""
+    marker = Path(shard_dir) / "complete.json"
+    if not marker.exists():
+        raise RuntimeError(f"Bloque sin marca de finalizacion: {shard_dir}")
+    data = json.loads(marker.read_text(encoding="utf-8"))
+    if data["identity"] != identity or data["run_digest"] != run_digest:
+        raise RuntimeError(f"Bloque incompatible: {shard_dir}. Usa otro --save-dir.")
+    if data["arrays"] != shard_description(shard_dir):
+        raise RuntimeError(f"Bloque incompleto o modificado: {shard_dir}")
+    if data["meta_sha256"] != file_sha256(Path(shard_dir) / "meta.json"):
+        raise RuntimeError(f"Metadatos modificados: {shard_dir}")
+    return data
+
+
+def is_missing_electrodes(exc):
+    return (
+        isinstance(exc, HTTPException)
+        and exc.status_code == 400
+        and isinstance(exc.detail, str)
+        and exc.detail.startswith("El EDF no contiene los electrodos requeridos")
+    )
+
+
+def export_dataset(shards, save_dir, run, outcomes):
+    """Concatena por bloques con memmap; no copia todo el EEG a la RAM.
+
+    Se preservan los nombres y las claves consumidas por los scripts XAI.
+    Los metadatos JSON se acumulan en RAM; las senales se copian por EDF.
+    """
+    save_dir = Path(save_dir)
+    if not shards:
+        raise ValueError("Ningun EDF produjo ventanas; revisa exclusions.json.")
+    marker_path = save_dir / "dataset_complete.json"
+    marker_path.unlink(missing_ok=True)
+    stage = save_dir / "_export_pending"
+    if stage.exists():
+        shutil.rmtree(stage)
+    stage.mkdir()
+
+    metas = []
+    descriptions = []
+    for shard in shards:
+        with (shard / "meta.json").open(encoding="utf-8") as f:
+            metas.append(json.load(f))
+        descriptions.append(shard_description(shard))
+    total = sum(d["labels"]["shape"][0] for d in descriptions)
+    for key, filename in ARRAY_FILES.items():
+        first = descriptions[0][key]
+        tail = first["shape"][1:]
+        for desc in descriptions:
+            if desc[key]["shape"][1:] != tail or desc[key]["dtype"] != first["dtype"]:
+                raise ValueError(f"Dimensiones o dtype incompatibles para {key}.")
+        dest = np.lib.format.open_memmap(
+            stage / filename, mode="w+", dtype=first["dtype"],
+            shape=(total, *tail),
+        )
+        offset = 0
+        for shard, desc in zip(shards, descriptions):
+            arr = np.load(shard / filename, mmap_mode="r", allow_pickle=False)
+            n = desc[key]["shape"][0]
+            dest[offset:offset+n] = arr
+            offset += n
+            del arr
+        dest.flush()
+        del dest
+
+    meta = {k: metas[0][k] for k in (
+        "feature_names", "extraction_config", "label_rule", "filters"
+    )}
+    meta.update(times=[], paths=[], records=[], window_metadata=[])
+    for local in metas:
+        window_offset = len(meta["times"])
+        record_offset = len(meta["records"])
+        meta["times"].extend(local["times"])
+        meta["paths"].extend(local["paths"])
+        for record in local["records"]:
+            item = dict(record)
+            item["record_id"] += record_offset
+            meta["records"].append(item)
+        for window in local["window_metadata"]:
+            item = dict(window)
+            item["window_id"] += window_offset
+            item["record_id"] += record_offset
+            meta["window_metadata"].append(item)
+    meta["provenance"] = {
+        **run,
+        "selection": "todos los EDF solicitados; exclusiones explicitas por montaje",
+        "selected_edfs": [item["edf_path"] for item in run["inputs"]],
+        "included_edfs": [o["edf_path"] for o in outcomes if o["status"] == "complete"],
+        "excluded_edfs": [o for o in outcomes if o["status"] == "excluded"],
+        "actual_coverage": "subconjunto compatible" if any(
+            o["status"] == "excluded" for o in outcomes
+        ) else "todos los EDF solicitados",
+    }
+    write_json(stage / "meta.json", meta)
+    # El lector nuevo rechaza una exportacion interrumpida sin marca final.
+    # No ejecutar lectores antiguos a la vez que este exportador.
+    for filename in [*ARRAY_FILES.values(), "meta.json"]:
+        os.replace(stage / filename, save_dir / filename)
+    stage.rmdir()
+    write_json(marker_path, {
+        "run_digest": json_digest(run), "n_windows": total,
+        "included_records": len(shards),
+    })
+    print(f"Dataset final guardado: {save_dir}", flush=True)
+    print(f"Ventanas: {total}; EDF incluidos: {len(shards)}", flush=True)
+
+
+def run_extraction(edfs, config, scaler, save_dir, run, min_overlap_sec=1.0,
+                   skip_missing_electrodes=True, export=True):
+    save_dir = Path(save_dir)
+    save_dir.mkdir(parents=True, exist_ok=True)
+    cache = save_dir / "_shards"
+    cache.mkdir(exist_ok=True)
+    manifest = save_dir / "run_manifest.json"
+    if manifest.exists():
+        old_run = json.loads(manifest.read_text(encoding="utf-8"))
+        if old_run != run:
+            raise RuntimeError(
+                "Cambian entradas, configuracion, scaler o codigo. "
+                "Conserva estos resultados y utiliza otro --save-dir."
+            )
+    else:
+        # No mezcla checkpoints de una corrida sin manifiesto.
+        if any(cache.iterdir()):
+            raise RuntimeError("Hay bloques sin manifiesto. Utiliza otro --save-dir.")
+        write_json(manifest, run)
+    run_digest = json_digest(run)
+    shards, outcomes = [], []
+    total_windows = total_positive = 0
+
+    for index, (edf, identity) in enumerate(zip(edfs, run["inputs"]), start=1):
+        edf = Path(edf).resolve()
+        key = hashlib.sha256(str(edf).encode()).hexdigest()[:24]
+        shard = cache / key
+        excluded_path = cache / f"{key}.excluded.json"
+        print(f"[{index}/{len(edfs)}] {edf}", flush=True)
+        # Detecta modificaciones ocurridas despues del inventario inicial.
+        if file_identity(edf) != identity:
+            raise RuntimeError(f"La entrada cambio durante la corrida: {edf}")
+        if shard.exists():
+            done = validate_shard(shard, identity, run_digest)
+            print("  Bloque completo: reutilizado.", flush=True)
+        elif excluded_path.exists():
+            excluded = json.loads(excluded_path.read_text(encoding="utf-8"))
+            if excluded["identity"] != identity or excluded["run_digest"] != run_digest:
+                raise RuntimeError(f"Exclusion incompatible: {edf}")
+            if not skip_missing_electrodes:
+                raise RuntimeError(f"EDF incompatible: {excluded['reason']}")
+            outcomes.append({"edf_path": str(edf), "status": "excluded",
+                             "reason": excluded["reason"]})
+            write_json(save_dir / "exclusions.json", [
+                o for o in outcomes if o["status"] == "excluded"
+            ])
+            print(f"  Exclusion registrada: {excluded['reason']}", flush=True)
+            continue
+        else:
+            try:
+                ds = build_dataset(
+                    [edf], config, config["selected_features"],
+                    min_overlap_sec=min_overlap_sec,
+                )
+            except HTTPException as exc:
+                if not skip_missing_electrodes or not is_missing_electrodes(exc):
+                    raise
+                exclusion = {
+                    "identity": identity, "run_digest": run_digest,
+                    "reason": exc.detail,
+                }
+                write_json(excluded_path, exclusion)
+                outcomes.append({"edf_path": str(edf), "status": "excluded",
+                                 "reason": exc.detail})
+                write_json(save_dir / "exclusions.json", [
+                    o for o in outcomes if o["status"] == "excluded"
+                ])
+                print(f"  Excluido por montaje: {exc.detail}", flush=True)
+                continue
+            if file_identity(edf) != identity:
+                raise RuntimeError(f"La entrada cambio durante la extraccion: {edf}")
+            pending = cache / f"{key}.pending"
+            if pending.exists():
+                shutil.rmtree(pending)
+            pending.mkdir()
+            ds["provenance"] = {"input": identity, "run_digest": run_digest}
+            save_dataset(ds, scaler, pending)
+            done = {
+                "identity": identity, "run_digest": run_digest,
+                "n_windows": int(len(ds["labels"])),
+                "n_positive": int(np.sum(ds["labels"])),
+                "arrays": shard_description(pending),
+                "meta_sha256": file_sha256(pending / "meta.json"),
+            }
+            write_json(pending / "complete.json", done)
+            os.replace(pending, shard)
+            del ds
+        shards.append(shard)
+        total_windows += done["n_windows"]
+        total_positive += done["n_positive"]
+        outcomes.append({"edf_path": str(edf), "status": "complete",
+                         "n_windows": done["n_windows"],
+                         "n_positive": done["n_positive"]})
+        write_json(save_dir / "progress.json", {
+            "n_windows": total_windows, "n_positive": total_positive,
+            "records": outcomes,
+        })
+        print(f"  Guardado: {total_windows} ventanas acumuladas, "
+              f"{total_positive} positivas", flush=True)
+
+    write_json(save_dir / "exclusions.json", [
+        o for o in outcomes if o["status"] == "excluded"
+    ])
+    if export:
+        marker = save_dir / "dataset_complete.json"
+        expected = {"run_digest": run_digest, "n_windows": total_windows,
+                    "included_records": len(shards)}
+        if marker.exists() and json.loads(marker.read_text(encoding="utf-8")) == expected:
+            if all((save_dir / f).is_file() for f in [*ARRAY_FILES.values(), "meta.json"]):
+                print("La exportacion final ya esta completa.", flush=True)
+                return outcomes
+        print("Consolidando bloques a los NPY finales...", flush=True)
+        export_dataset(shards, save_dir, run, outcomes)
+    return outcomes
+
+
+def main():
+    base_dir = Path(__file__).resolve().parent.parent
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--tusz-root", type=Path, default=Path(
+        "/mnt/d/tuh_eeg/tuh_eeg_seizure/v2.0.6/edf/eval"
+    ))
+    parser.add_argument("--config", type=Path,
+                        default=base_dir / "sanchez_transformer_config_used.json")
+    parser.add_argument("--scaler", type=Path,
+                        default=base_dir / "sanchez_transformer_feature_scaler.pkl")
+    parser.add_argument("--save-dir", type=Path, default=base_dir / "_data")
+    parser.add_argument("--min-overlap-sec", type=float, default=1.0)
+    parser.add_argument("--strict-montage", action="store_true",
+                        help="Detenerse ante electrodos ausentes; por defecto registra y excluye.")
+    parser.add_argument("--no-export", action="store_true",
+                        help="Guardar solo bloques; al reejecutar sin esta opcion se consolidan.")
+    args = parser.parse_args()
+    if not args.tusz_root.is_dir():
+        raise FileNotFoundError(args.tusz_root)
+    with args.config.open(encoding="utf-8") as f:
+        config = json.load(f)
+    fs = float(config["target_fs"])
+    win = float(config["window_sec"])
+    hop = float(config["hop_sec"])
+    if not np.isfinite([fs, win, hop, args.min_overlap_sec]).all():
+        raise ValueError("Configuracion temporal no finita.")
+    if fs <= 120 or win <= 0 or hop <= 0 or not 0 < args.min_overlap_sec <= win:
+        raise ValueError("Revisa target_fs (>120), ventana, paso y umbral de solapamiento.")
+    with args.scaler.open("rb") as f:
+        scaler = pickle.load(f)
+    if getattr(scaler, "n_features_in_", len(config["selected_features"])) != len(config["selected_features"]):
+        raise ValueError("El numero de features del scaler no coincide con la configuracion.")
+    edfs = sorted(p.resolve() for p in args.tusz_root.rglob("*.edf"))
+    if not edfs:
+        raise ValueError(f"No se encontraron EDF en {args.tusz_root}")
+    missing = [p for p in edfs if not p.with_suffix(".csv_bi").is_file()]
+    if missing:
+        raise FileNotFoundError(f"{len(missing)} EDF sin csv_bi. Primero: {missing[0]}")
+    print(f"Inventariando anotaciones de {len(edfs)} EDF...", flush=True)
+    helper_source = inspect.getsourcefile(_load_bipolar_signals)
+    if helper_source is None:
+        raise RuntimeError("No se pudo identificar el codigo del cargador.")
+    run = {
+        "pipeline_version": PIPELINE_VERSION,
+        "config_path": str(args.config.resolve()),
+        "config_sha256": file_sha256(args.config),
+        "extraction_config": config,
+        "scaler_path": str(args.scaler.resolve()),
+        "scaler_sha256": file_sha256(args.scaler),
+        "extractor_sha256": file_sha256(__file__),
+        "helper_sha256": file_sha256(helper_source),
+        "numpy_version": np.__version__, "scipy_version": scipy.__version__,
+        "dataset_root": str(args.tusz_root.resolve()),
+        "min_overlap_sec": args.min_overlap_sec,
+        "skip_missing_electrodes": not args.strict_montage,
+        "inputs": [file_identity(p) for p in edfs],
+    }
+    # Bloqueo POSIX: WSL/Linux/RunPod. Se libera tambien al terminar con error.
+    # Se comprueba antes de escribir; impide dos extractores en el mismo destino.
+    import fcntl
+    args.save_dir.mkdir(parents=True, exist_ok=True)
+    with (args.save_dir / ".extractor.lock").open("a") as lock:
+        try:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise RuntimeError("Ya hay otro extractor usando este --save-dir.") from exc
+        run_extraction(
+            edfs, config, scaler, args.save_dir, run,
+            min_overlap_sec=args.min_overlap_sec,
+            skip_missing_electrodes=not args.strict_montage,
+            export=not args.no_export,
+        )
+
+
+if __name__ == "__main__":
+    main()

@@ -135,7 +135,7 @@ for cat in ICLABEL_CATEGORIES:
 SEIZURE_KEYWORDS = {
     "focal": {"spsz", "cpsz", "fnsz"},
     "generalized_toniclonic": {"absz", "mysz", "tnsz", "gnsz", "tcsz"},
-    # tonic_clonic_unspecified = tcsz
+    #"tonic_clonic_unspecified": {"tcsz"},
 }
 
 SEIZURE_START_CONFIDENCE = {
@@ -149,6 +149,7 @@ EVENT_KEYWORDS = {
     "artifacts": {"artifact"},
 }
 
+"""
 # Seizure Corpus Keywords
 SEIZURE_KEYWORDS = {
     "tonic_seizure": {"tcsz"},
@@ -156,6 +157,7 @@ SEIZURE_KEYWORDS = {
     "generalized_non_specific": {"gnsz"},
     "focal_non_specific": {"fnsz"},
 }
+"""
 
 # Channel names (10-20 and 10-10 system)
 CHANNELS = [

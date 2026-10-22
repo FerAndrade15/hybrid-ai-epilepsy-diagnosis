@@ -4,8 +4,11 @@
 # Author: Maria Fernanda Andrade Recinos
 
 Pipeline to train 1D CNN for each artifact
+Implementation configurations
+ - Paper
+ - Lightweight
+ - Standard
 """
-#file : cnn_detectors
 from IPython.display import display
 from pathlib import Path
 import pandas as pd
