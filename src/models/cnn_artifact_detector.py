@@ -30,7 +30,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import (
     classification_report, confusion_matrix, roc_curve,
     precision_recall_curve, accuracy_score, precision_score,
-    recall_score, f1_score, average_precision_score, balanced_accuracy_score, roc_auc_score,
+    recall_score, f1_score, average_precision_score, balanced_accuracy_score, roc_auc_score, auc,
 )
 from tqdm import tqdm
 
