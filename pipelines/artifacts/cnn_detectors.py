@@ -49,9 +49,9 @@ for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DAT
 # CONFIGURATION ACCORDING TO THE REPORTED CODING OF THE TESTS: lightweight, paper ...
 
 CNN_CONFIG = {
-    "eye":               {"model_type": "paper", "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
-    "muscle":            {"model_type": "paper", "max_fp_per_day": 100,   "epochs": 100, "lr": 3e-4},
-    "non_physiological": {"model_type": "paper", "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
+    "eye":               {"model_type": "standard", "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
+    "muscle":            {"model_type": "standard", "max_fp_per_day": 100,   "epochs": 100, "lr": 3e-4},
+    "non_physiological": {"model_type": "standard", "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
 }
 
 LOSS_VARIANTS = {
