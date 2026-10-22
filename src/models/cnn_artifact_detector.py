@@ -312,7 +312,7 @@ class EEGWindowDataset(Dataset):
     def __init__(self, windowed_df: pd.DataFrame, target_col: str,
                  session_cache_dir: str = "cache/sessions", 
                  ica_cache_dir: str = "cache/ica",
-                 max_cached_sessions: Optional[int] = None,
+                 max_cached_sessions: Optional[int] = 320,
                  cache_memory_fraction: float = 0.3,
                  expected_n_timesteps: Optional[int] = None):
         self.df = windowed_df.reset_index(drop=True)

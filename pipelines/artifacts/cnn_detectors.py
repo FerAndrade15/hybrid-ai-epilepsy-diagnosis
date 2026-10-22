@@ -38,7 +38,7 @@ MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models_v2")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 SEEDS = [0]            # [0, 1, 2] triplica el tiempo
-CODE_VERSION = "v1"    
+CODE_VERSION = "v2"    
 
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)

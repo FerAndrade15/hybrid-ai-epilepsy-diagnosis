@@ -1,0 +1,91 @@
+[INFO] Using device: cuda
+
+[PASO 1] Loading ENTIRE dataset to guarantee consistent patient ordering...
+
+[PASO 2] Sorting alphabetically and filtering first 30 patients (Windows mimic)...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/03...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/03...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/03...
+3  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/03...
+4  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/03...
+
+[5 rows x 14 columns]
+Pacientes reales filtrados para la CNN: 30
+Patient registry allocation counts (Debería ser 12 y 2): {'train': 12, 'test': 2}
+
+[INFO] Modo de prueba rápida: Solo se procesará el artefacto 'eye'
+
+==================================================
+ARTIFACT: eye
+==================================================
+**************************************************
+>> eye | windows: 5s (2s stride)
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L1.parquet (19571 rows)
+Windows: 19571 -> without ambiguous: 19537 | positive: 4226
+[INFO] Best suggested and saved size weight for eye: 1.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p30_v1_eye_w5_s2_sw1.0_ua0.1 parquet and json
+[INFO] Saving patient assignment for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split                                                
+test      2898         547        2351       0.188751
+train    13716        2628       11088       0.191601
+val       2923        1051        1872       0.359562
+Broken rules: 0 | splits per patient: {'train': 19, 'val': 6, 'test': 5}
+[INFO] Split distribution:
+ split
+train    13716
+val       2923
+test      2898
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-09-24 11:37:35,280 - ArtifactDetector[diag_cnn_eye_w5_s2] - INFO - Model(standard). Parameters: 58,337
+[INFO] Calculated max_cached_sessions:1129 (session=44.3MB,)budget: 50.02GB
+[CACHE] hits=13690 | misses=26 | hit_rate=99.81%
+2026-09-24 11:37:45,092 - ArtifactDetector[diag_cnn_eye_w5_s2] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6185064935064936), 1: np.float64(2.6095890410958904)}
+2026-09-24 11:37:49,939 - ArtifactDetector[diag_cnn_eye_w5_s2] - INFO - Resuming from 19 epoch (best_f1=0.7078)
+x (64, 18, 1280) torch.float32
+mean=2.168e-08 std=2.517e-04 absmax=1.263e-02
+NaN: False | y únicos: [0.0, 1.0] | pos rate: 0.140625
+logits mean=5.0955 std=3.569369
+loss 0.5631742477416992
+conv.0.weight                            grad=5.676e+00
+conv.0.bias                              grad=4.567e-04
+conv.1.weight                            grad=8.682e-01
+conv.1.bias                              grad=6.490e+00
+conv.5.weight                            grad=7.341e+00
+conv.5.bias                              grad=2.029e-06
+conv.6.weight                            grad=5.791e-01
+conv.6.bias                              grad=1.288e-01
+conv.10.weight                           grad=9.640e+00
+conv.10.bias                             grad=6.347e-08
+conv.11.weight                           grad=7.240e-01
+conv.11.bias                             grad=3.372e-01
+classifier.1.weight                      grad=1.568e+01
+classifier.1.bias                        grad=7.417e-01
+classifier.3.weight                      grad=3.944e-02
+classifier.3.bias                        grad=3.090e-02
+classifier.5.weight                      grad=8.446e-01
+classifier.5.bias                        grad=3.053e-02
+classifier.7.weight                      grad=3.013e-02
+classifier.7.bias                        grad=9.537e-02
+classifier.9.weight                      grad=6.451e-01
+classifier.9.bias                        grad=2.635e-01
+TRAIN logits mean=-0.377 std=0.803 loss=0.5344 auc=0.812
+EVAL  logits mean=2.457 std=1.089 loss=2.2511 auc=0.752
+TRAIN logits mean=-0.433 std=0.771 loss=0.5282 auc=0.822
+EVAL  logits mean=2.435 std=1.065 loss=2.2328 auc=0.752
+iter   0 loss=0.4904
+iter  20 loss=0.3131
+iter  40 loss=0.2522
+iter  60 loss=0.1863
+iter  80 loss=0.1628
+iter 100 loss=0.1397
+iter 120 loss=0.1013
+iter 140 loss=0.1186
+iter 160 loss=0.1160
+iter 180 loss=0.0883
+iter 199 loss=0.0310
