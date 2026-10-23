@@ -85,7 +85,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 DATA_PATH = Path("/workspace/xai_results/data_extractor")
 # DATA_PATH = Path("/mnt/d/xai_results/data_extractor")
-RESULTS_ROOT = Path("/workspace/xai_results/temporal_transformer")
+RESULTS_ROOT = Path("/workspace/xai_results/temporal_transformer/"+XAI_METHOD)
 
 MODEL_PATH = BASE_DIR / "sanchez_transformer_final_model.pt"
 CONFIG_PATH = BASE_DIR / "sanchez_transformer_config_used.json"
