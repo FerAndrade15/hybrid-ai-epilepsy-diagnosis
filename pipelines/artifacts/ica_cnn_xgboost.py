@@ -48,7 +48,7 @@ SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 FORCE_RETRAIN = True
 POS_THR, IGN_THR = 0.5, 0.2
-OPTIMIZER_IDX = 1  # 0: grid, 1: random, 2: optuna
+OPTIMIZER_IDX = 2  # 0: grid, 1: random, 2: optuna
 
 ### ----------------------------------------------------------------------
 if COMPARISON:
