@@ -79,13 +79,14 @@ FORCE_RECALCULATE = False
 PLOT_RESULTS = True
 PLOT_ORIG_IDXS = None  # None: primera ventana de cada grupo.
 
-RUN_ID = "sanchez_full_v3"
+RUN_ID = "sanchez_full_v4"
 
 BASE_DIR = Path(__file__).resolve().parent
+print(BASE_DIR)
 
 DATA_PATH = Path("/workspace/xai_results/data_extractor")
 # DATA_PATH = Path("/mnt/d/xai_results/data_extractor")
-RESULTS_ROOT = Path("/workspace/xai_results/temporal_transformer/"+XAI_METHOD)
+RESULTS_ROOT = Path("/workspace/hybrid-ai-epilepsy-diagnosis/results/xai/temporal_transformer/"+XAI_METHOD)
 
 MODEL_PATH = BASE_DIR / "sanchez_transformer_final_model.pt"
 CONFIG_PATH = BASE_DIR / "sanchez_transformer_config_used.json"
