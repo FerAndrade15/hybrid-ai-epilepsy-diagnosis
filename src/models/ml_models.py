@@ -65,7 +65,7 @@ def make_val_score(X_val, df_val, target_col):
         #thr, score = find_best_threshold(yv_, sv_, beta=SCORER)
         #val_preds = model.predict_proba(X_val)[:, 1]
         auc = roc_auc_score(yv_, sv_)
-        return auc
+        return auc, 0.5
     return val_score
 
 ## Metric analysis functions
