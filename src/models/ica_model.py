@@ -62,15 +62,13 @@ def classification_iclabel(preprocessed_signal, variance=0.99, random_seed=97):
 
     # Components classification
     ic_labels = label_components(preprocessed_signal, ica, method='iclabel')
-    features = get_iclabel_features(preprocessed_signal, ica)
-    labels_pred_prob_matrix = run_iclabel(features)
+    topo, psds, autocorr = get_iclabel_features(preprocessed_signal, ica)
+    labels_pred_prob_matrix = run_iclabel(topo, psds, autocorr, backend="torch")
 
-    print(ic_labels)
-    print(features)
-    print(labels_pred_prob_matrix)
+    #print("[DEBUG] ICLABEL", ic_labels)
+    #print("[DEBUG] LABELS PRED PROB MATRIX", labels_pred_prob_matrix)
     
-    labels_pred_prob = ic_labels['y_pred_proba']
-    return ica, ic_labels, labels_pred_prob
+    return ica, ic_labels, labels_pred_prob_matrix
 
 
 def get_or_compute_ica(signal, patient, session, cache_dir="cache/ica"):
@@ -81,6 +79,7 @@ def get_or_compute_ica(signal, patient, session, cache_dir="cache/ica"):
 
     if cache_file.exists():
         with open(cache_file, "rb") as f:
+            print(f)
             return load(f)
     try: 
         ica, ic_labels, probs = classification_iclabel(signal)

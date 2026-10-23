@@ -167,12 +167,23 @@ def grouped_split_from_labels(windowed_df, target_col="is_positive", group_col="
     report["n_patients"] = pd.Series(assignment).value_counts()
     return df, assignment, report
 
-def get_or_compute_labeled_split(windowed_df, label_col, group_col="Patient",
-                                include_clean=True, drop_excluded=True, drop_ambiguous=True, 
-                                ratios={"train": 0.7, "val": 0.15, "test": 0.15}, seed=42, size_weight=0, 
-                                dataset_division_dir="splits", version=1, 
-                                artifact_umbral=0.7, window_size_sec=None, stride_sec=None,
-                                target="all", forced=None, registry_path=None, manually_checked=False
+def get_or_compute_labeled_split(   windowed_df, 
+                                    label_col, group_col="Patient",
+                                    include_clean=True, 
+                                    drop_excluded=True, 
+                                    drop_ambiguous=True, 
+                                    ratios={"train": 0.7, "val": 0.15, "test": 0.15}, 
+                                    seed=42, 
+                                    size_weight=0, 
+                                    dataset_division_dir="splits", 
+                                    version=1, 
+                                    artifact_umbral=0.7, 
+                                    window_size_sec=None, 
+                                    stride_sec=None,
+                                    target="all", 
+                                    forced=None, 
+                                    registry_path=None, 
+                                    manually_checked=False
                                 ):
     
     forced = resolve_forced_split(forced, windowed_df[group_col].unique(), ratios, registry_path)

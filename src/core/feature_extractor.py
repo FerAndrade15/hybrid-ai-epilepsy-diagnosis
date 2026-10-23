@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 import os, hashlib, json
+from IPython.display import display
 
 # Mathematical features libraries
 from scipy.signal import welch, find_peaks
@@ -163,8 +164,14 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
             "ic_index": int(comp_idx),
             "ic_raw_label": raw_labels[comp_idx],
             "ic_target_label": target_labels[comp_idx],
-            "ic_iclabel_prob": float(probs[comp_idx]),
-        }
+            "ic_iclabel_prob_brain": float(probs[comp_idx][0]),
+            "ic_iclabel_prob_muscle": float(probs[comp_idx][1]),        
+            "ic_iclabel_prob_eye": float(probs[comp_idx][2]),
+            "ic_iclabel_prob_heart": float(probs[comp_idx][3]),
+            "ic_iclabel_prob_line_noise": float(probs[comp_idx][4]),
+            "ic_iclabel_prob_channel_noise": float(probs[comp_idx][5]),
+            "ic_iclabel_prob_other": float(probs[comp_idx][6]),
+            }
 
         for key, value in tp_feat.items():
             if key.startswith(prefix):
@@ -185,7 +192,7 @@ def component_features_by_window(component_window, session_ica_metadata, mixing,
 
     return pd.DataFrame(rows)
 
-def fetch_positive_contributions(labeled_windows_df, target_channels, contrib_prefix="ic_contrib_"):
+def fetch_positive_contributions(labeled_windows_df, target_channels, y_ica_threshold, contrib_prefix="ic_contrib_"):
     contrib_cols_target= []
     for ch_pair in target_channels:
         for electrode in ch_pair.replace("-", " ").split():
@@ -200,8 +207,40 @@ def fetch_positive_contributions(labeled_windows_df, target_channels, contrib_pr
         score = labeled_windows_df[all_contrib_cols].max(axis=1)
 
     #print(f"[DEBUG] target_channels={target_channels} -> cols encontrados")
+    internal_threshold = score.max() * y_ica_threshold         # According to the current max, avoiding the direct 1.0*0.4
+    return score[score >= internal_threshold].index.tolist()
 
-    return score.idxmax()
+def label_ics(group, target_channels, pos_thr=0.5, ign_thr=0.2, prefix="ic_contrib_"):
+    cols = []
+    for pair in target_channels:
+        for el in pair.replace("-", " ").split():
+            c = f"{prefix}{el}"
+            if c in group.columns:
+                cols.append(c)
+
+    if not cols:
+        cols = [c for c in group.columns if c.startswith(prefix)]
+        base_score = group[cols].max(axis=1)
+    else:
+        base_score = group[cols].sum(axis=1)
+
+    # LA MAGIA: Multiplicamos anatomía espacial por energía de la ventana
+    score = base_score * group["ic_rms"]
+
+    # Normalizamos el score relativo al componente máximo
+    rel = score / (score.max() + 1e-12)
+    
+    lab = pd.Series(0, index=group.index)
+    lab[rel >= ign_thr] = -1
+    lab[rel >= pos_thr] = 1
+
+    # DEBUG TEMPORAL
+    #print(f"\n[DEBUG] Canales objetivo: {target_channels}")
+    #print(f"[DEBUG] Scores crudos: {score.values}")
+    #print(f"[DEBUG] Scores relativos (rel): {np.round(rel.values, 3)}")
+    #print(f"[DEBUG] Etiquetas asignadas: {lab.values}")
+    
+    return lab
 
 def iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use_ica=True, session_cache_dir="cache/sessions",ica_cache_dir="cache/ica"):
     """
@@ -320,7 +359,7 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
 
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
 
-def build_ml_dataset(long_df, target_artifact, output_path):
+def build_ml_dataset(long_df, target_artifact, output_path, y_ica_threshold=0.40, pos_thr=0.5, ign_thr=0.2):
     """
     Returs the categories according to the target:
     -   "eye"
@@ -341,17 +380,14 @@ def build_ml_dataset(long_df, target_artifact, output_path):
     channels_column = f"monopolar_channels_{target_artifact}"
 
     positive_windows = subset[subset[tuar_column]==1]
-
     group_cols = ["Patient", "Session", "Section", "Start"]
+    
     for _, group in positive_windows.groupby(group_cols):
         target_channels = group[channels_column].iloc[0]
-        #print(target_channels)
         if len(target_channels) == 0:
-            continue 
-        best_idx = fetch_positive_contributions(group, target_channels)
-        #print(">>", best_idx)
-        subset.loc[best_idx, "is_positive"]=1
-        #print(">>", subset.loc[best_idx, "is_positive"])
+            continue
+        lab = label_ics(group, target_channels, pos_thr=pos_thr, ign_thr=ign_thr)
+        subset.loc[lab.index, "is_positive"] = lab
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -407,12 +443,25 @@ if __name__ == "__main__":
     from src.core.data_loader import build_annotations_index
     from src.core.windowing import label_windowing
 
-    ARTIFACT, N_PATIENTS = "eye", 3
+    ARTIFACT, N_PATIENTS = "non_physiological", 3
     ICA_DIR = DEBUG_DIR / "cache" / "ica"
     SESSION_DIR = DEBUG_DIR / "cache" / "sessions"
-    OUT = DEBUG_DIR / "features" / f"rf_dataset_{ARTIFACT}_smoke.parquet"
+    OUT = DEBUG_DIR / "features" / f"rf_dataset_{ARTIFACT}_smoke_v2.parquet"
+    CHANNELS_FEATURES = False
+    POS_THR, IGN_THR, FEATURE_VERSION = 0.5, 0.2, 2
+    LABEL_TAG = f"pt{POS_THR}_it{IGN_THR}_f{FEATURE_VERSION}"
+
+    # en get_or_build_features:
+    VERSION=FEATURE_VERSION,
+
+    rf_dataset_path = DEBUG_DIR/ "dataset" / (
+        f"rf_dataset_{ARTIFACT}_w{WINDOW_REQUESTS_ARTIFACTS[ARTIFACT][0]['window_size_sec']}_s{WINDOW_REQUESTS_ARTIFACTS[ARTIFACT][0]['stride_sec']}"
+        f"_ua{WINDOW_REQUESTS_ARTIFACTS[ARTIFACT][0]['artifact_umbral']}_p{N_PATIENTS}_v{VERSION}_{LABEL_TAG}.parquet"
+    )
+
 
     # 1) Extractores con señal sintética (sin datos ni ICA)
+    """
     rng = np.random.default_rng(0)
     x, names = rng.normal(0, 1e-5, (4, 256)), ["a", "b", "c", "d"]
     for label, feats in [("temporales", temporal_features(x, names)),
@@ -421,9 +470,11 @@ if __name__ == "__main__":
         assert np.isfinite(list(feats.values())).all(), label
         print(f"[OK] {label}: {len(feats) // 4} features por canal")
 
+    """
+
     # 2) Sesión real con más ventanas positivas
-    ann = build_annotations_index("artifact", n_patients=N_PATIENTS, max_sessions=1, paths=True)
-    windowed = label_windowing(ann, WINDOW_REQUESTS_ARTIFACTS[ARTIFACT], ARTIFACT_KEYWORDS, unreviewd_tokens=True)
+    ann = build_annotations_index("artifact", n_patients=N_PATIENTS, max_sessions=1, paths=True, refresh=True, CACHE_DIR=SESSION_DIR)
+    windowed = label_windowing(ann, WINDOW_REQUESTS_ARTIFACTS[ARTIFACT][0], ARTIFACT_KEYWORDS, unreviewed_tokens=True)
     key = ["Patient", "Session", "Section"]
     best = windowed.groupby(key)[ARTIFACT].sum().idxmax()
     sess = windowed[(windowed["Patient"] == best[0]) & (windowed["Session"] == best[1]) & (windowed["Section"] == best[2])]
@@ -434,18 +485,22 @@ if __name__ == "__main__":
     sample = pd.concat([pos, neg]).sort_values("Start")
     print(f"\nSesión {best}: {len(pos)} ventanas positivas + {len(neg)} limpias")
 
+
     t0 = time.time()
     long_df = build_feature_dataset(sample, list(ARTIFACT_KEYWORDS), bipolar_montage=True, use_ica=True,
                                     ica_cache_dir=str(ICA_DIR), session_cache_dir=str(SESSION_DIR))
     print(f"build_feature_dataset: {time.time() - t0:.0f} s (incluye la ICA si no estaba en caché)")
     assert not long_df.empty
+    display(long_df.head(1))
+    print(long_df.columns.tolist())
 
     # Estructura del dataset largo
     n_ic = long_df["ic_index"].nunique()
     assert len(long_df) == long_df["Start"].nunique() * n_ic, "filas ≠ ventanas × ICs"
     bad = {"channel_window", "component_window", "mixing", "ic_map", "End", "sfreq", "ch_names", "ica_ch_names"}
     assert not (bad & set(long_df.columns)), bad & set(long_df.columns)
-    assert f"{BIPOLAR_MONTAGE['names'][0]}_variance" in long_df.columns, "faltan features de canal bipolar"
+    if CHANNELS_FEATURES:
+        assert f"{BIPOLAR_MONTAGE['names'][0]}_variance" in long_df.columns, "faltan features de canal bipolar"
     contrib = sorted(c[len("ic_contrib_"):] for c in long_df.columns if c.startswith("ic_contrib_"))
     assert contrib == sorted(MONOPOLAR_CHANNELS), contrib
     print("Columnas object:", [c for c in long_df.columns if long_df[c].dtype == object])
@@ -453,137 +508,9 @@ if __name__ == "__main__":
     print("Columnas con NaN:", nan[nan > 0].to_dict())
 
     # 3) Etiqueta is_positive
-    ds = build_ml_dataset(long_df, "rf", ARTIFACT, output_path=OUT)
-    n_pos_win, n_pos_rows = len(pos), int(ds["is_positive"].sum())
-    print(f"\nVentanas positivas: {n_pos_win} | filas is_positive=1: {n_pos_rows}")
-    assert OUT.exists() and 0 < n_pos_rows <= n_pos_win
-    tgt = ds[ds[f"tuar_{ARTIFACT}"] == 1].drop_duplicates("Start")[f"monopolar_channels_{ARTIFACT}"]
-    print("Ventanas positivas sin canales anotados (quedan sin IC positivo):", int((tgt.map(len) == 0).sum()))
+    ds = build_ml_dataset(long_df, ARTIFACT, output_path=OUT, pos_thr=0.5, ign_thr=0.2)
+    n_pos_win, n_pos_rows = len(pos), int((ds["is_positive"] == 1).sum())
+    n_ign_rows = int((ds["is_positive"] == -1).sum())
+    print(f"\nVentanas positivas: {n_pos_win} | filas is_positive=1: {n_pos_rows} | filas is_positive=-1: {n_ign_rows}")
     print("\n¿Qué ICs quedaron como positivos según ICLabel?")
     print(pd.crosstab(ds["is_positive"], ds["ic_raw_label"]).to_string())
-    print("[OK] feature_extractor")
-
-
-"""
-if __name__ == "__main__":
-
-    # Data integration libraries / project modules
-    from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION
-    from src.core.data_loader import build_annotations_index, find_project_root
-    from src.core.windowing import label_windowing
-    from src.core.data_splitter import get_or_compute_labeled_split
-
-    # Data visualization and search libraries
-    from IPython.display import display
-
-    BASE_DIR = find_project_root("src")
-    CORPUS_OUTPUTS_DIR = BASE_DIR / "outputs" / "artifact"
-    ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "cache" / "ica"
-    SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "cache" / "sessions"
-    FEATURES_DIR = CORPUS_OUTPUTS_DIR / "individual_tests"/ "features"
-    SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / "individual_tests" / "splits"
-
-    for d in (FEATURES_DIR, ICA_CACHE_DIR, SPLIT_CACHE_DIR):
-        d.mkdir(parents=True, exist_ok=True)
-
-    ARTIFACT = "eye"
-    BIPOLAR_MONTAGE = False
-    montage = "bipolar" if BIPOLAR_MONTAGE else "monopolar"
-
-    print("Loading 3 artifact patients, 1 sessions per patient for testing...")
-    database_corpus_patient = build_annotations_index("artifact", n_patients=3, max_sessions=1, paths=True)
-    display(database_corpus_patient.head(5))
-
-    print("Generating windows...")
-    windowed_annotations_corpus_patient = label_windowing(
-                    database_corpus_patient, WINDOW_REQUESTS_ARTIFACTS[ARTIFACT],
-                    ARTIFACT_KEYWORDS, unreviewd_tokens=True,
-                )
-    display(windowed_annotations_corpus_patient.head(25))
-    print(windowed_annotations_corpus_patient.columns.tolist())
-
-    print("Starting features extraction from channels and ICA components...")
-    featured_windows = build_feature_dataset(windowed_annotations_corpus_patient, list(ARTIFACT_KEYWORDS.keys()), bipolar_montage=BIPOLAR_MONTAGE, use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
-    display(featured_windows.head(5))
-
-    #positive_rows = featured_windows[featured_windows["tuar_eye"] == 1]
-    #display(positive_rows[["Start", "ic_index", f"{montage}_channels_eye"]].head(15))
-
-    if not featured_windows.empty:
-        print("Successful features extraction")
-        rf_features_dataset = build_rf_dataset(featured_windows, ARTIFACT, BIPOLAR_MONTAGE, features_dir=str(FEATURES_DIR))
-        print(rf_features_dataset.columns.tolist())
-        print(rf_features_dataset[f"{montage}_channels_{ARTIFACT}"].apply(tuple).unique())
-        print(rf_features_dataset.head(5))
-        print("Positive count:")
-        print(rf_features_dataset["is_positive"].value_counts())
-        positive_only = rf_features_dataset[rf_features_dataset["is_positive"] == 1]
-        print(f"\nVentanas positivas de {ARTIFACT}: {len(positive_only)}")
-        display(positive_only[[
-            "Patient", "Session", "Start", "ic_index", "ic_raw_label",
-            f"{montage}_channels_{ARTIFACT}"
-        ]])
-
-    else:
-        print("Resulting empty dataset")
-
-
-
-    rf_dataset, assignment, report = get_or_compute_labeled_split(
-                                    rf_features_dataset, 
-                                    "is_positive", 
-                                    group_col="Patient",
-                                    ratios=RATIOS,
-                                    size_weight=0.5, 
-                                    dataset_division_dir=SPLIT_CACHE_DIR, 
-                                    version=VERSION, 
-                                    target="eye"
-                                )
-
-    # ¿Existen columnas con mayúsculas tipo TUAR crudo?
-    cols_mayusculas = [c for c in rf_dataset.columns if c.startswith("ic_contrib_") and c[len("ic_contrib_"):].isupper()]
-    print("Columnas con nombre todo mayúsculas:", cols_mayusculas)
-
-    # ¿Existen columnas con Capitalize (Fp1, F7, etc.)?
-    cols_capitalize = [c for c in rf_dataset.columns if c.startswith("ic_contrib_")]
-    print("Todas las columnas ic_contrib_:", cols_capitalize)
-
-
-
-
-    print("Starting features extraction from channels and ICA components...")
-    featured_windows = build_feature_dataset(windowed_annotations_corpus_patient, list(ARTIFACT_KEYWORDS.keys()), use_ica=True, ica_cache_dir=str(ICA_CACHE_DIR), session_cache_dir=str(SESSION_CACHE_DIR))
-    display(featured_windows.head(5))
-
-    #print(featured_windows.columns.tolist())
-
-    if not featured_windows.empty:
-        print("Successful features extraction")
-        rf_features_dataset = build_rf_dataset(featured_windows, target_artifact="eye", features_dir=str(FEATURES_DIR))
-        print(rf_features_dataset.columns.tolist())
-        print(rf_features_dataset["channels_eye"].apply(tuple).unique())
-        print(rf_features_dataset.head(5))
-        print("Positive count:")
-        print(rf_features_dataset["is_positive"].value_counts())
-    else:
-        print("Resulting empty dataset")
-
-    rf_dataset, assignment, report = get_or_compute_labeled_split(
-                                    rf_features_dataset, 
-                                    "is_positive", 
-                                    group_col="Patient",
-                                    ratios=RATIOS,
-                                    size_weight=0.5, 
-                                    dataset_division_dir=SPLIT_CACHE_DIR, 
-                                    version=VERSION, 
-                                    target="eye"
-                                )
-
-    # ¿Existen columnas con mayúsculas tipo TUAR crudo?
-    cols_mayusculas = [c for c in rf_dataset.columns if c.startswith("ic_contrib_") and c[len("ic_contrib_"):].isupper()]
-    print("Columnas con nombre todo mayúsculas:", cols_mayusculas)
-
-    # ¿Existen columnas con Capitalize (Fp1, F7, etc.)?
-    cols_capitalize = [c for c in rf_dataset.columns if c.startswith("ic_contrib_")]
-    print("Todas las columnas ic_contrib_:", cols_capitalize)
-    """

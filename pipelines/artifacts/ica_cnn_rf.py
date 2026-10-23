@@ -46,6 +46,9 @@ ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
+FORCE_RETRAIN = True
+POS_THR, IGN_THR = 0.5, 0.2
+
 if COMPARISON:
     DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
     MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models/_comparison")
@@ -98,7 +101,7 @@ RANDOM_SPACE = {
 }
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", n_patients = 15, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 n_patients = len(database_corpus_patient["Patient"].unique())
 
@@ -124,8 +127,10 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
         rf_dataset_path = DATASET_DIR / (
             f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"
-            f"_ua{window['artifact_umbral']}_p{n_patients}_v{VERSION}.parquet"
+            f"_ua{window['artifact_umbral']}_p{n_patients}_v{VERSION}"
+            f"_pt{POS_THR}_it{IGN_THR}_norm{int(NORMALIZE and not COMPARISON)}.parquet"
         )
+
         #print("[DEBUG] Looking for {rf_dataset_path}, it is {rf_dataset_path.exists()} it exists")
         if rf_dataset_path.exists():
             print(f"[INFO] Existing dataset, loading: {rf_dataset_path}")
@@ -254,10 +259,12 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
             if not featured_windows.empty:
                 print("[INFO] Successful features extraction")
-                rf_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact, output_path=rf_dataset_path)
+                rf_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact,
+                                                       output_path=rf_dataset_path.with_suffix(".raw.parquet"),
+                                                       pos_thr=POS_THR, ign_thr=IGN_THR)
             else:
                 raise ValueError(f"Error: Resulting empty dataset")
-
+            
             rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset, protect_cols=LEAKAGE_COLS + ["is_positive", "split"] )
             print(rf_features_dataset.head(5))
             print(rf_features_dataset.columns.tolist())
@@ -274,6 +281,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
             print("[INFO] Positive count:")
             print(rf_features_dataset["is_positive"].value_counts())
+            rf_features_dataset.to_parquet(rf_dataset_path, index=False)
 
 
         split_counts = rf_features_dataset["split"].value_counts(dropna=False)
@@ -292,7 +300,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                         leakage_cols=LEAKAGE_COLS,
                                                                         search_method="random",
                                                                         search_kwargs={"n_iter": config["n_iter"]},
-                                                                        force_retrain=False,
+                                                                        force_retrain=FORCE_RETRAIN,
                                                                         balanced=True,
                                                                         max_fp_per_day=config["max_fp_per_day"] 
                                                                     )

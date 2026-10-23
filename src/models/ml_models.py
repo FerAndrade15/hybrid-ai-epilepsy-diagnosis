@@ -28,19 +28,43 @@ from sklearn.metrics import (
     precision_recall_curve, 
     fbeta_score,
     classification_report, 
-    average_precision_score
+    average_precision_score,
+    roc_curve,
 )
 
 # Functions from modules
-from src.core.data_config import SCORER, KEY
+from src.core.data_config import SCORER, KEYS
 from src.core.data_splitter import split_features_target
 
-def to_window_level(df_split, prob, target_col):
+KEY = ["Patient", "Session", "Section", "Start"]
+POS_THR, IGN_THR, FEATURE_VERSION = 0.5, 0.2, 2
+LABEL_TAG = f"pt{POS_THR}_it{IGN_THR}_f{FEATURE_VERSION}"
+_VAL_SCORE = None
+
+def to_window_level(df_split, prob, target_col, return_df=False):
     t = df_split[KEY].copy()
     t["p"] = np.asarray(prob)
     t["y"] = df_split[target_col].values
-    w = t.groupby(KEY, sort=False).agg(y=("y", "max"), s=("p", "max")).reset_index()
-    return w["y"].astype(int).values, w["s"].values
+    w = t.groupby(KEY, sort=False).agg(y=("y", "max"), p=("p", "max")).reset_index()
+    if return_df:
+        return w
+    return w["y"].astype(int).values, w["p"].values
+
+def fp_per_day_by_group(w, thr, stride_sec, group="Patient"):
+    d = w.copy()
+    d["fp"] = ((d["p"] >= thr) & (d["y"] == 0)).astype(int)
+    g = d.groupby(group).agg(fp=("fp", "sum"), n=("fp", "size"))
+    g["dias_cubiertos"] = g["n"] * stride_sec / 86400
+    g["fp_por_dia"] = g["fp"] / g["dias_cubiertos"]
+    return g.sort_values("fp_por_dia", ascending=False)
+
+def make_val_score(X_val, df_val, target_col):
+    def val_score(model):
+        p = model.predict_proba(X_val)[:, 1]
+        yv_, sv_ = to_window_level(df_val, p, target_col)
+        thr, f = find_best_threshold(yv_, sv_)
+        return f, thr
+    return val_score
 
 ## Metric analysis functions
 def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model"):
@@ -62,8 +86,11 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
         auc_roc = np.nan
 
     total_time_sec = len(y_true) * stride_sec
-    total_time_days = total_time_sec / 86400
+    # total_time_days = total_time_sec / 86400
+    # fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
 
+    total_time_sec = len(y_true) * stride_sec
+    total_time_days = total_time_sec / 86400
     fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
 
     return{
@@ -74,8 +101,9 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
         "accuracy": round(accuracy, 4),
         "f1_score": round(f1, 4),
         "auc_roc": round(auc_roc, 4) if not np.isnan(auc_roc) else np.nan,
-        "false_alar_rate": round(false_alarm_rate, 4),
+        "false_alarm_rate": round(false_alarm_rate, 4),
         "fp_per_day": round(fp_per_day, 2),
+        "covered_test_days": round(total_time_days, 4),
         "TP": int(tp),
         "FP": int(fp),
         "TN": int(tn),
@@ -99,27 +127,36 @@ def find_best_threshold(y_val, y_prob_val, beta=SCORER, smooth_window=0.02):
 def fbeta_scorer(y_true, y_pred, beta=SCORER):
     return fbeta_score(y_true, y_pred, beta=beta, pos_label=1, zero_division=0)
 
-def select_threshold(y_val, y_prob_val,window_size_sec, beta=SCORER, max_fp_per_day=100):
+def select_threshold(y_val, y_prob_val, stride_sec, beta=SCORER, max_fp_per_day=100):
     adjusted_threshold, _ = find_best_threshold(y_val, y_prob_val, beta=beta)
     candidates = {"thr05":0.5, "adjusted":adjusted_threshold}
+    
     total_time_days = len(y_val) * stride_sec / 86400
     scores, details = {}, {}
-
-    total_time_days = len(y_val)*window_size_sec / 86400
+    valid_candidates = {}
 
     for name, thr in candidates.items():
         y_pred = (y_prob_val >= thr).astype(int)
         fbeta = fbeta_scorer(y_val, y_pred, beta=beta)
-        fp = ((y_pred==1) & (y_val==0)).sum()
+        fp = ((y_pred == 1) & (y_val == 0)).sum()
         fp_per_day_val = fp / total_time_days if total_time_days > 0 else np.inf
-        details[name] = {"threshold": thr, "fbeta":fbeta, "fp_per_day_val": fp_per_day_val}
-        scores[name]= fbeta if fp_per_day_val <= max_fp_per_day else -1
-    best_name = max(scores, key=scores.get)
+        
+        details[name] = {"threshold": thr, "fbeta": fbeta, "fp_per_day_val": fp_per_day_val}
+        
+        if fp_per_day_val <= max_fp_per_day:
+            valid_candidates[name] = fbeta
 
-    if scores[best_name]==-1:
-        best_name = "thr05"
+    if valid_candidates:
+        best_name = max(valid_candidates, key=valid_candidates.get)
+    else:
+        print(f"\n[WARNING] Ningún umbral cumplió el límite de {max_fp_per_day} FP/día. Aplicando fallback de menor daño.")
+        best_name = min(details, key=lambda k: details[k]["fp_per_day_val"])
+
     return candidates[best_name], best_name, details
 
+def redirect_threshold(y_val, p_val, beta=SCORER):
+    thr, f = find_best_threshold(y_val, p_val, beta=beta)
+    return float(thr), {"threshold": float(thr), "fbeta_val": float(f)}
 
 ## Optimization functions
 def _search_grid(X_train, y_train, X_val, y_val, param_grid, verbose, build_model_fn, balanced=False):
@@ -130,13 +167,13 @@ def _search_grid(X_train, y_train, X_val, y_val, param_grid, verbose, build_mode
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
         
-        score = fbeta_scorer(y_val, model.predict(X_val))
+        #score = fbeta_scorer(y_val, model.predict(X_val))
+        score, _thr = _VAL_SCORE(model)
         
         if verbose:
-            print(f"\tparams:{params}\n\tF{SCORER} score:{score}")            
+            print(f"\tparams:{params}\n\tF{SCORER}(val, ventana)={score:.4f} | thr={_thr:.3f}")
         if score > best_score:
             best_score, best_params, best_model = score, params, model
-            
     return best_model, best_params, best_score
 
 
@@ -165,11 +202,11 @@ def _search_random(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
         
-        score = fbeta_scorer(y_val, model.predict(X_val))
-        
+        #score = fbeta_scorer(y_val, model.predict(X_val))
+        score, _thr = _VAL_SCORE(model)
+
         if verbose:
-            print(f"\tparams:{params}\n\tf{SCORER} score:{score}")
-            
+            print(f"\tparams:{params}\n\tF{SCORER}(val, ventana)={score:.4f} | thr={_thr:.3f}")            
         if score > best_score:
             best_score, best_params, best_model = score, params, model
             
@@ -202,8 +239,9 @@ def _search_optuna(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
 
-        score = fbeta_scorer(y_val, model.predict(X_val))
-        
+        #score = fbeta_scorer(y_val, model.predict(X_val))
+        score, _thr = _VAL_SCORE(model)
+
         return score
 
     optuna.logging.set_verbosity(optuna.logging.WARNING if not verbose else optuna.logging.INFO)
@@ -233,8 +271,9 @@ def _search_hba_binary(X_train, y_train, X_val, y_val, kwargs, space, verbose, b
         model = build_model_fn(balanced=balanced, **params)
         model.fit(X_train, y_train)
 
-        score = fbeta_scorer(y_val, model.predict(X_val))
-        
+        #score = fbeta_scorer(y_val, model.predict(X_val))
+        score, _thr = _VAL_SCORE(model)
+  
         return score
 
     best_vec, best_score, _ = honey_badger_optimizer(
@@ -258,7 +297,7 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
                        search_data=None, models_dir="models", verbose=True, 
                        leakage_cols=[], search_method="grid", search_kwargs=None,
                        force_retrain=False, balanced=False, max_fp_per_day=100, 
-                       target_col = None
+                       target_col = "is_positive"
                     ):
     """
     Generic function to train a binary classifier.
@@ -266,6 +305,14 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
     """
     if leakage_cols is None:
         leakage_cols = []
+    
+    # Medical Ground Truth
+    cols_to_drop = [c for c in df.columns if c.startswith("tuar_") or "channels" in c]
+    df = df.drop(columns=cols_to_drop, errors="ignore")
+
+    # Gray Zone
+    df = df[~((df["split"] != "test") & (df[target_col] == -1))].copy()
+    df.loc[df[target_col] == -1, target_col] = 0
 
     # Saving the model
     model_dir = Path(models_dir)
@@ -314,6 +361,11 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
 
         search_kwargs = search_kwargs or {}
 
+        global _VAL_SCORE
+        df_val = df[df["split"] == "val"]
+        assert len(df_val) == len(X_val)
+        _VAL_SCORE = make_val_score(X_val, df_val, target_col)
+
         if search_method == "grid":
             best_model, best_params, best_score = _search_grid(X_train, y_train, X_val, y_val, search_data, verbose, build_model_fn, balanced)
         elif search_method == "random":
@@ -327,28 +379,36 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
 
         # Best threshold results
         stride = window_size_sec["stride_sec"]
-        df_val = df[df["split"]=="val"]
         df_test = df[df["split"]=="test"]
         assert len(df_val) == len(X_val) and len(df_test) == len(X_test)
 
         y_prob_val = best_model.predict_proba(X_val)[:,1]
         y_prob_test =  best_model.predict_proba(X_test)[:,1]
 
-        yv, sv = to_window_level(df_val,  y_prob_val,  target_col)
-        yt, st = to_window_level(df_test, y_prob_test, target_col)
+        wv = to_window_level(df_val,  y_prob_val,  target_col, return_df=True); wv["split"] = "val"
+        wt = to_window_level(df_test, y_prob_test, target_col, return_df=True); wt["split"] = "test"
+        yv, sv = wv["y"].astype(int).values, wv["p"].values
+        yt, st = wt["y"].astype(int).values, wt["p"].values
+        pred_path = model_dir / f"{model_name}_{search_method}_preds.parquet"
+        pd.concat([wv, wt], ignore_index=True).to_parquet(pred_path, index=False)
 
-        chosen_threshold, chosen_name, threshold_details = select_threshold(yv, sv, stride, max_fp_per_day=max_fp_per_day)
+        # chosen_threshold, chosen_name, threshold_details = select_threshold(yv, sv, stride, max_fp_per_day=max_fp_per_day)
+        chosen_threshold, thr_info = redirect_threshold(yv, sv)
+        chosen_name = "fbeta_val"
+        
         y_test_predict = (st >= chosen_threshold).astype(int)
         class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
         conf_matrix = confusion_matrix(yt, y_test_predict)
         full_metrics = compute_full_metrics(yt, y_test_predict, st, stride, model_name)
+        full_metrics["threshold"] = round(float(chosen_threshold), 4)
         full_metrics["AP"] = round(average_precision_score(yt, st), 4)
+
+        fp_by_patient = fp_per_day_by_group(wt, chosen_threshold, stride)
+        if verbose:
+            print(fp_by_patient.round(3).to_string())
         
         if verbose:
-            print(f"[INFO] Threshold decision based on validation:")
-            for name, d in threshold_details.items():
-                flag = " <- choosen" if name==chosen_name else ""
-                print(f"\t{name}: threshold={d['threshold']:.4f} | F{SCORER}(val)={d['fbeta']:.4f} | fp_per_day_val(val)={d['fp_per_day_val']:.4f}{flag}")
+            print(f"[INFO] Umbral (F{SCORER}, validación, ventana): {chosen_threshold:.4f} | F{SCORER}(val)={thr_info['fbeta_val']:.4f}")
             print(f"[INFO] Best configuration found with validation: {best_params} | F1(val)={best_score:.4f}")
             print("Final report", "-"*25)
             print(class_report)

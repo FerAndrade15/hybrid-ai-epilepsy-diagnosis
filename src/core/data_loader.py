@@ -119,6 +119,18 @@ def load_annotations(csv_path):
     """
     return pd.read_csv(csv_path, sep=",", comment="#")
 
+def _limit(ann, n_patients, max_sessions):
+    if n_patients is not None:
+        selected = ann["Patient"].drop_duplicates().head(n_patients)
+        ann = ann[ann["Patient"].isin(selected)]
+    if max_sessions is not None:
+        keep = (
+            ann[["Patient", "Session"]].drop_duplicates()
+            .groupby("Patient").head(max_sessions)
+        )
+        ann = ann.merge(keep, on=["Patient", "Session"], how="inner")
+    return ann.reset_index(drop=True)
+
 def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, max_sessions=None, montages=None, paths=False, refresh=False, CACHE_DIR="annotations"):
     """
     Creates the dataframe according to the annotations metadata:
@@ -132,58 +144,40 @@ def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, ma
     cache_file = cache_dir / f"annotations_index_{corpus_name}.parquet"
 
     if cache_file.exists() and not refresh:
-        ann = pd.read_parquet(cache_file)
-
-        if n_patients is not None:
-            selected_patients = ann['Patient'].drop_duplicates().head(n_patients).tolist()
-            ann = ann[ann['Patient'].isin(selected_patients)]
-        if max_sessions is not None:
-            ann = ann.groupby('Patient').apply(
-                lambda x: x[x['Session'].isin(x['Session'].drop_duplicates().head(max_sessions))]
-            ).reset_index(drop=True)
-
+        ann = _limit(pd.read_parquet(cache_file), n_patients, max_sessions)
         if not paths:
             ann = ann.drop(columns=["EDF", "CSV"], errors="ignore")
-
         return ann
 
     print(f"[INFO] Creating '{corpus_name}' annotations, it could take long...")
     sessions_df = get_session_data(corpus_name,  n_patients, min_sessions, max_sessions, montages)
     frames = []
     for _, s in sessions_df.iterrows():
-        ann = load_annotations(s["csv"]).assign(
-                                                Patient=s["patient"], 
-                                                Session=s["session"],
-                                                Section=s["section"],
-                                                Montage=s["montage"],
-                                                Partition=s["partition"],
-                                                NoChannels=s["no_channels"],
-                                                Duration=s["duration_s"],
-                                            )
+        csv_path = s.get("csv", s.get("CSV"))
+        
+        ann = load_annotations(csv_path).assign(
+            Patient=s.get("patient", s.get("Patient")), 
+            Session=s.get("session", s.get("Session")),
+            Section=s.get("section", s.get("Section")),
+            Montage=s.get("montage", s.get("Montage")),
+            Partition=s.get("partition", s.get("Partition")),
+            NoChannels=s.get("no_channels", s.get("No_channels")),
+            Duration=s.get("duration_s", s.get("Duration_s")),
+        )
         if paths:
             ann = ann.assign(
-                EDF=str(s["edf"]),
+                EDF=str(s.get("edf", s.get("EDF"))),
                 CSV=str(s["csv"]),
             )
         frames.append(ann)
 
     full_ann = pd.concat(frames, ignore_index=True)
-    
     full_ann.to_parquet(cache_file, index=False)
     print(f"[INFO] Index saved in: {cache_file}")
 
-    ann_to_return = full_ann.copy()
-    if n_patients is not None:
-        selected_patients = ann_to_return['Patient'].drop_duplicates().head(n_patients).tolist()
-        ann_to_return = ann_to_return[ann_to_return['Patient'].isin(selected_patients)]
-    if max_sessions is not None:
-        ann_to_return = ann_to_return.groupby('Patient').apply(
-            lambda x: x[x['Session'].isin(x['Session'].drop_duplicates().head(max_sessions))]
-        ).reset_index(drop=True)
-        
+    ann_to_return = _limit(full_ann, n_patients, max_sessions)
     if not paths:
         ann_to_return = ann_to_return.drop(columns=["EDF", "CSV"], errors="ignore")
-        
     return ann_to_return
 
 # Select sessions for testing
