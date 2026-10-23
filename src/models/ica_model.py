@@ -17,8 +17,11 @@ from pathlib import Path
 from pickle import load, dump
 from mne.preprocessing import ICA
 from mne_icalabel import label_components
-from mne_icalabel.iclabel import iclabel_label_components
-from IPython.display import display
+from mne_icalabel.iclabel import get_iclabel_features
+from mne_icalabel.iclabel.network import run_iclabel
+
+# from IPython.display import display
+# from mne_icalabel.iclabel import iclabel_label_components
 
 # Data extraction functions EEG preprocessing
 from src.core.data_loader import load_raw_edf, get_session_data
@@ -59,6 +62,13 @@ def classification_iclabel(preprocessed_signal, variance=0.99, random_seed=97):
 
     # Components classification
     ic_labels = label_components(preprocessed_signal, ica, method='iclabel')
+    features = get_iclabel_features(preprocessed_signal, ica)
+    labels_pred_prob_matrix = run_iclabel(features)
+
+    print(ic_labels)
+    print(features)
+    print(labels_pred_prob_matrix)
+    
     labels_pred_prob = ic_labels['y_pred_proba']
     return ica, ic_labels, labels_pred_prob
 

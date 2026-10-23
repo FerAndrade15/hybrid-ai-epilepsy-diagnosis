@@ -269,7 +269,7 @@ def iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use
 
             yield window_paquet
 
-def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, use_ica=True, ica_cache_dir="cache/ica", session_cache_dir="cache/sessions"):
+def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, use_ica=True, ica_cache_dir="cache/ica", session_cache_dir="cache/sessions", window_features = False):
     """
     Returns signal + ICA features added by ICLabel cathegories.
     """    
@@ -277,15 +277,18 @@ def build_feature_dataset(label_windowing_df, target_labels, bipolar_montage, us
 
     for w in iter_session_windows(label_windowing_df, target_labels, bipolar_montage, use_ica, session_cache_dir, ica_cache_dir):
         channel_feats = {}
-        channel_feats.update(
-            temporal_features(
-                w["channel_window"], w["ch_names"],
-                Variance=True, Line_length=True, Peak_to_peak=True,
-                Mean=False, RMS=False, Skewness=False, Kurtosis=False, 
-                Zero_crossing_rate=False, Hjorth=False
+
+        if window_features:
+            channel_feats.update(
+                temporal_features(
+                    w["channel_window"], w["ch_names"],
+                    Variance=True, Line_length=True, Peak_to_peak=True,
+                    Mean=False, RMS=False, Skewness=False, Kurtosis=False, 
+                    Zero_crossing_rate=False, Hjorth=False
                 )
             )
 
+            
         if use_ica:
             comp_df = component_features_by_window(
                 w["component_window"],
