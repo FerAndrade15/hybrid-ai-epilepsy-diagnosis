@@ -232,7 +232,8 @@ def _search_optuna(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
             if p_type == "int":
                 params[param_name] = trial.suggest_int(param_name, config[1], config[2])
             elif p_type == "float":
-                params[param_name] = trial.suggest_float(param_name, config[1], config[2])
+                use_log = config[3] if len(config) > 3 else False
+                params[param_name] = trial.suggest_float(param_name, config[1], config[2], log=use_log)
             elif p_type == "categorical":
                 params[param_name] = trial.suggest_categorical(param_name, config[1])
 

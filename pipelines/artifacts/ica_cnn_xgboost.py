@@ -11,6 +11,7 @@ Training of several XGBoost, one per artifact -> validation -> saves work.
 # file: ica_cnn_xgboost.py (pipeline)
 
 # Data managment libraries
+import math
 import pandas as pd
 from pathlib import Path
 from scipy.stats import randint, uniform
@@ -47,11 +48,12 @@ SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 FORCE_RETRAIN = True
 POS_THR, IGN_THR = 0.5, 0.2
+OPTIMIZER_IDX = 1  # 0: grid, 1: random, 2: optuna
 
+### ----------------------------------------------------------------------
 if COMPARISON:
     DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
     MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models/_comparison")
-
 
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
@@ -66,12 +68,30 @@ RANDOM_SPACE = {
     "learning_rate": uniform(0.01, 0.29),      
     "subsample": uniform(0.4, 0.6),
     "colsample_bytree": uniform(0.5, 0.5),     
-    "min_child_weight": randint(1, 15),
-    "gamma": uniform(0.0, 5.0),
+    "min_child_weight": randint(1, 7),
+    "gamma": uniform(0.0, 2.0),
     "reg_alpha": uniform(0.0, 2.0),
     "reg_lambda": uniform(0.0, 2.0),
     "scale_pos_weight": [0.0],
 }
+OPTUNA_SPACE = {
+    "n_estimators": ("int", 100, 600),
+    "max_depth": ("int", 3, 10),
+    "learning_rate": ("float", 0.01, 0.30, True),      
+    "subsample": ("float", 0.4, 0.6),
+    "colsample_bytree": ("float", 0.5, 0.5),     
+    "min_child_weight": ("int", 1, 7),
+    "gamma": ("float", 0.0, 2.0),
+    "reg_alpha": ("float", 0.0, 2.0),
+    "reg_lambda": ("float", 0.0, 2.0),
+    "scale_pos_weight": ("categorical", [0.0]),
+}
+
+AVAILABLE_OPTIMIZERS = ["grid", "random", "optuna", "hba"]
+OPTIMIZER_SETTINGS = [PARAM_GRID, RANDOM_SPACE, OPTUNA_SPACE]
+
+CURRENT_OPTIMIZER = AVAILABLE_OPTIMIZERS[OPTIMIZER_IDX]
+CURRENT_SPACE_BASE = OPTIMIZER_SETTINGS[OPTIMIZER_IDX]
 
 for name, val in RANDOM_SPACE.items():
     has_rvs = hasattr(val, "rvs")
@@ -283,12 +303,16 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         train_mask = xg_features_dataset["split"] == "train"
         n_pos = (train_mask & (xg_features_dataset["is_positive"] == 1)).sum()
         n_neg = (train_mask & (xg_features_dataset["is_positive"] == 0)).sum()
-        scale_pos_weight_base = n_neg / n_pos if n_pos > 0 else 1.0
+        raw_weight = n_neg / n_pos if n_pos > 0 else 1.0
+        scale_pos_weight_base = min(raw_weight, 10.0)
         print("[INFO] Scale positive weight (excluding -1):", scale_pos_weight_base)
 
-        current_xgb_space = RANDOM_SPACE.copy()
-        current_xgb_space["scale_pos_weight"] = [scale_pos_weight_base]
-
+        current_xgb_space = CURRENT_SPACE_BASE.copy()
+        if CURRENT_OPTIMIZER in ["grid", "random"]:
+            current_xgb_space["scale_pos_weight"] = [scale_pos_weight_base]
+        elif CURRENT_OPTIMIZER == "optuna":
+            current_xgb_space["scale_pos_weight"] = ("categorical", [scale_pos_weight_base])
+        
         print("\n" + ("="*50))
         print(f"Starting training of XGBoost - {artifact}")
 
@@ -299,11 +323,11 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         results.setdefault(artifact, []).append(  train_binary_model(   df=xg_features_dataset,
                                                                         model_name=f"xgb_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
                                                                         window_size_sec=window,
-                                                                        build_model_fn=build_xgb_model, # <--- CAMBIO AQUÍ
-                                                                        search_data=current_xgb_space,  # <--- CAMBIO AQUÍ
+                                                                        build_model_fn=build_xgb_model,
+                                                                        search_data=current_xgb_space,
                                                                         models_dir=str(MODELS_DIR),
                                                                         leakage_cols=LEAKAGE_COLS,
-                                                                        search_method="random",
+                                                                        search_method=CURRENT_OPTIMIZER,
                                                                         search_kwargs={"n_iter": config["n_iter"]},
                                                                         force_retrain=FORCE_RETRAIN,
                                                                         balanced=False, # XGBoost ya usa scale_pos_weight
