@@ -26,4 +26,4 @@ def build_xgb_model(scale_pos_weight=1.0, **overrides):
     }
 
     params.update(overrides)
-    return XGBClassifier(**params)z
+    return XGBClassifier(**params)

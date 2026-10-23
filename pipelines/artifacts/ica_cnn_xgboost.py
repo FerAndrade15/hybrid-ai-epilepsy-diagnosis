@@ -1,5 +1,5 @@
 """
-# File: ica_cnn_rf.py
+# File: ica_cnn_xg.py
 # Project: Trabajo de graduación
 # Author: Maria Fernanda Andrade Recinos
 
@@ -15,12 +15,10 @@ import pandas as pd
 from pathlib import Path
 from scipy.stats import randint, uniform
 
-# Utils libraries
-
 # Data integration libraries / project modules
 from src.core.windowing import get_or_build_windows
 from src.core.data_loader import build_annotations_index, find_project_root
-from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS, OUTPUTS_DIR, NORMALIZE
+from src.core.data_config import ARTIFACT_KEYWORDS, WINDOW_REQUESTS_ARTIFACTS, RATIOS, VERSION, LEAKAGE_COLS, OUTPUTS_DIR, NORMALIZE, COMPARISON
 from src.core.data_splitter import get_or_compute_labeled_split, split_balance_report, drop_inconsistent_channel_columns
 from src.core.feature_extractor import build_ml_dataset, get_or_build_features
 from src.models.xgboost_model import build_xgb_model
@@ -31,6 +29,7 @@ from src.utils.patient_registry import load_registry, forced_for
 # Data visualization and search libraries
 from IPython.display import display
 
+
 # Pipeline directions
 BASE_DIR = find_project_root("src")
 CORPUS_OUTPUTS_DIR = OUTPUTS_DIR / Path("artifact")
@@ -39,12 +38,20 @@ ICA_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/ica")
 SESSION_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("cache/sessions")
 WINDOWS_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("windows")
 FEATURES_DIR = CORPUS_OUTPUTS_DIR / Path("features")
-DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset")
+DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset") 
 SPLIT_CACHE_DIR = CORPUS_OUTPUTS_DIR / Path("splits")
 ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
+
+FORCE_RETRAIN = True
+POS_THR, IGN_THR = 0.5, 0.2
+
+if COMPARISON:
+    DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
+    MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models/_comparison")
+
 
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
@@ -57,7 +64,7 @@ RANDOM_SPACE = {
     "n_estimators": randint(100, 600),
     "max_depth": randint(3, 10),
     "learning_rate": uniform(0.01, 0.29),      
-    "subsample": uniform(0.6, 0.4),            
+    "subsample": uniform(0.4, 0.6),
     "colsample_bytree": uniform(0.5, 0.5),     
     "min_child_weight": randint(1, 15),
     "gamma": uniform(0.0, 5.0),
@@ -86,8 +93,9 @@ CONFIG_ARTIFACT = {
     },
 }
 
+
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", n_patients = 15, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 n_patients = len(database_corpus_patient["Patient"].unique())
 
@@ -111,13 +119,16 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print("*"*50)
         print(f">> {artifact} | patients:{n_patients} | windows: {window['window_size_sec']}s ({window['stride_sec']}s stride)")
 
-        rf_dataset_path = DATASET_DIR / (
+        xg_dataset_path = DATASET_DIR / (
             f"rf_dataset_{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}"
-            f"_ua{window['artifact_umbral']}_p{n_patients}_v{VERSION}.parquet"
+            f"_ua{window['artifact_umbral']}_p{n_patients}_v{VERSION}"
+            f"_pt{POS_THR}_it{IGN_THR}_norm{int(NORMALIZE and not COMPARISON)}.parquet"
         )
-        if rf_dataset_path.exists():
-            print(f"[INFO] Existing dataset, loading: {rf_dataset_path}")
-            xg_features_dataset = pd.read_parquet(rf_dataset_path)
+
+        #print("[DEBUG] Looking for {xg_dataset_path}, it is {xg_dataset_path.exists()} it exists")
+        if xg_dataset_path.exists():
+            print(f"[INFO] Existing dataset, loading: {xg_dataset_path}")
+            xg_features_dataset = pd.read_parquet(xg_dataset_path)
         else:
             """ ANNOTATIONS WINDOWS """
             print("\n"+("*"*60))
@@ -204,9 +215,10 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                     artifact_umbral=window['artifact_umbral'],
                                                                                     window_size_sec=window['window_size_sec'],
                                                                                     stride_sec=window['stride_sec'],
+                                                                                    manually_checked=COMPARISON
                                                                                 )
 
-            if i == 0:
+            if i == 0 and not COMPARISON:
                 print(f"[INFO] Saving patient asignation for {artifact}")
                 current_forced.update(assignment)
 
@@ -235,20 +247,23 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                         session_cache_dir=str(SESSION_CACHE_DIR),
                                                         version=VERSION,
                                                         refresh=False,
+                                                        manually_checked=COMPARISON
                                                     )
             display(featured_windows.head(25))
 
             if not featured_windows.empty:
                 print("[INFO] Successful features extraction")
-                xg_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact, output_path=rf_dataset_path)
+                xg_features_dataset = build_ml_dataset(featured_windows, target_artifact=artifact,
+                                                       output_path=xg_dataset_path.with_suffix(".raw.parquet"),
+                                                       pos_thr=POS_THR, ign_thr=IGN_THR)
             else:
                 raise ValueError(f"Error: Resulting empty dataset")
-
+            
             xg_features_dataset = drop_inconsistent_channel_columns(xg_features_dataset, protect_cols=LEAKAGE_COLS + ["is_positive", "split"] )
             print(xg_features_dataset.head(5))
             print(xg_features_dataset.columns.tolist())
 
-            if NORMALIZE:
+            if NORMALIZE and not COMPARISON:
                 exclude_cols_to_feats = ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob']
                 feature_col = [c for c in xg_features_dataset.columns
                                if (c.startswith('ic_') and c not in exclude_cols_to_feats) or c.endswith(('_variance', '_line_length', '_peak_to_peak'))]
@@ -260,34 +275,38 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
             print("[INFO] Positive count:")
             print(xg_features_dataset["is_positive"].value_counts())
-
+            xg_features_dataset.to_parquet(xg_dataset_path, index=False)
 
         split_counts = xg_features_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
 
         train_mask = xg_features_dataset["split"] == "train"
-        positive_mask = xg_features_dataset["is_positive"] == 1
-
-        n_pos = (train_mask & positive_mask).sum()
-        n_neg = (train_mask & ~positive_mask).sum()
+        n_pos = (train_mask & (xg_features_dataset["is_positive"] == 1)).sum()
+        n_neg = (train_mask & (xg_features_dataset["is_positive"] == 0)).sum()
         scale_pos_weight_base = n_neg / n_pos if n_pos > 0 else 1.0
-        print("[INFO] Scale positive weight:", scale_pos_weight_base)
+        print("[INFO] Scale positive weight (excluding -1):", scale_pos_weight_base)
+
+        current_xgb_space = RANDOM_SPACE.copy()
+        current_xgb_space["scale_pos_weight"] = [scale_pos_weight_base]
 
         print("\n" + ("="*50))
         print(f"Starting training of XGBoost - {artifact}")
 
-        config = CONFIG_ARTIFACT[artifact]
-        RANDOM_SPACE["scale_pos_weight"] = [scale_pos_weight_base]
+        # Reemplaza config = RANDOM_SPACE[artifact] por tu configuración de iteraciones
+        config = CONFIG_ARTIFACT[artifact] # Asegúrate de tener este diccionario definido arriba
+
+        # 3. Llamar al entrenamiento con build_xgb_model
         results.setdefault(artifact, []).append(  train_binary_model(   df=xg_features_dataset,
                                                                         model_name=f"xgb_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
                                                                         window_size_sec=window,
-                                                                        build_model_fn=build_xgb_model,
-                                                                        search_data=RANDOM_SPACE,
+                                                                        build_model_fn=build_xgb_model, # <--- CAMBIO AQUÍ
+                                                                        search_data=current_xgb_space,  # <--- CAMBIO AQUÍ
                                                                         models_dir=str(MODELS_DIR),
                                                                         leakage_cols=LEAKAGE_COLS,
                                                                         search_method="random",
                                                                         search_kwargs={"n_iter": config["n_iter"]},
-                                                                        force_retrain=False,
+                                                                        force_retrain=FORCE_RETRAIN,
+                                                                        balanced=False, # XGBoost ya usa scale_pos_weight
                                                                         max_fp_per_day=config["max_fp_per_day"] 
                                                                     )
                                                  )
