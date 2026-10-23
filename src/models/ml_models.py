@@ -62,9 +62,10 @@ def make_val_score(X_val, df_val, target_col):
     def val_score(model):
         p = model.predict_proba(X_val)[:, 1]
         yv_, sv_ = to_window_level(df_val, p, target_col)
-        
-        thr, score = find_best_threshold(yv_, sv_, beta=SCORER)
-        return score, thr
+        #thr, score = find_best_threshold(yv_, sv_, beta=SCORER)
+        #val_preds = model.predict_proba(X_val)[:, 1]
+        auc = roc_auc_score(yv_, sv_)
+        return auc
     return val_score
 
 ## Metric analysis functions

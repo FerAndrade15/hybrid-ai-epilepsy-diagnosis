@@ -84,7 +84,7 @@ OPTUNA_SPACE = {
     "gamma": ("float", 0.0, 2.0),
     "reg_alpha": ("float", 0.0, 2.0),
     "reg_lambda": ("float", 0.0, 2.0),
-    "scale_pos_weight": ("float", 1.0, 10.0),
+    "scale_pos_weight": ("float", 1.0, 5.0),
 }
 
 AVAILABLE_OPTIMIZERS = ["grid", "random", "optuna", "hba"]
