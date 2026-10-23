@@ -84,7 +84,7 @@ OPTUNA_SPACE = {
     "gamma": ("float", 0.0, 2.0),
     "reg_alpha": ("float", 0.0, 2.0),
     "reg_lambda": ("float", 0.0, 2.0),
-    "scale_pos_weight": ("categorical", [0.0]),
+    "scale_pos_weight": ("float", 1.0, 10.0),
 }
 
 AVAILABLE_OPTIMIZERS = ["grid", "random", "optuna", "hba"]
@@ -301,6 +301,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print("[INFO] Split distribution: ", split_counts)
 
         train_mask = xg_features_dataset["split"] == "train"
+        
         n_pos = (train_mask & (xg_features_dataset["is_positive"] == 1)).sum()
         n_neg = (train_mask & (xg_features_dataset["is_positive"] == 0)).sum()
         raw_weight = n_neg / n_pos if n_pos > 0 else 1.0
@@ -310,9 +311,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         current_xgb_space = CURRENT_SPACE_BASE.copy()
         if CURRENT_OPTIMIZER in ["grid", "random"]:
             current_xgb_space["scale_pos_weight"] = [scale_pos_weight_base]
-        elif CURRENT_OPTIMIZER == "optuna":
-            current_xgb_space["scale_pos_weight"] = ("categorical", [scale_pos_weight_base])
-        
+
         print("\n" + ("="*50))
         print(f"Starting training of XGBoost - {artifact}")
 
