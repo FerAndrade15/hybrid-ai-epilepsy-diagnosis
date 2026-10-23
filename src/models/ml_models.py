@@ -29,7 +29,7 @@ from sklearn.metrics import (
     fbeta_score,
     classification_report, 
     average_precision_score,
-    roc_curve,
+    roc_auc_score,
 )
 
 # Functions from modules
@@ -62,8 +62,10 @@ def make_val_score(X_val, df_val, target_col):
     def val_score(model):
         p = model.predict_proba(X_val)[:, 1]
         yv_, sv_ = to_window_level(df_val, p, target_col)
-        thr, f = find_best_threshold(yv_, sv_)
-        return f, thr
+        # thr, f = find_best_threshold(yv_, sv_)
+        score = roc_auc_score(yv_, sv_) 
+        thr = 0.5                       # Placeholder durante Optuna
+        return score, thr
     return val_score
 
 ## Metric analysis functions
