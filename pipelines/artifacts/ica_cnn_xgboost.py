@@ -117,7 +117,7 @@ CONFIG_ARTIFACT = {
 
 
 print("\nLoading all dataset for training...")
-database_corpus_patient = build_annotations_index("artifact", n_patients = 15, paths=True, CACHE_DIR=ANNOTATIONS_DIR)
+database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
 n_patients = len(database_corpus_patient["Patient"].unique())
 

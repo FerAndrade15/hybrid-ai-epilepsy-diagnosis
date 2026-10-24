@@ -1,0 +1,39 @@
+{
+  "implementation": "streaming-xai-v1",
+  "method": "occlusion",
+  "model_sha256": "3e9dde53728e1b3e1628b0537ad8d527710eb44cdb9ce4d5cffd2fc582e44e21",
+  "config_sha256": "8f0b7c4649f6b0e03be14482a0588e98537240e55778160e888d214576a03482",
+  "dataset_meta_sha256": "8e75bc2ddb847a3b2266e5c46e774147abf35e5850d6f4a0953c2c1a9e0acda1",
+  "input_files": {
+    "windows_np.npy": {
+      "size": 19372052608,
+      "mtime_ns": 1792682679000000000
+    },
+    "features_scaled.npy": {
+      "size": 5503552,
+      "mtime_ns": 1792682703000000000
+    },
+    "labels_np.npy": {
+      "size": 86119,
+      "mtime_ns": 1792682712000000000
+    }
+  },
+  "dataset_path": "/workspace/xai_results/data_extractor",
+  "threshold": 0.5,
+  "ig_steps": 100,
+  "ig_internal_bs": 64,
+  "occlusion_window_sec": 0.5,
+  "baseline": 0.0,
+  "compute_attention": true,
+  "compute_fidelity": true,
+  "compute_ablation": true,
+  "fid_fracs": [
+    0.1,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "seed": 13,
+  "batch_size": 8,
+  "n_windows": 85991
+}
