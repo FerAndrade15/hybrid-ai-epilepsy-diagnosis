@@ -50,8 +50,6 @@ FORCE_RETRAIN = True
 POS_THR, IGN_THR = 0.5, 0.2
 OPTIMIZER_IDX = 2  # 0: grid, 1: random, 2: optuna
 
-VERSION += 1
-
 ### ----------------------------------------------------------------------
 if COMPARISON:
     DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
@@ -322,7 +320,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
 
         # 3. Llamar al entrenamiento con build_xgb_model
         results.setdefault(artifact, []).append(  train_binary_model(   df=xg_features_dataset,
-                                                                        model_name=f"xgb_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
+                                                                        model_name=f"xgb_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}_run2",
                                                                         window_size_sec=window,
                                                                         build_model_fn=build_xgb_model,
                                                                         search_data=current_xgb_space,
