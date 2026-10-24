@@ -58,6 +58,7 @@ def fp_per_day_by_group(w, thr, stride_sec, group="Patient"):
     g["fp_por_dia"] = g["fp"] / g["dias_cubiertos"]
     return g.sort_values("fp_por_dia", ascending=False)
 
+"""
 def make_val_score(X_val, df_val, target_col):
     def val_score(model):
         p = model.predict_proba(X_val)[:, 1]
@@ -65,6 +66,22 @@ def make_val_score(X_val, df_val, target_col):
         
         thr, score = find_best_threshold(yv_, sv_, beta=SCORER)
         return score, thr
+    return val_score
+"""
+def extreme_thresholds(y, p, min_recall=0.9, min_precision=0.5):
+    prec, rec, thr = precision_recall_curve(y, p)
+    prec, rec = prec[:-1], rec[:-1]
+    ok_lo = rec >= min_recall
+    t_bajo = thr[ok_lo].max() if ok_lo.any() else thr.min()
+    ok_hi = prec >= min_precision
+    t_alto = thr[ok_hi].min() if ok_hi.any() else thr.max()
+    return float(t_bajo), float(t_alto)
+
+def make_val_score(X_val, df_val, target_col):
+    def val_score(model):
+        p = model.predict_proba(X_val)[:, 1]
+        yv_, sv_ = to_window_level(df_val, p, target_col)
+        return average_precision_score(yv_, sv_), float("nan")
     return val_score
 
 ## Metric analysis functions
@@ -397,6 +414,14 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         # chosen_threshold, chosen_name, threshold_details = select_threshold(yv, sv, stride, max_fp_per_day=max_fp_per_day)
         chosen_threshold, thr_info = redirect_threshold(yv, sv)
         chosen_name = "fbeta_val"
+
+        t_bajo, t_alto = extreme_thresholds(yv, sv, min_recall=0.9, min_precision=0.5)
+
+    # Comprobación: Si la restricción realmente se cumplió
+    for name, t in [("t_bajo", t_bajo), ("t_alto", t_alto)]:
+        pred = (sv >= t).astype(int)
+        print(f"[INFO] {name}={t:.4f} | recall(val)={recall_score(yv, pred):.3f} "
+            f"| precision(val)={precision_score(yv, pred, zero_division=0):.3f}")
         
         y_test_predict = (st >= chosen_threshold).astype(int)
         class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
@@ -440,6 +465,9 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
             "confusion_matrix": conf_matrix,
             "metrics_results": full_metrics,
             "importances": importances,
+            "chosen_threshold": chosen_threshold,
+            "t_bajo": t_bajo,
+            "t_alto": t_alto,
         }, analysis_path)
         print(f"Model with metrics saved in {analysis_path}")
 
