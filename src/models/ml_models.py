@@ -395,9 +395,9 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         pred_path = model_dir / f"{model_name}_{search_method}_preds.parquet"
         pd.concat([wv, wt], ignore_index=True).to_parquet(pred_path, index=False)
 
-        # chosen_threshold, chosen_name, threshold_details = select_threshold(yv, sv, stride, max_fp_per_day=max_fp_per_day)
-        chosen_threshold, thr_info = redirect_threshold(yv, sv)
-        chosen_name = "fbeta_val"
+        chosen_threshold, chosen_name, threshold_details = select_threshold(yv, sv, stride, max_fp_per_day=max_fp_per_day)
+        # chosen_threshold, thr_info = redirect_threshold(yv, sv)
+        # chosen_name = "fbeta_val"
         
         y_test_predict = (st >= chosen_threshold).astype(int)
         class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
@@ -411,7 +411,8 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
             print(fp_by_patient.round(3).to_string())
         
         if verbose:
-            print(f"[INFO] Umbral (F{SCORER}, validación, ventana): {chosen_threshold:.4f} | F{SCORER}(val)={thr_info['fbeta_val']:.4f}")
+            fbeta_final = threshold_details[chosen_name]['fbeta']
+            print(f"[INFO] Umbral (F{SCORER}, validación, ventana): {chosen_threshold:.4f} | F{SCORER}(val)={fbeta_final:.4f}")
             print(f"[INFO] Best configuration found with validation: {best_params} | F1(val)={best_score:.4f}")
             print("Final report", "-"*25)
             print(class_report)

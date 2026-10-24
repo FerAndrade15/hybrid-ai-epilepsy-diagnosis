@@ -329,7 +329,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                         search_method=CURRENT_OPTIMIZER,
                                                                         search_kwargs={"n_iter": config["n_iter"]},
                                                                         force_retrain=FORCE_RETRAIN,
-                                                                        balanced=False, # XGBoost ya usa scale_pos_weight
+                                                                        balanced=False, 
                                                                         max_fp_per_day=config["max_fp_per_day"] 
                                                                     )
                                                  )
