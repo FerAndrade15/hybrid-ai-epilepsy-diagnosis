@@ -6,14 +6,27 @@
 Corpus-agnostic windowing for continuous annotations into fixed-size
 sections and tags according to a given taxonomy with all the passed in data.
 """
-# Data integration libraries
+# windowing.py
+# Data management libraries
 import numpy as np
 import pandas as pd
-import os,  hashlib, json
+import os
+import hashlib
+import json
 from pathlib import Path
 
-from src.core.data_config import LABEL_VERSION, KEYS
+# Settings and global constants
+from src.core.data_config import (
+    LABEL_VERSION, 
+    KEYS, 
+    SFREQ, 
+    WINDOWS_REQUESTS_SEIZURES
+)
+
+# Utilities
 from src.core.preprocessing import channel_standard_nomenclature
+from src.utils.session_cache import get_or_compute_session
+from src.core.feature_extractor import temporal_features, frequency_features
 
 # Process to analyze data
 def split_compound_label(label):
@@ -254,6 +267,141 @@ def get_or_build_windows(   annotations_df, window, taxonomy, cache_dir, unrevie
     os.replace(tmp, path)
 
     return w
+
+## Deep learning extraction of windows with continuous data
+def taxonomy_intervals(session_group, target_taxonomy):
+    """
+    Extracts start to end by class defined for the taxonomy. (Agnóstico)
+    Requires slit_compound_label and merge_annotate_ranges.
+    """
+    intervals_by_class = {}
+    for cat, keywords in target_taxonomy.items():
+        keep = session_group["label"].map(
+            lambda l: bool(split_compound_label(str(l)) & set(keywords))
+        )
+        sz = session_group[keep]
+        if len(sz):
+            intervals_by_class[cat] = [(float(a), float(b)) for a, b in merge_annotated_ranges(sz)]
+        else:
+            intervals_by_class[cat] = []
+            
+    return intervals_by_class
+
+
+def mask_from_intervals(intervals, n_samples, sfreq):
+    """
+    Transforms list of time intervals into binary masks (1D array) in C/Numpy.
+    Starts with ultrafast vectorization.
+    """
+    y = np.zeros(n_samples, dtype=bool)
+    for a, b in intervals:
+        start_idx = int(a * sfreq)
+        end_idx = int(b * sfreq)
+        y[start_idx:end_idx] = True
+    return y
+
+
+def window_labels(y_mask, sfreq, win_sec, shift_sec, min_pos_sec):
+    """
+    Sliding window over binary mask (as strided). Returns a 1D array with the minimum presence time.
+    """
+    win = int(win_sec * sfreq)
+    shift = int(shift_sec * sfreq)
+    min_pos = int(min_pos_sec * sfreq)
+    
+    if len(y_mask) < win:
+        return np.array([], dtype=bool)
+        
+    n_windows = (len(y_mask) - win) // shift + 1
+    
+    # Numpy strides wo create strided windows without duplication
+    shape = (n_windows, win)
+    strides = (y_mask.strides[0] * shift, y_mask.strides[0])
+    windows = np.lib.stride_tricks.as_strided(y_mask, shape=shape, strides=strides)
+    
+    # Sumar la cantidad de "Trues" a lo largo del eje del tiempo de la ventana
+    return windows.sum(axis=1) >= min_pos
+
+
+def build_ml_features_fast(annotations_df, target_taxonomy, 
+                           use_ica=False, bipolar_montage=True):
+    """
+    Construye el dataset tabular para Machine Learning usando el windowing ultrarrápido.
+    Aplica los extractores de características manuales a las mismas ventanas que verá la CNN.
+    Totalmente agnóstico: Genera una columna por cada clase en target_taxonomy.
+    """
+    # Extraer los valores desde el diccionario de configuración
+    win_sec = WINDOWS_REQUESTS_SEIZURES["win_sec"]
+    shift_sec = WINDOWS_REQUESTS_SEIZURES["shift_sec"]
+    min_pos_sec = WINDOWS_REQUESTS_SEIZURES["min_pos_sec"]
+    
+    win = int(win_sec * SFREQ)
+    shift = int(shift_sec * SFREQ)
+    
+    group_cols = ["Patient", "Session", "Section", "EDF_path", "Duration"]
+    rows = []
+    
+    classes = list(target_taxonomy.keys())
+    
+    for keys, group in annotations_df.groupby(group_cols, dropna=False):
+        patient, session, section, edf_path, duration_s = keys
+        total_samples = int(duration_s * SFREQ)
+        
+        # 1. Obtener la señal desde el caché .npz
+        sess_data = get_or_compute_session(
+            patient=patient, session=session, section=section, path_edf=edf_path, 
+            use_ica=use_ica, bipolar_montage=bipolar_montage
+        )
+        x = sess_data["data"]
+        ch_names = sess_data["ch_names"]
+        
+        # 2. Etiquetado ultrarrápido vectorizado
+        intervals_dict = taxonomy_intervals(group, target_taxonomy)
+        
+        session_labels = {}
+        for cat in classes:
+            iv = intervals_dict[cat]
+            y_mask = mask_from_intervals(iv, total_samples, SFREQ)
+            session_labels[cat] = window_labels(y_mask, SFREQ, win_sec, shift_sec, min_pos_sec)
+            
+        # Asumimos que todas las clases generan el mismo número de ventanas
+        # Tomamos la longitud de la primera clase como referencia
+        n_windows = len(session_labels[classes[0]])
+        
+        # 3. Iterar solo por los índices válidos para extraer features
+        for w0 in range(n_windows):
+            a = w0 * shift
+            b = a + win
+            
+            # Recorte exacto de la ventana (la misma que ve la CNN)
+            window_signal = x[:, a:b]
+            
+            # Ignorar si la ventana está incompleta al final del EDF
+            if window_signal.shape[1] < win:
+                continue
+                
+            # Extraer características manuales
+            t_feats = temporal_features(window_signal, ch_names)
+            f_feats = frequency_features(window_signal, SFREQ, ch_names)
+            
+            # Armar la fila tabular
+            row_data = {
+                "Patient": patient,
+                "Session": session,
+                "Section": section,
+                "Start_sec": w0 * shift_sec
+            }
+            
+            # Asignar la etiqueta agnóstica por cada clase
+            for cat in classes:
+                row_data[cat] = int(session_labels[cat][w0])
+                
+            row_data.update(t_feats)
+            row_data.update(f_feats)
+            
+            rows.append(row_data)
+            
+    return pd.DataFrame(rows)
 
 # General testing for windowing functions
 if __name__ == "__main__":

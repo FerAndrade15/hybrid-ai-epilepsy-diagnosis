@@ -31,7 +31,7 @@ def partition_from_path(edf_path, corpus_path):
     return next((p for p in folders if p in PARTITION_TO_SPLIT), "")
 
 # Funtions for EEG data analysis and dataframe generation
-def get_session_data(corpus_name, n_patients=None, min_sessions=None, max_sessions=None, montages=None):
+def get_session_data(corpus_name, n_patients=None, min_sessions=None, max_sessions=None, montages=None, binary=None):
     """
     Pair EDF and CSV files and extract patient and montage and saves important data from edfs:
         n_patients: Patients to analyze. None means no patient limit.
@@ -53,7 +53,9 @@ def get_session_data(corpus_name, n_patients=None, min_sessions=None, max_sessio
 
         edf_data = mne.io.read_raw_edf(edf_path, preload=False, verbose="WARNING")
 
-        csv_path = edf_path.with_suffix(".csv")
+        looked_suffix = ".csv_bi" if binary else ".csv"
+
+        csv_path = edf_path.with_suffix(looked_suffix)
         if not csv_path.exists():
             continue
 

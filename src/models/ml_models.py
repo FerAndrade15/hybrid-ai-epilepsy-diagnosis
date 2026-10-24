@@ -36,6 +36,13 @@ from sklearn.metrics import (
 from src.core.data_config import SCORER, KEYS
 from src.core.data_splitter import split_features_target
 
+from src.utils.seizure_eval import (
+    get_intervals_from_binary_mask, 
+    calculate_ovlp, 
+    calculate_taes, 
+    calculate_margin
+)
+
 KEY = ["Patient", "Session", "Section", "Start"]
 POS_THR, IGN_THR, FEATURE_VERSION = 0.5, 0.2, 2
 LABEL_TAG = f"pt{POS_THR}_it{IGN_THR}_f{FEATURE_VERSION}"
@@ -85,9 +92,9 @@ def make_val_score(X_val, df_val, target_col):
     return val_score
 
 ## Metric analysis functions
-def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model"):
+def compute_full_metrics(y_true, y_pred, y_prob, win_sec, stride_sec, margin_sec=5.0, model_name="model"):
     """
-    Calculation of SzCore metrics set.
+    Calculation of SzCore metrics set + Clinical Event metrics (OVLP, TAES, MARGIN).
     """
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred, labels=[0, 1]).ravel()
 
@@ -96,7 +103,7 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
     precision = precision_score(y_true, y_pred, pos_label=1, zero_division=0)
     accuracy = accuracy_score(y_true, y_pred)
     f1 = f1_score(y_true, y_pred, pos_label=1, zero_division=0)
-    false_alarm_rate = fp / (fp + tn) if (fp + tn) > 0 else np.nan  # = 1 - especificidad
+    false_alarm_rate = fp / (fp + tn) if (fp + tn) > 0 else np.nan
 
     try:
         auc_roc = roc_auc_score(y_true, y_prob)
@@ -104,14 +111,18 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
         auc_roc = np.nan
 
     total_time_sec = len(y_true) * stride_sec
-    # total_time_days = total_time_sec / 86400
-    # fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
-
-    total_time_sec = len(y_true) * stride_sec
     total_time_days = total_time_sec / 86400
     fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
 
-    return{
+    # EVENT-BASED
+    true_intervals = get_intervals_from_binary_mask(y_true, win_sec, stride_sec)
+    pred_intervals = get_intervals_from_binary_mask(y_pred, win_sec, stride_sec)
+    
+    ovlp_sens, ovlp_fa = calculate_ovlp(true_intervals, pred_intervals)
+    taes_score = calculate_taes(true_intervals, pred_intervals)
+    margin_onset, margin_offset = calculate_margin(true_intervals, pred_intervals, margin_sec)
+
+    return {
         "model": model_name,
         "sensitivity": round(sensitivity, 4),
         "specificity": round(specificity, 4),
@@ -128,6 +139,12 @@ def compute_full_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model")
         "FN": int(fn),
         "n_test_windows": len(y_true),
         "covered_test_hours": round(total_time_sec / 3600, 2),
+        
+        "OVLP_Sensitivity": round(ovlp_sens, 4),
+        "OVLP_False_Alarms": ovlp_fa,
+        "TAES_Score": round(taes_score, 4),
+        f"MARGIN_{int(margin_sec)}s_Onset": round(margin_onset, 4),
+        f"MARGIN_{int(margin_sec)}s_Offset": round(margin_offset, 4)
     }
 
 def find_best_threshold(y_val, y_prob_val, beta=SCORER, smooth_window=0.02):
@@ -426,7 +443,11 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         y_test_predict = (st >= chosen_threshold).astype(int)
         class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
         conf_matrix = confusion_matrix(yt, y_test_predict)
-        full_metrics = compute_full_metrics(yt, y_test_predict, st, stride, model_name)
+        
+        win = window_size_sec["window_size_sec"]
+        stride = window_size_sec["stride_sec"]
+
+        full_metrics = compute_full_metrics(yt, y_test_predict, st, win, stride, model_name=model_name)
         full_metrics["threshold"] = round(float(chosen_threshold), 4)
         full_metrics["AP"] = round(average_precision_score(yt, st), 4)
 

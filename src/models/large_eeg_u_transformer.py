@@ -15,7 +15,7 @@
 import math
 import torch
 import torch.nn as nn
-import torch.nn.functional as f
+import torch.nn.functional as F
 
 class SeizureTransformer(nn.Module):
 
@@ -489,3 +489,135 @@ class AttentionPooling(nn.Module):
         weights = torch.softmax(score, dim=1)     # (B, T)
         pooled = torch.bmm(x, weights.unsqueeze(-1)).squeeze(-1)  # (B, H)
         return pooled
+
+if __name__ == "__main__":
+    from pathlib import Path
+    import numpy as np
+
+    from src.core.data_loader import pick_test_session
+    from src.core.data_config import MONOPOLAR_CHANNELS, DEBUG_DIR
+    from src.utils.session_cache import get_or_compute_session
+
+    # 1. Ruta de los pesos que ya utilizaste.
+    proyecto = Path(__file__).resolve().parents[2]
+    ruta_pesos = (
+        proyecto
+        / "epileptic_eeg_analysis_toolbox"
+        / "models_weights"
+        / "seizure_transformer.pth"
+    )
+
+    print("1. Cargando pesos:", ruta_pesos)
+
+    archivo = torch.load(
+        ruta_pesos,
+        map_location="cpu",
+        weights_only=True,
+    )
+
+    if "model_state_dict" in archivo:
+        pesos = archivo["model_state_dict"]
+    elif "state_dict" in archivo:
+        pesos = archivo["state_dict"]
+    else:
+        pesos = archivo
+
+    canales = pesos["encoder.convs.0.weight"].shape[1]
+
+    # Misma configuración de tu prueba que ya funcionó.
+    modelo = SeizureTransformer(
+        in_channels=canales,
+        in_samples=15360,
+        dim_feedforward=2048,
+        num_layers=8,
+        num_heads=4,
+        drop_rate=0.1,
+    )
+
+    modelo.load_state_dict(pesos, strict=True)
+    modelo.eval()
+
+    # 2. Elegir un registro real del corpus de crisis.
+    print("2. Seleccionando registro EEG...")
+
+    row = pick_test_session(
+        corpus="seizure",
+        n_patients=1,
+        min_duration=60,
+    )
+
+    print("EDF:", row["edf"])
+
+    # 3. Recuperar o calcular TU señal preprocesada.
+    print("3. Obteniendo señal preprocesada...")
+
+    s = get_or_compute_session(
+        patient=row["patient"],
+        session=row["session"],
+        section=row["section"],
+        path_edf=row["edf"],
+        cache_dir= str(Path(DEBUG_DIR) / "cache" / "sessions"),
+        use_ica=False,
+        bipolar_montage=False,
+    )
+
+    data = s["data"]
+    sfreq = s["sfreq"]
+
+    print("Forma de la señal:", data.shape)
+    print("Frecuencia:", sfreq, "Hz")
+    print("Canales:", s["ch_names"])
+
+    if sfreq != 256:
+        raise ValueError(f"Se esperaban 256 Hz; recibí {sfreq}.")
+
+    if data.shape[0] != modelo.in_channels:
+        raise ValueError(
+            f"El modelo espera {modelo.in_channels} canales; "
+            f"la señal tiene {data.shape[0]}."
+        )
+
+    if s["ch_names"] != MONOPOLAR_CHANNELS:
+        raise ValueError("El orden no coincide con MONOPOLAR_CHANNELS.")
+
+    # 4. Extraer 60 segundos desde el inicio elegido.
+    inicio_segundos = 0
+    inicio = round(inicio_segundos * sfreq)
+    fin = inicio + modelo.in_samples
+
+    ventana = np.array(
+        data[:, inicio:fin],
+        dtype=np.float32,
+        order="C",
+        copy=True,
+    )
+
+    forma_esperada = (modelo.in_channels, modelo.in_samples)
+
+    if ventana.shape != forma_esperada:
+        raise ValueError(
+            f"Ventana incompleta: {ventana.shape}; "
+            f"se necesita {forma_esperada}."
+        )
+
+    if not np.isfinite(ventana).all():
+        raise ValueError("La entrada contiene NaN o infinito.")
+
+    # (19, 15360) -> (1, 19, 15360).
+    x = torch.from_numpy(ventana).unsqueeze(0)
+
+    # 5. Ejecutar el modelo con la señal real.
+    print("4. Ejecutando inferencia...")
+
+    with torch.inference_mode():
+        probabilidades = modelo(x)
+
+    assert probabilidades.shape == (1, modelo.in_samples)
+    assert torch.isfinite(probabilidades).all()
+    assert ((probabilidades >= 0) & (probabilidades <= 1)).all()
+
+    print("Entrada:", x.shape)
+    print("Salida:", probabilidades.shape)
+    print("Mínimo:", probabilidades.min().item())
+    print("Máximo:", probabilidades.max().item())
+    print("Prueba de ejecución con EEG real completada.")

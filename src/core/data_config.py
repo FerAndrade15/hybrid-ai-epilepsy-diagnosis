@@ -29,6 +29,7 @@ if platform.system() == "Windows":
 else:
     BASE_DATA_DIR = Path("/mnt/d/")
 
+
 # Data paths
 ALL_DATA_POSSIBLE_PATHS = [
     Path("/workspace/data"),                                                    # RunPod
@@ -43,6 +44,7 @@ ALL_OUTPUTS_POSSIBLE_PATHS = [
     BASE_DATA_DIR / Path("Users/disenoeinnovacion/ml-outputs"),      # PC07 CIT-114
 ]
 
+
 BASE_PATH = None
 for path in ALL_DATA_POSSIBLE_PATHS:
     if path.exists() and path.is_dir():
@@ -50,6 +52,8 @@ for path in ALL_DATA_POSSIBLE_PATHS:
         break
 if BASE_PATH is None:
     raise FileNotFoundError("No valid data path found")
+
+
 
 OUTPUTS_DIR = None
 for path in ALL_OUTPUTS_POSSIBLE_PATHS:
@@ -73,6 +77,13 @@ SFREQ = 256                     # According to all corpus majority
 NORMALIZE = True
 NORMALIZE_CLIP = 20.0
 SCORER = 1                      # 1: F1 Score | F2 Score
+# Seizures preprocessing
+SPEC_NFFT = SFREQ
+SPEC_FRAME = 20
+SPEC_HOP = 8
+PSD_BANDS = [(0, 4), (4, 7), (7, 13), (13, 15), (14, 30), (31, 45), (55, 100)]
+ENC_CHOICES = ("raw", "downsampled", "stft1", "stft2", "psd")
+RAW_SCALE_UV = 50.0 
 
 # Montages registered in the TUH server nomenclature as of late 2026 + Standard montages
 ALL_MONTAGES = [
@@ -132,16 +143,20 @@ for cat in ICLABEL_CATEGORIES:
 
 # TUSZ CORPUS: Labeling and resources ---------------------------------------------------
 # Seizure Corpus Keywords
-SEIZURE_KEYWORDS = {
+SEIZURE_KEYWORDS_MULTILABEL = {
     "focal": {"spsz", "cpsz", "fnsz"},
     "generalized_toniclonic": {"absz", "mysz", "tnsz", "gnsz", "tcsz"},
     #"tonic_clonic_unspecified": {"tcsz"},
 }
 
-SEIZURE_START_CONFIDENCE = {
-    "high": {"absz", "mysz", "tnsz", "spsz", "cpsz"},
-    "low":  {"fnsz", "gnsz", "tcsz"},
+SEIZURE_MULTILABELS = set().union(*SEIZURE_KEYWORDS_MULTILABEL.values())
+
+SEIZURE_BINARY_KEYBOARD = {
+    "seiz": SEIZURE_MULTILABELS,
+    "bckg": {"bckg"},
 }
+SEIZURE_BINARY_LABELS = set().union(*SEIZURE_BINARY_KEYBOARD.keys())
+
 
 # TUEV CORPUS: Labeling and resources ---------------------------------------------------
 EVENT_KEYWORDS = {
@@ -199,7 +214,7 @@ BIPOLAR_MONTAGE = {
 BIPOLAR_MONTAGE["names"]= [f"{a}-{c}" for a, c in zip(BIPOLAR_MONTAGE["anode"], BIPOLAR_MONTAGE["cathode"])]
 
 MONOPOLAR_CHANNELS = list(dict.fromkeys(BIPOLAR_MONTAGE["anode"] + BIPOLAR_MONTAGE["cathode"]))
-
+N_CHANNELS = len(BIPOLAR_MONTAGE["names"])  
 
 # Windowing
 WINDOW_REQUESTS_ARTIFACTS = {
@@ -220,6 +235,13 @@ WINDOW_REQUESTS_ARTIFACTS = {
                                     {"window_size_sec": 1, "stride_sec": 1, "artifact_umbral": 0.3},
                                     {"window_size_sec": 2, "stride_sec": 1, "artifact_umbral": 0.3},
                                    ],
+}
+
+WINDOWS_REQUESTS_SEIZURES = {
+    "win_sec": 4,
+    "shift_sec": 1,
+    "min_pos_sec": 1.0,
+    "chunk_windows": 60
 }
 
 # General models configuration
