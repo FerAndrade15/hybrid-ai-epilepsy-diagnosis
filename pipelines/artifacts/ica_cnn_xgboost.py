@@ -50,6 +50,8 @@ FORCE_RETRAIN = True
 POS_THR, IGN_THR = 0.5, 0.2
 OPTIMIZER_IDX = 2  # 0: grid, 1: random, 2: optuna
 
+VERSION += 1
+
 ### ----------------------------------------------------------------------
 if COMPARISON:
     DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
