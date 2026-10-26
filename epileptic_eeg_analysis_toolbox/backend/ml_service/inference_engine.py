@@ -280,6 +280,7 @@ class ClinicalInferenceEngine:
                         "label": "Crisis",
                         "confidence": ev["confidence"]
                     })
+            print(detections)
 
         return detections
 

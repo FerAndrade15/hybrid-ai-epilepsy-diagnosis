@@ -141,8 +141,9 @@ def build_annotations_index(corpus_name,  n_patients=None, min_sessions=None, ma
     - Section
     - Montage
     """
-    cache_dir = CACHE_DIR
+    cache_dir = Path(CACHE_DIR)
     cache_dir.mkdir(parents=True, exist_ok=True)
+
     cache_file = cache_dir / f"annotations_index_{corpus_name}.parquet"
 
     if cache_file.exists() and not refresh:

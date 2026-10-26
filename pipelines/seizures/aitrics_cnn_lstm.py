@@ -12,16 +12,19 @@ import pandas as pd
 
 # Importaciones de tu configuración unificada
 from src.core.data_config import (
-    OUTPUTS_DIR, 
-    VERSION, 
-    ENC_CHOICES, 
-    WINDOWS_REQUESTS_SEIZURES, 
-    SEIZURE_BINARY_KEYBOARD
+    OUTPUTS_DIR, VERSION, ENC_CHOICES, RATIOS,
+    WINDOWS_REQUESTS_SEIZURES, SEIZURE_BINARY_KEYBOARD,
+    SEIZURE_MULTILABELS, SEIZURE_SESSION_CACHE,
 )
+
+from src.core.data_config import PARTITION_TO_SPLIT
+from src.core.windowing import split_compound_label
 from src.core.data_loader import build_annotations_index
 from src.core.data_splitter import get_or_compute_labeled_split
+from src.utils.patient_registry import load_registry, forced_for
 from src.utils.seizure_dataset import HybridSeizureDataset
-from src.utils.seizure_eval import full_report
+from src.core.data_splitter import resolve_forced_split
+from src.utils.seizure_eval import full_report, window_metrics
 from src.models.aitrics_cnn_lstm import build_model, get_device, predict_sessions, train_model_aitrics
 
 ap = argparse.ArgumentParser()
@@ -48,20 +51,48 @@ for d in (CACHE_DIR, ANN_DIR):
 device = get_device()
 print(f"[INFO] Dispositivo: {device}")
 
-# 1. Configuración de Taxonomía Dinámica
-TAXONOMY = SEIZURE_BINARY_KEYBOARD
-N_CLASSES = len(TAXONOMY.keys())
+# Configuración de Taxonomía Dinámica
+TAXONOMY = {"seiz": SEIZURE_MULTILABELS}
+N_CLASSES = len(TAXONOMY)
 
-# 2. Indexación y División de Datos usando tu infraestructura agnóstica
-print("[INFO] Construyendo índice y splits...")
-ann_df = build_annotations_index("seizure", n_patients=args.n_patients, paths=True)
-windowed_df, _, _ = get_or_compute_labeled_split(
-    ann_df, label_col="is_positive", ratios={"train": 0.7, "val": 0.15, "test": 0.15}
+ann_df = build_annotations_index("seizure", n_patients=None, paths=True, CACHE_DIR=ANN_DIR)
+ann_df["EDF_path"] = ann_df["EDF"]
+ann_df["is_positive"] = ann_df["label"].map(
+    lambda l: int(bool(split_compound_label(str(l)) & SEIZURE_MULTILABELS))
 )
 
-train_ds = HybridSeizureDataset(windowed_df, "train", target_taxonomy=TAXONOMY)
-val_index = windowed_df[windowed_df["split"] == "val"].reset_index(drop=True)
-test_index = windowed_df[windowed_df["split"] == "test"].reset_index(drop=True)
+# Split desde tu registro: un solo split por paciente
+forced = forced_for(load_registry(), ann_df["Patient"].unique(), source_prefix="folder:seizure")
+ann_df["split"] = ann_df["Patient"].map(forced)
+
+off = ann_df["Partition"].map(PARTITION_TO_SPLIT)       # solo informativo
+print(f"[CHECK] registro == partición oficial: {(ann_df['split'] == off).mean():.1%}")
+print(f"[CHECK] pacientes sin regla (se excluyen): {ann_df.loc[ann_df['split'].isna(), 'Patient'].nunique()}")
+ann_df = ann_df[ann_df["split"].notna()].reset_index(drop=True)
+
+if args.n_patients:     # smoke: pacientes con crisis, repartidos entre los tres splits
+    per_split = {"train": args.n_patients // 2, "val": args.n_patients // 4, "test": args.n_patients // 4}
+    sz = ann_df.groupby("Patient").agg(split=("split", "first"), sz=("is_positive", "sum"))
+    keep = [p for s, n in per_split.items() for p in sz[(sz.split == s) & (sz.sz > 0)].index[:n]]
+    ann_df = ann_df[ann_df["Patient"].isin(keep)].reset_index(drop=True)
+
+windowed_df = ann_df
+print(ann_df.drop_duplicates("Patient")["split"].value_counts())
+
+print(ann_df["label"].value_counts().head(8))
+sz = ann_df.groupby("Patient")["is_positive"].sum()
+print(f"pacientes: {len(sz)} | con crisis: {(sz > 0).sum()} | filas de crisis: {int(sz.sum())}")
+forced = resolve_forced_split(None, ann_df["Patient"].unique(), RATIOS)
+print(sz.groupby(pd.Series(forced)).agg(["count", "sum"]))   # pacientes y filas de crisis por split
+
+
+train_ds = HybridSeizureDataset(windowed_df, "train", target_taxonomy=TAXONOMY,
+                                session_cache_dir=str(SEIZURE_SESSION_CACHE))
+has_sz = windowed_df.groupby(["Patient", "Session", "Section"])["is_positive"].transform("max") > 0
+pool = windowed_df[has_sz] if args.smoke else windowed_df
+val_index = pool[pool["split"] == "val"].reset_index(drop=True)          # evaluación final
+test_index = pool[pool["split"] == "test"].reset_index(drop=True)
+val_train_index = windowed_df[has_sz & (windowed_df["split"] == "val")].reset_index(drop=True)   # solo para elegir época
 
 encs = list(ENC_CHOICES) if args.enc == "all" else [args.enc]
 all_reports = []
@@ -78,7 +109,7 @@ for enc in encs:
         out_dir=model_dir, device=device, epochs=args.epochs,
         batch_size=args.batch, steps_per_epoch=args.steps, lr=args.lr,
         num_workers=args.workers, val_max_sessions=args.val_max_sessions,
-        force=args.force_retrain
+        force=args.force_retrain, session_cache_dir=str(SEIZURE_SESSION_CACHE)
     )
 
     cap = 3 if args.smoke else None
@@ -88,7 +119,8 @@ for enc in encs:
         if paths[s].exists() and not args.force_retrain:
             continue
         print(f"[INFO] Prediciendo {s} ({len(idx)} secciones)...")
-        preds_df = predict_sessions(model, idx, TAXONOMY, device, max_sessions=cap)
+        preds_df = predict_sessions(model, idx, TAXONOMY, device, max_sessions=cap,
+                                    session_cache_dir=str(SEIZURE_SESSION_CACHE))
         preds_df.to_parquet(paths[s], index=False)
 
     # 3. Evaluación Clínica Final
@@ -103,6 +135,15 @@ for enc in encs:
     report.to_csv(model_dir / "report.csv", index=False)
     all_reports.append(report)
     print(report.round(3).to_string(index=False))
+
+    wm = window_metrics(
+        pd.read_parquet(paths["test"]),
+        dict(zip(report["Class"], report["Best_Threshold"])),
+        shift_sec=WINDOWS_REQUESTS_SEIZURES["shift_sec"],
+    )
+    wm.insert(0, "enc", enc)
+    wm.to_csv(model_dir / "window_metrics.csv", index=False)
+    print(wm.round(3).to_string(index=False))
 
 pd.concat(all_reports).to_csv(CORPUS_OUT / f"report_all_v{VERSION}.csv", index=False)
 print(f"\n[OK] cnn_lstm_paper | reports en {CORPUS_OUT}")

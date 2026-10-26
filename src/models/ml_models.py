@@ -333,7 +333,7 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
                        search_data=None, models_dir="models", verbose=True, 
                        leakage_cols=[], search_method="grid", search_kwargs=None,
                        force_retrain=False, balanced=False, max_fp_per_day=100, 
-                       target_col = "is_positive"
+                       target_col = "is_positive", medical=None,
                     ):
     """
     Generic function to train a binary classifier.
@@ -341,6 +341,14 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
     """
     if leakage_cols is None:
         leakage_cols = []
+
+    # Verdad médica: se guarda ANTES de borrar tuar_* y *channels*
+    eval_col = target_col
+    if medical is not None:
+        medical.fit_meta(df)
+        df = medical.add_truth(df)                       # crea df["y_med"]
+        eval_col = medical.eval_col
+        leakage_cols = list(leakage_cols) + [eval_col]   # y_med jamás como feature
     
     # Medical Ground Truth
     cols_to_drop = [c for c in df.columns if c.startswith("tuar_") or "channels" in c]
@@ -400,7 +408,7 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         global _VAL_SCORE
         df_val = df[df["split"] == "val"]
         assert len(df_val) == len(X_val)
-        _VAL_SCORE = make_val_score(X_val, df_val, target_col)
+        _VAL_SCORE = make_val_score(X_val, df_val, eval_col)
 
         if search_method == "grid":
             best_model, best_params, best_score = _search_grid(X_train, y_train, X_val, y_val, search_data, verbose, build_model_fn, balanced)
@@ -421,8 +429,8 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         y_prob_val = best_model.predict_proba(X_val)[:,1]
         y_prob_test =  best_model.predict_proba(X_test)[:,1]
 
-        wv = to_window_level(df_val,  y_prob_val,  target_col, return_df=True); wv["split"] = "val"
-        wt = to_window_level(df_test, y_prob_test, target_col, return_df=True); wt["split"] = "test"
+        wv = to_window_level(df_val,  y_prob_val,  eval_col, return_df=True); wv["split"] = "val"
+        wt = to_window_level(df_test, y_prob_test, eval_col, return_df=True); wt["split"] = "test"
         yv, sv = wv["y"].astype(int).values, wv["p"].values
         yt, st = wt["y"].astype(int).values, wt["p"].values
         pred_path = model_dir / f"{model_name}_{search_method}_preds.parquet"
@@ -451,7 +459,12 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         full_metrics["threshold"] = round(float(chosen_threshold), 4)
         full_metrics["AP"] = round(average_precision_score(yt, st), 4)
 
+        if medical is not None:
+            med = medical.report(df_test, y_prob_test, chosen_threshold)
+            full_metrics.update({f"med_{k}": v for k, v in med.items()})
+
         fp_by_patient = fp_per_day_by_group(wt, chosen_threshold, stride)
+
         if verbose:
             print(fp_by_patient.round(3).to_string())
         

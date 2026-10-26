@@ -25,7 +25,6 @@ from scipy.stats import skew, kurtosis
 from src.core.data_config import RAW_TO_TARGET, TUAR_Labels
 from src.utils.session_cache import get_or_compute_session
 from src.models.ica_model import channel_contribution
-from src.core.windowing import file_keys, list_data
 
 def temporal_features(raw, ch_names, Mean=True, Variance=True, RMS=True,  Skewness=True, Kurtosis=True, Zero_crossing_rate=True, Hjorth=True, Line_length=True, Peak_to_peak=True):
     """
@@ -220,10 +219,9 @@ def label_ics(group, target_channels, pos_thr=0.5, ign_thr=0.2, prefix="ic_contr
                 cols.append(c)
 
     if not cols:
-        cols = [c for c in group.columns if c.startswith(prefix)]
-        base_score = group[cols].max(axis=1)
-    else:
-        base_score = group[cols].sum(axis=1)
+        # canales objetivo no mapeables a los 19: ignorar la ventana, no inventar localización
+        return pd.Series(-1, index=group.index)
+    base_score = group[cols].sum(axis=1)
 
     # LA MAGIA: Multiplicamos anatomía espacial por energía de la ventana
     score = base_score * group["ic_rms"]
@@ -402,6 +400,7 @@ def get_or_build_features(splitted_dataset, target_labels, bipolar_montage,
                             use_ica=True, ica_cache_dir="cache/ica",
                             session_cache_dir="cache/sessions",
                             version=1, refresh=True, manually_checked=False):
+    from src.core.windowing import file_keys, list_data   # import perezoso: evita el ciclo con windowing
     tax = hashlib.md5(
         json.dumps(sorted(target_labels)).encode()
     ).hexdigest()[:6]

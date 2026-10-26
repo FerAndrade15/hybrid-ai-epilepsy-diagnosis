@@ -1,7 +1,9 @@
-# File: src/core/seizure_eval.py
+# File: src/utils/seizure_eval.py
 
 import numpy as np
 import pandas as pd
+from sklearn.metrics import (confusion_matrix, recall_score, precision_score,
+                             accuracy_score, f1_score, roc_auc_score)
 
 def get_intervals_from_binary_mask(mask):
     """
@@ -203,3 +205,39 @@ def full_report(val_preds, test_preds, margin_sec=5, window_size_sec=4, shift_se
         })
         
     return pd.DataFrame(reports)
+
+def compute_window_metrics(y_true, y_pred, y_prob, stride_sec, model_name="model"):
+    """Mismas métricas por ventana que compute_full_metrics de ml_models, sin depender de ese módulo."""
+    tn, fp, fn, tp = confusion_matrix(y_true, y_pred, labels=[0, 1]).ravel()
+    try:
+        auc_roc = roc_auc_score(y_true, y_prob)
+    except ValueError:
+        auc_roc = np.nan
+    total_time_sec = len(y_true) * stride_sec
+    total_days = total_time_sec / 86400
+    return {
+        "model": model_name,
+        "sensitivity": round(recall_score(y_true, y_pred, zero_division=0), 4),
+        "specificity": round(tn / (tn + fp), 4) if (tn + fp) > 0 else np.nan,
+        "precision": round(precision_score(y_true, y_pred, zero_division=0), 4),
+        "accuracy": round(accuracy_score(y_true, y_pred), 4),
+        "f1_score": round(f1_score(y_true, y_pred, zero_division=0), 4),
+        "auc_roc": round(auc_roc, 4) if not np.isnan(auc_roc) else np.nan,
+        "false_alarm_rate": round(fp / (fp + tn), 4) if (fp + tn) > 0 else np.nan,
+        "fp_per_day": round(fp / total_days, 2) if total_days > 0 else np.nan,
+        "covered_test_days": round(total_days, 4),
+        "TP": int(tp), "FP": int(fp), "TN": int(tn), "FN": int(fn),
+        "n_test_windows": len(y_true),
+        "covered_test_hours": round(total_time_sec / 3600, 2),
+    }
+
+
+def window_metrics(test_preds, thresholds, shift_sec=1):
+    """Métricas por ventana y por clase, con el umbral elegido en validación."""
+    rows = []
+    for cat, thr in thresholds.items():
+        y_true = test_preds[f"y_{cat}"].astype(int).values
+        y_prob = test_preds[f"p_{cat}"].values
+        y_pred = (y_prob > thr).astype(int)
+        rows.append(compute_window_metrics(y_true, y_pred, y_prob, shift_sec, model_name=cat))
+    return pd.DataFrame(rows)

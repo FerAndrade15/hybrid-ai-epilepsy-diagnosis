@@ -27,6 +27,7 @@ from src.models.rf_model import build_rf_model
 from src.models.ml_models import train_binary_model
 from src.utils.split_cache import load_selected_sw, save_selected_sw
 from src.utils.patient_registry import load_registry, forced_for
+from src.utils.artifacts_eval import MedicalEval
 
 # Data visualization and search libraries
 from IPython.display import display
@@ -47,6 +48,7 @@ MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 FORCE_RETRAIN = True
+USE_MEDICAL_EVAL = True      # False = comportamiento anterior
 POS_THR, IGN_THR = 0.5, 0.2
 
 if COMPARISON:
@@ -291,6 +293,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of Random Forest - {artifact}")
 
         config = RANDOM_SPACE[artifact]
+        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if USE_MEDICAL_EVAL else None
+
         results.setdefault(artifact, []).append(  train_binary_model(   df=rf_features_dataset,
                                                                         model_name=f"rf_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
                                                                         window_size_sec=window,
@@ -302,7 +306,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                         search_kwargs={"n_iter": config["n_iter"]},
                                                                         force_retrain=FORCE_RETRAIN,
                                                                         balanced=True,
-                                                                        max_fp_per_day=config["max_fp_per_day"] 
+                                                                        max_fp_per_day=config["max_fp_per_day"],
+                                                                        medical=medical
                                                                     )
                                                  )
 

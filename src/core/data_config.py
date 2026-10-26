@@ -72,6 +72,8 @@ CORPUS_PATHS = {
     "events":       Path("tuh_eeg_events") / "v2.0.1",
 }
 
+SEIZURE_SESSION_CACHE = OUTPUTS_DIR / "seizure" / "sessions"
+
 ## Preprocessing restrictions
 SFREQ = 256                     # According to all corpus majority
 NORMALIZE = True

@@ -316,7 +316,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of XGBoost - {artifact}")
 
         # Reemplaza config = RANDOM_SPACE[artifact] por tu configuración de iteraciones
-        config = CONFIG_ARTIFACT[artifact] # Asegúrate de tener este diccionario definido arriba
+        config = CONFIG_ARTIFACT[artifact]
+        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if USE_MEDICAL_EVAL else None
 
         # 3. Llamar al entrenamiento con build_xgb_model
         results.setdefault(artifact, []).append(  train_binary_model(   df=xg_features_dataset,
@@ -330,7 +331,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                         search_kwargs={"n_iter": config["n_iter"]},
                                                                         force_retrain=FORCE_RETRAIN,
                                                                         balanced=False, 
-                                                                        max_fp_per_day=config["max_fp_per_day"] 
+                                                                        max_fp_per_day=config["max_fp_per_day"],
+                                                                        medical=medical
                                                                     )
                                                  )
 

@@ -142,7 +142,7 @@ def build_model(enc="psd", **kw):
 
 
 @torch.no_grad()
-def predict_sessions(model, index_df, target_taxonomy, device, block_windows=WINDOWS_REQUESTS_SEIZURES["chunk_windows"], infer_batch=8, max_sessions=None):
+def predict_sessions(model, index_df, target_taxonomy, device, block_windows=WINDOWS_REQUESTS_SEIZURES["chunk_windows"], infer_batch=8, max_sessions=None, session_cache_dir="cache/sessions"):    
     """Predice P(seizure) o P(clase) para cada ventana, extrayendo la señal desde el caché .npz
     y construyendo la etiqueta real (y_true) para el cálculo de métricas de validación."""
     model.eval().to(device)
@@ -154,23 +154,22 @@ def predict_sessions(model, index_df, target_taxonomy, device, block_windows=WIN
     shift = int(shift_sec * SFREQ)
     
     group_cols = ["Patient", "Session", "Section", "EDF_path", "Duration"]
-    sess = index_df.drop_duplicates(subset=group_cols).reset_index(drop=True)
-    
-    if max_sessions:
-        sess = sess.iloc[:max_sessions]
-        
-    frames = []
+    frames, n_done = [], 0
     classes = list(target_taxonomy.keys())
-    
-    for keys, group in sess.groupby(group_cols, dropna=False):
+
+    for keys, group in index_df.groupby(group_cols, dropna=False):   # group = TODAS las anotaciones de la sesión
+        if max_sessions and n_done >= max_sessions:
+            break
+        n_done += 1
         patient, session, section, edf_path, duration_s = keys
         total_samples = int(float(duration_s) * SFREQ)
         
         sess_data = get_or_compute_session(
             patient=patient, session=session, section=section, path_edf=edf_path, 
-            use_ica=False, bipolar_montage=True
+            use_ica=False, bipolar_montage=True, cache_dir=session_cache_dir
         )
         x = sess_data["data"]
+        total_samples = x.shape[1]          # longitud real tras el remuestreo; la del header puede diferir
         N = n_windows(x.shape[1], win, shift)
         if N <= 0:
             continue
@@ -235,7 +234,7 @@ def _val_auroc(preds, target_taxonomy):
 def train_model_aitrics(
         model, train_ds, val_index, target_taxonomy, out_dir, device, epochs=20, batch_size=8, steps_per_epoch=500,
         lr=1e-3, weight_decay=1e-6, pos_weight=1.0, num_workers=8, patience=5, val_max_sessions=None,
-        seed=42, force=False
+        seed=42, force=False, session_cache_dir="cache/sessions"
     ):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -285,7 +284,8 @@ def train_model_aitrics(
             if step % 50 == 0:
                 print(f"  ep{ep} step {step}/{len(loader)} loss={np.mean(losses[-50:]):.4f}", flush=True)
                 
-        val_preds = predict_sessions(model, val_index, target_taxonomy, device, max_sessions=val_max_sessions)
+        val_preds = predict_sessions(model, val_index, target_taxonomy, device, max_sessions=val_max_sessions,
+                                     session_cache_dir=session_cache_dir)        
         auroc = _val_auroc(val_preds, target_taxonomy)
         history.append({"epoch": ep, "train_loss": float(np.mean(losses)), "val_auroc": auroc,
                         "sec": round(time.time() - t0, 1)})
