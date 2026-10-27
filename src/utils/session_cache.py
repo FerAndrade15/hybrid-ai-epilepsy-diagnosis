@@ -23,9 +23,14 @@ def _load_mono(path_edf):
     return raw_data_preproccesing(raw, bipolar_montage=False)     # siempre monopolar + CAR
 
 def _save(cache_file, payload):
-    tmp = cache_file.with_name(cache_file.stem + "_tmp.npz")      # escritura atómica
-    np.savez_compressed(tmp, **payload)
-    os.replace(tmp, cache_file)
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    tmp = cache_file.with_name(f"{cache_file.stem}_tmp_{os.getpid()}.npz")
+    np.savez_compressed(tmp, **payload) 
+    
+    try:
+        os.replace(tmp, cache_file)
+    except FileNotFoundError:
+        pass
 
 def get_or_compute_session(patient, session, section, path_edf, cache_dir="cache/sessions",
                            ica_cache_dir="cache/ica", use_ica=True, bipolar_montage=False):
