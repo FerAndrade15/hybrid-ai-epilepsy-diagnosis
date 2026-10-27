@@ -32,6 +32,16 @@ def _save(cache_file, payload):
     except FileNotFoundError:
         pass
 
+def get_bip_slice(patient, session, section, path_edf, a, b, cache_dir):
+    f = Path(cache_dir) / f"{patient}_{session}_{section}_bip.npy"
+    if not f.exists():
+        s = get_or_compute_session(patient, session, section, path_edf,
+                                   use_ica=False, bipolar_montage=True, cache_dir=cache_dir)
+        tmp = f.with_name(f"{f.stem}_tmp_{os.getpid()}.npy")
+        np.save(tmp, s["data"].astype(np.float32))
+        os.replace(tmp, f)                       # atómico, seguro con varios workers
+    return np.load(f, mmap_mode="r")[:, a:b]
+
 def get_or_compute_session(patient, session, section, path_edf, cache_dir="cache/sessions",
                            ica_cache_dir="cache/ica", use_ica=True, bipolar_montage=False):
     """

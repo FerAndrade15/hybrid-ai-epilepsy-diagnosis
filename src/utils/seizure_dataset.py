@@ -8,7 +8,7 @@ from torch.utils.data import Dataset, WeightedRandomSampler
 from src.core.data_config import SFREQ, WINDOWS_REQUESTS_SEIZURES
 
 # Utilities
-from src.utils.session_cache import get_or_compute_session
+from src.utils.session_cache import get_or_compute_session, get_bip_slice
 from src.core.windowing import taxonomy_intervals, mask_from_intervals, window_labels
 
 class HybridSeizureDataset(Dataset):
@@ -87,27 +87,22 @@ class HybridSeizureDataset(Dataset):
         try:
             si, w0 = self.chunks[i]
             sess_meta = self.sessions_info[si]
-            
-            sess_data = get_or_compute_session(
-                patient=sess_meta["Patient"], 
-                session=sess_meta["Session"], 
-                section=sess_meta["Section"], 
-                path_edf=sess_meta["EDF_path"], 
-                use_ica=self.use_ica, 
-                bipolar_montage=self.bipolar_montage,
-                cache_dir=self.session_cache_dir,
-                ica_cache_dir=self.ica_cache_dir
-            )
-            
-            x = sess_data["data"]
+
             a = w0 * self.shift
             b = (w0 + self.cw - 1) * self.shift + self.win
-            
-            xs = torch.from_numpy(np.asarray(x[:, a:b], dtype=np.float32))
-            ys = torch.from_numpy(self.wlabels[si][w0:w0 + self.cw].astype(np.float32)) 
-            
+
+            x = get_bip_slice(sess_meta["Patient"], sess_meta["Session"], sess_meta["Section"],
+                              sess_meta["EDF_path"], a, b, self.session_cache_dir)
+            if x.shape[1] != b - a:
+                raise RuntimeError(f"chunk {i} {sess_meta['Patient']}_{sess_meta['Session']}: "
+                                   f"señal {x.shape[1]} != {b - a}")
+
+            xs = torch.from_numpy(np.array(x, dtype=np.float32))
+            ys = torch.from_numpy(self.wlabels[si][w0:w0 + self.cw].astype(np.float32))
             return xs, ys
         except ValueError as e:
+            if "Missing channels" not in str(e):
+                raise
             return self.__getitem__(random.randint(0, len(self) - 1))
 
     def make_sampler(self, num_samples, pos_frac=0.5):
