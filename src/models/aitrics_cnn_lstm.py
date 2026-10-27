@@ -145,76 +145,82 @@ def build_model(enc="psd", **kw):
 def predict_sessions(model, index_df, target_taxonomy, device, block_windows=WINDOWS_REQUESTS_SEIZURES["chunk_windows"], infer_batch=8, max_sessions=None, session_cache_dir="cache/sessions"):    
     """Predice P(seizure) o P(clase) para cada ventana, extrayendo la señal desde el caché .npz
     y construyendo la etiqueta real (y_true) para el cálculo de métricas de validación."""
-    model.eval().to(device)
-    win_sec = WINDOWS_REQUESTS_SEIZURES["win_sec"]
-    shift_sec = WINDOWS_REQUESTS_SEIZURES["shift_sec"]
-    min_pos_sec = WINDOWS_REQUESTS_SEIZURES["min_pos_sec"]
-    
-    win = int(win_sec * SFREQ)
-    shift = int(shift_sec * SFREQ)
-    
-    group_cols = ["Patient", "Session", "Section", "EDF_path", "Duration"]
-    frames, n_done = [], 0
-    classes = list(target_taxonomy.keys())
-
-    for keys, group in index_df.groupby(group_cols, dropna=False):   # group = TODAS las anotaciones de la sesión
-        if max_sessions and n_done >= max_sessions:
-            break
-        n_done += 1
-        patient, session, section, edf_path, duration_s = keys
-        total_samples = int(float(duration_s) * SFREQ)
+    try:
+        model.eval().to(device)
+        win_sec = WINDOWS_REQUESTS_SEIZURES["win_sec"]
+        shift_sec = WINDOWS_REQUESTS_SEIZURES["shift_sec"]
+        min_pos_sec = WINDOWS_REQUESTS_SEIZURES["min_pos_sec"]
         
-        sess_data = get_or_compute_session(
-            patient=patient, session=session, section=section, path_edf=edf_path, 
-            use_ica=False, bipolar_montage=True, cache_dir=session_cache_dir
-        )
-        x = sess_data["data"]
-        total_samples = x.shape[1]          # longitud real tras el remuestreo; la del header puede diferir
-        N = n_windows(x.shape[1], win, shift)
-        if N <= 0:
-            continue
+        win = int(win_sec * SFREQ)
+        shift = int(shift_sec * SFREQ)
+        
+        group_cols = ["Patient", "Session", "Section", "EDF_path", "Duration"]
+        frames, n_done = [], 0
+        classes = list(target_taxonomy.keys())
+
+        for keys, group in index_df.groupby(group_cols, dropna=False):   # group = TODAS las anotaciones de la sesión
+            if max_sessions and n_done >= max_sessions:
+                break
+            n_done += 1
+            patient, session, section, edf_path, duration_s = keys
+            total_samples = int(float(duration_s) * SFREQ)
             
-        # Generar etiquetas reales agnósticas (y_true)
-        intervals_dict = taxonomy_intervals(group, target_taxonomy)
-        y_true_list = []
-        for cat in classes:
-            iv = intervals_dict[cat]
-            y_mask = mask_from_intervals(iv, total_samples, SFREQ)
-            wl = window_labels(y_mask, SFREQ, win_sec, shift_sec, min_pos_sec)
-            y_true_list.append(wl[:N])
-        y_true = np.column_stack(y_true_list) # [N, N_clases]
-        
-        probs = np.zeros((N, len(classes)), np.float32)
-
-        def run(blocks):
-            xs = np.stack([x[:, w0 * shift:(w0 + nw - 1) * shift + win] for w0, nw in blocks]).astype(np.float32)
-            logits, _ = model(torch.from_numpy(xs).to(device))
-            p = torch.sigmoid(logits).cpu().numpy() # Sigmoid para multilabel/BCE
-            for (w0, nw), pp in zip(blocks, p):
-                probs[w0:w0 + nw] = pp
-
-        blocks = [(w0, min(block_windows, N - w0)) for w0 in range(0, N, block_windows)]
-        full = [b for b in blocks if b[1] == block_windows]
-        for i in range(0, len(full), infer_batch):
-            run(full[i:i + infer_batch])
-        for b in blocks:
-            if b[1] != block_windows:
-                run([b])
+            sess_data = get_or_compute_session(
+                patient=patient, session=session, section=section, path_edf=edf_path, 
+                use_ica=False, bipolar_montage=True, cache_dir=session_cache_dir
+            )
+            x = sess_data["data"]
+            total_samples = x.shape[1]          # longitud real tras el remuestreo; la del header puede diferir
+            N = n_windows(x.shape[1], win, shift)
+            if N <= 0:
+                continue
                 
-        df_res = pd.DataFrame({
-            "key": f"{patient}_{session}_{section}", "Patient": patient, "Session": session, 
-            "Section": section, "win_idx": np.arange(N),
-            "start_s": np.arange(N) * shift_sec, "end_s": np.arange(N) * shift_sec + win_sec
-        })
-        
-        for idx, cat in enumerate(classes):
-            df_res[f"p_{cat}"] = probs[:, idx]
-            df_res[f"y_{cat}"] = y_true[:, idx]
+            # Generar etiquetas reales agnósticas (y_true)
+            intervals_dict = taxonomy_intervals(group, target_taxonomy)
+            y_true_list = []
+            for cat in classes:
+                iv = intervals_dict[cat]
+                y_mask = mask_from_intervals(iv, total_samples, SFREQ)
+                wl = window_labels(y_mask, SFREQ, win_sec, shift_sec, min_pos_sec)
+                y_true_list.append(wl[:N])
+            y_true = np.column_stack(y_true_list) # [N, N_clases]
             
-        frames.append(df_res)
-        
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+            probs = np.zeros((N, len(classes)), np.float32)
 
+            def run(blocks):
+                xs = np.stack([x[:, w0 * shift:(w0 + nw - 1) * shift + win] for w0, nw in blocks]).astype(np.float32)
+                logits, _ = model(torch.from_numpy(xs).to(device))
+                p = torch.sigmoid(logits).cpu().numpy() # Sigmoid para multilabel/BCE
+                for (w0, nw), pp in zip(blocks, p):
+                    probs[w0:w0 + nw] = pp
+
+            blocks = [(w0, min(block_windows, N - w0)) for w0 in range(0, N, block_windows)]
+            full = [b for b in blocks if b[1] == block_windows]
+            for i in range(0, len(full), infer_batch):
+                run(full[i:i + infer_batch])
+            for b in blocks:
+                if b[1] != block_windows:
+                    run([b])
+                    
+            df_res = pd.DataFrame({
+                "key": f"{patient}_{session}_{section}", "Patient": patient, "Session": session, 
+                "Section": section, "win_idx": np.arange(N),
+                "start_s": np.arange(N) * shift_sec, "end_s": np.arange(N) * shift_sec + win_sec
+            })
+            
+            for idx, cat in enumerate(classes):
+                df_res[f"p_{cat}"] = probs[:, idx]
+                df_res[f"y_{cat}"] = y_true[:, idx]
+                
+            frames.append(df_res)
+            
+        return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+        
+    except ValueError as e:
+        if "Missing channels" in str(e):
+            print(f"[WARNING] Saltando sesión. {e}")
+            continue
+        raise e
 
 def _val_auroc(preds, target_taxonomy):
     """Calcula el AUROC promedio a través de todas las clases dinámicas."""
