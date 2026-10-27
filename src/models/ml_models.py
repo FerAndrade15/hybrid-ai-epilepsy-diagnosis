@@ -37,10 +37,9 @@ from src.core.data_config import SCORER, KEYS
 from src.core.data_splitter import split_features_target
 
 from src.utils.seizure_eval import (
-    get_intervals_from_binary_mask, 
-    calculate_ovlp, 
-    calculate_taes, 
-    calculate_margin
+    get_intervals_from_binary_mask,
+    evaluate_ovlp,
+    evaluate_taes,
 )
 
 KEY = ["Patient", "Session", "Section", "Start"]
@@ -120,8 +119,46 @@ def make_val_score(X_val, df_val, target_col):
         return average_precision_score(yv_, sv_), float("nan")
     return val_score
 
+def event_metrics(d, stride_sec, margin_sec=5.0):
+    """
+    d: DataFrame a nivel ventana con Patient, Session, Section, Start, y, pred.
+    Calcula OVLP, TAES y MARGIN por tramo continuo y suma los conteos.
+    """
+    ov_h = ov_m = ov_f = 0
+    ta_h = ta_m = ta_f = 0.0
+    on_hit = off_hit = n_ref = 0
+    tol = margin_sec / stride_sec            # margen en unidades de ventana
+
+    for _, g in d.groupby(["Patient", "Session", "Section"], sort=False):
+        g = g.sort_values("Start")
+        # nuevo tramo cada vez que hay un hueco entre ventanas consecutivas
+        gap = (g["Start"].diff().fillna(stride_sec) - stride_sec).abs() > 1e-6
+        for _, s in g.groupby(gap.cumsum()):
+            ref = get_intervals_from_binary_mask(s["y"].astype(int).values)
+            hyp = get_intervals_from_binary_mask(s["pred"].astype(int).values)
+
+            h, m, f = evaluate_ovlp(ref, hyp)
+            ov_h += h; ov_m += m; ov_f += f
+            h, m, f = evaluate_taes(ref, hyp)
+            ta_h += h; ta_m += m; ta_f += f
+
+            for r_s, r_e in ref:
+                n_ref += 1
+                ov = [(h_s, h_e) for h_s, h_e in hyp if h_e > r_s and h_s < r_e]
+                on_hit += any(abs(h_s - r_s) <= tol for h_s, _ in ov)
+                off_hit += any(abs(h_e - r_e) <= tol for _, h_e in ov)
+
+    nan = float("nan")
+    return {
+        "ovlp_sens": ov_h / (ov_h + ov_m) if (ov_h + ov_m) else nan,
+        "ovlp_fa": int(ov_f),
+        "taes": ta_h / (ta_h + ta_m) if (ta_h + ta_m) else nan,
+        "m_on": on_hit / n_ref if n_ref else nan,
+        "m_off": off_hit / n_ref if n_ref else nan,
+    }
+
 ## Metric analysis functions
-def compute_full_metrics(y_true, y_pred, y_prob, win_sec, stride_sec, margin_sec=5.0, model_name="model"):
+def compute_full_metrics(y_true, y_pred, y_prob, win_sec, stride_sec, margin_sec=5.0, model_name="model", w=None):
     """
     Calculation of SzCore metrics set + Clinical Event metrics (OVLP, TAES, MARGIN).
     """
@@ -144,12 +181,12 @@ def compute_full_metrics(y_true, y_pred, y_prob, win_sec, stride_sec, margin_sec
     fp_per_day = fp / total_time_days if total_time_days > 0 else np.nan
 
     # EVENT-BASED
-    true_intervals = get_intervals_from_binary_mask(y_true, win_sec, stride_sec)
-    pred_intervals = get_intervals_from_binary_mask(y_pred, win_sec, stride_sec)
-    
-    ovlp_sens, ovlp_fa = calculate_ovlp(true_intervals, pred_intervals)
-    taes_score = calculate_taes(true_intervals, pred_intervals)
-    margin_onset, margin_offset = calculate_margin(true_intervals, pred_intervals, margin_sec)
+    if w is not None:
+        ev = event_metrics(w.assign(pred=np.asarray(y_pred)), stride_sec, margin_sec)
+        ovlp_sens, ovlp_fa, taes_score = ev["ovlp_sens"], ev["ovlp_fa"], ev["taes"]
+        margin_onset, margin_offset = ev["m_on"], ev["m_off"]
+    else:
+        ovlp_sens = ovlp_fa = taes_score = margin_onset = margin_offset = float("nan")
 
     return {
         "model": model_name,
