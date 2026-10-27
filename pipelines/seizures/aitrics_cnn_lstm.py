@@ -56,6 +56,7 @@ TAXONOMY = {"seiz": SEIZURE_MULTILABELS}
 N_CLASSES = len(TAXONOMY)
 
 ann_df = build_annotations_index("seizure", n_patients=None, paths=True, CACHE_DIR=ANN_DIR)
+ann_df = ann_df[ann_df["No_channels"] >= 19].reset_index(drop=True)
 ann_df["EDF_path"] = ann_df["EDF"]
 ann_df["is_positive"] = ann_df["label"].map(
     lambda l: int(bool(split_compound_label(str(l)) & SEIZURE_MULTILABELS))
