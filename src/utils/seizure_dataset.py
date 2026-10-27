@@ -1,6 +1,7 @@
 # File: src/utils/seizure_dataset.py
 import numpy as np
 import torch
+import random
 from torch.utils.data import Dataset, WeightedRandomSampler
 
 # Configuraciones de tu proyecto
@@ -83,28 +84,31 @@ class HybridSeizureDataset(Dataset):
         return len(self.chunks)
 
     def __getitem__(self, i):
-        si, w0 = self.chunks[i]
-        sess_meta = self.sessions_info[si]
-        
-        sess_data = get_or_compute_session(
-            patient=sess_meta["Patient"], 
-            session=sess_meta["Session"], 
-            section=sess_meta["Section"], 
-            path_edf=sess_meta["EDF_path"], 
-            use_ica=self.use_ica, 
-            bipolar_montage=self.bipolar_montage,
-            cache_dir=self.session_cache_dir,
-            ica_cache_dir=self.ica_cache_dir
-        )
-        
-        x = sess_data["data"]
-        a = w0 * self.shift
-        b = (w0 + self.cw - 1) * self.shift + self.win
-        
-        xs = torch.from_numpy(np.asarray(x[:, a:b], dtype=np.float32))
-        ys = torch.from_numpy(self.wlabels[si][w0:w0 + self.cw].astype(np.float32)) 
-        
-        return xs, ys
+        try:
+            si, w0 = self.chunks[i]
+            sess_meta = self.sessions_info[si]
+            
+            sess_data = get_or_compute_session(
+                patient=sess_meta["Patient"], 
+                session=sess_meta["Session"], 
+                section=sess_meta["Section"], 
+                path_edf=sess_meta["EDF_path"], 
+                use_ica=self.use_ica, 
+                bipolar_montage=self.bipolar_montage,
+                cache_dir=self.session_cache_dir,
+                ica_cache_dir=self.ica_cache_dir
+            )
+            
+            x = sess_data["data"]
+            a = w0 * self.shift
+            b = (w0 + self.cw - 1) * self.shift + self.win
+            
+            xs = torch.from_numpy(np.asarray(x[:, a:b], dtype=np.float32))
+            ys = torch.from_numpy(self.wlabels[si][w0:w0 + self.cw].astype(np.float32)) 
+            
+            return xs, ys
+        except ValueError as e:
+            return self.__getitem__(random.randint(0, len(self) - 1))
 
     def make_sampler(self, num_samples, pos_frac=0.5):
         n_pos = int(self.chunk_pos.sum())
