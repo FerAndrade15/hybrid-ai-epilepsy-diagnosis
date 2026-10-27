@@ -36,10 +36,17 @@ ap.add_argument("--tune", type=int, default=0, help="n trials de Optuna (0 = par
 ap.add_argument("--force-retrain", action="store_true")
 ap.add_argument("--smoke", action="store_true", help="Prueba rápida de fontanería")
 ap.add_argument("--tune-epochs", type=int, default=8, help="épocas por intento de Optuna")
+ap.add_argument("--tune-hours", type=float, default=None, help="tope de tiempo de la búsqueda")
 args = ap.parse_args()
 
 if args.smoke:
     args.n_patients, args.epochs, args.steps, args.val_max_sessions, args.workers = 40, 1, 20, 3, 2
+
+def stop_if_plateau(study, trial, patience=20):
+    done = [t for t in study.trials if t.state == optuna.trial.TrialState.COMPLETE]
+    if len(done) > patience and max(t.number for t in done) - study.best_trial.number >= patience:
+        print(f"[TUNE] Sin mejora en {patience} intentos, se detiene.")
+        study.stop()
 
 CORPUS_OUT = OUTPUTS_DIR / "seizure" / ("smoke" if args.smoke else "full")
 ANN_DIR = OUTPUTS_DIR / "seizure" / "annotations"
@@ -150,7 +157,9 @@ for enc in encs:
             pruner=optuna.pruners.MedianPruner(n_startup_trials=5, n_warmup_steps=2))
 
         print(f"[TUNE] {enc}: intentos previos en el estudio: {len(study.trials)}")
-        study.optimize(objective, n_trials=args.tune, gc_after_trial=True)
+        study.optimize(objective, n_trials=args.tune, gc_after_trial=True,
+               timeout=args.tune_hours * 3600 if args.tune_hours else None,
+               callbacks=[stop_if_plateau])
 
         HP = study.best_params
         print(f"[TUNE] {enc} best val AUROC={study.best_value:.4f} params={HP}")
