@@ -62,6 +62,9 @@ def raw_data_preproccesing(raw_data, l_freq=1.0, h_freq=100.0, notch_freq=[50.0,
     
     raw.pick(MONOPOLAR_CHANNELS)
 
+    if raw.n_times < 2000:  # ~8 segundos de grabación
+        raise ValueError(f"Short signal: la grabación solo tiene {raw.n_times} muestras.")
+
     # Preserve 10-20 standard positions according to 10-10 nomenclature (10-20 extended)
     montage = mne.channels.make_standard_montage("standard_1005")
     raw.set_montage(montage, on_missing="ignore", match_case=False)

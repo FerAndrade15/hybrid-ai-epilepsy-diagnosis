@@ -170,10 +170,10 @@ def predict_sessions(model, index_df, target_taxonomy, device, block_windows=WIN
             )
             
         except ValueError as e:
-            if "Missing channels" not in str(e):
-                raise
-            skipped.append(f"{patient}_{session}_{section}")
-            continue
+            if "Missing channels" in str(e) or "Short signal" in str(e):
+                print(f"[WARNING] Saltando sesión: {e}") # Opcional, para no saturar tu consola
+                continue
+            raise e
 
         n_done += 1      
         x = sess_data["data"]
