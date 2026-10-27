@@ -12,9 +12,11 @@ Training of several XGBoost, one per artifact -> validation -> saves work.
 
 # Data managment libraries
 import math
+import argparse
 import pandas as pd
 from pathlib import Path
-from scipy.stats import randint, uniform
+from functools import partial
+from scipy.stats import randint, uniform, loguniform
 
 # Data integration libraries / project modules
 from src.core.windowing import get_or_build_windows
@@ -26,6 +28,7 @@ from src.models.xgboost_model import build_xgb_model
 from src.models.ml_models import train_binary_model
 from src.utils.split_cache import load_selected_sw, save_selected_sw
 from src.utils.patient_registry import load_registry, forced_for
+from src.utils.artifacts_eval import MedicalEval
 
 # Data visualization and search libraries
 from IPython.display import display
@@ -46,9 +49,40 @@ ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
-FORCE_RETRAIN = True
-POS_THR, IGN_THR = 0.5, 0.2
-OPTIMIZER_IDX = 2  # 0: grid, 1: random, 2: optuna
+AVAILABLE_OPTIMIZERS = ["grid", "random", "optuna", "hba"]
+
+DEFAULTS = dict(
+    optimizer="random",
+    n_iter=None,            # None = usa el n_iter de cada artefacto
+    seed=42,
+    pos_thr=0.5,
+    ign_thr=0.2,
+    force_retrain=True,
+    medical_eval=True,
+    tag="",
+)
+
+## Model arguments
+def parse_args():
+    p = argparse.ArgumentParser(description="Pipeline de artefactos (RF)")
+    p.add_argument("--optimizer", choices=["random", "optuna", "grid"], default=DEFAULTS["optimizer"])
+    p.add_argument("--n-iter", type=int, default=DEFAULTS["n_iter"])
+    p.add_argument("--artifacts", nargs="+", default=None)
+    p.add_argument("--seed", type=int, default=DEFAULTS["seed"])
+    p.add_argument("--pos-thr", type=float, default=DEFAULTS["pos_thr"])
+    p.add_argument("--ign-thr", type=float, default=DEFAULTS["ign_thr"])
+    p.add_argument("--force-retrain", action=argparse.BooleanOptionalAction, default=DEFAULTS["force_retrain"])
+    p.add_argument("--medical-eval", action=argparse.BooleanOptionalAction, default=DEFAULTS["medical_eval"])
+    p.add_argument("--tag", default=DEFAULTS["tag"])
+    p.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    return p.parse_args()
+
+args = parse_args()
+
+FORCE_RETRAIN = args.force_retrain
+USE_MEDICAL_EVAL = args.medical_eval
+POS_THR, IGN_THR = args.pos_thr, args.ign_thr
+OPTIMIZER_IDX = AVAILABLE_OPTIMIZERS.index(args.optimizer)
 
 ### ----------------------------------------------------------------------
 if COMPARISON:
@@ -63,17 +97,18 @@ PARAM_GRID = {
     "max_depth": [None, 20]
 }
 RANDOM_SPACE = {
-    "n_estimators": randint(100, 600),
-    "max_depth": randint(3, 10),
-    "learning_rate": uniform(0.01, 0.29),      
-    "subsample": uniform(0.4, 0.6),
-    "colsample_bytree": uniform(0.5, 0.5),     
-    "min_child_weight": randint(1, 7),
-    "gamma": uniform(0.0, 2.0),
+    "n_estimators": randint(100, 601),         
+    "max_depth": randint(3, 11),               
+    "learning_rate": loguniform(0.01, 0.30),   
+    "subsample": uniform(0.4, 0.2),            
+    "colsample_bytree": [0.5],                 
+    "min_child_weight": randint(1, 8),         
+    "gamma": uniform(0.0, 2.0),                
     "reg_alpha": uniform(0.0, 2.0),
     "reg_lambda": uniform(0.0, 2.0),
-    "scale_pos_weight": [0.0],
+    "scale_pos_weight": [0.0],                 
 }
+
 OPTUNA_SPACE = {
     "n_estimators": ("int", 100, 600),
     "max_depth": ("int", 3, 10),
@@ -87,9 +122,7 @@ OPTUNA_SPACE = {
     "scale_pos_weight": ("float", 1.0, 5.0),
 }
 
-AVAILABLE_OPTIMIZERS = ["grid", "random", "optuna", "hba"]
 OPTIMIZER_SETTINGS = [PARAM_GRID, RANDOM_SPACE, OPTUNA_SPACE]
-
 CURRENT_OPTIMIZER = AVAILABLE_OPTIMIZERS[OPTIMIZER_IDX]
 CURRENT_SPACE_BASE = OPTIMIZER_SETTINGS[OPTIMIZER_IDX]
 
@@ -129,6 +162,9 @@ print(pd.Series(FORCED).value_counts().to_dict())
 base_forced = FORCED.copy()
 
 for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
+    if args.artifacts and artifact not in args.artifacts:
+        continue
+
     print("\n" + "="*50)
     print(f"ARTIFACT: {artifact}")
     print("\n" + "="*50)
@@ -238,9 +274,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                     manually_checked=COMPARISON
                                                                                 )
 
-            if i == 0 and not COMPARISON:
-                print(f"[INFO] Saving patient asignation for {artifact}")
-                current_forced.update(assignment)
 
             balance = split_balance_report(splitted_dataset, target_col=artifact)
             spread = balance["positive_rate"].max() - balance["positive_rate"].min()
@@ -279,7 +312,13 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             else:
                 raise ValueError(f"Error: Resulting empty dataset")
             
-            xg_features_dataset = drop_inconsistent_channel_columns(xg_features_dataset, protect_cols=LEAKAGE_COLS + ["is_positive", "split"] )
+            xg_features_dataset = drop_inconsistent_channel_columns(
+                xg_features_dataset,
+                protect_cols=LEAKAGE_COLS + ["is_positive", "split",
+                                             f"tuar_{artifact}",
+                                             f"bipolar_channels_{artifact}",
+                                             f"monopolar_channels_{artifact}"],
+            )
             print(xg_features_dataset.head(5))
             print(xg_features_dataset.columns.tolist())
 
@@ -297,6 +336,11 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             print(xg_features_dataset["is_positive"].value_counts())
             xg_features_dataset.to_parquet(xg_dataset_path, index=False)
 
+        if i == 0 and not COMPARISON:
+            assignment_i = (xg_features_dataset.drop_duplicates("Patient")
+                            .set_index("Patient")["split"].to_dict())
+            current_forced.update(assignment_i)
+        
         split_counts = xg_features_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
 
@@ -316,26 +360,28 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of XGBoost - {artifact}")
 
         # Reemplaza config = RANDOM_SPACE[artifact] por tu configuración de iteraciones
-        config = CONFIG_ARTIFACT[artifact]
+        config = RANDOM_SPACE[artifact]
+        n_iter = args.n_iter or config["n_iter"]
         medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if USE_MEDICAL_EVAL else None
-
-        # 3. Llamar al entrenamiento con build_xgb_model
-        results.setdefault(artifact, []).append(  train_binary_model(   df=xg_features_dataset,
-                                                                        model_name=f"xgb_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}_run3",
-                                                                        window_size_sec=window,
-                                                                        build_model_fn=build_xgb_model,
-                                                                        search_data=current_xgb_space,
-                                                                        models_dir=str(MODELS_DIR),
-                                                                        leakage_cols=LEAKAGE_COLS,
-                                                                        search_method=CURRENT_OPTIMIZER,
-                                                                        search_kwargs={"n_iter": config["n_iter"]},
-                                                                        force_retrain=FORCE_RETRAIN,
-                                                                        balanced=False, 
-                                                                        max_fp_per_day=config["max_fp_per_day"],
-                                                                        medical=medical
-                                                                    )
-                                                 )
-
+        tag = f"_{args.tag}" if args.tag else ""
+        
+        results.setdefault(artifact, []).append(
+            train_binary_model(
+                df=xg_features_dataset,
+                model_name=f"xgb_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}{tag}",
+                window_size_sec=window,
+                build_model_fn=partial(build_xgb_model, device=args.device),
+                search_data=current_xgb_space,
+                models_dir=str(MODELS_DIR),
+                leakage_cols=LEAKAGE_COLS,
+                search_method=CURRENT_OPTIMIZER,
+                search_kwargs={"n_iter": n_iter, "n_trials": n_iter, "seed": args.seed},
+                force_retrain=FORCE_RETRAIN,
+                balanced=False,
+                max_fp_per_day=config["max_fp_per_day"],
+                medical=medical,
+            )
+        )
 print("\n"+"*-" * 25)
 print("Final report")
 for artifact, res_list in results.items():

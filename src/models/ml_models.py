@@ -60,7 +60,7 @@ def audit_features(df, X, target_col, tag="train", strict=True):
 
     dropped = sorted(df_cols - x_cols)
     leaked = sorted(c for c in x_cols if c in FORBIDDEN_IN_X or c.startswith(SUSPECT_PREFIXES))
-    non_numeric = sorted(c for c in X.columns if not np.issubdtype(X[c].dtype, np.number))
+    non_numeric = sorted(c for c in X.columns if not pd.api.types.is_numeric_dtype(X[c]) and not pd.api.types.is_bool_dtype(X[c]))
     const = sorted(c for c in X.columns if X[c].nunique(dropna=False) <= 1)
 
     print(f"\n[AUDIT:{tag}] df={len(df_cols)} cols | X={len(x_cols)} features | target={target_col}")
@@ -272,7 +272,7 @@ def _search_grid(X_train, y_train, X_val, y_val, param_grid, verbose, build_mode
         score, _thr = _VAL_SCORE(model)
         
         if verbose:
-            print(f"\tparams:{params}\n\tF{SCORER}(val, ventana)={score:.4f} | thr={_thr:.3f}")
+            print(f"\tparams:{params}\n\tAP(val, ventana)={score:.4f}")
         if score > best_score:
             best_score, best_params, best_model = score, params, model
     return best_model, best_params, best_score
@@ -347,7 +347,10 @@ def _search_optuna(X_train, y_train, X_val, y_val, kwargs, space, verbose, build
         return score
 
     optuna.logging.set_verbosity(optuna.logging.WARNING if not verbose else optuna.logging.INFO)
-    study = optuna.create_study(direction="maximize")
+    study = optuna.create_study(
+        direction="maximize",
+        sampler=optuna.samplers.TPESampler(seed=kwargs.get("seed", 42)),
+    )
     study.optimize(objective, n_trials=n_trials)
 
     best_params = study.best_params
@@ -521,7 +524,6 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         t_bajo, t_alto = extreme_thresholds(yv, sv, min_recall=0.9, min_precision=0.5)
 
     # Comprobación: Si la restricción realmente se cumplió
-            # Comprobación: la restricción de recall/precisión se cumple en val
     for name, t in [("t_bajo", t_bajo), ("t_alto", t_alto)]:
         pred = (sv >= t).astype(int)
         print(f"[INFO] {name}={t:.4f} | recall(val)={recall_score(yv, pred):.3f} "
@@ -534,7 +536,7 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
     win = window_size_sec["window_size_sec"]
     stride = window_size_sec["stride_sec"]
 
-    full_metrics = compute_full_metrics(yt, y_test_predict, st, win, stride, model_name=model_name)
+    full_metrics = compute_full_metrics(yt, y_test_predict, st, win, stride, model_name=model_name, w=wt)
     full_metrics["threshold"] = round(float(chosen_threshold), 4)
     full_metrics["AP"] = round(average_precision_score(yt, st), 4)
 

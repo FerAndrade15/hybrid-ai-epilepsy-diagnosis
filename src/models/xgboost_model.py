@@ -9,7 +9,7 @@ Reusable XGBoost modules for the AI pipeline.
 from xgboost import XGBClassifier
 
 # Binary RF
-def build_xgb_model(scale_pos_weight=1.0, **overrides):
+def build_xgb_model(scale_pos_weight=1.0, device="cpu", **overrides):
     """
     XGBoost base cofiguration with overrides for hiperparameters.
     """
@@ -22,7 +22,7 @@ def build_xgb_model(scale_pos_weight=1.0, **overrides):
         "scale_pos_weight": scale_pos_weight,
         "random_state": 42,
         "n_jobs": -1,
-        "device": "cuda",
+        "device": device,
         "tree_method": "hist",
     }
 

@@ -11,6 +11,7 @@ Training of multi-output RF -> validation -> saves work.
 # file: ica_cnn_rf.py (pipeline)
 
 # Data managment libraries
+import argparse
 import pandas as pd
 from pathlib import Path
 
@@ -47,9 +48,37 @@ ANNOTATIONS_DIR = OUTPUTS_DIR/ Path("artifact/annotations")
 MODELS_DIR = CORPUS_OUTPUTS_DIR / Path("models")
 SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
-FORCE_RETRAIN = True
-USE_MEDICAL_EVAL = True      # False = comportamiento anterior
-POS_THR, IGN_THR = 0.5, 0.2
+DEFAULTS = dict(
+    optimizer="random",
+    n_iter=None,            # None = usa el n_iter de cada artefacto
+    seed=42,
+    pos_thr=0.5,
+    ign_thr=0.2,
+    force_retrain=True,
+    medical_eval=True,
+    tag="",
+)
+
+## Model arguments
+def parse_args():
+    p = argparse.ArgumentParser(description="Pipeline de artefactos (RF)")
+    p.add_argument("--optimizer", choices=["random", "optuna", "grid"], default=DEFAULTS["optimizer"])
+    p.add_argument("--n-iter", type=int, default=DEFAULTS["n_iter"])
+    p.add_argument("--artifacts", nargs="+", default=None)
+    p.add_argument("--seed", type=int, default=DEFAULTS["seed"])
+    p.add_argument("--pos-thr", type=float, default=DEFAULTS["pos_thr"])
+    p.add_argument("--ign-thr", type=float, default=DEFAULTS["ign_thr"])
+    p.add_argument("--force-retrain", action=argparse.BooleanOptionalAction, default=DEFAULTS["force_retrain"])
+    p.add_argument("--medical-eval", action=argparse.BooleanOptionalAction, default=DEFAULTS["medical_eval"])
+    p.add_argument("--tag", default=DEFAULTS["tag"])
+    return p.parse_args()
+
+args = parse_args()
+
+FORCE_RETRAIN = args.force_retrain
+USE_MEDICAL_EVAL = args.medical_eval
+POS_THR, IGN_THR = args.pos_thr, args.ign_thr
+
 
 if COMPARISON:
     DATASET_DIR = CORPUS_OUTPUTS_DIR / Path("dataset/_comparison") 
@@ -102,6 +131,30 @@ RANDOM_SPACE = {
     },
 }
 
+def _optuna_space(depth_hi, split_lo, split_hi, leaf_lo, leaf_hi):
+    # Optuna incluye el extremo superior; randint de scipy no, por eso el "-1"
+    return {
+        "n_estimators": ("int", 150, 599),
+        "max_depth": ("int", 5, depth_hi - 1),
+        "min_samples_split": ("int", split_lo, split_hi - 1),
+        "min_samples_leaf": ("int", leaf_lo, leaf_hi - 1),
+        "max_features": ("categorical", ["sqrt", "log2", 0.3, 0.5]),
+        "sampling_strategy": ("categorical", [0.3, 0.5, 0.7, 1.0]),
+    }
+
+OPTUNA_SPACE = {
+    "eye":               _optuna_space(30, 5, 30, 2, 15),
+    "muscle":            _optuna_space(30, 2, 15, 1, 8),
+    "non_physiological": _optuna_space(35, 2, 15, 1, 8),
+}
+
+def space_for(artifact, optimizer):
+    if optimizer == "random":
+        return RANDOM_SPACE[artifact]["space"]
+    if optimizer == "optuna":
+        return OPTUNA_SPACE[artifact]
+    return PARAM_GRID
+
 print("\nLoading all dataset for training...")
 database_corpus_patient = build_annotations_index("artifact", paths=True, CACHE_DIR=ANNOTATIONS_DIR)
 display(database_corpus_patient.head(5))
@@ -117,6 +170,9 @@ print(pd.Series(FORCED).value_counts().to_dict())
 base_forced = FORCED.copy()
 
 for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
+    if args.artifacts and artifact not in args.artifacts:
+        continue
+    
     print("\n" + "="*50)
     print(f"ARTIFACT: {artifact}")
     print("\n" + "="*50)
@@ -307,23 +363,27 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of Random Forest - {artifact}")
 
         config = RANDOM_SPACE[artifact]
+        n_iter = args.n_iter or config["n_iter"]
         medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if USE_MEDICAL_EVAL else None
+        tag = f"_{args.tag}" if args.tag else ""
 
-        results.setdefault(artifact, []).append(  train_binary_model(   df=rf_features_dataset,
-                                                                        model_name=f"rf_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}",
-                                                                        window_size_sec=window,
-                                                                        build_model_fn=build_rf_model,
-                                                                        search_data=config["space"],
-                                                                        models_dir=str(MODELS_DIR),
-                                                                        leakage_cols=LEAKAGE_COLS,
-                                                                        search_method="random",
-                                                                        search_kwargs={"n_iter": config["n_iter"]},
-                                                                        force_retrain=FORCE_RETRAIN,
-                                                                        balanced=True,
-                                                                        max_fp_per_day=config["max_fp_per_day"],
-                                                                        medical=medical
-                                                                    )
-                                                 )
+        results.setdefault(artifact, []).append(
+            train_binary_model(
+                df=rf_features_dataset,
+                model_name=f"rf_{artifact}_w{window['window_size_sec']}s{window['stride_sec']}_{VERSION}{tag}",
+                window_size_sec=window,
+                build_model_fn=build_rf_model,
+                search_data=space_for(artifact, args.optimizer),
+                models_dir=str(MODELS_DIR),
+                leakage_cols=LEAKAGE_COLS,
+                search_method=args.optimizer,
+                search_kwargs={"n_iter": n_iter, "n_trials": n_iter, "seed": args.seed},
+                force_retrain=FORCE_RETRAIN,
+                balanced=True,
+                max_fp_per_day=config["max_fp_per_day"],
+                medical=medical,
+            )
+        )
 
 print("\n"+"*-" * 25)
 print("Final report")
