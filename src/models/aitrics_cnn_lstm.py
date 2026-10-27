@@ -58,6 +58,7 @@ class SeizureCNNLSTM(nn.Module):
         self.win, self.shift = int(win_s * sfreq), int(shift_s * sfreq)
         self.n_fft, self.hop, self.frame = SPEC_NFFT, SPEC_HOP, SPEC_FRAME
         self.flatten_for_ml = flatten_for_ml
+        self.dropout = dropout
 
         if enc not in ("raw", "downsampled"):
             assert self.n_fft == int(sfreq), "bins de 1 Hz: n_fft debe ser igual a sfreq"
@@ -241,19 +242,21 @@ def _val_auroc(preds, target_taxonomy):
             
     return float(np.mean(aurocs)) if aurocs else float("nan")
 
-
 def train_model_aitrics(
         model, train_ds, val_index, target_taxonomy, out_dir, device, epochs=20, batch_size=8, steps_per_epoch=500,
-        lr=1e-3, weight_decay=1e-6, pos_weight=1.0, num_workers=8, patience=5, val_max_sessions=None,
-        seed=42, force=False, session_cache_dir="cache/sessions"
+        lr=1e-3, weight_decay=1e-6, pos_weight=1.0, pos_frac=0.5, num_workers=8, patience=5,
+        val_max_sessions=None, seed=42, force=False, session_cache_dir="cache/sessions", trial=None
     ):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     ckpt, hist_path = out_dir / "best.pt", out_dir / "history.json"
     model.to(device)
     cfg = dict(enc=model.enc, n_ch=model.n_ch, epochs=epochs, batch_size=batch_size,
-           steps_per_epoch=steps_per_epoch, lr=lr, weight_decay=weight_decay,
-           pos_weight=pos_weight, patience=patience, seed=seed, val_max_sessions=val_max_sessions)
+               steps_per_epoch=steps_per_epoch, lr=lr, weight_decay=weight_decay,
+               pos_weight=pos_weight, pos_frac=pos_frac, patience=patience, seed=seed,
+               val_max_sessions=val_max_sessions,
+               hidden=model.lstm.hidden_size, n_layers=model.lstm.num_layers,
+               dropout=getattr(model, "dropout", None))
     cfg_path = out_dir / "config.json"
     if ckpt.exists() and not force:
         old = json.loads(cfg_path.read_text()) if cfg_path.exists() else None
@@ -266,13 +269,12 @@ def train_model_aitrics(
 
     torch.manual_seed(seed)
     np.random.seed(seed)
-    loader = DataLoader(train_ds, batch_size=batch_size, sampler=train_ds.make_sampler(steps_per_epoch * batch_size),
+    loader = DataLoader(train_ds, batch_size=batch_size,
+                        sampler=train_ds.make_sampler(steps_per_epoch * batch_size, pos_frac=pos_frac),
                         num_workers=num_workers, pin_memory=device.type == "cuda", drop_last=True,
                         persistent_workers=num_workers > 0)
     opt = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=lr, total_steps=epochs * len(loader), pct_start=0.1)
-    
-    # BCEWithLogitsLoss para multilabel/multiclase agnóstico
     loss_fn = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([pos_weight], device=device))
 
     best, bad, history = -1.0, 0, []
@@ -282,10 +284,8 @@ def train_model_aitrics(
         for step, (x, y) in enumerate(loader, 1):
             x, y = x.to(device, non_blocking=True), y.to(device, non_blocking=True)
             logits, _ = model(x)
-            
-            # Las dimensiones deben coincidir: (Batch*Nw, Clases)
             loss = loss_fn(logits.reshape(-1, logits.shape[-1]), y.reshape(-1, y.shape[-1]))
-            
+
             opt.zero_grad(set_to_none=True)
             loss.backward()
             nn.utils.clip_grad_norm_(model.parameters(), 5.0)
@@ -294,9 +294,9 @@ def train_model_aitrics(
             losses.append(loss.item())
             if step % 50 == 0:
                 print(f"  ep{ep} step {step}/{len(loader)} loss={np.mean(losses[-50:]):.4f}", flush=True)
-                
+
         val_preds = predict_sessions(model, val_index, target_taxonomy, device, max_sessions=val_max_sessions,
-                                     session_cache_dir=session_cache_dir)        
+                                     session_cache_dir=session_cache_dir)
         auroc = _val_auroc(val_preds, target_taxonomy)
         history.append({"epoch": ep, "train_loss": float(np.mean(losses)), "val_auroc": auroc,
                         "sec": round(time.time() - t0, 1)})
@@ -304,6 +304,13 @@ def train_model_aitrics(
               f"({history[-1]['sec']} s)", flush=True)
         hist_path.write_text(json.dumps(history, indent=2))
         score = auroc if not np.isnan(auroc) else -0.5
+
+        if trial is not None:                       # Optuna: reportar y podar intentos malos
+            import optuna
+            trial.report(score, ep)
+            if trial.should_prune():
+                raise optuna.TrialPruned()
+
         if score > best:
             best, bad = score, 0
             torch.save(model.state_dict(), ckpt)
@@ -316,7 +323,6 @@ def train_model_aitrics(
         torch.save(model.state_dict(), ckpt)
     model.load_state_dict(torch.load(ckpt, map_location=device))
     return model, history
-
 
 if __name__ == "__main__":
     # Shape / backward smoke test for every front-end (random data, 4 windows)
