@@ -47,6 +47,35 @@ KEY = ["Patient", "Session", "Section", "Start"]
 POS_THR, IGN_THR, FEATURE_VERSION = 0.5, 0.2, 2
 LABEL_TAG = f"pt{POS_THR}_it{IGN_THR}_f{FEATURE_VERSION}"
 _VAL_SCORE = None
+FORBIDDEN_IN_X = {
+    "Patient", "Session", "Section", "Start", "split",
+    "is_positive", "y_med", "ic_index",
+    "ic_raw_label", "ic_target_label", "ic_iclabel_prob",
+}
+SUSPECT_PREFIXES = ("tuar_", "bipolar_channels", "monopolar_channels")
+
+def audit_features(df, X, target_col, tag="train", strict=True):
+    """Muestra qué columnas entran al modelo y cuáles no, y falla si hay fuga."""
+    df_cols = set(re.sub('[^A-Za-z0-9_]+', '', c) for c in df.columns)
+    x_cols = set(X.columns)
+
+    dropped = sorted(df_cols - x_cols)
+    leaked = sorted(c for c in x_cols if c in FORBIDDEN_IN_X or c.startswith(SUSPECT_PREFIXES))
+    non_numeric = sorted(c for c in X.columns if not np.issubdtype(X[c].dtype, np.number))
+    const = sorted(c for c in X.columns if X[c].nunique(dropna=False) <= 1)
+
+    print(f"\n[AUDIT:{tag}] df={len(df_cols)} cols | X={len(x_cols)} features | target={target_col}")
+    print(f"[AUDIT:{tag}] EXCLUIDAS ({len(dropped)}): {dropped}")
+    print(f"[AUDIT:{tag}] FEATURES ({len(x_cols)}): {sorted(x_cols)}")
+    if non_numeric:
+        print(f"[AUDIT:{tag}] [WARN] no numéricas: {non_numeric}")
+    if const:
+        print(f"[AUDIT:{tag}] [WARN] constantes: {const}")
+    if leaked:
+        msg = f"[AUDIT:{tag}] FUGA: estas columnas están entrando al modelo: {leaked}"
+        if strict:
+            raise AssertionError(msg)
+        print(msg)
 
 def to_window_level(df_split, prob, target_col, return_df=False):
     t = df_split[KEY].copy()
@@ -342,15 +371,14 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
     if leakage_cols is None:
         leakage_cols = []
 
-    # Verdad médica: se guarda ANTES de borrar tuar_* y *channels*
+    # Medical Ground Truth
     eval_col = target_col
     if medical is not None:
-        medical.fit_meta(df)
-        df = medical.add_truth(df)                       # crea df["y_med"]
-        eval_col = medical.eval_col
-        leakage_cols = list(leakage_cols) + [eval_col]   # y_med jamás como feature
+        medical.fit_meta(df)                              # guarda tuar_*, bipolar_/monopolar_channels_*
+        df = medical.add_truth(df)                        # crea la columna y_med
+        eval_col = medical.eval_col                       # validación y umbral usan y_med
+        leakage_cols = list(leakage_cols) + [eval_col]    # y_med no puede ser feature
     
-    # Medical Ground Truth
     cols_to_drop = [c for c in df.columns if c.startswith("tuar_") or "channels" in c]
     df = df.drop(columns=cols_to_drop, errors="ignore")
 
@@ -364,27 +392,34 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
     model_path = model_dir / f"{model_name}_{search_method}.joblib"
     analysis_path = model_dir / f"{model_name}_and_analysis_{search_method}.joblib"
 
-    if model_path.exists() and analysis_path.exists() and not force_retrain:
+    reuse = model_path.exists() and analysis_path.exists() and not force_retrain
+    cached = None
+    if reuse:
+        cached = joblib.load(analysis_path)
+        if medical is not None and "med_ch_f1_micro" not in cached["metrics_results"]:
+            print("[INFO] Modelo guardado sin métricas de canales: se recalculan con el modelo cargado (sin reentrenar).")
+            reuse = False                     # entra a la rama de cálculo, reutilizando el modelo
+
+    if reuse:
         print(f"[INFO] Pretrained model found, loading: {analysis_path}")
-        model = joblib.load(analysis_path)
         print("Final report", "-"*25)
-        print(model["test_report"])
+        print(cached["test_report"])
         print("Confusion matrix", "-"*25)
-        print(model["confusion_matrix"])
+        print(cached["confusion_matrix"])
         print("General metrics", "-"*25)
-        print(pd.Series(model["metrics_results"]).to_string())
+        print(pd.Series(cached["metrics_results"]).to_string())
 
         return{
-            "model":            model["model"],
-            "params":           model["params"],
-            "feature_col":      model["feature_col"],
-            "val_f1":           model["val_f1"],
-            "test_report":      model["test_report"],
-            "confusion_matrix": model["confusion_matrix"],
-            "metrics_results":  model["metrics_results"],
-            "importances":      model["importances"]
+            "model":            cached["model"],
+            "params":           cached["params"],
+            "feature_col":      cached["feature_col"],
+            "val_f1":           cached["val_f1"],
+            "test_report":      cached["test_report"],
+            "confusion_matrix": cached["confusion_matrix"],
+            "metrics_results":  cached["metrics_results"],
+            "importances":      cached["importances"]
         }
-    
+
     else:
         X_train, y_train = split_features_target(df, "train", leakage_cols)
         X_val, y_val = split_features_target(df, "val", leakage_cols)
@@ -393,6 +428,9 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         X_train = X_train.rename(columns=lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
         X_val = X_val.rename(columns=lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
         X_test = X_test.rename(columns=lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
+
+        audit_features(df, X_train, eval_col, tag="train")
+        assert list(X_train.columns) == list(X_val.columns) == list(X_test.columns), "train/val/test tienen columnas distintas"
 
         if verbose:
             print(f"\n{'='*60}\nModelo: {model_name}")
@@ -410,7 +448,10 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         assert len(df_val) == len(X_val)
         _VAL_SCORE = make_val_score(X_val, df_val, eval_col)
 
-        if search_method == "grid":
+        if cached is not None:
+            assert list(X_val.columns) == cached["feature_col"], "las columnas cambiaron: reentrena (force_retrain=True)"
+            best_model, best_params, best_score = cached["model"], cached["params"], cached["val_f1"]
+        elif search_method == "grid":
             best_model, best_params, best_score = _search_grid(X_train, y_train, X_val, y_val, search_data, verbose, build_model_fn, balanced)
         elif search_method == "random":
             best_model, best_params, best_score = _search_random(X_train, y_train, X_val, y_val, search_kwargs, search_data, verbose, build_model_fn, balanced)
@@ -443,73 +484,79 @@ def train_binary_model( df, model_name, window_size_sec, build_model_fn,
         t_bajo, t_alto = extreme_thresholds(yv, sv, min_recall=0.9, min_precision=0.5)
 
     # Comprobación: Si la restricción realmente se cumplió
+            # Comprobación: la restricción de recall/precisión se cumple en val
     for name, t in [("t_bajo", t_bajo), ("t_alto", t_alto)]:
         pred = (sv >= t).astype(int)
         print(f"[INFO] {name}={t:.4f} | recall(val)={recall_score(yv, pred):.3f} "
-            f"| precision(val)={precision_score(yv, pred, zero_division=0):.3f}")
-        
-        y_test_predict = (st >= chosen_threshold).astype(int)
-        class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
-        conf_matrix = confusion_matrix(yt, y_test_predict)
-        
-        win = window_size_sec["window_size_sec"]
-        stride = window_size_sec["stride_sec"]
+                f"| precision(val)={precision_score(yv, pred, zero_division=0):.3f}")
 
-        full_metrics = compute_full_metrics(yt, y_test_predict, st, win, stride, model_name=model_name)
-        full_metrics["threshold"] = round(float(chosen_threshold), 4)
-        full_metrics["AP"] = round(average_precision_score(yt, st), 4)
+    y_test_predict = (st >= chosen_threshold).astype(int)
+    class_report = classification_report(yt, y_test_predict, target_names=["no_"+model_name, model_name])
+    conf_matrix = confusion_matrix(yt, y_test_predict)
 
-        if medical is not None:
-            med = medical.report(df_test, y_prob_test, chosen_threshold)
-            full_metrics.update({f"med_{k}": v for k, v in med.items()})
+    win = window_size_sec["window_size_sec"]
+    stride = window_size_sec["stride_sec"]
 
-        fp_by_patient = fp_per_day_by_group(wt, chosen_threshold, stride)
+    full_metrics = compute_full_metrics(yt, y_test_predict, st, win, stride, model_name=model_name)
+    full_metrics["threshold"] = round(float(chosen_threshold), 4)
+    full_metrics["AP"] = round(average_precision_score(yt, st), 4)
 
-        if verbose:
-            print(fp_by_patient.round(3).to_string())
-        
-        if verbose:
-            print(f"[INFO] Umbral (F{SCORER}, validación, ventana): {chosen_threshold:.4f} | F{SCORER}(val)={thr_info['fbeta_val']:.4f}")
-            print(f"[INFO] Best configuration found with validation: {best_params} | F1(val)={best_score:.4f}")
-            print("Final report", "-"*25)
-            print(class_report)
-            print("Confusion matrix", "-"*25)
-            print(conf_matrix)
-            print("General metrics", "-"*25)
-            print(pd.Series(full_metrics).to_string())
+    if medical is not None:
+        med = medical.report(df_test, y_prob_test, chosen_threshold)
 
-        importances = pd.DataFrame({
-            "features": X_train.columns,
-            "importance": best_model.feature_importances_
-        }).sort_values("importance", ascending=False).reset_index(drop=True)
+        # localización por canal: umbral elegido en val, reporte en test
+        keys_v, P_val = medical.channel_scores(df_val, y_prob_val)
+        G_val, ok_val = medical.channel_truth(keys_v)
+        tau = medical.pick_tau(P_val[ok_val], G_val[ok_val])
+        med.update(medical.report_channels(df_test, y_prob_test, tau))
+        med["ch_tau"] = round(float(tau), 3)
 
-        # Saving data
-        joblib.dump({
-            "model":best_model, "params":best_params, 
-            "feature_col": list(X_train.columns), "val_f1": best_score,
-        }, model_path)
-        print(f"Model saved in {model_path}")
+        full_metrics.update({f"med_{k}": v for k, v in med.items()})
 
-        joblib.dump({
-            "model":best_model, "params":best_params, 
-            "feature_col": list(X_train.columns), "val_f1": best_score,
-            "chosen_threshold": chosen_threshold,
-            "chosen_thresold_name": chosen_name,
-            "test_report": class_report,
-            "confusion_matrix": conf_matrix,
-            "metrics_results": full_metrics,
-            "importances": importances,
-            "chosen_threshold": chosen_threshold,
-            "t_bajo": t_bajo,
-            "t_alto": t_alto,
-        }, analysis_path)
-        print(f"Model with metrics saved in {analysis_path}")
+    fp_by_patient = fp_per_day_by_group(wt, chosen_threshold, stride)
 
-        return{
-            "model":best_model, "params":best_params, 
-            "feature_col": list(X_train.columns), "val_f1": best_score,
-            "test_report": class_report,
-            "confusion_matrix": conf_matrix,
-            "metrics_results": full_metrics,
-            "importances": importances,
-        }
+    if verbose:
+        print(fp_by_patient.round(3).to_string())
+        print(f"[INFO] Umbral (F{SCORER}, validación, ventana): {chosen_threshold:.4f} | F{SCORER}(val)={thr_info['fbeta_val']:.4f}")
+        print(f"[INFO] Best configuration found with validation: {best_params} | F1(val)={best_score:.4f}")
+        print("Final report", "-"*25)
+        print(class_report)
+        print("Confusion matrix", "-"*25)
+        print(conf_matrix)
+        print("General metrics", "-"*25)
+        print(pd.Series(full_metrics).to_string())
+
+    importances = pd.DataFrame({
+        "features": X_train.columns,
+        "importance": best_model.feature_importances_
+    }).sort_values("importance", ascending=False).reset_index(drop=True)
+
+    # Saving data
+    joblib.dump({
+        "model": best_model, "params": best_params,
+        "feature_col": list(X_train.columns), "val_f1": best_score,
+    }, model_path)
+    print(f"Model saved in {model_path}")
+
+    joblib.dump({
+        "model": best_model, "params": best_params,
+        "feature_col": list(X_train.columns), "val_f1": best_score,
+        "chosen_threshold": chosen_threshold,
+        "chosen_thresold_name": chosen_name,
+        "test_report": class_report,
+        "confusion_matrix": conf_matrix,
+        "metrics_results": full_metrics,
+        "importances": importances,
+        "t_bajo": t_bajo,
+        "t_alto": t_alto,
+    }, analysis_path)
+    print(f"Model with metrics saved in {analysis_path}")
+
+    return{
+        "model": best_model, "params": best_params,
+        "feature_col": list(X_train.columns), "val_f1": best_score,
+        "test_report": class_report,
+        "confusion_matrix": conf_matrix,
+        "metrics_results": full_metrics,
+        "importances": importances,
+    }

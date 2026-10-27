@@ -254,7 +254,7 @@ RATIOS= {"train": 0.7, "val": 0.15, "test": 0.15}
 COMPARISON = True
 
 ## Split version
-VERSION = 6
+VERSION = 7
 
 # Labeling version, related to current split version for easier tracking
 LABEL_VERSION = VERSION

@@ -226,10 +226,6 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                     manually_checked=COMPARISON
                                                                                 )
 
-            if i == 0 and not COMPARISON:
-                print(f"[INFO] Saving patient asignation for {artifact}")
-                current_forced.update(assignment)
-
             balance = split_balance_report(splitted_dataset, target_col=artifact)
             spread = balance["positive_rate"].max() - balance["positive_rate"].min()
             size_pct = balance["n_total"]/balance["n_total"].sum()
@@ -267,7 +263,13 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             else:
                 raise ValueError(f"Error: Resulting empty dataset")
             
-            rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset, protect_cols=LEAKAGE_COLS + ["is_positive", "split"] )
+            rf_features_dataset = drop_inconsistent_channel_columns(rf_features_dataset,
+                                                                    protect_cols=LEAKAGE_COLS + ["is_positive", "split",
+                                                                                                f"tuar_{artifact}",
+                                                                                                f"bipolar_channels_{artifact}",
+                                                                                                f"monopolar_channels_{artifact}"],
+                                                                )
+
             print(rf_features_dataset.head(5))
             print(rf_features_dataset.columns.tolist())
 
@@ -286,9 +288,21 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
             rf_features_dataset.to_parquet(rf_dataset_path, index=False)
 
 
+        if i == 0 and not COMPARISON:
+            assignment_i = (rf_features_dataset.drop_duplicates("Patient")
+                            .set_index("Patient")["split"].to_dict())
+            print(f"[INFO] Saving patient assignment for {artifact}")
+            current_forced.update(assignment_i)
+        
         split_counts = rf_features_dataset["split"].value_counts(dropna=False)
         print("[INFO] Split distribution: ", split_counts)
 
+        print("[INFO] Columnas del parquet:", rf_features_dataset.columns.tolist())
+        print("[INFO] Columnas LEAKAGE_COLS ausentes en el dataset:",
+              [c for c in LEAKAGE_COLS if c not in rf_features_dataset.columns])
+        print("[INFO] Columnas médicas presentes:",
+              [c for c in rf_features_dataset.columns if c.startswith(("tuar_", "bipolar_channels", "monopolar_channels"))])
+        
         print("\n" + ("="*50))
         print(f"Starting training of Random Forest - {artifact}")
 

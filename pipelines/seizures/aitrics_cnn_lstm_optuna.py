@@ -163,6 +163,7 @@ for enc in encs:
 
         HP = study.best_params
         print(f"[TUNE] {enc} best val AUROC={study.best_value:.4f} params={HP}")
+        
     # ---------- Entrenamiento final ----------
     tag = "_tuned" if HP else ""
     model_dir = CORPUS_OUT / "models" / f"cnn2d_lstm_{enc}_v{VERSION}{tag}"
