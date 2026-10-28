@@ -45,6 +45,19 @@ class ClinicalInferenceEngine:
         if model_filename:
             self.load_model(model_filename)
 
+    def predict_probs(self, signal_window):
+        """Devuelve las probabilidades por muestra, sin posprocesado."""
+        sig = signal_window * self.data_scale
+        x = torch.tensor(np.transpose(sig) if self.transpose else sig,
+                         dtype=torch.float32).unsqueeze(0)
+        with torch.no_grad():
+            out = self.model(x)
+        p = out.probabilities if hasattr(out, "probabilities") else out
+        p = p.detach().cpu().numpy().reshape(-1)
+        if p.min() < 0 or p.max() > 1:
+            raise ValueError("La salida no está en [0,1]: aplica sigmoid o revisa el modelo")
+        return p
+
     def load_model(self, model_filename:str):
         model_path = Path(model_filename)
         print(model_filename)
