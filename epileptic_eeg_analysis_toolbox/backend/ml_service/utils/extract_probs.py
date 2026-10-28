@@ -39,30 +39,42 @@ for s in args.splits:
 pick = pd.concat(pick)
 
 engine = ClinicalInferenceEngine(args.model)
+pick.to_csv(OUT / "sessions.csv", index=False)
+
+n_ch, n_s = engine.model.in_channels, engine.model.in_samples   # 19, 15360
+failed = []
 for r in pick.itertuples():
     f = OUT / f"{r.Patient}_{r.Session}_{r.Section}.npz"
     if f.exists():
         continue
-    raw = load_raw_edf(r.edf, preloaD=True)
-    prep = raw_data_preproccesing(raw_data=raw, l_freq=1.0, h_freq=100.0, notch_freq=60.0,
-                                  bipolar_montage=False, resampling_freq=256)  # = al worker
-    sfreq = float(prep.info["sfreq"])
-    wins = slice_raw_into_windows(raw=prep, window_size_sec=60.0, stride_sec=60.0)
-    n_ch, n_s = engine.model.in_channels, engine.model.in_samples   # 19, 15360
-    parts = []
-    for i, w in enumerate(wins):
-        d = np.asarray(w["data"])
-        if d.shape[0] != n_ch and d.shape[1] == n_ch:               # venía (muestras, canales)
-            d = d.T
-        assert d.shape[0] == n_ch, f"ventana {i}: {d.shape}, esperaba {n_ch} canales"
+    try:
+        raw = load_raw_edf(r.edf, preload=True)
+        prep = raw_data_preproccesing(raw_data=raw, l_freq=1.0, h_freq=100.0,
+                                      notch_freq=60.0, bipolar_montage=False,
+                                      resamplig_freq=256)
+        sfreq = float(prep.info["sfreq"])
+        wins = slice_raw_into_windows(raw=prep, window_size_sec=60.0, stride_sec=60.0)
 
-        n = d.shape[1]
-        if n != n_s:
-            print(f"[AVISO] ventana {i}/{len(wins)}: {n} muestras (esperadas {n_s})")
-        if n > n_s:                                                  # recorta el sobrante
-            d, n = d[:, :n_s], n_s
-        elif n < n_s:                                                # rellena con ceros
-            d = np.pad(d, ((0, 0), (0, n_s - n)))
+        parts = []
+        for i, w in enumerate(wins):
+            d = np.asarray(w["data"])
+            if d.shape[0] != n_ch and d.shape[1] == n_ch:
+                d = d.T
+            assert d.shape[0] == n_ch, f"ventana {i}: {d.shape}"
+            n = d.shape[1]
+            if n != n_s:
+                print(f"[AVISO] {f.stem} ventana {i}/{len(wins)}: {n} muestras")
+            if n > n_s:
+                d, n = d[:, :n_s], n_s
+            elif n < n_s:
+                d = np.pad(d, ((0, 0), (0, n_s - n)))
+            parts.append(engine.predict_probs(d)[:n])
 
-        parts.append(engine.predict_probs(d)[:n])                    # descarta las probs del relleno
-    probs = np.concatenate(parts)
+        probs = np.concatenate(parts)
+        np.savez_compressed(f, probs=probs.astype(np.float32), sfreq=sfreq)
+        print("[OK]", f.name, f"{len(probs)/sfreq/60:.1f} min")
+    except (ValueError, AssertionError) as e:
+        print(f"[FALLA] {f.stem}: {e}")
+        failed.append(f.stem)
+
+print(f"Terminado. Fallidas: {len(failed)}")
