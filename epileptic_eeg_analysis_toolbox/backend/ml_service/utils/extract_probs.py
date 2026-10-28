@@ -43,7 +43,7 @@ for r in pick.itertuples():
     f = OUT / f"{r.Patient}_{r.Session}_{r.Section}.npz"
     if f.exists():
         continue
-    raw = load_raw_edf(r.edf, preload=True)
+    raw = load_raw_edf(r.edf, preloaD=True)
     prep = raw_data_preproccesing(raw_data=raw, l_freq=1.0, h_freq=100.0, notch_freq=60.0,
                                   bipolar_montage=False, resampling_freq=256)  # = al worker
     sfreq = float(prep.info["sfreq"])
