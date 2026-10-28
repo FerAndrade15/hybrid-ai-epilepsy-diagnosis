@@ -15,7 +15,7 @@ from pathlib import Path
 from datetime import datetime
 
 # Project modules
-from src.core.data_config import OUTPUTS_DIR
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
 
 REG_PATH = OUTPUTS_DIR / Path("patients_corpus_registry.json")
 SPLIT_PRIORITY = {  "train":0,
