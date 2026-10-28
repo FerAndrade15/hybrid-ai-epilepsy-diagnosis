@@ -8,9 +8,9 @@ from backend.pipelines.data_loader import load_raw_edf
 from backend.pipelines.preprocessing import raw_data_preproccesing
 from backend.pipelines.windowing import slice_raw_into_windows
 from backend.ml_service.inference_engine import ClinicalInferenceEngine
-from src.core.data_loader import build_annotations_index
-from src.core.data_config import OUTPUTS_DIR
-from src.utils.patient_registry import load_registry, forced_for
+from backend.ml_service.utils.data_loader import build_annotations_index
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+from backend.ml_service.utils.patient_registry import load_registry, forced_for
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--model", required=True)
