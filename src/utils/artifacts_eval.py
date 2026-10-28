@@ -178,11 +178,17 @@ class MedicalEval:
             return 2 * tp / max(2 * tp + (Ph & ~G).sum() + (~Ph & G).sum(), 1)
         return float(max(grid, key=f1))
 
+
     def report_channels(self, df_split, prob, tau):
         keys, P = self.channel_scores(df_split, prob)
         G, ok = self.channel_truth(keys)
+        return self.report_channels_PG(P, G, ok, tau)
+
+    @staticmethod
+    def report_channels_PG(P, G, ok, tau):
         P, G = P[ok], G[ok]
         Ph = P >= tau
+        tp = (Ph & G).sum(0); fp = (Ph & ~G).sum(0); fn = (~Ph & G).sum(0)
         tp = (Ph & G).sum(0); fp = (Ph & ~G).sum(0); fn = (~Ph & G).sum(0)
         inter, union = (Ph & G).sum(1), (Ph | G).sum(1)
         act = union > 0

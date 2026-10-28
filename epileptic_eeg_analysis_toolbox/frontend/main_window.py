@@ -10,6 +10,7 @@ Keep track and merge:
  - Menu Bar
   Cross signals wiring
 """
+# main_window.py
 # System management libraries
 import os
 import sys

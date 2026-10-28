@@ -17,7 +17,9 @@ MODELS_REGISTER = {
         "transpose": False,
         "scale": 1e6,
         "classification_output": "data",
-        "parameters": {}
+        "parameters": {},
+        "postprocess": dict(smooth_sec=2.0, thr_on=0.5, thr_off_ratio=0.6,
+                            merge_gap_sec=12.0, min_dur_sec=10.0),
     },
 }
 

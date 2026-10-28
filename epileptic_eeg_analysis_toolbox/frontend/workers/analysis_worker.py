@@ -5,6 +5,7 @@
 
 Interactive canvas for high performace EEG visualization and annotation.
 """
+# analysis_worker.py
 from pathlib import Path
 from typing import Optional, Dict, Any
 from PySide6.QtCore import Signal, Slot, QThread
@@ -13,7 +14,6 @@ from PySide6.QtCore import Signal, Slot, QThread
 from backend.pipelines.data_loader import load_raw_edf, get_edf_metadata
 from backend.pipelines.preprocessing import raw_data_preproccesing
 from backend.pipelines.windowing import slice_raw_into_windows
-from backend.ml_service.inference_engine import ClinicalInferenceEngine
 from backend.ml_service.ica_module import classification_iclabel
 
 # Thread from data (backend) into UI
@@ -78,8 +78,15 @@ class AnalysisWorker(QThread):
 
             engine = None
             if self.model_filename:
+                import importlib
+                import backend.ml_service.feature_extractor as fe
+                import backend.ml_service.models_registry as mr
+                import backend.ml_service.inference_engine as ie
+                for m in (fe, mr, ie):
+                    importlib.reload(m)
+
                 self.progress_updated.emit(80, "Cargando arquitectura de IA...")
-                engine = ClinicalInferenceEngine(self.model_filename)
+                engine = ie.ClinicalInferenceEngine(self.model_filename)
                 self.window_size_sec = engine.window_size_sec
                 self.stride_sec = engine.stride_sec
 

@@ -221,6 +221,9 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                         code_version=CODE_VERSION,
                         force_retrain=False,
                         checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
+                        session_ann = {k: g for k, g in database_corpus_patient.groupby(["Patient","Session","Section"])}, 
+                        keywords=ARTIFACT_KEYWORDS[artifact],
+                        bip_names=BIPOLAR_MONTAGE["names"],
                     )
                 except TrainingInterrupted:
                     print("[WARN] Interrumpido por SIGTERM; al relanzar se reanuda.")

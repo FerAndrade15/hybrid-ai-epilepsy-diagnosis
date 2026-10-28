@@ -103,6 +103,7 @@ class AnnotationViewer(QWidget):
 
     def highlight_event_region(self, start_sec: float, end_sec: float, color: str = "#DC2626", label_text: str = ""):
         """Highligh into focalized channel"""
+        print("[DEBUG] Start and end", start_sec, end_sec)
         region = pg.LinearRegionItem(
             values=[start_sec, end_sec],
             brush=pg.mkBrush(f"{color}33"),  # Transparent color

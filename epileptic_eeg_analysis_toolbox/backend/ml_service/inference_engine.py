@@ -8,6 +8,7 @@
 #   - Get predictions from continuos windows
 #   - Structure data for GUI events
 """
+# inference_engine.py
 # Imports models 
 import joblib
 import torch
@@ -16,12 +17,15 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 from typing import Optional, List, Dict,  Any, Protocol
+from scipy.ndimage import binary_closing, binary_opening
 
 # Internal functions
 from config.app_config import CHECKPOINTS_DIR
 from config.data_config import SFREQ
 from backend.ml_service.models_registry import get_model_config
 from backend.ml_service.feature_extractor import extract_features_from_window_payload
+from backend.ml_service.utils.postprocess import probs_to_events    # el postprocess.py de antes
+
 
 # Protocol
 class TraditionalMLModel(Protocol):
@@ -88,6 +92,8 @@ class ClinicalInferenceEngine:
             self.transpose = config.get("transpose", False)
             self.data_scale = config.get("scale", 1e6)
             self.data_units = config.get("classification_output", "window")
+            self.postprocess = config.get("postprocess")
+            self.pp_source = config.get("postprocess_source")
 
             architecture_class = config["class"]
             parameters = config["parameters"]
@@ -114,7 +120,8 @@ class ClinicalInferenceEngine:
             sfreq: float = SFREQ,
             component_window: Optional[np.ndarray] = None,
             mixing_matrix: Optional[np.ndarray] = None,
-            ic_probs: Optional[np.ndarray] = None
+            ic_probs: Optional[np.ndarray] = None,
+            history: Optional[np.ndarray] = None,
         ) -> Dict[str, Any]:
         """
         Features extractor and inference execution over a single temporal window.
@@ -189,34 +196,50 @@ class ClinicalInferenceEngine:
                     print("[DEBUG] Logits")
                 else:
                     probs = outputs.detach().cpu().numpy()
-                    print("[DEBUG] General use (check here)")
+                    print("[DEBUG] General use")
 
-            if probs.ndim > 1:
+
+            probs = np.asarray(probs).reshape(-1)      # (1, N) -> (N,)
+            print("[DEBUG] Samples:", probs.size, "| seconds:", probs.size / sfreq)
+            print("[DEBUG] Dimensions: ", probs.ndim)
+
+            if probs.size > 1:
+                print("[DEBUG] Lenght probs for time analysis: ", len(probs))
+
                 if self.data_units == "window":
                     confidence = float(np.max(probs))
-                    print("[DEBUG] List of probs")
+                    print("[DEBUG] List of probs")                
                 elif self.data_units == "data":
-                    binary_output = (probs > self.threshold).astype(int)
-                    padded = np.pad(binary_output, (1, 1), 'constant', constant_values=0)
-                    cambios = np.diff(padded)
-                    inicios = np.where(cambios == 1)[0]
-                    fines = np.where(cambios == -1)[0]
+                    time_lapse = probs.size/sfreq
+                    min_gap = int(time_lapse*0.025)         # Cerrar/unir huecos    < 0.025 * 60s   = 1.20s
+                    min_dur = int(time_lapse*0.050)          # Descartar huecos     < 0.050 * 60s   = 3.00s 
+
+                    binary_output = (probs > self.threshold)
+                    binary_output = binary_closing(binary_output, structure=np.ones(min_gap))
+                    binary_output = binary_opening(binary_output, structure=np.ones(min_dur))
+
+                    padded = np.pad(binary_output.astype(int), (1, 1), 'constant', constant_values=0)
+                    changes = np.diff(padded)
+                    starts = np.where(changes == 1)[0]
+                    ends = np.where(changes == -1)[0]
+                    
+                    print("[DEBUG] START AND ENDS AFTER PROCESSING: ", starts, ends)
 
                     eventos_exactos = []
-                    for start_idx, end_idx in zip(inicios, fines):
-                        # Convertimos índices (muestras) a segundos
-                        start_sec = start_idx / sfreq
-                        end_sec = end_idx / sfreq
+                    for start_idx, end_idx in zip(starts, ends):
+                        start_sec, end_sec = start_idx / sfreq, end_idx / sfreq
                         duracion = end_sec - start_sec
+                        print("[DEBUG] Duration: ", duracion)
 
-                        # Filtramos eventos demasiado cortos (ej. menores a 2 segundos)
-                        if duracion >= 2.0:
+                        if duracion >= 1.0:
+                            print("[DEBUG] Start and end: ", start_idx, end_idx)
                             confianza_promedio = float(np.mean(probs[start_idx:end_idx]))
                             eventos_exactos.append({
                                 "offset_start": start_sec,
                                 "offset_end": end_sec,
                                 "confidence": confianza_promedio
                             })
+            """
 
             else:
                 confidence = float(probs[0])
@@ -225,50 +248,29 @@ class ClinicalInferenceEngine:
 
                 pred_label = "Crisis" if confidence >= self.threshold else "Fondo"
 
+                return {
+                        "prediction": "Crisis" if len(eventos_exactos) > 0 else "Fondo",
+                        "confidence": float(np.max(probs)), # Solo para referencia global
+                        "features": features,
+                        "exact_events": eventos_exactos
+                }"""
+
         else:
             raise RuntimeError(f"Tipo de modelo no soportado: {self.model_type}")
 
-        return {
-                "prediction": "Crisis" if len(eventos_exactos) > 0 else "Fondo",
-                "confidence": float(np.max(probs)), # Solo para referencia global
-                "features": features,
-                "exact_events": eventos_exactos
-            }
 
-    def predict_study_windows(
-            self,
-            windows: List[Dict[str, Any]],
-            sfreq: float = SFREQ,
-            components_full: Optional[np.ndarray] = None,
-            mixing_matrix: Optional[np.ndarray] = None,
-            ic_probs: Optional[np.ndarray] = None
-        ) -> List[Dict[str, Any]]:
-        """
-        Function to process a list of windows and generate detection list to feed events output into the UI
-        """
-        detections = []
+    def predict_study_windows(self, windows, sfreq=SFREQ, components_full=None,
+                          mixing_matrix=None, ic_probs=None):
+        self.last_probs = None
+        if self.model_type == "deep_learning" and self.data_units == "data":
+            probs = np.concatenate([self.predict_probs(w["data"]) for w in windows])
+            self.last_probs = probs                       # para pintar la curva y los sliders
+            t0 = windows[0]["start"]
+            return [{"start_time": t0 + s, "stop_time": t0 + e,
+                    "duration": round(e - s, 2), "label": "Crisis", "confidence": c}
+                    for s, e, c in probs_to_events(probs, sfreq, self.postprocess)]
 
-        for win in windows:
-            data = win["data"]
-            t_start = win["start"]
-            t_end = win["end"]
-            ch_names = win.get("channels", [])
-
-            comp_win = None
-            if components_full is not None:
-                start_samp = int(round(t_start * sfreq))
-                end_samp = int(round(t_end * sfreq))
-                comp_win = components_full[:, start_samp:end_samp]
-
-            res = self.predict_window(
-                signal_window=data,
-                ch_names=ch_names,
-                sfreq=sfreq,
-                component_window=comp_win,
-                mixing_matrix=mixing_matrix,
-                ic_probs=ic_probs
-            )
-
+            """
             if "exact_events" in res and res["exact_events"]:
                 for ev in res["exact_events"]:
                     abs_start = t_start + ev["offset_start"]
@@ -281,11 +283,10 @@ class ClinicalInferenceEngine:
                         "confidence": ev["confidence"]
                     })
             print(detections)
+            """
 
         return detections
 
 if __name__ == "__main__":
     engine = ClinicalInferenceEngine()
     print("inference_engine.py module instanced and integrated correctly")
-
-        
