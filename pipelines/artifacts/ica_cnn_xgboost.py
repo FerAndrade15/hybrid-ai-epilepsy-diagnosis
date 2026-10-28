@@ -360,7 +360,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of XGBoost - {artifact}")
 
         # Reemplaza config = RANDOM_SPACE[artifact] por tu configuración de iteraciones
-        config = RANDOM_SPACE[artifact]
+        config = CONFIG_ARTIFACT[artifact]
         n_iter = args.n_iter or config["n_iter"]
         medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if USE_MEDICAL_EVAL else None
         tag = f"_{args.tag}" if args.tag else ""
