@@ -48,7 +48,21 @@ for r in pick.itertuples():
                                   bipolar_montage=False, resampling_freq=256)  # = al worker
     sfreq = float(prep.info["sfreq"])
     wins = slice_raw_into_windows(raw=prep, window_size_sec=60.0, stride_sec=60.0)
-    probs = np.concatenate([engine.predict_probs(w["data"]) for w in wins])
-    np.savez_compressed(f, probs=probs.astype(np.float16), sfreq=sfreq)
-    print("[OK]", f.name, f"{len(probs)/sfreq/60:.1f} min")
-pick.to_csv(OUT / "sessions.csv", index=False)
+    n_ch, n_s = engine.model.in_channels, engine.model.in_samples   # 19, 15360
+    parts = []
+    for i, w in enumerate(wins):
+        d = np.asarray(w["data"])
+        if d.shape[0] != n_ch and d.shape[1] == n_ch:               # venía (muestras, canales)
+            d = d.T
+        assert d.shape[0] == n_ch, f"ventana {i}: {d.shape}, esperaba {n_ch} canales"
+
+        n = d.shape[1]
+        if n != n_s:
+            print(f"[AVISO] ventana {i}/{len(wins)}: {n} muestras (esperadas {n_s})")
+        if n > n_s:                                                  # recorta el sobrante
+            d, n = d[:, :n_s], n_s
+        elif n < n_s:                                                # rellena con ceros
+            d = np.pad(d, ((0, 0), (0, n_s - n)))
+
+        parts.append(engine.predict_probs(d)[:n])                    # descarta las probs del relleno
+    probs = np.concatenate(parts)
