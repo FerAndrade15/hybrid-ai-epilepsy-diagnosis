@@ -6,7 +6,7 @@ import argparse, numpy as np, pandas as pd
 from pathlib import Path
 from backend.pipelines.data_loader import load_raw_edf
 from backend.ml_service.utils.preprocessing import raw_data_preproccesing
-from backend.pipelines.windowing import slice_raw_into_windows
+from backend.ml_service.utils.windowing import slice_raw_into_windows
 from backend.ml_service.inference_engine import ClinicalInferenceEngine
 from backend.ml_service.utils.data_loader import build_annotations_index
 from backend.ml_service.utils.data_config import OUTPUTS_DIR
