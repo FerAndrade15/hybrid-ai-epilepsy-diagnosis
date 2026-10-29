@@ -12,6 +12,7 @@ Implementation configurations
 from IPython.display import display
 from pathlib import Path
 import pandas as pd
+import argparse
 
 from src.core.data_config import (  ARTIFACT_KEYWORDS, BIPOLAR_MONTAGE,
                                     WINDOW_REQUESTS_ARTIFACTS, SFREQ,
@@ -24,6 +25,7 @@ from src.core.data_splitter import get_or_compute_labeled_split, split_balance_r
 from src.models.cnn_artifact_detector import binary_cnn, TrainingInterrupted
 from src.utils.patient_registry import load_registry, forced_for
 from src.utils.split_cache import load_selected_sw
+from src.utils.artifacts_eval import MedicalEval
 
 # Pipeline directions
 BASE_DIR = find_project_root("src")
@@ -42,6 +44,23 @@ SPLIT_REGISTRY_PATH = SPLIT_CACHE_DIR / "split_registry.json"
 
 SEEDS = [0]            # [0, 1, 2] triplica el tiempo
 CODE_VERSION = "v2"    
+
+DEFAULTS = dict(
+    force_retrain=False,
+    medical_eval=True,
+    manually_checked=COMPARISON,
+    tag="",
+)
+
+def parse_args():
+    p = argparse.ArgumentParser(description="Pipeline de artefactos (CNN)")
+    p.add_argument("--force-retrain", action=argparse.BooleanOptionalAction, default=DEFAULTS["force_retrain"])
+    p.add_argument("--medical-eval", action=argparse.BooleanOptionalAction, default=DEFAULTS["medical_eval"])
+    p.add_argument("--manually-checked", action=argparse.BooleanOptionalAction, default=DEFAULTS["manually_checked"])
+    p.add_argument("--artifacts", nargs="+", default=None)
+    return p.parse_args()
+
+args = parse_args()
 
 for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DATASET_DIR, SPLIT_CACHE_DIR, ANNOTATIONS_DIR):
     d.mkdir(parents=True, exist_ok=True)
@@ -78,6 +97,8 @@ base_forced = FORCED.copy()
 
 
 for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
+    if args.artifacts and artifact not in args.artifacts:
+        continue
     print("\n" + "="*50)
     print(f"ARTIFACT: {artifact}")
     print("\n" + "="*50)
@@ -174,7 +195,7 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                                                                                 artifact_umbral=window['artifact_umbral'],
                                                                                 window_size_sec=window['window_size_sec'],
                                                                                 stride_sec=window['stride_sec'],
-                                                                                manually_checked=True,
+                                                                                manually_checked=args.manually_checked,
                                                                             )
 
         if i == 0:
@@ -200,7 +221,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
         print(f"Starting training of CNN_{artifact}")
 
         config = CNN_CONFIG[artifact]
-
+        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval else None
+        
         for variant, loss_cfg in LOSS_VARIANTS.items():
             for seed in SEEDS:
                 try:
@@ -219,7 +241,8 @@ for artifact, window_settings in WINDOW_REQUESTS_ARTIFACTS.items():
                         use_class_weights=loss_cfg["use_class_weights"],
                         seed=seed,
                         code_version=CODE_VERSION,
-                        force_retrain=False,
+                        force_retrain=args.force_retrain,
+                        medical=medical,
                         checkpoints_dir=str(CORPUS_OUTPUTS_DIR / f"{artifact}_w{window['window_size_sec']}_s{window['stride_sec']}" / "checkpoints"),
                         session_ann = {k: g for k, g in database_corpus_patient.groupby(["Patient","Session","Section"])}, 
                         keywords=ARTIFACT_KEYWORDS[artifact],

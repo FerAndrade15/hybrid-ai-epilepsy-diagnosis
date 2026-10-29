@@ -12,6 +12,7 @@ import json
 import psutil
 import random
 import logging
+import argparse
 import hashlib, shutil
 from pathlib import Path
 from typing import Optional, Dict, Any, Tuple, Literal
@@ -46,6 +47,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"[INFO] Using device: {device}")
 
 KEY = ["Patient", "Session", "Section", "Start"]
+REQUIRED_COLS = KEY + ["end", "EDF_path", "split"]
 DEBUG = True
 
 ## DEBUGGING Secondary Functions
@@ -353,7 +355,7 @@ class EEGWindowDataset(Dataset):
                 self.max_cached_sessions = max(1, int(budget // data["data"].nbytes))
                 self.logger_max_cached_sessions_msg = (
                     f"[INFO] Calculated max_cached_sessions:"
-                    f"{self.max_cached_sessions} (session={data["data"].nbytes/1e6:.1f}MB,)"
+                    f"{self.max_cached_sessions} (session={data['data'].nbytes/1e6:.1f}MB,)"
                     f"budget: {budget/1e9:.2f}GB"
                 )
                 print(self.logger_max_cached_sessions_msg)
@@ -687,8 +689,8 @@ class ArtifactDetector:
 
         # Localización por canal
         if medical is not None:
-            tau = MedicalEval.pick_tau(P_val[ok_val], G_val[ok_val])
-            chan = MedicalEval.report_channels_PG(P_test, G_test, ok_test, tau)
+            tau = medical.pick_tau(P_val[ok_val], G_val[ok_val])
+            chan = medical.report_channels_PG(P_test, G_test, ok_test, tau)
             full_metrics.update({f"med_{k}": v for k, v in chan.items()})
             full_metrics["med_ch_tau"] = round(float(tau), 3)
 
