@@ -15,7 +15,7 @@ from typing import List, Dict, Optional, Any, Tuple
 
 # Modules required functions
 from config.data_config import SFREQ, ARTIFACT_KEYWORDS, KEYS
-from backend.pipelines.preprocessing import channel_standard_nomenclature
+from backend.ml_service.utils.preprocessing import channel_standard_nomenclature
 
 # Functions if required from the ICA module application for AI
 try:
