@@ -12,8 +12,8 @@ from PySide6.QtCore import Signal, Slot, QThread
 
 # Backend functions
 from backend.pipelines.data_loader import load_raw_edf, get_edf_metadata
-from epileptic_eeg_analysis_toolbox.backend.ml_service.utils.preprocessing import raw_data_preproccesing
-from epileptic_eeg_analysis_toolbox.backend.ml_service.utils.windowing import slice_raw_into_windows
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.windowing import slice_raw_into_windows
 from backend.ml_service.ica_module import classification_iclabel
 
 # Thread from data (backend) into UI
