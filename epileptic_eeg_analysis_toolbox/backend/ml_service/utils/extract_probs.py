@@ -5,7 +5,7 @@
 import argparse, numpy as np, pandas as pd
 from pathlib import Path
 from backend.pipelines.data_loader import load_raw_edf
-from backend.pipelines.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
 from backend.pipelines.windowing import slice_raw_into_windows
 from backend.ml_service.inference_engine import ClinicalInferenceEngine
 from backend.ml_service.utils.data_loader import build_annotations_index
@@ -51,7 +51,7 @@ for r in pick.itertuples():
         raw = load_raw_edf(r.edf, preloaD=True)
         prep = raw_data_preproccesing(raw_data=raw, l_freq=1.0, h_freq=100.0,
                                       notch_freq=60.0, bipolar_montage=False,
-                                      resamplig_freq=256)
+                                      resampling_freq=256)
         sfreq = float(prep.info["sfreq"])
         wins = slice_raw_into_windows(raw=prep, window_size_sec=60.0, stride_sec=60.0)
 
