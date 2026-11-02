@@ -158,7 +158,7 @@ Este trabajo forma parte de una línea de investigación desarrollada durante va
 | 2025 | Santiago Sánchez | Modelos TCN, Transformer e híbridos sobre TUSZ, con implementaciones en TensorFlow y PyTorch, API de inferencia e interfaz para EDF. | [TesisFinal](https://github.com/sansancas/TesisFinal) |
 | 2026 | Fernanda Andrade | Comparación de métodos para artefactos y crisis, combinaciones híbridas, evaluación externa y XAI. | [Este repositorio](https://github.com/FerAndrade15/hybrid-ai-epilepsy-diagnosis) |
 
-El código y material técnico preservado de fases anteriores se encuentra en [`prior_work/`](prior_work/). La documentación histórica más detallada se consolidará dentro de `docs/`.
+El código y material técnico preservado de fases anteriores se encuentra en [`prior_work/`](prior_work/). La documentación histórica más detallada se consolida dentro de `docs/`.
 
 ---
 
@@ -166,8 +166,6 @@ El código y material técnico preservado de fases anteriores se encuentra en [`
 
 ```text
 .
-├── assets/
-│   └── readme/                       # Logos y recursos visuales del README
 ├── __docker__/                       # Configuración y artefactos Docker
 ├── __runpod__/                       # Scripts/configuración para RunPod
 ├── docs/                             # Notas, referencias y documentación técnica (incluyendo documentación de los modelos entrenados)
@@ -268,11 +266,3 @@ Los pesos de gran tamaño no se almacenan directamente en GitHub. Los modelos di
 ## Citación
 
 El repositorio utiliza [`CITATION.cff`](CITATION.cff) para registrar los metadatos básicos del software y de autoría.
-
----
-
-## Autora
-
-**María Fernanda Andrade**  
-Universidad del Valle de Guatemala  
-Fase VII — Hybrid AI for Epilepsy Diagnosis
