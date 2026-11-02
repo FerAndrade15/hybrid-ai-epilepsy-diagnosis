@@ -21,8 +21,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/status-en%20desarrollo-yellow" alt="Estado: En desarrollo"/>
-  <img src="https://img.shields.io/github/languages/top/FerAndrade15/hybrid-ai-epilepsy-diagnosis" alt="Lenguaje principal"/>
+  <img src="https://img.shields.io/badge/status-Fase%20VII-blue" alt="Estado: Fase VII"/>
+  <img src="https://img.shields.io/badge/Python-3.11-blue" alt="Python 3.11"/>
   <img src="https://img.shields.io/github/last-commit/FerAndrade15/hybrid-ai-epilepsy-diagnosis" alt="Último commit"/>
 </p>
 
