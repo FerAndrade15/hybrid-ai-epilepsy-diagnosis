@@ -14,7 +14,7 @@ from PySide6.QtCore import Signal, Slot, QThread
 from backend.pipelines.data_loader import load_raw_edf, get_edf_metadata
 from backend.ml_service.utils.preprocessing import raw_data_preproccesing
 from backend.ml_service.utils.windowing import slice_raw_into_windows
-from backend.ml_service.ica_module import classification_iclabel
+from backend.ml_service.utils.ica_module import classification_iclabel
 
 # Thread from data (backend) into UI
 class AnalysisWorker(QThread):
@@ -79,13 +79,14 @@ class AnalysisWorker(QThread):
             engine = None
             if self.model_filename:
                 import importlib
-                import backend.ml_service.feature_extractor as fe
+                import backend.ml_service.utils.feature_extractor as fe
                 import backend.ml_service.models_registry as mr
                 import backend.ml_service.inference_engine as ie
                 for m in (fe, mr, ie):
                     importlib.reload(m)
 
                 self.progress_updated.emit(80, "Cargando arquitectura de IA...")
+                print("[DEBUG] Cargando arquitectura de IA")
                 engine = ie.ClinicalInferenceEngine(self.model_filename)
                 self.window_size_sec = engine.window_size_sec
                 self.stride_sec = engine.stride_sec
@@ -102,6 +103,7 @@ class AnalysisWorker(QThread):
             detections = []
             if engine is not None:
                 self.progress_updated.emit(90, "Ejecutando inferencia clínica...")
+                print("[DEBUG] Clinical inference start")
                 detections = engine.predict_study_windows(
                     windows = windows,
                     sfreq = float(preprocessed_raw.info["sfreq"]),
@@ -109,7 +111,7 @@ class AnalysisWorker(QThread):
                     mixing_matrix = mixing_matrix,
                     ic_probs = ic_probs
                 )
-
+                track = engine.last_track
 
             # Clossing / Ending
             self.progress_updated.emit(100, "Procesamiento completo con éxito")

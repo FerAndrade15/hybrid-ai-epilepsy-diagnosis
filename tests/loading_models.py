@@ -1,6 +1,6 @@
 import torch
 import os
-from epileptic_eeg_analysis_toolbox.backend.ml_service.seizure_transformer import SeizureTransformer
+from backend.ml_service.models.seizure_transformer import SeizureTransformer
 
 def test_model():
     print("1. Instanciando el modelo...")

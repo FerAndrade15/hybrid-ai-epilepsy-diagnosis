@@ -6,7 +6,8 @@
 # Compilation of all models code to import all at the inference engine
 """
 
-from .seizure_transformer import SeizureTransformer
+from backend.ml_service.models.seizure_transformer import SeizureTransformer
+from backend.ml_service.models.temporal_transformer import TransformerClassifier
 
 MODELS_REGISTER = {
     "seizure_transformer": {
@@ -21,6 +22,9 @@ MODELS_REGISTER = {
         "postprocess": dict(smooth_sec=2.0, thr_on=0.5, thr_off_ratio=0.6,
                             merge_gap_sec=12.0, min_dur_sec=10.0),
     },
+    "temporal_transformer":{
+        "class":
+    }
 }
 
 def  get_model_config(model_name: str):

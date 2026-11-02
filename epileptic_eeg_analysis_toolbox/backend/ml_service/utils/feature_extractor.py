@@ -21,7 +21,7 @@ from scipy.stats import skew, kurtosis
 
 # Internal modules
 from config.data_config import SFREQ, RAW_TO_TARGET, ICLABEL_CATEGORIES
-from backend.ml_service.ica_module import channel_contribution
+from backend.ml_service.utils.ica_module import channel_contribution
 
 def temporal_features(
         raw: np.ndarray, 
