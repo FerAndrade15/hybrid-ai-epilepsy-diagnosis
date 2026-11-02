@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/img/Logo UVG-03.png" alt="Logo Universidad del Valle de Guatemala" height="130"/>
+  <img src="docs/img/Logo UVG-03.png" alt="Logo Universidad del Valle de Guatemala" height="58"/>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="docs/img/logo002.png" alt="Logo Facultad de Ingeniería" height="58"/>
 </p>
