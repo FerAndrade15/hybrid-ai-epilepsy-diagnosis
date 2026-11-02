@@ -1,13 +1,11 @@
 <p align="center">
-  <img src="docs/img/Logo UVG-03.png"
+  <img src="docs/img/logo-uvg.png"
        alt="Logo Universidad del Valle de Guatemala"
-       height="55"
-       align="middle"/>
+       height="58"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="docs/img/logo002.png"
+  <img src="docs/img/logo-ingenieria.png"
        alt="Logo Facultad de Ingeniería"
-       height="55"
-       align="middle"/>
+       height="58"/>
 </p>
 
 <h1 align="center">Hybrid AI for Epilepsy Diagnosis</h1>
