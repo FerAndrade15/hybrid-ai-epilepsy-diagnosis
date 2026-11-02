@@ -1,146 +1,390 @@
-# Setup del entorno con `uv`
+# Configuración del entorno
 
-Esta guía deja el proyecto **plug and play**: cualquier persona (o tú mismo en otra computadora del laboratorio) puede clonar el repo y tener el entorno listo con 3 comandos, sin preocuparse por qué versión de Python hay instalada en esa máquina.
+Esta guía describe cómo preparar el entorno local del proyecto **Hybrid AI for Epilepsy Diagnosis**, configurar las rutas de datos y mantener las dependencias necesarias para reproducir los experimentos.
 
----
-
-## 1. Qué es `uv` y por qué lo usamos
-
-`uv` es una herramienta (de Astral, los creadores de Ruff) que reemplaza `pip` + `venv` + gestión de versiones de Python en un solo binario. A diferencia de `python -m venv`, **si la versión de Python que pides no existe en la máquina, `uv` la descarga y la aísla automáticamente** — no depende del PATH del sistema, del `py` launcher, ni de permisos de administrador.
+> Los datasets y los pesos de gran tamaño no se distribuyen directamente en este repositorio.
 
 ---
 
-## 2. Instalar `uv` (una sola vez por computadora)
+## 1. Requisitos
 
-### Windows (Git Bash / PowerShell)
+El proyecto utiliza:
+
+- **Python 3.11**, definido en `.python-version`;
+- **uv** para crear el entorno virtual e instalar dependencias;
+- Git para clonar y actualizar el repositorio.
+
+No es necesario instalar Python 3.11 manualmente si se utiliza `uv`: cuando la versión solicitada no está disponible localmente, `uv` puede descargarla automáticamente.
+
+---
+
+## 2. Instalación rápida
+
+Clona el repositorio:
+
 ```bash
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+git clone https://github.com/FerAndrade15/hybrid-ai-epilepsy-diagnosis.git
+cd hybrid-ai-epilepsy-diagnosis
 ```
 
-### Mac / Linux
+Ejecuta:
+
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+./setup.sh
 ```
 
-Después de instalar, **cierra y reabre la terminal** para que reconozca el comando `uv`. Verifica con:
+El script:
+
+1. verifica si `uv` está disponible;
+2. intenta instalar `uv` si no se encuentra;
+3. crea `.venv` utilizando la versión indicada en `.python-version`;
+4. instala las dependencias definidas en `requirements.txt`.
+
+Si `uv` acaba de instalarse pero la terminal todavía no lo reconoce, cierra la terminal, abre una nueva sesión y vuelve a ejecutar:
+
+```bash
+./setup.sh
+```
+
+---
+
+## 3. Ejecución del código
+
+### Opción recomendada: usar `uv run`
+
+No es necesario activar manualmente el entorno virtual:
+
+```bash
+uv run python ruta/al/script.py
+```
+
+Para módulos del proyecto:
+
+```bash
+uv run python -m pipelines.seizures.aitrics_cnn_lstm --smoke
+```
+
+### Opción alternativa: activar `.venv`
+
+**Windows / Git Bash**
+
+```bash
+source .venv/Scripts/activate
+```
+
+**Linux / macOS / WSL**
+
+```bash
+source .venv/bin/activate
+```
+
+Después:
+
+```bash
+python ruta/al/script.py
+```
+
+---
+
+## 4. Dependencias
+
+El proyecto mantiene dos archivos:
+
+### `requirements.in`
+
+Contiene las **dependencias directas** utilizadas por el proyecto.
+
+Ejemplos:
+
+- PyTorch y TensorFlow;
+- scikit-learn y XGBoost;
+- MNE y PyEDFlib;
+- Captum y SHAP;
+- FastAPI;
+- herramientas de interfaz y notebooks.
+
+Si el proyecto empieza a utilizar una dependencia nueva de forma permanente, debe agregarse aquí.
+
+### `requirements.txt`
+
+Contiene las dependencias **resueltas y versionadas** utilizadas para reproducir el entorno.
+
+Este archivo fue generado a partir de `requirements.in` con:
+
+```bash
+uv pip compile requirements.in -o requirements.txt
+```
+
+### Agregar o actualizar una dependencia
+
+1. Agrega la dependencia a `requirements.in`.
+2. Regenera `requirements.txt`:
+
+```bash
+uv pip compile requirements.in -o requirements.txt
+```
+
+Para actualizar las versiones disponibles de todas las dependencias:
+
+```bash
+uv pip compile requirements.in -o requirements.txt --upgrade
+```
+
+3. Instala el entorno actualizado:
+
+```bash
+uv pip install -r requirements.txt
+```
+
+> Evita usar `uv pip freeze > requirements.txt` como método principal de mantenimiento, ya que `requirements.in` es la fuente de dependencias directas del proyecto.
+
+---
+
+## 5. Datos
+
+Los datasets utilizados por el proyecto **no se incluyen en GitHub**.
+
+El código trabaja principalmente con:
+
+- TUH EEG Artifact Corpus (TUAR);
+- TUH EEG Seizure Corpus (TUSZ);
+- Siena Scalp EEG Database, cuando corresponde.
+
+Las rutas principales se resuelven actualmente en:
+
+```text
+src/core/data_config.py
+```
+
+El código busca automáticamente ubicaciones conocidas para los datos, incluyendo:
+
+```text
+/workspace/data
+```
+
+para ejecución en RunPod, además de rutas configuradas para almacenamiento externo y equipos del laboratorio.
+
+Si ninguna ruta válida existe, el código genera:
+
+```text
+FileNotFoundError: No valid data path found
+```
+
+Antes de ejecutar pipelines en una computadora nueva, revisa en `src/core/data_config.py`:
+
+```python
+ALL_DATA_POSSIBLE_PATHS
+ALL_OUTPUTS_POSSIBLE_PATHS
+```
+
+y agrega o adapta una ruta local si es necesario.
+
+### Estructura de corpus esperada
+
+La configuración actual contempla, entre otros:
+
+```text
+tuh_eeg_artifact/
+└── v3.0.1/
+
+tuh_eeg_seizure/
+└── v2.0.6/
+```
+
+Las versiones utilizadas por un experimento deben verificarse en su configuración o documentación correspondiente antes de reproducir resultados.
+
+---
+
+## 6. Directorio de resultados
+
+Los resultados y cachés de procesamiento no deben escribirse dentro de los datasets originales.
+
+`src/core/data_config.py` busca una carpeta de salida independiente mediante:
+
+```python
+ALL_OUTPUTS_POSSIBLE_PATHS
+```
+
+Entre las ubicaciones contempladas actualmente se encuentran:
+
+```text
+/workspace/ml-outputs
+```
+
+y rutas equivalentes en almacenamiento externo o equipos del laboratorio.
+
+Si ninguna carpeta de salida válida existe, se genera:
+
+```text
+FileNotFoundError: No valid outputs path found
+```
+
+---
+
+## 7. Pesos de modelos
+
+Los checkpoints grandes no se almacenan directamente en GitHub.
+
+El `.gitignore` excluye, entre otros:
+
+```text
+*.pt
+*.pth
+epileptic_eeg_analysis_toolbox/models_weights/
+```
+
+Por lo tanto, clonar el repositorio **no garantiza que los modelos preentrenados estén disponibles localmente**.
+
+Las instrucciones de descarga o recuperación de pesos finales deben consultarse en la documentación de modelos correspondiente.
+
+Por ejemplo, el código de SeizureTransformer espera el peso en una ubicación equivalente a:
+
+```text
+epileptic_eeg_analysis_toolbox/
+└── models_weights/
+    └── seizure_transformer.pth
+```
+
+cuando se utiliza esa integración.
+
+---
+
+## 8. Docker y RunPod
+
+El repositorio contiene:
+
+```text
+__docker__/
+__runpod__/
+```
+
+Estas carpetas contienen recursos específicos para ejecución reproducible o remota.
+
+Su uso **no es obligatorio para instalar el entorno local básico** descrito en este documento.
+
+Docker también puede utilizarse como medio de distribución para checkpoints de gran tamaño cuando así se indique en la documentación del modelo correspondiente.
+
+---
+
+## 9. Archivos que sí deben conservarse con el código
+
+Para poder reconstruir el entorno, deben mantenerse versionados:
+
+```text
+.python-version
+requirements.in
+requirements.txt
+setup.sh
+SETUP.md
+```
+
+El entorno virtual local no debe subirse:
+
+```text
+.venv/
+```
+
+Los datasets, outputs y pesos pesados también se mantienen fuera del repositorio según las reglas de `.gitignore`.
+
+---
+
+## 10. Solución de problemas
+
+### `uv: command not found`
+
+Si `setup.sh` acaba de instalar `uv`, cierra la terminal y vuelve a abrirla.
+
+También puedes comprobar:
 
 ```bash
 uv --version
 ```
 
----
-
-## 3. Configuración del proyecto (esto ya se deja listo en el repo)
-
-### 3.1 Archivo `.python-version`
-Fija la versión de Python que el proyecto necesita, para que `uv` la use automáticamente sin que nadie tenga que recordarla:
-
-```
-3.11
-```
-
-### 3.2 `requirements.txt`
-Se mantiene igual que ahora — `uv` lo lee sin cambios.
-
-### 3.3 Script `setup.sh`
-Este es el corazón del "plug and play". Automatiza todo el proceso:
+### Verificar Python
 
 ```bash
-#!/bin/bash
-set -e
-
-echo "Verificando uv..."
-if ! command -v uv &> /dev/null; then
-    echo "uv no está instalado. Instálalo primero:"
-    echo "  Windows: powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\""
-    echo "  Mac/Linux: curl -LsSf https://astral.sh/uv/install.sh | sh"
-    exit 1
-fi
-
-echo "Creando entorno virtual con Python $(cat .python-version 2>/dev/null || echo '3.11')..."
-uv venv --python "$(cat .python-version 2>/dev/null || echo '3.11')"
-
-echo "Instalando dependencias..."
-uv pip install -r requirements.txt
-
-echo ""
-echo "Listo. Activa el entorno con:"
-echo "  source .venv/Scripts/activate   (Windows/Git Bash)"
-echo "  source .venv/bin/activate       (Mac/Linux)"
+uv run python --version
 ```
 
-Dale permisos de ejecución una vez (esto se guarda en git):
+Debe utilizar Python 3.11 según `.python-version`.
+
+Si activaste manualmente el entorno:
 
 ```bash
-chmod +x setup.sh
-```
-
----
-
-## 4. Uso diario (para ti o cualquier colaborador)
-
-### Primera vez en una máquina nueva
-```bash
-git clone <url-del-repo>
-cd hybrid-ai-epilepsy-diagnosis
-./setup.sh
-source .venv/Scripts/activate   # Windows/Git Bash
-```
-
-### Días siguientes (el venv ya existe)
-```bash
-source .venv/Scripts/activate
-```
-
-### Agregar una dependencia nueva
-```bash
-uv pip install nombre-paquete
-uv pip freeze > requirements.txt   # actualiza el archivo para que el equipo la reciba
-```
-
----
-
-## 5. Comandos equivalentes (referencia rápida)
-
-| Antes (pip/venv)                          | Ahora (uv)                              |
-|--------------------------------------------|------------------------------------------|
-| `python -m venv .venv`                     | `uv venv --python 3.11`                   |
-| `pip install -r requirements.txt`          | `uv pip install -r requirements.txt`      |
-| `pip freeze > requirements.txt`            | `uv pip freeze > requirements.txt`        |
-| `pip install paquete`                      | `uv pip install paquete`                  |
-
-La activación del entorno (`source .venv/Scripts/activate`) **no cambia** — sigue siendo la misma en ambos casos.
-
----
-
-## 6. Qué subir a git
-
-Agrega esto a tu `.gitignore` (si no está ya):
-
-```
-.venv/
-__pycache__/
-*.pyc
-```
-
-Y **sí sube** estos archivos, son los que hacen el setup reproducible:
-- `.python-version`
-- `requirements.txt`
-- `setup.sh`
-- este archivo, `SETUP.md`
-
----
-
-## 7. Troubleshooting rápido
-
-**"uv: command not found" después de instalar**
-Cierra la terminal por completo y ábrela de nuevo — el instalador modifica el PATH y solo se recarga en una sesión nueva.
-
-**Git Bash en Windows no reconoce el `.venv/Scripts/activate`**
-Revisa que estés parado en la carpeta del proyecto (`pwd`) antes de correr el comando; la ruta es relativa.
-
-**Quiero verificar qué Python está usando el venv activado**
-```bash
-which python
 python --version
 ```
+
+### El entorno instala correctamente pero el pipeline falla al importar `src`
+
+Ejecuta los comandos desde la raíz del repositorio y, cuando el pipeline esté organizado como módulo, prefiere:
+
+```bash
+uv run python -m pipelines.<subcarpeta>.<script>
+```
+
+### `No valid data path found`
+
+Configura una ruta válida en:
+
+```python
+src/core/data_config.py
+```
+
+dentro de:
+
+```python
+ALL_DATA_POSSIBLE_PATHS
+```
+
+### `No valid outputs path found`
+
+Configura o crea una ruta válida incluida en:
+
+```python
+ALL_OUTPUTS_POSSIBLE_PATHS
+```
+
+### No se encuentra un archivo `.pt` o `.pth`
+
+Los pesos grandes están excluidos de GitHub. Consulta la documentación del modelo para obtener el checkpoint requerido.
+
+---
+
+## 11. Verificación mínima
+
+Después de preparar el entorno:
+
+```bash
+uv run python --version
+uv pip list
+```
+
+Para verificar una parte concreta del proyecto, utiliza los tests o el modo `--smoke` de los pipelines que lo soporten.
+
+Ejemplo:
+
+```bash
+uv run python -m pipelines.seizures.aitrics_cnn_lstm --smoke
+```
+
+---
+
+## Resumen rápido
+
+En una máquina nueva:
+
+```bash
+git clone https://github.com/FerAndrade15/hybrid-ai-epilepsy-diagnosis.git
+cd hybrid-ai-epilepsy-diagnosis
+./setup.sh
+uv run python --version
+```
+
+Después:
+
+1. configura o conecta los datasets;
+2. configura una ubicación de outputs;
+3. descarga los pesos requeridos por el modelo que quieras utilizar;
+4. ejecuta el pipeline correspondiente.
+
+Para una descripción general del proyecto, consulta [`README.md`](README.md).
