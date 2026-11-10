@@ -3,8 +3,8 @@
 # Project: Trabajo de graduación
 """
 import argparse, json, numpy as np, pandas as pd, optuna
-from src.core.data_config import OUTPUTS_DIR
-from src.core.data_loader import build_annotations_index
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+from backend.ml_service.utils.data_loader import build_annotations_index
 from backend.ml_service.utils.postprocess import evaluate, merge_intervals, DEFAULT_PP
 
 ap = argparse.ArgumentParser()
@@ -19,10 +19,13 @@ sess = pd.read_csv(PP_DIR / "sessions.csv")
 ann = build_annotations_index("seizure", n_patients=None, paths=True,
                               CACHE_DIR=OUTPUTS_DIR / "seizure" / "annotations")
 
+ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+
 def build_records(split):
     recs = []
     ann_g = {k: g for k, g in ann.groupby(["Patient", "Session", "Section"])}
     for r in sess[sess.split == split].itertuples():
+        if not (PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz").exists(): continue
         z = np.load(PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz")
         g = ann_g[(r.Patient, r.Session, r.Section)]
         g = g[g["is_positive"] == 1]                         # ajusta nombres si difieren
@@ -71,12 +74,12 @@ if not args.eval_test:
                                         max_fa_day=args.max_fa_day, test=None), indent=2))
     print("[OK] congelado en", OUT_JSON)
 
-    from epileptic_eeg_analysis_toolbox.backend.ml_service.models_registry import PP_DIR
-    
-    PP_DIR.mkdir(parents=True, exist_ok=True)
-    (PP_DIR / f"{args.model_key}.json").write_text(json.dumps(
-        dict(postprocess=best, tuned_on="val", n_val_sessions=len(val),
-            max_fa_day=args.max_fa_day, val=m_val), indent=2))
+#    from epileptic_eeg_analysis_toolbox.backend.ml_service.models_registry import PP_DIR
+#    
+#    PP_DIR.mkdir(parents=True, exist_ok=True)
+#    (PP_DIR / f"{args.model_key}.json").write_text(json.dumps(
+#        dict(postprocess=best, tuned_on="val", n_val_sessions=len(val),
+#            max_fa_day=args.max_fa_day, val=m_val), indent=2))
 
 else:
     cfg = json.loads(OUT_JSON.read_text())

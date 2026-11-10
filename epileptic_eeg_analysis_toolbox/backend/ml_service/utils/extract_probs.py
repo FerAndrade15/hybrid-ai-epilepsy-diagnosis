@@ -26,7 +26,7 @@ ann["split"] = ann["Patient"].map(forced_for(load_registry(), ann["Patient"].uni
                                              source_prefix="folder:seizure"))
 ann = ann[ann["split"].isin(args.splits)]
 # ajusta estos nombres si tus columnas difieren (ann.columns)
-ann["is_positive"] = ann["is_positive"] if "is_positive" in ann else 0
+ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
 
 sess = (ann.groupby(["Patient", "Session", "Section"])
            .agg(split=("split", "first"), edf=("EDF", "first"), sz=("is_positive", "max"))

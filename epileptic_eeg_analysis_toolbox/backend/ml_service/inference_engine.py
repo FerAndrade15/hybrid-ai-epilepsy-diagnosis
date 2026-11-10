@@ -26,6 +26,9 @@ from backend.ml_service.models_registry import get_model_config
 from backend.ml_service.feature_extractor import extract_features_from_window_payload
 from backend.ml_service.utils.postprocess import probs_to_events    # el postprocess.py de antes
 
+RAW_PP = dict(smooth_sec=0.0, thr_on=0.5, thr_off_ratio=1.0,
+              merge_gap_sec=0.0, min_dur_sec=0.0)
+
 
 # Protocol
 class TraditionalMLModel(Protocol):
@@ -47,7 +50,8 @@ class ClinicalInferenceEngine:
 
     def predict_probs(self, signal_window):
         """Devuelve las probabilidades por muestra, sin posprocesado."""
-        sig = signal_window * self.data_scale
+        sig = np.asarray(signal_window, dtype=np.float64)
+        sig = (sig - sig.mean(1, keepdims=True)) / (sig.std(1, keepdims=True) + 1e-8)
         x = torch.tensor(np.transpose(sig) if self.transpose else sig,
                          dtype=torch.float32).unsqueeze(0)
         with torch.no_grad():
@@ -118,7 +122,7 @@ class ClinicalInferenceEngine:
             # Loading weights
             state = torch.load(model_path, map_location=torch.device('cpu'))
             state_dict = state.get("state_dict") or state
-            self.model.load_state_dict(state)
+            self.model.load_state_dict(state_dict)
             self.model.eval()
 
             scaler_path = model_path.parent / "feature_scaler.pkl"
@@ -273,32 +277,17 @@ class ClinicalInferenceEngine:
 
 
     def predict_study_windows(self, windows, sfreq=SFREQ, components_full=None,
-                          mixing_matrix=None, ic_probs=None):
+                              mixing_matrix=None, ic_probs=None, raw=False):
         self.last_probs = None
         if self.model_type == "deep_learning" and self.data_units == "data":
             probs = np.concatenate([self.predict_probs(w["data"]) for w in windows])
-            self.last_probs = probs                       # para pintar la curva y los sliders
+            self.last_probs = probs
+            pp = RAW_PP if raw else self.postprocess
             t0 = windows[0]["start"]
             return [{"start_time": t0 + s, "stop_time": t0 + e,
-                    "duration": round(e - s, 2), "label": "Crisis", "confidence": c}
-                    for s, e, c in probs_to_events(probs, sfreq, self.postprocess)]
-
-            """
-            if "exact_events" in res and res["exact_events"]:
-                for ev in res["exact_events"]:
-                    abs_start = t_start + ev["offset_start"]
-                    abs_end = t_start + ev["offset_end"]
-                    detections.append({
-                        "start_time": abs_start,
-                        "stop_time": abs_end,
-                        "duration": round(abs_end - abs_start, 2),
-                        "label": "Crisis",
-                        "confidence": ev["confidence"]
-                    })
-            print(detections)
-            """
-
-        return detections
+                     "duration": round(e - s, 2), "label": "Crisis", "confidence": c}
+                    for s, e, c in probs_to_events(probs, sfreq, pp)]
+        return []
 
 if __name__ == "__main__":
     engine = ClinicalInferenceEngine()
