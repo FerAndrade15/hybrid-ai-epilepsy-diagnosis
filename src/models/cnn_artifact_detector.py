@@ -8,6 +8,10 @@ Reusable CNN (1D Convolutional networks) modules for the AI pipeline.
 # cnn_artifact_detector.py
 
 # General imports
+import os
+from src.utils.session_cache import get_or_compute_session, get_bip_slice
+from src.core.data_config import NORMALIZE, NORMALIZE_CLIP, SFREQ   # añade SFREQ
+
 import json
 import psutil
 import random
@@ -322,8 +326,16 @@ class EEGWindowDataset(Dataset):
         self.cache_memory_fraction = cache_memory_fraction
         self.max_cached_sessions = max_cached_sessions
         self.expected_n_timesteps = expected_n_timesteps
-        self._session_cache: "OrderedDict[tuple, dict]" = OrderedDict()
-        self._estimated_session_bytes: Optional[int] = None
+        #	self._session_cache: "OrderedDict[tuple, dict]" = OrderedDict()
+	#        self._estimated_session_bytes: Optional[int] = None
+        self._norm = {}
+        self._mm, self._ymm = {}, {}      # memmaps abiertos una vez (heredados por los workers via fork)
+        self._P = self.df["Patient"].to_numpy()
+        self._S = self.df["Session"].to_numpy()
+        self._T = self.df["Section"].to_numpy()
+        self._start = self.df["Start"].to_numpy(float)
+        self._end = self.df["end"].to_numpy(float)
+        self._yw = self.df[target_col].to_numpy(float)      # (P,S,T) -> (mediana, escala): 18x1 floats, RAM despreciable
         self._truncated_count = 0
         self.ann = ann_by_session
         self.keywords = keywords
@@ -332,6 +344,83 @@ class EEGWindowDataset(Dataset):
     def __len__(self) -> int:
         return len(self.df)
 
+    def _bip_file(self, key):
+        return Path(self.session_cache_dir) / f"{key[0]}_{key[1]}_{key[2]}_bip.npy"
+
+    def _bip(self, key):
+        m = self._mm.get(key)
+        if m is None:
+            m = np.load(self._bip_file(key), mmap_mode="r")
+            self._mm[key] = m
+        return m
+
+    def _norm_stats(self, key):
+        if key not in self._norm:
+            x = np.array(self._bip(key)[:, ::10])
+            med = np.median(x, axis=1, keepdims=True)
+            q75, q25 = np.percentile(x, [75, 25], axis=1)
+            scale = np.maximum((q75 - q25)[:, None] / 1.349, 1e-12)
+            self._norm[key] = (med.astype(np.float32), scale.astype(np.float32))
+        return self._norm[key]
+
+    def _get_Y(self, key):
+        """Máscara canal x tiempo en disco (mmap), abierta una sola vez."""
+        m = self._ymm.get(key)
+        if m is None:
+            f = Path(self.session_cache_dir) / f"{key[0]}_{key[1]}_{key[2]}_Y_{self.target_col}.npy"
+            if not f.exists():
+                n = self._bip(key).shape[1]
+                Y = artifact_channel_masks(self.ann[key], self.keywords, n, SFREQ, self.bip_names)
+                tmp = f.with_name(f"{f.stem}_tmp_{os.getpid()}.npy")
+                np.save(tmp, Y)
+                os.replace(tmp, f)
+            m = np.load(f, mmap_mode="r")
+            self._ymm[key] = m
+        return m
+
+    def prewarm(self):
+        """Crea los .npy, abre los memmaps y calcula la normalización UNA vez, antes de los workers."""
+        sess = self.df.drop_duplicates(KEY[:3])
+        for r in tqdm(sess.itertuples(index=False), total=len(sess), desc="prewarm"):
+            key = (r.Patient, r.Session, r.Section)
+            get_bip_slice(*key, r.EDF_path, 0, 1, self.session_cache_dir)
+            self._bip(key)
+            if NORMALIZE:
+                self._norm_stats(key)
+            if self.ann is not None:
+                self._get_Y(key)
+
+    def __getitem__(self, idx):
+        key = (self._P[idx], self._S[idx], self._T[idx])
+        start = int(round(self._start[idx] * SFREQ))
+        end = int(round(self._end[idx] * SFREQ))
+        window = np.array(self._bip(key)[:, start:end])
+
+        if NORMALIZE:
+            med, scale = self._norm_stats(key)
+            window = np.clip((window - med) / scale, -NORMALIZE_CLIP, NORMALIZE_CLIP)
+
+        if self.expected_n_timesteps is not None and window.shape[1] != self.expected_n_timesteps:
+            self._truncated_count += 1
+            n_channels = window.shape[0]
+            padded = np.zeros((n_channels, self.expected_n_timesteps), dtype=window.dtype)
+            n_copy = min(window.shape[1], self.expected_n_timesteps)
+            padded[:, :n_copy] = window[:, :n_copy]
+            window = padded
+
+        y_win = float(self._yw[idx])
+        if self.ann is not None:
+            y_ch = np.asarray(self._get_Y(key)[:, start:end]).any(axis=1)   # (18,)
+            valid = not (y_win > 0 and not y_ch.any())
+            return (torch.tensor(window, dtype=torch.float32),
+                    torch.tensor(y_ch, dtype=torch.float32),
+                    torch.tensor(float(valid)),
+                    torch.tensor(y_win, dtype=torch.float32))
+
+        return torch.tensor(window, dtype=torch.float32), torch.tensor(y_win, dtype=torch.float32)
+
+
+"""
     def _get_session(self, patient, session, section, path_edf):
         key = (patient, session, section)
         if key in self._session_cache:
@@ -412,6 +501,7 @@ class EEGWindowDataset(Dataset):
         label = float(getattr(row, self.target_col))
         return torch.tensor(window, dtype=torch.float32), torch.tensor(label, dtype=torch.float32)
 
+"""
 
 # Main detector
 class ArtifactDetector:
@@ -781,15 +871,22 @@ def build_cnn_dataloaders(rf_dataset: pd.DataFrame, target_col: str,
     """
     Structures the 3 DataLoaders (train/val/test) with windowed dataframes.
     """
+    N_WORKERS = {"train": 8, "val": 4, "test": 4}   # 21 vCPU: deja ~5 libres para el proceso principal
+
     def _loader_for(split_name, shuffle):
         subset = rf_dataset[rf_dataset["split"] == split_name]
         ds = EEGWindowDataset(subset, target_col=target_col,
                               session_cache_dir=session_cache_dir, ica_cache_dir=ica_cache_dir,
-                              expected_n_timesteps=expected_n_timesteps, 
+                              expected_n_timesteps=expected_n_timesteps,
                               ann_by_session=session_ann, keywords=keywords, bip_names=bip_names)
-        
+        ds.prewarm()   # crea los .npy una vez, antes de lanzar los workers
+
         gen = torch.Generator().manual_seed(seed) if shuffle else None
-        return DataLoader(ds, batch_size=batch_size, shuffle=shuffle, num_workers=0, generator=gen)
+        return DataLoader(ds, batch_size=batch_size, shuffle=shuffle,
+                          num_workers=N_WORKERS[split_name],
+                          persistent_workers=(split_name != "test"),
+                          pin_memory=True, prefetch_factor=4,
+                          generator=gen)
 
     return _loader_for("train", True), _loader_for("val", False), _loader_for("test", False)
 

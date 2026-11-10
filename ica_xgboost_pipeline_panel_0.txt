@@ -1,0 +1,29 @@
+-rw-r--r-- 1 100000 100000 4.3K Oct 22 00:43 debug_out.txt
+-rw-r--r-- 1 100000 100000 9.1K Oct 22 00:43 diag_cnn_30.py
+drwxr-xr-x 6 100000 100000 2.0M Oct 21 21:53 docs
+-rw-r--r-- 1 100000 100000 175M Oct 22 13:02 entrenamiento.log
+drwxr-xr-x 7 100000 100000 990K Oct 21 21:53 epileptic_eeg_analysis_toolbox
+-rw-r--r-- 1 100000 100000    0 Oct 22 01:22 exit
+-rw-r--r-- 1 100000 100000 1.6K Oct 22 00:43 fix_paths.py
+-rw-r--r-- 1 root   root   2.1K Oct 24 02:04 ica_xgboost_pipeline_panel_0.txt
+drwxr-xr-x 7 100000 100000    1 Sep 24 04:42 models_cnn
+drwxr-xr-x 3 100000 100000 983K Oct 22 00:43 models_cnn_smoke_test
+drwxr-xr-x 5 100000 100000 2.0M Sep 24 02:28 notebooks
+drwxr-xr-x 3 100000 100000 989K Sep 24 02:28 pipelines
+drwxr-xr-x 8 100000 100000 2.0M Oct 21 21:53 prior_work
+-rw-r--r-- 1 100000 100000  507 Oct 21 21:53 requirements.in
+-rw-r--r-- 1 231072 231072  13K Oct 22 20:10 requirements.txt
+-rw-r--r-- 1 100000 100000 135K Oct 22 00:43 resultados_cnn_full.txt
+drwxr-xr-x 5 100000 100000 2.9M Oct 23 02:35 results
+-rw-r--r-- 1 100000 100000 1.3K Sep 24 13:38 setup.sh
+drwxr-xr-x 6 100000 100000 2.0M Oct 21 21:53 src
+-rw-r--r-- 1 100000 100000  271 Sep 24 02:28 test.py
+-rw-r--r-- 1 100000 100000  805 Oct 22 00:43 test_key.py
+drwxr-xr-x 3 100000 100000 980K Oct 21 22:45 tests
+-rw-r--r-- 1 100000 100000 138K Oct 22 14:52 tmux_cnn_lightweight_standard.txt
+-rw-r--r-- 1 100000 100000 206K Oct 22 07:14 tmux_cnn_paper.txt
+-rw-r--r-- 1 root   root   180K Oct 24 02:02 tmux_ica_machine.txt
+-rw-r--r-- 1 100000 100000 5.3G Oct 22 09:26 workspace.zip
+root@bcd6ce83ba0a:/workspace/hybrid-ai-epilepsy-diagnosis# session=$(tmux display-message -p '#S'); tmux list-panes -F '
+#P' | while read pane; do tmux capture-pane -p -t "$pane" > "${session}_panel_${pane}.txt"; done
+

@@ -1,0 +1,1887 @@
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_resumen_cuantitativo.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_state.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/benchmark.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/cfg.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/dataset.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/Hybrid.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/TCN.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/Transformer.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/pipeline.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/requirements.txt
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/sweep.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/utils.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/README.md
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/assets/gui_screenshot.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/requirements.txt
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/ui.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../aitrics_training_paper_parameters.txt
+        ../bench_rf.py
+        ../gpu_log.txt
+        ../ica_xgboost_pipeline_panel_0.txt
+        ../tmux_ica_machine.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# git pull
+Updating 2b50fbb..7d4a46b
+^[[AFast-forward
+ epileptic_eeg_analysis_toolbox/backend/{pipelines => ml_service/utils}/windowing.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ rename epileptic_eeg_analysis_toolbox/backend/{pipelines => ml_service/utils}/windowing.py (98%)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.extract_probs --
+model models_weights/seizure_transformer.pth
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/extract_probs.py", line 9, in <module>
+    from backend.pipelines.windowing import slice_raw_into_windows
+ModuleNotFoundError: No module named 'backend.pipelines.windowing'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# git fetch origin
+git remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 7 (delta 5), reused 7 (delta 5), pack-reused 0 (from 0)
+Unpacking objects: 100% (7/7), 576 bytes | 12.00 KiB/s, done.
+sFrom https://github.com/FerAndrade15/hybrid-ai-epilepsy-diagnosis
+   7d4a46b..af58118  main       -> origin/main
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# git status
+gOn branch main
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    ../prior_work/Summary.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/.gitkeep
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/01_FirstPhase.mlx
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/Caracteristicas.m
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/NN/NN_dise\303\261o.JPG"
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/NN/Physionet_ANN.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/NN/UBonn_ANN.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/ReadMe.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/SVM/Physionet_SVM.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/SVM/SVM_UBonn.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clustering/HUMANA_Clustering.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clustering/ReadME.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Clustering/clasificador_humana.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Documentos/Articulo___Maria_Angulo.pdf
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Documentos/Protocolo_Maria_Angulo.pdf
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Documentos/Tesis___Maria_Angulo.pdf
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features.asv
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features_tipicas.asv
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features_tipicas.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features_wavelet.m
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/annresult.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ejemploventana1.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ejventana2.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ejventana21.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/ANN_Physionet
+.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_Physionet
+.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_Physionet
+_resumen.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_UBonn.JPG
+"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_UBonn_res
+umen.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/UBonn_wavelet
+_method_ANN.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/UBonn_wavelet
+_method_SVM.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/ZCconcrisis.P
+NG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/ZCsincrisis.P
+NG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/mav_physionet
+_example.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/resumen_ANN_S
+VM.png"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/zc_physionet_
+example.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/svmresult.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana0.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana0.PNG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana0_1.jpeg"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana1.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana1.png"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana2.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana3.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana5.JPG"
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/windowstructure.JPG"
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Manual de Usuario/Manual_de_Usuario.pdf
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/ReadMe.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/ZC.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/agregarpac.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/clasificadorRN.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/clasificadorSVM.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/consultas.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/deserialize.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/edfread.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/features.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/logouvg.jpg
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/principal.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/procesamiento.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/selectprueba.mlapp
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/serialize.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/Features_edf.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/Features_wavelet.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/Graficar_clusters.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/ReadMe.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/VAT.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/ZC.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/edfread.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/fcm.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/k_means.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/labelsGen.m
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Presentaci\303\263n - Mar\303\255a Angulo - 2020.pptx"
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/ReadMe.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/FCM_p1.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/FCM_p2.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/k_means_p1.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/k_means_p2.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_2canales_x3.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_4canales_x3.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_db10_x2.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_db4_x2.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/SVM_2canales_x3.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/SVM_4canales_x3.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/ReadMe.md
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setAE_k10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setAE_k4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setDE_k10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setDE_k4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setAE_db10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setAE_db4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setDE_db10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setDE_db4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setAE_k10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setAE_k4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setDE_k10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setDE_k4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setAE_db10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setAE_db4.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setDE_db10.eps
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setDE_db4.eps
+        deleted:    "../prior_work/phase-i-2020-angulo-pineda/thesis_content/Tesis - Mar\303\255a Angulo, final - 2020.pdf"
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Wavelet/Wavelet.m
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Wavelet/subbandaswavelet.JPG
+        deleted:    ../prior_work/phase-i-2020-angulo-pineda/thesis_content/Wavelet/subbandaswavelet_test.JPG
+        deleted:    ../prior_work/phase-ii-2021-vela-manrique/.gitkeep
+        deleted:    ../prior_work/phase-iii-2022-lemus-silvestre/.gitkeep
+        deleted:    "../prior_work/phase-iv-2023-patz\303\241n-m\303\251ndez-caceros/.gitkeep"
+        deleted:    ../prior_work/phase-iv-2024-ixcayau-perez/.gitkeep
+        deleted:    ../prior_work/phase_vi_2025_sanchez/Benchmark and XAI.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/EDFData.ipynb
+        deleted:    ../prior_work/phase_vi_2025_sanchez/XAI.ipynb
+        deleted:    ../prior_work/phase_vi_2025_sanchez/analysis (2).ipynb
+        deleted:    ../prior_work/phase_vi_2025_sanchez/analysis.ipynb
+        deleted:    ../prior_work/phase_vi_2025_sanchez/models/Hybrid.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/models/TCN.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/models/Transformer.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/models/layers.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/pt/InitialTests.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/pt/benchmark.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/pt/config_used.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/pt/feature_scaler.pkl
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/attention_FN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/attention_FP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/attention_TN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/attention_TP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/saliency_features.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/saliency_signal_v0.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/shap_FN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/shap_FP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/shap_TN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/shap_TP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v0_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v0_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v0_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v1_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v1_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v1_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v2_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v2_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FN_v2_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v0_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v0_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v0_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v1_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v1_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v1_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v2_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v2_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_FP_v2_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v0_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v0_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v0_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v1_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v1_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v1_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v2_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v2_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TN_v2_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v0_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v0_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v0_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v1_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v1_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v1_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v2_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v2_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_TP_v2_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_resumen_cuantitativo.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/results/xai_state.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/.gitkeep
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/.vscode/settings.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/EDFData.ipynb
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/XAI.ipynb
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/classes/models.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/main.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/pt/InitialTests.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/pt/config_used.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/pt/feature_scaler.pkl
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/tf/config_used.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/tf/run_config.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/processing/files.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/processing/network_eval.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/api/routers/models.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/benchmark.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/cfg.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/dataset.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/Hybrid.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/TCN.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/Transformer.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/layers.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/pipeline.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/sweep.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/utils.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_FN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_FP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_TN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_TP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/saliency_features.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/saliency_signal_v0.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_FN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_FP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_TN.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_TP.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v0_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v0_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v0_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_ig_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_saliency_signal.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_summary.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_resumen_cuantitativo.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_state.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/benchmark.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/cfg.json
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/dataset.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/Hybrid.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/TCN.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/Transformer.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/pipeline.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/requirements.txt
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/sweep.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/utils.py
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/README.md
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/assets/gui_screenshot.png
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/requirements.txt
+        deleted:    ../prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/ui.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../aitrics_training_paper_parameters.txt
+        ../bench_rf.py
+        ../gpu_log.txt
+        ../ica_xgboost_pipeline_panel_0.txt
+        ../tmux_ica_machine.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# git pull
+Updating 7d4a46b..af58118
+Fast-forward
+ epileptic_eeg_analysis_toolbox/backend/ml_service/utils/extract_probs.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.extract_probs --
+model models_weights/seizure_transformer.pth
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+[FALLA] aaaaahie_s030_t022: ventana 0: (17, 15360)
+[OK] aaaaaoek_s027_t003.npz 4.0 min
+[OK] aaaaamck_s002_t008.npz 3.0 min
+[OK] aaaaamnd_s019_t006.npz 10.0 min
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:104: RuntimeWarning: filter_length
+(845) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_level)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:106: RuntimeWarning: filter_length
+(1691) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.notch_filter(freqs=notch_freq, verbose=log_level)
+[FALLA] aaaaarsp_s002_t004: need at least one array to concatenate
+[OK] aaaaaizb_s001_t000.npz 19.0 min
+[OK] aaaaamta_s003_t000.npz 25.0 min
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:104: RuntimeWarning: filter_length
+(845) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_level)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:106: RuntimeWarning: filter_length
+(1691) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.notch_filter(freqs=notch_freq, verbose=log_level)
+[FALLA] aaaaarsp_s002_t028: need at least one array to concatenate
+[FALLA] aaaaahie_s032_t045: ventana 0: (17, 15360)
+[FALLA] aaaaamnk_s003_t000: need at least one array to concatenate
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:104: RuntimeWarning: filter_length
+(845) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_level)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:106: RuntimeWarning: filter_length
+(1691) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.notch_filter(freqs=notch_freq, verbose=log_level)
+[FALLA] aaaaahie_s019_t006: need at least one array to concatenate
+[FALLA] aaaaahie_s022_t011: ventana 0: (17, 15360)
+[OK] aaaaahsi_s015_t002.npz 2.0 min
+[OK] aaaaaqtw_s002_t012.npz 4.0 min
+[OK] aaaaarei_s008_t001.npz 10.0 min
+[OK] aaaaahlk_s006_t006.npz 3.0 min
+[OK] aaaaarjc_s007_t004.npz 10.0 min
+[OK] aaaaasip_s008_t008.npz 10.0 min
+[OK] aaaaatao_s002_t007.npz 10.0 min
+[OK] aaaaatao_s002_t002.npz 13.0 min
+[OK] aaaaaqtw_s002_t001.npz 2.0 min
+[OK] aaaaaarq_s016_t002.npz 4.0 min
+[OK] aaaaajru_s031_t003.npz 10.0 min
+[OK] aaaaardf_s005_t003.npz 10.0 min
+[OK] aaaaaqtq_s006_t006.npz 4.0 min
+[OK] aaaaasip_s001_t000.npz 26.0 min
+[OK] aaaaardf_s004_t000.npz 16.0 min
+[OK] aaaaasfw_s003_t006.npz 10.0 min
+[OK] aaaaaqek_s008_t007.npz 10.0 min
+[OK] aaaaaefp_s007_t001.npz 29.0 min
+[OK] aaaaaghb_s009_t004.npz 4.0 min
+[OK] aaaaaqek_s009_t009.npz 4.0 min
+Terminado. Fallidas: 7
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#  raw.filter(l_freq=l_freq, h_freq=
+                                                                                           raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_leve
+l)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#  raw.filter(l_freq=l_freq, h_freq=
+EOF       f"crisis={m.mean()*100:5.1f}% p_dentro={p_in:.2f} p_fuera={p[~m].mean():.3f}")
+-bash: syntax error near unexpected token `l_freq=l_freq,'ysis_toolbox/backend/ml_service/utils/preprocessing.py:106: Runtim
+-bash: syntax error near unexpected token `(' the signal (256), distortion is likely. Reduce filter length or filter a longe-bash: syntax error near
+ unexpected token `freqs=notch_freq,'
+-bash: [FALLA]: command not foundeq, verbose=log_level)
+-bash: syntax error near unexpected token `(' array to concatenate
+-bash: [OK]: command not foundntana 0: (17, 15360)
+-bash: [OK]: command not found0 min
+-bash: [OK]: command not found0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found0 min
+-bash: [OK]: command not found0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found.0 min
+-bash: [OK]: command not found0 min
+-bash: Terminado.: command not found
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `freqs=notch_freq,'
+-bash: [FALLA]: command not found
+-bash: syntax error near unexpected token `('
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+-bash: [OK]: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cat > backend/ml_service/utils/check_probs.py << 'EOF'
+import numpy as np, pandas as pd
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+from backend.ml_service.utils.data_loader import build_annotations_index
+
+PP = OUTPUTS_DIR / "seizure" / "pp_probs"
+sess = pd.read_csv(PP / "sessions.csv")
+sess["ok"] = [(PP / f"{r.Patient}_{r.Session}_{r.Section}.npz").exists()
+              for r in sess.itertuples()]
+print(sess.groupby(["split", "sz", "ok"]).size().unstack(fill_value=0))
+
+ann = build_annotations_index("seizure", n_patients=None, paths=True,
+                              CACHE_DIR=OUTPUTS_DIR / "seizure" / "annotations")
+G = {k: g for k, g in ann.groupby(["Patient", "Session", "Section"])}
+
+for r in sess[sess.ok].itertuples():
+    z = np.load(PP / f"{r.Patient}_{r.Session}_{r.Section}.npz")
+    p, sf = z["probs"], float(z["sfreq"])
+    g = G[(r.Patient, r.Session, r.Section)]
+    pos = g[g.is_positive == 1]
+    m = np.zeros(len(p), bool)
+    for s, e in zip(pos.start_time, pos.stop_time):
+        m[int(s * sf):int(e * sf)] = True
+    p_in = p[m].mean() if m.any() else float("nan")
+    print(f"{r.split:4s} {r.Patient}_{r.Session}_{r.Section}: "
+          f"proc={len(p)/sf/60:5.1f} min anot={g.stop_time.max()/60:5.1f} min "
+          f"crisis={m.mean()*100:5.1f}% p_dentro={p_in:.2f} p_fuera={p[~m].mean():.3f}")
+EOF
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_probs
+ok        False  True
+split sz
+test  0       0     20
+val   0       7     13
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_probs.py", line 19, in <module>
+    pos = g[g.is_positive == 1]
+            ^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/generic.py", line 6206, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'is_positive'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python - << 'EOF'
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+from backend.ml_service.utils.data_loader import build_annotations_index
+ann = build_annotations_index("seizure", n_patients=None, paths=True,
+                              CACHE_DIR=OUTPUTS_DIR / "seizure" / "annotations")
+print(ann.columns.tolist())
+print(ann.head(8).to_string())
+for c in ann.columns:
+    if ann[c].dtype == object and ann[c].nunique() < 30:
+        print(c, ann[c].value_counts().to_dict())
+EOF
+['channel', 'start_time', 'stop_time', 'label', 'confidence', 'Patient', 'Session', 'Section', 'Montage', 'Partition', 'NoChannels', 'Duration', 'ED
+F', 'CSV']
+  channel  start_time  stop_time label  confidence   Patient Session Section    Montage Partition  NoChannels    Duration
+                                                                        EDF
+                          CSV
+0  FP1-F7      0.0297     0.9733  bckg         1.0  aaaaatvr    s005    t008  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t008.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t008.csv
+1  FP1-F7      0.0149     1.0401  bckg         1.0  aaaaatvr    s005    t007  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t007.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t007.csv
+2  FP1-F7      0.0149     1.0030  bckg         1.0  aaaaatvr    s005    t006  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t006.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t006.csv
+3  FP1-F7      0.0520     1.0996  bckg         1.0  aaaaatvr    s005    t004  01_tcp_ar     train          29   28.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t004.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t004.csv
+4  FP1-F7      0.0074     1.0104  bckg         1.0  aaaaatvr    s005    t002  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t002.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t002.csv
+5  FP1-F7      0.0074     1.0030  bckg         1.0  aaaaatvr    s005    t001  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t001.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t001.csv
+6  FP1-F7      0.0074     0.9881  bckg         1.0  aaaaatvr    s005    t000  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_tcp_ar/aaaaatvr_s005_t000.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s005_2015/01_
+tcp_ar/aaaaatvr_s005_t000.csv
+7  FP1-F7      0.0074     1.0401  bckg         1.0  aaaaatvr    s004    t008  01_tcp_ar     train          29  300.996094  /workspace/data/tuh_eeg_s
+eizure/v2.0.6/edf/train/aaaaatvr/s004_2015/01_tcp_ar/aaaaatvr_s004_t008.edf  /workspace/data/tuh_eeg_seizure/v2.0.6/edf/train/aaaaatvr/s004_2015/01_
+tcp_ar/aaaaatvr_s004_t008.csv
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_probs
+
+ok        False  True
+split sz
+test  0       0     20
+val   0       7     13
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_probs.py", line 19, in <module>
+    pos = g[g.is_positive == 1]
+            ^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/generic.py", line 6206, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'is_positive'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i 's|^ann\["is_positive"\] = .*|ann["is_positive"] =
+(~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)|' backend/ml_service/utils/extract_probs.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i '/^G = {k: g/i ann["is_positive"] = (~ann["label"].
+astype(str).str.strip().str.lower().eq("bckg")).astype(int)' backend/ml_service/utils/check_probs.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i '/^def build_records/i ann["is_positive"] = (~ann["
+label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)\n' backend/ml_service/utils/tune_postprocess.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n "is_positive\"\] =" backend/ml_service/utils/*.py
+backend/ml_service/utils/check_probs.py:13:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/extract_probs.py:29:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/tune_postprocess.py:22:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/tune_postprocess.py:30:        g = g[g["is_positive"] == 1]                         # ajusta nombres si difieren
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.extract_probs --
+model models_weights/seizure_transformer.pth
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+[OK] aaaaasgd_s003_t008.npz 10.0 min
+[FALLA] aaaaahie_s007_t026: ventana 0: (17, 15360)
+[FALLA] aaaaaovm_s001_t000: need at least one array to concatenate
+[OK] aaaaaoys_s003_t001.npz 15.0 min
+[OK] aaaaampk_s009_t003.npz 14.0 min
+[OK] aaaaahie_s024_t001.npz 15.0 min
+[OK] aaaaampk_s007_t000.npz 4.0 min
+[OK] aaaaamqq_s006_t000.npz 10.0 min
+[OK] aaaaaajy_s003_t003.npz 3.0 min
+[OK] aaaaaoek_s027_t002.npz 13.0 min
+[OK] aaaaaoek_s006_t009.npz 24.0 min
+[FALLA] aaaaamnk_s002_t005: ventana 0: (17, 15360)
+[OK] aaaaaovm_s001_t001.npz 21.0 min
+[OK] aaaaaiup_s002_t002.npz 6.0 min
+[OK] aaaaahie_s024_t000.npz 11.0 min
+[OK] aaaaamck_s001_t001.npz 21.0 min
+[OK] aaaaamnk_s001_t000.npz 26.0 min
+[OK] aaaaacqc_s003_t001.npz 9.0 min
+[OK] aaaaaool_s005_t015.npz 11.0 min
+[OK] aaaaaqrs_s001_t001.npz 12.0 min
+[OK] aaaaaopm_s009_t000.npz 4.0 min
+[FALLA] aaaaaoek_s033_t003: need at least one array to concatenate
+[FALLA] aaaaahie_s031_t057: ventana 0: (17, 15360)
+[OK] aaaaaict_s006_t010.npz 6.0 min
+[FALLA] aaaaaskf_s002_t008: ventana 0: (17, 15360)
+[OK] aaaaaskf_s005_t004.npz 4.0 min
+[OK] aaaaaoek_s032_t007.npz 10.0 min
+[OK] aaaaaoek_s031_t010.npz 10.0 min
+[OK] aaaaaskf_s007_t007.npz 4.0 min
+[OK] aaaaabxe_s002_t003.npz 9.0 min
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:104: RuntimeWarning: filter_length
+(845) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_level)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:106: RuntimeWarning: filter_length
+(1691) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.notch_filter(freqs=notch_freq, verbose=log_level)
+[FALLA] aaaaamva_s004_t019: need at least one array to concatenate
+[OK] aaaaahie_s012_t008.npz 4.0 min
+[OK] aaaaaoek_s027_t000.npz 4.0 min
+[FALLA] aaaaamva_s004_t053: ventana 0: (17, 15360)
+[OK] aaaaamqw_s001_t000.npz 20.0 min
+[OK] aaaaamva_s006_t002.npz 5.0 min
+[OK] aaaaaptf_s008_t000.npz 11.0 min
+[OK] aaaaaoiz_s005_t001.npz 10.0 min
+[OK] aaaaahie_s021_t002.npz 11.0 min
+[OK] aaaaaoek_s014_t002.npz 18.0 min
+[OK] aaaaajru_s038_t006.npz 15.0 min
+[OK] aaaaaqld_s002_t004.npz 14.0 min
+[OK] aaaaarnq_s002_t001.npz 29.0 min
+[OK] aaaaaghb_s010_t001.npz 5.0 min
+[OK] aaaaaqld_s003_t015.npz 11.0 min
+[OK] aaaaafcf_s009_t009.npz 29.0 min
+[OK] aaaaaqld_s003_t006.npz 11.0 min
+[OK] aaaaarpv_s002_t007.npz 4.0 min
+[OK] aaaaatdt_s003_t003.npz 17.0 min
+[OK] aaaaarpv_s002_t008.npz 10.0 min
+[OK] aaaaardf_s004_t011.npz 10.0 min
+[OK] aaaaaqld_s003_t013.npz 11.0 min
+[OK] aaaaatao_s002_t005.npz 11.0 min
+[OK] aaaaarpv_s002_t003.npz 4.0 min
+[OK] aaaaatba_s002_t001.npz 3.0 min
+[OK] aaaaarpu_s003_t001.npz 10.0 min
+[OK] aaaaarpv_s002_t000.npz 18.0 min
+[OK] aaaaardf_s004_t005.npz 12.0 min
+[OK] aaaaarpv_s001_t003.npz 10.0 min
+[OK] aaaaaqvx_s010_t003.npz 10.0 min
+[FALLA] aaaaajdj_s004_t001: need at least one array to concatenate
+[OK] aaaaaqek_s009_t002.npz 10.0 min
+[OK] aaaaatdt_s004_t011.npz 4.0 min
+[OK] aaaaarpu_s004_t003.npz 4.0 min
+[OK] aaaaasfw_s003_t009.npz 10.0 min
+[OK] aaaaaarq_s017_t017.npz 10.0 min
+[OK] aaaaaraf_s005_t004.npz 6.0 min
+[OK] aaaaahlk_s006_t005.npz 4.0 min
+[OK] aaaaaqek_s008_t002.npz 10.0 min
+[OK] aaaaaqek_s010_t000.npz 4.0 min
+[OK] aaaaasip_s008_t002.npz 7.0 min
+[OK] aaaaasvq_s004_t004.npz 10.0 min
+[OK] aaaaatba_s004_t007.npz 10.0 min
+[OK] aaaaaamc_s013_t001.npz 1.0 min
+[FALLA] aaaaapli_s002_t010: need at least one array to concatenate
+[OK] aaaaasfw_s005_t003.npz 10.0 min
+[OK] aaaaaqtq_s006_t001.npz 10.0 min
+[OK] aaaaaswc_s003_t000.npz 4.0 min
+Terminado. Fallidas: 10
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n "is_positive\"\] =" backend/ml_service/utils/*.py
+backend/ml_service/utils/check_probs.py:13:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/extract_probs.py:29:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/tune_postprocess.py:22:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/tune_postprocess.py:30:        g = g[g["is_positive"] == 1]                         # ajusta nombres si difieren
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.extract_probs --
+model models_weights/seizure_transformer.pth
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+[FALLA] aaaaahie_s007_t026: ventana 0: (17, 15360)
+[FALLA] aaaaaovm_s001_t000: need at least one array to concatenate
+[FALLA] aaaaamnk_s002_t005: ventana 0: (17, 15360)
+[FALLA] aaaaaoek_s033_t003: need at least one array to concatenate
+[FALLA] aaaaahie_s031_t057: ventana 0: (17, 15360)
+[FALLA] aaaaaskf_s002_t008: ventana 0: (17, 15360)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:104: RuntimeWarning: filter_length
+(845) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_level)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:106: RuntimeWarning: filter_length
+(1691) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.notch_filter(freqs=notch_freq, verbose=log_level)
+[FALLA] aaaaamva_s004_t019: need at least one array to concatenate
+[FALLA] aaaaamva_s004_t053: ventana 0: (17, 15360)
+[FALLA] aaaaajdj_s004_t001: need at least one array to concatenate
+[FALLA] aaaaapli_s002_t010: need at least one array to concatenate
+Terminado. Fallidas: 10
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n 'ann\["is_positive"\] = ' backend/ml_service/utils
+/*.py
+backend/ml_service/utils/check_probs.py:13:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/extract_probs.py:29:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+backend/ml_service/utils/tune_postprocess.py:22:ann["is_positive"] = (~ann["label"].astype(str).str.strip().str.lower().eq("bckg")).astype(int)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_probs
+ok        False  True
+split sz
+test  0       2     18
+      1       0     20
+val   0       5     15
+      1       3     17
+val  aaaaasgd_s003_t008: proc= 10.0 min anot=  8.5 min crisis= 12.1% p_dentro=0.19 p_fuera=0.251
+val  aaaaaoys_s003_t001: proc= 15.0 min anot=  8.9 min crisis=  8.9% p_dentro=0.04 p_fuera=0.033
+val  aaaaampk_s009_t003: proc= 14.0 min anot=  6.6 min crisis=  7.6% p_dentro=0.03 p_fuera=0.028
+val  aaaaahie_s024_t001: proc= 15.0 min anot=  9.9 min crisis=  5.3% p_dentro=0.11 p_fuera=0.115
+val  aaaaampk_s007_t000: proc=  4.0 min anot=  4.8 min crisis= 41.8% p_dentro=0.14 p_fuera=0.054
+val  aaaaamqq_s006_t000: proc= 10.0 min anot=  8.8 min crisis= 43.8% p_dentro=0.42 p_fuera=0.312
+val  aaaaaajy_s003_t003: proc=  3.0 min anot=  2.8 min crisis= 90.5% p_dentro=0.11 p_fuera=0.075
+val  aaaaaoek_s027_t002: proc= 13.0 min anot= 13.3 min crisis= 88.5% p_dentro=0.14 p_fuera=0.214
+val  aaaaaoek_s006_t009: proc= 24.0 min anot=  9.7 min crisis= 11.8% p_dentro=0.09 p_fuera=0.107
+val  aaaaaovm_s001_t001: proc= 21.0 min anot= 19.2 min crisis= 14.2% p_dentro=0.09 p_fuera=0.076
+val  aaaaaiup_s002_t002: proc=  6.0 min anot=  2.4 min crisis= 10.3% p_dentro=0.15 p_fuera=0.163
+val  aaaaahie_s024_t000: proc= 11.0 min anot= 11.1 min crisis= 15.5% p_dentro=0.08 p_fuera=0.116
+val  aaaaamck_s001_t001: proc= 21.0 min anot= 17.6 min crisis=  7.3% p_dentro=0.08 p_fuera=0.211
+val  aaaaamnk_s001_t000: proc= 26.0 min anot=  2.7 min crisis=  2.3% p_dentro=0.09 p_fuera=0.137
+val  aaaaacqc_s003_t001: proc=  9.0 min anot=  8.1 min crisis=  9.2% p_dentro=0.13 p_fuera=0.137
+val  aaaaaool_s005_t015: proc= 11.0 min anot=  6.1 min crisis=  7.4% p_dentro=0.46 p_fuera=0.366
+val  aaaaaqrs_s001_t001: proc= 12.0 min anot= 12.3 min crisis= 13.8% p_dentro=0.04 p_fuera=0.215
+val  aaaaaopm_s009_t000: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.286
+val  aaaaaict_s006_t010: proc=  6.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.082
+val  aaaaaskf_s005_t004: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.115
+val  aaaaaoek_s032_t007: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.192
+val  aaaaaoek_s031_t010: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.196
+val  aaaaaskf_s007_t007: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.199
+val  aaaaabxe_s002_t003: proc=  9.0 min anot=  9.0 min crisis=  0.0% p_dentro=nan p_fuera=0.170
+val  aaaaahie_s012_t008: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.075
+val  aaaaaoek_s027_t000: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.174
+val  aaaaamqw_s001_t000: proc= 20.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.095
+val  aaaaamva_s006_t002: proc=  5.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.161
+val  aaaaaptf_s008_t000: proc= 11.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.104
+val  aaaaaoiz_s005_t001: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.269
+val  aaaaahie_s021_t002: proc= 11.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.134
+val  aaaaaoek_s014_t002: proc= 18.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.145
+test aaaaajru_s038_t006: proc= 15.0 min anot=  8.0 min crisis=  4.3% p_dentro=0.14 p_fuera=0.099
+test aaaaaqld_s002_t004: proc= 14.0 min anot=  7.5 min crisis= 12.2% p_dentro=0.09 p_fuera=0.059
+test aaaaarnq_s002_t001: proc= 29.0 min anot= 21.4 min crisis=  2.2% p_dentro=0.13 p_fuera=0.100
+test aaaaaghb_s010_t001: proc=  5.0 min anot=  3.7 min crisis= 15.1% p_dentro=0.04 p_fuera=0.037
+test aaaaaqtw_s002_t001: proc=  2.0 min anot=  1.2 min crisis= 61.3% p_dentro=0.14 p_fuera=0.323
+test aaaaaqld_s003_t015: proc= 11.0 min anot=  6.0 min crisis= 10.0% p_dentro=0.09 p_fuera=0.126
+test aaaaafcf_s009_t009: proc= 29.0 min anot= 28.7 min crisis= 16.2% p_dentro=0.06 p_fuera=0.062
+test aaaaaqld_s003_t006: proc= 11.0 min anot=  6.2 min crisis= 10.2% p_dentro=0.14 p_fuera=0.051
+test aaaaarpv_s002_t007: proc=  4.0 min anot=  4.3 min crisis= 23.5% p_dentro=0.16 p_fuera=0.098
+test aaaaatdt_s003_t003: proc= 17.0 min anot= 17.4 min crisis= 53.2% p_dentro=0.50 p_fuera=0.378
+test aaaaarpv_s002_t008: proc= 10.0 min anot= 10.0 min crisis= 12.8% p_dentro=0.15 p_fuera=0.092
+test aaaaardf_s004_t011: proc= 10.0 min anot=  5.3 min crisis=  3.7% p_dentro=0.07 p_fuera=0.144
+test aaaaaqld_s003_t013: proc= 11.0 min anot=  6.0 min crisis=  8.9% p_dentro=0.10 p_fuera=0.086
+test aaaaatao_s002_t005: proc= 11.0 min anot=  5.9 min crisis=  3.8% p_dentro=0.09 p_fuera=0.055
+test aaaaarpv_s002_t003: proc=  4.0 min anot=  5.0 min crisis= 70.0% p_dentro=0.14 p_fuera=0.101
+test aaaaatba_s002_t001: proc=  3.0 min anot=  2.9 min crisis= 86.5% p_dentro=0.12 p_fuera=0.078
+test aaaaarpu_s003_t001: proc= 10.0 min anot=  8.3 min crisis=  3.5% p_dentro=0.08 p_fuera=0.104
+test aaaaarpv_s002_t000: proc= 18.0 min anot= 18.8 min crisis= 42.5% p_dentro=0.13 p_fuera=0.115
+test aaaaardf_s004_t005: proc= 12.0 min anot=  7.3 min crisis= 18.2% p_dentro=0.16 p_fuera=0.247
+test aaaaarpv_s001_t003: proc= 10.0 min anot=  8.8 min crisis= 30.5% p_dentro=0.13 p_fuera=0.103
+test aaaaaqvx_s010_t003: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.200
+test aaaaaqek_s009_t002: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.158
+test aaaaaqek_s008_t007: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.132
+test aaaaatdt_s004_t011: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.229
+test aaaaarpu_s004_t003: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.130
+test aaaaasfw_s003_t009: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.304
+test aaaaaarq_s017_t017: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.279
+test aaaaaraf_s005_t004: proc=  6.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.075
+test aaaaahlk_s006_t005: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.102
+test aaaaaqek_s008_t002: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.082
+test aaaaaqek_s010_t000: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.259
+test aaaaasip_s008_t002: proc=  7.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.115
+test aaaaasvq_s004_t004: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.061
+test aaaaatba_s004_t007: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.321
+test aaaaaamc_s013_t001: proc=  1.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.287
+test aaaaasfw_s005_t003: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.016
+test aaaaaqtq_s006_t001: proc= 10.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.126
+test aaaaaswc_s003_t000: proc=  4.0 min anot=  0.0 min crisis=  0.0% p_dentro=nan p_fuera=0.084
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python - << 'EOF'
+from backend.pipelines.data_loader import load_raw_edf
+from backend.pipelines.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.data_config import MONOPOLAR_CHANNELS
+import glob
+f = glob.glob("/workspace/data/tuh_eeg_seizure/v2.0.6/edf/*/aaaaahie/s007_*/*/aaaaahie_s007_t026.edf")[0]
+prep = raw_data_preproccesing(raw_data=load_raw_edf(f), bipolar_montage=False, resampling_freq=256)
+print(len(prep.ch_names), [c for c in MONOPOLAR_CHANNELS if c not in prep.ch_names])
+EOF
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+ModuleNotFoundError: No module named 'backend.pipelines.preprocessing'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_norm
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/bin/python: No module named backend.ml_service.utils.check_norm
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# /workspace/hybrid-ai-epilepsy-diagnosis/.venv/bin/python:
+No module named backend.ml_service.utils.check_norm
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#
+
+-bash: /workspace/hybrid-ai-epilepsy-diagnosis/.venv/bin/python:: No such file or directory
+-bash: root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#: No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_norm
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/bin/python: No module named backend.ml_service.utils.check_norm
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# head -12 backend/ml_service/utils/check_norm.py
+head: cannot open 'backend/ml_service/utils/check_norm.py' for reading: No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python - << 'EOF'
+import glob
+from backend.pipelines.data_loader import load_raw_edf
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.data_config import MONOPOLAR_CHANNELS
+f = glob.glob("/workspace/data/tuh_eeg_seizure/v2.0.6/edf/*/aaaaahie/s007_*/*/aaaaahie_s007_t026.edf")[0]
+raw = load_raw_edf(f)
+print("canales del EDF:", len(raw.ch_names))
+prep = raw_data_preproccesing(raw_data=raw, bipolar_montage=False, resampling_freq=256)
+print(len(prep.ch_names), "| faltan:", [c for c in MONOPOLAR_CHANNELS if c not in prep.ch_names])
+print("MONOPOLAR_CHANNELS tiene", len(MONOPOLAR_CHANNELS))
+EOF
+canales del EDF: 20
+17 | faltan: ['FZ', 'PZ']
+MONOPOLAR_CHANNELS tiene 19
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cat > backend/ml_service/utils/check_norm.py << 'EOF'
+import numpy as np
+from backend.pipelines.data_loader import load_raw_edf
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.windowing import slice_raw_into_windows
+from backend.ml_service.inference_engine import ClinicalInferenceEngine
+from backend.ml_service.utils.data_loader import build_annotations_index
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+
+KEY = ("aaaaaajy", "s003", "t003")
+engine = ClinicalInferenceEngine("models_weights/seizure_transformer.pth")
+orig_scale = engine.data_scale
+print("training mode:", engine.model.training, "| data_scale:", orig_scale)
+
+ann = build_annotations_index("seizure", n_patients=None, paths=True,
+                              CACHE_DIR=OUTPUTS_DIR / "seizure" / "annotations")
+g = ann[(ann.Patient == KEY[0]) & (ann.Session == KEY[1]) & (ann.Section == KEY[2])]
+print("Duración real:", g.Duration.iloc[0], "s")
+pos = g[g.label != "bckg"]
+print(pos[["channel", "start_time", "stop_time", "label"]].drop_duplicates().head(12).to_string())
+print("--- CSV original ---")
+print(open(g.CSV.iloc[0]).read()[:900])
+
+EOF print(f"{name:28s} p_dentro={p[m].mean():.3f} p_fuera={p[~m].mean():.3f} max={p.max():.2f}")
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cat > backend/ml_service/utils/check_norm.py << 'EOF'
+import numpy as np
+from backend.pipelines.data_loader import load_raw_edf
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.windowing import slice_raw_into_windows
+from backend.ml_service.inference_engine import ClinicalInferenceEngine
+from backend.ml_service.utils.data_loader import build_annotations_index
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+
+KEY = ("aaaaaajy", "s003", "t003")
+engine = ClinicalInferenceEngine("models_weights/seizure_transformer.pth")
+orig_scale = engine.data_scale
+print("training mode:", engine.model.training, "| data_scale:", orig_scale)
+
+ann = build_annotations_index("seizure", n_patients=None, paths=True,
+                              CACHE_DIR=OUTPUTS_DIR / "seizure" / "annotations")
+g = ann[(ann.Patient == KEY[0]) & (ann.Session == KEY[1]) & (ann.Section == KEY[2])]
+print("Duración real:", g.Duration.iloc[0], "s")
+pos = g[g.label != "bckg"]
+print(pos[["channel", "start_time", "stop_time", "label"]].drop_duplicates().head(12).to_string())
+print("--- CSV original ---")
+print(open(g.CSV.iloc[0]).read()[:900])
+
+EOF print(f"{name:28s} p_dentro={p[m].mean():.3f} p_fuera={p[~m].mean():.3f} max={p.max():.2f}")
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cat > backend/ml_service/utils/check_norm.py << 'EOF'
+import numpy as np
+from backend.pipelines.data_loader import load_raw_edf
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.windowing import slice_raw_into_windows
+from backend.ml_service.inference_engine import ClinicalInferenceEngine
+from backend.ml_service.utils.data_loader import build_annotations_index
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+
+KEY = ("aaaaaajy", "s003", "t003")
+engine = ClinicalInferenceEngine("models_weights/seizure_transformer.pth")
+orig_scale = engine.data_scale
+print("training mode:", engine.model.training, "| data_scale:", orig_scale)
+
+ann = build_annotations_index("seizure", n_patients=None, paths=True,
+                              CACHE_DIR=OUTPUTS_DIR / "seizure" / "annotations")
+g = ann[(ann.Patient == KEY[0]) & (ann.Session == KEY[1]) & (ann.Section == KEY[2])]
+print("Duración real:", g.Duration.iloc[0], "s")
+pos = g[g.label != "bckg"]
+print(pos[["channel", "start_time", "stop_time", "label"]].drop_duplicates().head(12).to_string())
+print("--- CSV original ---")
+print(open(g.CSV.iloc[0]).read()[:900])
+
+EOF print(f"{name:28s} p_dentro={p[m].mean():.3f} p_fuera={p[~m].mean():.3f} max={p.max():.2f}")
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# head -8 backend/ml_service/utils/check_norm.py
+uv run python -m backend.ml_service.utils.check_norm
+import numpy as np
+from backend.pipelines.data_loader import load_raw_edf
+from backend.ml_service.utils.preprocessing import raw_data_preproccesing
+from backend.ml_service.utils.windowing import slice_raw_into_windows
+from backend.ml_service.inference_engine import ClinicalInferenceEngine
+from backend.ml_service.utils.data_loader import build_annotations_index
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+training mode: False | data_scale: 1000000.0
+Duración real: 204.9975 s
+      channel  start_time  stop_time label
+60884  FP1-F7      7.9890   117.9905  gnsz
+60885   F7-T3      7.9890   117.9905  gnsz
+60886   T3-T5      7.9890   117.9905  gnsz
+60887   T5-O1      7.9890   117.9905  gnsz
+60888  FP2-F8      7.9890   117.9905  gnsz
+60889   F8-T4      7.9890   117.9905  gnsz
+60890   F8-T4    118.0095   170.8548  fnsz
+60891   T4-T6      7.9890   117.9905  gnsz
+60892   T4-T6    118.0095   170.8548  fnsz
+60893   T6-O2      7.9890   117.9905  gnsz
+60894   T3-C3      7.9890   117.9905  gnsz
+60895   C3-CZ      7.9890   117.9905  gnsz
+--- CSV original ---
+# version = csv_v1.0.0
+# bname = aaaaaajy_s003_t003
+# duration = 205.0000 secs
+# montage_file = 01_tcp_ar_montage.txt
+#
+channel,start_time,stop_time,label,confidence
+FP1-F7,7.9890,117.9905,gnsz,1.0000
+F7-T3,7.9890,117.9905,gnsz,1.0000
+T3-T5,7.9890,117.9905,gnsz,1.0000
+T5-O1,7.9890,117.9905,gnsz,1.0000
+FP2-F8,7.9890,117.9905,gnsz,1.0000
+F8-T4,7.9890,117.9905,gnsz,1.0000
+F8-T4,118.0095,170.8548,fnsz,1.0000
+T4-T6,7.9890,117.9905,gnsz,1.0000
+T4-T6,118.0095,170.8548,fnsz,1.0000
+T6-O2,7.9890,117.9905,gnsz,1.0000
+T3-C3,7.9890,117.9905,gnsz,1.0000
+C3-CZ,7.9890,117.9905,gnsz,1.0000
+CZ-C4,7.9890,117.9905,gnsz,1.0000
+C4-T4,7.9890,117.9905,gnsz,1.0000
+C4-T4,118.0095,170.8548,fnsz,1.0000
+FP1-F3,7.9890,117.9905,gnsz,1.0000
+F3-C3,7.9890,117.9905,gnsz,1.0000
+C3-P3,7.9890,117.9905,gnsz,1.0000
+P3-O1,7.9890,117.9905,gnsz,1.0000
+FP2-F4,7.9890,117.9905,gnsz,1.0000
+F4-C4,7.9890,117.9905,gnsz,1.0000
+C4-P4,7.98
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_norm.py", line 23, in <module>
+    raw = load_raw_edf(g.EDF.iloc[0], preload=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_raw_edf() got an unexpected keyword argument 'preload'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_norm.py && echo SINTAXIS_OK
+SINTAXIS_OK
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_norm.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_norm.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_norm.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_norm
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+training mode: False | scale: 1000000.0
+Duracion real: 204.9975 s
+      channel  start_time  stop_time label
+60884  FP1-F7      7.9890   117.9905  gnsz
+60885   F7-T3      7.9890   117.9905  gnsz
+60886   T3-T5      7.9890   117.9905  gnsz
+60887   T5-O1      7.9890   117.9905  gnsz
+60888  FP2-F8      7.9890   117.9905  gnsz
+60889   F8-T4      7.9890   117.9905  gnsz
+60890   F8-T4    118.0095   170.8548  fnsz
+60891   T4-T6      7.9890   117.9905  gnsz
+60892   T4-T6    118.0095   170.8548  fnsz
+60893   T6-O2      7.9890   117.9905  gnsz
+60894   T3-C3      7.9890   117.9905  gnsz
+60895   C3-CZ      7.9890   117.9905  gnsz
+--- CSV original ---
+# version = csv_v1.0.0
+# bname = aaaaaajy_s003_t003
+# duration = 205.0000 secs
+# montage_file = 01_tcp_ar_montage.txt
+#
+channel,start_time,stop_time,label,confidence
+FP1-F7,7.9890,117.9905,gnsz,1.0000
+F7-T3,7.9890,117.9905,gnsz,1.0000
+T3-T5,7.9890,117.9905,gnsz,1.0000
+T5-O1,7.9890,117.9905,gnsz,1.0000
+FP2-F8,7.9890,117.9905,gnsz,1.0000
+F8-T4,7.9890,117.9905,gnsz,1.0000
+F8-T4,118.0095,170.8548,fnsz,1.0000
+T4-T6,7.9890,117.9905,gnsz,1.0000
+T4-T6,118.0095,170.8548,fnsz,1.0000
+T6-O2,7.9890,117.9905,gnsz,1.0000
+T3-C3,7.9890,117.9905,gnsz,1.0000
+C3-CZ,7.9890,117.9905,gnsz,1.0000
+CZ-C4,7.9890,117.9905,gnsz,1.0000
+C4-T4,7.9890,117.9905,gnsz,1.0000
+C4-T4,118.0095,170.8548,fnsz,1.0000
+FP1-F3,7.9890,117.9905,gnsz,1.0000
+F3-C3,7.9890,117.9905,gnsz,1.0000
+C3-P3,7.9890,117.9905,gnsz,1.0000
+P3-O1,7.9890,117.9905,gnsz,1.0000
+FP2-F4,7.9890,117.9905,gnsz,1.0000
+F4-C4,7.9890,117.9905,gnsz,1.0000
+C4-P4,7.98
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_norm.py", line 26, in <module>
+    raw = load_raw_edf(g.EDF.iloc[0], preload=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_raw_edf() got an unexpected keyword argument 'preload'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i 's/preload=True/preloaD=True/' backend/ml_service/u
+tils/check_norm.py
+grep -n "preloa" backend/ml_service/utils/check_norm.py
+26:raw = load_raw_edf(g.EDF.iloc[0], preloaD=True)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_norm
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+training mode: False | scale: 1000000.0
+Duracion real: 204.9975 s
+      channel  start_time  stop_time label
+60884  FP1-F7      7.9890   117.9905  gnsz
+60885   F7-T3      7.9890   117.9905  gnsz
+60886   T3-T5      7.9890   117.9905  gnsz
+60887   T5-O1      7.9890   117.9905  gnsz
+60888  FP2-F8      7.9890   117.9905  gnsz
+60889   F8-T4      7.9890   117.9905  gnsz
+60890   F8-T4    118.0095   170.8548  fnsz
+60891   T4-T6      7.9890   117.9905  gnsz
+60892   T4-T6    118.0095   170.8548  fnsz
+60893   T6-O2      7.9890   117.9905  gnsz
+60894   T3-C3      7.9890   117.9905  gnsz
+60895   C3-CZ      7.9890   117.9905  gnsz
+--- CSV original ---
+# version = csv_v1.0.0
+# bname = aaaaaajy_s003_t003
+# duration = 205.0000 secs
+# montage_file = 01_tcp_ar_montage.txt
+#
+channel,start_time,stop_time,label,confidence
+FP1-F7,7.9890,117.9905,gnsz,1.0000
+F7-T3,7.9890,117.9905,gnsz,1.0000
+T3-T5,7.9890,117.9905,gnsz,1.0000
+T5-O1,7.9890,117.9905,gnsz,1.0000
+FP2-F8,7.9890,117.9905,gnsz,1.0000
+F8-T4,7.9890,117.9905,gnsz,1.0000
+F8-T4,118.0095,170.8548,fnsz,1.0000
+T4-T6,7.9890,117.9905,gnsz,1.0000
+T4-T6,118.0095,170.8548,fnsz,1.0000
+T6-O2,7.9890,117.9905,gnsz,1.0000
+T3-C3,7.9890,117.9905,gnsz,1.0000
+C3-CZ,7.9890,117.9905,gnsz,1.0000
+CZ-C4,7.9890,117.9905,gnsz,1.0000
+C4-T4,7.9890,117.9905,gnsz,1.0000
+C4-T4,118.0095,170.8548,fnsz,1.0000
+FP1-F3,7.9890,117.9905,gnsz,1.0000
+F3-C3,7.9890,117.9905,gnsz,1.0000
+C3-P3,7.9890,117.9905,gnsz,1.0000
+P3-O1,7.9890,117.9905,gnsz,1.0000
+FP2-F4,7.9890,117.9905,gnsz,1.0000
+F4-C4,7.9890,117.9905,gnsz,1.0000
+C4-P4,7.98
+actual p_dentro=0.111 p_fuera=0.075 max=1.00
+zscore p_dentro=0.458 p_fuera=0.032 max=0.95
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cd /workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_a
+nalysis_toolbox
+cp backend/ml_service/inference_engine.py backend/ml_service/inference_engine.py.bak
+sed -i 's|^\(\s*\)sig = signal_window \* self.data_scale|\1sig = np.asarray(signal_window, dtype=np.float64)\n\1sig = (sig - sig.mean(1, keepdims=Tr
+ue)) / (sig.std(1, keepdims=True) + 1e-8)|' backend/ml_service/inference_engine.py
+grep -n -B2 -A8 "def predict_probs" backend/ml_service/inference_engine.py
+46-            self.load_model(model_filename)
+47-
+48:    def predict_probs(self, signal_window):
+49-        """Devuelve las probabilidades por muestra, sin posprocesado."""
+50-        sig = np.asarray(signal_window, dtype=np.float64)
+51-        sig = (sig - sig.mean(1, keepdims=True)) / (sig.std(1, keepdims=True) + 1e-8)
+52-        x = torch.tensor(np.transpose(sig) if self.transpose else sig,
+53-                         dtype=torch.float32).unsqueeze(0)
+54-        with torch.no_grad():
+55-            out = self.model(x)
+56-        p = out.probabilities if hasattr(out, "probabilities") else out
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_norm 2>&1
+| tail -3
+C4-P4,7.98
+actual p_dentro=0.458 p_fuera=0.032 max=0.95
+zscore p_dentro=0.458 p_fuera=0.032 max=0.95
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i 's|g.stop_time.max()/60|g.Duration.iloc[0]/60|' bac
+kend/ml_service/utils/check_probs.py
+grep -n "Duration" backend/ml_service/utils/check_probs.py
+26:          f"proc={len(p)/sf/60:5.1f} min anot={g.Duration.iloc[0]/60:5.1f} min "
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i '/for r in sess\[sess.split == split\].itertuples()
+:/a\        if not (PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz").exists(): continue' backend/ml_service/utils/tune_postprocess.py
+grep -n -B1 -A2 "exists(): continue" backend/ml_service/utils/tune_postprocess.py
+27-    for r in sess[sess.split == split].itertuples():
+28:        if not (PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz").exists(): continue
+29-        z = np.load(PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz")
+30-        g = ann_g[(r.Patient, r.Session, r.Section)]
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# head -12 backend/ml_service/utils/tune_postprocess.py
+ls backend/ml_service/utils/postprocess.py
+uv run python -c "import optuna; print('optuna', optuna.__version__)"
+uv run python -m backend.ml_service.utils.tune_postprocess --help
+"""
+# File: tune_postprocess.py
+# Project: Trabajo de graduación
+"""
+import argparse, json, numpy as np, pandas as pd, optuna
+from src.core.data_config import OUTPUTS_DIR
+from src.core.data_loader import build_annotations_index
+from backend.ml_service.utils.postprocess import evaluate, merge_intervals, DEFAULT_PP
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--trials", type=int, default=300)
+ap.add_argument("--max-fa-day", type=float, default=10.0)
+backend/ml_service/utils/postprocess.py
+optuna 5.0.0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/tune_postprocess.py", line 6, i
+n <module>
+    from src.core.data_config import OUTPUTS_DIR
+ModuleNotFoundError: No module named 'src'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cp backend/ml_service/utils/tune_postprocess.py backend/ml
+_service/utils/tune_postprocess.py.bak
+sed -i 's|from src\.core\.data_config import|from backend.ml_service.utils.data_config import|' backend/ml_service/utils/tune_postprocess.py
+sed -i 's|from src\.core\.data_loader import|from backend.ml_service.utils.data_loader import|' backend/ml_service/utils/tune_postprocess.py
+sed -i 's|from src\.utils\.postprocess import|from backend.ml_service.utils.postprocess import|' backend/ml_service/utils/tune_postprocess.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n "^from\|^import" backend/ml_service/utils/tune_pos
+tprocess.py
+grep -n "src\." backend/ml_service/utils/tune_postprocess.py
+ls backend/ml_service/utils/postprocess.py
+5:import argparse, json, numpy as np, pandas as pd, optuna
+6:from backend.ml_service.utils.data_config import OUTPUTS_DIR
+7:from backend.ml_service.utils.data_loader import build_annotations_index
+8:from backend.ml_service.utils.postprocess import evaluate, merge_intervals, DEFAULT_PP
+backend/ml_service/utils/postprocess.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.tune_postprocess
+ --help
+usage: tune_postprocess.py [-h] [--trials TRIALS] [--max-fa-day MAX_FA_DAY] [--eval-test]
+
+options:
+  -h, --help            show this help message and exit
+  --trials TRIALS
+  --max-fa-day MAX_FA_DAY
+  --eval-test           evalúa en test con los parámetros congelados
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/postprocess.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/postp
+rocess.py && echo SINTAXIS_OK
+SINTAXIS_OK
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# head -12 backend/ml_service/utils/tune_postprocess.py
+ls backend/ml_service/utils/postprocess.py
+uv run python -c "import optuna; print('optuna', optuna.__version__)"
+uv run python -m backend.ml_service.utils.tune_postprocess --help
+"""
+# File: tune_postprocess.py
+# Project: Trabajo de graduación
+"""
+import argparse, json, numpy as np, pandas as pd, optuna
+from backend.ml_service.utils.data_config import OUTPUTS_DIR
+from backend.ml_service.utils.data_loader import build_annotations_index
+from backend.ml_service.utils.postprocess import evaluate, merge_intervals, DEFAULT_PP
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--trials", type=int, default=300)
+ap.add_argument("--max-fa-day", type=float, default=10.0)
+backend/ml_service/utils/postprocess.py
+optuna 5.0.0
+usage: tune_postprocess.py [-h] [--trials TRIALS] [--max-fa-day MAX_FA_DAY] [--eval-test]
+
+options:
+  -h, --help            show this help message and exit
+  --trials TRIALS
+  --max-fa-day MAX_FA_DAY
+  --eval-test           evalúa en test con los parámetros congelados
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# PPD=$(uv run python -c "from backend.ml_service.utils.data
+_config import OUTPUTS_DIR; print(OUTPUTS_DIR/'seizure'/'pp_probs')")
+echo $PPD
+mv "$PPD" "${PPD}_escala_vieja"
+/workspace/ml-outputs/seizure/pp_probs
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nohup uv run python -m backend.ml_service.utils.extract_pr
+obs --model models_weights/seizure_transformer.pth --n-sz 30 --n-bg 20 > extract.log 2>&1 &
+tail -f extract.log
+[1] 6596
+nohup: ignoring input
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+[OK] aaaaasgd_s003_t008.npz 10.0 min
+[FALLA] aaaaahie_s007_t026: ventana 0: (17, 15360)
+[FALLA] aaaaaovm_s001_t000: need at least one array to concatenate
+[OK] aaaaaoys_s003_t001.npz 15.0 min
+[OK] aaaaampk_s009_t003.npz 14.0 min
+[OK] aaaaahie_s024_t001.npz 15.0 min
+[OK] aaaaampk_s007_t000.npz 4.0 min
+[OK] aaaaamqq_s006_t000.npz 10.0 min
+[OK] aaaaaajy_s003_t003.npz 3.0 min
+[OK] aaaaaoek_s027_t002.npz 13.0 min
+[OK] aaaaaoek_s006_t009.npz 24.0 min
+[FALLA] aaaaamnk_s002_t005: ventana 0: (17, 15360)
+[OK] aaaaaovm_s001_t001.npz 21.0 min
+[OK] aaaaaiup_s002_t002.npz 6.0 min
+[OK] aaaaahie_s024_t000.npz 11.0 min
+[OK] aaaaamck_s001_t001.npz 21.0 min
+[OK] aaaaamnk_s001_t000.npz 26.0 min
+[OK] aaaaacqc_s003_t001.npz 9.0 min
+[OK] aaaaaool_s005_t015.npz 11.0 min
+[OK] aaaaaqrs_s001_t001.npz 12.0 min
+[OK] aaaaamqq_s004_t006.npz 14.0 min
+[FALLA] aaaaampk_s010_t006: ventana 0: (17, 15360)
+[OK] aaaaamnd_s007_t005.npz 4.0 min
+[OK] aaaaandx_s003_t006.npz 16.0 min
+[OK] aaaaaskf_s003_t003.npz 10.0 min
+[OK] aaaaadkj_s003_t003.npz 2.0 min
+[FALLA] aaaaarsp_s002_t021: ventana 0: (17, 15360)
+[OK] aaaaadkj_s003_t000.npz 7.0 min
+[OK] aaaaasgd_s003_t006.npz 10.0 min
+[OK] aaaaatgc_s004_t005.npz 1.0 min
+[OK] aaaaaopm_s009_t000.npz 4.0 min
+[FALLA] aaaaaoek_s033_t003: need at least one array to concatenate
+[FALLA] aaaaahie_s031_t057: ventana 0: (17, 15360)
+[OK] aaaaaict_s006_t010.npz 6.0 min
+[FALLA] aaaaaskf_s002_t008: ventana 0: (17, 15360)
+[OK] aaaaaskf_s005_t004.npz 4.0 min
+[OK] aaaaaoek_s032_t007.npz 10.0 min
+[OK] aaaaaoek_s031_t010.npz 10.0 min
+[OK] aaaaaskf_s007_t007.npz 4.0 min
+[OK] aaaaabxe_s002_t003.npz 9.0 min
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:104: RuntimeWarning: filter_length
+(845) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.filter(l_freq=l_freq, h_freq=h_freq, verbose=log_level)
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/preprocessing.py:106: RuntimeWarning: filter_length
+(1691) is longer than the signal (256), distortion is likely. Reduce filter length or filter a longer signal.
+  raw.notch_filter(freqs=notch_freq, verbose=log_level)
+[FALLA] aaaaamva_s004_t019: need at least one array to concatenate
+[OK] aaaaahie_s012_t008.npz 4.0 min
+[OK] aaaaaoek_s027_t000.npz 4.0 min
+[FALLA] aaaaamva_s004_t053: ventana 0: (17, 15360)
+[OK] aaaaamqw_s001_t000.npz 20.0 min
+[OK] aaaaamva_s006_t002.npz 5.0 min
+[OK] aaaaaptf_s008_t000.npz 11.0 min
+[OK] aaaaaoiz_s005_t001.npz 10.0 min
+[OK] aaaaahie_s021_t002.npz 11.0 min
+[OK] aaaaaoek_s014_t002.npz 18.0 min
+[OK] aaaaajru_s038_t006.npz 15.0 min
+[OK] aaaaaqld_s002_t004.npz 14.0 min
+[OK] aaaaarnq_s002_t001.npz 29.0 min
+[OK] aaaaaghb_s010_t001.npz 5.0 min
+[OK] aaaaaqtw_s002_t001.npz 2.0 min
+[OK] aaaaaqld_s003_t015.npz 11.0 min
+[OK] aaaaafcf_s009_t009.npz 29.0 min
+[OK] aaaaaqld_s003_t006.npz 11.0 min
+[OK] aaaaarpv_s002_t007.npz 4.0 min
+[OK] aaaaatdt_s003_t003.npz 17.0 min
+[OK] aaaaarpv_s002_t008.npz 10.0 min
+[OK] aaaaardf_s004_t011.npz 10.0 min
+[OK] aaaaaqld_s003_t013.npz 11.0 min
+[OK] aaaaatao_s002_t005.npz 11.0 min
+[OK] aaaaarpv_s002_t003.npz 4.0 min
+[OK] aaaaatba_s002_t001.npz 3.0 min
+[OK] aaaaarpu_s003_t001.npz 10.0 min
+[OK] aaaaarpv_s002_t000.npz 18.0 min
+[OK] aaaaardf_s004_t005.npz 12.0 min
+[OK] aaaaarpv_s001_t003.npz 10.0 min
+[OK] aaaaaswc_s002_t002.npz 12.0 min
+[OK] aaaaaqld_s003_t004.npz 12.0 min
+[OK] aaaaarnq_s004_t003.npz 10.0 min
+[OK] aaaaasoc_s004_t000.npz 4.0 min
+[OK] aaaaajru_s031_t005.npz 4.0 min
+[OK] aaaaajru_s029_t001.npz 16.0 min
+[OK] aaaaaghb_s010_t002.npz 6.0 min
+[OK] aaaaajru_s038_t005.npz 10.0 min
+[OK] aaaaardf_s004_t008.npz 10.0 min
+[OK] aaaaaqtw_s001_t000.npz 24.0 min
+[OK] aaaaaqvx_s010_t003.npz 10.0 min
+[FALLA] aaaaajdj_s004_t001: need at least one array to concatenate
+[OK] aaaaaqek_s009_t002.npz 10.0 min
+[OK] aaaaaqek_s008_t007.npz 10.0 min
+[OK] aaaaatdt_s004_t011.npz 4.0 min
+[OK] aaaaarpu_s004_t003.npz 4.0 min
+[OK] aaaaasfw_s003_t009.npz 10.0 min
+[OK] aaaaaarq_s017_t017.npz 10.0 min
+[OK] aaaaaraf_s005_t004.npz 6.0 min
+[OK] aaaaahlk_s006_t005.npz 4.0 min
+[OK] aaaaaqek_s008_t002.npz 10.0 min
+[OK] aaaaaqek_s010_t000.npz 4.0 min
+[OK] aaaaasip_s008_t002.npz 7.0 min
+[OK] aaaaasvq_s004_t004.npz 10.0 min
+[OK] aaaaatba_s004_t007.npz 10.0 min
+[OK] aaaaaamc_s013_t001.npz 1.0 min
+[FALLA] aaaaapli_s002_t010: need at least one array to concatenate
+[OK] aaaaasfw_s005_t003.npz 10.0 min
+[OK] aaaaaqtq_s006_t001.npz 10.0 min
+[OK] aaaaaswc_s003_t000.npz 4.0 min
+Terminado. Fallidas: 12
+^C
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.extract_probs --model models_weights/seizure_transformer.pth --n-sz 30
+ --n-bg 20 > extract.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n -A6 "def predict_probs" backend/ml_service/inferen
+ce_engine.py
+48:    def predict_probs(self, signal_window):
+49-        """Devuelve las probabilidades por muestra, sin posprocesado."""
+50-        sig = np.asarray(signal_window, dtype=np.float64)
+51-        sig = (sig - sig.mean(1, keepdims=True)) / (sig.std(1, keepdims=True) + 1e-8)
+52-        x = torch.tensor(np.transpose(sig) if self.transpose else sig,
+53-                         dtype=torch.float32).unsqueeze(0)
+54-        with torch.no_grad():
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_probs > ch
+eck.log 2>&1
+head -10 check.log
+ok        False  True
+split sz
+test  0       2     18
+      1       0     30
+val   0       5     15
+      1       5     25
+val  aaaaasgd_s003_t008: proc= 10.0 min anot= 10.6 min crisis= 12.1% p_dentro=0.16 p_fuera=0.043
+val  aaaaaoys_s003_t001: proc= 15.0 min anot= 16.0 min crisis=  8.9% p_dentro=0.67 p_fuera=0.029
+val  aaaaampk_s009_t003: proc= 14.0 min anot= 14.5 min crisis=  7.6% p_dentro=0.95 p_fuera=0.029
+val  aaaaahie_s024_t001: proc= 15.0 min anot= 15.0 min crisis=  5.3% p_dentro=0.05 p_fuera=0.011
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep "p_dentro=" check.log | grep -v "p_dentro=nan" | awk
+'{split($0,a,"p_dentro=");split(a[2],b," ");split($0,c,"p_fuera=");s=$1; n[s]++; if (b[1]+0 > c[2]+0) w[s]++} END{for(s in n) print s, "sesiones con
+ crisis:", n[s], "| p_dentro > p_fuera en:", w[s]+0}'
+test sesiones con crisis: 30 | p_dentro > p_fuera en: 27
+val sesiones con crisis: 25 | p_dentro > p_fuera en: 22
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n "models_registry\|PP_DIR\|exists(): continue" back
+end/ml_service/utils/tune_postprocess.py
+16:PP_DIR = OUTPUTS_DIR / "seizure" / "pp_probs"
+17:OUT_JSON = PP_DIR / "postprocess_frozen.json"
+18:sess = pd.read_csv(PP_DIR / "sessions.csv")
+28:        if not (PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz").exists(): continue
+29:        z = np.load(PP_DIR / f"{r.Patient}_{r.Session}_{r.Section}.npz")
+77:    from epileptic_eeg_analysis_toolbox.backend.ml_service.models_registry import PP_DIR
+79:    PP_DIR.mkdir(parents=True, exist_ok=True)
+80:    (PP_DIR / f"{args.model_key}.json").write_text(json.dumps(
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.tune_postprocess
+ --trials 5
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+[I 2026-10-29 03:00:00,932] A new study created in memory with name: no-name-f2df6766-f225-48cc-8a67-0d9b92541612
+[I 2026-10-29 03:00:00,981] Trial 0 finished with value: -0.21921362721699653 and parameters: {'smooth_sec': 1.8727005942368125, 'thr_on': 0.9179642
+991664454, 'thr_off_ratio': 0.8123957592679836, 'merge_gap_sec': 17.959754525911098, 'min_dur_sec': 4.680559213273096}. Best is trial 0 with value:
+-0.21921362721699653.
+[I 2026-10-29 03:00:01,045] Trial 1 finished with value: -9.538022743226168 and parameters: {'smooth_sec': 0.7799726016810132, 'thr_on': 0.337754347
+9093296, 'thr_off_ratio': 0.9063233020424546, 'merge_gap_sec': 18.033450352296263, 'min_dur_sec': 21.242177333881365}. Best is trial 0 with value: -
+0.21921362721699653.
+[I 2026-10-29 03:00:01,093] Trial 2 finished with value: -0.5632327202957553 and parameters: {'smooth_sec': 0.10292247147901223, 'thr_on': 0.9304414
+039052962, 'thr_off_ratio': 0.8827098485602951, 'merge_gap_sec': 6.370173320348284, 'min_dur_sec': 5.454749016213018}. Best is trial 0 with value: -
+0.21921362721699653.
+[I 2026-10-29 03:00:01,151] Trial 3 finished with value: -8.84998455706865 and parameters: {'smooth_sec': 0.9170225492671691, 'thr_on': 0.4977574579
+236995, 'thr_off_ratio': 0.6673295021425665, 'merge_gap_sec': 12.958350559263472, 'min_dur_sec': 8.736874205941257}. Best is trial 0 with value: -0.
+21921362721699653.
+[I 2026-10-29 03:00:01,212] Trial 4 finished with value: -9.803610463755907 and parameters: {'smooth_sec': 3.0592644736118975, 'thr_on': 0.390671009
+42382715, 'thr_off_ratio': 0.5045012539746527, 'merge_gap_sec': 10.99085529881075, 'min_dur_sec': 13.682099526511077}. Best is trial 0 with value: -
+0.21921362721699653.
+[val ajustado] sens=0.157 FA/día=13.7 eventos=51 horas=7.0
+[estabilidad] objetivo óptimo=-0.219 | peor con ±20%=-4.554
+[OK] congelado en /workspace/ml-outputs/seizure/pp_probs/postprocess_frozen.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/tune_postprocess.py", line 77, in <module>
+    from epileptic_eeg_analysis_toolbox.backend.ml_service.models_registry import PP_DIR
+ModuleNotFoundError: No module named 'epileptic_eeg_analysis_toolbox'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -n '74,86p' backend/ml_service/utils/tune_postprocess.
+py
+                                        max_fa_day=args.max_fa_day, test=None), indent=2))
+    print("[OK] congelado en", OUT_JSON)
+
+    from epileptic_eeg_analysis_toolbox.backend.ml_service.models_registry import PP_DIR
+
+    PP_DIR.mkdir(parents=True, exist_ok=True)
+    (PP_DIR / f"{args.model_key}.json").write_text(json.dumps(
+        dict(postprocess=best, tuned_on="val", n_val_sessions=len(val),
+            max_fa_day=args.max_fa_day, val=m_val), indent=2))
+
+else:
+    cfg = json.loads(OUT_JSON.read_text())
+    if cfg["test"] is not None:
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i '77,82s/^/#/' backend/ml_service/utils/tune_postpro
+cess.py
+sed -n '74,86p' backend/ml_service/utils/tune_postprocess.py
+                                        max_fa_day=args.max_fa_day, test=None), indent=2))
+    print("[OK] congelado en", OUT_JSON)
+
+#    from epileptic_eeg_analysis_toolbox.backend.ml_service.models_registry import PP_DIR
+#
+#    PP_DIR.mkdir(parents=True, exist_ok=True)
+#    (PP_DIR / f"{args.model_key}.json").write_text(json.dumps(
+#        dict(postprocess=best, tuned_on="val", n_val_sessions=len(val),
+#            max_fa_day=args.max_fa_day, val=m_val), indent=2))
+
+else:
+    cfg = json.loads(OUT_JSON.read_text())
+    if cfg["test"] is not None:
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nohup uv run python -m backend.ml_service.utils.tune_postp
+rocess --trials 300 > tune.log 2>&1 &
+tail -f tune.log | grep -v "Trial"
+[1] 7059
+nohup: ignoring input
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+[I 2026-10-29 03:02:08,986] A new study created in memory with name: no-name-fec3503d-9671-4c5b-abad-ab1b60cbf7ef
+[val ajustado] sens=0.157 FA/día=10.3 eventos=51 horas=7.0
+[estabilidad] objetivo óptimo=0.125 | peor con ±20%=-2.873
+[OK] congelado en /workspace/ml-outputs/seizure/pp_probs/postprocess_frozen.json
+^C
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nohup uv run python -m backend.ml_service.utils.tune_postp
+rocess --trials 300 > tune.log 2>&1 & tail -f tune.log | grep -v "Trial"
+[1] 7208
+nohup: ignoring input
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+[I 2026-10-29 03:03:23,677] A new study created in memory with name: no-name-3eca0810-1e09-420f-a0c0-b5690ee6ede8
+[val ajustado] sens=0.157 FA/día=10.3 eventos=51 horas=7.0
+[estabilidad] objetivo óptimo=0.125 | peor con ±20%=-2.873
+[OK] congelado en /workspace/ml-outputs/seizure/pp_probs/postprocess_frozen.json
+uv run python -m py_compile backend/ml_service/utils/tune_postprocess.py && echo SINTAXIS_OK
+nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1 &
+^C
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/tune_
+postprocess.py && echo SINTAXIS_OK
+nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1 &
+SINTAXIS_OK
+[1] 7361
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# tail -f tune.log | grep -v "Trial"
+[val ajustado] sens=0.157 FA/día=10.3 eventos=51 horas=7.0
+[estabilidad] objetivo óptimo=0.125 | peor con ±20%=-2.873
+[OK] congelado en /workspace/ml-outputs/seizure/pp_probs/postprocess_frozen.json
+grep -E "^\[(val|estabilidad|OK)" tune.log
+^C
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nohup uv run python -m backend.ml_service.utils.tune_postp
+rocess --trials 300 > tune.log 2>&1 & tail -f tune.log | grep -v "Trial"
+[1] 7510
+nohup: ignoring input
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+[I 2026-10-29 03:05:14,864] A new study created in memory with name: no-name-dc45f6e4-73bf-4c4c-b32b-18f9e357e3b9
+[val ajustado] sens=0.157 FA/día=10.3 eventos=51 horas=7.0
+[estabilidad] objetivo óptimo=0.125 | peor con ±20%=-2.873
+[OK] congelado en /workspace/ml-outputs/seizure/pp_probs/postprocess_frozen.json
+^C
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/tune_
+postprocess.py && echo SINTAXIS_OK
+nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1 &
+SINTAXIS_OK
+[1] 7813
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# tail -f tune.log | grep -v "Trial"
+nohup: ignoring input
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+[I 2026-10-29 03:14:45,482] A new study created in memory with name: no-name-2669cd5b-4505-407a-843f-d6f690591c67
+grep -E "^\[(val|estabilidad|OK)" tune.log
+^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -E "^\[(val|estabilidad|OK)" tune.log
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# pgrep -af tune_postprocess
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.tune_postprocess --trials 300 > tune.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -E "^\[(val|estab|OK)" tune.log
+[val baseline crudo] sens=0.569 FA/día=27631.5 eventos=51 horas=7.0
+[val ajustado] sens=0.157 FA/día=10.3 eventos=51 horas=7.0
+[estabilidad] objetivo óptimo=0.125 | peor con ±20%=-2.873
+[OK] congelado en /workspace/ml-outputs/seizure/pp_probs/postprocess_frozen.json
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_fa.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_fa.py && echo SINTAXIS_OK
+uv run python -m backend.ml_service.utils.check_fa > fa.log 2>&1
+cat fa.log
+SINTAXIS_OK
+params: {'smooth_sec': 1.7192498375231184, 'thr_on': 0.8645902253281361, 'thr_off_ratio': 0.949878255400619, 'merge_gap_sec': 7.359958547980839, 'mi
+n_dur_sec': 16.365175264073162}
+horas val: 6.98 sesiones: 40
+--- falsas alarmas (params congelados) ---
+aaaaamck s001 t001 FA 1203-1231 s conf=0.88
+aaaaamnk s001 t000 FA 511-537 s conf=0.91
+aaaaamnk s001 t000 FA 841-871 s conf=0.94
+--- eventos perdidos ---
+aaaaasgd s003 dur=18s pmax=0.45 pmean=0.20
+aaaaasgd s003 dur=25s pmax=0.35 pmean=0.18
+aaaaasgd s003 dur=29s pmax=0.37 pmean=0.11
+aaaaaoys s003 dur=80s pmax=0.92 pmean=0.67
+aaaaahie s024 dur=24s pmax=0.10 pmean=0.04
+aaaaahie s024 dur=24s pmax=0.13 pmean=0.07
+aaaaampk s007 dur=81s pmax=0.74 pmean=0.29
+aaaaampk s007 dur=55s pmax=0.91 pmean=0.67
+aaaaampk s007 fuera del rango procesado
+aaaaaajy s003 dur=53s pmax=0.31 pmean=0.02
+aaaaaoek s027 dur=710s pmax=0.75 pmean=0.17
+aaaaaoek s006 dur=169s pmax=0.54 pmean=0.13
+aaaaaovm s001 dur=36s pmax=0.20 pmean=0.00
+aaaaaovm s001 dur=57s pmax=0.26 pmean=0.00
+aaaaaovm s001 dur=23s pmax=0.32 pmean=0.01
+aaaaaovm s001 dur=36s pmax=0.33 pmean=0.02
+aaaaaovm s001 dur=27s pmax=0.28 pmean=0.00
+aaaaaiup s002 dur=37s pmax=0.36 pmean=0.13
+aaaaahie s024 dur=87s pmax=0.23 pmean=0.00
+aaaaahie s024 dur=20s pmax=0.27 pmean=0.00
+aaaaamck s001 dur=2s pmax=0.74 pmean=0.62
+aaaaamck s001 dur=66s pmax=0.93 pmean=0.36
+aaaaamck s001 dur=24s pmax=0.90 pmean=0.66
+aaaaamnk s001 dur=36s pmax=0.51 pmean=0.25
+aaaaacqc s003 dur=9s pmax=0.47 pmean=0.16
+aaaaacqc s003 dur=15s pmax=0.29 pmean=0.12
+aaaaacqc s003 dur=14s pmax=0.29 pmean=0.05
+aaaaacqc s003 dur=11s pmax=0.33 pmean=0.08
+aaaaaool s005 dur=49s pmax=0.89 pmean=0.69
+aaaaaqrs s001 dur=65s pmax=0.68 pmean=0.32
+aaaaamqq s004 dur=45s pmax=0.69 pmean=0.24
+aaaaamnd s007 dur=47s pmax=0.66 pmean=0.23
+aaaaandx s003 dur=21s pmax=0.78 pmean=0.30
+aaaaandx s003 dur=12s pmax=0.78 pmean=0.44
+aaaaaskf s003 dur=59s pmax=0.60 pmean=0.19
+aaaaaskf s003 dur=128s pmax=0.79 pmean=0.33
+aaaaaskf s003 dur=100s pmax=0.38 pmean=0.10
+aaaaaskf s003 dur=162s pmax=0.40 pmean=0.07
+aaaaaskf s003 dur=28s pmax=0.14 pmean=0.02
+aaaaadkj s003 dur=91s pmax=0.72 pmean=0.29
+aaaaadkj s003 dur=33s pmax=0.69 pmean=0.30
+aaaaasgd s003 dur=20s pmax=0.52 pmean=0.23
+aaaaatgc s004 dur=90s pmax=0.97 pmean=0.80
+--- curva variando solo thr_on ---
+thr=0.30 sens=0.529 FA=33 FA/dia=113.4
+thr=0.50 sens=0.412 FA=23 FA/dia=79.0
+thr=0.70 sens=0.255 FA=11 FA/dia=37.8
+thr=0.80 sens=0.196 FA=5 FA/dia=17.2
+thr=0.90 sens=0.098 FA=2 FA/dia=6.9
+thr=0.95 sens=0.078 FA=1 FA/dia=3.4
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/
+epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check_fa.py && echo SINTAXIS_OK
+uv run python -m backend.ml_service.utils.check_fa > fa.log 2>&1
+cat fa.log
+SINTAXIS_OK
+params: {'smooth_sec': 1.7192498375231184, 'thr_on': 0.8645902253281361, 'thr_off_ratio': 0.949878255400619, 'merge_gap_sec': 7.359958547980839, 'mi
+n_dur_sec': 16.365175264073162}
+horas val: 6.98 sesiones: 40
+--- falsas alarmas (params congelados) ---
+aaaaamck s001 t001 FA 1203-1231 s conf=0.88
+aaaaamnk s001 t000 FA 511-537 s conf=0.91
+aaaaamnk s001 t000 FA 841-871 s conf=0.94
+--- eventos perdidos ---
+aaaaasgd s003 dur=18s pmax=0.45 pmean=0.20
+aaaaasgd s003 dur=25s pmax=0.35 pmean=0.18
+aaaaasgd s003 dur=29s pmax=0.37 pmean=0.11
+aaaaaoys s003 dur=80s pmax=0.92 pmean=0.67
+aaaaahie s024 dur=24s pmax=0.10 pmean=0.04
+aaaaahie s024 dur=24s pmax=0.13 pmean=0.07
+aaaaampk s007 dur=81s pmax=0.74 pmean=0.29
+aaaaampk s007 dur=55s pmax=0.91 pmean=0.67
+aaaaampk s007 fuera del rango procesado
+aaaaaajy s003 dur=53s pmax=0.31 pmean=0.02
+aaaaaoek s027 dur=710s pmax=0.75 pmean=0.17
+aaaaaoek s006 dur=169s pmax=0.54 pmean=0.13
+aaaaaovm s001 dur=36s pmax=0.20 pmean=0.00
+aaaaaovm s001 dur=57s pmax=0.26 pmean=0.00
+aaaaaovm s001 dur=23s pmax=0.32 pmean=0.01
+aaaaaovm s001 dur=36s pmax=0.33 pmean=0.02
+aaaaaovm s001 dur=27s pmax=0.28 pmean=0.00
+aaaaaiup s002 dur=37s pmax=0.36 pmean=0.13
+aaaaahie s024 dur=87s pmax=0.23 pmean=0.00
+aaaaahie s024 dur=20s pmax=0.27 pmean=0.00
+aaaaamck s001 dur=2s pmax=0.74 pmean=0.62
+aaaaamck s001 dur=66s pmax=0.93 pmean=0.36
+aaaaamck s001 dur=24s pmax=0.90 pmean=0.66
+aaaaamnk s001 dur=36s pmax=0.51 pmean=0.25
+aaaaacqc s003 dur=9s pmax=0.47 pmean=0.16
+aaaaacqc s003 dur=15s pmax=0.29 pmean=0.12
+aaaaacqc s003 dur=14s pmax=0.29 pmean=0.05
+aaaaacqc s003 dur=11s pmax=0.33 pmean=0.08
+aaaaaool s005 dur=49s pmax=0.89 pmean=0.69
+aaaaaqrs s001 dur=65s pmax=0.68 pmean=0.32
+aaaaamqq s004 dur=45s pmax=0.69 pmean=0.24
+aaaaamnd s007 dur=47s pmax=0.66 pmean=0.23
+aaaaandx s003 dur=21s pmax=0.78 pmean=0.30
+aaaaandx s003 dur=12s pmax=0.78 pmean=0.44
+aaaaaskf s003 dur=59s pmax=0.60 pmean=0.19
+aaaaaskf s003 dur=128s pmax=0.79 pmean=0.33
+aaaaaskf s003 dur=100s pmax=0.38 pmean=0.10
+aaaaaskf s003 dur=162s pmax=0.40 pmean=0.07
+aaaaaskf s003 dur=28s pmax=0.14 pmean=0.02
+aaaaadkj s003 dur=91s pmax=0.72 pmean=0.29
+aaaaadkj s003 dur=33s pmax=0.69 pmean=0.30
+aaaaasgd s003 dur=20s pmax=0.52 pmean=0.23
+aaaaatgc s004 dur=90s pmax=0.97 pmean=0.80
+--- curva variando solo thr_on ---
+thr=0.30 sens=0.529 FA=33 FA/dia=113.4
+thr=0.50 sens=0.412 FA=23 FA/dia=79.0
+thr=0.70 sens=0.255 FA=11 FA/dia=37.8
+thr=0.80 sens=0.196 FA=5 FA/dia=17.2
+thr=0.90 sens=0.098 FA=2 FA/dia=6.9
+thr=0.95 sens=0.078 FA=1 FA/dia=3.4
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#
+[tool_anal0:bash*                                                                               ^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# ^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_variants.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_variants.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_variants.py && echo SINTAXIS_OK
+nohup uv run python -m backend.ml_service.utils.check_variants > var.log 2>&1 &
+tail -f var.log
+SINTAXIS_OK
+[1] 8162
+nohup: ignoring input
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+aaaaasgd s003 t008 0.906 0.911 0.966 0.969
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_variants.py", line 67, in <module>
+    p = run(dd)
+        ^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_variants.py", line 33, in run
+    y = engine.model(x.unsqueeze(0))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py", line 79, in forward
+    assert x.shape[1:] == (self.in_channels, self.in_samples)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+^C
+[1]+  Exit 1                  nohup uv run python -m backend.ml_service.utils.check_variants > var.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_variants.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_variants.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_variants.py && echo SINTAXIS_OK
+nohup uv run python -m backend.ml_service.utils.check_variants > var.log 2>&1 &
+tail -f var.log
+SINTAXIS_OK
+[1] 8379
+nohup: ignoring input
+models_weights/seizure_transformer.pth
+/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/seizure_transformer.py:61: UserWarning: enable_nested_tens
+or is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference perfor
+mance)
+  self.transformer_encoder = nn.TransformerEncoder(
+aaaaasgd s003 t008 0.906 0.911 0.966 0.969
+aaaaaoys s003 t001 0.999 0.978 0.996 0.985
+aaaaampk s009 t003 1.000 1.000 1.000 1.000
+aaaaahie s024 t001 0.942 0.834 0.795 0.556
+aaaaampk s007 t000 0.822 0.816 0.826 0.815
+aaaaamqq s006 t000 0.975 0.976 0.982 0.974
+aaaaaajy s003 t003 0.816 0.762 0.770 0.739
+aaaaaoek s027 t002 0.740 0.486 0.776 0.795
+--- AUROC medio ---
+win 1-100 0.900
+rec 1-100 0.845
+win .5-120 0.889
+rec .5-120 0.854
+
+nano backend/ml_service/utils/check_pooled.py
+^C
+[1]+  Done                    nohup uv run python -m backend.ml_service.utils.check_variants > var.log 2>&1
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_pooled.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i 's/for split in ("val", "test"):/for split in ("val
+",):/' backend/ml_service/utils/check_pooled.py
+grep -n "for split" backend/ml_service/utils/check_pooled.py
+uv run python -m backend.ml_service.utils.check_pooled
+16:for split in ("val",):
+^CTraceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_pooled.py", line 14, in <module>
+    G = {k: g for k, g in ann.groupby(["Patient", "Session", "Section"])}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_pooled.py", line 14, in <dictcomp>
+    G = {k: g for k, g in ann.groupby(["Patient", "Session", "Section"])}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 627, in get_iterator
+    yield from zip(keys, splitter, strict=True)
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 1256, in __iter__
+    yield self._chop(sdata, slice(start, end))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 1279, in _chop
+    mgr = sdata._mgr.get_slice(slice_obj, axis=1)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/internals.pyx", line 911, in pandas._libs.internals.BlockManager.get_slice
+  File "pandas/_libs/internals.pyx", line 891, in pandas._libs.internals.BlockManager._slice_mgr_rows
+  File "pandas/_libs/internals.pyx", line 723, in pandas._libs.internals.Block.slice_block_rows
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/internals/blocks.py", line 2088, in slice_block_rows
+    new_values = self.values[slicer]
+                 ~~~~~~~~~~~^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 801, in __getitem__
+    result = self._from_pyarrow_array(value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/arrays/string_arrow.py", line 167, in _from_pyarrow_a
+rray
+    return type(self)(pa_array, dtype=self.dtype)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/arrays/string_arrow.py", line 138, in __init__
+    or _is_string_view(values.type)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/arrays/string_arrow.py", line 76, in _is_string_view
+    def _is_string_view(typ):
+
+KeyboardInterrupt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -i 's/for split in ("val", "test"):/for split in ("val
+",):/' backend/ml_service/utils/check_pooled.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# grep -n "for split" backend/ml_service/utils/check_pooled.
+py
+16:for split in ("val",):
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.check_pooled
+val muestras=804480 prevalencia=0.128 AUROC=0.785 AP=0.386
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_baseline.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_baseline.py && echo SINTAXIS_OK
+uv run python -m backend.ml_service.utils.check_baseline
+SINTAXIS_OK
+crudo                  AUROC=0.785 AP=0.386
+menos mediana sesion   AUROC=0.678 AP=0.335
+menos media 5 min      AUROC=0.669 AP=0.336
+menos media 10 min     AUROC=0.698 AP=0.369
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_events.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_events.py && echo SINTAXIS_OK
+uv run python -m backend.ml_service.utils.check_events
+SINTAXIS_OK
+          n  pmax_ge_05  pmax_ge_08  pmean_mediana
+label
+cpsz    1.0        1.00        0.00           0.25
+fnsz   29.0        0.41        0.17           0.13
+gnsz   20.0        0.80        0.45           0.33
+            n  pmax_ge_05  pmax_ge_08  pmean_mediana
+dur_bin
+<20s      8.0        0.38        0.00           0.18
+20-60s   25.0        0.48        0.24           0.18
+60-180s  16.0        0.81        0.50           0.35
+>180s     1.0        1.00        0.00           0.17
+            n  pmax_ge_05  pmax_ge_08  pmean_mediana
+patient
+aaaaacqc  4.0        0.00        0.00           0.10
+aaaaahie  4.0        0.00        0.00           0.02
+aaaaaiup  1.0        0.00        0.00           0.13
+aaaaaovm  5.0        0.00        0.00           0.00
+aaaaasgd  4.0        0.25        0.00           0.19
+aaaaaskf  5.0        0.40        0.00           0.10
+aaaaaajy  2.0        0.50        0.50           0.34
+aaaaadkj  4.0        1.00        0.50           0.46
+aaaaamnk  1.0        1.00        0.00           0.25
+aaaaampk  3.0        1.00        0.67           0.67
+aaaaandx  2.0        1.00        0.00           0.37
+aaaaamqq  4.0        1.00        0.75           0.71
+aaaaaoek  2.0        1.00        0.00           0.15
+aaaaaool  1.0        1.00        1.00           0.69
+aaaaamnd  1.0        1.00        0.00           0.23
+aaaaamck  3.0        1.00        0.67           0.62
+aaaaaqrs  2.0        1.00        0.50           0.54
+aaaaaoys  1.0        1.00        1.00           0.67
+aaaaatgc  1.0        1.00        1.00           0.80
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_montage.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_montage.py && echo SINTAXIS_OK
+uv run python -m backend.ml_service.utils.check_montage
+SINTAXIS_OK
+              n   det  pmax_med
+montage
+01_tcp_ar    35  0.63      0.68
+02_tcp_le     4  0.00      0.31
+03_tcp_ar_a  11  0.64      0.69
+              montage  n   det  pmax_med  dur_med
+patient
+aaaaacqc    02_tcp_le  4  0.00      0.31    12.80
+aaaaahie    01_tcp_ar  4  0.00      0.18    24.02
+aaaaaiup  03_tcp_ar_a  1  0.00      0.36    37.01
+aaaaaovm    01_tcp_ar  5  0.00      0.28    35.58
+aaaaasgd    01_tcp_ar  4  0.25      0.41    22.59
+aaaaaskf  03_tcp_ar_a  5  0.40      0.40    99.94
+aaaaaajy    01_tcp_ar  2  0.50      0.63    81.42
+aaaaadkj  03_tcp_ar_a  4  1.00      0.84    51.96
+aaaaamnk    01_tcp_ar  1  1.00      0.51    36.00
+aaaaampk    01_tcp_ar  3  1.00      0.91    63.43
+aaaaandx    01_tcp_ar  2  1.00      0.78    16.57
+aaaaamqq    01_tcp_ar  4  1.00      0.98    87.49
+aaaaaoek    01_tcp_ar  2  1.00      0.64   439.68
+aaaaaool    01_tcp_ar  1  1.00      0.89    49.02
+aaaaamnd    01_tcp_ar  1  1.00      0.66    46.95
+aaaaamck    01_tcp_ar  3  1.00      0.90    24.02
+aaaaaqrs    01_tcp_ar  2  1.00      0.82    59.03
+aaaaaoys    01_tcp_ar  1  1.00      0.92    80.14
+aaaaatgc  03_tcp_ar_a  1  1.00      0.97    89.93
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# nano backend/ml_service/utils/check_partition.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/check
+_partition.py && echo SINTAXIS_OK
+uv run python -m backend.ml_service.utils.check_partition
+SINTAXIS_OK
+split  Partition
+test   eval         26
+val    dev          27
+dtype: int64
+split  Montage
+test   01_tcp_ar      25
+       03_tcp_ar_a     1
+val    01_tcp_ar      21
+       02_tcp_le       2
+       03_tcp_ar_a     4
+dtype: int64
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.plot_session --k
+ey aaaaaajy_s003_t003 --t0 0 --t1 200
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/bin/python: No module named backend.ml_service.utils.plot_session
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# sed -n '90,130p' frontend/workers/analysis_worker.py
+                self.window_size_sec = engine.window_size_sec
+                self.stride_sec = engine.stride_sec
+
+            # Windows temporal segmentation
+            self.progress_updated.emit(85, f"Segmentando señal ({self.window_size_sec}s)...")
+            windows = slice_raw_into_windows(
+                raw=preprocessed_raw,
+                window_size_sec=self.window_size_sec,
+                stride_sec=self.stride_sec
+            )
+
+            # AI inference
+            detections = []
+            if engine is not None:
+                self.progress_updated.emit(90, "Ejecutando inferencia clínica...")
+                detections = engine.predict_study_windows(
+                    windows = windows,
+                    sfreq = float(preprocessed_raw.info["sfreq"]),
+                    components_full = components_full,
+                    mixing_matrix = mixing_matrix,
+                    ic_probs = ic_probs
+                )
+
+
+            # Clossing / Ending
+            self.progress_updated.emit(100, "Procesamiento completo con éxito")
+
+            # Data
+            signal_matrix_uv = preprocessed_raw.get_data() * 1e6
+            ch_names = list(preprocessed_raw.ch_names)
+            sfreq = float(preprocessed_raw.info["sfreq"])
+            duration_sec = float(preprocessed_raw.n_times / sfreq)
+
+            # Results
+            results = {
+                "metadata": metadata,
+                "raw": preprocessed_raw,
+                "signal_matrix": signal_matrix_uv,
+                "ch_names": ch_names,
+                "sfreq": sfreq,
+                "duration_sec": duration_sec,
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# cd /workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_a
+nalysis_toolbox
+nano backend/ml_service/utils/plot_session.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m py_compile backend/ml_service/utils/plot_
+session.py && echo SINTAXIS_OK
+SINTAXIS_OK
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox# uv run python -m backend.ml_service.utils.plot_session --k
+ey aaaaaajy_s003_t003 --t0 0 --t1 180
+eventos crudo: 46 | ajustado: 1 | referencia: 2
+[OK] /workspace/ml-outputs/seizure/pp_probs/plot_aaaaaajy_s003_t003.png
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/epileptic_eeg_analysis_toolbox#

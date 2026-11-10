@@ -1,0 +1,35 @@
+ _____                             _
+|  __ \                           | |
+| |__) |   _ _ __  _ __   ___   __| |
+|  _  / | | | '_ \| '_ \ / _ \ / _` |
+| | \ \ |_| | | | | |_) | (_) | (_| |
+|_|  \_\__,_|_| |_| .__/ \___/ \__,_|
+                  | |
+                  |_|
+For detailed documentation and guides, please visit:
+https://docs.runpod.io/
+and https://blog.runpod.io
+
+root@d4deb216ff16:/# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

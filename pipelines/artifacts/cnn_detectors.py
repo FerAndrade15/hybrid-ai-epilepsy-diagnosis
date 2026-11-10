@@ -18,6 +18,7 @@ from src.core.data_config import (  ARTIFACT_KEYWORDS, BIPOLAR_MONTAGE,
                                     WINDOW_REQUESTS_ARTIFACTS, SFREQ,
                                     RATIOS, VERSION, OUTPUTS_DIR,
                                     find_project_root,
+					COMPARISON
                                 )
 from src.core.data_loader import build_annotations_index
 from src.core.windowing import get_or_build_windows
@@ -67,11 +68,14 @@ for d in (ICA_CACHE_DIR, SESSION_CACHE_DIR, WINDOWS_CACHE_DIR, FEATURES_DIR, DAT
 
 # CONFIGURATION ACCORDING TO THE REPORTED CODING OF THE TESTS: lightweight, paper ...
 
+config_model = "paper"
+
 CNN_CONFIG = {
-    "eye":               {"model_type": "standard", "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
-    "muscle":            {"model_type": "standard", "max_fp_per_day": 100,   "epochs": 100, "lr": 3e-4},
-    "non_physiological": {"model_type": "standard", "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
+    	"eye":               {"model_type": config_model, "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
+    	"muscle":            {"model_type": config_model, "max_fp_per_day": 100,   "epochs": 100, "lr": 3e-4},
+	"non_physiological": {"model_type": config_model, "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
 }
+
 
 LOSS_VARIANTS = {
     "A1": dict(focal_params={"alpha": 0.25, "gamma": 2.0}, use_class_weights=False),

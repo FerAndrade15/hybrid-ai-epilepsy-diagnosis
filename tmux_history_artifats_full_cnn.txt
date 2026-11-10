@@ -1,0 +1,1981 @@
+ _____                             _
+|  __ \                           | |
+| |__) |   _ _ __  _ __   ___   __| |
+|  _  / | | | '_ \| '_ \ / _ \ / _` |
+| | \ \ |_| | | | | |_) | (_) | (_| |
+|_|  \_\__,_|_| |_| .__/ \___/ \__,_|
+                  | |
+                  |_|
+For detailed documentation and guides, please visit:
+https://docs.runpod.io/
+and https://blog.runpod.io
+
+root@d4deb216ff16:/# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# git fetch origin
+gitremote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 12 (delta 9), reused 12 (delta 9), pack-reused 0 (from 0)
+Unpacking objects: 100% (12/12), 1.46 KiB | 16.00 KiB/s, done.
+sFrom https://github.com/FerAndrade15/hybrid-ai-epilepsy-diagnosis
+   af58118..7298225  main       -> origin/main
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# git status
+On branch main
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   epileptic_eeg_analysis_toolbox/backend/ml_service/inference_engine.py
+        modified:   epileptic_eeg_analysis_toolbox/backend/ml_service/utils/extract_probs.py
+        modified:   epileptic_eeg_analysis_toolbox/backend/ml_service/utils/postprocess.py
+        modified:   epileptic_eeg_analysis_toolbox/backend/ml_service/utils/tune_postprocess.py
+        deleted:    prior_work/Summary.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/.gitkeep
+        deleted:    prior_work/phase-i-2020-angulo-pineda/01_FirstPhase.mlx
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/Caracteristicas.m
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/NN/NN_dise\303\261o.JPG"
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/NN/Physionet_ANN.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/NN/UBonn_ANN.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/ReadMe.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/SVM/Physionet_SVM.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clasificadores/SVM/SVM_UBonn.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clustering/HUMANA_Clustering.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clustering/ReadME.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Clustering/clasificador_humana.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Documentos/Articulo___Maria_Angulo.pdf
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Documentos/Protocolo_Maria_Angulo.pdf
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Documentos/Tesis___Maria_Angulo.pdf
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features.asv
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features_tipicas.asv
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features_tipicas.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Features_wavelet.m
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/annresult.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ejemploventana1.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ejventana2.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ejventana21.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/ANN_Physionet.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_Physionet.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_Physionet_resumen.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_UBonn.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/SVM_UBonn_resumen.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/UBonn_wavelet_method_ANN.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/UBonn_wavelet_method_SVM.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/ZCconcrisis.PNG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/ZCsincrisis.PNG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/mav_physionet_example.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/resumen_ANN_SVM.png"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/resultados/zc_physionet_example.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/svmresult.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana0.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana0.PNG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana0_1.jpeg"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana1.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana1.png"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana2.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana3.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/ventana5.JPG"
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Im\303\241genes/windowstructure.JPG"
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/Manual de Usuario/Manual_de_Usuario.pdf
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/ReadMe.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/ZC.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/agregarpac.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/clasificadorRN.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/clasificadorSVM.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/consultas.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/deserialize.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/edfread.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/features.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/logouvg.jpg
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/principal.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/procesamiento.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/selectprueba.mlapp
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Epileptic EEG Analysis Toolbox/serialize.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/Features_edf.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/Features_wavelet.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/Graficar_clusters.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/ReadMe.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/VAT.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/ZC.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/edfread.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/fcm.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/k_means.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Funciones/labelsGen.m
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Presentaci\303\263n - Mar\303\255a Angulo - 2020.pptx"
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/ReadMe.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/FCM_p1.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/FCM_p2.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/k_means_p1.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/HUMANA/k_means_p2.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_2canales_x3.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_4canales_x3.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_db10_x2.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/RN_db4_x2.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/SVM_2canales_x3.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/Physionet/SVM_4canales_x3.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/ReadMe.md
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setAE_k10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setAE_k4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setDE_k10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_setDE_k4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setAE_db10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setAE_db4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setDE_db10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/RN_wavelet_setDE_db4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setAE_k10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setAE_k4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setDE_k10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_setDE_k4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setAE_db10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setAE_db4.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setDE_db10.eps
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Resultados_Finales/UBonn/SVM_wavelet_setDE_db4.eps
+        deleted:    "prior_work/phase-i-2020-angulo-pineda/thesis_content/Tesis - Mar\303\255a Angulo, final - 2020.pdf"
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Wavelet/Wavelet.m
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Wavelet/subbandaswavelet.JPG
+        deleted:    prior_work/phase-i-2020-angulo-pineda/thesis_content/Wavelet/subbandaswavelet_test.JPG
+        deleted:    prior_work/phase-ii-2021-vela-manrique/.gitkeep
+        deleted:    prior_work/phase-iii-2022-lemus-silvestre/.gitkeep
+        deleted:    "prior_work/phase-iv-2023-patz\303\241n-m\303\251ndez-caceros/.gitkeep"
+        deleted:    prior_work/phase-iv-2024-ixcayau-perez/.gitkeep
+        deleted:    prior_work/phase_vi_2025_sanchez/Benchmark and XAI.py
+        deleted:    prior_work/phase_vi_2025_sanchez/EDFData.ipynb
+        deleted:    prior_work/phase_vi_2025_sanchez/XAI.ipynb
+        deleted:    prior_work/phase_vi_2025_sanchez/analysis (2).ipynb
+        deleted:    prior_work/phase_vi_2025_sanchez/analysis.ipynb
+        deleted:    prior_work/phase_vi_2025_sanchez/models/Hybrid.py
+        deleted:    prior_work/phase_vi_2025_sanchez/models/TCN.py
+        deleted:    prior_work/phase_vi_2025_sanchez/models/Transformer.py
+        deleted:    prior_work/phase_vi_2025_sanchez/models/layers.py
+        deleted:    prior_work/phase_vi_2025_sanchez/pt/InitialTests.py
+        deleted:    prior_work/phase_vi_2025_sanchez/pt/benchmark.py
+        deleted:    prior_work/phase_vi_2025_sanchez/pt/config_used.json
+        deleted:    prior_work/phase_vi_2025_sanchez/pt/feature_scaler.pkl
+        deleted:    prior_work/phase_vi_2025_sanchez/results/attention_FN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/attention_FP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/attention_TN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/attention_TP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/saliency_features.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/saliency_signal_v0.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/shap_FN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/shap_FP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/shap_TN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/shap_TP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v0_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v0_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v0_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v1_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v1_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v1_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v2_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v2_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FN_v2_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v0_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v0_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v0_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v1_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v1_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v1_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v2_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v2_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_FP_v2_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v0_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v0_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v0_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v1_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v1_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v1_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v2_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v2_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TN_v2_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v0_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v0_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v0_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v1_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v1_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v1_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v2_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v2_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_TP_v2_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_resumen_cuantitativo.json
+        deleted:    prior_work/phase_vi_2025_sanchez/results/xai_state.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/.gitkeep
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/.vscode/settings.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/EDFData.ipynb
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/XAI.ipynb
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/classes/models.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/main.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/pt/InitialTests.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/pt/config_used.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/pt/feature_scaler.pkl
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/tf/config_used.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/networks/tf/run_config.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/processing/files.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/processing/network_eval.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/api/routers/models.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/benchmark.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/cfg.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/dataset.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/Hybrid.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/TCN.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/Transformer.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/models/layers.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/pipeline.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/sweep.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/pt/utils.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_FN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_FP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_TN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/attention_TP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/saliency_features.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/saliency_signal_v0.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_FN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_FP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_TN.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/shap_TP.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v0_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v0_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v0_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v1_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FN_v2_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v0_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v1_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_FP_v2_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v0_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v1_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TN_v2_p0.00_t0_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v0_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v1_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_ig_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_saliency_signal.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_TP_v2_p0.69_t15_summary.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_resumen_cuantitativo.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/results/xai_state.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/benchmark.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/cfg.json
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/dataset.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/Hybrid.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/TCN.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/models/Transformer.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/pipeline.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/requirements.txt
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/sweep.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/tf/utils.py
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/README.md
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/assets/gui_screenshot.png
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/requirements.txt
+        deleted:    prior_work/phase_vi_2025_sanchez/sanchez_repository/ui/ui.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        aitrics_training_paper_parameters.txt
+        bench_rf.py
+        epileptic_eeg_analysis_toolbox/backend/ml_service/inference_engine.py.bak
+        epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_fa.py
+        epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_norm.py
+        epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_probs.py
+        epileptic_eeg_analysis_toolbox/backend/ml_service/utils/check_variants.py
+        epileptic_eeg_analysis_toolbox/backend/ml_service/utils/tune_postprocess.py.bak
+        gpu_log.txt
+        ica_xgboost_pipeline_panel_0.txt
+        tmux_ica_machine.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# git pull
+Updating af58118..7298225
+Fast-forward
+ epileptic_eeg_analysis_toolbox/frontend/workers/analysis_worker.py |  4 ++--
+ pipelines/artifacts/cnn_detectors.py                               | 29 ++++++++++++++++++++++++++---
+ src/models/cnn_artifact_detector.py                                |  8 +++++---
+ 3 files changed, 33 insertions(+), 8 deletions(-)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye
+[INFO] Using device: cuda
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/pipelines/artifacts/cnn_detectors.py", line 51, in <module>
+    manually_checked=COMPARISON,
+                     ^^^^^^^^^^
+NameError: name 'COMPARISON' is not defined
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eyesed -i '/^from src
+.core.data_loader import build_annotations_index/i from src.core.data_config import COMPARISON' pipelines/artifacts/cnn_detectors.py
+grep -n "COMPARISON\|NORMALIZE\|MedicalEval" pipelines/artifacts/cnn_detectors.py
+[INFO] Using device: cuda
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/pipelines/artifacts/cnn_detectors.py", line 51, in <module>
+    manually_checked=COMPARISON,
+                     ^^^^^^^^^^
+NameError: name 'COMPARISON' is not defined
+28:from src.utils.artifacts_eval import MedicalEval
+51:    manually_checked=COMPARISON,
+224:        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval else None
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# sed -i '/^from src.core.data_loader import build_annotations_index/i from src.utils.artifacts_eval import
+MedicalEval' pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# grep -n "COMPARISON\|NORMALIZE\|MedicalEval" pipelines/artifacts/cnn_detectors.pysed -i '/^from src.core.d
+ata_loader import build_annotations_index/i from src.core.data_config import COMPARISON, NORMALIZE' pipelines/artifacts/cnn_detecto
+rs.py
+grep: pipelines/artifacts/cnn_detectors.pysed: No such file or directory
+grep: /^from src.core.data_loader import build_annotations_index/i from src.core.data_config import COMPARISON, NORMALIZE: No such file or directory
+pipelines/artifacts/cnn_detectors.py:22:from src.utils.artifacts_eval import MedicalEval
+pipelines/artifacts/cnn_detectors.py:29:from src.utils.artifacts_eval import MedicalEval
+pipelines/artifacts/cnn_detectors.py:52:    manually_checked=COMPARISON,
+pipelines/artifacts/cnn_detectors.py:225:        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval
+ else None
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# grep -n "COMPARISON\|NORMALIZE\|MedicalEval" pipelines/artifacts/cnn_detectors.py
+22:from src.utils.artifacts_eval import MedicalEval
+29:from src.utils.artifacts_eval import MedicalEval
+52:    manually_checked=COMPARISON,
+225:        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval else None
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# sed -i '/^from src.core.data_loader import build_annotations_index/i from src.utils.artifacts_eval import
+MedicalEval' pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts eye
+[INFO] Using device: cuda
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/pipelines/artifacts/cnn_detectors.py", line 53, in <module>
+    manually_checked=COMPARISON,
+                     ^^^^^^^^^^
+NameError: name 'COMPARISON' is not defined
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# sed -i '1i from src.core.data_config import COMPARISON' pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# grep -n "COMPARISON\|MedicalEval" pipelines/artifacts/cnn_detectors.py
+1:from src.core.data_config import COMPARISON
+23:from src.utils.artifacts_eval import MedicalEval
+24:from src.utils.artifacts_eval import MedicalEval
+31:from src.utils.artifacts_eval import MedicalEval
+54:    manually_checked=COMPARISON,
+227:        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval else None
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+
+
+Use "fg" to return to nano.
+
+[1]+  Stopped                 nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# grep -n "COMPARISON\|MedicalEval" pipelines/artifacts/cnn_detectors.py
+22:from src.utils.artifacts_eval import MedicalEval
+29:from src.utils.artifacts_eval import MedicalEval
+52:    manually_checked=COMPARISON,
+225:        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval else None
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# grep -n "COMPARISON\|MedicalEval" pipelines/artifacts/cnn_detectors.py
+21:                                     COMPARISON
+29:from src.utils.artifacts_eval import MedicalEval
+52:    manually_checked=COMPARISON,
+225:        medical = MedicalEval(artifact, session_cache_dir=str(SESSION_CACHE_DIR), k=3) if args.medical_eval else None
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux ls
+artifacts_cnn: 1 windows (created Thu Oct 29 10:57:53 2026)
+artifacts_ica_xg: 1 windows (created Wed Oct 28 23:26:25 2026) (attached)
+artifats_full_cnn: 1 windows (created Thu Oct 29 04:49:31 2026) (attached)
+tool_analysis: 1 windows (created Wed Oct 28 23:45:22 2026)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nvidia-smi
+Thu Oct 29 11:10:03 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.91.07              Driver Version: 595.91.07      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4090        On  |   00000000:42:00.0 Off |                  Off |
+|  0%   38C    P8             24W /  450W |       1MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts eye
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  start_time  stop_time  ...  Duration                                                EDF                                                CSV
+0  FP1-F7     22.9737    30.0688  ...  1441.996  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7    136.7987   140.1117  ...  1441.996  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7    145.0133   148.0498  ...  1441.996  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3     22.9737    30.0688  ...  1441.996  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3    136.7987   140.1117  ...  1441.996  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section    Montage Partition  ...  distinguish  genuine_cooccurrence  weak_overlap  is_unreviewed is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar            ...            0                     0             0              0           0
+1  aaaaaaju    s005    t000  01_tcp_ar            ...            0                     0             0              0           0
+2  aaaaaaju    s005    t000  01_tcp_ar            ...            0                     0             0              0           0
+3  aaaaaaju    s005    t000  01_tcp_ar            ...            0                     0             0              0           0
+4  aaaaaaju    s005    t000  01_tcp_ar            ...            0                     0             0              0           0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 11:10:36,505 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:10:36,555 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 11:10:42,388 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w5_s2_0169516f] Epoch 1/100 [train]:   0%|                                              | 4/2111 [01:02<7:52:58, 13.47s/it, loss=0.5460]Traceback (most r
+ecent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/pipelines/artifacts/cnn_detectors.py", line 230, in <module>
+    res = binary_cnn(
+          ^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/src/models/cnn_artifact_detector.py", line 889, in binary_cnn
+    detector.train(train_loader,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/src/models/cnn_artifact_detector.py", line 537, in train
+    for X_batch, y_batch, valid, _ in train_bar:
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 801, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 54, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/src/models/cnn_artifact_detector.py", line 401, in __getitem__
+    s["_Y"] = artifact_channel_masks(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/src/utils/artifacts_eval.py", line 34, in artifact_channel_masks
+    for r in session_group.itertuples():
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py", line 829, in __iter__
+    val = value.as_py()
+          ^^^^^^^^^^^^^
+KeyboardInterrupt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain 2>&1 | tee full_cnn_artifacts.log
+
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 11:13:14,330 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:13:14,377 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 11:13:18,621 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w5_s2_0169516f] Epoch 1/100 - loss=0.0254 val_loss=0.0231 val_ap=0.8305 val_f1=0.7829 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 2/100 - loss=0.0140 val_loss=0.0230 val_ap=0.8346 val_f1=0.7859 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 3/100 [train]:  34%|███▍      | 719/2111 [00:16<00:32, 42.71it/s, loss=0.0118]^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts eye 2>&1 | tee full_cnn_
+eye_artifacts.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 11:17:45,607 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:17:45,657 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 11:17:49,643 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w5_s2_0169516f] Epoch 1/100 - loss=0.0254 val_loss=0.0231 val_ap=0.8331 val_f1=0.7809 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 2/100 - loss=0.0140 val_loss=0.0232 val_ap=0.8368 val_f1=0.7846 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 3/100 - loss=0.0133 val_loss=0.0216 val_ap=0.8415 val_f1=0.7932 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 4/100 - loss=0.0129 val_loss=0.0223 val_ap=0.8391 val_f1=0.7840 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 5/100 - loss=0.0126 val_loss=0.0214 val_ap=0.8365 val_f1=0.7881 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 6/100 - loss=0.0124 val_loss=0.0218 val_ap=0.8399 val_f1=0.7900 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 7/100 - loss=0.0122 val_loss=0.0226 val_ap=0.8350 val_f1=0.7853 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 8/100 - loss=0.0121 val_loss=0.0225 val_ap=0.8440 val_f1=0.8001 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 9/100 - loss=0.0119 val_loss=0.0224 val_ap=0.8402 val_f1=0.7836 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 10/100 - loss=0.0118 val_loss=0.0226 val_ap=0.8400 val_f1=0.7869 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 11/100 - loss=0.0117 val_loss=0.0224 val_ap=0.8496 val_f1=0.7992 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 12/100 - loss=0.0117 val_loss=0.0222 val_ap=0.8531 val_f1=0.7980 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 13/100 - loss=0.0116 val_loss=0.0214 val_ap=0.8566 val_f1=0.8077 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 14/100 - loss=0.0115 val_loss=0.0219 val_ap=0.8498 val_f1=0.7986 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 15/100 - loss=0.0114 val_loss=0.0222 val_ap=0.8494 val_f1=0.7958 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 16/100 - loss=0.0114 val_loss=0.0222 val_ap=0.8522 val_f1=0.8054 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 17/100 - loss=0.0114 val_loss=0.0234 val_ap=0.8497 val_f1=0.8038 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 18/100 - loss=0.0113 val_loss=0.0230 val_ap=0.8509 val_f1=0.8011 (selección: ap)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --artifacts eye 2>&1 | tee full_cnn_eye_artifacts.lo
+ghon -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts eye 2>&1
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 11:47:32,044 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:47:32,093 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 11:47:36,080 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Resuming from 18 epoch (best_score=0.8566)
+2026-10-29 11:47:36,080 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w5_s2_0169516f] Epoch 19/100 - loss=0.0113 val_loss=0.0228 val_ap=0.8519 val_f1=0.8022 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 20/100 - loss=0.0112 val_loss=0.0227 val_ap=0.8477 val_f1=0.7939 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 21/100 - loss=0.0112 val_loss=0.0230 val_ap=0.8482 val_f1=0.7990 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 22/100 - loss=0.0111 val_loss=0.0229 val_ap=0.8498 val_f1=0.8018 (selección: ap)
+[cnn_eye_A1_w5_s2_0169516f] Epoch 23/100 - loss=0.0111 val_loss=0.0219 val_ap=0.8538 val_f1=0.8120 (selección: ap)
+
+Epoch 23: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 11:53:59,715 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A1_w5_s2_0169516f
+Umbral (fbeta_val, val): 0.381
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A1_w5_s2_0169516f       0.92      0.90      0.91     16582
+   cnn_eye_A1_w5_s2_0169516f       0.77      0.80      0.78      6850
+
+                    accuracy                           0.87     23432
+                   macro avg       0.84      0.85      0.85     23432
+                weighted avg       0.87      0.87      0.87     23432
+
+[[14969  1613]
+ [ 1385  5465]]
+model                 cnn_eye_A1_w5_s2_0169516f
+sensitivity                              0.7978
+specificity                              0.9027
+precision                                0.7721
+accuracy                                 0.8721
+f1_score                                 0.7848
+auc_roc                                  0.9401
+false_alarm_rate                         0.0973
+fp_per_day                              2973.78
+covered_test_days                        0.5424
+TP                                         5465
+FP                                         1613
+TN                                        14969
+FN                                         1385
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.8865
+OVLP_False_Alarms                           378
+TAES_Score                               0.7767
+MARGIN_5s_Onset                          0.7294
+MARGIN_5s_Offset                         0.7449
+AP                                       0.8792
+balanced_accuracy                        0.8503
+pROC_0.1                                 0.0656
+adj_PR_AUC                               0.9398
+threshold                                0.3809
+val_fp_per_day                          3555.24
+med_ch_f1_micro                          0.6818
+med_ch_f1_macro                          0.2924
+med_ch_jaccard                           0.5336
+med_n_win_scored                        23432.0
+med_ch_tau                                 0.35
+
+-- Con tope 50 FP/día: thr=0.658 (fbeta_val+fp_cap)
+model                 cnn_eye_A1_w5_s2_0169516f
+sensitivity                              0.0974
+specificity                              0.9997
+precision                                0.9926
+accuracy                                 0.7359
+f1_score                                 0.1773
+auc_roc                                  0.9401
+false_alarm_rate                         0.0003
+fp_per_day                                 9.22
+covered_test_days                        0.5424
+TP                                          667
+FP                                            5
+TN                                        16577
+FN                                         6183
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                          0.112
+OVLP_False_Alarms                             2
+TAES_Score                               0.0479
+MARGIN_5s_Onset                          0.0591
+MARGIN_5s_Offset                         0.0622
+AP                                       0.8792
+balanced_accuracy                        0.5485
+pROC_0.1                                 0.0656
+adj_PR_AUC                               0.9398
+threshold                                0.6582
+val_fp_per_day                            48.44
+2026-10-29 11:54:30,350 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_0169516f
+2026-10-29 11:54:30,631 - ArtifactDetector[cnn_eye_A1_w5_s2_0169516f] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A1_w5_s2_0169516f/cnn_cnn_eye_A1_w5_s2_0169516f_learning_curves.png
+2026-10-29 11:54:30,855 - ArtifactDetector[cnn_eye_A2_w5_s2_00124cb5] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:54:30,896 - ArtifactDetector[cnn_eye_A2_w5_s2_00124cb5] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 11:56:46,868 - ArtifactDetector[cnn_eye_A2_w5_s2_00124cb5] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 1/100 - loss=0.1829 val_loss=0.2664 val_ap=0.8414 val_f1=0.7879 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 2/100 - loss=0.1527 val_loss=0.2461 val_ap=0.8426 val_f1=0.7889 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 3/100 - loss=0.1449 val_loss=0.2939 val_ap=0.8398 val_f1=0.7889 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 4/100 - loss=0.1407 val_loss=0.2511 val_ap=0.8398 val_f1=0.7932 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 5/100 - loss=0.1380 val_loss=0.2665 val_ap=0.8355 val_f1=0.7904 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 6/100 - loss=0.1359 val_loss=0.2530 val_ap=0.8487 val_f1=0.8055 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 7/100 - loss=0.1338 val_loss=0.2885 val_ap=0.8407 val_f1=0.7985 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 8/100 - loss=0.1316 val_loss=0.3159 val_ap=0.8350 val_f1=0.7880 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 9/100 - loss=0.1313 val_loss=0.2593 val_ap=0.8429 val_f1=0.8031 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 10/100 - loss=0.1300 val_loss=0.2903 val_ap=0.8399 val_f1=0.8042 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 11/100 - loss=0.1284 val_loss=0.2986 val_ap=0.8414 val_f1=0.8012 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 12/100 - loss=0.1273 val_loss=0.2720 val_ap=0.8446 val_f1=0.8056 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 13/100 - loss=0.1271 val_loss=0.3251 val_ap=0.8417 val_f1=0.7986 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 14/100 - loss=0.1260 val_loss=0.3398 val_ap=0.8446 val_f1=0.8033 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 15/100 - loss=0.1248 val_loss=0.2881 val_ap=0.8411 val_f1=0.8040 (selección: ap)
+[cnn_eye_A2_w5_s2_00124cb5] Epoch 16/100 - loss=0.1249 val_loss=0.3296 val_ap=0.8462 val_f1=0.8099 (selección: ap)
+
+Epoch 16: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 12:12:02,419 - ArtifactDetector[cnn_eye_A2_w5_s2_00124cb5] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A2_w5_s2_00124cb5
+Umbral (fbeta_val, val): 0.840
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A2_w5_s2_00124cb5       0.92      0.90      0.91     16582
+   cnn_eye_A2_w5_s2_00124cb5       0.76      0.80      0.78      6850
+
+                    accuracy                           0.87     23432
+                   macro avg       0.84      0.85      0.84     23432
+                weighted avg       0.87      0.87      0.87     23432
+
+[[14848  1734]
+ [ 1368  5482]]
+model                 cnn_eye_A2_w5_s2_00124cb5
+sensitivity                              0.8003
+specificity                              0.8954
+precision                                0.7597
+accuracy                                 0.8676
+f1_score                                 0.7795
+auc_roc                                  0.9346
+false_alarm_rate                         0.1046
+fp_per_day                              3196.86
+covered_test_days                        0.5424
+TP                                         5482
+FP                                         1734
+TN                                        14848
+FN                                         1368
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.9005
+OVLP_False_Alarms                           412
+TAES_Score                               0.7941
+MARGIN_5s_Onset                          0.7543
+MARGIN_5s_Offset                         0.7434
+AP                                       0.8642
+balanced_accuracy                        0.8479
+pROC_0.1                                 0.0635
+adj_PR_AUC                               0.9323
+threshold                                0.8399
+val_fp_per_day                          4102.85
+med_ch_f1_micro                          0.6962
+med_ch_f1_macro                          0.2942
+med_ch_jaccard                           0.5217
+med_n_win_scored                        23432.0
+med_ch_tau                                 0.75
+
+-- Con tope 50 FP/día: thr=0.981 (fbeta_val+fp_cap)
+model                 cnn_eye_A2_w5_s2_00124cb5
+sensitivity                              0.0996
+specificity                              0.9986
+precision                                 0.966
+accuracy                                 0.7357
+f1_score                                 0.1805
+auc_roc                                  0.9346
+false_alarm_rate                         0.0014
+fp_per_day                                44.25
+covered_test_days                        0.5424
+TP                                          682
+FP                                           24
+TN                                        16558
+FN                                         6168
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.1477
+OVLP_False_Alarms                             9
+TAES_Score                               0.0737
+MARGIN_5s_Onset                          0.0855
+MARGIN_5s_Offset                         0.0964
+AP                                       0.8642
+balanced_accuracy                        0.5491
+pROC_0.1                                 0.0635
+adj_PR_AUC                               0.9323
+threshold                                0.9812
+val_fp_per_day                            48.44
+2026-10-29 12:12:33,190 - ArtifactDetector[cnn_eye_A2_w5_s2_00124cb5] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_00124cb5
+2026-10-29 12:12:33,412 - ArtifactDetector[cnn_eye_A2_w5_s2_00124cb5] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A2_w5_s2_00124cb5/cnn_cnn_eye_A2_w5_s2_00124cb5_learning_curves.png
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.15_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 356942 | positive: 73008
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     39414       10951       28463       0.277845
+train   275283       51108      224175       0.185656
+val      42245       10949       31296       0.259179
+Broken rules: 0 | splits per patient: {'train': 153, 'val': 32, 'test': 28}
+[INFO] Split distribution:  split
+train    275283
+val       42245
+test      39414
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 12:12:38,218 - ArtifactDetector[cnn_eye_A1_w2_s1_0c25b9a1] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 12:12:38,324 - ArtifactDetector[cnn_eye_A1_w2_s1_0c25b9a1] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1
+: np.float64(2.6931498004226344)}
+2026-10-29 12:12:38,327 - ArtifactDetector[cnn_eye_A1_w2_s1_0c25b9a1] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 1/100 - loss=0.0171 val_loss=0.0209 val_ap=0.8099 val_f1=0.7666 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 2/100 - loss=0.0119 val_loss=0.0203 val_ap=0.8202 val_f1=0.7711 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 3/100 - loss=0.0115 val_loss=0.0204 val_ap=0.8270 val_f1=0.7719 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 4/100 - loss=0.0113 val_loss=0.0200 val_ap=0.8347 val_f1=0.7809 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 5/100 - loss=0.0111 val_loss=0.0193 val_ap=0.8387 val_f1=0.7827 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 6/100 - loss=0.0109 val_loss=0.0195 val_ap=0.8299 val_f1=0.7726 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 7/100 - loss=0.0108 val_loss=0.0195 val_ap=0.8322 val_f1=0.7709 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 8/100 - loss=0.0107 val_loss=0.0198 val_ap=0.8331 val_f1=0.7725 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 9/100 - loss=0.0106 val_loss=0.0195 val_ap=0.8287 val_f1=0.7681 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 10/100 - loss=0.0105 val_loss=0.0196 val_ap=0.8298 val_f1=0.7737 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 11/100 - loss=0.0104 val_loss=0.0200 val_ap=0.8311 val_f1=0.7707 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 12/100 - loss=0.0104 val_loss=0.0190 val_ap=0.8361 val_f1=0.7755 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 13/100 - loss=0.0104 val_loss=0.0203 val_ap=0.8311 val_f1=0.7695 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 14/100 - loss=0.0103 val_loss=0.0204 val_ap=0.8359 val_f1=0.7741 (selección: ap)
+[cnn_eye_A1_w2_s1_0c25b9a1] Epoch 15/100 - loss=0.0103 val_loss=0.0205 val_ap=0.8333 val_f1=0.7756 (selección: ap)
+
+Epoch 15: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 12:38:51,381 - ArtifactDetector[cnn_eye_A1_w2_s1_0c25b9a1] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A1_w2_s1_0c25b9a1
+Umbral (fbeta_val, val): 0.333
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A1_w2_s1_0c25b9a1       0.88      0.90      0.89     28463
+   cnn_eye_A1_w2_s1_0c25b9a1       0.73      0.69      0.71     10951
+
+                    accuracy                           0.84     39414
+                   macro avg       0.81      0.79      0.80     39414
+                weighted avg       0.84      0.84      0.84     39414
+
+[[25638  2825]
+ [ 3409  7542]]
+model                 cnn_eye_A1_w2_s1_0c25b9a1
+sensitivity                              0.6887
+specificity                              0.9007
+precision                                0.7275
+accuracy                                 0.8418
+f1_score                                 0.7076
+auc_roc                                  0.9001
+false_alarm_rate                         0.0993
+fp_per_day                              6192.72
+covered_test_days                        0.4562
+TP                                         7542
+FP                                         2825
+TN                                        25638
+FN                                         3409
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.9247
+OVLP_False_Alarms                           978
+TAES_Score                               0.7439
+MARGIN_5s_Onset                          0.8546
+MARGIN_5s_Offset                          0.864
+AP                                       0.8126
+balanced_accuracy                        0.7947
+pROC_0.1                                 0.0551
+adj_PR_AUC                               0.9053
+threshold                                0.3332
+val_fp_per_day                          6532.41
+med_ch_f1_micro                          0.6113
+med_ch_f1_macro                           0.217
+med_ch_jaccard                           0.4391
+med_n_win_scored                        39414.0
+med_ch_tau                                  0.3
+
+-- Con tope 50 FP/día: thr=0.620 (fbeta_val+fp_cap)
+model                 cnn_eye_A1_w2_s1_0c25b9a1
+sensitivity                              0.0371
+specificity                              0.9999
+precision                                0.9951
+accuracy                                 0.7324
+f1_score                                 0.0715
+auc_roc                                  0.9001
+false_alarm_rate                         0.0001
+fp_per_day                                 4.38
+covered_test_days                        0.4562
+TP                                          406
+FP                                            2
+TN                                        28461
+FN                                        10545
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.0962
+OVLP_False_Alarms                             1
+TAES_Score                                0.026
+MARGIN_5s_Onset                           0.068
+MARGIN_5s_Offset                         0.0764
+AP                                       0.8126
+balanced_accuracy                        0.5185
+pROC_0.1                                 0.0551
+adj_PR_AUC                               0.9053
+threshold                                  0.62
+val_fp_per_day                            49.09
+2026-10-29 12:39:30,464 - ArtifactDetector[cnn_eye_A1_w2_s1_0c25b9a1] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_0c25b9a1
+2026-10-29 12:39:30,693 - ArtifactDetector[cnn_eye_A1_w2_s1_0c25b9a1] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A1_w2_s1_0c25b9a1/cnn_cnn_eye_A1_w2_s1_0c25b9a1_learning_curves.png
+2026-10-29 12:39:30,930 - ArtifactDetector[cnn_eye_A2_w2_s1_42e0c73b] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 12:39:31,008 - ArtifactDetector[cnn_eye_A2_w2_s1_42e0c73b] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1
+: np.float64(2.6931498004226344)}
+2026-10-29 12:42:24,653 - ArtifactDetector[cnn_eye_A2_w2_s1_42e0c73b] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 1/100 - loss=0.1767 val_loss=0.2809 val_ap=0.8166 val_f1=0.7745 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 2/100 - loss=0.1546 val_loss=0.2793 val_ap=0.8280 val_f1=0.7781 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 3/100 - loss=0.1485 val_loss=0.2918 val_ap=0.8392 val_f1=0.7868 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 4/100 - loss=0.1442 val_loss=0.2992 val_ap=0.8395 val_f1=0.7895 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 5/100 - loss=0.1411 val_loss=0.3081 val_ap=0.8339 val_f1=0.7822 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 6/100 - loss=0.1392 val_loss=0.3134 val_ap=0.8392 val_f1=0.7883 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 7/100 - loss=0.1365 val_loss=0.3029 val_ap=0.8379 val_f1=0.7870 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 8/100 - loss=0.1348 val_loss=0.2857 val_ap=0.8380 val_f1=0.7870 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 9/100 - loss=0.1338 val_loss=0.3019 val_ap=0.8411 val_f1=0.7916 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 10/100 - loss=0.1335 val_loss=0.2959 val_ap=0.8409 val_f1=0.7896 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 11/100 - loss=0.1312 val_loss=0.2609 val_ap=0.8462 val_f1=0.7944 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 12/100 - loss=0.1305 val_loss=0.3023 val_ap=0.8394 val_f1=0.7809 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 13/100 - loss=0.1300 val_loss=0.3149 val_ap=0.8474 val_f1=0.7890 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 14/100 - loss=0.1295 val_loss=0.2966 val_ap=0.8375 val_f1=0.7785 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 15/100 - loss=0.1294 val_loss=0.2962 val_ap=0.8422 val_f1=0.7874 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 16/100 - loss=0.1287 val_loss=0.2852 val_ap=0.8414 val_f1=0.7816 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 17/100 - loss=0.1280 val_loss=0.3097 val_ap=0.8401 val_f1=0.7812 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 18/100 - loss=0.1276 val_loss=0.2889 val_ap=0.8397 val_f1=0.7813 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 19/100 - loss=0.1273 val_loss=0.2651 val_ap=0.8468 val_f1=0.7913 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 20/100 - loss=0.1268 val_loss=0.3207 val_ap=0.8391 val_f1=0.7819 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 21/100 - loss=0.1266 val_loss=0.2823 val_ap=0.8424 val_f1=0.7831 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 22/100 - loss=0.1263 val_loss=0.3146 val_ap=0.8382 val_f1=0.7778 (selección: ap)
+[cnn_eye_A2_w2_s1_42e0c73b] Epoch 23/100 - loss=0.1255 val_loss=0.3109 val_ap=0.8346 val_f1=0.7752 (selección: ap)
+
+Epoch 23: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 13:22:43,326 - ArtifactDetector[cnn_eye_A2_w2_s1_42e0c73b] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A2_w2_s1_42e0c73b
+Umbral (fbeta_val, val): 0.781
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A2_w2_s1_42e0c73b       0.90      0.90      0.90     28463
+   cnn_eye_A2_w2_s1_42e0c73b       0.73      0.73      0.73     10951
+
+                    accuracy                           0.85     39414
+                   macro avg       0.81      0.81      0.81     39414
+                weighted avg       0.85      0.85      0.85     39414
+
+[[25510  2953]
+ [ 2989  7962]]
+model                 cnn_eye_A2_w2_s1_42e0c73b
+sensitivity                              0.7271
+specificity                              0.8963
+precision                                0.7295
+accuracy                                 0.8492
+f1_score                                 0.7283
+auc_roc                                  0.9111
+false_alarm_rate                         0.1037
+fp_per_day                              6473.31
+covered_test_days                        0.4562
+TP                                         7962
+FP                                         2953
+TN                                        25510
+FN                                         2989
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                          0.931
+OVLP_False_Alarms                           976
+TAES_Score                               0.7651
+MARGIN_5s_Onset                          0.8734
+MARGIN_5s_Offset                         0.8713
+AP                                       0.8109
+balanced_accuracy                        0.8117
+pROC_0.1                                 0.0557
+adj_PR_AUC                                0.908
+threshold                                0.7809
+val_fp_per_day                           6260.4
+med_ch_f1_micro                          0.6253
+med_ch_f1_macro                           0.218
+med_ch_jaccard                           0.4625
+med_n_win_scored                        39414.0
+med_ch_tau                                 0.65
+
+-- Con tope 50 FP/día: thr=0.994 (fbeta_val+fp_cap)
+model                 cnn_eye_A2_w2_s1_42e0c73b
+sensitivity                              0.0443
+specificity                              0.9986
+precision                                0.9256
+accuracy                                 0.7335
+f1_score                                 0.0845
+auc_roc                                  0.9111
+false_alarm_rate                         0.0014
+fp_per_day                                85.49
+covered_test_days                        0.4562
+TP                                          485
+FP                                           39
+TN                                        28424
+FN                                        10466
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.1276
+OVLP_False_Alarms                            18
+TAES_Score                               0.0405
+MARGIN_5s_Onset                          0.1015
+MARGIN_5s_Offset                         0.1077
+AP                                       0.8109
+balanced_accuracy                        0.5215
+pROC_0.1                                 0.0557
+adj_PR_AUC                                0.908
+threshold                                0.9936
+val_fp_per_day                            49.09
+2026-10-29 13:23:21,760 - ArtifactDetector[cnn_eye_A2_w2_s1_42e0c73b] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_42e0c73b
+2026-10-29 13:23:21,984 - ArtifactDetector[cnn_eye_A2_w2_s1_42e0c73b] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A2_w2_s1_42e0c73b/cnn_cnn_eye_A2_w2_s1_42e0c73b_learning_curves.png
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- eye ----------
+                 Threshold: 0.381 (fbeta_val)
+                 Confusion matrix:
+[[14969  1613]
+ [ 1385  5465]]
+                 Metrics results: {'model': 'cnn_eye_A1_w5_s2_0169516f', 'sensitivity': 0.7978, 'specificity': np.float64(0.9027), 'precision': 0.7721, 'accuracy': 0
+.8721, 'f1_score': 0.7848, 'auc_roc': 0.9401, 'false_alarm_rate': np.float64(0.0973), 'fp_per_day': np.float64(2973.78), 'covered_test_days': 0.5424, 'TP': 5465, 'FP
+': 1613, 'TN': 14969, 'FN': 1385, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.8865, 'OVLP_False_Alarms': 378, 'TAES_Score': np.float6
+4(0.7767), 'MARGIN_5s_Onset': 0.7294, 'MARGIN_5s_Offset': 0.7449, 'AP': 0.8792, 'balanced_accuracy': 0.8503, 'pROC_0.1': 0.0656, 'adj_PR_AUC': 0.9398, 'threshold': 0
+.3809, 'val_fp_per_day': 3555.24, 'med_ch_f1_micro': 0.6818, 'med_ch_f1_macro': 0.2924, 'med_ch_jaccard': 0.5336, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.35}
+                 Threshold: 0.840 (fbeta_val)
+                 Confusion matrix:
+[[14848  1734]
+ [ 1368  5482]]
+                 Metrics results: {'model': 'cnn_eye_A2_w5_s2_00124cb5', 'sensitivity': 0.8003, 'specificity': np.float64(0.8954), 'precision': 0.7597, 'accuracy': 0
+.8676, 'f1_score': 0.7795, 'auc_roc': 0.9346, 'false_alarm_rate': np.float64(0.1046), 'fp_per_day': np.float64(3196.86), 'covered_test_days': 0.5424, 'TP': 5482, 'FP
+': 1734, 'TN': 14848, 'FN': 1368, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.9005, 'OVLP_False_Alarms': 412, 'TAES_Score': np.float6
+4(0.7941), 'MARGIN_5s_Onset': 0.7543, 'MARGIN_5s_Offset': 0.7434, 'AP': 0.8642, 'balanced_accuracy': 0.8479, 'pROC_0.1': 0.0635, 'adj_PR_AUC': 0.9323, 'threshold': 0
+.8399, 'val_fp_per_day': 4102.85, 'med_ch_f1_micro': 0.6962, 'med_ch_f1_macro': 0.2942, 'med_ch_jaccard': 0.5217, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.75}
+                 Threshold: 0.333 (fbeta_val)
+                 Confusion matrix:
+[[25638  2825]
+ [ 3409  7542]]
+                 Metrics results: {'model': 'cnn_eye_A1_w2_s1_0c25b9a1', 'sensitivity': 0.6887, 'specificity': np.float64(0.9007), 'precision': 0.7275, 'accuracy': 0
+.8418, 'f1_score': 0.7076, 'auc_roc': 0.9001, 'false_alarm_rate': np.float64(0.0993), 'fp_per_day': np.fl
+oat64(6192.72), 'covered_test_days': 0.4562, 'TP': 7542, 'FP': 2825, 'TN': 25638, 'FN': 3409, 'n_test_windows': 39414, 'covered_test_ho
+urs': 10.95, 'OVLP_Sensitivity': 0.9247, 'OVLP_False_Alarms': 978, 'TAES_Score': np.float64(0.7439), 'MARGIN_5s_Onset': 0.8546, 'MARGIN
+_5s_Offset': 0.864, 'AP': 0.8126, 'balanced_accuracy': 0.7947, 'pROC_0.1': 0.0551, 'adj_PR_AUC': 0.9053, 'threshold': 0.3332, 'val_fp_p
+er_day': 6532.41, 'med_ch_f1_micro': 0.6113, 'med_ch_f1_macro': 0.217, 'med_ch_jaccard': 0.4391, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.781 (fbeta_val)
+                 Confusion matrix:
+[[25510  2953]
+ [ 2989  7962]]
+                 Metrics results: {'model': 'cnn_eye_A2_w2_s1_42e0c73b', 'sensitivity': 0.7271, 'specificity': np.float64(0.8963), 'precision': 0.7295, 'accuracy': 0
+.8492, 'f1_score': 0.7283, 'auc_roc': 0.9111, 'false_alarm_rate': np.float64(0.1037), 'fp_per_day': np.float64(6473.31), 'covered_test_days': 0.4562, 'TP': 7962, 'FP
+': 2953, 'TN': 25510, 'FN': 2989, 'n_test_windows': 39414, 'covered_test_hours': 10.95, 'OVLP_Sensitivity': 0.931, 'OVLP_False_Alarms': 976, 'TAES_Score': np.float64
+(0.7651), 'MARGIN_5s_Onset': 0.8734, 'MARGIN_5s_Offset': 0.8713, 'AP': 0.8109, 'balanced_accuracy': 0.8117, 'pROC_0.1': 0.0557, 'adj_PR_AUC': 0.908, 'threshold': 0.7
+809, 'val_fp_per_day': 6260.4, 'med_ch_f1_micro': 0.6253, 'med_ch_f1_macro': 0.218, 'med_ch_jaccard': 0.4625, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.65}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# pws
+-bash: pws: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# pwd
+/workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# realpath full_cnn_artifacts.log
+/workspace/hybrid-ai-epilepsy-diagnosis/full_cnn_artifacts.log
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS - > eye_cnn_artifacts.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# realpath eye_cnn_artifacts.txt
+/workspace/hybrid-ai-epilepsy-diagnosis/eye_cnn_artifacts.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#nano cnn_detectors.pyy
+# (o la ruta exacta donde lo tengas ubicado en tu estructura de código)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines.artifacts.cnn_detectors
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines.artifacts.cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines.artifacts.cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh
+total 5.6G
+-rw-rw-rw- 1 root root  50K Oct 21 21:53  Figure_1.png
+-rw-rw-rw- 1 root root  121 Oct 26 22:20  README.md
+-rw-rw-rw- 1 root root 4.4K Oct 26 22:20  SETUP.md
+drwxrwxrwx 2 root root 979K Sep 27 23:42  __docker__
+drwxrwxrwx 2 root root 978K Sep 24 11:42  __pycache__
+drwxrwxrwx 2 root root 8.5K Sep 27 23:42  __runpod__
+-rw-rw-rw- 1 root root  91K Oct 27 14:13  aitrics_training_paper_parameters.txt
+-rw-rw-rw- 1 root root 4.0K Oct 26 22:20  archs_xai.txt
+-rw-rw-rw- 1 root root 6.2K Oct 27 21:58  artefactos_20261027_2131.log
+-rw-rw-rw- 1 root root  11K Oct 28 15:07  artifacts_ica_xgboost.log
+-rw-rw-rw- 1 root root 134K Oct 29 11:03  artifacts_xgboost_ica_tmux.txt
+-rw-rw-rw- 1 root root  337 Oct 27 21:12  bench_20261027_2112.log
+-rw-rw-rw- 1 root root  945 Oct 27 21:14  bench_eye.log
+-rw-rw-rw- 1 root root  971 Oct 27 21:18  bench_muscle.log
+-rw-rw-rw- 1 root root 1.7K Oct 27 21:13  bench_rf.py
+-rw-rw-rw- 1 root root 1.3K Oct 29 14:30  check_labels.py
+drwxrwxrwx 3 root root 982K Oct 21 22:46  checkpoints_smoke_test
+-rw-rw-rw- 1 root root    0 Oct 29 14:37  cnn_detectors.py
+-rw-rw-rw- 1 root root 1.1M Oct 28 01:05  cnn_lstl_psd.log
+-rw-rw-rw- 1 root root 632K Oct 28 03:10  cnn_lstm_raw.log
+-rw-rw-rw- 1 root root  76K Oct 21 21:53  dataset_structure.png
+-rw-rw-rw- 1 root root 4.4K Oct 26 22:20  debug_out.txt
+-rw-rw-rw- 1 root root 9.3K Oct 26 22:20  diag_cnn_30.py
+drwxrwxrwx 5 root root 2.0M Oct 27 18:14  docs
+-rw-rw-rw- 1 root root 175M Oct 22 13:02  entrenamiento.log
+drwxrwxrwx 8 root root 2.0M Oct 29 04:32  epileptic_eeg_analysis_toolbox
+-rw-rw-rw- 1 root root    0 Oct 22 01:22  exit
+-rw-rw-rw- 1 root root  87K Oct 29 13:42  eye_cnn_artifacts.txt
+-rw-rw-rw- 1 root root 1.7K Oct 26 22:20  fix_paths.py
+-rw-rw-rw- 1 root root 812K Oct 29 11:17  full_cnn_artifacts.log
+-rw-rw-rw- 1 root root  34M Oct 29 13:23  full_cnn_eye_artifacts.log
+-rw-rw-rw- 1 root root  34M Oct 29 13:16  full_cnn_muscle_artifacts.log
+-rw-rw-rw- 1 root root  36M Oct 29 14:37  full_cnn_non_phy_artifacts.log
+-rw-rw-rw- 1 root root 566K Oct 28 06:05  gpu_log.txt
+-rw-rw-rw- 1 root root 1.8K Oct 24 02:05  ica_xgboost_pipeline_panel_0.txt
+-rw-rw-rw- 1 root root    0 Oct 26 22:20  lista_limpia.txt
+drwxrwxrwx 7 root root    1 Sep 24 04:42  models_cnn
+drwxrwxrwx 3 root root 978K Oct 24 07:24  models_cnn_smoke_test
+-rw-rw-rw- 1 root root  38K Oct 29 13:17  muscle_artifact_full_cnn.txt
+drwxrwxrwx 5 root root 2.0M Sep 24 02:28  notebooks
+drwxrwxrwx 4 root root 995K Oct 26 22:20  pipelines
+-rw-rw-rw- 1 root root  560 Oct 26 22:20  requirements.in
+-rw-rw-rw- 1 root root  13K Oct 22 20:10  requirements.txt
+-rw-rw-rw- 1 root root  385 Oct 27 21:03  rescate_tmux.log
+-rw-rw-rw- 1 root root 137K Oct 26 22:20  resultados_cnn_full.txt
+drwxrwxrwx 5 root root 2.9M Oct 23 02:35  results
+-rw-rw-rw- 1 root root  58K Oct 29 14:37  rf_artifacts_random.log
+-rw-rw-rw- 1 root root  14K Oct 28 18:16  rf_artifacts_random_cpu_v1.log
+-rw-rw-rw- 1 root root 9.2K Oct 28 18:19  rf_artifacts_random_cpu_v2.log
+-rw-rw-rw- 1 root root  10K Oct 29 14:03  rf_artifacts_random_p2.log
+-rw-rw-rw- 1 root root  11K Oct 28 16:32  rf_artifacts_random_v1.log
+-rw-rw-rw- 1 root root 4.1K Oct 27 22:33  rf_cpu_20261027_2233.log
+-rw-rw-rw- 1 root root  404 Oct 27 22:35  rf_cpu_20261027_2234.log
+-rw-rw-rw- 1 root root  30K Oct 28 01:53  rf_cpu_20261027_2235.log
+-rw-rw-rw- 1 root root   29 Oct 27 23:32 'rf_cpu_20261027_2332'$'\n''.log'
+-rw-rw-rw- 1 root root 3.1K Oct 28 01:59  rf_cpu_parte220261028_0158.log
+-rw-rw-rw- 1 root root  397 Oct 28 01:59  rf_cpu_parte220261028_0159.log
+-rw-rw-rw- 1 root root 7.6K Oct 28 02:02  rf_cpu_parte2_20261028_0201.log
+-rw-rw-rw- 1 root root    0 Oct 28 02:07  rf_cpu_parte2_20261028_0207.log
+-rw-rw-rw- 1 root root  17K Oct 28 04:22  rf_cpu_parte3_20261028_0207.log
+-rw-rw-rw- 1 root root 4.1K Oct 27 23:33  rf_cpu_v2_20261027_2333.log
+-rw-rw-rw- 1 root root 1.3K Sep 24 13:38  setup.sh
+drwxrwxrwx 6 root root 2.0M Oct 26 22:20  src
+-rw-rw-rw- 1 root root  283 Oct 26 22:20  test.py
+-rw-rw-rw- 1 root root  830 Oct 26 22:20  test_key.py
+drwxrwxrwx 3 root root 980K Oct 26 22:20  tests
+-rw-rw-rw- 1 root root 139K Oct 26 22:20  tmux_cnn_lightweight_standard.txt
+-rw-rw-rw- 1 root root 208K Oct 26 22:20  tmux_cnn_paper.txt
+-rw-rw-rw- 1 root root 180K Oct 24 02:02  tmux_ica_machine.txt
+-rw-rw-rw- 1 root root 588K Oct 27 22:37  tune_psd.log
+-rw-rw-rw- 1 root root 5.3G Oct 22 09:26  workspace.zip
+-rw-rw-rw- 1 root root   31 Oct 29 06:05  xg_artifacts_random.log
+-rw-rw-rw- 1 root root  13K Oct 28 04:29  xg_gpu_20261028_0313.log
+-rw-rw-rw- 1 root root 5.9K Oct 27 22:29  xgb_gpu_20261027_2224.log
+-rw-rw-rw- 1 root root 5.5K Oct 27 22:31  xgb_gpu_20261027_2231.log
+-rw-rw-rw- 1 root root  11K Oct 28 15:11  xgboost_artifacts_random.log
+-rw-rw-rw- 1 root root  11K Oct 28 16:14  xgboost_artifacts_random_v2.log
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# find . -name "cnn_detectors.py"
+./cnn_detectors.py
+./pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# find pipelines/ src/ -name "*.py" | grep -i "cnn"
+pipelines/seizures/aitrics_cnn_lstm_optuna.py
+pipelines/seizures/aitrics_cnn_lstm.py
+pipelines/artifacts/cnn_detectors.py
+pipelines/artifacts/ica_cnn_xgboost.py
+pipelines/artifacts/ica_cnn_rf.py
+pipelines/artifacts/ica_cnn_rf - Copy.py
+pipelines/artifacts/ica_cnn_svm.py
+src/models/cnn_artifact_detector.py
+src/models/aitrics_cnn_lstm.py
+src/models/__old__/cnn_model.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee full_c
+nn_eye_artifacts_lightweight.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 14:42:20,895 - ArtifactDetector[cnn_eye_A1_w5_s2_06c7b32e] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 14:42:20,946 - ArtifactDetector[cnn_eye_A1_w5_s2_06c7b32e] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 14:42:26,774 - ArtifactDetector[cnn_eye_A1_w5_s2_06c7b32e] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 1/100 - loss=0.0798 val_loss=0.0320 val_ap=0.7103 val_f1=0.6543 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 2/100 - loss=0.0182 val_loss=0.0294 val_ap=0.7720 val_f1=0.7353 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 3/100 - loss=0.0164 val_loss=0.0279 val_ap=0.7818 val_f1=0.7600 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 4/100 - loss=0.0156 val_loss=0.0277 val_ap=0.7931 val_f1=0.7687 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 5/100 - loss=0.0151 val_loss=0.0258 val_ap=0.8189 val_f1=0.7855 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 6/100 - loss=0.0148 val_loss=0.0251 val_ap=0.8164 val_f1=0.7956 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 7/100 - loss=0.0146 val_loss=0.0255 val_ap=0.8175 val_f1=0.7968 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 8/100 - loss=0.0144 val_loss=0.0251 val_ap=0.8138 val_f1=0.7986 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 9/100 - loss=0.0143 val_loss=0.0263 val_ap=0.8298 val_f1=0.8128 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 10/100 - loss=0.0141 val_loss=0.0255 val_ap=0.8297 val_f1=0.8085 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 11/100 - loss=0.0140 val_loss=0.0255 val_ap=0.8299 val_f1=0.8117 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 12/100 - loss=0.0140 val_loss=0.0250 val_ap=0.8290 val_f1=0.8099 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 13/100 - loss=0.0139 val_loss=0.0245 val_ap=0.8327 val_f1=0.8114 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 14/100 - loss=0.0138 val_loss=0.0249 val_ap=0.8295 val_f1=0.8105 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 15/100 - loss=0.0138 val_loss=0.0254 val_ap=0.8313 val_f1=0.8126 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 16/100 - loss=0.0138 val_loss=0.0245 val_ap=0.8312 val_f1=0.8089 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 17/100 - loss=0.0137 val_loss=0.0253 val_ap=0.8331 val_f1=0.8143 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 18/100 - loss=0.0137 val_loss=0.0252 val_ap=0.8322 val_f1=0.8139 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 19/100 - loss=0.0136 val_loss=0.0249 val_ap=0.8299 val_f1=0.8113 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 20/100 - loss=0.0136 val_loss=0.0250 val_ap=0.8307 val_f1=0.8128 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 21/100 - loss=0.0136 val_loss=0.0250 val_ap=0.8308 val_f1=0.8136 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 22/100 - loss=0.0135 val_loss=0.0254 val_ap=0.8308 val_f1=0.8135 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 23/100 - loss=0.0135 val_loss=0.0256 val_ap=0.8344 val_f1=0.8157 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 24/100 - loss=0.0135 val_loss=0.0254 val_ap=0.8323 val_f1=0.8126 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 25/100 - loss=0.0135 val_loss=0.0243 val_ap=0.8282 val_f1=0.8122 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 26/100 - loss=0.0135 val_loss=0.0253 val_ap=0.8314 val_f1=0.8136 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 27/100 - loss=0.0135 val_loss=0.0250 val_ap=0.8329 val_f1=0.8150 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 28/100 - loss=0.0135 val_loss=0.0250 val_ap=0.8335 val_f1=0.8132 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 29/100 - loss=0.0135 val_loss=0.0249 val_ap=0.8293 val_f1=0.8117 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 30/100 - loss=0.0134 val_loss=0.0253 val_ap=0.8327 val_f1=0.8132 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 31/100 - loss=0.0134 val_loss=0.0253 val_ap=0.8300 val_f1=0.8130 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 32/100 - loss=0.0134 val_loss=0.0250 val_ap=0.8318 val_f1=0.8139 (selección: ap)
+[cnn_eye_A1_w5_s2_06c7b32e] Epoch 33/100 - loss=0.0134 val_loss=0.0248 val_ap=0.8321 val_f1=0.8152 (selección: ap)
+
+Epoch 33: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 15:15:24,951 - ArtifactDetector[cnn_eye_A1_w5_s2_06c7b32e] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A1_w5_s2_06c7b32e
+Umbral (fbeta_val, val): 0.344
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A1_w5_s2_06c7b32e       0.92      0.86      0.89     16582
+   cnn_eye_A1_w5_s2_06c7b32e       0.70      0.83      0.76      6850
+
+                    accuracy                           0.85     23432
+                   macro avg       0.81      0.84      0.82     23432
+                weighted avg       0.86      0.85      0.85     23432
+
+[[14190  2392]
+ [ 1192  5658]]
+model                 cnn_eye_A1_w5_s2_06c7b32e
+sensitivity                               0.826
+specificity                              0.8557
+precision                                0.7029
+accuracy                                  0.847
+f1_score                                 0.7595
+auc_roc                                  0.9178
+false_alarm_rate                         0.1443
+fp_per_day                              4409.97
+covered_test_days                        0.5424
+TP                                         5658
+FP                                         2392
+TN                                        14190
+FN                                         1192
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.8974
+OVLP_False_Alarms                           549
+TAES_Score                               0.7976
+MARGIN_5s_Onset                          0.7263
+MARGIN_5s_Offset                         0.7232
+AP                                       0.8329
+balanced_accuracy                        0.8409
+pROC_0.1                                 0.0574
+adj_PR_AUC                               0.9154
+threshold                                 0.344
+val_fp_per_day                          3706.89
+med_ch_f1_micro                          0.5956
+med_ch_f1_macro                          0.2728
+med_ch_jaccard                           0.3552
+med_n_win_scored                        23432.0
+med_ch_tau                                 0.25
+
+-- Con tope 50 FP/día: thr=0.685 (fbeta_val+fp_cap)
+model                 cnn_eye_A1_w5_s2_06c7b32e
+sensitivity                              0.1019
+specificity                              0.9982
+precision                                0.9588
+accuracy                                 0.7362
+f1_score                                 0.1842
+auc_roc                                  0.9178
+false_alarm_rate                         0.0018
+fp_per_day                                55.31
+covered_test_days                        0.5424
+TP                                          698
+FP                                           30
+TN                                        16552
+FN                                         6152
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.1571
+OVLP_False_Alarms                             5
+TAES_Score                               0.0857
+MARGIN_5s_Onset                          0.0995
+MARGIN_5s_Offset                         0.0902
+AP                                       0.8329
+balanced_accuracy                          0.55
+pROC_0.1                                 0.0574
+adj_PR_AUC                               0.9154
+threshold                                0.6847
+val_fp_per_day                            46.34
+2026-10-29 15:15:55,040 - ArtifactDetector[cnn_eye_A1_w5_s2_06c7b32e] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_06c7b32e
+2026-10-29 15:15:55,303 - ArtifactDetector[cnn_eye_A1_w5_s2_06c7b32e] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A1_w5_s2_06c7b32e/cnn_cnn_eye_A1_w5_s2_06c7b32e_learning_curves.png
+2026-10-29 15:15:55,516 - ArtifactDetector[cnn_eye_A2_w5_s2_9d724f33] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 15:15:55,559 - ArtifactDetector[cnn_eye_A2_w5_s2_9d724f33] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1
+: np.float64(2.111039914981402)}
+2026-10-29 15:18:09,552 - ArtifactDetector[cnn_eye_A2_w5_s2_9d724f33] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 1/100 - loss=0.2522 val_loss=0.3502 val_ap=0.7728 val_f1=0.7467 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 2/100 - loss=0.2045 val_loss=0.3462 val_ap=0.7904 val_f1=0.7710 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 3/100 - loss=0.1942 val_loss=0.3412 val_ap=0.7966 val_f1=0.7785 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 4/100 - loss=0.1880 val_loss=0.3244 val_ap=0.8017 val_f1=0.7854 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 5/100 - loss=0.1825 val_loss=0.3098 val_ap=0.8128 val_f1=0.7923 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 6/100 - loss=0.1781 val_loss=0.3121 val_ap=0.8178 val_f1=0.7981 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 7/100 - loss=0.1746 val_loss=0.3085 val_ap=0.8219 val_f1=0.8016 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 8/100 - loss=0.1719 val_loss=0.3000 val_ap=0.8179 val_f1=0.8021 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 9/100 - loss=0.1696 val_loss=0.2983 val_ap=0.8242 val_f1=0.8021 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 10/100 - loss=0.1677 val_loss=0.3000 val_ap=0.8256 val_f1=0.8060 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 11/100 - loss=0.1663 val_loss=0.2917 val_ap=0.8247 val_f1=0.8043 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 12/100 - loss=0.1650 val_loss=0.2773 val_ap=0.8260 val_f1=0.8028 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 13/100 - loss=0.1640 val_loss=0.2864 val_ap=0.8251 val_f1=0.8000 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 14/100 - loss=0.1628 val_loss=0.2901 val_ap=0.8255 val_f1=0.8029 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 15/100 - loss=0.1621 val_loss=0.2795 val_ap=0.8285 val_f1=0.8045 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 16/100 - loss=0.1612 val_loss=0.2912 val_ap=0.8246 val_f1=0.8075 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 17/100 - loss=0.1602 val_loss=0.2921 val_ap=0.8300 val_f1=0.8083 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 18/100 - loss=0.1596 val_loss=0.2801 val_ap=0.8248 val_f1=0.8023 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 19/100 - loss=0.1591 val_loss=0.2851 val_ap=0.8262 val_f1=0.8041 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 20/100 - loss=0.1587 val_loss=0.2819 val_ap=0.8286 val_f1=0.8094 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 21/100 - loss=0.1580 val_loss=0.2872 val_ap=0.8274 val_f1=0.8094 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 22/100 - loss=0.1577 val_loss=0.2923 val_ap=0.8272 val_f1=0.8053 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 23/100 - loss=0.1574 val_loss=0.2806 val_ap=0.8265 val_f1=0.8071 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 24/100 - loss=0.1571 val_loss=0.2818 val_ap=0.8243 val_f1=0.8068 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 25/100 - loss=0.1566 val_loss=0.2875 val_ap=0.8255 val_f1=0.8053 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 26/100 - loss=0.1564 val_loss=0.2869 val_ap=0.8242 val_f1=0.8042 (selección: ap)
+[cnn_eye_A2_w5_s2_9d724f33] Epoch 27/100 - loss=0.1562 val_loss=0.2865 val_ap=0.8250 val_f1=0.8060 (selección: ap)
+
+Epoch 27: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 15:41:51,949 - ArtifactDetector[cnn_eye_A2_w5_s2_9d724f33] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A2_w5_s2_9d724f33
+Umbral (fbeta_val, val): 0.876
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A2_w5_s2_9d724f33       0.91      0.87      0.89     16582
+   cnn_eye_A2_w5_s2_9d724f33       0.71      0.78      0.74      6850
+
+                    accuracy                           0.84     23432
+                   macro avg       0.81      0.83      0.82     23432
+                weighted avg       0.85      0.84      0.84     23432
+
+[[14371  2211]
+ [ 1483  5367]]
+model                 cnn_eye_A2_w5_s2_9d724f33
+sensitivity                              0.7835
+specificity                              0.8667
+precision                                0.7082
+accuracy                                 0.8424
+f1_score                                  0.744
+auc_roc                                  0.9053
+false_alarm_rate                         0.1333
+fp_per_day                              4076.27
+covered_test_days                        0.5424
+TP                                         5367
+FP                                         2211
+TN                                        14371
+FN                                         1483
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.8927
+OVLP_False_Alarms                           463
+TAES_Score                               0.7972
+MARGIN_5s_Onset                          0.7325
+MARGIN_5s_Offset                         0.7294
+AP                                       0.7898
+balanced_accuracy                        0.8251
+pROC_0.1                                 0.0522
+adj_PR_AUC                               0.8931
+threshold                                0.8761
+val_fp_per_day                          4056.52
+med_ch_f1_micro                          0.6125
+med_ch_f1_macro                          0.2715
+med_ch_jaccard                           0.3665
+med_n_win_scored                        23432.0
+med_ch_tau                                  0.7
+
+-- Con tope 50 FP/día: thr=1.000 (fbeta_val+fp_cap)
+model                 cnn_eye_A2_w5_s2_9d724f33
+sensitivity                              0.0673
+specificity                              0.9972
+precision                                0.9093
+accuracy                                 0.7254
+f1_score                                 0.1253
+auc_roc                                  0.9053
+false_alarm_rate                         0.0028
+fp_per_day                                84.81
+covered_test_days                        0.5424
+TP                                          461
+FP                                           46
+TN                                        16536
+FN                                         6389
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.1369
+OVLP_False_Alarms                             8
+TAES_Score                               0.0851
+MARGIN_5s_Onset                           0.098
+MARGIN_5s_Offset                         0.0964
+AP                                       0.7898
+balanced_accuracy                        0.5323
+pROC_0.1                                 0.0522
+adj_PR_AUC                               0.8931
+threshold                                0.9997
+val_fp_per_day                            48.44
+2026-10-29 15:42:25,824 - ArtifactDetector[cnn_eye_A2_w5_s2_9d724f33] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_9d724f33
+2026-10-29 15:42:26,006 - ArtifactDetector[cnn_eye_A2_w5_s2_9d724f33] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A2_w5_s2_9d724f33/cnn_cnn_eye_A2_w5_s2_9d724f33_learning_curves.png
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.15_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 356942 | positive: 73008
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     39414       10951       28463       0.277845
+train   275283       51108      224175       0.185656
+val      42245       10949       31296       0.259179
+Broken rules: 0 | splits per patient: {'train': 153, 'val': 32, 'test': 28}
+[INFO] Split distribution:  split
+train    275283
+val       42245
+test      39414
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 15:42:29,913 - ArtifactDetector[cnn_eye_A1_w2_s1_11ef8c67] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 15:42:29,984 - ArtifactDetector[cnn_eye_A1_w2_s1_11ef8c67] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1
+: np.float64(2.6931498004226344)}
+2026-10-29 15:42:29,987 - ArtifactDetector[cnn_eye_A1_w2_s1_11ef8c67] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 1/100 - loss=0.0422 val_loss=0.0275 val_ap=0.7290 val_f1=0.7000 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 2/100 - loss=0.0140 val_loss=0.0254 val_ap=0.7711 val_f1=0.7313 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 3/100 - loss=0.0132 val_loss=0.0240 val_ap=0.7907 val_f1=0.7602 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 4/100 - loss=0.0129 val_loss=0.0238 val_ap=0.8008 val_f1=0.7653 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 5/100 - loss=0.0127 val_loss=0.0234 val_ap=0.8041 val_f1=0.7685 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 6/100 - loss=0.0126 val_loss=0.0234 val_ap=0.8027 val_f1=0.7705 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 7/100 - loss=0.0125 val_loss=0.0232 val_ap=0.8001 val_f1=0.7696 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 8/100 - loss=0.0124 val_loss=0.0222 val_ap=0.7951 val_f1=0.7692 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 9/100 - loss=0.0124 val_loss=0.0229 val_ap=0.8043 val_f1=0.7700 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 10/100 - loss=0.0124 val_loss=0.0227 val_ap=0.7952 val_f1=0.7726 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 11/100 - loss=0.0123 val_loss=0.0229 val_ap=0.8006 val_f1=0.7703 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 12/100 - loss=0.0123 val_loss=0.0229 val_ap=0.8039 val_f1=0.7753 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 13/100 - loss=0.0123 val_loss=0.0222 val_ap=0.8019 val_f1=0.7719 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 14/100 - loss=0.0122 val_loss=0.0226 val_ap=0.8036 val_f1=0.7697 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 15/100 - loss=0.0122 val_loss=0.0225 val_ap=0.8017 val_f1=0.7680 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 16/100 - loss=0.0122 val_loss=0.0229 val_ap=0.7990 val_f1=0.7670 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 17/100 - loss=0.0122 val_loss=0.0226 val_ap=0.8041 val_f1=0.7736 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 18/100 - loss=0.0121 val_loss=0.0228 val_ap=0.8095 val_f1=0.7751 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 19/100 - loss=0.0121 val_loss=0.0226 val_ap=0.8034 val_f1=0.7717 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 20/100 - loss=0.0121 val_loss=0.0225 val_ap=0.8043 val_f1=0.7693 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 21/100 - loss=0.0121 val_loss=0.0223 val_ap=0.8077 val_f1=0.7768 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 22/100 - loss=0.0121 val_loss=0.0225 val_ap=0.8091 val_f1=0.7780 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 23/100 - loss=0.0121 val_loss=0.0228 val_ap=0.8099 val_f1=0.7739 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 24/100 - loss=0.0121 val_loss=0.0228 val_ap=0.8071 val_f1=0.7727 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 25/100 - loss=0.0121 val_loss=0.0227 val_ap=0.8064 val_f1=0.7741 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 26/100 - loss=0.0120 val_loss=0.0227 val_ap=0.8061 val_f1=0.7719 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 27/100 - loss=0.0120 val_loss=0.0224 val_ap=0.8090 val_f1=0.7771 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 28/100 - loss=0.0120 val_loss=0.0228 val_ap=0.8072 val_f1=0.7740 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 29/100 - loss=0.0120 val_loss=0.0225 val_ap=0.8074 val_f1=0.7751 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 30/100 - loss=0.0120 val_loss=0.0230 val_ap=0.8060 val_f1=0.7728 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 31/100 - loss=0.0120 val_loss=0.0227 val_ap=0.8054 val_f1=0.7736 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 32/100 - loss=0.0120 val_loss=0.0225 val_ap=0.8094 val_f1=0.7780 (selección: ap)
+[cnn_eye_A1_w2_s1_11ef8c67] Epoch 33/100 - loss=0.0120 val_loss=0.0226 val_ap=0.8086 val_f1=0.7758 (selección: ap)
+
+Epoch 33: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 16:33:33,931 - ArtifactDetector[cnn_eye_A1_w2_s1_11ef8c67] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A1_w2_s1_11ef8c67
+Umbral (fbeta_val, val): 0.357
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A1_w2_s1_11ef8c67       0.89      0.92      0.90     28463
+   cnn_eye_A1_w2_s1_11ef8c67       0.77      0.71      0.74     10951
+
+                    accuracy                           0.86     39414
+                   macro avg       0.83      0.81      0.82     39414
+                weighted avg       0.86      0.86      0.86     39414
+
+[[26073  2390]
+ [ 3145  7806]]
+model                 cnn_eye_A1_w2_s1_11ef8c67
+sensitivity                              0.7128
+specificity                               0.916
+precision                                0.7656
+accuracy                                 0.8596
+f1_score                                 0.7383
+auc_roc                                  0.9093
+false_alarm_rate                          0.084
+fp_per_day                              5239.15
+covered_test_days                        0.4562
+TP                                         7806
+FP                                         2390
+TN                                        26073
+FN                                         3145
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.8839
+OVLP_False_Alarms                           732
+TAES_Score                               0.7129
+MARGIN_5s_Onset                          0.8462
+MARGIN_5s_Offset                         0.8389
+AP                                        0.817
+balanced_accuracy                        0.8144
+pROC_0.1                                 0.0559
+adj_PR_AUC                               0.9102
+threshold                                0.3568
+val_fp_per_day                          5994.52
+med_ch_f1_micro                           0.588
+med_ch_f1_macro                          0.2457
+med_ch_jaccard                           0.3454
+med_n_win_scored                        39414.0
+med_ch_tau                                 0.25
+
+-- Con tope 50 FP/día: thr=0.747 (fbeta_val+fp_cap)
+model                 cnn_eye_A1_w2_s1_11ef8c67
+sensitivity                              0.0364
+specificity                              0.9999
+precision                                0.9901
+accuracy                                 0.7322
+f1_score                                 0.0703
+auc_roc                                  0.9093
+false_alarm_rate                         0.0001
+fp_per_day                                 8.77
+covered_test_days                        0.4562
+TP                                          399
+FP                                            4
+TN                                        28459
+FN                                        10552
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.0921
+OVLP_False_Alarms                             2
+TAES_Score                               0.0355
+MARGIN_5s_Onset                          0.0743
+MARGIN_5s_Offset                         0.0722
+AP                                        0.817
+balanced_accuracy                        0.5181
+pROC_0.1                                 0.0559
+adj_PR_AUC                               0.9102
+threshold                                 0.747
+val_fp_per_day                            47.04
+2026-10-29 16:34:13,609 - ArtifactDetector[cnn_eye_A1_w2_s1_11ef8c67] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_11ef8c67
+2026-10-29 16:34:13,797 - ArtifactDetector[cnn_eye_A1_w2_s1_11ef8c67] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye
+_A1_w2_s1_11ef8c67/cnn_cnn_eye_A1_w2_s1_11ef8c67_learning_curves.png
+2026-10-29 16:34:14,015 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 16:34:14,092 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1
+: np.float64(2.6931498004226344)}
+2026-10-29 16:37:18,959 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 1/100 - loss=0.2321 val_loss=0.3924 val_ap=0.7102 val_f1=0.7104 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 2/100 - loss=0.1946 val_loss=0.3685 val_ap=0.7267 val_f1=0.7319 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 3/100 - loss=0.1854 val_loss=0.3557 val_ap=0.7409 val_f1=0.7425 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 4/100 - loss=0.1808 val_loss=0.3373 val_ap=0.7511 val_f1=0.7570 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 5/100 - loss=0.1777 val_loss=0.3363 val_ap=0.7558 val_f1=0.7600 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 6/100 - loss=0.1755 val_loss=0.3214 val_ap=0.7596 val_f1=0.7633 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 7/100 - loss=0.1735 val_loss=0.3270 val_ap=0.7560 val_f1=0.7589 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 8/100 - loss=0.1719 val_loss=0.3092 val_ap=0.7680 val_f1=0.7727 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 9/100 - loss=0.1707 val_loss=0.3234 val_ap=0.7623 val_f1=0.7606 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 10/100 - loss=0.1697 val_loss=0.3219 val_ap=0.7610 val_f1=0.7616 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 11/100 - loss=0.1688 val_loss=0.3126 val_ap=0.7652 val_f1=0.7673 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 12/100 - loss=0.1680 val_loss=0.3128 val_ap=0.7637 val_f1=0.7635 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 13/100 - loss=0.1667 val_loss=0.3119 val_ap=0.7713 val_f1=0.7681 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 14/100 - loss=0.1663 val_loss=0.3106 val_ap=0.7653 val_f1=0.7663 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 15/100 - loss=0.1658 val_loss=0.3149 val_ap=0.7661 val_f1=0.7660 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 16/100 - loss=0.1655 val_loss=0.3124 val_ap=0.7658 val_f1=0.7642 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 17/100 - loss=0.1647 val_loss=0.3153 val_ap=0.7712 val_f1=0.7681 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 18/100 - loss=0.1644 val_loss=0.3115 val_ap=0.7734 val_f1=0.7692 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 19/100 - loss=0.1641 val_loss=0.3066 val_ap=0.7738 val_f1=0.7689 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 20/100 - loss=0.1639 val_loss=0.3084 val_ap=0.7734 val_f1=0.7695 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 21/100 - loss=0.1637 val_loss=0.3051 val_ap=0.7722 val_f1=0.7691 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 22/100 - loss=0.1635 val_loss=0.3090 val_ap=0.7763 val_f1=0.7714 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 23/100 - loss=0.1633 val_loss=0.3195 val_ap=0.7766 val_f1=0.7691 (selección: ap)
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 24/100 [train]:  96%|█████████▋| 4143/4302 [03:40<00:22,  6.95it/s, loss=0.1346]root@d4deb
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee full_c
+nn_eye_artifacts_lightweight.log
+^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee full_c
+nn_eye_artifacts_lightweight_2.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_06c7b32e_analysis.joblib
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_9d724f33_analysis.joblib
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.15_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 356942 | positive: 73008
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     39414       10951       28463       0.277845
+train   275283       51108      224175       0.185656
+val      42245       10949       31296       0.259179
+Broken rules: 0 | splits per patient: {'train': 153, 'val': 32, 'test': 28}
+[INFO] Split distribution:  split
+train    275283
+val       42245
+test      39414
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_11ef8c67_analysis.joblib
+2026-10-29 17:47:24,347 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 17:47:24,448 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1
+: np.float64(2.6931498004226344)}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee full_c
+nn_eye_artifacts_lightweight_2.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_06c7b32e_analysis.joblib
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_9d724f33_analysis.joblib
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.15_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_dura
+tion', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_mus
+cle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye'
+, 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 356942 | positive: 73008
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     39414       10951       28463       0.277845
+train   275283       51108      224175       0.185656
+val      42245       10949       31296       0.259179
+Broken rules: 0 | splits per patient: {'train': 153, 'val': 32, 'test': 28}
+[INFO] Split distribution:  split
+train    275283
+val       42245
+test      39414
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_11ef8c67_analysis.joblib
+2026-10-29 17:53:50,183 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 17:53:50,288 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1
+: np.float64(2.6931498004226344)}
+2026-10-29 17:57:12,764 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Resuming from 23 epoch (best_score=0.7766)
+2026-10-29 17:57:12,764 - ArtifactDetector[cnn_eye_A2_w2_s1_cbc08fec] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w2_s1_cbc08fec] Epoch 24/100 [train]:  63%|██████▎   | 2722/4302 [01:02<00:34, 45.77it/s, loss=0.2182]

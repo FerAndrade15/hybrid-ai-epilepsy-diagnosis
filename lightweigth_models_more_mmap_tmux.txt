@@ -1,0 +1,1905 @@
+ 62%|██████▏   | 2383/3817 [00:57<00:31, 44.83it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  62%|██████▏   | 2383/3817 [00:57<00:31, 44.83
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  62%|██████▏   | 2383/3817 [00:57<00:31, 44.83it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  62%|██████▏   | 2383/3817 [00:57<00:31, 44.83it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  62%|██████▏
+ | 2383/3817 [00:57<00:31, 44.83it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  62%|██████▏   | 2383/3817 [00:57<00:31, 44.83it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2388/3817 [00:57<00:37, 38.57it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  63%|██████▎   | 2388/3817 [00:57<00:37, 38.57it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2388/3817 [
+00:57<00:37, 38.57it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2388/3817 [00:57<00:37, 38.57it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2388/3817 [00:57<00:37, 38.57it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  63%|██████▎   | 2388/3817 [00:57<00:37, 38.57it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2388/3817 [00:57<00:37, 3
+8.57it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2394/3817 [00:57<00:33, 42.55it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2394/3817 [00:57<00:33, 42.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|█████
+█▎   | 2394/3817 [00:57<00:33, 42.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2394/3817 [00:57<00:33, 42.55it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2394/3817 [00:57<00:33, 42.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  63%|██████▎   | 2394/3817 [00:57<00:33, 42.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2394/38
+17 [00:57<00:33, 42.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2400/3817 [00:57<00:31, 45.68it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2400/3817 [00:57<00:31, 45.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  63%|██████▎   | 2400/3817 [00:57<00:31, 45.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2400/3817 [00:57<00:3
+1, 45.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2400/3817 [00:57<00:31, 45.68it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2400/3817 [00:57<00:31, 45.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|█
+█████▎   | 2405/3817 [00:57<00:32, 43.89it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2405/3817 [00:57<00:32, 43.89it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2405/3817 [00:57<00:32, 43.89it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  63%|██████▎   | 2405/3817 [00:57<00:32, 43.89it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 240
+5/3817 [00:57<00:32, 43.89it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2405/3817 [00:57<00:32, 43.89it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2410/3817 [00:57<00:35, 39.12it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  63%|██████▎   | 2410/3817 [00:57<00:35, 39.12it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2410/3817 [00:57<
+00:35, 39.12it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2410/3817 [00:57<00:35, 39.12it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2410/3817 [00:57<00:35, 39.12it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  6
+3%|██████▎   | 2410/3817 [00:57<00:35, 39.12it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2410/3817 [00:57<00:35, 39.12it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2416/3817 [00:57<00:32, 43.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2416/3817 [00:57<00:32, 43.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   |
+ 2416/3817 [00:57<00:32, 43.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2416/3817 [00:57<00:32, 43.16it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2416/3817 [00:57<00:32, 43.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  63%|██████▎   | 2416/3817 [00:57<00:32, 43.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2416/3817 [00
+:58<00:32, 43.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2422/3817 [00:58<00:30, 46.26it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2422/3817 [00:58<00:30, 46.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  63%|██████▎   | 2422/3817 [00:58<00:30, 46.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2422/3817 [00:58<00:30, 46.
+26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2422/3817 [00:58<00:30, 46.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  63%|██████▎   | 2422/3817 [00:58<00:30, 46.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  63%|██████▎
+   | 2422/3817 [00:58<00:30, 46.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2428/3817 [00:58<00:29, 47.79it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2428/3817 [00:58<00:29, 47.79it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  64%|██████▎   | 2428/3817 [00:58<00:29, 47.79it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2428/3817
+ [00:58<00:29, 47.79it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2428/3817 [00:58<00:29, 47.79it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2428/3817 [00:58<00:29, 47.79it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  64%|██████▎   | 2433/3817 [00:58<00:33, 41.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2433/3817 [00:58<00:33,
+ 41.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2433/3817 [00:58<00:33, 41.15it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2433/3817 [00:58<00:33, 41.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|███
+███▎   | 2433/3817 [00:58<00:33, 41.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2433/3817 [00:58<00:33, 41.15it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▎   | 2433/3817 [00:58<00:33, 41.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  64%|██████▍   | 2439/3817 [00:58<00:30, 44.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2439/
+3817 [00:58<00:30, 44.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2439/3817 [00:58<00:30, 44.65it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2439/3817 [00:58<00:30, 44.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  64%|██████▍   | 2439/3817 [00:58<00:30, 44.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2439/3817 [00:58<00
+:30, 44.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2439/3817 [00:58<00:30, 44.65it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2445/3817 [00:58<00:29, 47.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%
+|██████▍   | 2445/3817 [00:58<00:29, 47.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2445/3817 [00:58<00:29, 47.22it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2445/3817 [00:58<00:29, 47.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  64%|██████▍   | 2445/3817 [00:58<00:29, 47.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2
+445/3817 [00:58<00:29, 47.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2445/3817 [00:58<00:29, 47.22it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2451/3817 [00:58<00:28, 48.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  64%|██████▍   | 2451/3817 [00:58<00:28, 48.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2451/3817 [00:5
+8<00:28, 48.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2451/3817 [00:58<00:28, 48.29it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2451/3817 [00:58<00:28, 48.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 64%|██████▍   | 2451/3817 [00:58<00:28, 48.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2456/3817 [00:58<00:38, 35.53
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2456/3817 [00:58<00:38, 35.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2456/3817 [00:58<00:38, 35.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍
+ | 2456/3817 [00:58<00:38, 35.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2456/3817 [00:58<00:38, 35.53it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  64%|██████▍   | 2456/3817 [00:58<00:38, 35.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  64%|██████▍   | 2456/3817 [00:58<00:38, 35.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2462/3817 [
+00:58<00:33, 39.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2462/3817 [00:58<00:33, 39.93it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2462/3817 [00:59<00:33, 39.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  65%|██████▍   | 2462/3817 [00:59<00:33, 39.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2462/3817 [00:59<00:33, 3
+9.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2462/3817 [00:59<00:33, 39.93it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2462/3817 [00:59<00:33, 39.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|█████
+█▍   | 2468/3817 [00:59<00:30, 43.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2468/3817 [00:59<00:30, 43.53it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2468/3817 [00:59<00:30, 43.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  65%|██████▍   | 2468/3817 [00:59<00:30, 43.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2468/38
+17 [00:59<00:30, 43.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2468/3817 [00:59<00:30, 43.53it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2468/3817 [00:59<00:30, 43.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  65%|██████▍   | 2474/3817 [00:59<00:31, 42.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2474/3817 [00:59<00:3
+1, 42.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2474/3817 [00:59<00:31, 42.96it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2474/3817 [00:59<00:31, 42.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|█
+█████▍   | 2474/3817 [00:59<00:31, 42.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2474/3817 [00:59<00:31, 42.96it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2479/3817 [00:59<00:34, 38.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  65%|██████▍   | 2479/3817 [00:59<00:34, 38.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 247
+9/3817 [00:59<00:34, 38.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2479/3817 [00:59<00:34, 38.64it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2479/3817 [00:59<00:34, 38.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  65%|██████▍   | 2479/3817 [00:59<00:34, 38.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▍   | 2479/3817 [00:59<
+00:34, 38.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2485/3817 [00:59<00:31, 42.61it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2485/3817 [00:59<00:31, 42.61it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  6
+5%|██████▌   | 2485/3817 [00:59<00:31, 42.61it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2485/3817 [00:59<00:31, 42.61it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2485/3817 [00:59<00:31, 42.61it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2485/3817 [00:59<00:31, 42.61it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   |
+ 2485/3817 [00:59<00:31, 42.61it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2491/3817 [00:59<00:28, 45.77it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2491/3817 [00:59<00:28, 45.77it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  65%|██████▌   | 2491/3817 [00:59<00:28, 45.77it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2491/3817 [00
+:59<00:28, 45.77it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2491/3817 [00:59<00:28, 45.77it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2491/3817 [00:59<00:28, 45.77it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  65%|██████▌   | 2496/3817 [00:59<00:36, 35.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2496/3817 [00:59<00:36, 35.
+82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2496/3817 [00:59<00:36, 35.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2496/3817 [00:59<00:36, 35.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌
+   | 2496/3817 [00:59<00:36, 35.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2496/3817 [00:59<00:36, 35.82it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  65%|██████▌   | 2496/3817 [00:59<00:36, 35.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  66%|██████▌   | 2502/3817 [00:59<00:32, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2502/3817
+ [00:59<00:32, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2502/3817 [00:59<00:32, 40.28it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2502/3817 [01:00<00:32, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  66%|██████▌   | 2502/3817 [01:00<00:32, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2502/3817 [01:00<00:32,
+ 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2502/3817 [01:00<00:32, 40.28it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2508/3817 [01:00<00:29, 43.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|███
+███▌   | 2508/3817 [01:00<00:29, 43.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2508/3817 [01:00<00:29, 43.82it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2508/3817 [01:00<00:29, 43.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  66%|██████▌   | 2508/3817 [01:00<00:29, 43.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2508/
+3817 [01:00<00:29, 43.82it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2508/3817 [01:00<00:29, 43.82it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2514/3817 [01:00<00:27, 46.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  66%|██████▌   | 2514/3817 [01:00<00:27, 46.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2514/3817 [01:00<00
+:27, 46.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2514/3817 [01:00<00:27, 46.63it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2514/3817 [01:00<00:27, 46.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%
+|██████▌   | 2514/3817 [01:00<00:27, 46.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2519/3817 [01:00<00:34, 38.16it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2519/3817 [01:00<00:34, 38.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  66%|██████▌   | 2519/3817 [01:00<00:34, 38.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2
+519/3817 [01:00<00:34, 38.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2519/3817 [01:00<00:34, 38.16it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2519/3817 [01:00<00:34, 38.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  66%|██████▌   | 2519/3817 [01:00<00:34, 38.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2525/3817 [01:0
+0<00:30, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2525/3817 [01:00<00:30, 42.23it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2525/3817 [01:00<00:30, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 66%|██████▌   | 2525/3817 [01:00<00:30, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2525/3817 [01:00<00:30, 42.23
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2525/3817 [01:00<00:30, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  66%|██████▌   | 2525/3817 [01:00<00:30, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋
+ | 2531/3817 [01:00<00:28, 45.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2531/3817 [01:00<00:28, 45.45it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2531/3817 [01:00<00:28, 45.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  66%|██████▋   | 2531/3817 [01:00<00:28, 45.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2531/3817 [
+01:00<00:28, 45.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2531/3817 [01:00<00:28, 45.45it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2531/3817 [01:00<00:28, 45.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  66%|██████▋   | 2537/3817 [01:00<00:26, 47.94it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2537/3817 [01:00<00:26, 4
+7.94it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2537/3817 [01:00<00:26, 47.94it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2537/3817 [01:00<00:26, 47.94it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|█████
+█▋   | 2537/3817 [01:00<00:26, 47.94it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2537/3817 [01:00<00:26, 47.94it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  66%|██████▋   | 2537/3817 [01:00<00:26, 47.94it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  67%|██████▋   | 2543/3817 [01:00<00:25, 49.75it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2543/38
+17 [01:00<00:25, 49.75it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2543/3817 [01:00<00:25, 49.75it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2543/3817 [01:00<00:25, 49.75it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  67%|██████▋   | 2543/3817 [01:01<00:25, 49.75it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2543/3817 [01:01<00:2
+5, 49.75it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2543/3817 [01:01<00:25, 49.75it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2549/3817 [01:01<00:34, 36.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|█
+█████▋   | 2549/3817 [01:01<00:34, 36.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2549/3817 [01:01<00:34, 36.29it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2549/3817 [01:01<00:34, 36.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  67%|██████▋   | 2549/3817 [01:01<00:34, 36.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 254
+9/3817 [01:01<00:34, 36.29it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2549/3817 [01:01<00:34, 36.29it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2555/3817 [01:01<00:31, 40.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  67%|██████▋   | 2555/3817 [01:01<00:31, 40.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2555/3817 [01:01<
+00:31, 40.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2555/3817 [01:01<00:31, 40.22it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2555/3817 [01:01<00:31, 40.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  6
+7%|██████▋   | 2555/3817 [01:01<00:31, 40.22it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2555/3817 [01:01<00:31, 40.22it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2561/3817 [01:01<00:28, 43.51it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2561/3817 [01:01<00:28, 43.51it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   |
+ 2561/3817 [01:01<00:28, 43.51it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2561/3817 [01:01<00:28, 43.51it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2561/3817 [01:01<00:28, 43.51it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  67%|██████▋   | 2561/3817 [01:01<00:28, 43.51it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2566/3817 [01
+:01<00:27, 45.02it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2566/3817 [01:01<00:27, 45.02it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2566/3817 [01:01<00:27, 45.02it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  67%|██████▋   | 2566/3817 [01:01<00:27, 45.02it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2566/3817 [01:01<00:27, 45.
+02it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2566/3817 [01:01<00:27, 45.02it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2571/3817 [01:01<00:32, 38.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋
+   | 2571/3817 [01:01<00:32, 38.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2571/3817 [01:01<00:32, 38.05it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2571/3817 [01:01<00:32, 38.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  67%|██████▋   | 2571/3817 [01:01<00:32, 38.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2571/3817
+ [01:01<00:32, 38.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  67%|██████▋   | 2571/3817 [01:01<00:32, 38.05it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2577/3817 [01:01<00:29, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  68%|██████▊   | 2577/3817 [01:01<00:29, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2577/3817 [01:01<00:29,
+ 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2577/3817 [01:01<00:29, 42.23it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2577/3817 [01:01<00:29, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|███
+███▊   | 2577/3817 [01:01<00:29, 42.23it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2577/3817 [01:01<00:29, 42.23it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2583/3817 [01:01<00:27, 45.48it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  68%|██████▊   | 2583/3817 [01:01<00:27, 45.48it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2583/
+3817 [01:01<00:27, 45.48it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2583/3817 [01:01<00:27, 45.48it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2583/3817 [01:01<00:27, 45.48it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  68%|██████▊   | 2583/3817 [01:01<00:27, 45.48it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2588/3817 [01:01<00
+:26, 46.59it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2588/3817 [01:01<00:26, 46.59it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2588/3817 [01:02<00:26, 46.59it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%
+|██████▊   | 2588/3817 [01:02<00:26, 46.59it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2588/3817 [01:02<00:26, 46.59it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2588/3817 [01:02<00:26, 46.59it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  68%|██████▊   | 2593/3817 [01:02<00:31, 38.72it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2
+593/3817 [01:02<00:31, 38.72it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2593/3817 [01:02<00:31, 38.72it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2593/3817 [01:02<00:31, 38.72it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  68%|██████▊   | 2593/3817 [01:02<00:31, 38.72it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2593/3817 [01:0
+2<00:31, 38.72it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2593/3817 [01:02<00:31, 38.72it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2599/3817 [01:02<00:28, 42.76it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 68%|██████▊   | 2599/3817 [01:02<00:28, 42.76it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2599/3817 [01:02<00:28, 42.76
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2599/3817 [01:02<00:28, 42.76it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2599/3817 [01:02<00:28, 42.76it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊
+ | 2599/3817 [01:02<00:28, 42.76it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2599/3817 [01:02<00:28, 42.76it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2605/3817 [01:02<00:26, 45.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  68%|██████▊   | 2605/3817 [01:02<00:26, 45.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2605/3817 [
+01:02<00:26, 45.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2605/3817 [01:02<00:26, 45.91it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2605/3817 [01:02<00:26, 45.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  68%|██████▊   | 2605/3817 [01:02<00:26, 45.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2610/3817 [01:02<00:27, 4
+4.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2610/3817 [01:02<00:27, 44.68it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2610/3817 [01:02<00:27, 44.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|█████
+█▊   | 2610/3817 [01:02<00:27, 44.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2610/3817 [01:02<00:27, 44.68it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  68%|██████▊   | 2610/3817 [01:02<00:27, 44.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  69%|██████▊   | 2615/3817 [01:02<00:30, 38.81it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2615/38
+17 [01:02<00:30, 38.81it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2615/3817 [01:02<00:30, 38.81it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2615/3817 [01:02<00:30, 38.81it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  69%|██████▊   | 2615/3817 [01:02<00:30, 38.81it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2615/3817 [01:02<00:3
+0, 38.81it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2615/3817 [01:02<00:30, 38.81it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2621/3817 [01:02<00:27, 42.97it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|█
+█████▊   | 2621/3817 [01:02<00:27, 42.97it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2621/3817 [01:02<00:27, 42.97it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2621/3817 [01:02<00:27, 42.97it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  69%|██████▊   | 2621/3817 [01:02<00:27, 42.97it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 262
+1/3817 [01:02<00:27, 42.97it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▊   | 2621/3817 [01:02<00:27, 42.97it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2627/3817 [01:02<00:25, 46.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  69%|██████▉   | 2627/3817 [01:02<00:25, 46.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2627/3817 [01:02<
+00:25, 46.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2627/3817 [01:02<00:25, 46.16it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2627/3817 [01:02<00:25, 46.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  6
+9%|██████▉   | 2627/3817 [01:02<00:25, 46.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2627/3817 [01:02<00:25, 46.16it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2633/3817 [01:02<00:24, 47.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2633/3817 [01:03<00:24, 47.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   |
+ 2633/3817 [01:03<00:24, 47.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2633/3817 [01:03<00:24, 47.39it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2633/3817 [01:03<00:24, 47.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  69%|██████▉   | 2633/3817 [01:03<00:24, 47.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2638/3817 [01
+:03<00:33, 35.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2638/3817 [01:03<00:33, 35.16it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2638/3817 [01:03<00:33, 35.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  69%|██████▉   | 2638/3817 [01:03<00:33, 35.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2638/3817 [01:03<00:33, 35.
+16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2638/3817 [01:03<00:33, 35.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2638/3817 [01:03<00:33, 35.16it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉
+   | 2644/3817 [01:03<00:29, 39.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2644/3817 [01:03<00:29, 39.67it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2644/3817 [01:03<00:29, 39.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  69%|██████▉   | 2644/3817 [01:03<00:29, 39.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2644/3817
+ [01:03<00:29, 39.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2644/3817 [01:03<00:29, 39.67it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2644/3817 [01:03<00:29, 39.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  69%|██████▉   | 2650/3817 [01:03<00:26, 43.25it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2650/3817 [01:03<00:26,
+ 43.25it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2650/3817 [01:03<00:26, 43.25it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2650/3817 [01:03<00:26, 43.25it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|███
+███▉   | 2650/3817 [01:03<00:26, 43.25it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2650/3817 [01:03<00:26, 43.25it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  69%|██████▉   | 2650/3817 [01:03<00:26, 43.25it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  70%|██████▉   | 2656/3817 [01:03<00:25, 45.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2656/
+3817 [01:03<00:25, 45.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2656/3817 [01:03<00:25, 45.99it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2656/3817 [01:03<00:25, 45.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  70%|██████▉   | 2656/3817 [01:03<00:25, 45.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2656/3817 [01:03<00
+:25, 45.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2661/3817 [01:03<00:24, 46.84it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2661/3817 [01:03<00:24, 46.84it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%
+|██████▉   | 2661/3817 [01:03<00:24, 46.84it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2661/3817 [01:03<00:24, 46.84it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2661/3817 [01:03<00:24, 46.84it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  70%|██████▉   | 2661/3817 [01:03<00:24, 46.84it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2
+666/3817 [01:03<00:29, 39.60it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2666/3817 [01:03<00:29, 39.60it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2666/3817 [01:03<00:29, 39.60it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  70%|██████▉   | 2666/3817 [01:03<00:29, 39.60it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2666/3817 [01:0
+3<00:29, 39.60it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2666/3817 [01:03<00:29, 39.60it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|██████▉   | 2666/3817 [01:03<00:29, 39.60it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 70%|███████   | 2672/3817 [01:03<00:26, 43.21it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2672/3817 [01:03<00:26, 43.21
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2672/3817 [01:04<00:26, 43.21it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  70%|███████   | 2672/3817 [01:04<00:26, 43.21it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████
+ | 2672/3817 [01:04<00:26, 43.21it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2672/3817 [01:04<00:26, 43.21it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2677/3817 [01:04<00:30, 37.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  70%|███████   | 2677/3817 [01:04<00:30, 37.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2677/3817 [
+01:04<00:30, 37.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2677/3817 [01:04<00:30, 37.39it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2677/3817 [01:04<00:30, 37.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  70%|███████   | 2677/3817 [01:04<00:30, 37.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2677/3817 [01:04<00:30, 3
+7.39it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2683/3817 [01:04<00:27, 41.68it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2683/3817 [01:04<00:27, 41.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|█████
+██   | 2683/3817 [01:04<00:27, 41.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2683/3817 [01:04<00:27, 41.68it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2683/3817 [01:04<00:27, 41.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  70%|███████   | 2683/3817 [01:04<00:27, 41.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2683/38
+17 [01:04<00:27, 41.68it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2689/3817 [01:04<00:25, 45.06it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2689/3817 [01:04<00:25, 45.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  70%|███████   | 2689/3817 [01:04<00:25, 45.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2689/3817 [01:04<00:2
+5, 45.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2689/3817 [01:04<00:25, 45.06it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|███████   | 2689/3817 [01:04<00:25, 45.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  70%|█
+██████   | 2689/3817 [01:04<00:25, 45.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2695/3817 [01:04<00:23, 47.63it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2695/3817 [01:04<00:23, 47.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  71%|███████   | 2695/3817 [01:04<00:23, 47.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 269
+5/3817 [01:04<00:23, 47.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2695/3817 [01:04<00:23, 47.63it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2695/3817 [01:04<00:23, 47.63it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  71%|███████   | 2700/3817 [01:04<00:32, 34.41it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2700/3817 [01:04<
+00:32, 34.41it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2700/3817 [01:04<00:32, 34.41it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2700/3817 [01:04<00:32, 34.41it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  7
+1%|███████   | 2700/3817 [01:04<00:32, 34.41it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2700/3817 [01:04<00:32, 34.41it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2700/3817 [01:04<00:32, 34.41it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  71%|███████   | 2706/3817 [01:04<00:28, 38.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   |
+ 2706/3817 [01:04<00:28, 38.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2706/3817 [01:04<00:28, 38.95it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2706/3817 [01:04<00:28, 38.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  71%|███████   | 2706/3817 [01:04<00:28, 38.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2706/3817 [01
+:04<00:28, 38.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2706/3817 [01:04<00:28, 38.95it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2712/3817 [01:04<00:25, 42.78it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  71%|███████   | 2712/3817 [01:04<00:25, 42.78it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2712/3817 [01:04<00:25, 42.
+78it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2712/3817 [01:04<00:25, 42.78it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2712/3817 [01:04<00:25, 42.78it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████
+   | 2712/3817 [01:04<00:25, 42.78it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2712/3817 [01:04<00:25, 42.78it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2718/3817 [01:04<00:24, 45.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  71%|███████   | 2718/3817 [01:05<00:24, 45.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2718/3817
+ [01:05<00:24, 45.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2718/3817 [01:05<00:24, 45.52it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████   | 2718/3817 [01:05<00:24, 45.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  71%|███████   | 2718/3817 [01:05<00:24, 45.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2723/3817 [01:05<00:32,
+ 34.11it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2723/3817 [01:05<00:32, 34.11it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2723/3817 [01:05<00:32, 34.11it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███
+████▏  | 2723/3817 [01:05<00:32, 34.11it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2723/3817 [01:05<00:32, 34.11it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2723/3817 [01:05<00:32, 34.11it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  71%|███████▏  | 2723/3817 [01:05<00:32, 34.11it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2729/
+3817 [01:05<00:28, 38.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2729/3817 [01:05<00:28, 38.67it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2729/3817 [01:05<00:28, 38.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  71%|███████▏  | 2729/3817 [01:05<00:28, 38.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2729/3817 [01:05<00
+:28, 38.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2729/3817 [01:05<00:28, 38.67it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  71%|███████▏  | 2729/3817 [01:05<00:28, 38.67it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%
+|███████▏  | 2735/3817 [01:05<00:25, 42.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2735/3817 [01:05<00:25, 42.34it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2735/3817 [01:05<00:25, 42.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  72%|███████▏  | 2735/3817 [01:05<00:25, 42.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2
+735/3817 [01:05<00:25, 42.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2735/3817 [01:05<00:25, 42.34it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2735/3817 [01:05<00:25, 42.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  72%|███████▏  | 2741/3817 [01:05<00:23, 45.24it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2741/3817 [01:0
+5<00:23, 45.24it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2741/3817 [01:05<00:23, 45.24it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2741/3817 [01:05<00:23, 45.24it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 72%|███████▏  | 2741/3817 [01:05<00:23, 45.24it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2741/3817 [01:05<00:23, 45.24
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2746/3817 [01:05<00:23, 46.31it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2746/3817 [01:05<00:23, 46.31it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏
+ | 2746/3817 [01:05<00:23, 46.31it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2746/3817 [01:05<00:23, 46.31it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2746/3817 [01:05<00:23, 46.31it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  72%|███████▏  | 2746/3817 [01:05<00:23, 46.31it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2751/3817 [
+01:05<00:28, 37.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2751/3817 [01:05<00:28, 37.93it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2751/3817 [01:05<00:28, 37.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  72%|███████▏  | 2751/3817 [01:05<00:28, 37.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2751/3817 [01:05<00:28, 3
+7.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2751/3817 [01:05<00:28, 37.93it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2751/3817 [01:05<00:28, 37.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|█████
+██▏  | 2757/3817 [01:05<00:25, 41.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2757/3817 [01:06<00:25, 41.99it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2757/3817 [01:06<00:25, 41.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  72%|███████▏  | 2757/3817 [01:06<00:25, 41.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2757/38
+17 [01:06<00:25, 41.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2757/3817 [01:06<00:25, 41.99it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2757/3817 [01:06<00:25, 41.99it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  72%|███████▏  | 2763/3817 [01:06<00:23, 44.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2763/3817 [01:06<00:2
+3, 44.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2763/3817 [01:06<00:23, 44.91it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2763/3817 [01:06<00:23, 44.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|█
+██████▏  | 2763/3817 [01:06<00:23, 44.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2763/3817 [01:06<00:23, 44.91it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  72%|███████▏  | 2763/3817 [01:06<00:23, 44.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  73%|███████▎  | 2769/3817 [01:06<00:22, 47.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 276
+9/3817 [01:06<00:22, 47.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2769/3817 [01:06<00:22, 47.40it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2769/3817 [01:06<00:22, 47.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  73%|███████▎  | 2769/3817 [01:06<00:22, 47.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2769/3817 [01:06<
+00:22, 47.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2774/3817 [01:06<00:29, 35.52it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2774/3817 [01:06<00:29, 35.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  7
+3%|███████▎  | 2774/3817 [01:06<00:29, 35.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2774/3817 [01:06<00:29, 35.52it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2774/3817 [01:06<00:29, 35.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2774/3817 [01:06<00:29, 35.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  |
+ 2774/3817 [01:06<00:29, 35.52it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2780/3817 [01:06<00:26, 39.86it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2780/3817 [01:06<00:26, 39.86it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  73%|███████▎  | 2780/3817 [01:06<00:26, 39.86it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2780/3817 [01
+:06<00:26, 39.86it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2780/3817 [01:06<00:26, 39.86it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2780/3817 [01:06<00:26, 39.86it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  73%|███████▎  | 2780/3817 [01:06<00:26, 39.86it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2786/3817 [01:06<00:23, 43.
+45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2786/3817 [01:06<00:23, 43.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2786/3817 [01:06<00:23, 43.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████
+▎  | 2786/3817 [01:06<00:23, 43.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2786/3817 [01:06<00:23, 43.45it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2786/3817 [01:06<00:23, 43.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  73%|███████▎  | 2786/3817 [01:06<00:23, 43.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2792/3817
+ [01:06<00:22, 46.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2792/3817 [01:06<00:22, 46.28it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2792/3817 [01:06<00:22, 46.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  73%|███████▎  | 2792/3817 [01:06<00:22, 46.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2792/3817 [01:06<00:22,
+ 46.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2792/3817 [01:06<00:22, 46.28it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2797/3817 [01:06<00:25, 40.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███
+████▎  | 2797/3817 [01:07<00:25, 40.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2797/3817 [01:07<00:25, 40.26it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2797/3817 [01:07<00:25, 40.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  73%|███████▎  | 2797/3817 [01:07<00:25, 40.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2797/
+3817 [01:07<00:25, 40.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2802/3817 [01:07<00:27, 36.95it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2802/3817 [01:07<00:27, 36.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  73%|███████▎  | 2802/3817 [01:07<00:27, 36.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2802/3817 [01:07<00
+:27, 36.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2802/3817 [01:07<00:27, 36.95it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%|███████▎  | 2802/3817 [01:07<00:27, 36.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  73%
+|███████▎  | 2802/3817 [01:07<00:27, 36.95it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2808/3817 [01:07<00:24, 41.10it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2808/3817 [01:07<00:24, 41.10it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  74%|███████▎  | 2808/3817 [01:07<00:24, 41.10it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2
+808/3817 [01:07<00:24, 41.10it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2808/3817 [01:07<00:24, 41.10it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2808/3817 [01:07<00:24, 41.10it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  74%|███████▎  | 2808/3817 [01:07<00:24, 41.10it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2814/3817 [01:0
+7<00:22, 44.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2814/3817 [01:07<00:22, 44.44it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2814/3817 [01:07<00:22, 44.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 74%|███████▎  | 2814/3817 [01:07<00:22, 44.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2814/3817 [01:07<00:22, 44.44
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▎  | 2814/3817 [01:07<00:22, 44.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2819/3817 [01:07<00:27, 36.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍
+ | 2819/3817 [01:07<00:27, 36.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2819/3817 [01:07<00:27, 36.34it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2819/3817 [01:07<00:27, 36.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  74%|███████▍  | 2819/3817 [01:07<00:27, 36.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2819/3817 [
+01:07<00:27, 36.34it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2824/3817 [01:07<00:26, 37.13it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2824/3817 [01:07<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  74%|███████▍  | 2824/3817 [01:07<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2824/3817 [01:07<00:26, 3
+7.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2824/3817 [01:07<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2828/3817 [01:07<00:28, 35.03it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|█████
+██▍  | 2828/3817 [01:07<00:28, 35.03it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2828/3817 [01:07<00:28, 35.03it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2828/3817 [01:07<00:28, 35.03it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  74%|███████▍  | 2828/3817 [01:07<00:28, 35.03it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2832/38
+17 [01:07<00:29, 33.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2832/3817 [01:08<00:29, 33.53it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2832/3817 [01:08<00:29, 33.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  74%|███████▍  | 2832/3817 [01:08<00:29, 33.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2832/3817 [01:08<00:2
+9, 33.53it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2836/3817 [01:08<00:31, 31.42it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2836/3817 [01:08<00:31, 31.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|█
+██████▍  | 2836/3817 [01:08<00:31, 31.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2836/3817 [01:08<00:31, 31.42it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2836/3817 [01:08<00:31, 31.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  74%|███████▍  | 2836/3817 [01:08<00:31, 31.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 283
+6/3817 [01:08<00:31, 31.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2842/3817 [01:08<00:26, 37.13it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2842/3817 [01:08<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  74%|███████▍  | 2842/3817 [01:08<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2842/3817 [01:08<
+00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2842/3817 [01:08<00:26, 37.13it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  74%|███████▍  | 2842/3817 [01:08<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  7
+4%|███████▍  | 2842/3817 [01:08<00:26, 37.13it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2848/3817 [01:08<00:23, 41.66it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2848/3817 [01:08<00:23, 41.66it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2848/3817 [01:08<00:23, 41.66it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  |
+ 2848/3817 [01:08<00:23, 41.66it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2848/3817 [01:08<00:23, 41.66it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2848/3817 [01:08<00:23, 41.66it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  75%|███████▍  | 2848/3817 [01:08<00:23, 41.66it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2854/3817 [01
+:08<00:22, 42.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2854/3817 [01:08<00:22, 42.65it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2854/3817 [01:08<00:22, 42.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  75%|███████▍  | 2854/3817 [01:08<00:22, 42.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2854/3817 [01:08<00:22, 42.
+65it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2854/3817 [01:08<00:22, 42.65it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2859/3817 [01:08<00:24, 38.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████
+▍  | 2859/3817 [01:08<00:24, 38.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2859/3817 [01:08<00:24, 38.45it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2859/3817 [01:08<00:24, 38.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  75%|███████▍  | 2859/3817 [01:08<00:24, 38.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2859/3817
+ [01:08<00:24, 38.45it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▍  | 2859/3817 [01:08<00:24, 38.45it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2865/3817 [01:08<00:22, 42.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  75%|███████▌  | 2865/3817 [01:08<00:22, 42.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2865/3817 [01:08<00:22,
+ 42.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2865/3817 [01:08<00:22, 42.40it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2865/3817 [01:08<00:22, 42.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███
+████▌  | 2865/3817 [01:08<00:22, 42.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2865/3817 [01:08<00:22, 42.40it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2871/3817 [01:08<00:20, 45.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  75%|███████▌  | 2871/3817 [01:08<00:20, 45.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2871/
+3817 [01:08<00:20, 45.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2871/3817 [01:08<00:20, 45.26it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2871/3817 [01:08<00:20, 45.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  75%|███████▌  | 2871/3817 [01:09<00:20, 45.26it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2876/3817 [01:09<00
+:25, 36.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2876/3817 [01:09<00:25, 36.28it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2876/3817 [01:09<00:25, 36.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%
+|███████▌  | 2876/3817 [01:09<00:25, 36.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2876/3817 [01:09<00:25, 36.28it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  75%|███████▌  | 2876/3817 [01:09<00:25, 36.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  75%|███████▌  | 2876/3817 [01:09<00:25, 36.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2
+882/3817 [01:09<00:23, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2882/3817 [01:09<00:23, 40.28it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2882/3817 [01:09<00:23, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  76%|███████▌  | 2882/3817 [01:09<00:23, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2882/3817 [01:0
+9<00:23, 40.28it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2882/3817 [01:09<00:23, 40.28it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2887/3817 [01:09<00:26, 35.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 76%|███████▌  | 2887/3817 [01:09<00:26, 35.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2887/3817 [01:09<00:26, 35.05
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2887/3817 [01:09<00:26, 35.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2887/3817 [01:09<00:26, 35.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌
+ | 2887/3817 [01:09<00:26, 35.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2892/3817 [01:09<00:28, 32.18it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2892/3817 [01:09<00:28, 32.18it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  76%|███████▌  | 2892/3817 [01:09<00:28, 32.18it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2892/3817 [
+01:09<00:28, 32.18it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2892/3817 [01:09<00:28, 32.18it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2892/3817 [01:09<00:28, 32.18it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  76%|███████▌  | 2892/3817 [01:09<00:28, 32.18it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2898/3817 [01:09<00:24, 3
+7.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2898/3817 [01:09<00:24, 37.19it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2898/3817 [01:09<00:24, 37.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|█████
+██▌  | 2898/3817 [01:09<00:24, 37.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2898/3817 [01:09<00:24, 37.19it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2898/3817 [01:09<00:24, 37.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  76%|███████▌  | 2898/3817 [01:09<00:24, 37.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2904/38
+17 [01:09<00:22, 41.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2904/3817 [01:09<00:22, 41.19it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2904/3817 [01:09<00:22, 41.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  76%|███████▌  | 2904/3817 [01:09<00:22, 41.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2904/3817 [01:09<00:2
+2, 41.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2904/3817 [01:09<00:22, 41.19it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2904/3817 [01:09<00:22, 41.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|█
+██████▌  | 2910/3817 [01:09<00:20, 44.37it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2910/3817 [01:09<00:20, 44.37it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2910/3817 [01:09<00:20, 44.37it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  76%|███████▌  | 2910/3817 [01:09<00:20, 44.37it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 291
+0/3817 [01:09<00:20, 44.37it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2910/3817 [01:09<00:20, 44.37it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▌  | 2910/3817 [01:09<00:20, 44.37it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  76%|███████▋  | 2916/3817 [01:09<00:19, 46.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▋  | 2916/3817 [01:10<
+00:19, 46.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▋  | 2916/3817 [01:10<00:19, 46.05it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▋  | 2916/3817 [01:10<00:19, 46.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  7
+6%|███████▋  | 2916/3817 [01:10<00:19, 46.05it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  76%|███████▋  | 2916/3817 [01:10<00:19, 46.05it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2921/3817 [01:10<00:23, 37.43it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2921/3817 [01:10<00:23, 37.43it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  |
+ 2921/3817 [01:10<00:23, 37.43it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2921/3817 [01:10<00:23, 37.43it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2921/3817 [01:10<00:23, 37.43it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  77%|███████▋  | 2921/3817 [01:10<00:23, 37.43it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2921/3817 [01
+:10<00:23, 37.43it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2927/3817 [01:10<00:21, 41.40it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2927/3817 [01:10<00:21, 41.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  77%|███████▋  | 2927/3817 [01:10<00:21, 41.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2927/3817 [01:10<00:21, 41.
+40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2927/3817 [01:10<00:21, 41.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2927/3817 [01:10<00:21, 41.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████
+▋  | 2927/3817 [01:10<00:21, 41.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2933/3817 [01:10<00:19, 44.40it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2933/3817 [01:10<00:19, 44.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  77%|███████▋  | 2933/3817 [01:10<00:19, 44.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2933/3817
+ [01:10<00:19, 44.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2933/3817 [01:10<00:19, 44.40it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2933/3817 [01:10<00:19, 44.40it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  77%|███████▋  | 2938/3817 [01:10<00:21, 41.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2938/3817 [01:10<00:21,
+ 41.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2938/3817 [01:10<00:21, 41.55it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2938/3817 [01:10<00:21, 41.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███
+████▋  | 2938/3817 [01:10<00:21, 41.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2938/3817 [01:10<00:21, 41.55it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2943/3817 [01:10<00:23, 37.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  77%|███████▋  | 2943/3817 [01:10<00:23, 37.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2943/
+3817 [01:10<00:23, 37.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2943/3817 [01:10<00:23, 37.64it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2943/3817 [01:10<00:23, 37.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  77%|███████▋  | 2943/3817 [01:10<00:23, 37.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2943/3817 [01:10<00
+:23, 37.64it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2949/3817 [01:10<00:21, 41.14it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2949/3817 [01:10<00:21, 41.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%
+|███████▋  | 2949/3817 [01:10<00:21, 41.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2949/3817 [01:10<00:21, 41.14it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2949/3817 [01:10<00:21, 41.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  77%|███████▋  | 2949/3817 [01:10<00:21, 41.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2
+954/3817 [01:10<00:23, 37.00it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2954/3817 [01:11<00:23, 37.00it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2954/3817 [01:11<00:23, 37.00it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  77%|███████▋  | 2954/3817 [01:11<00:23, 37.00it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2954/3817 [01:1
+1<00:23, 37.00it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2954/3817 [01:11<00:23, 37.00it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  77%|███████▋  | 2954/3817 [01:11<00:23, 37.00it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 78%|███████▊  | 2960/3817 [01:11<00:21, 40.71it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2960/3817 [01:11<00:21, 40.71
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2960/3817 [01:11<00:21, 40.71it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2960/3817 [01:11<00:21, 40.71it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊
+ | 2960/3817 [01:11<00:21, 40.71it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2960/3817 [01:11<00:21, 40.71it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2960/3817 [01:11<00:21, 40.71it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  78%|███████▊  | 2966/3817 [01:11<00:19, 43.73it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2966/3817 [
+01:11<00:19, 43.73it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2966/3817 [01:11<00:19, 43.73it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2966/3817 [01:11<00:19, 43.73it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  78%|███████▊  | 2966/3817 [01:11<00:19, 43.73it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2966/3817 [01:11<00:19, 4
+3.73it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2971/3817 [01:11<00:24, 34.87it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2971/3817 [01:11<00:24, 34.87it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|█████
+██▊  | 2971/3817 [01:11<00:24, 34.87it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2971/3817 [01:11<00:24, 34.87it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2971/3817 [01:11<00:24, 34.87it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  78%|███████▊  | 2971/3817 [01:11<00:24, 34.87it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2976/38
+17 [01:11<00:22, 38.08it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2976/3817 [01:11<00:22, 38.08it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2976/3817 [01:11<00:22, 38.08it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  78%|███████▊  | 2976/3817 [01:11<00:22, 38.08it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2976/3817 [01:11<00:2
+2, 38.08it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2976/3817 [01:11<00:22, 38.08it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2976/3817 [01:11<00:22, 38.08it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|█
+██████▊  | 2982/3817 [01:11<00:20, 41.07it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2982/3817 [01:11<00:20, 41.07it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2982/3817 [01:11<00:20, 41.07it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  78%|███████▊  | 2982/3817 [01:11<00:20, 41.07it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 298
+2/3817 [01:11<00:20, 41.07it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2982/3817 [01:11<00:20, 41.07it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2987/3817 [01:11<00:19, 42.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  78%|███████▊  | 2987/3817 [01:11<00:19, 42.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2987/3817 [01:11<
+00:19, 42.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2987/3817 [01:11<00:19, 42.06it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2987/3817 [01:11<00:19, 42.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  7
+8%|███████▊  | 2987/3817 [01:11<00:19, 42.06it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2992/3817 [01:11<00:18, 43.44it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2992/3817 [01:11<00:18, 43.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2992/3817 [01:11<00:18, 43.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  |
+ 2992/3817 [01:11<00:18, 43.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2992/3817 [01:11<00:18, 43.44it/s, loss=0.0[c
+nn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  78%|███████▊  | 2992/3817 [01:11<00:18, 43.44it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch
+11/100 [train]:  79%|███████▊  | 2997/3817 [01:11<00:18, 44.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 2997/3817 [01
+:12<00:18, 44.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 2997/3817 [01:12<00:18, 44.15it/s, loss=0.0[cnn_non_physiol
+ogical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 2997/3817 [01:12<00:18, 44.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]
+:  79%|███████▊  | 2997/3817 [01:12<00:18, 44.15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 2997/3817 [01:12<00:18, 44.
+15it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 3002/3817 [01:12<00:18, 43.88it/s, loss=0.0[cnn_non_physiological_A1_w1_s
+1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 3002/3817 [01:12<00:18, 43.88it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████
+▊  | 3002/3817 [01:12<00:18, 43.88it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 3002/3817 [01:12<00:18, 43.88it/s, loss=0
+.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▊  | 3002/3817 [01:12<00:18, 43.88it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Ep
+och 11/100 [train]:  79%|███████▊  | 3002/3817 [01:12<00:18, 43.88it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3007/3817
+ [01:12<00:23, 34.85it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3007/3817 [01:12<00:23, 34.85it/s, loss=0.0[cnn_non_phy
+siological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3007/3817 [01:12<00:23, 34.85it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [tr
+ain]:  79%|███████▉  | 3007/3817 [01:12<00:23, 34.85it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3007/3817 [01:12<00:23,
+ 34.85it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3007/3817 [01:12<00:23, 34.85it/s, loss=0.0[cnn_non_physiological_A1_
+w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3012/3817 [01:12<00:21, 36.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███
+████▉  | 3012/3817 [01:12<00:21, 36.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3012/3817 [01:12<00:21, 36.93it/s, lo
+ss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3012/3817 [01:12<00:21, 36.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c
+] Epoch 11/100 [train]:  79%|███████▉  | 3012/3817 [01:12<00:21, 36.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3012/
+3817 [01:12<00:21, 36.93it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3017/3817 [01:12<00:20, 39.19it/s, loss=0.0[cnn_non
+_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3017/3817 [01:12<00:20, 39.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100
+ [train]:  79%|███████▉  | 3017/3817 [01:12<00:20, 39.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3017/3817 [01:12<00
+:20, 39.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3017/3817 [01:12<00:20, 39.19it/s, loss=0.0[cnn_non_physiological
+_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3017/3817 [01:12<00:20, 39.19it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%
+|███████▉  | 3022/3817 [01:12<00:19, 40.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3022/3817 [01:12<00:19, 40.91it/s
+, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3022/3817 [01:12<00:19, 40.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4
+650c] Epoch 11/100 [train]:  79%|███████▉  | 3022/3817 [01:12<00:19, 40.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3
+022/3817 [01:12<00:19, 40.91it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3022/3817 [01:12<00:19, 40.91it/s, loss=0.0[cnn
+_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3027/3817 [01:12<00:22, 35.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11
+/100 [train]:  79%|███████▉  | 3027/3817 [01:12<00:22, 35.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3027/3817 [01:1
+2<00:22, 35.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3027/3817 [01:12<00:22, 35.55it/s, loss=0.0[cnn_non_physiolog
+ical_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3027/3817 [01:13<00:22, 35.55it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:
+ 79%|███████▉  | 3031/3817 [01:13<00:24, 31.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3031/3817 [01:13<00:24, 31.96
+it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3031/3817 [01:13<00:24, 31.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_
+06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3031/3817 [01:13<00:24, 31.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉
+ | 3031/3817 [01:13<00:24, 31.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  79%|███████▉  | 3031/3817 [01:13<00:24, 31.96it/s, loss=0.0
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3036/3817 [01:13<00:22, 35.38it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoc
+h 11/100 [train]:  80%|███████▉  | 3036/3817 [01:13<00:22, 35.38it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3036/3817 [
+01:13<00:22, 35.38it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3036/3817 [01:13<00:22, 35.38it/s, loss=0.0[cnn_non_physi
+ological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3036/3817 [01:13<00:22, 35.38it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [trai
+n]:  80%|███████▉  | 3036/3817 [01:13<00:22, 35.38it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3041/3817 [01:13<00:20, 3
+7.90it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3041/3817 [01:13<00:20, 37.90it/s, loss=0.0[cnn_non_physiological_A1_w1
+_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3041/3817 [01:13<00:20, 37.90it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|█████
+██▉  | 3041/3817 [01:13<00:20, 37.90it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3041/3817 [01:13<00:20, 37.90it/s, loss
+=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3041/3817 [01:13<00:20, 37.90it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c]
+Epoch 11/100 [train]:  80%|███████▉  | 3046/3817 [01:13<00:19, 40.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3046/38
+17 [01:13<00:19, 40.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3046/3817 [01:13<00:19, 40.14it/s, loss=0.0[cnn_non_p
+hysiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3046/3817 [01:13<00:19, 40.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [
+train]:  80%|███████▉  | 3046/3817 [01:13<00:19, 40.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3046/3817 [01:13<00:1
+9, 40.14it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3051/3817 [01:13<00:18, 41.42it/s, loss=0.0[cnn_non_physiological_A
+1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3051/3817 [01:13<00:18, 41.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|█
+██████▉  | 3051/3817 [01:13<00:18, 41.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3051/3817 [01:13<00:18, 41.42it/s,
+loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|███████▉  | 3051/3817 [01:13<00:18, 41.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e465
+0c] Epoch 11/100 [train]:  80%|███████▉  | 3051/3817 [01:13<00:18, 41.42it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 305
+6/3817 [01:13<00:25, 29.35it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3056/3817 [01:13<00:25, 29.35it/s, loss=0.0[cnn_n
+on_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3056/3817 [01:13<00:25, 29.35it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/1
+00 [train]:  80%|████████  | 3056/3817 [01:13<00:25, 29.35it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3056/3817 [01:13<
+00:25, 29.35it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3056/3817 [01:13<00:25, 29.35it/s, loss=0.0[cnn_non_physiologic
+al_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3061/3817 [01:13<00:22, 32.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  8
+0%|████████  | 3061/3817 [01:13<00:22, 32.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3061/3817 [01:13<00:22, 32.96it
+/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 [train]:  80%|████████  | 3061/3817 [01:13<00:22, 32.96it/s, loss=0.0[cnn_non_physiological_A1_w1_s1_06
+e4650c] Ep[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 11/100 - loss=0.0133 val_loss=0.0164 val_ap=0.4436 val_f1=0.4403 (selección: ap)s, loss=0.0072]
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 12/100 [val]:  28%|██▊       | 262/926 [00:07<00:40, 16.48it/s, loss=0.0067]root@d4deb216ff16:/works| tee full_cnn_non_phy
+_artifacts.logv run python -u -m pipelines.artifacts.cnn_detectors --artifacts non_physiological 2>&1 |
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: non_physiological
+
+==================================================
+**************************************************
+>> non_physiological | patients:213 | windows: 1s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s1_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (359626 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359626 -> without ambiguous: 354592 | positive: 50155
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO] Best suggested and saved size weight for non_physiological: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for non_physiological
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51097        7523       43574       0.147230
+train   244287       35109      209178       0.143720
+val      59208        7523       51685       0.127061
+Broken rules: 0 | splits per patient: {'train': 136, 'val': 44, 'test': 33}
+[INFO] Split distribution:  split
+train    244287
+val       59208
+test      51097
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_non_physiological
+2026-10-29 17:51:54,560 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 17:51:54,672 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.58392134928
+14732), 1: np.float64(3.4789797487823635)}
+2026-10-29 17:51:59,553 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Resuming from 11 epoch (best_score=0.4549)
+2026-10-29 17:51:59,553 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Starting training: epochs=100
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 12/100 [train]:   0%|          | 3/3817 [01:06<21:00:30, 19.83s/it, loss=0.0164]^C
+
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#    cat /sys/fs/cgroup/memory.current /sys/fs/cgroup/memory.max
+
+   grep -E "^(anon|file) " /sys/fs/cgroup/memory.stat
+33047691264
+40999997440
+anon 8092864512
+file 24054640640
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/hybrid-ai-epilepsy-diagnosis
+grep -n "model_type" pipelines/artifacts/cnn_detectors.py
+nano pipelines/artifacts/cnn_detectors.py
+72:    "eye":               {"model_type": "lightweight", "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
+73:    "muscle":            {"model_type": "lightweight", "max_fp_per_day": 100,   "epochs": 100, "lr": 3e-4},
+74:    "non_physiological": {"model_type": "lightweight", "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
+240:                        model_type=config["model_type"], epochs=config["epochs"], lr=config["lr"],
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ulimit -Hn
+
+ulimit -n 8192
+uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee cnn_eye_paper_mmap2.log
+
+524288
+524288
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 159, in _get_module_details
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/pipelines/artifacts/cnn_detectors.py", line 75
+    "muscle":            {"model_type": config_model, "max_paper: 100,   "epochpaper": 100, "lr": 3e-4},
+                                                                                               ^
+SyntaxError: unterminated string literal (detected at line 75)
+-bash: 524288: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ulimit -Hn
+
+ulimit -n 8192
+uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee cnn_eye_paper_mmap2.log
+
+524288
+8192
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 19:49:20,301 - ArtifactDetector[cnn_eye_A1_w5_s2_2213f4d9] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 235/235 [00:13<00:00, 17.66it/s]
+prewarm: 100%|██████████| 37/37 [00:02<00:00, 15.29it/s]
+prewarm: 100%|██████████| 38/38 [00:02<00:00, 18.02it/s]
+2026-10-29 19:49:38,265 - ArtifactDetector[cnn_eye_A1_w5_s2_2213f4d9] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1: np.
+float64(2.111039914981402)}
+2026-10-29 19:49:41,959 - ArtifactDetector[cnn_eye_A1_w5_s2_2213f4d9] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 1/100 - loss=0.0170 val_loss=0.0238 val_ap=0.8355 val_f1=0.7900 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 2/100 - loss=0.0125 val_loss=0.0222 val_ap=0.8548 val_f1=0.8161 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 3/100 - loss=0.0119 val_loss=0.0232 val_ap=0.8553 val_f1=0.8281 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 4/100 - loss=0.0114 val_loss=0.0251 val_ap=0.8552 val_f1=0.8238 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 5/100 - loss=0.0109 val_loss=0.0254 val_ap=0.8508 val_f1=0.8241 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 6/100 - loss=0.0105 val_loss=0.0221 val_ap=0.8610 val_f1=0.8293 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 7/100 - loss=0.0102 val_loss=0.0221 val_ap=0.8594 val_f1=0.8305 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 8/100 - loss=0.0099 val_loss=0.0230 val_ap=0.8554 val_f1=0.8252 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 9/100 - loss=0.0096 val_loss=0.0230 val_ap=0.8565 val_f1=0.8287 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 10/100 - loss=0.0094 val_loss=0.0258 val_ap=0.8619 val_f1=0.8276 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 11/100 - loss=0.0089 val_loss=0.0236 val_ap=0.8627 val_f1=0.8311 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 12/100 - loss=0.0086 val_loss=0.0244 val_ap=0.8553 val_f1=0.8273 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 13/100 - loss=0.0085 val_loss=0.0264 val_ap=0.8605 val_f1=0.8249 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 14/100 - loss=0.0083 val_loss=0.0275 val_ap=0.8465 val_f1=0.8140 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 15/100 - loss=0.0079 val_loss=0.0258 val_ap=0.8583 val_f1=0.8257 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 16/100 - loss=0.0078 val_loss=0.0257 val_ap=0.8571 val_f1=0.8282 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 17/100 - loss=0.0076 val_loss=0.0282 val_ap=0.8508 val_f1=0.8177 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 18/100 - loss=0.0075 val_loss=0.0257 val_ap=0.8598 val_f1=0.8151 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 19/100 - loss=0.0072 val_loss=0.0261 val_ap=0.8548 val_f1=0.8200 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 20/100 - loss=0.0071 val_loss=0.0273 val_ap=0.8507 val_f1=0.8133 (selección: ap)
+[cnn_eye_A1_w5_s2_2213f4d9] Epoch 21/100 - loss=0.0070 val_loss=0.0291 val_ap=0.8504 val_f1=0.8150 (selección: ap)
+
+Epoch 21: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 19:55:46,680 - ArtifactDetector[cnn_eye_A1_w5_s2_2213f4d9] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A1_w5_s2_2213f4d9
+Umbral (fbeta_val, val): 0.359
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A1_w5_s2_2213f4d9       0.92      0.91      0.92     16582
+   cnn_eye_A1_w5_s2_2213f4d9       0.79      0.82      0.80      6850
+
+                    accuracy                           0.88     23432
+                   macro avg       0.85      0.86      0.86     23432
+                weighted avg       0.88      0.88      0.88     23432
+
+[[15051  1531]
+ [ 1254  5596]]
+model                 cnn_eye_A1_w5_s2_2213f4d9
+sensitivity                              0.8169
+specificity                              0.9077
+precision                                0.7852
+accuracy                                 0.8811
+f1_score                                 0.8007
+auc_roc                                  0.9396
+false_alarm_rate                         0.0923
+fp_per_day                               2822.6
+covered_test_days                        0.5424
+TP                                         5596
+FP                                         1531
+TN                                        15051
+FN                                         1254
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                          0.874
+OVLP_False_Alarms                           359
+TAES_Score                               0.7695
+MARGIN_5s_Onset                          0.7232
+MARGIN_5s_Offset                         0.7403
+AP                                       0.8808
+balanced_accuracy                        0.8623
+pROC_0.1                                 0.0665
+adj_PR_AUC                               0.9404
+threshold                                0.3591
+val_fp_per_day                          3091.88
+med_ch_f1_micro                          0.6648
+med_ch_f1_macro                          0.3023
+med_ch_jaccard                           0.4974
+med_n_win_scored                        23432.0
+med_ch_tau                                  0.3
+
+-- Con tope 50 FP/día: thr=0.839 (fbeta_val+fp_cap)
+model                 cnn_eye_A1_w5_s2_2213f4d9
+sensitivity                               0.119
+specificity                              0.9999
+precision                                0.9976
+accuracy                                 0.7424
+f1_score                                 0.2126
+auc_roc                                  0.9396
+false_alarm_rate                         0.0001
+fp_per_day                                 3.69
+covered_test_days                        0.5424
+TP                                          815
+FP                                            2
+TN                                        16580
+FN                                         6035
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.0809
+OVLP_False_Alarms                             1
+TAES_Score                               0.0311
+MARGIN_5s_Onset                           0.042
+MARGIN_5s_Offset                         0.0358
+AP                                       0.8808
+balanced_accuracy                        0.5594
+pROC_0.1                                 0.0665
+adj_PR_AUC                               0.9404
+threshold                                0.8392
+val_fp_per_day                            46.34
+2026-10-29 19:55:50,844 - ArtifactDetector[cnn_eye_A1_w5_s2_2213f4d9] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_2213f4d9
+2026-10-29 19:55:51,154 - ArtifactDetector[cnn_eye_A1_w5_s2_2213f4d9] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w
+5_s2_2213f4d9/cnn_cnn_eye_A1_w5_s2_2213f4d9_learning_curves.png
+2026-10-29 19:55:51,942 - ArtifactDetector[cnn_eye_A2_w5_s2_bd9b4fda] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 235/235 [00:06<00:00, 38.18it/s]
+prewarm: 100%|██████████| 37/37 [00:01<00:00, 35.52it/s]
+prewarm: 100%|██████████| 38/38 [00:01<00:00, 32.93it/s]
+2026-10-29 19:56:00,412 - ArtifactDetector[cnn_eye_A2_w5_s2_bd9b4fda] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6551792712739125), 1: np.
+float64(2.111039914981402)}
+2026-10-29 19:56:09,565 - ArtifactDetector[cnn_eye_A2_w5_s2_bd9b4fda] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 1/100 [train]:  71%|███████▏  | 1505/2111 [00:10<00:03, 165.43it/s, loss=0.0973]ulimit -Hn
+ulimit -n 8192
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 1/100 [train]:  71%|███████▏  | 1505/2111 [00:10<00:03, 165.43it/s, loss=0.2316]uv run python -u -m pipelines.artifacts.cnn_detectors --
+no-force-retrain --artifacts muscle 2>&1 | tee cnn_muscle_mmap2.log
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 1/100 - loss=0.1747 val_loss=0.2457 val_ap=0.8386 val_f1=0.8061 (selección: ap) ^[[3~
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 2/100 - loss=0.1451 val_loss=0.2376 val_ap=0.8514 val_f1=0.8280 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 3/100 - loss=0.1351 val_loss=0.2868 val_ap=0.8563 val_f1=0.8275 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 4/100 - loss=0.1291 val_loss=0.2572 val_ap=0.8594 val_f1=0.8254 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 5/100 - loss=0.1237 val_loss=0.2232 val_ap=0.8600 val_f1=0.8359 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 6/100 - loss=0.1186 val_loss=0.2483 val_ap=0.8564 val_f1=0.8282 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 7/100 - loss=0.1144 val_loss=0.3104 val_ap=0.8552 val_f1=0.8299 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 8/100 - loss=0.1115 val_loss=0.2805 val_ap=0.8509 val_f1=0.8194 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 9/100 - loss=0.1078 val_loss=0.3483 val_ap=0.8529 val_f1=0.8212 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 10/100 - loss=0.1022 val_loss=0.3257 val_ap=0.8491 val_f1=0.8217 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 11/100 - loss=0.0996 val_loss=0.2735 val_ap=0.8515 val_f1=0.8258 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 12/100 - loss=0.0971 val_loss=0.3298 val_ap=0.8586 val_f1=0.8309 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 13/100 - loss=0.0950 val_loss=0.3207 val_ap=0.8538 val_f1=0.8215 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 14/100 - loss=0.0909 val_loss=0.4054 val_ap=0.8515 val_f1=0.8197 (selección: ap)
+[cnn_eye_A2_w5_s2_bd9b4fda] Epoch 15/100 - loss=0.0891 val_loss=0.3600 val_ap=0.8550 val_f1=0.8251 (selección: ap)
+
+Epoch 15: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:00:17,553 - ArtifactDetector[cnn_eye_A2_w5_s2_bd9b4fda] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A2_w5_s2_bd9b4fda
+Umbral (fbeta_val, val): 0.871
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A2_w5_s2_bd9b4fda       0.92      0.91      0.91     16582
+   cnn_eye_A2_w5_s2_bd9b4fda       0.79      0.80      0.79      6850
+
+                    accuracy                           0.88     23432
+                   macro avg       0.85      0.85      0.85     23432
+                weighted avg       0.88      0.88      0.88     23432
+
+[[15085  1497]
+ [ 1374  5476]]
+model                 cnn_eye_A2_w5_s2_bd9b4fda
+sensitivity                              0.7994
+specificity                              0.9097
+precision                                0.7853
+accuracy                                 0.8775
+f1_score                                 0.7923
+auc_roc                                  0.9355
+false_alarm_rate                         0.0903
+fp_per_day                              2759.92
+covered_test_days                        0.5424
+TP                                         5476
+FP                                         1497
+TN                                        15085
+FN                                         1374
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.8538
+OVLP_False_Alarms                           336
+TAES_Score                                0.751
+MARGIN_5s_Onset                          0.7076
+MARGIN_5s_Offset                         0.7154
+AP                                       0.8699
+balanced_accuracy                        0.8546
+pROC_0.1                                 0.0649
+adj_PR_AUC                                0.935
+threshold                                0.8711
+val_fp_per_day                          3089.78
+med_ch_f1_micro                          0.6573
+med_ch_f1_macro                          0.2818
+med_ch_jaccard                           0.4878
+med_n_win_scored                        23432.0
+med_ch_tau                                 0.75
+
+-- Con tope 50 FP/día: thr=0.999 (fbeta_val+fp_cap)
+model                 cnn_eye_A2_w5_s2_bd9b4fda
+sensitivity                              0.0801
+specificity                              0.9991
+precision                                0.9734
+accuracy                                 0.7305
+f1_score                                 0.1481
+auc_roc                                  0.9355
+false_alarm_rate                         0.0009
+fp_per_day                                27.65
+covered_test_days                        0.5424
+TP                                          549
+FP                                           15
+TN                                        16567
+FN                                         6301
+n_test_windows                            23432
+covered_test_hours                        13.02
+OVLP_Sensitivity                         0.0995
+OVLP_False_Alarms                             7
+TAES_Score                                0.046
+MARGIN_5s_Onset                          0.0607
+MARGIN_5s_Offset                         0.0575
+AP                                       0.8699
+balanced_accuracy                        0.5396
+pROC_0.1                                 0.0649
+adj_PR_AUC                                0.935
+threshold                                0.9992
+val_fp_per_day                            48.44
+2026-10-29 20:00:21,485 - ArtifactDetector[cnn_eye_A2_w5_s2_bd9b4fda] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_bd9b4fda
+2026-10-29 20:00:21,717 - ArtifactDetector[cnn_eye_A2_w5_s2_bd9b4fda] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w
+5_s2_bd9b4fda/cnn_cnn_eye_A2_w5_s2_bd9b4fda_learning_curves.png
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.15_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 356942 | positive: 73008
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     39414       10951       28463       0.277845
+train   275283       51108      224175       0.185656
+val      42245       10949       31296       0.259179
+Broken rules: 0 | splits per patient: {'train': 153, 'val': 32, 'test': 28}
+[INFO] Split distribution:  split
+train    275283
+val       42245
+test      39414
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+2026-10-29 20:00:26,807 - ArtifactDetector[cnn_eye_A1_w2_s1_2fa5cc0d] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 242/242 [00:06<00:00, 37.73it/s]
+prewarm: 100%|██████████| 36/36 [00:00<00:00, 36.04it/s]
+prewarm: 100%|██████████| 32/32 [00:00<00:00, 34.99it/s]
+2026-10-29 20:00:35,321 - ArtifactDetector[cnn_eye_A1_w2_s1_2fa5cc0d] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1: np.
+float64(2.6931498004226344)}
+2026-10-29 20:00:35,322 - ArtifactDetector[cnn_eye_A1_w2_s1_2fa5cc0d] - INFO - Starting training: epochs=100
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 1/100 - loss=0.0135 val_loss=0.0220 val_ap=0.8257 val_f1=0.7722 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 2/100 - loss=0.0109 val_loss=0.0211 val_ap=0.8354 val_f1=0.7836 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 3/100 - loss=0.0104 val_loss=0.0202 val_ap=0.8441 val_f1=0.7980 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 4/100 - loss=0.0099 val_loss=0.0222 val_ap=0.8420 val_f1=0.7869 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 5/100 - loss=0.0095 val_loss=0.0205 val_ap=0.8442 val_f1=0.7907 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 6/100 - loss=0.0092 val_loss=0.0222 val_ap=0.8452 val_f1=0.7876 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 7/100 - loss=0.0090 val_loss=0.0224 val_ap=0.8481 val_f1=0.7885 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 8/100 - loss=0.0087 val_loss=0.0213 val_ap=0.8461 val_f1=0.7844 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 9/100 - loss=0.0085 val_loss=0.0217 val_ap=0.8441 val_f1=0.7820 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 10/100 - loss=0.0083 val_loss=0.0228 val_ap=0.8325 val_f1=0.7734 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 11/100 - loss=0.0082 val_loss=0.0232 val_ap=0.8368 val_f1=0.7746 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 12/100 - loss=0.0079 val_loss=0.0254 val_ap=0.8315 val_f1=0.7709 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 13/100 - loss=0.0078 val_loss=0.0232 val_ap=0.8334 val_f1=0.7739 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 14/100 - loss=0.0077 val_loss=0.0244 val_ap=0.8351 val_f1=0.7717 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 15/100 - loss=0.0076 val_loss=0.0251 val_ap=0.8286 val_f1=0.7727 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 16/100 - loss=0.0074 val_loss=0.0238 val_ap=0.8301 val_f1=0.7710 (selección: ap)
+[cnn_eye_A1_w2_s1_2fa5cc0d] Epoch 17/100 - loss=0.0073 val_loss=0.0234 val_ap=0.8322 val_f1=0.7682 (selección: ap)
+
+Epoch 17: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:06:44,012 - ArtifactDetector[cnn_eye_A1_w2_s1_2fa5cc0d] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A1_w2_s1_2fa5cc0d
+Umbral (fbeta_val, val): 0.302
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A1_w2_s1_2fa5cc0d       0.88      0.92      0.90     28463
+   cnn_eye_A1_w2_s1_2fa5cc0d       0.77      0.66      0.71     10951
+
+                    accuracy                           0.85     39414
+                   macro avg       0.82      0.79      0.80     39414
+                weighted avg       0.85      0.85      0.85     39414
+
+[[26280  2183]
+ [ 3748  7203]]
+model                 cnn_eye_A1_w2_s1_2fa5cc0d
+sensitivity                              0.6577
+specificity                              0.9233
+precision                                0.7674
+accuracy                                 0.8495
+f1_score                                 0.7084
+auc_roc                                  0.9073
+false_alarm_rate                         0.0767
+fp_per_day                              4785.39
+covered_test_days                        0.4562
+TP                                         7203
+FP                                         2183
+TN                                        26280
+FN                                         3748
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.8734
+OVLP_False_Alarms                           749
+TAES_Score                               0.6928
+MARGIN_5s_Onset                          0.8107
+MARGIN_5s_Offset                         0.8264
+AP                                        0.821
+balanced_accuracy                        0.7905
+pROC_0.1                                 0.0559
+adj_PR_AUC                               0.9108
+threshold                                0.3022
+val_fp_per_day                          5706.14
+med_ch_f1_micro                          0.6186
+med_ch_f1_macro                          0.2389
+med_ch_jaccard                           0.4456
+med_n_win_scored                        39414.0
+med_ch_tau                                 0.25
+
+-- Con tope 50 FP/día: thr=0.779 (fbeta_val+fp_cap)
+model                 cnn_eye_A1_w2_s1_2fa5cc0d
+sensitivity                              0.0405
+specificity                              0.9999
+precision                                0.9955
+accuracy                                 0.7334
+f1_score                                 0.0779
+auc_roc                                  0.9073
+false_alarm_rate                         0.0001
+fp_per_day                                 4.38
+covered_test_days                        0.4562
+TP                                          444
+FP                                            2
+TN                                        28461
+FN                                        10507
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.0868
+OVLP_False_Alarms                             1
+TAES_Score                               0.0271
+MARGIN_5s_Onset                          0.0586
+MARGIN_5s_Offset                         0.0638
+AP                                        0.821
+balanced_accuracy                        0.5202
+pROC_0.1                                 0.0559
+adj_PR_AUC                               0.9108
+threshold                                0.7793
+val_fp_per_day                            49.09
+2026-10-29 20:06:50,034 - ArtifactDetector[cnn_eye_A1_w2_s1_2fa5cc0d] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_2fa5cc0d
+2026-10-29 20:06:50,257 - ArtifactDetector[cnn_eye_A1_w2_s1_2fa5cc0d] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w
+2_s1_2fa5cc0d/cnn_cnn_eye_A1_w2_s1_2fa5cc0d_learning_curves.png
+2026-10-29 20:06:51,385 - ArtifactDetector[cnn_eye_A2_w2_s1_860dde18] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 242/242 [00:06<00:00, 36.43it/s]
+prewarm: 100%|██████████| 36/36 [00:01<00:00, 35.00it/s]
+prewarm: 100%|██████████| 32/32 [00:00<00:00, 34.98it/s]
+2026-10-29 20:07:00,148 - ArtifactDetector[cnn_eye_A2_w2_s1_860dde18] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6139913014386083), 1: np.
+float64(2.6931498004226344)}
+2026-10-29 20:07:10,640 - ArtifactDetector[cnn_eye_A2_w2_s1_860dde18] - INFO - Starting training: epochs=100
+[cnn_eye_A2_w2_s1_860dde18] Epoch 1/100 - loss=0.1688 val_loss=0.2758 val_ap=0.8067 val_f1=0.7836 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 2/100 - loss=0.1443 val_loss=0.2355 val_ap=0.8256 val_f1=0.7835 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 3/100 - loss=0.1352 val_loss=0.2169 val_ap=0.8381 val_f1=0.7946 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 4/100 - loss=0.1287 val_loss=0.2778 val_ap=0.8265 val_f1=0.7819 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 5/100 - loss=0.1231 val_loss=0.3215 val_ap=0.8367 val_f1=0.7810 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 6/100 - loss=0.1188 val_loss=0.2904 val_ap=0.8455 val_f1=0.7902 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 7/100 - loss=0.1156 val_loss=0.2531 val_ap=0.8426 val_f1=0.7835 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 8/100 - loss=0.1102 val_loss=0.2455 val_ap=0.8402 val_f1=0.7803 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 9/100 - loss=0.1078 val_loss=0.2708 val_ap=0.8300 val_f1=0.7659 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 10/100 - loss=0.1057 val_loss=0.3840 val_ap=0.8366 val_f1=0.7767 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 11/100 - loss=0.1035 val_loss=0.3952 val_ap=0.8305 val_f1=0.7695 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 12/100 - loss=0.0996 val_loss=0.3008 val_ap=0.8270 val_f1=0.7695 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 13/100 - loss=0.0978 val_loss=0.3206 val_ap=0.8242 val_f1=0.7636 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 14/100 - loss=0.0965 val_loss=0.3100 val_ap=0.8293 val_f1=0.7661 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 15/100 - loss=0.0949 val_loss=0.3139 val_ap=0.8332 val_f1=0.7752 (selección: ap)
+[cnn_eye_A2_w2_s1_860dde18] Epoch 16/100 - loss=0.0921 val_loss=0.2936 val_ap=0.8274 val_f1=0.7681 (selección: ap)
+
+Epoch 16: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:12:57,803 - ArtifactDetector[cnn_eye_A2_w2_s1_860dde18] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_eye_A2_w2_s1_860dde18
+Umbral (fbeta_val, val): 0.766
+                              precision    recall  f1-score   support
+
+no_cnn_eye_A2_w2_s1_860dde18       0.89      0.91      0.90     28463
+   cnn_eye_A2_w2_s1_860dde18       0.74      0.70      0.72     10951
+
+                    accuracy                           0.85     39414
+                   macro avg       0.81      0.80      0.81     39414
+                weighted avg       0.85      0.85      0.85     39414
+
+[[25830  2633]
+ [ 3324  7627]]
+model                 cnn_eye_A2_w2_s1_860dde18
+sensitivity                              0.6965
+specificity                              0.9075
+precision                                0.7434
+accuracy                                 0.8489
+f1_score                                 0.7192
+auc_roc                                  0.9092
+false_alarm_rate                         0.0925
+fp_per_day                              5771.84
+covered_test_days                        0.4562
+TP                                         7627
+FP                                         2633
+TN                                        25830
+FN                                         3324
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.9069
+OVLP_False_Alarms                           816
+TAES_Score                               0.7402
+MARGIN_5s_Onset                          0.8389
+MARGIN_5s_Offset                         0.8441
+AP                                        0.817
+balanced_accuracy                         0.802
+pROC_0.1                                 0.0561
+adj_PR_AUC                               0.9098
+threshold                                0.7658
+val_fp_per_day                          6669.44
+med_ch_f1_micro                          0.5964
+med_ch_f1_macro                          0.2261
+med_ch_jaccard                           0.4305
+med_n_win_scored                        39414.0
+med_ch_tau                                 0.65
+
+-- Con tope 50 FP/día: thr=0.998 (fbeta_val+fp_cap)
+model                 cnn_eye_A2_w2_s1_860dde18
+sensitivity                              0.0218
+specificity                              0.9999
+precision                                0.9835
+accuracy                                 0.7281
+f1_score                                 0.0427
+auc_roc                                  0.9092
+false_alarm_rate                         0.0001
+fp_per_day                                 8.77
+covered_test_days                        0.4562
+TP                                          239
+FP                                            4
+TN                                        28459
+FN                                        10712
+n_test_windows                            39414
+covered_test_hours                        10.95
+OVLP_Sensitivity                         0.0481
+OVLP_False_Alarms                             3
+TAES_Score                               0.0113
+MARGIN_5s_Onset                          0.0314
+MARGIN_5s_Offset                          0.022
+AP                                        0.817
+balanced_accuracy                        0.5108
+pROC_0.1                                 0.0561
+adj_PR_AUC                               0.9098
+threshold                                0.9982
+val_fp_per_day                            47.04
+2026-10-29 20:13:03,629 - ArtifactDetector[cnn_eye_A2_w2_s1_860dde18] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_860dde18
+2026-10-29 20:13:03,820 - ArtifactDetector[cnn_eye_A2_w2_s1_860dde18] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w
+2_s1_860dde18/cnn_cnn_eye_A2_w2_s1_860dde18_learning_curves.png
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- eye ----------
+                 Threshold: 0.359 (fbeta_val)
+                 Confusion matrix:
+[[15051  1531]
+ [ 1254  5596]]
+                 Metrics results: {'model': 'cnn_eye_A1_w5_s2_2213f4d9', 'sensitivity': 0.8169, 'specificity': np.float64(0.9077), 'precision': 0.7852, 'accuracy': 0.8811
+, 'f1_score': 0.8007, 'auc_roc': 0.9396, 'false_alarm_rate': np.float64(0.0923), 'fp_per_day': np.float64(2822.6), 'covered_test_days': 0.5424, 'TP': 5596, 'FP': 1531, 'T
+N': 15051, 'FN': 1254, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.874, 'OVLP_False_Alarms': 359, 'TAES_Score': np.float64(0.7695), 'MARGI
+N_5s_Onset': 0.7232, 'MARGIN_5s_Offset': 0.7403, 'AP': 0.8808, 'balanced_accuracy': 0.8623, 'pROC_0.1': 0.0665, 'adj_PR_AUC': 0.9404, 'threshold': 0.3591, 'val_fp_per_day
+': 3091.88, 'med_ch_f1_micro': 0.6648, 'med_ch_f1_macro': 0.3023, 'med_ch_jaccard': 0.4974, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.871 (fbeta_val)
+                 Confusion matrix:
+[[15085  1497]
+ [ 1374  5476]]
+                 Metrics results: {'model': 'cnn_eye_A2_w5_s2_bd9b4fda', 'sensitivity': 0.7994, 'specificity': np.float64(0.9097), 'precision': 0.7853, 'accuracy': 0.8775
+, 'f1_score': 0.7923, 'auc_roc': 0.9355, 'false_alarm_rate': np.float64(0.0903), 'fp_per_day': np.float64(2759.92), 'covered_test_days': 0.5424, 'TP': 5476, 'FP': 1497, '
+TN': 15085, 'FN': 1374, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.8538, 'OVLP_False_Alarms': 336, 'TAES_Score': np.float64(0.751), 'MARG
+IN_5s_Onset': 0.7076, 'MARGIN_5s_Offset': 0.7154, 'AP': 0.8699, 'balanced_accuracy': 0.8546, 'pROC_0.1': 0.0649, 'adj_PR_AUC': 0.935, 'threshold': 0.8711, 'val_fp_per_day
+': 3089.78, 'med_ch_f1_micro': 0.6573, 'med_ch_f1_macro': 0.2818, 'med_ch_jaccard': 0.4878, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.75}
+                 Threshold: 0.302 (fbeta_val)
+                 Confusion matrix:
+[[26280  2183]
+ [ 3748  7203]]
+                 Metrics results: {'model': 'cnn_eye_A1_w2_s1_2fa5cc0d', 'sensitivity': 0.6577, 'specificity': np.float64(0.9233), 'precision': 0.7674, 'accuracy': 0.8495
+, 'f1_score': 0.7084, 'auc_roc': 0.9073, 'false_alarm_rate': np.float64(0.0767), 'fp_per_day': np.float64(4785.39), 'covered_test_days': 0.4562, 'TP': 7203, 'FP': 2183, '
+TN': 26280, 'FN': 3748, 'n_test_windows': 39414, 'covered_test_hours': 10.95, 'OVLP_Sensitivity': 0.8734, 'OVLP_False_Alarms': 749, 'TAES_Score': np.float64(0.6928), 'MAR
+GIN_5s_Onset': 0.8107, 'MARGIN_5s_Offset': 0.8264, 'AP': 0.821, 'balanced_accuracy': 0.7905, 'pROC_0.1': 0.0559, 'adj_PR_AUC': 0.9108, 'threshold': 0.3022, 'val_fp_per_da
+y': 5706.14, 'med_ch_f1_micro': 0.6186, 'med_ch_f1_macro': 0.2389, 'med_ch_jaccard': 0.4456, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.25}
+                 Threshold: 0.766 (fbeta_val)
+                 Confusion matrix:
+[[25830  2633]
+ [ 3324  7627]]
+                 Metrics results: {'model': 'cnn_eye_A2_w2_s1_860dde18', 'sensitivity': 0.6965, 'specificity': np.float64(0.9075), 'precision': 0.7434, 'accuracy': 0.8489
+, 'f1_score': 0.7192, 'auc_roc': 0.9092, 'false_alarm_rate': np.float64(0.0925), 'fp_per_day': np.float64(5771.84), 'covered_test_days': 0.4562, 'TP': 7627, 'FP': 2633, '
+TN': 25830, 'FN': 3324, 'n_test_windows': 39414, 'covered_test_hours': 10.95, 'OVLP_Sensitivity': 0.9069, 'OVLP_False_Alarms': 816, 'TAES_Score': np.float64(0.7402), 'MAR
+GIN_5s_Onset': 0.8389, 'MARGIN_5s_Offset': 0.8441, 'AP': 0.817, 'balanced_accuracy': 0.802, 'pROC_0.1': 0.0561, 'adj_PR_AUC': 0.9098, 'threshold': 0.7658, 'val_fp_per_day
+': 6669.44, 'med_ch_f1_micro': 0.5964, 'med_ch_f1_macro': 0.2261, 'med_ch_jaccard': 0.4305, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.65}
+-bash: 524288: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ulimit -Hn
+8192
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ulimit -n 8192
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts muscle 2>&1 | tee cnn_musc
+le_mmap2.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/pipelines/artifacts/cnn_detectors.py", line 243, in <module>
+    max_fp_per_day=config["max_fp_per_day"],
+                   ~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'max_fp_per_day'
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts muscle 2>&1 | tee cnn_musc
+le_mmap2.logcd /workspace/hybrid-ai-epilepsy-diagnosis
+grep -n -A6 "^CNN_CONFIG" pipelines/artifacts/cnn_detectors.py
+tee: /workspace/hybrid-ai-epilepsy-diagnosis: Is a directory
+cd /workspace/hybrid-ai-epilepsy-diagnosis
+grep -n -A6 "^CNN_CONFIG" pipelines/artifacts/cnn_detectors.py
+^C
+73:CNN_CONFIG = {
+74-     "eye":               {"model_type": config_model, "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
+75-     "muscle":            {"model_type": config_model, "max_paper: 100":100,   "epochs": 100, "lr": 3e-4},
+76-     "non_physiological": {"model_type": config_model, "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
+77-}
+78-
+79-
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/hybrid-ai-epilepsy-diagnosis
+grep -n -A6 "^CNN_CONFIG" pipelines/artifacts/cnn_detectors.py
+73:CNN_CONFIG = {
+74-     "eye":               {"model_type": config_model, "max_fp_per_day": 50,    "epochs": 100, "lr": 3e-4},
+75-     "muscle":            {"model_type": config_model, "max_paper: 100":100,   "epochs": 100, "lr": 3e-4},
+76-     "non_physiological": {"model_type": config_model, "max_fp_per_day": 150,   "epochs": 100, "lr": 3e-4},
+77-}
+78-
+79-
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano pipelines/artifacts/cnn_detectors.py
+
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ulimit -Hn
+
+8192
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts muscle 2>&1 | tee cnn_musc
+le_mmap2.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 20:17:29,659 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_b995551c] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 232/232 [00:06<00:00, 33.34it/s]
+prewarm: 100%|██████████| 38/38 [00:01<00:00, 29.79it/s]
+prewarm: 100%|██████████| 40/40 [00:01<00:00, 33.56it/s]
+2026-10-29 20:17:39,495 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_b995551c] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 20:17:44,545 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_b995551c] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 1/100 - loss=0.0197 val_loss=0.0259 val_ap=0.6811 val_f1=0.6415 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 2/100 - loss=0.0163 val_loss=0.0255 val_ap=0.6813 val_f1=0.6249 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 3/100 - loss=0.0151 val_loss=0.0270 val_ap=0.6596 val_f1=0.6105 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 4/100 - loss=0.0144 val_loss=0.0284 val_ap=0.6741 val_f1=0.6013 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 5/100 - loss=0.0139 val_loss=0.0278 val_ap=0.6943 val_f1=0.6184 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 6/100 - loss=0.0136 val_loss=0.0281 val_ap=0.6656 val_f1=0.6050 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 7/100 - loss=0.0131 val_loss=0.0292 val_ap=0.6497 val_f1=0.5942 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 8/100 - loss=0.0128 val_loss=0.0272 val_ap=0.6751 val_f1=0.6150 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 9/100 - loss=0.0126 val_loss=0.0299 val_ap=0.6683 val_f1=0.6043 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 10/100 - loss=0.0124 val_loss=0.0299 val_ap=0.6589 val_f1=0.5957 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 11/100 - loss=0.0121 val_loss=0.0322 val_ap=0.6358 val_f1=0.5800 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 12/100 - loss=0.0119 val_loss=0.0305 val_ap=0.6560 val_f1=0.5939 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 13/100 - loss=0.0118 val_loss=0.0315 val_ap=0.6561 val_f1=0.5920 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 14/100 - loss=0.0117 val_loss=0.0309 val_ap=0.6678 val_f1=0.6017 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_b995551c] Epoch 15/100 - loss=0.0114 val_loss=0.0330 val_ap=0.6509 val_f1=0.5909 (selección: ap)
+
+Epoch 15: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:28:09,993 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_b995551c] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A1_w1_s0.5_b995551c
+Umbral (fbeta_val, val): 0.318
+                                   precision    recall  f1-score   support
+
+no_cnn_muscle_A1_w1_s0.5_b995551c       0.92      0.83      0.87     63975
+   cnn_muscle_A1_w1_s0.5_b995551c       0.66      0.83      0.74     26387
+
+                         accuracy                           0.83     90362
+                        macro avg       0.79      0.83      0.80     90362
+                     weighted avg       0.85      0.83      0.83     90362
+
+[[52942 11033]
+ [ 4540 21847]]
+model                 cnn_muscle_A1_w1_s0.5_b995551c
+sensitivity                                   0.8279
+specificity                                   0.8275
+precision                                     0.6644
+accuracy                                      0.8277
+f1_score                                      0.7372
+auc_roc                                       0.9051
+false_alarm_rate                              0.1725
+fp_per_day                                   21098.5
+covered_test_days                             0.5229
+TP                                             21847
+FP                                             11033
+TN                                             52942
+FN                                              4540
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                              0.9768
+OVLP_False_Alarms                               2445
+TAES_Score                                    0.8315
+MARGIN_5s_Onset                               0.9269
+MARGIN_5s_Offset                              0.9251
+AP                                            0.7993
+balanced_accuracy                             0.8277
+pROC_0.1                                      0.0509
+adj_PR_AUC                                    0.8979
+threshold                                     0.3184
+val_fp_per_day                              19169.55
+med_ch_f1_micro                               0.6802
+med_ch_f1_macro                               0.6703
+med_ch_jaccard                                0.3897
+med_n_win_scored                             90022.0
+med_ch_tau                                       0.3
+
+-- Con tope 100 FP/día: thr=0.774 (fbeta_val+fp_cap)
+model                 cnn_muscle_A1_w1_s0.5_b995551c
+sensitivity                                   0.1049
+specificity                                    0.997
+precision                                     0.9345
+accuracy                                      0.7365
+f1_score                                      0.1886
+auc_roc                                       0.9051
+false_alarm_rate                               0.003
+fp_per_day                                    370.99
+covered_test_days                             0.5229
+TP                                              2768
+FP                                               194
+TN                                             63781
+FN                                             23619
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                              0.3226
+OVLP_False_Alarms                                 71
+TAES_Score                                    0.0753
+MARGIN_5s_Onset                               0.2228
+MARGIN_5s_Offset                              0.2157
+AP                                            0.7993
+balanced_accuracy                             0.5509
+pROC_0.1                                      0.0509
+adj_PR_AUC                                    0.8979
+threshold                                     0.7735
+val_fp_per_day                                 99.02
+2026-10-29 20:28:29,257 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_b995551c] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_b995
+551c
+2026-10-29 20:28:29,558 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_b995551c] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_mus
+cle_A1_w1_s0.5_b995551c/cnn_cnn_muscle_A1_w1_s0.5_b995551c_learning_curves.png
+2026-10-29 20:28:31,078 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_12e5a252] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 232/232 [00:06<00:00, 36.66it/s]
+prewarm: 100%|██████████| 38/38 [00:01<00:00, 32.02it/s]
+prewarm: 100%|██████████| 40/40 [00:01<00:00, 36.11it/s]
+2026-10-29 20:28:40,093 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_12e5a252] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 20:29:01,282 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_12e5a252] - INFO - Starting training: epochs=100
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 1/100 - loss=0.1659 val_loss=0.1875 val_ap=0.6630 val_f1=0.6334 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 2/100 - loss=0.1410 val_loss=0.1997 val_ap=0.6542 val_f1=0.6230 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 3/100 - loss=0.1322 val_loss=0.2169 val_ap=0.6432 val_f1=0.6052 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 4/100 - loss=0.1266 val_loss=0.2275 val_ap=0.6430 val_f1=0.6032 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 5/100 - loss=0.1230 val_loss=0.2319 val_ap=0.6632 val_f1=0.6138 (selección: ap) ^[[3~^[[3~sis
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 6/100 - loss=0.1180 val_loss=0.2359 val_ap=0.6439 val_f1=0.5985 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 7/100 - loss=0.1158 val_loss=0.2827 val_ap=0.6361 val_f1=0.5936 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 8/100 - loss=0.1138 val_loss=0.2455 val_ap=0.6499 val_f1=0.6062 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 9/100 - loss=0.1120 val_loss=0.2605 val_ap=0.6322 val_f1=0.5865 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 10/100 - loss=0.1089 val_loss=0.2821 val_ap=0.6250 val_f1=0.5857 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 11/100 - loss=0.1076 val_loss=0.2444 val_ap=0.6414 val_f1=0.5944 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 12/100 - loss=0.1064 val_loss=0.2349 val_ap=0.6515 val_f1=0.6019 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 13/100 - loss=0.1051 val_loss=0.2646 val_ap=0.6458 val_f1=0.5972 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 14/100 - loss=0.1028 val_loss=0.2739 val_ap=0.6481 val_f1=0.5943 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_12e5a252] Epoch 15/100 - loss=0.1020 val_loss=0.2638 val_ap=0.6395 val_f1=0.5880 (selección: ap)
+
+Epoch 15: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:39:23,804 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_12e5a252] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A2_w1_s0.5_12e5a252
+Umbral (fbeta_val, val): 0.703
+                                   precision    recall  f1-score   support
+
+no_cnn_muscle_A2_w1_s0.5_12e5a252       0.92      0.80      0.86     63975
+   cnn_muscle_A2_w1_s0.5_12e5a252       0.63      0.84      0.72     26387
+
+                         accuracy                           0.81     90362
+                        macro avg       0.78      0.82      0.79     90362
+                     weighted avg       0.84      0.81      0.82     90362
+
+[[50903 13072]
+ [ 4131 22256]]
+model                 cnn_muscle_A2_w1_s0.5_12e5a252
+sensitivity                                   0.8434
+specificity                                   0.7957
+precision                                       0.63
+accuracy                                      0.8096
+f1_score                                      0.7213
+auc_roc                                       0.9011
+false_alarm_rate                              0.2043
+fp_per_day                                  24997.69
+covered_test_days                             0.5229
+TP                                             22256
+FP                                             13072
+TN                                             50903
+FN                                              4131
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                               0.984
+OVLP_False_Alarms                               2756
+TAES_Score                                    0.8351
+MARGIN_5s_Onset                               0.9305
+MARGIN_5s_Offset                               0.918
+AP                                            0.7934
+balanced_accuracy                             0.8196
+pROC_0.1                                      0.0514
+adj_PR_AUC                                     0.894
+threshold                                     0.7031
+val_fp_per_day                              22550.43
+med_ch_f1_micro                               0.6621
+med_ch_f1_macro                               0.6549
+med_ch_jaccard                                0.3768
+med_n_win_scored                             90022.0
+med_ch_tau                                      0.65
+
+-- Con tope 100 FP/día: thr=0.999 (fbeta_val+fp_cap)
+model                 cnn_muscle_A2_w1_s0.5_12e5a252
+sensitivity                                   0.0507
+specificity                                   0.9983
+precision                                     0.9265
+accuracy                                      0.7216
+f1_score                                      0.0961
+auc_roc                                       0.9011
+false_alarm_rate                              0.0017
+fp_per_day                                     202.7
+covered_test_days                             0.5229
+TP                                              1337
+FP                                               106
+TN                                             63869
+FN                                             25050
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                               0.303
+OVLP_False_Alarms                                 31
+TAES_Score                                     0.072
+MARGIN_5s_Onset                                0.221
+MARGIN_5s_Offset                              0.1979
+AP                                            0.7934
+balanced_accuracy                             0.5245
+pROC_0.1                                      0.0514
+adj_PR_AUC                                     0.894
+threshold                                     0.9994
+val_fp_per_day                                 97.25
+2026-10-29 20:39:43,415 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_12e5a252] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_12e5
+a252
+2026-10-29 20:39:43,682 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_12e5a252] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_mus
+cle_A2_w1_s0.5_12e5a252/cnn_cnn_muscle_A2_w1_s0.5_12e5a252_learning_curves.png
+**************************************************
+>> muscle | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.2_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 174396 | positive: 48934
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     24691        7340       17351       0.297274
+train   125835       34254       91581       0.272214
+val      23870        7340       16530       0.307499
+Broken rules: 0 | splits per patient: {'train': 149, 'val': 35, 'test': 29}
+[INFO] Split distribution:  split
+train    125835
+test      24691
+val       23870
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 20:39:47,562 - ArtifactDetector[cnn_muscle_A1_w5_s2_7deb458a] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 234/234 [00:06<00:00, 38.41it/s]
+prewarm: 100%|██████████| 37/37 [00:01<00:00, 33.54it/s]
+prewarm: 100%|██████████| 39/39 [00:01<00:00, 33.55it/s]
+2026-10-29 20:39:56,052 - ArtifactDetector[cnn_muscle_A1_w5_s2_7deb458a] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.687014773806794), 1: n
+p.float64(1.8367927833245752)}
+2026-10-29 20:39:56,053 - ArtifactDetector[cnn_muscle_A1_w5_s2_7deb458a] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 1/100 - loss=0.0257 val_loss=0.0257 val_ap=0.7648 val_f1=0.7082 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 2/100 - loss=0.0206 val_loss=0.0257 val_ap=0.7552 val_f1=0.6850 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 3/100 - loss=0.0192 val_loss=0.0272 val_ap=0.7511 val_f1=0.6900 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 4/100 - loss=0.0182 val_loss=0.0282 val_ap=0.7316 val_f1=0.6612 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 5/100 - loss=0.0174 val_loss=0.0283 val_ap=0.7383 val_f1=0.6743 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 6/100 - loss=0.0167 val_loss=0.0277 val_ap=0.7312 val_f1=0.6617 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 7/100 - loss=0.0159 val_loss=0.0306 val_ap=0.7251 val_f1=0.6619 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 8/100 - loss=0.0155 val_loss=0.0302 val_ap=0.7273 val_f1=0.6607 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 9/100 - loss=0.0152 val_loss=0.0300 val_ap=0.7254 val_f1=0.6553 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 10/100 - loss=0.0147 val_loss=0.0305 val_ap=0.7172 val_f1=0.6463 (selección: ap)
+[cnn_muscle_A1_w5_s2_7deb458a] Epoch 11/100 - loss=0.0142 val_loss=0.0318 val_ap=0.7140 val_f1=0.6499 (selección: ap)
+
+Epoch 11: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:45:43,764 - ArtifactDetector[cnn_muscle_A1_w5_s2_7deb458a] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A1_w5_s2_7deb458a
+Umbral (fbeta_val, val): 0.353
+                                 precision    recall  f1-score   support
+
+no_cnn_muscle_A1_w5_s2_7deb458a       0.92      0.85      0.88     17351
+   cnn_muscle_A1_w5_s2_7deb458a       0.69      0.83      0.75      7340
+
+                       accuracy                           0.84     24691
+                      macro avg       0.81      0.84      0.82     24691
+                   weighted avg       0.85      0.84      0.84     24691
+
+[[14687  2664]
+ [ 1279  6061]]
+model                 cnn_muscle_A1_w5_s2_7deb458a
+sensitivity                                 0.8257
+specificity                                 0.8465
+precision                                   0.6947
+accuracy                                    0.8403
+f1_score                                    0.7546
+auc_roc                                     0.9134
+false_alarm_rate                            0.1535
+fp_per_day                                  4661.0
+covered_test_days                           0.5716
+TP                                            6061
+FP                                            2664
+TN                                           14687
+FN                                            1279
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                            0.8922
+OVLP_False_Alarms                              355
+TAES_Score                                   0.794
+MARGIN_5s_Onset                             0.7353
+MARGIN_5s_Offset                            0.6471
+AP                                          0.8223
+balanced_accuracy                           0.8361
+pROC_0.1                                    0.0564
+adj_PR_AUC                                  0.9083
+threshold                                    0.353
+val_fp_per_day                             3639.51
+med_ch_f1_micro                             0.7084
+med_ch_f1_macro                             0.7074
+med_ch_jaccard                              0.4224
+med_n_win_scored                           24534.0
+med_ch_tau                                     0.3
+
+-- Con tope 100 FP/día: thr=0.520 (fbeta_val+fp_cap)
+model                 cnn_muscle_A1_w5_s2_7deb458a
+sensitivity                                 0.2699
+specificity                                 0.9925
+precision                                    0.938
+accuracy                                    0.7777
+f1_score                                    0.4192
+auc_roc                                     0.9134
+false_alarm_rate                            0.0075
+fp_per_day                                   229.2
+covered_test_days                           0.5716
+TP                                            1981
+FP                                             131
+TN                                           17220
+FN                                            5359
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                            0.3946
+OVLP_False_Alarms                               45
+TAES_Score                                  0.2518
+MARGIN_5s_Onset                             0.3064
+MARGIN_5s_Offset                            0.2917
+AP                                          0.8223
+balanced_accuracy                           0.6312
+pROC_0.1                                    0.0564
+adj_PR_AUC                                  0.9083
+threshold                                   0.5196
+val_fp_per_day                               95.92
+2026-10-29 20:45:53,283 - ArtifactDetector[cnn_muscle_A1_w5_s2_7deb458a] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_7deb458a
+2026-10-29 20:45:53,553 - ArtifactDetector[cnn_muscle_A1_w5_s2_7deb458a] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscl
+e_A1_w5_s2_7deb458a/cnn_cnn_muscle_A1_w5_s2_7deb458a_learning_curves.png
+2026-10-29 20:45:54,380 - ArtifactDetector[cnn_muscle_A2_w5_s2_bb88ef05] - INFO - Model(paper). Parameters: 59,843
+prewarm: 100%|██████████| 234/234 [00:20<00:00, 11.29it/s]
+prewarm: 100%|██████████| 37/37 [00:04<00:00,  8.93it/s]
+prewarm: 100%|██████████| 39/39 [00:06<00:00,  6.30it/s]
+2026-10-29 20:46:25,593 - ArtifactDetector[cnn_muscle_A2_w5_s2_bb88ef05] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.687014773806794), 1: n
+p.float64(1.8367927833245752)}
+2026-10-29 20:47:12,834 - ArtifactDetector[cnn_muscle_A2_w5_s2_bb88ef05] - INFO - Starting training: epochs=100
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 1/100 - loss=0.1847 val_loss=0.1877 val_ap=0.7589 val_f1=0.6830 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 2/100 - loss=0.1549 val_loss=0.1899 val_ap=0.7584 val_f1=0.6867 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 3/100 - loss=0.1445 val_loss=0.1999 val_ap=0.7686 val_f1=0.6894 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 4/100 - loss=0.1374 val_loss=0.2148 val_ap=0.7696 val_f1=0.7004 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 5/100 - loss=0.1319 val_loss=0.1816 val_ap=0.7779 val_f1=0.7142 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 6/100 - loss=0.1273 val_loss=0.2464 val_ap=0.7484 val_f1=0.6864 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 7/100 - loss=0.1238 val_loss=0.2082 val_ap=0.7591 val_f1=0.6950 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 8/100 - loss=0.1203 val_loss=0.1958 val_ap=0.7643 val_f1=0.7038 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 9/100 - loss=0.1177 val_loss=0.2106 val_ap=0.7348 val_f1=0.6735 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 10/100 - loss=0.1130 val_loss=0.2356 val_ap=0.7409 val_f1=0.6753 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 11/100 - loss=0.1107 val_loss=0.2236 val_ap=0.7435 val_f1=0.6813 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 12/100 - loss=0.1086 val_loss=0.2430 val_ap=0.7261 val_f1=0.6673 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 13/100 - loss=0.1067 val_loss=0.2158 val_ap=0.7438 val_f1=0.6831 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 14/100 - loss=0.1032 val_loss=0.2530 val_ap=0.7412 val_f1=0.6778 (selección: ap)
+[cnn_muscle_A2_w5_s2_bb88ef05] Epoch 15/100 - loss=0.1016 val_loss=0.2275 val_ap=0.7318 val_f1=0.6708 (selección: ap)
+
+Epoch 15: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 20:50:44,564 - ArtifactDetector[cnn_muscle_A2_w5_s2_bb88ef05] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A2_w5_s2_bb88ef05
+Umbral (fbeta_val, val): 0.756
+                                 precision    recall  f1-score   support
+
+no_cnn_muscle_A2_w5_s2_bb88ef05       0.93      0.84      0.88     17351
+   cnn_muscle_A2_w5_s2_bb88ef05       0.69      0.84      0.76      7340
+
+                       accuracy                           0.84     24691
+                      macro avg       0.81      0.84      0.82     24691
+                   weighted avg       0.85      0.84      0.84     24691
+
+[[14507  2844]
+ [ 1147  6193]]
+model                 cnn_muscle_A2_w5_s2_bb88ef05
+sensitivity                                 0.8437
+specificity                                 0.8361
+precision                                   0.6853
+accuracy                                    0.8384
+f1_score                                    0.7563
+auc_roc                                     0.9222
+false_alarm_rate                            0.1639
+fp_per_day                                 4975.93
+covered_test_days                           0.5716
+TP                                            6193
+FP                                            2844
+TN                                           14507
+FN                                            1147
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                             0.902
+OVLP_False_Alarms                              500
+TAES_Score                                  0.8144
+MARGIN_5s_Onset                             0.7426
+MARGIN_5s_Offset                            0.6642
+AP                                          0.8297
+balanced_accuracy                           0.8399
+pROC_0.1                                    0.0586
+adj_PR_AUC                                  0.9134
+threshold                                   0.7565
+val_fp_per_day                             4443.07
+med_ch_f1_micro                             0.7337
+med_ch_f1_macro                             0.7299
+med_ch_jaccard                              0.4343
+med_n_win_scored                           24534.0
+med_ch_tau                                    0.65
+
+-- Con tope 100 FP/día: thr=0.991 (fbeta_val+fp_cap)
+model                 cnn_muscle_A2_w5_s2_bb88ef05
+sensitivity                                 0.2169
+specificity                                 0.9934
+precision                                   0.9326
+accuracy                                    0.7625
+f1_score                                    0.3519
+auc_roc                                     0.9222
+false_alarm_rate                            0.0066
+fp_per_day                                  201.21
+covered_test_days                           0.5716
+TP                                            1592
+FP                                             115
+TN                                           17236
+FN                                            5748
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                            0.3284
+OVLP_False_Alarms                               41
+TAES_Score                                  0.1825
+MARGIN_5s_Onset                             0.2353
+MARGIN_5s_Offset                            0.2083
+AP                                          0.8297
+balanced_accuracy                           0.6051
+pROC_0.1                                    0.0586
+adj_PR_AUC                                  0.9134
+threshold                                   0.9912
+val_fp_per_day                               97.73
+2026-10-29 20:50:51,323 - ArtifactDetector[cnn_muscle_A2_w5_s2_bb88ef05] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_bb88ef05
+2026-10-29 20:50:51,608 - ArtifactDetector[cnn_muscle_A2_w5_s2_bb88ef05] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscl
+e_A2_w5_s2_bb88ef05/cnn_cnn_muscle_A2_w5_s2_bb88ef05_learning_curves.png
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- muscle ----------
+                 Threshold: 0.318 (fbeta_val)
+                 Confusion matrix:
+[[52942 11033]
+ [ 4540 21847]]
+                 Metrics results: {'model': 'cnn_muscle_A1_w1_s0.5_b995551c', 'sensitivity': 0.8279, 'specificity': np.float64(0.8275), 'precision': 0.6644, 'accuracy': 0
+.8277, 'f1_score': 0.7372, 'auc_roc': 0.9051, 'false_alarm_rate': np.float64(0.1725), 'fp_per_day': np.float64(21098.5), 'covered_test_days': 0.5229, 'TP': 21847, 'FP': 1
+1033, 'TN': 52942, 'FN': 4540, 'n_test_windows': 90362, 'covered_test_hours': 12.55, 'OVLP_Sensitivity': 0.9768, 'OVLP_False_Alarms': 2445, 'TAES_Score': np.float64(0.831
+5), 'MARGIN_5s_Onset': 0.9269, 'MARGIN_5s_Offset': 0.9251, 'AP': 0.7993, 'balanced_accuracy': 0.8277, 'pROC_0.1': 0.0509, 'adj_PR_AUC': 0.8979, 'threshold': 0.3184, 'val_
+fp_per_day': 19169.55, 'med_ch_f1_micro': 0.6802, 'med_ch_f1_macro': 0.6703, 'med_ch_jaccard': 0.3897, 'med_n_win_scored': 90022.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.703 (fbeta_val)
+                 Confusion matrix:
+[[50903 13072]
+ [ 4131 22256]]
+                 Metrics results: {'model': 'cnn_muscle_A2_w1_s0.5_12e5a252', 'sensitivity': 0.8434, 'specificity': np.float64(0.7957), 'precision': 0.63, 'accuracy': 0.8
+096, 'f1_score': 0.7213, 'auc_roc': 0.9011, 'false_alarm_rate': np.float64(0.2043), 'fp_per_day': np.float64(24997.69), 'covered_test_days': 0.5229, 'TP': 22256, 'FP': 13
+072, 'TN': 50903, 'FN': 4131, 'n_test_windows': 90362, 'covered_test_hours': 12.55, 'OVLP_Sensitivity': 0.984, 'OVLP_False_Alarms': 2756, 'TAES_Score': np.float64(0.8351)
+, 'MARGIN_5s_Onset': 0.9305, 'MARGIN_5s_Offset': 0.918, 'AP': 0.7934, 'balanced_accuracy': 0.8196, 'pROC_0.1': 0.0514, 'adj_PR_AUC': 0.894, 'threshold': 0.7031, 'val_fp_p
+er_day': 22550.43, 'med_ch_f1_micro': 0.6621, 'med_ch_f1_macro': 0.6549, 'med_ch_jaccard': 0.3768, 'med_n_win_scored': 90022.0, 'med_ch_tau': 0.65}
+                 Threshold: 0.353 (fbeta_val)
+                 Confusion matrix:
+[[14687  2664]
+ [ 1279  6061]]
+                 Metrics results: {'model': 'cnn_muscle_A1_w5_s2_7deb458a', 'sensitivity': 0.8257, 'specificity': np.float64(0.8465), 'precision': 0.6947, 'accuracy': 0.8
+403, 'f1_score': 0.7546, 'auc_roc': 0.9134, 'false_alarm_rate': np.float64(0.1535), 'fp_per_day': np.float64(4661.0), 'covered_test_days': 0.5716, 'TP': 6061, 'FP': 2664,
+ 'TN': 14687, 'FN': 1279, 'n_test_windows': 24691, 'covered_test_hours': 13.72, 'OVLP_Sensitivity': 0.8922, 'OVLP_False_Alarms': 355, 'TAES_Score': np.float64(0.794), 'MA
+RGIN_5s_Onset': 0.7353, 'MARGIN_5s_Offset': 0.6471, 'AP': 0.8223, 'balanced_accuracy': 0.8361, 'pROC_0.1': 0.0564, 'adj_PR_AUC': 0.9083, 'threshold': 0.353, 'val_fp_per_d
+ay': 3639.51, 'med_ch_f1_micro': 0.7084, 'med_ch_f1_macro': 0.7074, 'med_ch_jaccard': 0.4224, 'med_n_win_scored': 24534.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.756 (fbeta_val)
+                 Confusion matrix:
+[[14507  2844]
+ [ 1147  6193]]
+                 Metrics results: {'model': 'cnn_muscle_A2_w5_s2_bb88ef05', 'sensitivity': 0.8437, 'specificity': np.float64(0.8361), 'precision': 0.6853, 'accuracy': 0.8
+384, 'f1_score': 0.7563, 'auc_roc': 0.9222, 'false_alarm_rate': np.float64(0.1639), 'fp_per_day': np.float64(4975.93), 'covered_test_days': 0.5716, 'TP': 6193, 'FP': 2844
+, 'TN': 14507, 'FN': 1147, 'n_test_windows': 24691, 'covered_test_hours': 13.72, 'OVLP_Sensitivity': 0.902, 'OVLP_False_Alarms': 500, 'TAES_Score': np.float64(0.8144), 'M
+ARGIN_5s_Onset': 0.7426, 'MARGIN_5s_Offset': 0.6642, 'AP': 0.8297, 'balanced_accuracy': 0.8399, 'pROC_0.1': 0.0586, 'adj_PR_AUC': 0.9134, 'threshold': 0.7565, 'val_fp_per
+_day': 4443.07, 'med_ch_f1_micro': 0.7337, 'med_ch_f1_macro': 0.7299, 'med_ch_jaccard': 0.4343, 'med_n_win_scored': 24534.0, 'med_ch_tau': 0.65}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -p -S -32768 > lightweigth_models_more_mmap_tmux.txt
+

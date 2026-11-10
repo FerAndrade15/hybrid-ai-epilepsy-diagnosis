@@ -1,0 +1,1060 @@
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.ica_cnn_rf 2>&1 | tee rf_artifacts_random_p2.log
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    1629421
+test      284985
+val       261193
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+
+[AUDIT:train] df=68 cols | X=57 features | target=y_med
+[AUDIT:train] EXCLUIDAS (11): ['Partition', 'Patient', 'Section', 'Session', 'Start', 'ic_index', 'ic_raw_label', 'ic_target_label', 'is_positive', 'split', 'y_med']
+[AUDIT:train] FEATURES (57): ['ic_alpha_power', 'ic_baseline_shift', 'ic_beta_power', 'ic_contrib_C3', 'ic_contrib_C4', 'ic_contrib_CZ', 'ic_contrib_F3', 'ic_contrib_F4', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_con
+trib_FP1', 'ic_contrib_FP2', 'ic_contrib_FZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_P3', 'ic_contrib_P4', 'ic_contrib_P7', 'ic_contrib_P8', 'ic_contrib_PZ', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_delta_pow
+er', 'ic_dwt_energy_A4', 'ic_dwt_energy_D1', 'ic_dwt_energy_D2', 'ic_dwt_energy_D3', 'ic_dwt_energy_D4', 'ic_dwt_var_A4', 'ic_dwt_var_D1', 'ic_dwt_var_D2', 'ic_dwt_var_D3', 'ic_dwt_var_D4', 'ic_gamma_power', 'ic_
+hjorth_complexity', 'ic_hjorth_mobility', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_muscle', 'ic_icla
+bel_prob_other', 'ic_kurtosis', 'ic_line_length', 'ic_mean', 'ic_n_peaks', 'ic_peak_position', 'ic_peak_to_mean', 'ic_peak_to_peak', 'ic_ratio_high_low', 'ic_rms', 'ic_skewness', 'ic_spectral_entropy', 'ic_theta_
+power', 'ic_variance', 'ic_zcr']
+
+============================================================
+Modelo: rf_eye_w5s2_7
+Train: 1548881 (pos=70589) | Val: 241396 (pos = 15743) | Test: 284985 (pos=16987)
+^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.ica_cnn_rf --no-force-retrain 2>&1 | tee rf_artifacts_random_p2.log
+
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    1629421
+test      284985
+val       261193
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w5s2_7_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w5s2_7       0.86      0.87      0.86     16582
+   rf_eye_w5s2_7       0.67      0.65      0.66      6850
+
+        accuracy                           0.80     23432
+       macro avg       0.76      0.76      0.76     23432
+    weighted avg       0.80      0.80      0.80     23432
+
+Confusion matrix -------------------------
+[[14384  2198]
+ [ 2402  4448]]
+General metrics -------------------------
+model                    rf_eye_w5s2_7
+sensitivity                     0.6493
+specificity                     0.8674
+precision                       0.6693
+accuracy                        0.8037
+f1_score                        0.6592
+auc_roc                         0.8391
+false_alarm_rate                0.1326
+fp_per_day                      4052.3
+covered_test_days               0.5424
+TP                                4448
+FP                                2198
+TN                               14384
+FN                                2402
+n_test_windows                   23432
+covered_test_hours               13.02
+OVLP_Sensitivity                0.6952
+OVLP_False_Alarms                  465
+TAES_Score                      0.5597
+MARGIN_5s_Onset                 0.5241
+MARGIN_5s_Offset                0.4914
+threshold                       0.9621
+AP                              0.7438
+med_win_precision               0.6693
+med_win_recall                  0.6493
+med_win_AP                      0.7438
+med_n_tp_windows                4448.0
+med_ch_bip_hit@3                0.9971
+med_ch_bip_iou                  0.6072
+med_n_tp_with_bip_gt            4448.0
+med_ch_mono_hit@3               0.9978
+med_n_tp_with_mono_gt           4448.0
+med_ch_f1_micro                 0.2943
+med_ch_f1_macro                 0.1948
+med_ch_jaccard                  0.1815
+med_n_win_scored               23432.0
+med_ch_tau                        0.95
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    3327696
+val       512849
+test      497695
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w2s1_7_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w2s1_7       0.83      0.94      0.88     28463
+   rf_eye_w2s1_7       0.75      0.50      0.60     10951
+
+        accuracy                           0.81     39414
+       macro avg       0.79      0.72      0.74     39414
+    weighted avg       0.81      0.81      0.80     39414
+
+Confusion matrix -------------------------
+[[26648  1815]
+ [ 5528  5423]]
+General metrics -------------------------
+model                    rf_eye_w2s1_7
+sensitivity                     0.4952
+specificity                     0.9362
+precision                       0.7492
+accuracy                        0.8137
+f1_score                        0.5963
+auc_roc                          0.817
+false_alarm_rate                0.0638
+fp_per_day                     3978.69
+covered_test_days               0.4562
+TP                                5423
+FP                                1815
+TN                               26648
+FN                                5528
+n_test_windows                   39414
+covered_test_hours               10.95
+OVLP_Sensitivity                0.5931
+OVLP_False_Alarms                  541
+TAES_Score                      0.4543
+MARGIN_5s_Onset                 0.5481
+MARGIN_5s_Offset                0.5439
+threshold                       0.9058
+AP                               0.704
+med_win_precision               0.7492
+med_win_recall                  0.4952
+med_win_AP                       0.704
+med_n_tp_windows                5423.0
+med_ch_bip_hit@3                0.9924
+med_ch_bip_iou                   0.676
+med_n_tp_with_bip_gt            5423.0
+med_ch_mono_hit@3               0.9972
+med_n_tp_with_mono_gt           5423.0
+med_ch_f1_micro                 0.4668
+med_ch_f1_macro                  0.228
+med_ch_jaccard                  0.2672
+med_n_win_scored               39414.0
+med_ch_tau                         0.9
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.ica_cnn_rf --no-force-retrain 2>&1 | tee rf_artifacts_random_p2.log
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    1629421
+test      284985
+val       261193
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w5s2_7_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w5s2_7       0.86      0.87      0.86     16582
+   rf_eye_w5s2_7       0.67      0.65      0.66      6850
+
+        accuracy                           0.80     23432
+       macro avg       0.76      0.76      0.76     23432
+    weighted avg       0.80      0.80      0.80     23432
+
+Confusion matrix -------------------------
+[[14384  2198]
+ [ 2402  4448]]
+General metrics -------------------------
+model                    rf_eye_w5s2_7
+sensitivity                     0.6493
+specificity                     0.8674
+precision                       0.6693
+accuracy                        0.8037
+f1_score                        0.6592
+auc_roc                         0.8391
+false_alarm_rate                0.1326
+fp_per_day                      4052.3
+covered_test_days               0.5424
+TP                                4448
+FP                                2198
+TN                               14384
+FN                                2402
+n_test_windows                   23432
+covered_test_hours               13.02
+OVLP_Sensitivity                0.6952
+OVLP_False_Alarms                  465
+TAES_Score                      0.5597
+MARGIN_5s_Onset                 0.5241
+MARGIN_5s_Offset                0.4914
+threshold                       0.9621
+AP                              0.7438
+med_win_precision               0.6693
+med_win_recall                  0.6493
+med_win_AP                      0.7438
+med_n_tp_windows                4448.0
+med_ch_bip_hit@3                0.9971
+med_ch_bip_iou                  0.6072
+med_n_tp_with_bip_gt            4448.0
+med_ch_mono_hit@3               0.9978
+med_n_tp_with_mono_gt           4448.0
+med_ch_f1_micro                 0.2943
+med_ch_f1_macro                 0.1948
+med_ch_jaccard                  0.1815
+med_n_win_scored               23432.0
+med_ch_tau                        0.95
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    3327696
+val       512849
+test      497695
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w2s1_7_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w2s1_7       0.83      0.94      0.88     28463
+   rf_eye_w2s1_7       0.75      0.50      0.60     10951
+
+        accuracy                           0.81     39414
+       macro avg       0.79      0.72      0.74     39414
+    weighted avg       0.81      0.81      0.80     39414
+
+Confusion matrix -------------------------
+[[26648  1815]
+ [ 5528  5423]]
+General metrics -------------------------
+model                    rf_eye_w2s1_7
+sensitivity                     0.4952
+specificity                     0.9362
+precision                       0.7492
+accuracy                        0.8137
+f1_score                        0.5963
+auc_roc                          0.817
+false_alarm_rate                0.0638
+fp_per_day                     3978.69
+covered_test_days               0.4562
+TP                                5423
+FP                                1815
+TN                               26648
+FN                                5528
+n_test_windows                   39414
+covered_test_hours               10.95
+OVLP_Sensitivity                0.5931
+OVLP_False_Alarms                  541
+TAES_Score                      0.4543
+MARGIN_5s_Onset                 0.5481
+MARGIN_5s_Offset                0.5439
+threshold                       0.9058
+AP                               0.704
+med_win_precision               0.7492
+med_win_recall                  0.4952
+med_win_AP                       0.704
+med_n_tp_windows                5423.0
+med_ch_bip_hit@3                0.9924
+med_ch_bip_iou                   0.676
+med_n_tp_with_bip_gt            5423.0
+med_ch_mono_hit@3               0.9972
+med_n_tp_with_mono_gt           5423.0
+med_ch_f1_micro                 0.4668
+med_ch_f1_macro                  0.228
+med_ch_jaccard                  0.2672
+med_n_win_scored               39414.0
+med_ch_tau                         0.9
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.ica_cnn_rf --no-force-retrain 2>&1 | tee rf_artifacts_random_p2.log
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    1629421
+test      284985
+val       261193
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w5s2_7_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w5s2_7       0.86      0.87      0.86     16582
+   rf_eye_w5s2_7       0.67      0.65      0.66      6850
+
+        accuracy                           0.80     23432
+       macro avg       0.76      0.76      0.76     23432
+    weighted avg       0.80      0.80      0.80     23432
+
+Confusion matrix -------------------------
+[[14384  2198]
+ [ 2402  4448]]
+General metrics -------------------------
+model                    rf_eye_w5s2_7
+sensitivity                     0.6493
+specificity                     0.8674
+precision                       0.6693
+accuracy                        0.8037
+f1_score                        0.6592
+auc_roc                         0.8391
+false_alarm_rate                0.1326
+fp_per_day                      4052.3
+covered_test_days               0.5424
+TP                                4448
+FP                                2198
+TN                               14384
+FN                                2402
+n_test_windows                   23432
+covered_test_hours               13.02
+OVLP_Sensitivity                0.6952
+OVLP_False_Alarms                  465
+TAES_Score                      0.5597
+MARGIN_5s_Onset                 0.5241
+MARGIN_5s_Offset                0.4914
+threshold                       0.9621
+AP                              0.7438
+med_win_precision               0.6693
+med_win_recall                  0.6493
+med_win_AP                      0.7438
+med_n_tp_windows                4448.0
+med_ch_bip_hit@3                0.9971
+med_ch_bip_iou                  0.6072
+med_n_tp_with_bip_gt            4448.0
+med_ch_mono_hit@3               0.9978
+med_n_tp_with_mono_gt           4448.0
+med_ch_f1_micro                 0.2943
+med_ch_f1_macro                 0.1948
+med_ch_jaccard                  0.1815
+med_n_win_scored               23432.0
+med_ch_tau                        0.95
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    3327696
+val       512849
+test      497695
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_ic
+label_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', '
+ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy', 'ic_dw
+t_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3'
+, 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_c
+ontrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', '
+tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiologic
+al', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_
+is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - eye
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w2s1_7_and_analysis_random.joblib
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w2s1_7       0.83      0.94      0.88     28463
+   rf_eye_w2s1_7       0.75      0.50      0.60     10951
+
+        accuracy                           0.81     39414
+       macro avg       0.79      0.72      0.74     39414
+    weighted avg       0.81      0.81      0.80     39414
+
+Confusion matrix -------------------------
+[[26648  1815]
+ [ 5528  5423]]
+General metrics -------------------------
+model                    rf_eye_w2s1_7
+sensitivity                     0.4952
+specificity                     0.9362
+precision                       0.7492
+accuracy                        0.8137
+f1_score                        0.5963
+auc_roc                          0.817
+false_alarm_rate                0.0638
+fp_per_day                     3978.69
+covered_test_days               0.4562
+TP                                5423
+FP                                1815
+TN                               26648
+FN                                5528
+n_test_windows                   39414
+covered_test_hours               10.95
+OVLP_Sensitivity                0.5931
+OVLP_False_Alarms                  541
+TAES_Score                      0.4543
+MARGIN_5s_Onset                 0.5481
+MARGIN_5s_Offset                0.5439
+threshold                       0.9058
+AP                               0.704
+med_win_precision               0.7492
+med_win_recall                  0.4952
+med_win_AP                       0.704
+med_n_tp_windows                5423.0
+med_ch_bip_hit@3                0.9924
+med_ch_bip_iou                   0.676
+med_n_tp_with_bip_gt            5423.0
+med_ch_mono_hit@3               0.9972
+med_n_tp_with_mono_gt           5423.0
+med_ch_f1_micro                 0.4668
+med_ch_f1_macro                  0.228
+med_ch_jaccard                  0.2672
+med_n_win_scored               39414.0
+med_ch_tau                         0.9
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# python
+Python 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandas as pd
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'pandas'
+>>>
+>>> artifact = "eye"
+>>> # Ajusta el nombre exacto de tu archivo RF si es necesario
+>>> rf_path = f"outputs/artifact/dataset/rf_dataset_{artifact}_w5_s2_ua0.5_p30_v2_pt0.5_it0.2_norm1.parquet"
+>>> # Ajusta a la ruta donde se guardó el dataset de la CNN
+>>> cnn_path = f"outputs/artifact/models_v2/cnn_{artifact}/preds_test.parquet"
+>>>
+>>> KEY = ["Patient", "Session", "Section", "Start"]
+>>> rf = pd.read_parquet(rf_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>> cnn = pd.read_parquet(cnn_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>>
+>>> # Hacemos el cruce solo para el set de prueba
+>>> m = rf[KEY + [f"tuar_{artifact}"]].merge(cnn, on=KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'rf' is not defined
+>>>
+>>> # Imprimir la matriz
+>>> print("\n--- MATRIZ DE EQUIVALENCIA ---")
+
+--- MATRIZ DE EQUIVALENCIA ---
+>>> print(pd.crosstab(m[f"tuar_{artifact}"] > 0, m["y"], margins=True))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>> exit()
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python
+Python 3.11.17 (main, Oct  1 2026, 15:41:07) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandas as pd
+xacto de tu archivo RF si es necesario
+rf_path = f"outputs/artifact/dataset/rf_dataset_{artifact}_w5_s2_ua0.5_p30_v2_pt0.5_it0.2_norm1.parquet"
+# Ajusta a la ruta donde se guardó el dataset de la CNN
+cnn_path = f"outputs/artifact/models_v2/cnn_{artifact}/preds_test.parquet"
+
+KEY = ["Patient", "Session", "Section", "Start"]
+rf = pd.read_parquet(rf_path).drop_duplicates(KEY)
+cnn = pd.read_parquet(cnn_path).drop_duplicates(KEY)
+
+# Hacemos el cruce solo para el set de prueba
+m = rf[KEY + [f"tuar_{artifact}"]].merge(cnn, on=KEY)
+
+# Imprimir la matriz
+print("\n--- MATRIZ DE EQUIVALENCIA ---")
+print(pd.crosstab(m[f"tuar_{artifact}"] > 0, m["y"], margins=True))
+>>>
+>>> artifact = "eye"
+>>> # Ajusta el nombre exacto de tu archivo RF si es necesario
+>>> rf_path = f"outputs/artifact/dataset/rf_dataset_{artifact}_w5_s2_ua0.5_p30_v2_pt0.5_it0.2_norm1.parquet"
+>>> # Ajusta a la ruta donde se guardó el dataset de la CNN
+>>> cnn_path = f"outputs/artifact/models_v2/cnn_{artifact}/preds_test.parquet"
+>>>
+>>> KEY = ["Patient", "Session", "Section", "Start"]
+>>> rf = pd.read_parquet(rf_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 671, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 253, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 141, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 935, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/artifact/dataset/rf_dataset_eye_w5_s2_ua0.5_p30_v2_pt0.5_it0.2_norm1.parquet'
+>>> cnn = pd.read_parquet(cnn_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 671, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 253, in read
+    path_or_handle, handles, filesystem = _get_path_or_handle(
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 141, in _get_path_or_handle
+    handles = get_handle(
+              ^^^^^^^^^^^
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 935, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'outputs/artifact/models_v2/cnn_eye/preds_test.parquet'
+>>>
+>>> # Hacemos el cruce solo para el set de prueba
+>>> m = rf[KEY + [f"tuar_{artifact}"]].merge(cnn, on=KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'rf' is not defined
+>>>
+>>> # Imprimir la matriz
+>>> print("\n--- MATRIZ DE EQUIVALENCIA ---")
+
+--- MATRIZ DE EQUIVALENCIA ---
+>>> print(pd.crosstab(m[f"tuar_{artifact}"] > 0, m["y"], margins=True))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'm' is not defined
+>>> exit()
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh outputs/artifact/dataset/rf_dataset_eye*.parquet
+ls: cannot access 'outputs/artifact/dataset/rf_dataset_eye*.parquet': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh outputs/artifact/dataset/*dataset*.parquet
+ls: cannot access 'outputs/artifact/dataset/*dataset*.parquet': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh *dataset*.parquet
+ls: cannot access '*dataset*.parquet': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# find outputs/artifact/dataset -type f -name "rf_dataset_eye*.parquet"
+find: 'outputs/artifact/dataset': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/
+root@d4deb216ff16:/workspace# find outputs/artifact/dataset -type f -name "rf_dataset_eye*.parquet"
+find: 'outputs/artifact/dataset': No such file or directory
+root@d4deb216ff16:/workspace# find outputs/artifact/dataset -type f -name "*dataset*.parquet"
+find: 'outputs/artifact/dataset': No such file or directory
+root@d4deb216ff16:/workspace# ls -lh
+total 155M
+drwxrwxrwx  4 root root 2.9M Oct 27 17:58 data
+drwxrwxrwx 18 root root 2.9M Oct 29 13:42 hybrid-ai-epilepsy-diagnosis
+drwxrwxrwx  6 root root 2.9M Oct 27 18:19 ml-outputs
+-rw-rw-rw-  1 root root 1.4K Oct 29 05:28 patch_engine.py
+-rw-rw-rw-  1 root root 263K Sep 24 17:11 resultados_entrenamiento.txt
+-rw-rw-rw-  1 root root 4.3M Sep 24 03:21 train_log.txt
+-rw-rw-rw-  1 root root 626K Oct 22 01:33 train_v2.lo
+-rw-rw-rw-  1 root root 141M Oct 22 07:11 train_v2.log
+root@d4deb216ff16:/workspace# cd ./data/
+root@d4deb216ff16:/workspace/data# ls -lh
+total 5.8M
+drwxrwxrwx 3 root root 2.9M Sep 23 23:54 tuh_eeg_artifact
+drwxrwxrwx 3 root root 2.9M Aug 14 13:45 tuh_eeg_seizure
+root@d4deb216ff16:/workspace/data# cd /workspace/ml-outputs/
+root@d4deb216ff16:/workspace/ml-outputs# ls -lh
+total 7.9M
+drwxrwxrwx  2 root root    1 Sep 24 05:18 annotations
+drwxrwxrwx 17 root root 2.9M Oct 21 21:54 artifact
+drwxrwxrwx  5 root root 2.0M Sep 24 03:10 artifact_backup_paths
+-rw-rw-rw-  1 root root  57K Sep 24 03:08 patient_registry.json
+-rw-rw-rw-  1 root root  57K Sep 24 05:16 patients_corpus_registry.json
+drwxrwxrwx  9 root root 2.9M Oct 29 02:48 seizure
+-rw-rw-rw-  1 root root 112K Oct 27 18:19 seizure_hybrid_model_v1.db
+root@d4deb216ff16:/workspace/ml-outputs# find -type f -name "*dataset*.parquet"
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_ua0.3_p213_v7_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_ua0.3_p213_v7_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w5_s2_ua0.2_p213_v7_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w5_s2_ua0.2_p213_v7_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v7_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v7_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v7_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_ua0.3_p213_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_ua0.3_p213_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_ua0.3_p213_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_ua0.3_p213_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w5_s2_ua0.2_p213_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w5_s2_ua0.2_p213_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p213_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p213_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_ua0.3_p15_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_ua0.3_p15_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_ua0.3_p15_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_ua0.3_p15_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w5_s2_ua0.2_p15_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w5_s2_ua0.2_p15_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p15_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_muscle_w1_s0.5_ua0.3_p15_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p15_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p15_v6_pt0.5_it0.2_norm0.raw.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p15_v6_pt0.5_it0.2_norm0.parquet
+./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p15_v6_pt0.5_it0.2_norm0.raw.parquet
+root@d4deb216ff16:/workspace/ml-outputs# uv run python
+Python 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandas as pd
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'pandas'
+>>> from glob import glob
+>>>
+>>> artifact = "eye"  # Cambia a "muscle" o "non_physiological" si lo requieres
+>>> window_tag = "w5_s2"  # Ajusta según el tamaño de ventana del archivo que encontraste
+>>>
+>>> # 1. Ruta del Random Forest (basada en tu listado _comparison)
+>>> rf_path = f"./artifact/dataset/_comparison/rf_dataset_{artifact}_{window_tag}_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet"
+>>>
+>>> # 2. Buscar automáticamente la ruta del archivo de la CNN
+>>> cnn_matches = glob(f"./artifact/models_v2/cnn_{artifact}*/preds_test.parquet")
+>>> if not cnn_matches:
+...     raise FileNotFoundError(f"No se encontró preds_test.parquet para {artifact}")
+... cnn_path = cnn_matches[0]  # Toma la primera coincidencia encontrada
+  File "<stdin>", line 3
+    cnn_path = cnn_matches[0]  # Toma la primera coincidencia encontrada
+    ^^^^^^^^
+SyntaxError: invalid syntax
+>>>
+>>> print(f"[INFO] Usando RF: {rf_path}")
+[INFO] Usando RF: ./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+>>> print(f"[INFO] Usando CNN: {cnn_path}")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'cnn_path' is not defined. Did you mean: 'rf_path'?
+>>>
+>>> KEY = ["Patient", "Session", "Section", "Start"]
+>>>
+>>> # Carga de datos eliminando duplicados por llave
+>>> rf = pd.read_parquet(rf_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>> cnn = pd.read_parquet(cnn_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>>
+>>> # Cruce de ambas tablas
+>>> m = rf[KEY + [f"tuar_{artifact}"]].merge(cnn, on=KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'rf' is not defined
+>>>
+>>> print("\n" + "=" * 50)
+
+==================================================
+>>> print(f"MATRIZ DE EQUIVALENCIA DE ETIQUETAS ({artifact.upper()})")
+MATRIZ DE EQUIVALENCIA DE ETIQUETAS (EYE)
+>>> print("=" * 50)
+==================================================
+>>> print(pd.crosstab(m[f"tuar_{artifact}"] > 0, m["y"], margins=True))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>> print("=" * 50)
+==================================================
+>>> exit()
+root@d4deb216ff16:/workspace/ml-outputs# cd ./artifact/dataset/
+root@d4deb216ff16:/workspace/ml-outputs/artifact/dataset# uv run python
+Python 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandas as pd
+lob import glob
+
+artifact = "eye"  # Cambia a "muscle" o "non_physiological" si lo requieres
+window_tag = "w5_s2"  # Ajusta según el tamaño de ventana del archivo que encontraste
+
+# 1. Ruta del Random Forest (basada en tu listado _comparison)
+rf_path = f"./artifact/dataset/_comparison/rf_dataset_{artifaTraceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'pandas'
+>>> from glob import glob
+>>>
+>>> artifact = "eye"  # Cambia a "muscle" o "non_physiological" si lo requieres
+>>> window_tag = "w5_s2"  # Ajusta según el tamaño de ventana del archivo que encontraste
+>>>
+>>> # 1. Ruta del Random Forest (basada en tu listado _comparison)
+>>> rf_path = f"./artifact/dataset/_comparison/rf_dataset_{artifact}_{window_tag}_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet"
+>>>
+>>> # 2. Buscar automáticamente la ruta del archivo de la CNN
+>>> cnn_matches = glob(f"./artifact/models_v2/cnn_{artifact}*/preds_test.parquet")
+>>> if not cnn_matches:
+...     raise FileNotFoundError(f"No se encontró preds_test.parquet para {artifact}")
+... cnn_path = cnn_matches[0]  # Toma la primera coincidencia encontrada
+  File "<stdin>", line 3
+    cnn_path = cnn_matches[0]  # Toma la primera coincidencia encontrada
+    ^^^^^^^^
+SyntaxError: invalid syntax
+>>>
+>>> print(f"[INFO] Usando RF: {rf_path}")
+[INFO] Usando RF: ./artifact/dataset/_comparison/rf_dataset_eye_w5_s2_ua0.1_p213_v7_pt0.5_it0.2_norm0.parquet
+>>> print(f"[INFO] Usando CNN: {cnn_path}")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'cnn_path' is not defined. Did you mean: 'rf_path'?
+>>>
+>>> KEY = ["Patient", "Session", "Section", "Start"]
+>>>
+>>> # Carga de datos eliminando duplicados por llave
+>>> rf = pd.read_parquet(rf_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>> cnn = pd.read_parquet(cnn_path).drop_duplicates(KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>>
+>>> # Cruce de ambas tablas
+>>> m = rf[KEY + [f"tuar_{artifact}"]].merge(cnn, on=KEY)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'rf' is not defined
+>>>
+>>> print("\n" + "=" * 50)
+
+==================================================
+>>> print(f"MATRIZ DE EQUIVALENCIA DE ETIQUETAS ({artifact.upper()})")
+MATRIZ DE EQUIVALENCIA DE ETIQUETAS (EYE)
+>>> print("=" * 50)
+==================================================
+>>> print(pd.crosstab(m[f"tuar_{artifact}"] > 0, m["y"], margins=True))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pd' is not defined. Did you mean: 'id'?
+>>> print("=" * 50)
+==================================================
+>>> exit()
+root@d4deb216ff16:/workspace/ml-outputs/artifact/dataset# cd /workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cat << 'EOF' > check_labels.py
+import pandas as pd
+from glob import glob
+
+artifact = "eye"
+window_tag = "w5_s2"
+
+# Ruta exacta basada en tu listado de _comparison (con p15_v6)
+rf_path = f"/workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_{artifact}_{window_tag}_ua0.1_p15_v6_pt0.5_it0.2_norm0.parquet"
+
+# Búsqueda automática del archivo de la CNN
+cnn_matches = glob(f"/workspace/ml-outputs/artifact/models_v2/cnn_{artifact}*/preds_test.parquet")
+if not cnn_matches:
+    # Intento alternativo en la otra ruta de modelos
+    cnn_matches = glob(f"./outputs/artifact/models_v2/cnn_{artifact}*/preds_test.parquet")
+
+if not cnn_matches:
+    raise FileNotFoundError(f"No se encontró preds_test.parquet para {artifact}")
+
+cnn_path = cnn_matches[0]
+
+print(f"[INFO] Usando RF: {rf_path}")
+print(f"[INFO] Usando CNN: {cnn_path}")
+
+KEY = ["Patient", "Session", "Section", "Start"]
+
+rf = pd.read_parquet(rf_path).drop_duplicates(KEY)
+EOFnt("=" * 50)ab(m[f"tuar_{artifact}"] > 0, m["y"], margins=True))
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python check_labels.py
+Traceback (most recent call last):
+  File "/workspace/hybrid-ai-epilepsy-diagnosis/check_labels.py", line 17, in <module>
+    raise FileNotFoundError(f"No se encontró preds_test.parquet para {artifact}")
+FileNotFoundError: No se encontró preds_test.parquet para eye
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# find ml-outputs/artifact/models_v2 -name "preds_test.parquet" | grep "eye"
+find: 'ml-outputs/artifact/models_v2': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# find ml-outputs/artifact/models_v2 -name "*.parquet"
+find: 'ml-outputs/artifact/models_v2': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/
+root@d4deb216ff16:/workspace# find ml-outputs/artifact/models_v2 -name "*.parquet"
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_437be6ac/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_437be6ac/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_40ab4faa/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_40ab4faa/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_42e0c73b/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_42e0c73b/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_0c25b9a1/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_0c25b9a1/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_f0b189be/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_f0b189be/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_00124cb5/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_00124cb5/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_1d7b319b/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_1d7b319b/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_85ebf60e/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_85ebf60e/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_0169516f/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_0169516f/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w2_s1_0b8ef3c3/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w2_s1_0b8ef3c3/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w2_s1_a549102d/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w2_s1_a549102d/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w1_s1_ba67dc5f/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w1_s1_ba67dc5f/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_93b1b9e2/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_93b1b9e2/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_0b654add/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_0b654add/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_33bb8fb6/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_33bb8fb6/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_d47b9670/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_d47b9670/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_a8d3f9e6/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_a8d3f9e6/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_582fd41d/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_582fd41d/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_f95f08c3/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_f95f08c3/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w2_s1_29698153/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w2_s1_29698153/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w2_s1_ad6583ee/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w2_s1_ad6583ee/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w2_s1_e538e25e/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w2_s1_e538e25e/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w1_s1_ad4592a8/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w1_s1_ad4592a8/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w2_s1_88a9d71e/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w2_s1_88a9d71e/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w1_s1_e24f0c26/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A2_w1_s1_e24f0c26/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_6ebd0fb3/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_6ebd0fb3/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_347940da/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_347940da/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_54c84f02/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_non_physiological_A1_w1_s1_54c84f02/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_0a25cb42/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_0a25cb42/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_093cf476/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_093cf476/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_4ec300fd/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_4ec300fd/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_8adc04ad/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_8adc04ad/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_d45e6339/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_d45e6339/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_7eb5bc3f/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_7eb5bc3f/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_be8ba201/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_be8ba201/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_477537c4/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_477537c4/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_6a5a8436/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_6a5a8436/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_b3e79d7a/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_b3e79d7a/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_99855ef2/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_99855ef2/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_3dec86be/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_3dec86be/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_2b4308b4/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_2b4308b4/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_17fdd5c1/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_17fdd5c1/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_e8523483/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_e8523483/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_ef253abf/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_ef253abf/preds_val.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_c4992744/preds_test.parquet
+ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_c4992744/preds_val.parquet
+root@d4deb216ff16:/workspace# cd /workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace# cd /workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace# cd /workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano check_labels.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python check_labels.py
+[INFO] Usando RF: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_eye_w2_s1_ua0.15_p15_v6_pt0.5_it0.2_norm0.parquet
+[INFO] Usando CNN: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_42e0c73b/preds_test.parquet
+
+==================================================
+MATRIZ DE EQUIVALENCIA DE ETIQUETAS (EYE)
+==================================================
+y            0    1   All
+tuar_eye
+False     4681    0  4681
+True         0  584   584
+All       4681  584  5265
+==================================================
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS - > tmux_ica_rf_artifacts.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS - > tmux_ica_rf_artifacts.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1916 @@
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 256 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[EPOCH 20/20] loss=0.3414 val_AUROC=0.9089 (466.0 s)
+[INFO] Prediciendo val (10227 secciones)...
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 256 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1280 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Missing channels according to current configuration:
+['FZ', 'PZ']
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1536 muestras.
+[WARNING] Saltando sesión: Short signal: la grabación solo tiene 1792 muestras.
+[INFO] Prediciendo test (6020 secciones)...
+enc Class  Best_Threshold  OVLP_Sens  OVLP_Spec  OVLP_FA/24h  TAES_Sens  MARGIN_Onset  MARGIN_Offset
+psd  seiz            0.73      0.842      0.586        65.34      0.554         0.331          0.611
+enc model  sensitivity  specificity  precision  accuracy  f1_score  auc_roc  false_alarm_rate  fp_per_day  covered_test_days    TP   FP     TN   FN  n_test_
+windows  covered_test_hours
+psd  seiz        0.612        0.993      0.839     0.973     0.708    0.957             0.007      544.11              5.326 15056 2898 432682 9542
+ 460178              127.83
+
+[OK] cnn_lstm_paper | reports en /workspace/ml-outputs/seizure/full
+root@0d1248e24453:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -S - -E - -p > aitrics_training_paper_parameters.txt
+

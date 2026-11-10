@@ -1,0 +1,334 @@
+ _____                             _
+|  __ \                           | |
+| |__) |   _ _ __  _ __   ___   __| |
+|  _  / | | | '_ \| '_ \ / _ \ / _` |
+| | \ \ |_| | | | | |_) | (_) | (_| |
+|_|  \_\__,_|_| |_| .__/ \___/ \__,_|
+                  | |
+                  |_|
+For detailed documentation and guides, please visit:
+https://docs.runpod.io/
+and https://blog.runpod.io
+
+root@d4deb216ff16:/# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts eye 2>&1 | tee cnn_eye_mma
+p.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: eye
+
+==================================================
+**************************************************
+>> eye | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.1_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 179020 | positive: 45696
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_eye_w5_s2_sw0.0_ua0.1 parquet and json
+[INFO] Saving patient asignation for eye
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     23432        6850       16582       0.292335
+train   135077       31993      103084       0.236850
+val      20511        6853       13658       0.334113
+Broken rules: 0 | splits per patient: {'train': 153, 'test': 34, 'val': 26}
+[INFO] Split distribution:  split
+train    135077
+test      23432
+val       20511
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w5_s2_06c7b32e_analysis.joblib
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w5_s2_9d724f33_analysis.joblib
+**************************************************
+>> eye | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.15_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 356942 | positive: 73008
+['Patient', 'Session', 'Section', 'Start', 'eye']
+[INFO] Best suggested and saved size weight for eye: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     39414       10951       28463       0.277845
+train   275283       51108      224175       0.185656
+val      42245       10949       31296       0.259179
+Broken rules: 0 | splits per patient: {'train': 153, 'val': 32, 'test': 28}
+[INFO] Split distribution:  split
+train    275283
+val       42245
+test      39414
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_eye
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A1_w2_s1_11ef8c67_analysis.joblib
+[INFO] Pretrained model found: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_eye_A2_w2_s1_cbc08fec_analysis.joblib
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- eye ----------
+                 Threshold: 0.344 (fbeta_val)
+                 Confusion matrix:
+[[14190  2392]
+ [ 1192  5658]]
+                 Metrics results: {'model': 'cnn_eye_A1_w5_s2_06c7b32e', 'sensitivity': 0.826, 'specificity': np.float64(0.8557), 'precision': 0.7029, 'accuracy': 0.847,
+'f1_score': 0.7595, 'auc_roc': 0.9178, 'false_alarm_rate': np.float64(0.1443), 'fp_per_day': np.float64(4409.97), 'covered_test_days': 0.5424, 'TP': 5658, 'FP': 2392, 'TN
+': 14190, 'FN': 1192, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.8974, 'OVLP_False_Alarms': 549, 'TAES_Score': np.float64(0.7976), 'MARGI
+N_5s_Onset': 0.7263, 'MARGIN_5s_Offset': 0.7232, 'AP': 0.8329, 'balanced_accuracy': 0.8409, 'pROC_0.1': 0.0574, 'adj_PR_AUC': 0.9154, 'threshold': 0.344, 'val_fp_per_day'
+: 3706.89, 'med_ch_f1_micro': 0.5956, 'med_ch_f1_macro': 0.2728, 'med_ch_jaccard': 0.3552, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.25}
+                 Threshold: 0.876 (fbeta_val)
+                 Confusion matrix:
+[[14371  2211]
+ [ 1483  5367]]
+                 Metrics results: {'model': 'cnn_eye_A2_w5_s2_9d724f33', 'sensitivity': 0.7835, 'specificity': np.float64(0.8667), 'precision': 0.7082, 'accuracy': 0.8424
+, 'f1_score': 0.744, 'auc_roc': 0.9053, 'false_alarm_rate': np.float64(0.1333), 'fp_per_day': np.float64(4076.27), 'covered_test_days': 0.5424, 'TP': 5367, 'FP': 2211, 'T
+N': 14371, 'FN': 1483, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.8927, 'OVLP_False_Alarms': 463, 'TAES_Score': np.float64(0.7972), 'MARG
+IN_5s_Onset': 0.7325, 'MARGIN_5s_Offset': 0.7294, 'AP': 0.7898, 'balanced_accuracy': 0.8251, 'pROC_0.1': 0.0522, 'adj_PR_AUC': 0.8931, 'threshold': 0.8761, 'val_fp_per_da
+y': 4056.52, 'med_ch_f1_micro': 0.6125, 'med_ch_f1_macro': 0.2715, 'med_ch_jaccard': 0.3665, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.7}
+                 Threshold: 0.357 (fbeta_val)
+                 Confusion matrix:
+[[26073  2390]
+ [ 3145  7806]]
+                 Metrics results: {'model': 'cnn_eye_A1_w2_s1_11ef8c67', 'sensitivity': 0.7128, 'specificity': np.float64(0.916), 'precision': 0.7656, 'accuracy': 0.8596,
+ 'f1_score': 0.7383, 'auc_roc': 0.9093, 'false_alarm_rate': np.float64(0.084), 'fp_per_day': np.float64(5239.15), 'covered_test_days': 0.4562, 'TP': 7806, 'FP': 2390, 'TN
+': 26073, 'FN': 3145, 'n_test_windows': 39414, 'covered_test_hours': 10.95, 'OVLP_Sensitivity': 0.8839, 'OVLP_False_Alarms': 732, 'TAES_Score': np.float64(0.7129), 'MARGI
+N_5s_Onset': 0.8462, 'MARGIN_5s_Offset': 0.8389, 'AP': 0.817, 'balanced_accuracy': 0.8144, 'pROC_0.1': 0.0559, 'adj_PR_AUC': 0.9102, 'threshold': 0.3568, 'val_fp_per_day'
+: 5994.52, 'med_ch_f1_micro': 0.588, 'med_ch_f1_macro': 0.2457, 'med_ch_jaccard': 0.3454, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.25}
+                 Threshold: 0.898 (fbeta_val)
+                 Confusion matrix:
+[[25938  2525]
+ [ 3725  7226]]
+                 Metrics results: {'model': 'cnn_eye_A2_w2_s1_cbc08fec', 'sensitivity': 0.6598, 'specificity': np.float64(0.9113), 'precision': 0.7411, 'accuracy': 0.8414
+, 'f1_score': 0.6981, 'auc_roc': 0.89, 'false_alarm_rate': np.float64(0.0887), 'fp_per_day': np.float64(5535.09), 'covered_test_days': 0.4562, 'TP': 7226, 'FP': 2525, 'TN
+': 25938, 'FN': 3725, 'n_test_windows': 39414, 'covered_test_hours': 10.95, 'OVLP_Sensitivity': 0.8933, 'OVLP_False_Alarms': 704, 'TAES_Score': np.float64(0.7112), 'MARGI
+N_5s_Onset': 0.841, 'MARGIN_5s_Offset': 0.8431, 'AP': 0.7339, 'balanced_accuracy': 0.7856, 'pROC_0.1': 0.0453, 'adj_PR_AUC': 0.8699, 'threshold': 0.8981, 'val_fp_per_day'
+: 6258.35, 'med_ch_f1_micro': 0.5818, 'med_ch_f1_macro': 0.2432, 'med_ch_jaccard': 0.3573, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.75}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts muscle 2>&1 | tee cnn_musc
+le_mmap.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 18:29:16,384 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Model(lightweight). Parameters: 2,051
+prewarm: 100%|██████████| 232/232 [01:49<00:00,  2.11it/s]
+prewarm: 100%|██████████| 38/38 [00:19<00:00,  1.92it/s]
+prewarm: 100%|██████████| 40/40 [00:18<00:00,  2.16it/s]
+2026-10-29 18:31:44,799 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 18:31:50,534 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w1_s0.5_dfdc2730] Epoch 1/100 - loss=0.0341 val_loss=0.0243 val_ap=0.6580 val_f1=0.6216 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_dfdc2730] Epoch 2/100 - loss=0.0200 val_loss=0.0248 val_ap=0.6485 val_f1=0.6083 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_dfdc2730] Epoch 3/100 - loss=0.0196 val_loss=0.0243 val_ap=0.6528 val_f1=0.6139 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_dfdc2730] Epoch 4/100 [train]:   4%|▍         | 345/8158 [00:38<12:44, 10.23it/s, loss=0.0170]^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cp $F $F.bak3
+F="$F" python - <<'EOF'
+import os
+p = os.environ["F"]
+s = open(p, newline=None).read()
+
+# 1) arrays y diccionarios en __init__
+anchor = "        self._norm = {}"
+assert s.count(anchor) == 1
+s = s.replace(anchor, anchor + '''
+        self._mm, self._ymm = {}, {}      # memmaps abiertos una vez (heredados por los workers via fork)
+        self._P = self.df["Patient"].to_numpy()
+        self._S = self.df["Session"].to_numpy()
+        self._T = self.df["Section"].to_numpy()
+        self._start = self.df["Start"].to_numpy(float)
+        self._end = self.df["end"].to_numpy(float)
+        self._yw = self.df[target_col].to_numpy(float)''', 1)
+
+# 2) reemplaza _bip_file ... __getitem__
+a = s.index("    def _bip_file(self, key):")
+b = s.index('"""\n    def _get_session')
+assert a < b
+new = '''    def _bip_file(self, key):
+        return Path(self.session_cache_dir) / f"{key[0]}_{key[1]}_{key[2]}_bip.npy"
+
+    def _bip(self, key):
+        m = self._mm.get(key)
+        if m is None:
+            m = np.load(self._bip_file(key), mmap_mode="r")
+python -m py_compile $F && echo OK(s)type=torch.float32), torch.tensor(y_win, dtype=torch.float32)s."""
+cp: missing destination file operand after '.bak3'
+Try 'cp --help' for more information.
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: ''
+usage: py_compile.py [-h] [-q] filenames [filenames ...]
+py_compile.py: error: the following arguments are required: filenames
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd ./src/models
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/src/models# cp $F $F.bak3
+F="$F" python - <<'EOF'
+import os
+p = os.environ["F"]
+s = open(p, newline=None).read()
+
+# 1) arrays y diccionarios en __init__
+anchor = "        self._norm = {}"
+assert s.count(anchor) == 1
+s = s.replace(anchor, anchor + '''
+        self._mm, self._ymm = {}, {}      # memmaps abiertos una vez (heredados por los workers via fork)
+        self._P = self.df["Patient"].to_numpy()
+        self._S = self.df["Session"].to_numpy()
+        self._T = self.df["Section"].to_numpy()
+        self._start = self.df["Start"].to_numpy(float)
+        self._end = self.df["end"].to_numpy(float)
+        self._yw = self.df[target_col].to_numpy(float)''', 1)
+
+# 2) reemplaza _bip_file ... __getitem__
+a = s.index("    def _bip_file(self, key):")
+b = s.index('"""\n    def _get_session')
+assert a < b
+new = '''    def _bip_file(self, key):
+        return Path(self.session_cache_dir) / f"{key[0]}_{key[1]}_{key[2]}_bip.npy"
+
+    def _bip(self, key):
+        m = self._mm.get(key)
+        if m is None:
+            m = np.load(self._bip_file(key), mmap_mode="r")
+python -m py_compile $F && echo OK(s)type=torch.float32), torch.tensor(y_win, dtype=torch.float32)s."""
+cp: missing destination file operand after '.bak3'
+Try 'cp --help' for more information.
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: ''
+usage: py_compile.py [-h] [-q] filenames [filenames ...]
+py_compile.py: error: the following arguments are required: filenames
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/src/models# cp $F $F.bak3
+F="$F" python - <<'EOF'
+import os
+p = os.environ["F"]
+s = open(p, newline=None).read()
+
+# 1) arrays y diccionarios en __init__
+anchor = "        self._norm = {}"
+assert s.count(anchor) == 1
+s = s.replace(anchor, anchor + '''
+        self._mm, self._ymm = {}, {}      # memmaps abiertos una vez (heredados por los workers via fork)
+        self._P = self.df["Patient"].to_numpy()
+        self._S = self.df["Session"].to_numpy()
+        self._T = self.df["Section"].to_numpy()
+        self._start = self.df["Start"].to_numpy(float)
+        self._end = self.df["end"].to_numpy(float)
+        self._yw = self.df[target_col].to_numpy(float)''', 1)
+
+# 2) reemplaza _bip_file ... __getitem__
+a = s.index("    def _bip_file(self, key):")
+b = s.index('"""\n    def _get_session')
+assert a < b
+new = '''    def _bip_file(self, key):
+        return Path(self.session_cache_dir) / f"{key[0]}_{key[1]}_{key[2]}_bip.npy"
+
+    def _bip(self, key):
+        m = self._mm.get(key)
+        if m is None:
+            m = np.load(self._bip_file(key), mmap_mode="r")
+python -m py_compile $F && echo OK(s)type=torch.float32), torch.tensor(y_win, dtype=torch.float32)s."""
+cp: missing destination file operand after '.bak3'
+Try 'cp --help' for more information.
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: ''
+usage: py_compile.py [-h] [-q] filenames [filenames ...]
+py_compile.py: error: the following arguments are required: filenames
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis/src/models# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -p -S -32768 > cnn_muscle_1_models_mmap_tmux.txt
+

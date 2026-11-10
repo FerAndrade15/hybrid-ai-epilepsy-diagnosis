@@ -1,0 +1,1557 @@
+ _____                             _
+|  __ \                           | |
+| |__) |   _ _ __  _ __   ___   __| |
+|  _  / | | | '_ \| '_ \ / _ \ / _` |
+| | \ \ |_| | | | | |_) | (_) | (_| |
+|_|  \_\__,_|_| |_| .__/ \___/ \__,_|
+                  | |
+                  |_|
+For detailed documentation and guides, please visit:
+https://docs.runpod.io/
+and https://blog.runpod.io
+
+root@d4deb216ff16:/# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts muscle 2>&1 | tee full_cnn_muscle_artifacts.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 11:20:35,984 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:20:36,153 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 11:20:40,112 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 1/100 - loss=0.0219 val_loss=0.0258 val_ap=0.6718 val_f1=0.6180 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 2/100 - loss=0.0183 val_loss=0.0276 val_ap=0.6313 val_f1=0.5995 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 3/100 - loss=0.0176 val_loss=0.0277 val_ap=0.6355 val_f1=0.5903 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 4/100 - loss=0.0172 val_loss=0.0292 val_ap=0.6236 val_f1=0.5832 (selección: ap)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts muscle 2>&1 | tee full_cnn_mu
+scle_artifacts.log
+
+uv run python -u -m pipelines.artifacts.cnn_detectors --force-retrain --artifacts muscle 2>&1 | tee full_cnn_muscle_artifacts.log
+^C
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --artifacts muscle 2>&1 | tee full_cnn_muscle_artifacts.l
+og
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 11:43:36,110 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 11:43:36,267 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 11:43:41,812 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Resuming from 4 epoch (best_score=0.6718)
+2026-10-29 11:43:41,812 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 5/100 - loss=0.0170 val_loss=0.0268 val_ap=0.6685 val_f1=0.6107 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 6/100 - loss=0.0166 val_loss=0.0273 val_ap=0.6514 val_f1=0.5967 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 7/100 - loss=0.0164 val_loss=0.0272 val_ap=0.6554 val_f1=0.5905 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 8/100 - loss=0.0163 val_loss=0.0279 val_ap=0.6537 val_f1=0.5907 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 9/100 - loss=0.0163 val_loss=0.0275 val_ap=0.6513 val_f1=0.5907 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 10/100 - loss=0.0162 val_loss=0.0274 val_ap=0.6584 val_f1=0.5969 (selección: ap)
+[cnn_muscle_A1_w1_s0.5_85ebf60e] Epoch 11/100 - loss=0.0160 val_loss=0.0277 val_ap=0.6563 val_f1=0.5903 (selección: ap)
+
+Epoch 11: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 12:07:42,306 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A1_w1_s0.5_85ebf60e
+Umbral (fbeta_val, val): 0.324
+                                   precision    recall  f1-score   support
+
+no_cnn_muscle_A1_w1_s0.5_85ebf60e       0.90      0.85      0.87     63975
+   cnn_muscle_A1_w1_s0.5_85ebf60e       0.68      0.77      0.72     26387
+
+                         accuracy                           0.83     90362
+                        macro avg       0.79      0.81      0.80     90362
+                     weighted avg       0.84      0.83      0.83     90362
+
+[[54406  9569]
+ [ 6018 20369]]
+model                 cnn_muscle_A1_w1_s0.5_85ebf60e
+sensitivity                                   0.7719
+specificity                                   0.8504
+precision                                     0.6804
+accuracy                                      0.8275
+f1_score                                      0.7233
+auc_roc                                       0.8941
+false_alarm_rate                              0.1496
+fp_per_day                                  18298.88
+covered_test_days                             0.5229
+TP                                             20369
+FP                                              9569
+TN                                             54406
+FN                                              6018
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                              0.9804
+OVLP_False_Alarms                               2307
+TAES_Score                                    0.8119
+MARGIN_5s_Onset                               0.9216
+MARGIN_5s_Offset                              0.9091
+AP                                            0.7939
+balanced_accuracy                             0.8112
+pROC_0.1                                       0.054
+adj_PR_AUC                                    0.8917
+threshold                                     0.3238
+val_fp_per_day                               19344.6
+med_ch_f1_micro                               0.6809
+med_ch_f1_macro                               0.6747
+med_ch_jaccard                                0.3728
+med_n_win_scored                             90022.0
+med_ch_tau                                       0.3
+
+-- Con tope 100 FP/día: thr=0.591 (fbeta_val+fp_cap)
+model                 cnn_muscle_A1_w1_s0.5_85ebf60e
+sensitivity                                   0.0224
+specificity                                   0.9981
+precision                                     0.8268
+accuracy                                      0.7132
+f1_score                                      0.0437
+auc_roc                                       0.8941
+false_alarm_rate                              0.0019
+fp_per_day                                    237.13
+covered_test_days                             0.5229
+TP                                               592
+FP                                               124
+TN                                             63851
+FN                                             25795
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                               0.205
+OVLP_False_Alarms                                 32
+TAES_Score                                    0.0318
+MARGIN_5s_Onset                               0.1283
+MARGIN_5s_Offset                              0.1176
+AP                                            0.7939
+balanced_accuracy                             0.5102
+pROC_0.1                                       0.054
+adj_PR_AUC                                    0.8917
+threshold                                     0.5911
+val_fp_per_day                                 99.02
+2026-10-29 12:08:51,442 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w1_s0.5_85eb
+f60e
+2026-10-29 12:08:51,676 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_85ebf60e] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_mus
+cle_A1_w1_s0.5_85ebf60e/cnn_cnn_muscle_A1_w1_s0.5_85ebf60e_learning_curves.png
+2026-10-29 12:08:52,019 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_f0b189be] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 12:08:52,154 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_f0b189be] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 12:12:31,148 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_f0b189be] - INFO - Starting training: epochs=100
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 1/100 - loss=0.1751 val_loss=0.2199 val_ap=0.6682 val_f1=0.6338 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 2/100 - loss=0.1575 val_loss=0.2642 val_ap=0.6319 val_f1=0.5923 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 3/100 - loss=0.1519 val_loss=0.2906 val_ap=0.5961 val_f1=0.5707 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 4/100 - loss=0.1483 val_loss=0.3150 val_ap=0.5838 val_f1=0.5569 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 5/100 - loss=0.1463 val_loss=0.2847 val_ap=0.5886 val_f1=0.5713 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 6/100 - loss=0.1437 val_loss=0.3135 val_ap=0.6037 val_f1=0.5807 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 7/100 - loss=0.1419 val_loss=0.3154 val_ap=0.5983 val_f1=0.5687 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 8/100 - loss=0.1407 val_loss=0.3392 val_ap=0.5831 val_f1=0.5600 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 9/100 - loss=0.1401 val_loss=0.2889 val_ap=0.6020 val_f1=0.5728 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 10/100 - loss=0.1386 val_loss=0.2790 val_ap=0.6131 val_f1=0.5753 (selección: ap)
+[cnn_muscle_A2_w1_s0.5_f0b189be] Epoch 11/100 - loss=0.1383 val_loss=0.2697 val_ap=0.6144 val_f1=0.5786 (selección: ap)
+
+Epoch 11: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 12:46:42,415 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_f0b189be] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A2_w1_s0.5_f0b189be
+Umbral (fbeta_val, val): 0.713
+                                   precision    recall  f1-score   support
+
+no_cnn_muscle_A2_w1_s0.5_f0b189be       0.91      0.87      0.89     63975
+   cnn_muscle_A2_w1_s0.5_f0b189be       0.71      0.78      0.74     26387
+
+                         accuracy                           0.84     90362
+                        macro avg       0.81      0.82      0.81     90362
+                     weighted avg       0.85      0.84      0.84     90362
+
+[[55550  8425]
+ [ 5816 20571]]
+model                 cnn_muscle_A2_w1_s0.5_f0b189be
+sensitivity                                   0.7796
+specificity                                   0.8683
+precision                                     0.7094
+accuracy                                      0.8424
+f1_score                                      0.7429
+auc_roc                                       0.9025
+false_alarm_rate                              0.1317
+fp_per_day                                   16111.2
+covered_test_days                             0.5229
+TP                                             20571
+FP                                              8425
+TN                                             55550
+FN                                              5816
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                              0.9715
+OVLP_False_Alarms                               1903
+TAES_Score                                    0.8157
+MARGIN_5s_Onset                               0.9162
+MARGIN_5s_Offset                              0.9109
+AP                                            0.8022
+balanced_accuracy                             0.8239
+pROC_0.1                                      0.0566
+adj_PR_AUC                                    0.8975
+threshold                                     0.7127
+val_fp_per_day                              17447.28
+med_ch_f1_micro                               0.6888
+med_ch_f1_macro                               0.6858
+med_ch_jaccard                                0.3849
+med_n_win_scored                             90022.0
+med_ch_tau                                       0.6
+
+-- Con tope 100 FP/día: thr=0.978 (fbeta_val+fp_cap)
+model                 cnn_muscle_A2_w1_s0.5_f0b189be
+sensitivity                                   0.0279
+specificity                                   0.9977
+precision                                     0.8307
+accuracy                                      0.7145
+f1_score                                       0.054
+auc_roc                                       0.9025
+false_alarm_rate                              0.0023
+fp_per_day                                    286.85
+covered_test_days                             0.5229
+TP                                               736
+FP                                               150
+TN                                             63825
+FN                                             25651
+n_test_windows                                 90362
+covered_test_hours                             12.55
+OVLP_Sensitivity                              0.2353
+OVLP_False_Alarms                                 50
+TAES_Score                                    0.0392
+MARGIN_5s_Onset                               0.1569
+MARGIN_5s_Offset                               0.139
+AP                                            0.8022
+balanced_accuracy                             0.5128
+pROC_0.1                                      0.0566
+adj_PR_AUC                                    0.8975
+threshold                                     0.9784
+val_fp_per_day                                 99.02
+2026-10-29 12:47:59,217 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_f0b189be] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w1_s0.5_f0b1
+89be
+2026-10-29 12:47:59,438 - ArtifactDetector[cnn_muscle_A2_w1_s0.5_f0b189be] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_mus
+cle_A2_w1_s0.5_f0b189be/cnn_cnn_muscle_A2_w1_s0.5_f0b189be_learning_curves.png
+**************************************************
+>> muscle | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w5_s2_ua0.2_ub0.1_urTrue_dcd979_L7.parquet (179257 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 179257 -> without ambiguous: 174396 | positive: 48934
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     24691        7340       17351       0.297274
+train   125835       34254       91581       0.272214
+val      23870        7340       16530       0.307499
+Broken rules: 0 | splits per patient: {'train': 149, 'val': 35, 'test': 29}
+[INFO] Split distribution:  split
+train    125835
+test      24691
+val       23870
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 12:48:02,155 - ArtifactDetector[cnn_muscle_A1_w5_s2_40ab4faa] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 12:48:02,194 - ArtifactDetector[cnn_muscle_A1_w5_s2_40ab4faa] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.687014773806794), 1: n
+p.float64(1.8367927833245752)}
+2026-10-29 12:48:02,196 - ArtifactDetector[cnn_muscle_A1_w5_s2_40ab4faa] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 1/100 - loss=0.0329 val_loss=0.0280 val_ap=0.7393 val_f1=0.6754 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 2/100 - loss=0.0223 val_loss=0.0311 val_ap=0.7056 val_f1=0.6410 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 3/100 - loss=0.0211 val_loss=0.0320 val_ap=0.7021 val_f1=0.6331 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 4/100 - loss=0.0204 val_loss=0.0333 val_ap=0.6937 val_f1=0.6270 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 5/100 - loss=0.0200 val_loss=0.0324 val_ap=0.7009 val_f1=0.6370 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 6/100 - loss=0.0196 val_loss=0.0320 val_ap=0.7011 val_f1=0.6362 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 7/100 - loss=0.0194 val_loss=0.0346 val_ap=0.6820 val_f1=0.6197 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 8/100 - loss=0.0191 val_loss=0.0339 val_ap=0.6870 val_f1=0.6241 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 9/100 - loss=0.0190 val_loss=0.0340 val_ap=0.6790 val_f1=0.6076 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 10/100 - loss=0.0188 val_loss=0.0334 val_ap=0.6816 val_f1=0.6103 (selección: ap)
+[cnn_muscle_A1_w5_s2_40ab4faa] Epoch 11/100 - loss=0.0187 val_loss=0.0394 val_ap=0.6925 val_f1=0.6356 (selección: ap)
+
+Epoch 11: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 12:59:46,359 - ArtifactDetector[cnn_muscle_A1_w5_s2_40ab4faa] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A1_w5_s2_40ab4faa
+Umbral (fbeta_val, val): 0.324
+                                 precision    recall  f1-score   support
+
+no_cnn_muscle_A1_w5_s2_40ab4faa       0.91      0.81      0.86     17351
+   cnn_muscle_A1_w5_s2_40ab4faa       0.65      0.81      0.72      7340
+
+                       accuracy                           0.81     24691
+                      macro avg       0.78      0.81      0.79     24691
+                   weighted avg       0.83      0.81      0.82     24691
+
+[[14131  3220]
+ [ 1417  5923]]
+model                 cnn_muscle_A1_w5_s2_40ab4faa
+sensitivity                                 0.8069
+specificity                                 0.8144
+precision                                   0.6478
+accuracy                                    0.8122
+f1_score                                    0.7187
+auc_roc                                     0.8916
+false_alarm_rate                            0.1856
+fp_per_day                                 5633.79
+covered_test_days                           0.5716
+TP                                            5923
+FP                                            3220
+TN                                           14131
+FN                                            1417
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                             0.902
+OVLP_False_Alarms                              583
+TAES_Score                                  0.8068
+MARGIN_5s_Onset                             0.7328
+MARGIN_5s_Offset                            0.6422
+AP                                          0.7764
+balanced_accuracy                           0.8107
+pROC_0.1                                    0.0504
+adj_PR_AUC                                  0.8819
+threshold                                   0.3244
+val_fp_per_day                              5299.1
+med_ch_f1_micro                             0.6965
+med_ch_f1_macro                             0.6916
+med_ch_jaccard                              0.3788
+med_n_win_scored                           24534.0
+med_ch_tau                                     0.3
+
+-- Con tope 100 FP/día: thr=0.536 (fbeta_val+fp_cap)
+model                 cnn_muscle_A1_w5_s2_40ab4faa
+sensitivity                                 0.1437
+specificity                                 0.9917
+precision                                   0.8799
+accuracy                                    0.7396
+f1_score                                    0.2471
+auc_roc                                     0.8916
+false_alarm_rate                            0.0083
+fp_per_day                                  251.95
+covered_test_days                           0.5716
+TP                                            1055
+FP                                             144
+TN                                           17207
+FN                                            6285
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                            0.3946
+OVLP_False_Alarms                               41
+TAES_Score                                  0.2075
+MARGIN_5s_Onset                             0.3039
+MARGIN_5s_Offset                            0.2549
+AP                                          0.7764
+balanced_accuracy                           0.5677
+pROC_0.1                                    0.0504
+adj_PR_AUC                                  0.8819
+threshold                                   0.5358
+val_fp_per_day                               99.54
+2026-10-29 13:00:22,151 - ArtifactDetector[cnn_muscle_A1_w5_s2_40ab4faa] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A1_w5_s2_40ab4faa
+2026-10-29 13:00:22,350 - ArtifactDetector[cnn_muscle_A1_w5_s2_40ab4faa] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscl
+e_A1_w5_s2_40ab4faa/cnn_cnn_muscle_A1_w5_s2_40ab4faa_learning_curves.png
+2026-10-29 13:00:22,538 - ArtifactDetector[cnn_muscle_A2_w5_s2_437be6ac] - INFO - Model(standard). Parameters: 60,659
+2026-10-29 13:00:22,581 - ArtifactDetector[cnn_muscle_A2_w5_s2_437be6ac] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.687014773806794), 1: n
+p.float64(1.8367927833245752)}
+2026-10-29 13:02:34,743 - ArtifactDetector[cnn_muscle_A2_w5_s2_437be6ac] - INFO - Starting training: epochs=100
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 1/100 - loss=0.1886 val_loss=0.2302 val_ap=0.7355 val_f1=0.6815 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 2/100 - loss=0.1618 val_loss=0.2301 val_ap=0.7550 val_f1=0.6870 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 3/100 - loss=0.1561 val_loss=0.2583 val_ap=0.7317 val_f1=0.6593 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 4/100 - loss=0.1520 val_loss=0.2348 val_ap=0.7574 val_f1=0.6964 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 5/100 - loss=0.1493 val_loss=0.2888 val_ap=0.7333 val_f1=0.6810 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 6/100 - loss=0.1469 val_loss=0.2722 val_ap=0.7242 val_f1=0.6708 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 7/100 - loss=0.1444 val_loss=0.2682 val_ap=0.7343 val_f1=0.6729 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 8/100 - loss=0.1431 val_loss=0.2500 val_ap=0.7410 val_f1=0.6858 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 9/100 - loss=0.1419 val_loss=0.2962 val_ap=0.7335 val_f1=0.6762 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 10/100 - loss=0.1406 val_loss=0.4278 val_ap=0.7244 val_f1=0.6742 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 11/100 - loss=0.1390 val_loss=0.3253 val_ap=0.7042 val_f1=0.6540 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 12/100 - loss=0.1385 val_loss=0.3219 val_ap=0.7097 val_f1=0.6558 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 13/100 - loss=0.1379 val_loss=0.3265 val_ap=0.7162 val_f1=0.6637 (selección: ap)
+[cnn_muscle_A2_w5_s2_437be6ac] Epoch 14/100 - loss=0.1365 val_loss=0.3263 val_ap=0.7073 val_f1=0.6605 (selección: ap)
+
+Epoch 14: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 13:15:32,210 - ArtifactDetector[cnn_muscle_A2_w5_s2_437be6ac] - INFO - Training completed.
+
+
+============================================================
+EVALUATION(TEST) — cnn_muscle_A2_w5_s2_437be6ac
+Umbral (fbeta_val, val): 0.581
+                                 precision    recall  f1-score   support
+
+no_cnn_muscle_A2_w5_s2_437be6ac       0.91      0.84      0.88     17351
+   cnn_muscle_A2_w5_s2_437be6ac       0.69      0.81      0.74      7340
+
+                       accuracy                           0.83     24691
+                      macro avg       0.80      0.83      0.81     24691
+                   weighted avg       0.84      0.83      0.84     24691
+
+[[14621  2730]
+ [ 1400  5940]]
+model                 cnn_muscle_A2_w5_s2_437be6ac
+sensitivity                                 0.8093
+specificity                                 0.8427
+precision                                   0.6851
+accuracy                                    0.8327
+f1_score                                     0.742
+auc_roc                                     0.9075
+false_alarm_rate                            0.1573
+fp_per_day                                 4776.48
+covered_test_days                           0.5716
+TP                                            5940
+FP                                            2730
+TN                                           14621
+FN                                            1400
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                            0.9044
+OVLP_False_Alarms                              498
+TAES_Score                                   0.812
+MARGIN_5s_Onset                             0.7623
+MARGIN_5s_Offset                            0.6593
+AP                                          0.8116
+balanced_accuracy                            0.826
+pROC_0.1                                    0.0564
+adj_PR_AUC                                  0.9013
+threshold                                   0.5807
+val_fp_per_day                             3869.36
+med_ch_f1_micro                             0.7048
+med_ch_f1_macro                             0.6994
+med_ch_jaccard                              0.4153
+med_n_win_scored                           24534.0
+med_ch_tau                                     0.5
+
+-- Con tope 100 FP/día: thr=0.947 (fbeta_val+fp_cap)
+model                 cnn_muscle_A2_w5_s2_437be6ac
+sensitivity                                 0.2056
+specificity                                 0.9941
+precision                                   0.9367
+accuracy                                    0.7597
+f1_score                                    0.3372
+auc_roc                                     0.9075
+false_alarm_rate                            0.0059
+fp_per_day                                  178.46
+covered_test_days                           0.5716
+TP                                            1509
+FP                                             102
+TN                                           17249
+FN                                            5831
+n_test_windows                               24691
+covered_test_hours                           13.72
+OVLP_Sensitivity                            0.3505
+OVLP_False_Alarms                               33
+TAES_Score                                  0.1857
+MARGIN_5s_Onset                             0.2549
+MARGIN_5s_Offset                            0.2353
+AP                                          0.8116
+balanced_accuracy                           0.5999
+pROC_0.1                                    0.0564
+adj_PR_AUC                                  0.9013
+threshold                                   0.9473
+val_fp_per_day                               99.54
+2026-10-29 13:16:07,117 - ArtifactDetector[cnn_muscle_A2_w5_s2_437be6ac] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscle_A2_w5_s2_437be6ac
+2026-10-29 13:16:07,324 - ArtifactDetector[cnn_muscle_A2_w5_s2_437be6ac] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cnn_cnn_muscl
+e_A2_w5_s2_437be6ac/cnn_cnn_muscle_A2_w5_s2_437be6ac_learning_curves.png
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- muscle ----------
+                 Threshold: 0.324 (fbeta_val)
+                 Confusion matrix:
+[[54406  9569]
+ [ 6018 20369]]
+                 Metrics results: {'model': 'cnn_muscle_A1_w1_s0.5_85ebf60e', 'sensitivity': 0.7719, 'specificity': np.float64(0.8504), 'precision': 0.6804, 'accuracy': 0
+.8275, 'f1_score': 0.7233, 'auc_roc': 0.8941, 'false_alarm_rate': np.float64(0.1496), 'fp_per_day': np.float64(18298.88), 'covered_test_days': 0.5229, 'TP': 20369, 'FP':
+9569, 'TN': 54406, 'FN': 6018, 'n_test_windows': 90362, 'covered_test_hours': 12.55, 'OVLP_Sensitivity': 0.9804, 'OVLP_False_Alarms': 2307, 'TAES_Score': np.float64(0.811
+9), 'MARGIN_5s_Onset': 0.9216, 'MARGIN_5s_Offset': 0.9091, 'AP': 0.7939, 'balanced_accuracy': 0.8112, 'pROC_0.1': 0.054, 'adj_PR_AUC': 0.8917, 'threshold': 0.3238, 'val_f
+p_per_day': 19344.6, 'med_ch_f1_micro': 0.6809, 'med_ch_f1_macro': 0.6747, 'med_ch_jaccard': 0.3728, 'med_n_win_scored': 90022.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.713 (fbeta_val)
+                 Confusion matrix:
+[[55550  8425]
+ [ 5816 20571]]
+                 Metrics results: {'model': 'cnn_muscle_A2_w1_s0.5_f0b189be', 'sensitivity': 0.7796, 'specificity': np.float64(0.8683), 'precision': 0.7094, 'accuracy': 0
+.8424, 'f1_score': 0.7429, 'auc_roc': 0.9025, 'false_alarm_rate': np.float64(0.1317), 'fp_per_day': np.float64(16111.2), 'covered_test_days': 0.5229, 'TP': 20571, 'FP': 8
+425, 'TN': 55550, 'FN': 5816, 'n_test_windows': 90362, 'covered_test_hours': 12.55, 'OVLP_Sensitivity': 0.9715, 'OVLP_False_Alarms': 1903, 'TAES_Score': np.float64(0.8157
+), 'MARGIN_5s_Onset': 0.9162, 'MARGIN_5s_Offset': 0.9109, 'AP': 0.8022, 'balanced_accuracy': 0.8239, 'pROC_0.1': 0.0566, 'adj_PR_AUC': 0.8975, 'threshold': 0.7127, 'val_f
+p_per_day': 17447.28, 'med_ch_f1_micro': 0.6888, 'med_ch_f1_macro': 0.6858, 'med_ch_jaccard': 0.3849, 'med_n_win_scored': 90022.0, 'med_ch_tau': 0.6}
+                 Threshold: 0.324 (fbeta_val)
+                 Confusion matrix:
+[[14131  3220]
+ [ 1417  5923]]
+                 Metrics results: {'model': 'cnn_muscle_A1_w5_s2_40ab4faa', 'sensitivity': 0.8069, 'specificity': np.float64(0.8144), 'precision': 0.6478, 'accuracy': 0.8
+122, 'f1_score': 0.7187, 'auc_roc': 0.8916, 'false_alarm_rate': np.float64(0.1856), 'fp_per_day': np.float64(5633.79), 'covered_test_days': 0.5716, 'TP': 5923, 'FP': 3220
+, 'TN': 14131, 'FN': 1417, 'n_test_windows': 24691, 'covered_test_hours': 13.72, 'OVLP_Sensitivity': 0.902, 'OVLP_False_Alarms': 583, 'TAES_Score': np.float64(0.8068), 'M
+ARGIN_5s_Onset': 0.7328, 'MARGIN_5s_Offset': 0.6422, 'AP': 0.7764, 'balanced_accuracy': 0.8107, 'pROC_0.1': 0.0504, 'adj_PR_AUC': 0.8819, 'threshold': 0.3244, 'val_fp_per
+_day': 5299.1, 'med_ch_f1_micro': 0.6965, 'med_ch_f1_macro': 0.6916, 'med_ch_jaccard': 0.3788, 'med_n_win_scored': 24534.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.581 (fbeta_val)
+                 Confusion matrix:
+[[14621  2730]
+ [ 1400  5940]]
+                 Metrics results: {'model': 'cnn_muscle_A2_w5_s2_437be6ac', 'sensitivity': 0.8093, 'specificity': np.float64(0.8427), 'precision': 0.6851, 'accuracy': 0.8
+327, 'f1_score': 0.742, 'auc_roc': 0.9075, 'false_alarm_rate': np.float64(0.1573), 'fp_per_day': np.float64(4776.48), 'covered_test_days': 0.5716, 'TP': 5940, 'FP': 2730,
+ 'TN': 14621, 'FN': 1400, 'n_test_windows': 24691, 'covered_test_hours': 13.72, 'OVLP_Sensitivity': 0.9044, 'OVLP_False_Alarms': 498, 'TAES_Score': np.float64(0.812), 'MA
+RGIN_5s_Onset': 0.7623, 'MARGIN_5s_Offset': 0.6593, 'AP': 0.8116, 'balanced_accuracy': 0.826, 'pROC_0.1': 0.0564, 'adj_PR_AUC': 0.9013, 'threshold': 0.5807, 'val_fp_per_d
+ay': 3869.36, 'med_ch_f1_micro': 0.7048, 'med_ch_f1_macro': 0.6994, 'med_ch_jaccard': 0.4153, 'med_n_win_scored': 24534.0, 'med_ch_tau': 0.5}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS - > muscle_artifact_full_cnn.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# pws
+-bash: pws: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# pwd
+/workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh muscle_artifact_full_cnn.txt
+-rw-rw-rw- 1 root root 38K Oct 29 13:17 muscle_artifact_full_cnn.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# realpath muscle_artifact_full_cnn.txt
+/workspace/hybrid-ai-epilepsy-diagnosis/muscle_artifact_full_cnn.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# realpath full_cnn_muscle_artifacts.log
+/workspace/hybrid-ai-epilepsy-diagnosis/full_cnn_muscle_artifacts.log
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --artifacts muscle 2>&1 | tee full_cnn_muscle_artifacts_l
+ightweight.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 17:23:58,510 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 17:23:58,998 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 17:24:09,118 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Starting training: epochs=100
+[cnn_muscle_A1_w1_s0.5_dfdc2730] Epoch 1/100 [train]:   0%|          | 6/8158 [02:55<41:00:38, 18.11s/it, loss=0.3393]root@d4deb216ff16:/workspace/h
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.cnn_detectors --artifacts muscle 2>&1 | tee full_cnn_muscle_artifacts_l
+ightweight_v2.log
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (719252 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 719252 -> without ambiguous: 710195 | positive: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO] Best suggested and saved size weight for muscle: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for muscle
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+[INFO] Split distribution:  split
+train    522109
+val       97724
+test      90362
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_muscle
+2026-10-29 17:49:36,452 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Model(lightweight). Parameters: 2,051
+2026-10-29 17:49:36,684 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.6543227669317666), 1
+: np.float64(2.1199813220724377)}
+2026-10-29 17:49:42,866 - ArtifactDetector[cnn_muscle_A1_w1_s0.5_dfdc2730] - INFO - Starting training: epochs=100
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ulimit -Hn
+ulimit -n 8192
+uv run python -u -m pipelines.artifacts.cnn_detectors --no-force-retrain --artifacts non_physiological 2>&1 | tee cnn_non_phy_mmap2.log
+
+524288
+[INFO] Using device: cuda
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: non_physiological
+
+==================================================
+**************************************************
+>> non_physiological | patients:213 | windows: 1s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w1_s1_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (359626 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359626 -> without ambiguous: 354592 | positive: 50155
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO] Best suggested and saved size weight for non_physiological: 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.0_ua0.3 parquet and json
+[INFO] Saving patient asignation for non_physiological
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51097        7523       43574       0.147230
+train   244287       35109      209178       0.143720
+val      59208        7523       51685       0.127061
+Broken rules: 0 | splits per patient: {'train': 136, 'val': 44, 'test': 33}
+[INFO] Split distribution:  split
+train    244287
+val       59208
+test      51097
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_non_physiological
+2026-10-29 19:39:25,552 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Model(lightweight). Parameters: 2,051
+prewarm: 100%|██████████| 215/215 [00:11<00:00, 18.12it/s]
+prewarm: 100%|██████████| 50/50 [00:02<00:00, 18.35it/s]
+prewarm: 100%|██████████| 45/45 [00:02<00:00, 16.74it/s]
+2026-10-29 19:39:43,049 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.58392134928
+14732), 1: np.float64(3.4789797487823635)}
+2026-10-29 19:39:46,398 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Resuming from 11 epoch (best_score=0.4549)
+2026-10-29 19:39:46,398 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Starting training: epochs=100
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 12/100 - loss=0.0132 val_loss=0.0163 val_ap=0.4420 val_f1=0.4331 (selección: ap)
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 13/100 - loss=0.0132 val_loss=0.0162 val_ap=0.4399 val_f1=0.4324 (selección: ap)
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 14/100 - loss=0.0131 val_loss=0.0165 val_ap=0.4415 val_f1=0.4332 (selección: ap)
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 15/100 - loss=0.0131 val_loss=0.0165 val_ap=0.4361 val_f1=0.4332 (selección: ap)
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 16/100 - loss=0.0130 val_loss=0.0163 val_ap=0.4423 val_f1=0.4380 (selección: ap)
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 17/100 - loss=0.0130 val_loss=0.0164 val_ap=0.4370 val_f1=0.4331 (selección: ap)
+[cnn_non_physiological_A1_w1_s1_06e4650c] Epoch 18/100 - loss=0.0130 val_loss=0.0170 val_ap=0.4286 val_f1=0.4289 (selección: ap)
+
+Epoch 18: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 19:41:46,657 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_non_physiological_A1_w1_s1_06e4650c
+Umbral (fbeta_val, val): 0.284
+                                            precision    recall  f1-score   support
+
+no_cnn_non_physiological_A1_w1_s1_06e4650c       0.88      0.96      0.92     43574
+   cnn_non_physiological_A1_w1_s1_06e4650c       0.51      0.26      0.34      7523
+
+                                  accuracy                           0.85     51097
+                                 macro avg       0.70      0.61      0.63     51097
+                              weighted avg       0.83      0.85      0.83     51097
+
+[[41733  1841]
+ [ 5590  1933]]
+model                 cnn_non_physiological_A1_w1_s1_06e4650c
+sensitivity                                            0.2569
+specificity                                            0.9578
+precision                                              0.5122
+accuracy                                               0.8546
+f1_score                                               0.3422
+auc_roc                                                0.6747
+false_alarm_rate                                       0.0422
+fp_per_day                                            3112.95
+covered_test_days                                      0.5914
+TP                                                       1933
+FP                                                       1841
+TN                                                      41733
+FN                                                       5590
+n_test_windows                                          51097
+covered_test_hours                                      14.19
+OVLP_Sensitivity                                       0.4913
+OVLP_False_Alarms                                        1155
+TAES_Score                                             0.2425
+MARGIN_5s_Onset                                        0.4487
+MARGIN_5s_Offset                                       0.3955
+AP                                                     0.3578
+balanced_accuracy                                      0.6073
+pROC_0.1                                               0.0256
+adj_PR_AUC                                             0.7128
+threshold                                              0.2841
+val_fp_per_day                                        3858.29
+med_ch_f1_micro                                        0.2448
+med_ch_f1_macro                                        0.2478
+med_ch_jaccard                                           0.08
+med_n_win_scored                                      50654.0
+med_ch_tau                                                0.3
+
+-- Con tope 150 FP/día: thr=0.549 (fbeta_val+fp_cap)
+model                 cnn_non_physiological_A1_w1_s1_06e4650c
+sensitivity                                            0.0432
+specificity                                            0.9969
+precision                                              0.7035
+accuracy                                               0.8564
+f1_score                                               0.0814
+auc_roc                                                0.6747
+false_alarm_rate                                       0.0031
+fp_per_day                                             231.65
+covered_test_days                                      0.5914
+TP                                                        325
+FP                                                        137
+TN                                                      43437
+FN                                                       7198
+n_test_windows                                          51097
+covered_test_hours                                      14.19
+OVLP_Sensitivity                                       0.1358
+OVLP_False_Alarms                                          62
+TAES_Score                                             0.0283
+MARGIN_5s_Onset                                        0.1092
+MARGIN_5s_Offset                                       0.0772
+AP                                                     0.3578
+balanced_accuracy                                        0.52
+pROC_0.1                                               0.0256
+adj_PR_AUC                                             0.7128
+threshold                                              0.5495
+val_fp_per_day                                         148.84
+2026-10-29 19:41:58,365 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_non_physiolog
+ical_A1_w1_s1_06e4650c
+2026-10-29 19:41:58,643 - ArtifactDetector[cnn_non_physiological_A1_w1_s1_06e4650c] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cn
+n_cnn_non_physiological_A1_w1_s1_06e4650c/cnn_cnn_non_physiological_A1_w1_s1_06e4650c_learning_curves.png
+2026-10-29 19:41:59,604 - ArtifactDetector[cnn_non_physiological_A2_w1_s1_97b28e78] - INFO - Model(lightweight). Parameters: 2,051
+prewarm: 100%|██████████| 215/215 [00:05<00:00, 36.03it/s]
+prewarm: 100%|██████████| 50/50 [00:01<00:00, 38.18it/s]
+prewarm: 100%|██████████| 45/45 [00:01<00:00, 37.45it/s]
+2026-10-29 19:42:08,283 - ArtifactDetector[cnn_non_physiological_A2_w1_s1_97b28e78] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.58392134928
+14732), 1: np.float64(3.4789797487823635)}
+2026-10-29 19:42:16,160 - ArtifactDetector[cnn_non_physiological_A2_w1_s1_97b28e78] - INFO - Starting training: epochs=100
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 1/100 - loss=0.2692 val_loss=0.2424 val_ap=0.4655 val_f1=0.4836 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 2/100 - loss=0.2259 val_loss=0.2403 val_ap=0.4669 val_f1=0.4798 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 3/100 - loss=0.2167 val_loss=0.2433 val_ap=0.4742 val_f1=0.4821 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 4/100 - loss=0.2116 val_loss=0.2427 val_ap=0.4746 val_f1=0.4817 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 5/100 - loss=0.2084 val_loss=0.2450 val_ap=0.4726 val_f1=0.4814 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 6/100 - loss=0.2061 val_loss=0.2453 val_ap=0.4772 val_f1=0.4845 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 7/100 - loss=0.2035 val_loss=0.2462 val_ap=0.4726 val_f1=0.4801 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 8/100 - loss=0.2021 val_loss=0.2466 val_ap=0.4735 val_f1=0.4798 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 9/100 - loss=0.2010 val_loss=0.2465 val_ap=0.4759 val_f1=0.4820 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 10/100 - loss=0.2000 val_loss=0.2457 val_ap=0.4770 val_f1=0.4838 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 11/100 - loss=0.1987 val_loss=0.2479 val_ap=0.4757 val_f1=0.4808 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 12/100 - loss=0.1980 val_loss=0.2477 val_ap=0.4757 val_f1=0.4808 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 13/100 - loss=0.1974 val_loss=0.2469 val_ap=0.4762 val_f1=0.4801 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 14/100 - loss=0.1968 val_loss=0.2456 val_ap=0.4754 val_f1=0.4803 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 15/100 - loss=0.1960 val_loss=0.2484 val_ap=0.4745 val_f1=0.4797 (selección: ap)
+[cnn_non_physiological_A2_w1_s1_97b28e78] Epoch 16/100 - loss=0.1956 val_loss=0.2483 val_ap=0.4752 val_f1=0.4798 (selección: ap)
+
+Epoch 16: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 19:46:29,237 - ArtifactDetector[cnn_non_physiological_A2_w1_s1_97b28e78] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_non_physiological_A2_w1_s1_97b28e78
+Umbral (fbeta_val, val): 0.758
+                                            precision    recall  f1-score   support
+
+no_cnn_non_physiological_A2_w1_s1_97b28e78       0.90      0.94      0.92     43574
+   cnn_non_physiological_A2_w1_s1_97b28e78       0.52      0.36      0.43      7523
+
+                                  accuracy                           0.86     51097
+                                 macro avg       0.71      0.65      0.67     51097
+                              weighted avg       0.84      0.86      0.85     51097
+
+[[41097  2477]
+ [ 4786  2737]]
+model                 cnn_non_physiological_A2_w1_s1_97b28e78
+sensitivity                                            0.3638
+specificity                                            0.9432
+precision                                              0.5249
+accuracy                                               0.8579
+f1_score                                               0.4298
+auc_roc                                                0.7407
+false_alarm_rate                                       0.0568
+fp_per_day                                            4188.36
+covered_test_days                                      0.5914
+TP                                                       2737
+FP                                                       2477
+TN                                                      41097
+FN                                                       4786
+n_test_windows                                          51097
+covered_test_hours                                      14.19
+OVLP_Sensitivity                                       0.5939
+OVLP_False_Alarms                                        1150
+TAES_Score                                             0.3403
+MARGIN_5s_Onset                                        0.5526
+MARGIN_5s_Offset                                       0.5047
+AP                                                     0.4185
+balanced_accuracy                                      0.6535
+pROC_0.1                                                0.031
+adj_PR_AUC                                             0.7649
+threshold                                              0.7582
+val_fp_per_day                                        4589.38
+med_ch_f1_micro                                        0.3303
+med_ch_f1_macro                                        0.3325
+med_ch_jaccard                                         0.1218
+med_n_win_scored                                      50654.0
+med_ch_tau                                                0.8
+
+-- Con tope 150 FP/día: thr=1.000 (fbeta_val+fp_cap)
+model                 cnn_non_physiological_A2_w1_s1_97b28e78
+sensitivity                                            0.0338
+specificity                                             0.997
+precision                                              0.6632
+accuracy                                               0.8552
+f1_score                                               0.0643
+auc_roc                                                0.7407
+false_alarm_rate                                        0.003
+fp_per_day                                             218.13
+covered_test_days                                      0.5914
+TP                                                        254
+FP                                                        129
+TN                                                      43445
+FN                                                       7269
+n_test_windows                                          51097
+covered_test_hours                                      14.19
+OVLP_Sensitivity                                       0.0892
+OVLP_False_Alarms                                          56
+TAES_Score                                             0.0258
+MARGIN_5s_Onset                                        0.0732
+MARGIN_5s_Offset                                       0.0559
+AP                                                     0.4185
+balanced_accuracy                                      0.5154
+pROC_0.1                                                0.031
+adj_PR_AUC                                             0.7649
+threshold                                                 1.0
+val_fp_per_day                                         147.39
+2026-10-29 19:46:39,315 - ArtifactDetector[cnn_non_physiological_A2_w1_s1_97b28e78] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_non_physiolog
+ical_A2_w1_s1_97b28e78
+2026-10-29 19:46:39,607 - ArtifactDetector[cnn_non_physiological_A2_w1_s1_97b28e78] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cn
+n_cnn_non_physiological_A2_w1_s1_97b28e78/cnn_cnn_non_physiological_A2_w1_s1_97b28e78_learning_curves.png
+**************************************************
+>> non_physiological | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[INFO] Windows loaded from cache: windows_w2_s1_ua0.3_ub0.1_urTrue_dcd979_L7.parquet (359316 rows)
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channels', 'Session_duration'
+, 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bip
+olar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'no
+n_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Windows: 359316 -> without ambiguous: 350838 | positive: 51351
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO] Best suggested and saved size weight for non_physiological: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51778        7482       44296       0.144502
+train   246719       34496      212223       0.139819
+val      52341        9373       42968       0.179076
+Broken rules: 0 | splits per patient: {'train': 138, 'test': 39, 'val': 36}
+[INFO] Split distribution:  split
+train    246719
+val       52341
+test      51778
+Name: count, dtype: int64
+
+==================================================
+Starting training of CNN_non_physiological
+2026-10-29 19:46:44,666 - ArtifactDetector[cnn_non_physiological_A1_w2_s1_88f637b2] - INFO - Model(lightweight). Parameters: 2,051
+prewarm: 100%|██████████| 223/223 [00:05<00:00, 39.11it/s]
+prewarm: 100%|██████████| 41/41 [00:01<00:00, 36.76it/s]
+prewarm: 100%|██████████| 46/46 [00:01<00:00, 39.50it/s]
+2026-10-29 19:46:52,845 - ArtifactDetector[cnn_non_physiological_A1_w2_s1_88f637b2] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.58127300057
+0155), 1: np.float64(3.5760522959183674)}
+2026-10-29 19:46:52,846 - ArtifactDetector[cnn_non_physiological_A1_w2_s1_88f637b2] - INFO - Starting training: epochs=100
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 1/100 - loss=0.0459 val_loss=0.0234 val_ap=0.4908 val_f1=0.4552 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 2/100 - loss=0.0147 val_loss=0.0232 val_ap=0.5012 val_f1=0.4693 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 3/100 - loss=0.0138 val_loss=0.0238 val_ap=0.4958 val_f1=0.4626 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 4/100 - loss=0.0134 val_loss=0.0248 val_ap=0.4866 val_f1=0.4548 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 5/100 - loss=0.0131 val_loss=0.0243 val_ap=0.4873 val_f1=0.4535 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 6/100 - loss=0.0128 val_loss=0.0250 val_ap=0.4826 val_f1=0.4523 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 7/100 - loss=0.0126 val_loss=0.0247 val_ap=0.4829 val_f1=0.4449 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 8/100 - loss=0.0125 val_loss=0.0251 val_ap=0.4671 val_f1=0.4327 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 9/100 - loss=0.0123 val_loss=0.0249 val_ap=0.4760 val_f1=0.4386 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 10/100 - loss=0.0122 val_loss=0.0252 val_ap=0.4756 val_f1=0.4367 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 11/100 - loss=0.0121 val_loss=0.0257 val_ap=0.4724 val_f1=0.4406 (selección: ap)
+[cnn_non_physiological_A1_w2_s1_88f637b2] Epoch 12/100 - loss=0.0120 val_loss=0.0253 val_ap=0.4778 val_f1=0.4393 (selección: ap)
+
+Epoch 12: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 19:50:30,110 - ArtifactDetector[cnn_non_physiological_A1_w2_s1_88f637b2] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_non_physiological_A1_w2_s1_88f637b2
+Umbral (fbeta_val, val): 0.264
+                                            precision    recall  f1-score   support
+
+no_cnn_non_physiological_A1_w2_s1_88f637b2       0.91      0.90      0.91     44296
+   cnn_non_physiological_A1_w2_s1_88f637b2       0.45      0.47      0.46      7482
+
+                                  accuracy                           0.84     51778
+                                 macro avg       0.68      0.68      0.68     51778
+                              weighted avg       0.84      0.84      0.84     51778
+
+[[39939  4357]
+ [ 3979  3503]]
+model                 cnn_non_physiological_A1_w2_s1_88f637b2
+sensitivity                                            0.4682
+specificity                                            0.9016
+precision                                              0.4457
+accuracy                                                0.839
+f1_score                                               0.4567
+auc_roc                                                0.7362
+false_alarm_rate                                       0.0984
+fp_per_day                                            7270.36
+covered_test_days                                      0.5993
+TP                                                       3503
+FP                                                       4357
+TN                                                      39939
+FN                                                       3979
+n_test_windows                                          51778
+covered_test_hours                                      14.38
+OVLP_Sensitivity                                       0.5944
+OVLP_False_Alarms                                        1167
+TAES_Score                                             0.3906
+MARGIN_5s_Onset                                        0.5441
+MARGIN_5s_Offset                                       0.4895
+AP                                                     0.4632
+balanced_accuracy                                      0.6849
+pROC_0.1                                               0.0352
+adj_PR_AUC                                             0.7759
+threshold                                              0.2642
+val_fp_per_day                                        5964.03
+med_ch_f1_micro                                        0.2941
+med_ch_f1_macro                                         0.292
+med_ch_jaccard                                         0.1041
+med_n_win_scored                                      51262.0
+med_ch_tau                                               0.25
+
+-- Con tope 150 FP/día: thr=0.506 (fbeta_val+fp_cap)
+model                 cnn_non_physiological_A1_w2_s1_88f637b2
+sensitivity                                            0.1327
+specificity                                            0.9947
+precision                                              0.8093
+accuracy                                               0.8702
+f1_score                                                0.228
+auc_roc                                                0.7362
+false_alarm_rate                                       0.0053
+fp_per_day                                             390.47
+covered_test_days                                      0.5993
+TP                                                        993
+FP                                                        234
+TN                                                      44062
+FN                                                       6489
+n_test_windows                                          51778
+covered_test_hours                                      14.38
+OVLP_Sensitivity                                       0.1622
+OVLP_False_Alarms                                          61
+TAES_Score                                              0.066
+MARGIN_5s_Onset                                        0.1413
+MARGIN_5s_Offset                                       0.1077
+AP                                                     0.4632
+balanced_accuracy                                      0.5637
+pROC_0.1                                               0.0352
+adj_PR_AUC                                             0.7759
+threshold                                              0.5056
+val_fp_per_day                                         148.56
+2026-10-29 19:50:38,987 - ArtifactDetector[cnn_non_physiological_A1_w2_s1_88f637b2] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_non_physiolog
+ical_A1_w2_s1_88f637b2
+2026-10-29 19:50:39,250 - ArtifactDetector[cnn_non_physiological_A1_w2_s1_88f637b2] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cn
+n_cnn_non_physiological_A1_w2_s1_88f637b2/cnn_cnn_non_physiological_A1_w2_s1_88f637b2_learning_curves.png
+2026-10-29 19:50:40,411 - ArtifactDetector[cnn_non_physiological_A2_w2_s1_a281bd36] - INFO - Model(lightweight). Parameters: 2,051
+prewarm: 100%|██████████| 223/223 [00:06<00:00, 34.39it/s]
+prewarm: 100%|██████████| 41/41 [00:01<00:00, 31.60it/s]
+prewarm: 100%|██████████| 46/46 [00:01<00:00, 32.75it/s]
+2026-10-29 19:50:49,823 - ArtifactDetector[cnn_non_physiological_A2_w2_s1_a281bd36] - INFO - Pesos de clase calculados para el entrenamiento: {0: np.float64(0.58127300057
+0155), 1: np.float64(3.5760522959183674)}
+2026-10-29 19:51:01,629 - ArtifactDetector[cnn_non_physiological_A2_w2_s1_a281bd36] - INFO - Starting training: epochs=100
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 1/100 - loss=0.2618 val_loss=0.3128 val_ap=0.5626 val_f1=0.5482 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 2/100 - loss=0.2136 val_loss=0.3073 val_ap=0.5641 val_f1=0.5509 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 3/100 - loss=0.2021 val_loss=0.3211 val_ap=0.5574 val_f1=0.5388 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 4/100 - loss=0.1952 val_loss=0.3226 val_ap=0.5493 val_f1=0.5340 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 5/100 - loss=0.1904 val_loss=0.3308 val_ap=0.5498 val_f1=0.5282 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 6/100 - loss=0.1869 val_loss=0.3422 val_ap=0.5413 val_f1=0.5235 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 7/100 - loss=0.1839 val_loss=0.3358 val_ap=0.5412 val_f1=0.5221 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 8/100 - loss=0.1822 val_loss=0.3397 val_ap=0.5409 val_f1=0.5225 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 9/100 - loss=0.1809 val_loss=0.3373 val_ap=0.5441 val_f1=0.5274 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 10/100 - loss=0.1798 val_loss=0.3528 val_ap=0.5340 val_f1=0.5159 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 11/100 - loss=0.1782 val_loss=0.3426 val_ap=0.5340 val_f1=0.5174 (selección: ap)
+[cnn_non_physiological_A2_w2_s1_a281bd36] Epoch 12/100 - loss=0.1774 val_loss=0.3505 val_ap=0.5349 val_f1=0.5159 (selección: ap)
+
+Epoch 12: early stopping (metric AP without improvement in 10 epochs)
+2026-10-29 19:55:17,881 - ArtifactDetector[cnn_non_physiological_A2_w2_s1_a281bd36] - INFO - Training completed.
+
+============================================================
+EVALUATION(TEST) — cnn_non_physiological_A2_w2_s1_a281bd36
+Umbral (fbeta_val, val): 0.602
+                                            precision    recall  f1-score   support
+
+no_cnn_non_physiological_A2_w2_s1_a281bd36       0.92      0.89      0.91     44296
+   cnn_non_physiological_A2_w2_s1_a281bd36       0.46      0.55      0.50      7482
+
+                                  accuracy                           0.84     51778
+                                 macro avg       0.69      0.72      0.70     51778
+                              weighted avg       0.86      0.84      0.85     51778
+
+[[39477  4819]
+ [ 3356  4126]]
+model                 cnn_non_physiological_A2_w2_s1_a281bd36
+sensitivity                                            0.5515
+specificity                                            0.8912
+precision                                              0.4613
+accuracy                                               0.8421
+f1_score                                               0.5023
+auc_roc                                                0.7837
+false_alarm_rate                                       0.1088
+fp_per_day                                            8041.28
+covered_test_days                                      0.5993
+TP                                                       4126
+FP                                                       4819
+TN                                                      39477
+FN                                                       3356
+n_test_windows                                          51778
+covered_test_hours                                      14.38
+OVLP_Sensitivity                                       0.7399
+OVLP_False_Alarms                                        1188
+TAES_Score                                             0.5338
+MARGIN_5s_Onset                                        0.6909
+MARGIN_5s_Offset                                        0.635
+AP                                                     0.5089
+balanced_accuracy                                      0.7213
+pROC_0.1                                               0.0396
+adj_PR_AUC                                             0.8111
+threshold                                              0.6018
+val_fp_per_day                                        5612.43
+med_ch_f1_micro                                        0.3508
+med_ch_f1_macro                                        0.3483
+med_ch_jaccard                                         0.1387
+med_n_win_scored                                      51262.0
+med_ch_tau                                                0.6
+
+-- Con tope 150 FP/día: thr=1.000 (fbeta_val+fp_cap)
+model                 cnn_non_physiological_A2_w2_s1_a281bd36
+sensitivity                                            0.1088
+specificity                                            0.9956
+precision                                              0.8075
+accuracy                                               0.8675
+f1_score                                               0.1918
+auc_roc                                                0.7837
+false_alarm_rate                                       0.0044
+fp_per_day                                             323.72
+covered_test_days                                      0.5993
+TP                                                        814
+FP                                                        194
+TN                                                      44102
+FN                                                       6668
+n_test_windows                                          51778
+covered_test_hours                                      14.38
+OVLP_Sensitivity                                       0.1203
+OVLP_False_Alarms                                          49
+TAES_Score                                             0.0452
+MARGIN_5s_Onset                                        0.1049
+MARGIN_5s_Offset                                       0.0713
+AP                                                     0.5089
+balanced_accuracy                                      0.5522
+pROC_0.1                                               0.0396
+adj_PR_AUC                                             0.8111
+threshold                                              0.9998
+val_fp_per_day                                         146.91
+2026-10-29 19:55:27,776 - ArtifactDetector[cnn_non_physiological_A2_w2_s1_a281bd36] - INFO - Model saved in /workspace/ml-outputs/artifact/models_v2/cnn_cnn_non_physiolog
+ical_A2_w2_s1_a281bd36
+2026-10-29 19:55:28,046 - ArtifactDetector[cnn_non_physiological_A2_w2_s1_a281bd36] - INFO - Gráfica de evolución guardada en: /workspace/ml-outputs/artifact/models_v2/cn
+n_cnn_non_physiological_A2_w2_s1_a281bd36/cnn_cnn_non_physiological_A2_w2_s1_a281bd36_learning_curves.png
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- non_physiological ----------
+                 Threshold: 0.284 (fbeta_val)
+                 Confusion matrix:
+[[41733  1841]
+ [ 5590  1933]]
+                 Metrics results: {'model': 'cnn_non_physiological_A1_w1_s1_06e4650c', 'sensitivity': 0.2569, 'specificity': np.float64(0.9578), 'precision': 0.5122, 'acc
+uracy': 0.8546, 'f1_score': 0.3422, 'auc_roc': 0.6747, 'false_alarm_rate': np.float64(0.0422), 'fp_per_day': np.float64(3112.95), 'covered_test_days': 0.5914, 'TP': 1933,
+ 'FP': 1841, 'TN': 41733, 'FN': 5590, 'n_test_windows': 51097, 'covered_test_hours': 14.19, 'OVLP_Sensitivity': 0.4913, 'OVLP_False_Alarms': 1155, 'TAES_Score': np.float6
+4(0.2425), 'MARGIN_5s_Onset': 0.4487, 'MARGIN_5s_Offset': 0.3955, 'AP': 0.3578, 'balanced_accuracy': 0.6073, 'pROC_0.1': 0.0256, 'adj_PR_AUC': 0.7128, 'threshold': 0.2841
+, 'val_fp_per_day': 3858.29, 'med_ch_f1_micro': 0.2448, 'med_ch_f1_macro': 0.2478, 'med_ch_jaccard': 0.08, 'med_n_win_scored': 50654.0, 'med_ch_tau': 0.3}
+                 Threshold: 0.758 (fbeta_val)
+                 Confusion matrix:
+[[41097  2477]
+ [ 4786  2737]]
+                 Metrics results: {'model': 'cnn_non_physiological_A2_w1_s1_97b28e78', 'sensitivity': 0.3638, 'specificity': np.float64(0.9432), 'precision': 0.5249, 'acc
+uracy': 0.8579, 'f1_score': 0.4298, 'auc_roc': 0.7407, 'false_alarm_rate': np.float64(0.0568), 'fp_per_day': np.float64(4188.36), 'covered_test_days': 0.5914, 'TP': 2737,
+ 'FP': 2477, 'TN': 41097, 'FN': 4786, 'n_test_windows': 51097, 'covered_test_hours': 14.19, 'OVLP_Sensitivity': 0.5939, 'OVLP_False_Alarms': 1150, 'TAES_Score': np.float6
+4(0.3403), 'MARGIN_5s_Onset': 0.5526, 'MARGIN_5s_Offset': 0.5047, 'AP': 0.4185, 'balanced_accuracy': 0.6535, 'pROC_0.1': 0.031, 'adj_PR_AUC': 0.7649, 'threshold': 0.7582,
+ 'val_fp_per_day': 4589.38, 'med_ch_f1_micro': 0.3303, 'med_ch_f1_macro': 0.3325, 'med_ch_jaccard': 0.1218, 'med_n_win_scored': 50654.0, 'med_ch_tau': 0.8}
+                 Threshold: 0.264 (fbeta_val)
+                 Confusion matrix:
+[[39939  4357]
+ [ 3979  3503]]
+                 Metrics results: {'model': 'cnn_non_physiological_A1_w2_s1_88f637b2', 'sensitivity': 0.4682, 'specificity': np.float64(0.9016), 'precision': 0.4457, 'acc
+uracy': 0.839, 'f1_score': 0.4567, 'auc_roc': 0.7362, 'false_alarm_rate': np.float64(0.0984), 'fp_per_day': np.float64(7270.36), 'covered_test_days': 0.5993, 'TP': 3503,
+'FP': 4357, 'TN': 39939, 'FN': 3979, 'n_test_windows': 51778, 'covered_test_hours': 14.38, 'OVLP_Sensitivity': 0.5944, 'OVLP_False_Alarms': 1167, 'TAES_Score': np.float64
+(0.3906), 'MARGIN_5s_Onset': 0.5441, 'MARGIN_5s_Offset': 0.4895, 'AP': 0.4632, 'balanced_accuracy': 0.6849, 'pROC_0.1': 0.0352, 'adj_PR_AUC': 0.7759, 'threshold': 0.2642,
+ 'val_fp_per_day': 5964.03, 'med_ch_f1_micro': 0.2941, 'med_ch_f1_macro': 0.292, 'med_ch_jaccard': 0.1041, 'med_n_win_scored': 51262.0, 'med_ch_tau': 0.25}
+                 Threshold: 0.602 (fbeta_val)
+                 Confusion matrix:
+[[39477  4819]
+ [ 3356  4126]]
+                 Metrics results: {'model': 'cnn_non_physiological_A2_w2_s1_a281bd36', 'sensitivity': 0.5515, 'specificity': np.float64(0.8912), 'precision': 0.4613, 'acc
+uracy': 0.8421, 'f1_score': 0.5023, 'auc_roc': 0.7837, 'false_alarm_rate': np.float64(0.1088), 'fp_per_day': np.float64(8041.28), 'covered_test_days': 0.5993, 'TP': 4126,
+ 'FP': 4819, 'TN': 39477, 'FN': 3356, 'n_test_windows': 51778, 'covered_test_hours': 14.38, 'OVLP_Sensitivity': 0.7399, 'OVLP_False_Alarms': 1188, 'TAES_Score': np.float6
+4(0.5338), 'MARGIN_5s_Onset': 0.6909, 'MARGIN_5s_Offset': 0.635, 'AP': 0.5089, 'balanced_accuracy': 0.7213, 'pROC_0.1': 0.0396, 'adj_PR_AUC': 0.8111, 'threshold': 0.6018,
+ 'val_fp_per_day': 5612.43, 'med_ch_f1_micro': 0.3508, 'med_ch_f1_macro': 0.3483, 'med_ch_jaccard': 0.1387, 'med_n_win_scored': 51262.0, 'med_ch_tau': 0.6}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano /tmp/inventario.py
+
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/hybrid-ai-epilepsy-diagnosis
+uv run python /tmp/inventario.py
+         artifact variant     win     hash        tipo  params                      estado     AP     F1
+              eye      A1   w2_s1 11ef8c67 lightweight  2051.0                       LISTO 0.8170 0.7383
+              eye      A1   w2_s1 e8523483 lightweight  1745.0                       LISTO    NaN 0.7088
+              eye      A2   w2_s1 cbc08fec lightweight  2051.0                       LISTO 0.7339 0.6981
+              eye      A2   w2_s1 99855ef2 lightweight  1745.0                       LISTO    NaN 0.7120
+              eye      A1   w5_s2 06c7b32e lightweight  2051.0                       LISTO 0.8329 0.7595
+              eye      A1   w5_s2 c4992744 lightweight  1745.0                       LISTO    NaN 0.7831
+              eye      A2   w5_s2 9d724f33 lightweight  2051.0                       LISTO 0.7898 0.7440
+              eye      A2   w5_s2 ef253abf lightweight  1745.0                       LISTO    NaN 0.7807
+           muscle      A1 w1_s0.5 dfdc2730 lightweight  2051.0                       LISTO 0.7710 0.7066
+           muscle      A1 w1_s0.5 7eb5bc3f lightweight  1745.0                       LISTO    NaN 0.7330
+           muscle      A2 w1_s0.5 6ee553fb lightweight  2051.0                       LISTO 0.7669 0.7040
+           muscle      A2 w1_s0.5 d45e6339 lightweight  1745.0                       LISTO    NaN 0.7372
+           muscle      A1   w5_s2 02348f54 lightweight  2051.0                       LISTO 0.8045 0.7369
+           muscle      A1   w5_s2 4ec300fd lightweight  1745.0                       LISTO    NaN 0.7521
+           muscle      A2   w5_s2 093cf476 lightweight  1745.0                       LISTO    NaN 0.7421
+           muscle      A2   w5_s2 c9503f75 lightweight     NaN EN CURSO/PAUSADO (época 19)    NaN    NaN
+non_physiological      A1   w1_s1 06e4650c lightweight  2051.0                       LISTO 0.3578 0.3422
+non_physiological      A1   w1_s1 54c84f02 lightweight  1745.0                       LISTO    NaN 0.4599
+non_physiological      A2   w1_s1 97b28e78 lightweight  2051.0                       LISTO 0.4185 0.4298
+non_physiological      A2   w1_s1 e24f0c26 lightweight  1745.0                       LISTO    NaN 0.4132
+non_physiological      A1   w2_s1 88f637b2 lightweight  2051.0                       LISTO 0.4632 0.4567
+non_physiological      A1   w2_s1 88a9d71e lightweight  1745.0                       LISTO    NaN 0.4480
+non_physiological      A2   w2_s1 a281bd36 lightweight  2051.0                       LISTO 0.5089 0.5023
+non_physiological      A2   w2_s1 e538e25e lightweight  1745.0                       LISTO    NaN 0.4560
+              eye      A1   w2_s1 b3e79d7a       paper 57521.0                       LISTO    NaN 0.7080
+              eye      A2   w2_s1 477537c4       paper 57521.0                       LISTO    NaN 0.7219
+              eye      A1   w5_s2 2213f4d9       paper 59843.0                       LISTO 0.8808 0.8007
+              eye      A1   w5_s2 17fdd5c1       paper 57521.0                       LISTO    NaN 0.7980
+              eye      A2   w5_s2 2b4308b4       paper 57521.0                       LISTO    NaN 0.8122
+              eye      A2   w5_s2 bd9b4fda       paper     NaN EN CURSO/PAUSADO (época 14)    NaN    NaN
+           muscle      A1 w1_s0.5 be8ba201       paper 57521.0                       LISTO    NaN 0.7231
+           muscle      A2 w1_s0.5 8adc04ad       paper 57521.0                       LISTO    NaN 0.7539
+           muscle      A1   w5_s2 0a25cb42       paper 57521.0                       LISTO    NaN 0.7512
+           muscle      A2   w5_s2 347940da       paper 57521.0                       LISTO    NaN 0.7419
+non_physiological      A1   w1_s1 6ebd0fb3       paper 57521.0                       LISTO    NaN 0.4310
+non_physiological      A2   w1_s1 ad4592a8       paper 57521.0                       LISTO    NaN 0.4158
+non_physiological      A1   w2_s1 ad6583ee       paper 57521.0                       LISTO    NaN 0.4561
+non_physiological      A2   w2_s1 29698153       paper 57521.0                       LISTO    NaN 0.4432
+              eye      A1   w2_s1 0c25b9a1    standard 60659.0                       LISTO 0.8126 0.7076
+              eye      A1   w2_s1 f95f08c3    standard 58337.0                       LISTO    NaN 0.7223
+              eye      A2   w2_s1 42e0c73b    standard 60659.0                       LISTO 0.8109 0.7283
+              eye      A2   w2_s1 582fd41d    standard 58337.0                       LISTO    NaN 0.7432
+              eye      A1   w5_s2 0169516f    standard 60659.0                       LISTO 0.8792 0.7848
+              eye      A1   w5_s2 3dec86be    standard 58337.0                       LISTO    NaN 0.7872
+              eye      A2   w5_s2 00124cb5    standard 60659.0                       LISTO 0.8642 0.7795
+              eye      A2   w5_s2 6a5a8436    standard 58337.0                       LISTO    NaN 0.7789
+           muscle      A1 w1_s0.5 85ebf60e    standard 60659.0                       LISTO 0.7939 0.7233
+           muscle      A1 w1_s0.5 a8d3f9e6    standard 58337.0                       LISTO    NaN 0.7191
+           muscle      A2 w1_s0.5 f0b189be    standard 60659.0                       LISTO 0.8022 0.7429
+           muscle      A2 w1_s0.5 d47b9670    standard 58337.0                       LISTO    NaN 0.7116
+           muscle      A1   w5_s2 40ab4faa    standard 60659.0                       LISTO 0.7764 0.7187
+           muscle      A1   w5_s2 33bb8fb6    standard 58337.0                       LISTO    NaN 0.7418
+           muscle      A2   w5_s2 437be6ac    standard 60659.0                       LISTO 0.8116 0.7420
+           muscle      A2   w5_s2 0b654add    standard 58337.0                       LISTO    NaN 0.7543
+non_physiological      A1   w1_s1 1d7b319b    standard 60659.0                       LISTO 0.4825 0.4525
+non_physiological      A1   w1_s1 93b1b9e2    standard 58337.0                       LISTO    NaN 0.4254
+non_physiological      A2   w1_s1 ee6843cf    standard 60659.0                       LISTO 0.5139 0.5107
+non_physiological      A2   w1_s1 ba67dc5f    standard 58337.0                       LISTO    NaN 0.4486
+non_physiological      A1   w2_s1 862bdb97    standard 60659.0                       LISTO 0.5282 0.5095
+non_physiological      A1   w2_s1 a549102d    standard 58337.0                       LISTO    NaN 0.4915
+non_physiological      A2   w2_s1 0df4acaf    standard 60659.0                       LISTO 0.5032 0.4942
+non_physiological      A2   w2_s1 0b8ef3c3    standard 58337.0                       LISTO    NaN 0.4733
+
+=== Faltantes por tipo de modelo ===
+
+[lightweight] listos: 12/12
+
+[paper] listos: 12/12
+
+[standard] listos: 12/12
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python /tmp/inventario.py
+         artifact variant     win     hash        tipo  params                     estado     AP     F1
+              eye      A1   w2_s1 11ef8c67 lightweight  2051.0                      LISTO 0.8170 0.7383
+              eye      A1   w2_s1 e8523483 lightweight  1745.0                      LISTO    NaN 0.7088
+              eye      A2   w2_s1 cbc08fec lightweight  2051.0                      LISTO 0.7339 0.6981
+              eye      A2   w2_s1 99855ef2 lightweight  1745.0                      LISTO    NaN 0.7120
+              eye      A1   w5_s2 06c7b32e lightweight  2051.0                      LISTO 0.8329 0.7595
+              eye      A1   w5_s2 c4992744 lightweight  1745.0                      LISTO    NaN 0.7831
+              eye      A2   w5_s2 9d724f33 lightweight  2051.0                      LISTO 0.7898 0.7440
+              eye      A2   w5_s2 ef253abf lightweight  1745.0                      LISTO    NaN 0.7807
+           muscle      A1 w1_s0.5 dfdc2730 lightweight  2051.0                      LISTO 0.7710 0.7066
+           muscle      A1 w1_s0.5 7eb5bc3f lightweight  1745.0                      LISTO    NaN 0.7330
+           muscle      A2 w1_s0.5 6ee553fb lightweight  2051.0                      LISTO 0.7669 0.7040
+           muscle      A2 w1_s0.5 d45e6339 lightweight  1745.0                      LISTO    NaN 0.7372
+           muscle      A1   w5_s2 02348f54 lightweight  2051.0                      LISTO 0.8045 0.7369
+           muscle      A1   w5_s2 4ec300fd lightweight  1745.0                      LISTO    NaN 0.7521
+           muscle      A2   w5_s2 c9503f75 lightweight  2051.0                      LISTO 0.7882 0.7316
+           muscle      A2   w5_s2 093cf476 lightweight  1745.0                      LISTO    NaN 0.7421
+non_physiological      A1   w1_s1 06e4650c lightweight  2051.0                      LISTO 0.3578 0.3422
+non_physiological      A1   w1_s1 54c84f02 lightweight  1745.0                      LISTO    NaN 0.4599
+non_physiological      A2   w1_s1 97b28e78 lightweight  2051.0                      LISTO 0.4185 0.4298
+non_physiological      A2   w1_s1 e24f0c26 lightweight  1745.0                      LISTO    NaN 0.4132
+non_physiological      A1   w2_s1 88f637b2 lightweight  2051.0                      LISTO 0.4632 0.4567
+non_physiological      A1   w2_s1 88a9d71e lightweight  1745.0                      LISTO    NaN 0.4480
+non_physiological      A2   w2_s1 a281bd36 lightweight  2051.0                      LISTO 0.5089 0.5023
+non_physiological      A2   w2_s1 e538e25e lightweight  1745.0                      LISTO    NaN 0.4560
+              eye      A1   w2_s1 2fa5cc0d       paper 59843.0                      LISTO 0.8210 0.7084
+              eye      A1   w2_s1 b3e79d7a       paper 57521.0                      LISTO    NaN 0.7080
+              eye      A2   w2_s1 860dde18       paper 59843.0                      LISTO 0.8170 0.7192
+              eye      A2   w2_s1 477537c4       paper 57521.0                      LISTO    NaN 0.7219
+              eye      A1   w5_s2 2213f4d9       paper 59843.0                      LISTO 0.8808 0.8007
+              eye      A1   w5_s2 17fdd5c1       paper 57521.0                      LISTO    NaN 0.7980
+              eye      A2   w5_s2 bd9b4fda       paper 59843.0                      LISTO 0.8699 0.7923
+              eye      A2   w5_s2 2b4308b4       paper 57521.0                      LISTO    NaN 0.8122
+           muscle      A1 w1_s0.5 be8ba201       paper 57521.0                      LISTO    NaN 0.7231
+           muscle      A1 w1_s0.5 b995551c       paper     NaN EN CURSO/PAUSADO (época 6)    NaN    NaN
+           muscle      A2 w1_s0.5 8adc04ad       paper 57521.0                      LISTO    NaN 0.7539
+           muscle      A1   w5_s2 0a25cb42       paper 57521.0                      LISTO    NaN 0.7512
+           muscle      A2   w5_s2 347940da       paper 57521.0                      LISTO    NaN 0.7419
+non_physiological      A1   w1_s1 6ebd0fb3       paper 57521.0                      LISTO    NaN 0.4310
+non_physiological      A2   w1_s1 ad4592a8       paper 57521.0                      LISTO    NaN 0.4158
+non_physiological      A1   w2_s1 ad6583ee       paper 57521.0                      LISTO    NaN 0.4561
+non_physiological      A2   w2_s1 29698153       paper 57521.0                      LISTO    NaN 0.4432
+              eye      A1   w2_s1 0c25b9a1    standard 60659.0                      LISTO 0.8126 0.7076
+              eye      A1   w2_s1 f95f08c3    standard 58337.0                      LISTO    NaN 0.7223
+              eye      A2   w2_s1 42e0c73b    standard 60659.0                      LISTO 0.8109 0.7283
+              eye      A2   w2_s1 582fd41d    standard 58337.0                      LISTO    NaN 0.7432
+              eye      A1   w5_s2 0169516f    standard 60659.0                      LISTO 0.8792 0.7848
+              eye      A1   w5_s2 3dec86be    standard 58337.0                      LISTO    NaN 0.7872
+              eye      A2   w5_s2 00124cb5    standard 60659.0                      LISTO 0.8642 0.7795
+              eye      A2   w5_s2 6a5a8436    standard 58337.0                      LISTO    NaN 0.7789
+           muscle      A1 w1_s0.5 85ebf60e    standard 60659.0                      LISTO 0.7939 0.7233
+           muscle      A1 w1_s0.5 a8d3f9e6    standard 58337.0                      LISTO    NaN 0.7191
+           muscle      A2 w1_s0.5 f0b189be    standard 60659.0                      LISTO 0.8022 0.7429
+           muscle      A2 w1_s0.5 d47b9670    standard 58337.0                      LISTO    NaN 0.7116
+           muscle      A1   w5_s2 40ab4faa    standard 60659.0                      LISTO 0.7764 0.7187
+           muscle      A1   w5_s2 33bb8fb6    standard 58337.0                      LISTO    NaN 0.7418
+           muscle      A2   w5_s2 437be6ac    standard 60659.0                      LISTO 0.8116 0.7420
+           muscle      A2   w5_s2 0b654add    standard 58337.0                      LISTO    NaN 0.7543
+non_physiological      A1   w1_s1 1d7b319b    standard 60659.0                      LISTO 0.4825 0.4525
+non_physiological      A1   w1_s1 93b1b9e2    standard 58337.0                      LISTO    NaN 0.4254
+non_physiological      A2   w1_s1 ee6843cf    standard 60659.0                      LISTO 0.5139 0.5107
+non_physiological      A2   w1_s1 ba67dc5f    standard 58337.0                      LISTO    NaN 0.4486
+non_physiological      A1   w2_s1 862bdb97    standard 60659.0                      LISTO 0.5282 0.5095
+non_physiological      A1   w2_s1 a549102d    standard 58337.0                      LISTO    NaN 0.4915
+non_physiological      A2   w2_s1 0df4acaf    standard 60659.0                      LISTO 0.5032 0.4942
+non_physiological      A2   w2_s1 0b8ef3c3    standard 58337.0                      LISTO    NaN 0.4733
+
+=== Faltantes por tipo de modelo ===
+
+[lightweight] listos: 12/12
+
+[paper] listos: 12/12
+
+[standard] listos: 12/12
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# nano /tmp/inventario.py
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/hybrid-ai-epilepsy-diagnosis
+uv run python /tmp/inventario.py > /tmp/inventario.txt; cat /tmp/inventario.txt
+====================================================================================================
+CONFIG  codigo=v2 | dataset=? | modelo=lightweight | 2,051 parametros
+====================================================================================================
+  eye                w5_s2    A1   OK  AP ?  10-21 23:54  [c4992744]  |  OK  AP 0.833  10-29 15:15  [06c7b32e]   <-- varios hashes
+  eye                w5_s2    A2   OK  AP ?  10-22 00:15  [ef253abf]  |  OK  AP 0.790  10-29 15:42  [9d724f33]   <-- varios hashes
+  eye                w2_s1    A1   OK  AP ?  10-22 01:51  [e8523483]  |  OK  AP 0.817  10-29 16:34  [11ef8c67]   <-- varios hashes
+  eye                w2_s1    A2   OK  AP ?  10-22 03:06  [99855ef2]  |  OK  AP 0.734  10-29 18:23  [cbc08fec]   <-- varios hashes
+
+  muscle             w1_s0.5  A1   OK  AP ?  10-22 03:35  [7eb5bc3f]  |  OK  AP 0.771  10-29 19:41  [dfdc2730]   <-- varios hashes
+  muscle             w1_s0.5  A2   OK  AP ?  10-22 04:05  [d45e6339]  |  OK  AP 0.767  10-29 19:52  [6ee553fb]   <-- varios hashes
+  muscle             w5_s2    A1   OK  AP ?  10-22 04:19  [4ec300fd]  |  OK  AP 0.804  10-29 19:55  [02348f54]   <-- varios hashes
+  muscle             w5_s2    A2   OK  AP ?  10-22 04:34  [093cf476]  |  OK  AP 0.788  10-29 20:00  [c9503f75]   <-- varios hashes
+
+  non_physiological  w1_s1    A1   OK  AP ?  10-22 04:53  [54c84f02]  |  OK  AP 0.358  10-29 19:41  [06e4650c]   <-- varios hashes
+  non_physiological  w1_s1    A2   OK  AP ?  10-22 05:20  [e24f0c26]  |  OK  AP 0.418  10-29 19:46  [97b28e78]   <-- varios hashes
+  non_physiological  w2_s1    A1   OK  AP ?  10-22 06:14  [88a9d71e]  |  OK  AP 0.463  10-29 19:50  [88f637b2]   <-- varios hashes
+  non_physiological  w2_s1    A2   OK  AP ?  10-22 06:31  [e538e25e]  |  OK  AP 0.509  10-29 19:55  [a281bd36]   <-- varios hashes
+
+====================================================================================================
+CONFIG  codigo=v2 | dataset=? | modelo=paper | 59,843 parametros
+====================================================================================================
+  eye                w5_s2    A1   OK  AP ?  10-22 01:11  [17fdd5c1]  |  OK  AP 0.881  10-29 19:55  [2213f4d9]   <-- varios hashes
+  eye                w5_s2    A2   OK  AP ?  10-22 02:04  [2b4308b4]  |  OK  AP 0.870  10-29 20:00  [bd9b4fda]   <-- varios hashes
+  eye                w2_s1    A1   OK  AP ?  10-22 02:33  [b3e79d7a]  |  OK  AP 0.821  10-29 20:06  [2fa5cc0d]   <-- varios hashes
+  eye                w2_s1    A2   OK  AP ?  10-22 02:52  [477537c4]  |  OK  AP 0.817  10-29 20:13  [860dde18]   <-- varios hashes
+
+  muscle             w1_s0.5  A1   OK  AP ?  10-22 03:52  [be8ba201]  |  EN CURSO ep8  10-29 20:23  [b995551c]   <-- varios hashes
+  muscle             w1_s0.5  A2   OK  AP ?  10-22 04:24  [8adc04ad]
+  muscle             w5_s2    A1   OK  AP ?  10-22 04:34  [0a25cb42]
+  muscle             w5_s2    A2   OK  AP ?  10-22 04:45  [347940da]
+
+  non_physiological  w1_s1    A1   OK  AP ?  10-22 05:32  [6ebd0fb3]
+  non_physiological  w1_s1    A2   OK  AP ?  10-22 06:18  [ad4592a8]
+  non_physiological  w2_s1    A1   OK  AP ?  10-22 06:40  [ad6583ee]
+  non_physiological  w2_s1    A2   OK  AP ?  10-22 07:11  [29698153]
+
+====================================================================================================
+CONFIG  codigo=v2 | dataset=? | modelo=standard | 60,659 parametros
+====================================================================================================
+  eye                w5_s2    A1   OK  AP ?  10-22 02:08  [3dec86be]  |  OK  AP 0.879  10-29 11:54  [0169516f]   <-- varios hashes
+  eye                w5_s2    A2   OK  AP ?  10-22 06:48  [6a5a8436]  |  OK  AP 0.864  10-29 12:12  [00124cb5]   <-- varios hashes
+  eye                w2_s1    A1   OK  AP ?  10-22 07:12  [f95f08c3]  |  OK  AP 0.813  10-29 12:39  [0c25b9a1]   <-- varios hashes
+  eye                w2_s1    A2   OK  AP ?  10-22 07:49  [582fd41d]  |  OK  AP 0.811  10-29 13:23  [42e0c73b]   <-- varios hashes
+
+  muscle             w1_s0.5  A1   OK  AP ?  10-22 08:37  [a8d3f9e6]  |  OK  AP 0.794  10-29 12:08  [85ebf60e]   <-- varios hashes
+  muscle             w1_s0.5  A2   OK  AP ?  10-22 09:24  [d47b9670]  |  OK  AP 0.802  10-29 12:47  [f0b189be]   <-- varios hashes
+  muscle             w5_s2    A1   OK  AP ?  10-22 09:40  [33bb8fb6]  |  OK  AP 0.776  10-29 13:00  [40ab4faa]   <-- varios hashes
+  muscle             w5_s2    A2   OK  AP ?  10-22 10:11  [0b654add]  |  OK  AP 0.812  10-29 13:16  [437be6ac]   <-- varios hashes
+
+  non_physiological  w1_s1    A1   OK  AP ?  10-22 10:52  [93b1b9e2]  |  OK  AP 0.482  10-29 13:54  [1d7b319b]   <-- varios hashes
+  non_physiological  w1_s1    A2   OK  AP ?  10-22 11:34  [ba67dc5f]  |  OK  AP 0.514  10-29 14:38  [ee6843cf]   <-- varios hashes
+  non_physiological  w2_s1    A1   OK  AP ?  10-22 12:15  [a549102d]  |  OK  AP 0.528  10-29 14:58  [862bdb97]   <-- varios hashes
+  non_physiological  w2_s1    A2   OK  AP ?  10-22 13:02  [0b8ef3c3]  |  OK  AP 0.503  10-29 15:22  [0df4acaf]   <-- varios hashes
+
+====================================================================================================
+RESUMEN  (celdas del grid con resultado final / 12)
+  codigo=v2   dataset=?    modelo=lightweight  12/12   (24 modelos terminados)
+  codigo=v2   dataset=?    modelo=paper        12/12   (16 modelos terminados)
+  codigo=v2   dataset=?    modelo=standard     12/12   (24 modelos terminados)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pael -pS lightweigth_models_mmap_tmux.txt
+unknown command: capture-pael
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-panel -pS lightweigth_models_mmap_tmux.txt
+unknown command: capture-panel
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS lightweigth_models_mmap_tmux.txt
+  eye                w5_s2    A1   OK  AP ?  10-22 01:11  [17fdd5c1]  |  OK  AP 0.881  10-29 19:55  [2213f4d9]   <-- varios hashes
+  eye                w5_s2    A2   OK  AP ?  10-22 02:04  [2b4308b4]  |  OK  AP 0.870  10-29 20:00  [bd9b4fda]   <-- varios hashes
+  eye                w2_s1    A1   OK  AP ?  10-22 02:33  [b3e79d7a]  |  OK  AP 0.821  10-29 20:06  [2fa5cc0d]   <-- varios hashes
+  eye                w2_s1    A2   OK  AP ?  10-22 02:52  [477537c4]  |  OK  AP 0.817  10-29 20:13  [860dde18]   <-- varios hashes
+
+  muscle             w1_s0.5  A1   OK  AP ?  10-22 03:52  [be8ba201]  |  EN CURSO ep8  10-29 20:23  [b995551c]   <-- varios hashes
+  muscle             w1_s0.5  A2   OK  AP ?  10-22 04:24  [8adc04ad]
+  muscle             w5_s2    A1   OK  AP ?  10-22 04:34  [0a25cb42]
+  muscle             w5_s2    A2   OK  AP ?  10-22 04:45  [347940da]
+
+  non_physiological  w1_s1    A1   OK  AP ?  10-22 05:32  [6ebd0fb3]
+  non_physiological  w1_s1    A2   OK  AP ?  10-22 06:18  [ad4592a8]
+  non_physiological  w2_s1    A1   OK  AP ?  10-22 06:40  [ad6583ee]
+  non_physiological  w2_s1    A2   OK  AP ?  10-22 07:11  [29698153]
+
+====================================================================================================
+CONFIG  codigo=v2 | dataset=? | modelo=standard | 60,659 parametros
+====================================================================================================
+  eye                w5_s2    A1   OK  AP ?  10-22 02:08  [3dec86be]  |  OK  AP 0.879  10-29 11:54  [0169516f]   <-- varios hashes
+  eye                w5_s2    A2   OK  AP ?  10-22 06:48  [6a5a8436]  |  OK  AP 0.864  10-29 12:12  [00124cb5]   <-- varios hashes
+  eye                w2_s1    A1   OK  AP ?  10-22 07:12  [f95f08c3]  |  OK  AP 0.813  10-29 12:39  [0c25b9a1]   <-- varios hashes
+  eye                w2_s1    A2   OK  AP ?  10-22 07:49  [582fd41d]  |  OK  AP 0.811  10-29 13:23  [42e0c73b]   <-- varios hashes
+
+  muscle             w1_s0.5  A1   OK  AP ?  10-22 08:37  [a8d3f9e6]  |  OK  AP 0.794  10-29 12:08  [85ebf60e]   <-- varios hashes
+  muscle             w1_s0.5  A2   OK  AP ?  10-22 09:24  [d47b9670]  |  OK  AP 0.802  10-29 12:47  [f0b189be]   <-- varios hashes
+  muscle             w5_s2    A1   OK  AP ?  10-22 09:40  [33bb8fb6]  |  OK  AP 0.776  10-29 13:00  [40ab4faa]   <-- varios hashes
+  muscle             w5_s2    A2   OK  AP ?  10-22 10:11  [0b654add]  |  OK  AP 0.812  10-29 13:16  [437be6ac]   <-- varios hashes
+
+  non_physiological  w1_s1    A1   OK  AP ?  10-22 10:52  [93b1b9e2]  |  OK  AP 0.482  10-29 13:54  [1d7b319b]   <-- varios hashes
+  non_physiological  w1_s1    A2   OK  AP ?  10-22 11:34  [ba67dc5f]  |  OK  AP 0.514  10-29 14:38  [ee6843cf]   <-- varios hashes
+  non_physiological  w2_s1    A1   OK  AP ?  10-22 12:15  [a549102d]  |  OK  AP 0.528  10-29 14:58  [862bdb97]   <-- varios hashes
+  non_physiological  w2_s1    A2   OK  AP ?  10-22 13:02  [0b8ef3c3]  |  OK  AP 0.503  10-29 15:22  [0df4acaf]   <-- varios hashes
+
+====================================================================================================
+RESUMEN  (celdas del grid con resultado final / 12)
+  codigo=v2   dataset=?    modelo=lightweight  12/12   (24 modelos terminados)
+  codigo=v2   dataset=?    modelo=paper        12/12   (16 modelos terminados)
+  codigo=v2   dataset=?    modelo=standard     12/12   (24 modelos terminados)
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pael -pS lightweigth_models_mmap_tmux.txt
+unknown command: capture-pael
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-panel -pS lightweigth_models_mmap_tmux.txt
+unknown command: capture-panel
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS lightweigth_models_mmap_tmux.txt
+
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh lightweigth_models_mmap_tmux.txt
+ls: cannot access 'lightweigth_models_mmap_tmux.txt': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh lightweigth_models_mmap_tmux.txt
+ls: cannot access 'lightweigth_models_mmap_tmux.txt': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh lightweigth_models_mmap_tmux.txt
+ls: cannot access 'lightweigth_models_mmap_tmux.txt': No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -p -S -32768 > lightweigth_models_mmap_tmux.txt
+

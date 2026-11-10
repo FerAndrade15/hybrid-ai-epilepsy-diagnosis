@@ -1,0 +1,1933 @@
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 474, 'max_depth': 4, 'learning_rate': 0.07679997188924412, 'subsample': 0.5749124081674929, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 0.6206473458001895, 'reg_alpha': 1.5548096764823551, 'reg_lambda': 1.9436528521219347, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6381 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:06] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 198, 'max_depth': 6, 'learning_rate': 0.016313759647946173, 'subsample': 0.40278725754164035, 'colsample_bytree': 0.
+5, 'min_child_weight': 4, 'gamma': 0.4593120599977105, 'reg_alpha': 0.26364443557304207, 'reg_lambda': 1.355317347225715, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6217 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:10] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 585, 'max_depth': 3, 'learning_rate': 0.05596425205169427, 'subsample': 0.5388524871285774, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.39955130332011524, 'reg_alpha': 1.6082490523645254, 'reg_lambda': 1.4308142592316033, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6681 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:15] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 391, 'max_depth': 3, 'learning_rate': 0.015616661269875359, 'subsample': 0.42475076073006895, 'colsample_bytree': 0.
+5, 'min_child_weight': 6, 'gamma': 1.8551251020130153, 'reg_alpha': 0.7951563876498813, 'reg_lambda': 0.6018973835618795, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6549 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:18] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 166, 'max_depth': 6, 'learning_rate': 0.0953083207377582, 'subsample': 0.591124651409394, 'colsample_bytree': 0.5, '
+min_child_weight': 4, 'gamma': 1.8496168586240542, 'reg_alpha': 0.04971898277251263, 'reg_lambda': 1.1103960846536494, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6390 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:22] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 243, 'max_depth': 4, 'learning_rate': 0.014335845302827055, 'subsample': 0.42806791941278255, 'colsample_bytree': 0.
+5, 'min_child_weight': 5, 'gamma': 0.8382286386326077, 'reg_alpha': 1.9324638242863634, 'reg_lambda': 1.1920851064687457, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6413 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:25] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 190, 'max_depth': 10, 'learning_rate': 0.15421925645835272, 'subsample': 0.4934763203110583, 'colsample_bytree': 0.5
+, 'min_child_weight': 5, 'gamma': 0.03567356795397547, 'reg_alpha': 0.21828799353146988, 'reg_lambda': 1.6588572297654727, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.5931 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:30] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 493, 'max_depth': 5, 'learning_rate': 0.02206168018916195, 'subsample': 0.5061539181198107, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.2120316414000218, 'reg_alpha': 1.7354779075520224, 'reg_lambda': 1.2062143146774513, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6638 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:35] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 245, 'max_depth': 6, 'learning_rate': 0.03570386269565289, 'subsample': 0.485176417274702, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 1.7349812635046498, 'reg_alpha': 0.9077937641525995, 'reg_lambda': 0.49567912590271623, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6553 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:39] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 426, 'max_depth': 5, 'learning_rate': 0.126460108377552, 'subsample': 0.5633137526847821, 'colsample_bytree': 0.5, '
+min_child_weight': 2, 'gamma': 0.21055615970824992, 'reg_alpha': 0.13311771391035632, 'reg_lambda': 1.1888673275129036, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6508 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:43] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 279, 'max_depth': 4, 'learning_rate': 0.1652452573257853, 'subsample': 0.4620669347848149, 'colsample_bytree': 0.5,
+'min_child_weight': 7, 'gamma': 1.8419409449749005, 'reg_alpha': 0.33106344547055633, 'reg_lambda': 0.5694401646758711, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6565 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:48] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 172, 'max_depth': 7, 'learning_rate': 0.01481128803521789, 'subsample': 0.404229603267288, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.11079081832852022, 'reg_alpha': 0.3492829418717054, 'reg_lambda': 0.10676386525435078, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6160 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:52] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 315, 'max_depth': 7, 'learning_rate': 0.10127398422850747, 'subsample': 0.47872609136640565, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.0090524740444602, 'reg_alpha': 1.7500098844692171, 'reg_lambda': 1.702263253644412, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6360 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:27:56] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 259, 'max_depth': 7, 'learning_rate': 0.018539377962879106, 'subsample': 0.4473489742208792, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 0.49877515166442365, 'reg_alpha': 1.1424653034855454, 'reg_lambda': 0.8325248514063845, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6305 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:01] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 241, 'max_depth': 3, 'learning_rate': 0.03563472281497419, 'subsample': 0.5047505897435275, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.6669171075771194, 'reg_alpha': 0.10392373293020851, 'reg_lambda': 1.8496837380361242, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6712 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:04] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 150, 'max_depth': 8, 'learning_rate': 0.17622295966892162, 'subsample': 0.5805306287855234, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 1.9591413611731854, 'reg_alpha': 1.6040517605471871, 'reg_lambda': 1.5589550815426578, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6052 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:08] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 414, 'max_depth': 8, 'learning_rate': 0.14147251451560128, 'subsample': 0.4269104416826294, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.028445740380829, 'reg_alpha': 1.7151442882451151, 'reg_lambda': 0.9255987311870317, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.5921 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:13] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 368, 'max_depth': 9, 'learning_rate': 0.08804658210540657, 'subsample': 0.4532926635001692, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 0.27953682190791374, 'reg_alpha': 0.9557545480474916, 'reg_lambda': 0.83377873718977, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6111 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:19] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 402, 'max_depth': 4, 'learning_rate': 0.0349027387132147, 'subsample': 0.4732784899652495, 'colsample_bytree': 0.5,
+'min_child_weight': 6, 'gamma': 0.7589281594538579, 'reg_alpha': 1.3714866909118908, 'reg_lambda': 0.5937529491425706, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6672 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:23] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 264, 'max_depth': 9, 'learning_rate': 0.2257132927480671, 'subsample': 0.49618208566001576, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 0.6567224100093776, 'reg_alpha': 1.0708695796600063, 'reg_lambda': 1.697120977547249, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.5934 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:28] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 345, 'max_depth': 8, 'learning_rate': 0.15423547176143457, 'subsample': 0.5065444552131481, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.5763112283649234, 'reg_alpha': 1.4697863246205816, 'reg_lambda': 0.4048091862514367, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.5783 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:33] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 417, 'max_depth': 7, 'learning_rate': 0.18680411127713117, 'subsample': 0.4264205674603088, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 1.2287594810838396, 'reg_alpha': 0.1901914964598692, 'reg_lambda': 1.4514312565428538, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.5900 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:38] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 390, 'max_depth': 3, 'learning_rate': 0.24126626734538495, 'subsample': 0.4274815860075605, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.6017683521701933, 'reg_alpha': 1.1873640089327082, 'reg_lambda': 1.5652482092590938, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6505 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:42] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 580, 'max_depth': 10, 'learning_rate': 0.2496874316029365, 'subsample': 0.45067667076783746, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.1801517907166184, 'reg_alpha': 0.19009839512880244, 'reg_lambda': 1.2323314000482426, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.5506 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:50] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 184, 'max_depth': 4, 'learning_rate': 0.06831255926561383, 'subsample': 0.51448610280677, 'colsample_bytree': 0.5, '
+min_child_weight': 4, 'gamma': 1.0452635510262456, 'reg_alpha': 1.5278467800131759, 'reg_lambda': 1.5984894330241333, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6651 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:53] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 333, 'max_depth': 7, 'learning_rate': 0.07685501588482806, 'subsample': 0.5862472471380205, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 0.23946717700224562, 'reg_alpha': 0.234207131800221, 'reg_lambda': 0.17541802382153682, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6312 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:28:57] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 344, 'max_depth': 8, 'learning_rate': 0.0415274456488948, 'subsample': 0.5548642832283687, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.6672755166564763, 'reg_alpha': 1.7967330947230715, 'reg_lambda': 1.5250642941413046, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6213 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:29:02] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 436, 'max_depth': 8, 'learning_rate': 0.03451085907339221, 'subsample': 0.4628879960408526, 'colsample_bytree': 0.5,
+ 'min_child_weight': 2, 'gamma': 0.3152232972499993, 'reg_alpha': 0.2955667450843833, 'reg_lambda': 1.872254926751488, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6046 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:29:08] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 378, 'max_depth': 6, 'learning_rate': 0.036830690204600676, 'subsample': 0.5459371417354756, 'colsample_bytree': 0.5
+, 'min_child_weight': 2, 'gamma': 1.8722799736769244, 'reg_alpha': 1.5606029878187844, 'reg_lambda': 0.9587391282490807, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6507 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [01:29:12] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 377, 'max_depth': 4, 'learning_rate': 0.28666483764642964, 'subsample': 0.5435520472007287, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 1.9023893200076822, 'reg_alpha': 0.23695715443408272, 'reg_lambda': 1.7010673583815652, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.6171 | thr=nan
+[INFO] t_bajo=0.5327 | recall(val)=0.900 | precision(val)=0.375
+[INFO] t_alto=0.7927 | recall(val)=0.737 | precision(val)=0.500
+           fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaaoiv  546   604           0.014   39051.656
+aaaaangp  254   584           0.014   18789.041
+aaaaakka  226   524           0.012   18632.061
+aaaaajam  229   610           0.014   16217.705
+aaaaaksu  180   580           0.013   13406.897
+aaaaajrf  684  2412           0.056   12250.746
+aaaaanwj  156   647           0.015   10416.074
+aaaaafcf  171   710           0.016   10404.507
+aaaaamxn  153   684           0.016    9663.158
+aaaaagvx  135   731           0.017    7978.112
+aaaaamrj   98   593           0.014    7139.292
+aaaaajys  101   641           0.015    6806.864
+aaaaaarq   85   613           0.014    5990.212
+aaaaaezj   36   294           0.007    5289.796
+aaaaahte  100  1303           0.030    3315.426
+aaaaajah  137  2517           0.058    2351.371
+aaaaaksb   24   573           0.013    1809.424
+aaaaajtu   22   572           0.013    1661.538
+aaaaaohw   15   614           0.014    1055.375
+aaaaanyb   26  1472           0.034     763.043
+aaaaajso    4   595           0.014     290.420
+aaaaanqe    4   622           0.014     277.814
+aaaaanta    4   631           0.015     273.851
+aaaaaiae    3   603           0.014     214.925
+aaaaaijh    5  1298           0.030     166.410
+aaaaamcr    4  1185           0.027     145.823
+aaaaalmh    2   635           0.015     136.063
+aaaaaicc    2  1246           0.029      69.342
+aaaaakxz    0   598           0.014       0.000
+[INFO] Umbral (F1, validación, ventana): 0.8083 | F1(val)=0.5972
+[INFO] Best configuration found with validation: {'n_estimators': 241, 'max_depth': 3, 'learning_rate': 0.03563472281497419, 'subsample': 0.50475058
+97435275, 'colsample_bytree': 0.5, 'min_child_weight': 7, 'gamma': 1.6669171075771194, 'reg_alpha': 0.10392373293020851, 'reg_lambda': 1.84968373803
+61242, 'scale_pos_weight': 10.0} | F1(val)=0.6712
+Final report -------------------------
+                      precision    recall  f1-score   support
+
+no_xgb_muscle_w5s2_7       0.84      0.80      0.82     17351
+   xgb_muscle_w5s2_7       0.57      0.63      0.60      7340
+
+            accuracy                           0.75     24691
+           macro avg       0.70      0.71      0.71     24691
+        weighted avg       0.76      0.75      0.75     24691
+
+Confusion matrix -------------------------
+[[13945  3406]
+ [ 2751  4589]]
+General metrics -------------------------
+model                    xgb_muscle_w5s2_7
+sensitivity                         0.6252
+specificity                         0.8037
+precision                            0.574
+accuracy                            0.7506
+f1_score                            0.5985
+auc_roc                             0.7824
+false_alarm_rate                    0.1963
+fp_per_day                         5959.22
+covered_test_days                   0.5716
+TP                                    4589
+FP                                    3406
+TN                                   13945
+FN                                    2751
+n_test_windows                       24691
+covered_test_hours                   13.72
+OVLP_Sensitivity                    0.6373
+OVLP_False_Alarms                      547
+TAES_Score                          0.5104
+MARGIN_5s_Onset                        0.5
+MARGIN_5s_Offset                     0.424
+threshold                           0.8083
+AP                                    0.59
+med_win_precision                    0.574
+med_win_recall                      0.6252
+med_win_AP                            0.59
+med_n_tp_windows                    4589.0
+med_ch_bip_hit@3                    0.9654
+med_ch_bip_iou                      0.2374
+med_n_tp_with_bip_gt                4589.0
+med_ch_mono_hit@3                   0.9821
+med_n_tp_with_mono_gt               4589.0
+med_ch_f1_micro                     0.4764
+med_ch_f1_macro                     0.4464
+med_ch_jaccard                      0.2131
+med_n_win_scored                   24534.0
+med_ch_tau                            0.85
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/xgb_muscle_w5s2_7_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/xgb_muscle_w5s2_7_and_analysis_random.joblib
+
+==================================================
+ARTIFACT: non_physiological
+
+==================================================
+**************************************************
+>> non_physiological | patients:213 | windows: 1s (1s stride)
+
+************************************************************
+Generating windows...
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channel
+s', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverag
+e_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_ch
+annels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccur
+rence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 359626 -> sin ambiguas: 354592 | positivas: 50155
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO]: Split for non_physiological|w1|s1|ua0.3|p213|v7 not found
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.0_ua0.3
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.3_ua0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.5_ua0.3
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.7_ua0.3
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw1.0_ua0.3
+
+************************************************************
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  ...  size_dev  combined_score
+size_weight                         ...
+0.0             0.1472      0.1437  ...    0.0170          0.0371
+0.3             0.1662      0.1342  ...    0.0263          0.0583
+0.7             0.1688      0.1344  ...    0.0125          0.0469
+0.5             0.1519      0.1338  ...    0.0212          0.0589
+1.0             0.1277      0.1359  ...    0.0021          0.0561
+
+[5 rows x 9 columns]
+[INFO] Best suggested size weight for non_physiological: 0.0
+[INFO] sw registrado: non_physiological|w1|s1|ua0.3|p213|v7 = 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w1_s1_sw0.0_ua0.3 parquet and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51097        7523       43574       0.147230
+train   244287       35109      209178       0.143720
+val      59208        7523       51685       0.127061
+Broken rules: 0 | splits per patient: {'train': 136, 'val': 44, 'test': 33}
+    Patient Session Section  ... is_unreviewed is_excluded  split
+0  aaaaaaju    s005    t000  ...             0           0  train
+1  aaaaaaju    s005    t000  ...             0           0  train
+2  aaaaaaju    s005    t000  ...             0           0  train
+3  aaaaaaju    s005    t000  ...             0           0  train
+4  aaaaaaju    s005    t000  ...             0           0  train
+5  aaaaaaju    s005    t000  ...             0           0  train
+6  aaaaaaju    s005    t000  ...             0           0  train
+7  aaaaaaju    s005    t000  ...             0           0  train
+8  aaaaaaju    s005    t000  ...             0           0  train
+9  aaaaaaju    s005    t000  ...             0           0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channel
+s', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverag
+e_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_ch
+annels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccur
+rence', 'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[WARN] ICA failed for aaaaaimu_s008_t000: One PCA component captures most of the explained variance (99.41216475980121%), your threshold results in
+1 component. You should select a higher value.
+[SKIP] Session aaaaaimu_s008_t000 discarted by ICA error One PCA component captures most of the explained variance (99.41216475980121%), your thresh
+old results in 1 component. You should select a higher value.
+    ic_index  ... bipolar_channels_non_physiological
+0          0  ...                                 []
+1          1  ...                                 []
+2          2  ...                                 []
+3          3  ...                                 []
+4          4  ...                                 []
+5          5  ...                                 []
+6          6  ...                                 []
+7          7  ...                                 []
+8          8  ...                                 []
+9          9  ...                                 []
+10        10  ...                                 []
+11        11  ...                                 []
+12         0  ...                                 []
+13         1  ...                                 []
+14         2  ...                                 []
+15         3  ...                                 []
+16         4  ...                                 []
+17         5  ...                                 []
+18         6  ...                                 []
+19         7  ...                                 []
+20         8  ...                                 []
+21         9  ...                                 []
+22        10  ...                                 []
+23        11  ...                                 []
+24         0  ...                                 []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label  ... bipolar_channels_non_physiological  is_positive
+0         0        brain  ...                                 []            0
+1         1    eye blink  ...                                 []            0
+2         2        brain  ...                                 []            0
+3         3        other  ...                                 []            0
+4         4        brain  ...                                 []            0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', '
+ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtos
+is', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks
+', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_e
+ntropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_
+var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4'
+, 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contri
+b_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_
+clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_we
+ak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_ey
+e', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+ 0    4086254
+-1     112264
+ 1     111623
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    2969974
+val       729130
+test      611037
+Name: count, dtype: int64
+[INFO] Scale positive weight (excluding -1): 10.0
+
+==================================================
+Starting training of XGBoost - non_physiological
+
+[AUDIT:train] df=68 cols | X=57 features | target=y_med
+[AUDIT:train] EXCLUIDAS (11): ['Partition', 'Patient', 'Section', 'Session', 'Start', 'ic_index', 'ic_raw_label', 'ic_target_label', 'is_positive',
+'split', 'y_med']
+[AUDIT:train] FEATURES (57): ['ic_alpha_power', 'ic_baseline_shift', 'ic_beta_power', 'ic_contrib_C3', 'ic_contrib_C4', 'ic_contrib_CZ', 'ic_contrib
+_F3', 'ic_contrib_F4', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_contrib_FP1', 'ic_contrib_FP2', 'ic_contrib_FZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_
+contrib_P3', 'ic_contrib_P4', 'ic_contrib_P7', 'ic_contrib_P8', 'ic_contrib_PZ', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_delta_power', 'ic_dwt_energy_
+A4', 'ic_dwt_energy_D1', 'ic_dwt_energy_D2', 'ic_dwt_energy_D3', 'ic_dwt_energy_D4', 'ic_dwt_var_A4', 'ic_dwt_var_D1', 'ic_dwt_var_D2', 'ic_dwt_var_
+D3', 'ic_dwt_var_D4', 'ic_gamma_power', 'ic_hjorth_complexity', 'ic_hjorth_mobility', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_channel_noise', 'ic_
+iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_other', 'ic_kurtosis', 'ic_line
+_length', 'ic_mean', 'ic_n_peaks', 'ic_peak_position', 'ic_peak_to_mean', 'ic_peak_to_peak', 'ic_ratio_high_low', 'ic_rms', 'ic_skewness', 'ic_spect
+ral_entropy', 'ic_theta_power', 'ic_variance', 'ic_zcr']
+
+============================================================
+Modelo: xgb_non_physiological_w1s1_7
+Train: 2889338 (pos=80690) | Val: 713343 (pos = 15437) | Test: 611037 (pos=15496)
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:12:45] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 144, 'max_depth': 9, 'learning_rate': 0.0444914614461489, 'subsample': 0.5717195839822765, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 0.18835469577529906, 'reg_alpha': 1.9512447032735118, 'reg_lambda': 1.522279403980706, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3062 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:12:52] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 449, 'max_depth': 8, 'learning_rate': 0.015461063713132448, 'subsample': 0.49007718757911345, 'colsample_bytree': 0.
+5, 'min_child_weight': 6, 'gamma': 0.7415960484651625, 'reg_alpha': 1.8535299776972036, 'reg_lambda': 1.287730240161329, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3053 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:01] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 301, 'max_depth': 9, 'learning_rate': 0.045183153402851416, 'subsample': 0.4454477443569554, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 0.12763451220835065, 'reg_alpha': 1.6552623439851641, 'reg_lambda': 1.2633287982441297, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3066 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:10] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 377, 'max_depth': 4, 'learning_rate': 0.03339472280097698, 'subsample': 0.5941396048789807, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.7862422426443954, 'reg_alpha': 1.5567669941475237, 'reg_lambda': 0.38927741570393515, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2721 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:17] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 282, 'max_depth': 6, 'learning_rate': 0.011606558734739106, 'subsample': 0.4308578984135096, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.4895243118156343, 'reg_alpha': 1.93501946486842, 'reg_lambda': 0.6516507162763039, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2771 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:24] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 442, 'max_depth': 10, 'learning_rate': 0.04938452365876037, 'subsample': 0.43789427181685714, 'colsample_bytree': 0.
+5, 'min_child_weight': 3, 'gamma': 0.2598430106709433, 'reg_alpha': 0.9514098524518675, 'reg_lambda': 0.4538186981017682, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3174 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:35] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 382, 'max_depth': 8, 'learning_rate': 0.04423096258668029, 'subsample': 0.5665356392115675, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 0.6247332827640821, 'reg_alpha': 1.6645196027904021, 'reg_lambda': 1.6095287149936037, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3128 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:44] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 450, 'max_depth': 9, 'learning_rate': 0.026662174755311165, 'subsample': 0.5364991007949951, 'colsample_bytree': 0.5
+, 'min_child_weight': 3, 'gamma': 0.2795049672186196, 'reg_alpha': 0.39981640495021664, 'reg_lambda': 0.014724539502011025, 'scale_pos_weight': 10.0
+}
+        F1(val, ventana)=0.3102 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:13:54] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 499, 'max_depth': 9, 'learning_rate': 0.09595449662719525, 'subsample': 0.541033075725267, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.9178315510766799, 'reg_alpha': 1.1374823919057875, 'reg_lambda': 0.2795939962553149, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2892 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:05] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 491, 'max_depth': 4, 'learning_rate': 0.09712079339787152, 'subsample': 0.49421924122862654, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 1.1304722129623777, 'reg_alpha': 1.5299977148320512, 'reg_lambda': 1.2694366400011816, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2751 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:12] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 383, 'max_depth': 7, 'learning_rate': 0.06699104970185919, 'subsample': 0.4607900196125225, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 0.8734347784647247, 'reg_alpha': 0.4291693456390584, 'reg_lambda': 0.8170572874492723, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2927 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:20] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 115, 'max_depth': 10, 'learning_rate': 0.022159348459209697, 'subsample': 0.41166054833781324, 'colsample_bytree': 0
+.5, 'min_child_weight': 6, 'gamma': 0.5627677840439931, 'reg_alpha': 0.5871875155333672, 'reg_lambda': 1.3238330294537901, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3055 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:27] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 163, 'max_depth': 7, 'learning_rate': 0.14385094068121893, 'subsample': 0.5328627080654775, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 1.6280407693320693, 'reg_alpha': 0.3339458398154078, 'reg_lambda': 0.045424146267720955, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3095 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:33] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 303, 'max_depth': 3, 'learning_rate': 0.11668427988483095, 'subsample': 0.4923754460502775, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 0.3225435580672036, 'reg_alpha': 1.002089550206727, 'reg_lambda': 0.30462420542633684, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2526 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:40] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 349, 'max_depth': 8, 'learning_rate': 0.04560651820005272, 'subsample': 0.4762042452192965, 'colsample_bytree': 0.5,
+ 'min_child_weight': 2, 'gamma': 1.260565186237777, 'reg_alpha': 0.7236252211067808, 'reg_lambda': 0.175299838632202, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3071 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:48] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 251, 'max_depth': 5, 'learning_rate': 0.26353571802887915, 'subsample': 0.5817161381415215, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 1.3994142676214991, 'reg_alpha': 0.5317399229190392, 'reg_lambda': 1.9383527546954478, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2678 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:14:55] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 232, 'max_depth': 9, 'learning_rate': 0.1145338173360641, 'subsample': 0.48987230042875773, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.1927819243069986, 'reg_alpha': 1.8052047930876833, 'reg_lambda': 0.9115525796672221, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2847 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:03] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 236, 'max_depth': 8, 'learning_rate': 0.028309684708575773, 'subsample': 0.5158439137883792, 'colsample_bytree': 0.5
+, 'min_child_weight': 2, 'gamma': 0.3535455658784634, 'reg_alpha': 1.713228568184751, 'reg_lambda': 1.5170390596704202, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2962 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:12] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 346, 'max_depth': 8, 'learning_rate': 0.043476423754404074, 'subsample': 0.5254617681404887, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 1.29969320310964, 'reg_alpha': 0.16888864227977818, 'reg_lambda': 0.8316148043412193, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3130 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:20] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 392, 'max_depth': 9, 'learning_rate': 0.0536641603661336, 'subsample': 0.4659722424665571, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 0.2890483777320938, 'reg_alpha': 0.20680593544510328, 'reg_lambda': 1.175289144355424, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3051 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:30] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 497, 'max_depth': 4, 'learning_rate': 0.23254906088827462, 'subsample': 0.516212227940079, 'colsample_bytree': 0.5,
+'min_child_weight': 4, 'gamma': 1.1818309829628335, 'reg_alpha': 0.045607742059394996, 'reg_lambda': 1.9171184264828907, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2754 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:37] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 273, 'max_depth': 6, 'learning_rate': 0.14328305772812225, 'subsample': 0.4165459999844877, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 0.9733166616763207, 'reg_alpha': 0.9814139887090418, 'reg_lambda': 1.8756529099499657, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2746 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:43] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 180, 'max_depth': 7, 'learning_rate': 0.05004967459360097, 'subsample': 0.4533951326183787, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.0413448049430756, 'reg_alpha': 0.8778229206100934, 'reg_lambda': 0.04322415976066085, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2967 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:50] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 266, 'max_depth': 5, 'learning_rate': 0.210735704646771, 'subsample': 0.4280498177997222, 'colsample_bytree': 0.5, '
+min_child_weight': 6, 'gamma': 1.1080722870780988, 'reg_alpha': 0.2171514822708871, 'reg_lambda': 1.3444801860796234, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2788 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:15:56] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 159, 'max_depth': 5, 'learning_rate': 0.09419919458728106, 'subsample': 0.5453989228573766, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 0.21548189191179312, 'reg_alpha': 1.8320236902752158, 'reg_lambda': 0.46042798178976163, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2818 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:02] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 485, 'max_depth': 4, 'learning_rate': 0.0660061460128121, 'subsample': 0.4741844567724878, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 1.6595794862648263, 'reg_alpha': 1.6165029441286036, 'reg_lambda': 0.6342777856454307, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2887 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:09] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 201, 'max_depth': 10, 'learning_rate': 0.02689805777571999, 'subsample': 0.503011425846343, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.8720871400979266, 'reg_alpha': 0.3292156351640363, 'reg_lambda': 0.08982123878465798, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3093 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:18] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 228, 'max_depth': 5, 'learning_rate': 0.29232034214806374, 'subsample': 0.5783354532509828, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 1.4972160389138984, 'reg_alpha': 1.7815849817570497, 'reg_lambda': 1.7868932793957264, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2703 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:24] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 158, 'max_depth': 7, 'learning_rate': 0.029286368148972824, 'subsample': 0.5544024864221977, 'colsample_bytree': 0.5
+, 'min_child_weight': 3, 'gamma': 0.7473154577474201, 'reg_alpha': 0.18893333612303054, 'reg_lambda': 1.493579222698052, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2878 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:31] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 431, 'max_depth': 6, 'learning_rate': 0.24198398050280362, 'subsample': 0.448194115001137, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.24551586482297205, 'reg_alpha': 1.6622253442498123, 'reg_lambda': 0.3065686332489881, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2609 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:39] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 474, 'max_depth': 4, 'learning_rate': 0.07679997188924412, 'subsample': 0.5749124081674929, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 0.6206473458001895, 'reg_alpha': 1.5548096764823551, 'reg_lambda': 1.9436528521219347, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2775 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:47] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 198, 'max_depth': 6, 'learning_rate': 0.016313759647946173, 'subsample': 0.40278725754164035, 'colsample_bytree': 0.
+5, 'min_child_weight': 4, 'gamma': 0.4593120599977105, 'reg_alpha': 0.26364443557304207, 'reg_lambda': 1.355317347225715, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2749 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:16:53] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 585, 'max_depth': 3, 'learning_rate': 0.05596425205169427, 'subsample': 0.5388524871285774, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.39955130332011524, 'reg_alpha': 1.6082490523645254, 'reg_lambda': 1.4308142592316033, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2748 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:01] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 391, 'max_depth': 3, 'learning_rate': 0.015616661269875359, 'subsample': 0.42475076073006895, 'colsample_bytree': 0.
+5, 'min_child_weight': 6, 'gamma': 1.8551251020130153, 'reg_alpha': 0.7951563876498813, 'reg_lambda': 0.6018973835618795, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2536 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:07] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 166, 'max_depth': 6, 'learning_rate': 0.0953083207377582, 'subsample': 0.591124651409394, 'colsample_bytree': 0.5, '
+min_child_weight': 4, 'gamma': 1.8496168586240542, 'reg_alpha': 0.04971898277251263, 'reg_lambda': 1.1103960846536494, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2977 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:13] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 243, 'max_depth': 4, 'learning_rate': 0.014335845302827055, 'subsample': 0.42806791941278255, 'colsample_bytree': 0.
+5, 'min_child_weight': 5, 'gamma': 0.8382286386326077, 'reg_alpha': 1.9324638242863634, 'reg_lambda': 1.1920851064687457, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2576 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:19] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 190, 'max_depth': 10, 'learning_rate': 0.15421925645835272, 'subsample': 0.4934763203110583, 'colsample_bytree': 0.5
+, 'min_child_weight': 5, 'gamma': 0.03567356795397547, 'reg_alpha': 0.21828799353146988, 'reg_lambda': 1.6588572297654727, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2889 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:27] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 493, 'max_depth': 5, 'learning_rate': 0.02206168018916195, 'subsample': 0.5061539181198107, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.2120316414000218, 'reg_alpha': 1.7354779075520224, 'reg_lambda': 1.2062143146774513, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2840 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:34] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 245, 'max_depth': 6, 'learning_rate': 0.03570386269565289, 'subsample': 0.485176417274702, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 1.7349812635046498, 'reg_alpha': 0.9077937641525995, 'reg_lambda': 0.49567912590271623, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2866 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:41] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 426, 'max_depth': 5, 'learning_rate': 0.126460108377552, 'subsample': 0.5633137526847821, 'colsample_bytree': 0.5, '
+min_child_weight': 2, 'gamma': 0.21055615970824992, 'reg_alpha': 0.13311771391035632, 'reg_lambda': 1.1888673275129036, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2818 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:48] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 279, 'max_depth': 4, 'learning_rate': 0.1652452573257853, 'subsample': 0.4620669347848149, 'colsample_bytree': 0.5,
+'min_child_weight': 7, 'gamma': 1.8419409449749005, 'reg_alpha': 0.33106344547055633, 'reg_lambda': 0.5694401646758711, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2741 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:17:55] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 172, 'max_depth': 7, 'learning_rate': 0.01481128803521789, 'subsample': 0.404229603267288, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.11079081832852022, 'reg_alpha': 0.3492829418717054, 'reg_lambda': 0.10676386525435078, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2844 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:02] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 315, 'max_depth': 7, 'learning_rate': 0.10127398422850747, 'subsample': 0.47872609136640565, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.0090524740444602, 'reg_alpha': 1.7500098844692171, 'reg_lambda': 1.702263253644412, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3036 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:09] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 259, 'max_depth': 7, 'learning_rate': 0.018539377962879106, 'subsample': 0.4473489742208792, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 0.49877515166442365, 'reg_alpha': 1.1424653034855454, 'reg_lambda': 0.8325248514063845, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2918 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:16] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 241, 'max_depth': 3, 'learning_rate': 0.03563472281497419, 'subsample': 0.5047505897435275, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.6669171075771194, 'reg_alpha': 0.10392373293020851, 'reg_lambda': 1.8496837380361242, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2536 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:23] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 150, 'max_depth': 8, 'learning_rate': 0.17622295966892162, 'subsample': 0.5805306287855234, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 1.9591413611731854, 'reg_alpha': 1.6040517605471871, 'reg_lambda': 1.5589550815426578, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2924 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:29] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 414, 'max_depth': 8, 'learning_rate': 0.14147251451560128, 'subsample': 0.4269104416826294, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.028445740380829, 'reg_alpha': 1.7151442882451151, 'reg_lambda': 0.9255987311870317, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2990 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:38] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 368, 'max_depth': 9, 'learning_rate': 0.08804658210540657, 'subsample': 0.4532926635001692, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 0.27953682190791374, 'reg_alpha': 0.9557545480474916, 'reg_lambda': 0.83377873718977, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3043 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:47] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 402, 'max_depth': 4, 'learning_rate': 0.0349027387132147, 'subsample': 0.4732784899652495, 'colsample_bytree': 0.5,
+'min_child_weight': 6, 'gamma': 0.7589281594538579, 'reg_alpha': 1.3714866909118908, 'reg_lambda': 0.5937529491425706, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2753 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:18:54] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 264, 'max_depth': 9, 'learning_rate': 0.2257132927480671, 'subsample': 0.49618208566001576, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 0.6567224100093776, 'reg_alpha': 1.0708695796600063, 'reg_lambda': 1.697120977547249, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2904 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:03] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 345, 'max_depth': 8, 'learning_rate': 0.15423547176143457, 'subsample': 0.5065444552131481, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.5763112283649234, 'reg_alpha': 1.4697863246205816, 'reg_lambda': 0.4048091862514367, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2872 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:11] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 417, 'max_depth': 7, 'learning_rate': 0.18680411127713117, 'subsample': 0.4264205674603088, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 1.2287594810838396, 'reg_alpha': 0.1901914964598692, 'reg_lambda': 1.4514312565428538, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2753 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:19] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 390, 'max_depth': 3, 'learning_rate': 0.24126626734538495, 'subsample': 0.4274815860075605, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.6017683521701933, 'reg_alpha': 1.1873640089327082, 'reg_lambda': 1.5652482092590938, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2602 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:26] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 580, 'max_depth': 10, 'learning_rate': 0.2496874316029365, 'subsample': 0.45067667076783746, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.1801517907166184, 'reg_alpha': 0.19009839512880244, 'reg_lambda': 1.2323314000482426, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2668 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:39] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 184, 'max_depth': 4, 'learning_rate': 0.06831255926561383, 'subsample': 0.51448610280677, 'colsample_bytree': 0.5, '
+min_child_weight': 4, 'gamma': 1.0452635510262456, 'reg_alpha': 1.5278467800131759, 'reg_lambda': 1.5984894330241333, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2723 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:44] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 333, 'max_depth': 7, 'learning_rate': 0.07685501588482806, 'subsample': 0.5862472471380205, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 0.23946717700224562, 'reg_alpha': 0.234207131800221, 'reg_lambda': 0.17541802382153682, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2996 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:19:52] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 344, 'max_depth': 8, 'learning_rate': 0.0415274456488948, 'subsample': 0.5548642832283687, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.6672755166564763, 'reg_alpha': 1.7967330947230715, 'reg_lambda': 1.5250642941413046, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3106 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:20:00] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 436, 'max_depth': 8, 'learning_rate': 0.03451085907339221, 'subsample': 0.4628879960408526, 'colsample_bytree': 0.5,
+ 'min_child_weight': 2, 'gamma': 0.3152232972499993, 'reg_alpha': 0.2955667450843833, 'reg_lambda': 1.872254926751488, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3034 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:20:09] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 378, 'max_depth': 6, 'learning_rate': 0.036830690204600676, 'subsample': 0.5459371417354756, 'colsample_bytree': 0.5
+, 'min_child_weight': 2, 'gamma': 1.8722799736769244, 'reg_alpha': 1.5606029878187844, 'reg_lambda': 0.9587391282490807, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2959 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [03:20:17] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 377, 'max_depth': 4, 'learning_rate': 0.28666483764642964, 'subsample': 0.5435520472007287, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 1.9023893200076822, 'reg_alpha': 0.23695715443408272, 'reg_lambda': 1.7010673583815652, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.2589 | thr=nan
+[INFO] t_bajo=0.0586 | recall(val)=0.900 | precision(val)=0.138
+[INFO] t_alto=0.6719 | recall(val)=0.189 | precision(val)=0.500
+            fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaaezj   231   588           0.007   33942.857
+aaaaalfj   567  2175           0.025   22523.586
+aaaaajrf  1236  4782           0.055   22331.744
+aaaaanwj   307  1311           0.015   20232.494
+aaaaamdq   245  1208           0.014   17523.179
+aaaaaarq   239  1232           0.014   16761.039
+aaaaankf   200  1180           0.014   14644.068
+aaaaamcr   373  2372           0.027   13586.509
+aaaaakxo   179  1165           0.013   13275.193
+aaaaaiby   153  1181           0.014   11193.226
+aaaaaluz   149  1194           0.014   10781.910
+aaaaaoav   272  2819           0.033    8336.573
+aaaaanxl   107  1220           0.014    7577.705
+aaaaafcf   125  1456           0.017    7417.582
+aaaaalsq    97  1193           0.014    7024.979
+aaaaajuh    89  1197           0.014    6424.060
+aaaaanqe    89  1306           0.015    5887.902
+aaaaaksb    78  1178           0.014    5720.883
+aaaaaijh   154  2708           0.031    4913.442
+aaaaapxk    80  1452           0.017    4760.331
+aaaaakeq   202  3771           0.044    4628.162
+aaaaakcv    58  1125           0.013    4454.400
+aaaaaiae    49  1207           0.014    3507.539
+aaaaaohw    50  1235           0.014    3497.976
+aaaaalaf    40  1168           0.014    2958.904
+aaaaangp    35  1193           0.014    2534.786
+aaaaapkx    30  1049           0.012    2470.925
+aaaaamnq    31  1169           0.014    2291.189
+aaaaalvw    31  1359           0.016    1970.861
+aaaaamxn    29  1359           0.016    1843.709
+aaaaalid    22  1177           0.014    1614.953
+aaaaamzf    21  1187           0.014    1528.559
+aaaaajpf     3  1181           0.014     219.475
+[INFO] Umbral (F1, validación, ventana): 0.4410 | F1(val)=0.3364
+[INFO] Best configuration found with validation: {'n_estimators': 442, 'max_depth': 10, 'learning_rate': 0.04938452365876037, 'subsample': 0.4378942
+7181685714, 'colsample_bytree': 0.5, 'min_child_weight': 3, 'gamma': 0.2598430106709433, 'reg_alpha': 0.9514098524518675, 'reg_lambda': 0.4538186981
+017682, 'scale_pos_weight': 10.0} | F1(val)=0.3174
+Final report -------------------------
+                                 precision    recall  f1-score   support
+
+no_xgb_non_physiological_w1s1_7       0.90      0.87      0.88     43574
+   xgb_non_physiological_w1s1_7       0.36      0.42      0.39      7523
+
+                       accuracy                           0.81     51097
+                      macro avg       0.63      0.65      0.64     51097
+                   weighted avg       0.82      0.81      0.81     51097
+
+Confusion matrix -------------------------
+[[38003  5571]
+ [ 4372  3151]]
+General metrics -------------------------
+model                    xgb_non_physiological_w1s1_7
+sensitivity                                    0.4188
+specificity                                    0.8721
+precision                                      0.3613
+accuracy                                       0.8054
+f1_score                                       0.3879
+auc_roc                                        0.7308
+false_alarm_rate                               0.1279
+fp_per_day                                    9420.01
+covered_test_days                              0.5914
+TP                                               3151
+FP                                               5571
+TN                                              38003
+FN                                               4372
+n_test_windows                                  51097
+covered_test_hours                              14.19
+OVLP_Sensitivity                               0.6578
+OVLP_False_Alarms                                2958
+TAES_Score                                     0.3912
+MARGIN_5s_Onset                                0.6325
+MARGIN_5s_Offset                               0.5992
+threshold                                       0.441
+AP                                             0.3903
+med_win_precision                              0.3613
+med_win_recall                                 0.4188
+med_win_AP                                     0.3903
+med_n_tp_windows                               3151.0
+med_ch_bip_hit@3                               0.8342
+med_ch_bip_iou                                 0.2491
+med_n_tp_with_bip_gt                           3028.0
+med_ch_mono_hit@3                              0.8312
+med_n_tp_with_mono_gt                          3151.0
+med_ch_f1_micro                                0.2669
+med_ch_f1_macro                                0.2821
+med_ch_jaccard                                 0.0932
+med_n_win_scored                              50654.0
+med_ch_tau                                        0.4
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/xgb_non_physiological_w1s1_7_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/xgb_non_physiological_w1s1_7_and_analysis_random.joblib
+**************************************************
+>> non_physiological | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+    Patient Session Section  ... weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  ...            0             0            0
+1  aaaaaaju    s005    t000  ...            0             0            0
+2  aaaaaaju    s005    t000  ...            0             0            0
+3  aaaaaaju    s005    t000  ...            0             0            0
+4  aaaaaaju    s005    t000  ...            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channel
+s', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverag
+e_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_ch
+annels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccur
+rence', 'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 359316 -> sin ambiguas: 350838 | positivas: 51351
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO]: Split for non_physiological|w2|s1|ua0.3|p213|v7 not found
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w2_s1_sw0.0_ua0.3
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w2_s1_sw0.3_ua0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w2_s1_sw0.5_ua0.3
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w2_s1_sw0.7_ua0.3
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w2_s1_sw1.0_ua0.3
+
+************************************************************
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  ...  size_dev  combined_score
+size_weight                         ...
+0.3             0.1652      0.1380  ...    0.0299          0.0648
+0.7             0.1733      0.1381  ...    0.0135          0.0487
+0.5             0.1763      0.1373  ...    0.0234          0.0624
+1.0             0.1445      0.1398  ...    0.0032          0.0425
+0.0             0.1685      0.1518  ...    0.0449          0.1007
+
+[5 rows x 9 columns]
+[INFO] Best suggested size weight for non_physiological: 1.0
+[INFO] sw registrado: non_physiological|w2|s1|ua0.3|p213|v7 = 1.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v7_non_physiological_w2_s1_sw1.0_ua0.3 parquet and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51778        7482       44296       0.144502
+train   246719       34496      212223       0.139819
+val      52341        9373       42968       0.179076
+Broken rules: 0 | splits per patient: {'train': 138, 'test': 39, 'val': 36}
+    Patient Session Section  ... is_unreviewed is_excluded  split
+0  aaaaaaju    s005    t000  ...             0           0  train
+1  aaaaaaju    s005    t000  ...             0           0  train
+2  aaaaaaju    s005    t000  ...             0           0  train
+3  aaaaaaju    s005    t000  ...             0           0  train
+4  aaaaaaju    s005    t000  ...             0           0  train
+5  aaaaaaju    s005    t000  ...             0           0  train
+6  aaaaaaju    s005    t000  ...             0           0  train
+7  aaaaaaju    s005    t000  ...             0           0  train
+8  aaaaaaju    s005    t000  ...             0           0  train
+9  aaaaaaju    s005    t000  ...             0           0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_channels_annotated', 'No_channel
+s', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'monopolar_channels_eye', 'bipolar_channels_eye', 'coverag
+e_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_ch
+annels_non_physiological', 'is_clean_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccur
+rence', 'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[WARN] ICA failed for aaaaaimu_s008_t000: One PCA component captures most of the explained variance (99.41216475980121%), your threshold results in
+1 component. You should select a higher value.
+[SKIP] Session aaaaaimu_s008_t000 discarted by ICA error One PCA component captures most of the explained variance (99.41216475980121%), your thresh
+old results in 1 component. You should select a higher value.
+    ic_index  ... bipolar_channels_non_physiological
+0          0  ...                                 []
+1          1  ...                                 []
+2          2  ...                                 []
+3          3  ...                                 []
+4          4  ...                                 []
+5          5  ...                                 []
+6          6  ...                                 []
+7          7  ...                                 []
+8          8  ...                                 []
+9          9  ...                                 []
+10        10  ...                                 []
+11        11  ...                                 []
+12         0  ...                                 []
+13         1  ...                                 []
+14         2  ...                                 []
+15         3  ...                                 []
+16         4  ...                                 []
+17         5  ...                                 []
+18         6  ...                                 []
+19         7  ...                                 []
+20         8  ...                                 []
+21         9  ...                                 []
+22        10  ...                                 []
+23        11  ...                                 []
+24         0  ...                                 []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label  ... bipolar_channels_non_physiological  is_positive
+0         0        brain  ...                                 []            0
+1         1    eye blink  ...                                 []            0
+2         2        brain  ...                                 []            0
+3         3        other  ...                                 []            0
+4         4        brain  ...                                 []            0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', '
+ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtos
+is', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks
+', 'ic_baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_e
+ntropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_
+var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4'
+, 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contri
+b_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_
+clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_we
+ak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_ey
+e', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positive']
+[INFO] Positive count:
+is_positive
+ 0    4027373
+-1     120506
+ 1     117548
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    3010830
+val       653187
+test      601410
+Name: count, dtype: int64
+[INFO] Scale positive weight (excluding -1): 10.0
+
+==================================================
+Starting training of XGBoost - non_physiological
+
+[AUDIT:train] df=68 cols | X=57 features | target=y_med
+[AUDIT:train] EXCLUIDAS (11): ['Partition', 'Patient', 'Section', 'Session', 'Start', 'ic_index', 'ic_raw_label', 'ic_target_label', 'is_positive',
+'split', 'y_med']
+[AUDIT:train] FEATURES (57): ['ic_alpha_power', 'ic_baseline_shift', 'ic_beta_power', 'ic_contrib_C3', 'ic_contrib_C4', 'ic_contrib_CZ', 'ic_contrib
+_F3', 'ic_contrib_F4', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_contrib_FP1', 'ic_contrib_FP2', 'ic_contrib_FZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_
+contrib_P3', 'ic_contrib_P4', 'ic_contrib_P7', 'ic_contrib_P8', 'ic_contrib_PZ', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_delta_power', 'ic_dwt_energy_
+A4', 'ic_dwt_energy_D1', 'ic_dwt_energy_D2', 'ic_dwt_energy_D3', 'ic_dwt_energy_D4', 'ic_dwt_var_A4', 'ic_dwt_var_D1', 'ic_dwt_var_D2', 'ic_dwt_var_
+D3', 'ic_dwt_var_D4', 'ic_gamma_power', 'ic_hjorth_complexity', 'ic_hjorth_mobility', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_channel_noise', 'ic_
+iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_other', 'ic_kurtosis', 'ic_line
+_length', 'ic_mean', 'ic_n_peaks', 'ic_peak_position', 'ic_peak_to_mean', 'ic_peak_to_peak', 'ic_ratio_high_low', 'ic_rms', 'ic_skewness', 'ic_spect
+ral_entropy', 'ic_theta_power', 'ic_variance', 'ic_zcr']
+
+============================================================
+Modelo: xgb_non_physiological_w2s1_7
+Train: 2927941 (pos=81850) | Val: 630734 (pos = 20331) | Test: 601410 (pos=15367)
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:56:26] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 144, 'max_depth': 9, 'learning_rate': 0.0444914614461489, 'subsample': 0.5717195839822765, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 0.18835469577529906, 'reg_alpha': 1.9512447032735118, 'reg_lambda': 1.522279403980706, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4062 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:56:33] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 449, 'max_depth': 8, 'learning_rate': 0.015461063713132448, 'subsample': 0.49007718757911345, 'colsample_bytree': 0.
+5, 'min_child_weight': 6, 'gamma': 0.7415960484651625, 'reg_alpha': 1.8535299776972036, 'reg_lambda': 1.287730240161329, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3926 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:56:42] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 301, 'max_depth': 9, 'learning_rate': 0.045183153402851416, 'subsample': 0.4454477443569554, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 0.12763451220835065, 'reg_alpha': 1.6552623439851641, 'reg_lambda': 1.2633287982441297, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4048 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:56:51] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 377, 'max_depth': 4, 'learning_rate': 0.03339472280097698, 'subsample': 0.5941396048789807, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.7862422426443954, 'reg_alpha': 1.5567669941475237, 'reg_lambda': 0.38927741570393515, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3930 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:56:58] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 282, 'max_depth': 6, 'learning_rate': 0.011606558734739106, 'subsample': 0.4308578984135096, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.4895243118156343, 'reg_alpha': 1.93501946486842, 'reg_lambda': 0.6516507162763039, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3867 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:57:05] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 442, 'max_depth': 10, 'learning_rate': 0.04938452365876037, 'subsample': 0.43789427181685714, 'colsample_bytree': 0.
+5, 'min_child_weight': 3, 'gamma': 0.2598430106709433, 'reg_alpha': 0.9514098524518675, 'reg_lambda': 0.4538186981017682, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4021 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:57:17] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 382, 'max_depth': 8, 'learning_rate': 0.04423096258668029, 'subsample': 0.5665356392115675, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 0.6247332827640821, 'reg_alpha': 1.6645196027904021, 'reg_lambda': 1.6095287149936037, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3927 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:57:25] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 450, 'max_depth': 9, 'learning_rate': 0.026662174755311165, 'subsample': 0.5364991007949951, 'colsample_bytree': 0.5
+, 'min_child_weight': 3, 'gamma': 0.2795049672186196, 'reg_alpha': 0.39981640495021664, 'reg_lambda': 0.014724539502011025, 'scale_pos_weight': 10.0
+}
+        F1(val, ventana)=0.3956 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:57:36] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 499, 'max_depth': 9, 'learning_rate': 0.09595449662719525, 'subsample': 0.541033075725267, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.9178315510766799, 'reg_alpha': 1.1374823919057875, 'reg_lambda': 0.2795939962553149, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3920 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:57:46] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 491, 'max_depth': 4, 'learning_rate': 0.09712079339787152, 'subsample': 0.49421924122862654, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 1.1304722129623777, 'reg_alpha': 1.5299977148320512, 'reg_lambda': 1.2694366400011816, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3957 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:57:54] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 383, 'max_depth': 7, 'learning_rate': 0.06699104970185919, 'subsample': 0.4607900196125225, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 0.8734347784647247, 'reg_alpha': 0.4291693456390584, 'reg_lambda': 0.8170572874492723, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3804 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:02] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 115, 'max_depth': 10, 'learning_rate': 0.022159348459209697, 'subsample': 0.41166054833781324, 'colsample_bytree': 0
+.5, 'min_child_weight': 6, 'gamma': 0.5627677840439931, 'reg_alpha': 0.5871875155333672, 'reg_lambda': 1.3238330294537901, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3833 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:09] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 163, 'max_depth': 7, 'learning_rate': 0.14385094068121893, 'subsample': 0.5328627080654775, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 1.6280407693320693, 'reg_alpha': 0.3339458398154078, 'reg_lambda': 0.045424146267720955, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3979 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:15] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 303, 'max_depth': 3, 'learning_rate': 0.11668427988483095, 'subsample': 0.4923754460502775, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 0.3225435580672036, 'reg_alpha': 1.002089550206727, 'reg_lambda': 0.30462420542633684, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3818 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:21] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 349, 'max_depth': 8, 'learning_rate': 0.04560651820005272, 'subsample': 0.4762042452192965, 'colsample_bytree': 0.5,
+ 'min_child_weight': 2, 'gamma': 1.260565186237777, 'reg_alpha': 0.7236252211067808, 'reg_lambda': 0.175299838632202, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3959 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:30] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 251, 'max_depth': 5, 'learning_rate': 0.26353571802887915, 'subsample': 0.5817161381415215, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 1.3994142676214991, 'reg_alpha': 0.5317399229190392, 'reg_lambda': 1.9383527546954478, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3933 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:37] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 232, 'max_depth': 9, 'learning_rate': 0.1145338173360641, 'subsample': 0.48987230042875773, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.1927819243069986, 'reg_alpha': 1.8052047930876833, 'reg_lambda': 0.9115525796672221, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3941 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:45] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 236, 'max_depth': 8, 'learning_rate': 0.028309684708575773, 'subsample': 0.5158439137883792, 'colsample_bytree': 0.5
+, 'min_child_weight': 2, 'gamma': 0.3535455658784634, 'reg_alpha': 1.713228568184751, 'reg_lambda': 1.5170390596704202, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4032 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:58:52] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 346, 'max_depth': 8, 'learning_rate': 0.043476423754404074, 'subsample': 0.5254617681404887, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 1.29969320310964, 'reg_alpha': 0.16888864227977818, 'reg_lambda': 0.8316148043412193, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3975 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:00] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 392, 'max_depth': 9, 'learning_rate': 0.0536641603661336, 'subsample': 0.4659722424665571, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 0.2890483777320938, 'reg_alpha': 0.20680593544510328, 'reg_lambda': 1.175289144355424, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4045 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:10] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 497, 'max_depth': 4, 'learning_rate': 0.23254906088827462, 'subsample': 0.516212227940079, 'colsample_bytree': 0.5,
+'min_child_weight': 4, 'gamma': 1.1818309829628335, 'reg_alpha': 0.045607742059394996, 'reg_lambda': 1.9171184264828907, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3903 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:17] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 273, 'max_depth': 6, 'learning_rate': 0.14328305772812225, 'subsample': 0.4165459999844877, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 0.9733166616763207, 'reg_alpha': 0.9814139887090418, 'reg_lambda': 1.8756529099499657, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3998 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:24] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 180, 'max_depth': 7, 'learning_rate': 0.05004967459360097, 'subsample': 0.4533951326183787, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.0413448049430756, 'reg_alpha': 0.8778229206100934, 'reg_lambda': 0.04322415976066085, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4078 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:31] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 266, 'max_depth': 5, 'learning_rate': 0.210735704646771, 'subsample': 0.4280498177997222, 'colsample_bytree': 0.5, '
+min_child_weight': 6, 'gamma': 1.1080722870780988, 'reg_alpha': 0.2171514822708871, 'reg_lambda': 1.3444801860796234, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3749 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:37] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 159, 'max_depth': 5, 'learning_rate': 0.09419919458728106, 'subsample': 0.5453989228573766, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 0.21548189191179312, 'reg_alpha': 1.8320236902752158, 'reg_lambda': 0.46042798178976163, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3841 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:43] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 485, 'max_depth': 4, 'learning_rate': 0.0660061460128121, 'subsample': 0.4741844567724878, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 1.6595794862648263, 'reg_alpha': 1.6165029441286036, 'reg_lambda': 0.6342777856454307, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4011 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:50] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 201, 'max_depth': 10, 'learning_rate': 0.02689805777571999, 'subsample': 0.503011425846343, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.8720871400979266, 'reg_alpha': 0.3292156351640363, 'reg_lambda': 0.08982123878465798, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3966 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [05:59:59] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 228, 'max_depth': 5, 'learning_rate': 0.29232034214806374, 'subsample': 0.5783354532509828, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 1.4972160389138984, 'reg_alpha': 1.7815849817570497, 'reg_lambda': 1.7868932793957264, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3615 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:06] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 158, 'max_depth': 7, 'learning_rate': 0.029286368148972824, 'subsample': 0.5544024864221977, 'colsample_bytree': 0.5
+, 'min_child_weight': 3, 'gamma': 0.7473154577474201, 'reg_alpha': 0.18893333612303054, 'reg_lambda': 1.493579222698052, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3937 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:12] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 431, 'max_depth': 6, 'learning_rate': 0.24198398050280362, 'subsample': 0.448194115001137, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.24551586482297205, 'reg_alpha': 1.6622253442498123, 'reg_lambda': 0.3065686332489881, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3812 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:20] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 474, 'max_depth': 4, 'learning_rate': 0.07679997188924412, 'subsample': 0.5749124081674929, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 0.6206473458001895, 'reg_alpha': 1.5548096764823551, 'reg_lambda': 1.9436528521219347, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3871 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:27] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 198, 'max_depth': 6, 'learning_rate': 0.016313759647946173, 'subsample': 0.40278725754164035, 'colsample_bytree': 0.
+5, 'min_child_weight': 4, 'gamma': 0.4593120599977105, 'reg_alpha': 0.26364443557304207, 'reg_lambda': 1.355317347225715, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3934 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:33] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 585, 'max_depth': 3, 'learning_rate': 0.05596425205169427, 'subsample': 0.5388524871285774, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.39955130332011524, 'reg_alpha': 1.6082490523645254, 'reg_lambda': 1.4308142592316033, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3831 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:41] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 391, 'max_depth': 3, 'learning_rate': 0.015616661269875359, 'subsample': 0.42475076073006895, 'colsample_bytree': 0.
+5, 'min_child_weight': 6, 'gamma': 1.8551251020130153, 'reg_alpha': 0.7951563876498813, 'reg_lambda': 0.6018973835618795, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3538 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:48] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 166, 'max_depth': 6, 'learning_rate': 0.0953083207377582, 'subsample': 0.591124651409394, 'colsample_bytree': 0.5, '
+min_child_weight': 4, 'gamma': 1.8496168586240542, 'reg_alpha': 0.04971898277251263, 'reg_lambda': 1.1103960846536494, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3869 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:00:54] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 243, 'max_depth': 4, 'learning_rate': 0.014335845302827055, 'subsample': 0.42806791941278255, 'colsample_bytree': 0.
+5, 'min_child_weight': 5, 'gamma': 0.8382286386326077, 'reg_alpha': 1.9324638242863634, 'reg_lambda': 1.1920851064687457, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3756 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:00] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 190, 'max_depth': 10, 'learning_rate': 0.15421925645835272, 'subsample': 0.4934763203110583, 'colsample_bytree': 0.5
+, 'min_child_weight': 5, 'gamma': 0.03567356795397547, 'reg_alpha': 0.21828799353146988, 'reg_lambda': 1.6588572297654727, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3891 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:08] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 493, 'max_depth': 5, 'learning_rate': 0.02206168018916195, 'subsample': 0.5061539181198107, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.2120316414000218, 'reg_alpha': 1.7354779075520224, 'reg_lambda': 1.2062143146774513, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4022 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:16] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 245, 'max_depth': 6, 'learning_rate': 0.03570386269565289, 'subsample': 0.485176417274702, 'colsample_bytree': 0.5,
+'min_child_weight': 1, 'gamma': 1.7349812635046498, 'reg_alpha': 0.9077937641525995, 'reg_lambda': 0.49567912590271623, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3988 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:23] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 426, 'max_depth': 5, 'learning_rate': 0.126460108377552, 'subsample': 0.5633137526847821, 'colsample_bytree': 0.5, '
+min_child_weight': 2, 'gamma': 0.21055615970824992, 'reg_alpha': 0.13311771391035632, 'reg_lambda': 1.1888673275129036, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3970 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:31] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 279, 'max_depth': 4, 'learning_rate': 0.1652452573257853, 'subsample': 0.4620669347848149, 'colsample_bytree': 0.5,
+'min_child_weight': 7, 'gamma': 1.8419409449749005, 'reg_alpha': 0.33106344547055633, 'reg_lambda': 0.5694401646758711, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3857 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:38] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 172, 'max_depth': 7, 'learning_rate': 0.01481128803521789, 'subsample': 0.404229603267288, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.11079081832852022, 'reg_alpha': 0.3492829418717054, 'reg_lambda': 0.10676386525435078, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3862 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:44] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 315, 'max_depth': 7, 'learning_rate': 0.10127398422850747, 'subsample': 0.47872609136640565, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.0090524740444602, 'reg_alpha': 1.7500098844692171, 'reg_lambda': 1.702263253644412, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4115 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:51] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 259, 'max_depth': 7, 'learning_rate': 0.018539377962879106, 'subsample': 0.4473489742208792, 'colsample_bytree': 0.5
+, 'min_child_weight': 1, 'gamma': 0.49877515166442365, 'reg_alpha': 1.1424653034855454, 'reg_lambda': 0.8325248514063845, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3952 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:01:59] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 241, 'max_depth': 3, 'learning_rate': 0.03563472281497419, 'subsample': 0.5047505897435275, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.6669171075771194, 'reg_alpha': 0.10392373293020851, 'reg_lambda': 1.8496837380361242, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3668 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:05] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 150, 'max_depth': 8, 'learning_rate': 0.17622295966892162, 'subsample': 0.5805306287855234, 'colsample_bytree': 0.5,
+ 'min_child_weight': 1, 'gamma': 1.9591413611731854, 'reg_alpha': 1.6040517605471871, 'reg_lambda': 1.5589550815426578, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3877 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:11] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 414, 'max_depth': 8, 'learning_rate': 0.14147251451560128, 'subsample': 0.4269104416826294, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 1.028445740380829, 'reg_alpha': 1.7151442882451151, 'reg_lambda': 0.9255987311870317, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3995 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:21] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 368, 'max_depth': 9, 'learning_rate': 0.08804658210540657, 'subsample': 0.4532926635001692, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 0.27953682190791374, 'reg_alpha': 0.9557545480474916, 'reg_lambda': 0.83377873718977, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3946 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:30] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 402, 'max_depth': 4, 'learning_rate': 0.0349027387132147, 'subsample': 0.4732784899652495, 'colsample_bytree': 0.5,
+'min_child_weight': 6, 'gamma': 0.7589281594538579, 'reg_alpha': 1.3714866909118908, 'reg_lambda': 0.5937529491425706, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3964 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:37] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 264, 'max_depth': 9, 'learning_rate': 0.2257132927480671, 'subsample': 0.49618208566001576, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 0.6567224100093776, 'reg_alpha': 1.0708695796600063, 'reg_lambda': 1.697120977547249, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3449 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:46] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 345, 'max_depth': 8, 'learning_rate': 0.15423547176143457, 'subsample': 0.5065444552131481, 'colsample_bytree': 0.5,
+ 'min_child_weight': 6, 'gamma': 0.5763112283649234, 'reg_alpha': 1.4697863246205816, 'reg_lambda': 0.4048091862514367, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3800 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:02:53] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 417, 'max_depth': 7, 'learning_rate': 0.18680411127713117, 'subsample': 0.4264205674603088, 'colsample_bytree': 0.5,
+ 'min_child_weight': 5, 'gamma': 1.2287594810838396, 'reg_alpha': 0.1901914964598692, 'reg_lambda': 1.4514312565428538, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3583 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:01] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 390, 'max_depth': 3, 'learning_rate': 0.24126626734538495, 'subsample': 0.4274815860075605, 'colsample_bytree': 0.5,
+ 'min_child_weight': 7, 'gamma': 1.6017683521701933, 'reg_alpha': 1.1873640089327082, 'reg_lambda': 1.5652482092590938, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3841 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:08] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 580, 'max_depth': 10, 'learning_rate': 0.2496874316029365, 'subsample': 0.45067667076783746, 'colsample_bytree': 0.5
+, 'min_child_weight': 6, 'gamma': 1.1801517907166184, 'reg_alpha': 0.19009839512880244, 'reg_lambda': 1.2323314000482426, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3543 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:21] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 184, 'max_depth': 4, 'learning_rate': 0.06831255926561383, 'subsample': 0.51448610280677, 'colsample_bytree': 0.5, '
+min_child_weight': 4, 'gamma': 1.0452635510262456, 'reg_alpha': 1.5278467800131759, 'reg_lambda': 1.5984894330241333, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3797 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:27] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 333, 'max_depth': 7, 'learning_rate': 0.07685501588482806, 'subsample': 0.5862472471380205, 'colsample_bytree': 0.5,
+ 'min_child_weight': 4, 'gamma': 0.23946717700224562, 'reg_alpha': 0.234207131800221, 'reg_lambda': 0.17541802382153682, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3971 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:35] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 344, 'max_depth': 8, 'learning_rate': 0.0415274456488948, 'subsample': 0.5548642832283687, 'colsample_bytree': 0.5,
+'min_child_weight': 2, 'gamma': 0.6672755166564763, 'reg_alpha': 1.7967330947230715, 'reg_lambda': 1.5250642941413046, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3994 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:43] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 436, 'max_depth': 8, 'learning_rate': 0.03451085907339221, 'subsample': 0.4628879960408526, 'colsample_bytree': 0.5,
+ 'min_child_weight': 2, 'gamma': 0.3152232972499993, 'reg_alpha': 0.2955667450843833, 'reg_lambda': 1.872254926751488, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3959 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:03:53] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 378, 'max_depth': 6, 'learning_rate': 0.036830690204600676, 'subsample': 0.5459371417354756, 'colsample_bytree': 0.5
+, 'min_child_weight': 2, 'gamma': 1.8722799736769244, 'reg_alpha': 1.5606029878187844, 'reg_lambda': 0.9587391282490807, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.3993 | thr=nan
+/workspace/hybrid-ai-epilepsy-diagnosis/.venv/lib/python3.11/site-packages/xgboost/training.py:200: UserWarning: [06:04:00] WARNING: /__w/xgboost/xg
+boost/src/learner.cc:782:
+Parameters: { "balanced" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+        params:{'n_estimators': 377, 'max_depth': 4, 'learning_rate': 0.28666483764642964, 'subsample': 0.5435520472007287, 'colsample_bytree': 0.5,
+ 'min_child_weight': 3, 'gamma': 1.9023893200076822, 'reg_alpha': 0.23695715443408272, 'reg_lambda': 1.7010673583815652, 'scale_pos_weight': 10.0}
+        F1(val, ventana)=0.4084 | thr=nan
+[INFO] t_bajo=0.0754 | recall(val)=0.900 | precision(val)=0.199
+[INFO] t_alto=0.6448 | recall(val)=0.286 | precision(val)=0.500
+           fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaaezj  451   585           0.007   66609.231
+aaaaamzl  804  1255           0.015   55351.076
+aaaaalfj  856  2146           0.025   34463.374
+aaaaaarq  469  1232           0.014   32890.909
+aaaaanxz  592  1691           0.020   30247.664
+aaaaanxl  366  1213           0.014   26069.580
+aaaaamdq  301  1208           0.014   21528.477
+aaaaankf  278  1167           0.014   20582.005
+aaaaalvw  309  1335           0.015   19998.202
+aaaaapar  242  1213           0.014   17237.263
+aaaaajfk  231  1182           0.014   16885.279
+aaaaaguk  174  1162           0.013   12937.694
+aaaaamcr  352  2364           0.027   12864.975
+aaaaanpr  137   925           0.011   12796.541
+aaaaajam  148  1221           0.014   10472.727
+aaaaakcx  125  1124           0.013    9608.541
+aaaaanyw  310  2840           0.033    9430.986
+aaaaakka  120  1117           0.013    9282.005
+aaaaafcf  130  1419           0.016    7915.433
+aaaaakcv   88  1086           0.013    7001.105
+aaaaaijh  207  2646           0.031    6759.184
+aaaaaphs  118  1517           0.018    6720.633
+aaaaalaf   78  1135           0.013    5937.621
+aaaaanzu   64   960           0.011    5760.000
+aaaaamyb   89  1362           0.016    5645.815
+aaaaaons   84  1432           0.017    5068.156
+aaaaangp   67  1173           0.014    4935.038
+aaaaanzh   62  1284           0.015    4171.963
+aaaaamzv   76  1676           0.019    3917.900
+aaaaaels   25   619           0.007    3489.499
+aaaaajoo   30  1183           0.014    2191.040
+aaaaakxz   25  1199           0.014    1801.501
+aaaaakft   26  1401           0.016    1603.426
+aaaaamnq   20  1134           0.013    1523.810
+aaaaaluz   11  1171           0.014     811.614
+aaaaaloy    6   702           0.008     738.462
+aaaaamqc   10  1194           0.014     723.618
+aaaaanyc    5  1287           0.015     335.664
+aaaaanyt    0  1218           0.014       0.000
+[INFO] Umbral (F1, validación, ventana): 0.4321 | F1(val)=0.4059
+[INFO] Best configuration found with validation: {'n_estimators': 315, 'max_depth': 7, 'learning_rate': 0.10127398422850747, 'subsample': 0.47872609
+136640565, 'colsample_bytree': 0.5, 'min_child_weight': 6, 'gamma': 1.0090524740444602, 'reg_alpha': 1.7500098844692171, 'reg_lambda': 1.70226325364
+4412, 'scale_pos_weight': 10.0} | F1(val)=0.4115
+Final report -------------------------
+                                 precision    recall  f1-score   support
+
+no_xgb_non_physiological_w2s1_7       0.91      0.83      0.87     44296
+   xgb_non_physiological_w2s1_7       0.33      0.50      0.40      7482
+
+                       accuracy                           0.78     51778
+                      macro avg       0.62      0.67      0.63     51778
+                   weighted avg       0.83      0.78      0.80     51778
+
+Confusion matrix -------------------------
+[[36810  7486]
+ [ 3729  3753]]
+General metrics -------------------------
+model                    xgb_non_physiological_w2s1_7
+sensitivity                                    0.5016
+specificity                                     0.831
+precision                                      0.3339
+accuracy                                       0.7834
+f1_score                                       0.4009
+auc_roc                                        0.7334
+false_alarm_rate                                0.169
+fp_per_day                                   12491.61
+covered_test_days                              0.5993
+TP                                               3753
+FP                                               7486
+TN                                              36810
+FN                                               3729
+n_test_windows                                  51778
+covered_test_hours                              14.38
+OVLP_Sensitivity                               0.7021
+OVLP_False_Alarms                                2350
+TAES_Score                                     0.4604
+MARGIN_5s_Onset                                 0.642
+MARGIN_5s_Offset                               0.6112
+threshold                                      0.4321
+AP                                             0.3981
+med_win_precision                              0.3339
+med_win_recall                                 0.5016
+med_win_AP                                     0.3981
+med_n_tp_windows                               3753.0
+med_ch_bip_hit@3                               0.7711
+med_ch_bip_iou                                 0.2443
+med_n_tp_with_bip_gt                           3613.0
+med_ch_mono_hit@3                                0.79
+med_n_tp_with_mono_gt                          3753.0
+med_ch_f1_micro                                0.2253
+med_ch_f1_macro                                0.2332
+med_ch_jaccard                                 0.0817
+med_n_win_scored                              51262.0
+med_ch_tau                                        0.4
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/xgb_non_physiological_w2s1_7_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/xgb_non_physiological_w2s1_7_and_analysis_random.joblib
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- eye ----------
+                 F1(val)=0.7992
+                 best_params={'n_estimators': 166, 'max_depth': 6, 'learning_rate': 0.0953083207377582, 'subsample': 0.591124651409394, 'colsample_b
+ytree': 0.5, 'min_child_weight': 4, 'gamma': 1.8496168586240542, 'reg_alpha': 0.04971898277251263, 'reg_lambda': 1.1103960846536494, 'scale_pos_weig
+ht': 10.0}
+                 Confusion matrix: [[14985  1597]
+ [ 2265  4585]]
+                 Metrics results: {'model': 'xgb_eye_w5s2_7', 'sensitivity': 0.6693, 'specificity': np.float64(0.9037), 'precision': 0.7417, 'accura
+cy': 0.8352, 'f1_score': 0.7037, 'auc_roc': 0.8746, 'false_alarm_rate': np.float64(0.0963), 'fp_per_day': np.float64(2944.28), 'covered_test_days':
+0.5424, 'TP': 4585, 'FP': 1597, 'TN': 14985, 'FN': 2265, 'n_test_windows': 23432, 'covered_test_hours': 13.02, 'OVLP_Sensitivity': 0.703, 'OVLP_Fals
+e_Alarms': 453, 'TAES_Score': np.float64(0.5649), 'MARGIN_5s_Onset': 0.5692, 'MARGIN_5s_Offset': 0.549, 'threshold': 0.7823, 'AP': 0.8017, 'med_win_
+precision': 0.7417, 'med_win_recall': 0.6693, 'med_win_AP': 0.8017, 'med_n_tp_windows': 4585.0, 'med_ch_bip_hit@3': 0.998, 'med_ch_bip_iou': 0.6116,
+ 'med_n_tp_with_bip_gt': 4585.0, 'med_ch_mono_hit@3': 0.998, 'med_n_tp_with_mono_gt': 4585.0, 'med_ch_f1_micro': 0.4814, 'med_ch_f1_macro': 0.2452,
+'med_ch_jaccard': 0.3173, 'med_n_win_scored': 23432.0, 'med_ch_tau': 0.75}
+                 F1(val)=0.7887
+                 best_params={'n_estimators': 166, 'max_depth': 6, 'learning_rate': 0.0953083207377582, 'subsample': 0.591124651409394, 'colsample_b
+ytree': 0.5, 'min_child_weight': 4, 'gamma': 1.8496168586240542, 'reg_alpha': 0.04971898277251263, 'reg_lambda': 1.1103960846536494, 'scale_pos_weig
+ht': 10.0}
+                 Confusion matrix: [[26016  2447]
+ [ 5194  5757]]
+                 Metrics results: {'model': 'xgb_eye_w2s1_7', 'sensitivity': 0.5257, 'specificity': np.float64(0.914), 'precision': 0.7017, 'accurac
+y': 0.8061, 'f1_score': 0.6011, 'auc_roc': 0.8451, 'false_alarm_rate': np.float64(0.086), 'fp_per_day': np.float64(5364.1), 'covered_test_days': 0.4
+562, 'TP': 5757, 'FP': 2447, 'TN': 26016, 'FN': 5194, 'n_test_windows': 39414, 'covered_test_hours': 10.95, 'OVLP_Sensitivity': 0.682, 'OVLP_False_A
+larms': 489, 'TAES_Score': np.float64(0.5), 'MARGIN_5s_Onset': 0.6255, 'MARGIN_5s_Offset': 0.6203, 'threshold': 0.7476, 'AP': 0.7381, 'med_win_preci
+sion': 0.7017, 'med_win_recall': 0.5257, 'med_win_AP': 0.7381, 'med_n_tp_windows': 5757.0, 'med_ch_bip_hit@3': 0.9932, 'med_ch_bip_iou': 0.676, 'med
+_n_tp_with_bip_gt': 5757.0, 'med_ch_mono_hit@3': 0.9964, 'med_n_tp_with_mono_gt': 5757.0, 'med_ch_f1_micro': 0.5595, 'med_ch_f1_macro': 0.2679, 'med
+_ch_jaccard': 0.3517, 'med_n_win_scored': 39414.0, 'med_ch_tau': 0.7}
+---------- muscle ----------
+                 F1(val)=0.6258
+                 best_params={'n_estimators': 585, 'max_depth': 3, 'learning_rate': 0.05596425205169427, 'subsample': 0.5388524871285774, 'colsample
+_bytree': 0.5, 'min_child_weight': 6, 'gamma': 0.39955130332011524, 'reg_alpha': 1.6082490523645254, 'reg_lambda': 1.4308142592316033, 'scale_pos_we
+ight': 10.0}
+                 Confusion matrix: [[50521 13454]
+ [ 6813 19574]]
+                 Metrics results: {'model': 'xgb_muscle_w1s0.5_7', 'sensitivity': 0.7418, 'specificity': np.float64(0.7897), 'precision': 0.5926, 'a
+ccuracy': 0.7757, 'f1_score': 0.6589, 'auc_roc': 0.8354, 'false_alarm_rate': np.float64(0.2103), 'fp_per_day': np.float64(25728.2), 'covered_test_da
+ys': 0.5229, 'TP': 19574, 'FP': 13454, 'TN': 50521, 'FN': 6813, 'n_test_windows': 90362, 'covered_test_hours': 12.55, 'OVLP_Sensitivity': 0.8342, 'O
+VLP_False_Alarms': 2502, 'TAES_Score': np.float64(0.6518), 'MARGIN_5s_Onset': 0.7897, 'MARGIN_5s_Offset': 0.7611, 'threshold': 0.7534, 'AP': 0.6813,
+ 'med_win_precision': 0.5926, 'med_win_recall': 0.7418, 'med_win_AP': 0.6813, 'med_n_tp_windows': 19574.0, 'med_ch_bip_hit@3': 0.9555, 'med_ch_bip_i
+ou': 0.2463, 'med_n_tp_with_bip_gt': 19562.0, 'med_ch_mono_hit@3': 0.9842, 'med_n_tp_with_mono_gt': 19574.0, 'med_ch_f1_micro': 0.5263, 'med_ch_f1_m
+acro': 0.4966, 'med_ch_jaccard': 0.2362, 'med_n_win_scored': 90022.0, 'med_ch_tau': 0.8}
+                 F1(val)=0.6712
+                 best_params={'n_estimators': 241, 'max_depth': 3, 'learning_rate': 0.03563472281497419, 'subsample': 0.5047505897435275, 'colsample
+_bytree': 0.5, 'min_child_weight': 7, 'gamma': 1.6669171075771194, 'reg_alpha': 0.10392373293020851, 'reg_lambda': 1.8496837380361242, 'scale_pos_we
+ight': 10.0}
+                 Confusion matrix: [[13945  3406]
+ [ 2751  4589]]
+                 Metrics results: {'model': 'xgb_muscle_w5s2_7', 'sensitivity': 0.6252, 'specificity': np.float64(0.8037), 'precision': 0.574, 'accu
+racy': 0.7506, 'f1_score': 0.5985, 'auc_roc': 0.7824, 'false_alarm_rate': np.float64(0.1963), 'fp_per_day': np.float64(5959.22), 'covered_test_days'
+: 0.5716, 'TP': 4589, 'FP': 3406, 'TN': 13945, 'FN': 2751, 'n_test_windows': 24691, 'covered_test_hours': 13.72, 'OVLP_Sensitivity': 0.6373, 'OVLP_F
+alse_Alarms': 547, 'TAES_Score': np.float64(0.5104), 'MARGIN_5s_Onset': 0.5, 'MARGIN_5s_Offset': 0.424, 'threshold': 0.8083, 'AP': 0.59, 'med_win_pr
+ecision': 0.574, 'med_win_recall': 0.6252, 'med_win_AP': 0.59, 'med_n_tp_windows': 4589.0, 'med_ch_bip_hit@3': 0.9654, 'med_ch_bip_iou': 0.2374, 'me
+d_n_tp_with_bip_gt': 4589.0, 'med_ch_mono_hit@3': 0.9821, 'med_n_tp_with_mono_gt': 4589.0, 'med_ch_f1_micro': 0.4764, 'med_ch_f1_macro': 0.4464, 'me
+d_ch_jaccard': 0.2131, 'med_n_win_scored': 24534.0, 'med_ch_tau': 0.85}
+---------- non_physiological ----------
+                 F1(val)=0.3174
+                 best_params={'n_estimators': 442, 'max_depth': 10, 'learning_rate': 0.04938452365876037, 'subsample': 0.43789427181685714, 'colsamp
+le_bytree': 0.5, 'min_child_weight': 3, 'gamma': 0.2598430106709433, 'reg_alpha': 0.9514098524518675, 'reg_lambda': 0.4538186981017682, 'scale_pos_w
+eight': 10.0}
+                 Confusion matrix: [[38003  5571]
+ [ 4372  3151]]
+                 Metrics results: {'model': 'xgb_non_physiological_w1s1_7', 'sensitivity': 0.4188, 'specificity': np.float64(0.8721), 'precision': 0
+.3613, 'accuracy': 0.8054, 'f1_score': 0.3879, 'auc_roc': 0.7308, 'false_alarm_rate': np.float64(0.1279), 'fp_per_day': np.float64(9420.01), 'covere
+d_test_days': 0.5914, 'TP': 3151, 'FP': 5571, 'TN': 38003, 'FN': 4372, 'n_test_windows': 51097, 'covered_test_hours': 14.19, 'OVLP_Sensitivity': 0.6
+578, 'OVLP_False_Alarms': 2958, 'TAES_Score': np.float64(0.3912), 'MARGIN_5s_Onset': 0.6325, 'MARGIN_5s_Offset': 0.5992, 'threshold': 0.441, 'AP': 0
+.3903, 'med_win_precision': 0.3613, 'med_win_recall': 0.4188, 'med_win_AP': 0.3903, 'med_n_tp_windows': 3151.0, 'med_ch_bip_hit@3': 0.8342, 'med_ch_
+bip_iou': 0.2491, 'med_n_tp_with_bip_gt': 3028.0, 'med_ch_mono_hit@3': 0.8312, 'med_n_tp_with_mono_gt': 3151.0, 'med_ch_f1_micro': 0.2669, 'med_ch_f
+1_macro': 0.2821, 'med_ch_jaccard': 0.0932, 'med_n_win_scored': 50654.0, 'med_ch_tau': 0.4}
+                 F1(val)=0.4115
+                 best_params={'n_estimators': 315, 'max_depth': 7, 'learning_rate': 0.10127398422850747, 'subsample': 0.47872609136640565, 'colsampl
+e_bytree': 0.5, 'min_child_weight': 6, 'gamma': 1.0090524740444602, 'reg_alpha': 1.7500098844692171, 'reg_lambda': 1.702263253644412, 'scale_pos_wei
+ght': 10.0}
+                 Confusion matrix: [[36810  7486]
+ [ 3729  3753]]
+                 Metrics results: {'model': 'xgb_non_physiological_w2s1_7', 'sensitivity': 0.5016, 'specificity': np.float64(0.831), 'precision': 0.
+3339, 'accuracy': 0.7834, 'f1_score': 0.4009, 'auc_roc': 0.7334, 'false_alarm_rate': np.float64(0.169), 'fp_per_day': np.float64(12491.61), 'covered
+_test_days': 0.5993, 'TP': 3753, 'FP': 7486, 'TN': 36810, 'FN': 3729, 'n_test_windows': 51778, 'covered_test_hours': 14.38, 'OVLP_Sensitivity': 0.70
+21, 'OVLP_False_Alarms': 2350, 'TAES_Score': np.float64(0.4604), 'MARGIN_5s_Onset': 0.642, 'MARGIN_5s_Offset': 0.6112, 'threshold': 0.4321, 'AP': 0.
+3981, 'med_win_precision': 0.3339, 'med_win_recall': 0.5016, 'med_win_AP': 0.3981, 'med_n_tp_windows': 3753.0, 'med_ch_bip_hit@3': 0.7711, 'med_ch_b
+ip_iou': 0.2443, 'med_n_tp_with_bip_gt': 3613.0, 'med_ch_mono_hit@3': 0.79, 'med_n_tp_with_mono_gt': 3753.0, 'med_ch_f1_micro': 0.2253, 'med_ch_f1_m
+acro': 0.2332, 'med_ch_jaccard': 0.0817, 'med_n_win_scored': 51262.0, 'med_ch_tau': 0.4}
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# root@d4deb216ff16:/# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+-bash: root@d4deb216ff16:/#: No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.
+artifacts.ica_cnn_xg --no-force-ret
+-bash: root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis#: No such file or directory
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# rain --device "cuda" 2>&1 | tee xg_artifacts_random.log
+-bash: rain: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tail  -40 xg_artifacts_random.log
+-bash: rain: command not found
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh xg_artifacts_random.log
+-rw-rw-rw- 1 root root 31 Oct 29 06:05 xg_artifacts_random.log
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# pwd
+/workspace/hybrid-ai-epilepsy-diagnosis
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# realpath xg_artifacts_random.log
+/workspace/hybrid-ai-epilepsy-diagnosis/xg_artifacts_random.log
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS - > artifacts_xgboost_ica_tmux.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# ls -lh artifacts_xgboost_ica_tmux.txt
+-rw-rw-rw- 1 root root 134K Oct 29 11:03 artifacts_xgboost_ica_tmux.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# realpath artifacts_xgboost_ica_tmux.txt
+/workspace/hybrid-ai-epilepsy-diagnosis/artifacts_xgboost_ica_tmux.txt
+root@d4deb216ff16:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -pS - > artifacts_xgboost_ica_tmux.txt

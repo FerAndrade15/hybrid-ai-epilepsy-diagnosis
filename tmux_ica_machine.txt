@@ -1,0 +1,2508 @@
+ ('aaaaajtu', 's001', 't000'), ('aaaaaogk', 's001', 't001'), ('aaaaaouk', 's008', 't002'), ('aaaaanqe', 's001', 't000'),
+ ('aaaaaltw', 's001', 't001'), ('aaaaaels', 's006', 't006'), ('aaaaamob', 's001', 't000'), ('aaaaamsc', 's001', 't000'),
+ ('aaaaamzf', 's001', 't001'), ('aaaaaprj', 's002', 't000'), ('aaaaammu', 's001', 't001'), ('aaaaakdo', 's001', 't000'),
+ ('aaaaafwz', 's001', 't001'), ('aaaaanxz', 's001', 't000'), ('aaaaapas', 's005', 't000'), ('aaaaapqh', 's004', 't000'),
+ ('aaaaalmh', 's001', 't000'), ('aaaaalnt', 's001', 't001'), ('aaaaalqs', 's001', 't001'), ('aaaaamzi', 's001', 't001'),
+ ('aaaaakbz', 's005', 't000'), ('aaaaajns', 's003', 't000'), ('aaaaankc', 's004', 't001'), ('aaaaajrj', 's004', 't005'),
+ ('aaaaanyf', 's001', 't001'), ('aaaaabnn', 's002', 't002'), ('aaaaappv', 's002', 't005'), ('aaaaamyb', 's001', 't001'),
+ ('aaaaanyw', 's001', 't000'), ('aaaaamhb', 's001', 't001'), ('aaaaakcy', 's005', 't001'), ('aaaaanrc', 's002', 't002'),
+ ('aaaaajso', 's001', 't000'), ('aaaaanbp', 's001', 't001'), ('aaaaaphs', 's001', 't000'), ('aaaaaibx', 's001', 't000'),
+ ('aaaaaenq', 's004', 't000'), ('aaaaahzs', 's001', 't001'), ('aaaaajah', 's002', 't001'), ('aaaaakeq', 's002', 't000'),
+ ('aaaaaeab', 's003', 't000'), ('aaaaaksu', 's001', 't001'), ('aaaaaora', 's002', 't000'), ('aaaaaout', 's001', 't000'),
+ ('aaaaahte', 's002', 't000'), ('aaaaafcf', 's006', 't009'), ('aaaaafcf', 's006', 't004'), ('aaaaadmi', 's014', 't008'),
+ ('aaaaamhb', 's006', 't004'), ('aaaaafhl', 's003', 't000'), ('aaaaapex', 's001', 't000'), ('aaaaakqr', 's001', 't000'),
+ ('aaaaajrf', 's004', 't000'), ('aaaaapas', 's003', 't001'), ('aaaaakcx', 's001', 't001'), ('aaaaakka', 's001', 't001'),
+ ('aaaaalzg', 's007', 't000'), ('aaaaanbp', 's001', 't002'), ('aaaaanrc', 's004', 't009'), ('aaaaanrc', 's004', 't004'),
+ ('aaaaaoxr', 's004', 't004'), ('aaaaaoda', 's001', 't000'), ('aaaaaelb', 's003', 't000'), ('aaaaapas', 's003', 't000'),
+ ('aaaaakeq', 's003', 't000'), ('aaaaalbt', 's002', 't000'), ('aaaaaovn', 's002', 't005'), ('aaaaajfk', 's002', 't001'),
+ ('aaaaagvx', 's003', 't001'), ('aaaaanyc', 's005', 't006'), ('aaaaamdq', 's001', 't000'), ('aaaaaoby', 's001', 't000'),
+ ('aaaaaktz', 's001', 't000'), ('aaaaaimu', 's003', 't000'), ('aaaaahte', 's003', 't000'), ('aaaaapar', 's001', 't000'),
+ ('aaaaalbt', 's001', 't001'), ('aaaaaksb', 's001', 't000'), ('aaaaanrc', 's004', 't006'), ('aaaaaobi', 's001', 't000'),
+ ('aaaaappv', 's002', 't003'), ('aaaaappv', 's001', 't001'), ('aaaaalox', 's001', 't001'), ('aaaaadmi', 's013', 't013'),
+ ('aaaaanrc', 's005', 't000'), ('aaaaaomy', 's001', 't000'), ('aaaaapkv', 's001', 't000'), ('aaaaalzg', 's006', 't000'),
+ ('aaaaapmp', 's001', 't000'), ('aaaaapre', 's001', 't002'), ('aaaaajrf', 's002', 't000'), ('aaaaafdh', 's004', 't001'),
+ ('aaaaaiby', 's001', 't000'), ('aaaaajqo', 's020', 't001'), ('aaaaanwj', 's002', 't000'), ('aaaaamoa', 's001', 't000'),
+ ('aaaaabnn', 's002', 't001'), ('aaaaaouk', 's001', 't000'), ('aaaaamcr', 's003', 't004'), ('aaaaakqg', 's001', 't001'),
+ ('aaaaamnq', 's001', 't000'), ('aaaaaljj', 's001', 't000'), ('aaaaahzm', 's001', 't001'), ('aaaaalaf', 's001', 't000'),
+ ('aaaaalth', 's003', 't000'), ('aaaaakck', 's001', 't001'), ('aaaaamyc', 's004', 't001'), ('aaaaamhb', 's012', 't006'),
+ ('aaaaajah', 's004', 't000'), ('aaaaamuc', 's001', 't000'), ('aaaaakxo', 's001', 't000'), ('aaaaamhb', 's006', 't005'),
+ ('aaaaaoav', 's002', 't000'), ('aaaaanta', 's001', 't000'), ('aaaaajjb', 's001', 't001'), ('aaaaagqb', 's001', 't000'),
+ ('aaaaaizu', 's001', 't001'), ('aaaaadmi', 's014', 't002'), ('aaaaangp', 's001', 't000'), ('aaaaakmg', 's001', 't000'),
+ ('aaaaajqo', 's033', 't000'), ('aaaaanji', 's001', 't000'), ('aaaaagsc', 's006', 't001'), ('aaaaanrc', 's001', 't001'),
+ ('aaaaajpf', 's001', 't000'), ('aaaaaozv', 's002', 't000'), ('aaaaamcr', 's003', 't010'), ('aaaaanrc', 's004', 't005'),
+ ('aaaaalfj', 's006', 't006'), ('aaaaafwz', 's001', 't000'), ('aaaaambs', 's010', 't006'), ('aaaaagqb', 's002', 't001'),
+ ('aaaaabnn', 's002', 't004'), ('aaaaaoeg', 's001', 't000'), ('aaaaalsq', 's001', 't000'), ('aaaaajns', 's005', 't001')}
+    ic_index ic_raw_label  ... bipolar_channels_muscle  bipolar_channels_non_physiological
+0          0        brain  ...                      []                                  []
+1          1    eye blink  ...                      []                                  []
+2          2        brain  ...                      []                                  []
+3          3        other  ...                      []                                  []
+4          4        brain  ...                      []                                  []
+5          5        brain  ...                      []                                  []
+6          6        brain  ...                      []                                  []
+7          7        brain  ...                      []                                  []
+8          8    eye blink  ...                      []                                  []
+9          9        brain  ...                      []                                  []
+10        10        brain  ...                      []                                  []
+11        11        brain  ...                      []                                  []
+12         0        brain  ...                      []                                  []
+13         1    eye blink  ...                      []                                  []
+14         2        brain  ...                      []                                  []
+15         3        other  ...                      []                                  []
+16         4        brain  ...                      []                                  []
+17         5        brain  ...                      []                                  []
+18         6        brain  ...                      []                                  []
+19         7        brain  ...                      []                                  []
+20         8    eye blink  ...                      []                                  []
+21         9        brain  ...                      []                                  []
+22        10        brain  ...                      []                                  []
+23        11        brain  ...                      []                                  []
+24         0        brain  ...                      []                                  []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ...  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positi
+ve
+0         0        brain              clean  ...                       []                                  []
+ 0
+1         1    eye blink                eye  ...                       []                                  []
+ 0
+2         2        brain              clean  ...                       []                                  []
+ 0
+3         3        other  non_physiological  ...                       []                                  []
+ 0
+4         4        brain              clean  ...                       []                                  []
+ 0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye'
+, 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_m
+ean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic
+_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_po
+wer', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy',
+ 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_
+energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'i
+c_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'i
+c_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic
+_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', '
+tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrenc
+e', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_
+non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positiv
+e']
+[INFO] Positive count:
+is_positive
+ 0    269210
+-1      8820
+ 1      7714
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    203067
+test      48175
+val       34502
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - eye
+
+============================================================
+Modelo: rf_eye_w2s1_6
+Train: 196642 (pos=5972) | Val: 32875 (pos = 1124) | Test: 48175 (pos=618)
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 21, 'min_samples_leaf': 7, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.051
+        params:{'n_estimators': 344, 'max_depth': 26, 'min_samples_split': 7, 'min_samples_leaf': 11, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.054
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 18, 'min_samples_leaf': 14, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3115 | thr=0.463
+        params:{'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 22, 'min_samples_leaf': 12, 'max_features': '
+sqrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.038
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 25, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3118 | thr=0.093
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 9, 'min_samples_leaf': 14, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3118 | thr=0.123
+        params:{'n_estimators': 501, 'max_depth': 21, 'min_samples_split': 15, 'min_samples_leaf': 12, 'max_features': '
+log2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3119 | thr=0.148
+        params:{'n_estimators': 395, 'max_depth': 16, 'min_samples_split': 16, 'min_samples_leaf': 4, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.047
+        params:{'n_estimators': 191, 'max_depth': 18, 'min_samples_split': 27, 'min_samples_leaf': 2, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.045
+        params:{'n_estimators': 536, 'max_depth': 25, 'min_samples_split': 11, 'min_samples_leaf': 10, 'max_features': 0
+.5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.054
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 22, 'min_samples_leaf': 6, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.061
+        params:{'n_estimators': 180, 'max_depth': 29, 'min_samples_split': 16, 'min_samples_leaf': 13, 'max_features': 0
+.5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.057
+        params:{'n_estimators': 455, 'max_depth': 24, 'min_samples_split': 23, 'min_samples_leaf': 4, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.048
+        params:{'n_estimators': 313, 'max_depth': 16, 'min_samples_split': 17, 'min_samples_leaf': 2, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3119 | thr=0.145
+        params:{'n_estimators': 395, 'max_depth': 8, 'min_samples_split': 23, 'min_samples_leaf': 10, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3119 | thr=0.227
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 14, 'min_samples_leaf': 14, 'max_features': 0
+.5, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.061
+        params:{'n_estimators': 334, 'max_depth': 13, 'min_samples_split': 27, 'min_samples_leaf': 6, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.046
+        params:{'n_estimators': 184, 'max_depth': 16, 'min_samples_split': 24, 'min_samples_leaf': 4, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.024
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 22, 'min_samples_leaf': 8, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.051
+        params:{'n_estimators': 298, 'max_depth': 10, 'min_samples_split': 19, 'min_samples_leaf': 10, 'max_features': 0
+.5, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.052
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 9, 'min_samples_leaf': 12, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.058
+        params:{'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.019
+        params:{'n_estimators': 495, 'max_depth': 25, 'min_samples_split': 15, 'min_samples_leaf': 12, 'max_features': '
+sqrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.060
+        params:{'n_estimators': 528, 'max_depth': 14, 'min_samples_split': 27, 'min_samples_leaf': 5, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.063
+        params:{'n_estimators': 257, 'max_depth': 22, 'min_samples_split': 20, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.033
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 25, 'min_samples_leaf': 2, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.064
+        params:{'n_estimators': 508, 'max_depth': 24, 'min_samples_split': 24, 'min_samples_leaf': 10, 'max_features': 0
+.5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.060
+        params:{'n_estimators': 362, 'max_depth': 22, 'min_samples_split': 11, 'min_samples_leaf': 12, 'max_features': '
+log2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3119 | thr=0.176
+        params:{'n_estimators': 400, 'max_depth': 16, 'min_samples_split': 17, 'min_samples_leaf': 9, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.045
+        params:{'n_estimators': 166, 'max_depth': 8, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 0.3
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.022
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 21, 'min_samples_leaf': 8, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3118 | thr=0.114
+        params:{'n_estimators': 534, 'max_depth': 19, 'min_samples_split': 6, 'min_samples_leaf': 11, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3118 | thr=0.113
+        params:{'n_estimators': 408, 'max_depth': 20, 'min_samples_split': 19, 'min_samples_leaf': 9, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.054
+        params:{'n_estimators': 190, 'max_depth': 18, 'min_samples_split': 24, 'min_samples_leaf': 5, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3118 | thr=0.121
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 13, 'min_samples_leaf': 7, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3119 | thr=0.527
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3118 | thr=0.149
+        params:{'n_estimators': 596, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3117 | thr=0.044
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 26, 'min_samples_leaf': 5, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3119 | thr=0.427
+        params:{'n_estimators': 562, 'max_depth': 12, 'min_samples_split': 15, 'min_samples_leaf': 10, 'max_features': 0
+.3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.047
+        params:{'n_estimators': 206, 'max_depth': 18, 'min_samples_split': 17, 'min_samples_leaf': 12, 'max_features': 0
+.5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3117 | thr=0.039
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 15, 'min_samples_leaf': 7, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.040
+        params:{'n_estimators': 338, 'max_depth': 25, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.038
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 'log
+2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3119 | thr=0.620
+        params:{'n_estimators': 497, 'max_depth': 23, 'min_samples_split': 22, 'min_samples_leaf': 8, 'max_features': 0.
+5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3117 | thr=0.036
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 27, 'min_samples_leaf': 8, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.044
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 17, 'min_samples_leaf': 11, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3118 | thr=0.189
+        params:{'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 9, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3120 | thr=0.108
+        params:{'n_estimators': 257, 'max_depth': 12, 'min_samples_split': 22, 'min_samples_leaf': 10, 'max_features': '
+sqrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3118 | thr=0.138
+        params:{'n_estimators': 423, 'max_depth': 14, 'min_samples_split': 28, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3119 | thr=0.269
+        params:{'n_estimators': 304, 'max_depth': 7, 'min_samples_split': 13, 'min_samples_leaf': 14, 'max_features': 's
+qrt', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3119 | thr=0.486
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 17, 'min_samples_leaf': 11, 'max_features': 0
+.5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3117 | thr=0.057
+        params:{'n_estimators': 355, 'max_depth': 11, 'min_samples_split': 24, 'min_samples_leaf': 14, 'max_features': 0
+.3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.063
+        params:{'n_estimators': 268, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 11, 'max_features': '
+sqrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3118 | thr=0.124
+        params:{'n_estimators': 505, 'max_depth': 16, 'min_samples_split': 23, 'min_samples_leaf': 5, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3117 | thr=0.051
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 16, 'min_samples_leaf': 13, 'max_features': 0.
+3, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3118 | thr=0.323
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 22, 'min_samples_leaf': 4, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3119 | thr=0.215
+        params:{'n_estimators': 474, 'max_depth': 12, 'min_samples_split': 25, 'min_samples_leaf': 9, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3118 | thr=0.151
+        params:{'n_estimators': 396, 'max_depth': 9, 'min_samples_split': 16, 'min_samples_leaf': 13, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3119 | thr=0.238
+        params:{'n_estimators': 158, 'max_depth': 23, 'min_samples_split': 17, 'min_samples_leaf': 11, 'max_features': 0
+.3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3117 | thr=0.059
+        params:{'n_estimators': 448, 'max_depth': 15, 'min_samples_split': 12, 'min_samples_leaf': 10, 'max_features': '
+log2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3119 | thr=0.195
+            fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaadeu  1239  1352           0.016   79178.698
+aaaaabbn   888  1229           0.014   62427.339
+aaaaaarq   631  1235           0.014   44144.453
+[INFO] Umbral (F1, validación, ventana): 0.1084 | F1(val)=0.3120
+[INFO] Best configuration found with validation: {'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 9, 'min_sam
+ples_leaf': 6, 'max_features': 'sqrt', 'sampling_strategy': 0.3} | F1(val)=0.3120
+Final report -------------------------
+                  precision    recall  f1-score   support
+
+no_rf_eye_w2s1_6       1.00      0.21      0.35      3494
+   rf_eye_w2s1_6       0.10      1.00      0.19       322
+
+        accuracy                           0.28      3816
+       macro avg       0.55      0.61      0.27      3816
+    weighted avg       0.92      0.28      0.33      3816
+
+Confusion matrix -------------------------
+[[ 736 2758]
+ [   0  322]]
+General metrics -------------------------
+model                 rf_eye_w2s1_6
+sensitivity                     1.0
+specificity                  0.2106
+precision                    0.1045
+accuracy                     0.2773
+f1_score                     0.1893
+auc_roc                      0.8595
+false_alarm_rate             0.7894
+fp_per_day                 62445.28
+covered_test_days            0.0442
+TP                              322
+FP                             2758
+TN                              736
+FN                                0
+n_test_windows                 3816
+covered_test_hours             1.06
+threshold                    0.1084
+AP                           0.3967
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w2s1_6_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/rf_eye_w2s1_6_and_analysis_random.joblib
+
+==================================================
+ARTIFACT: muscle
+
+==================================================
+**************************************************
+>> muscle | patients:213 | windows: 1s (0.5s stride)
+
+************************************************************
+Generating windows...
+[NOTICE] windows_w1_s0.5_ua0.3_ub0.1_urTrue_dcd979_L6.parquet not found in current annotations
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  eye  muscle  non_phys
+iological is_ambiguous  sample_weight  distinguish  genuine_cooccurrence weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.0  1.0             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+1  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.5  1.5             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+2  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.0  2.0             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+3  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.5  2.5             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+4  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    2.0  3.0             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 719252 -> sin ambiguas: 710195 | positivas: 175914
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO]: Split for muscle|w1|s0.5|ua0.3|p213|v6 not found
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w1_s0.5_sw0.0_ua0.3
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w1_s0.5_sw0.3_ua0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w1_s0.5_sw0.5_ua0.3
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w1_s0.5_sw0.7_ua0.3
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w1_s0.5_sw1.0_ua0.3
+
+************************************************************
+
+[INFO] Sweep size weight results for muscle:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.0             0.2920      0.2359    0.2700       0.0562     0.7352   0.1376    0.1272    0.0352          0.0913
+0.3             0.3131      0.2170    0.3898       0.1727     0.7664   0.1071    0.1265    0.0664          0.2391
+0.5             0.3273      0.2109    0.4013       0.1905     0.7563   0.1141    0.1296    0.0563          0.2468
+0.7             0.2994      0.2108    0.4053       0.1945     0.7331   0.1254    0.1415    0.0331          0.2276
+1.0             0.2961      0.2015    0.4165       0.2150     0.7020   0.1494    0.1486    0.0020          0.2170
+[INFO] Best suggested size weight for muscle: 0.0
+[INFO] sw registrado: muscle|w1|s0.5|ua0.3|p213|v6 = 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v6_muscle_w1_s0.5_sw0.0_ua0.3 parquet and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     90362       26387       63975       0.292014
+train   522109      123140      398969       0.235851
+val      97724       26387       71337       0.270016
+Broken rules: 0 | splits per patient: {'train': 150, 'val': 33, 'test': 30}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  muscle  non_physiolog
+ical  is_ambiguous sample_weight  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.0  1.0             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    0.5  1.5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.0  2.0             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    1.5  2.5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    2.0  3.0             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    2.5  3.5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    3.0  4.0             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    3.5  4.5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    4.0  5.0             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                      1     0.5    4.5  5.5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[NOTICE] featured_muscle_w1_s0.5_bipFalse_icaTrue_23961c_v6.parquet no coincide: 284 keys faltantes en cache
+{('aaaaaimu', 's008', 't002'), ('aaaaanvw', 's001', 't000'), ('aaaaapcu', 's001', 't000'), ('aaaaaguk', 's002', 't001'),
+ ('aaaaaiat', 's003', 't000'), ('aaaaamzv', 's001', 't000'), ('aaaaanwc', 's001', 't001'), ('aaaaajqh', 's004', 't000'),
+ ('aaaaamrj', 's001', 't000'), ('aaaaanoz', 's001', 't000'), ('aaaaakbz', 's002', 't000'), ('aaaaajoa', 's001', 't001'),
+ ('aaaaapkx', 's001', 't001'), ('aaaaamyy', 's001', 't001'), ('aaaaaike', 's001', 't001'), ('aaaaapas', 's001', 't001'),
+ ('aaaaaogd', 's008', 't004'), ('aaaaagxr', 's017', 't000'), ('aaaaankf', 's001', 't000'), ('aaaaajrj', 's003', 't012'),
+ ('aaaaanzu', 's001', 't003'), ('aaaaanzh', 's001', 't000'), ('aaaaaijh', 's002', 't000'), ('aaaaanyw', 's002', 't000'),
+ ('aaaaamyc', 's004', 't006'), ('aaaaanvg', 's001', 't002'), ('aaaaaohr', 's002', 't001'), ('aaaaakeq', 's001', 't000'),
+ ('aaaaajam', 's001', 't000'), ('aaaaajys', 's001', 't001'), ('aaaaajqo', 's008', 't001'), ('aaaaaiyu', 's001', 't000'),
+ ('aaaaaprj', 's001', 't000'), ('aaaaalco', 's002', 't000'), ('aaaaamzl', 's001', 't000'), ('aaaaatjz', 's001', 't000'),
+ ('aaaaanlp', 's001', 't000'), ('aaaaapcr', 's006', 't000'), ('aaaaamdu', 's014', 't001'), ('aaaaajrj', 's006', 't007'),
+ ('aaaaamob', 's002', 't007'), ('aaaaajrj', 's006', 't006'), ('aaaaamyc', 's006', 't000'), ('aaaaanrc', 's004', 't008'),
+ ('aaaaamhb', 's013', 't001'), ('aaaaaofj', 's001', 't000'), ('aaaaajrj', 's005', 't007'), ('aaaaamhb', 's010', 't005'),
+ ('aaaaagsc', 's003', 't001'), ('aaaaaluz', 's001', 't001'), ('aaaaalxk', 's001', 't000'), ('aaaaansj', 's001', 't000'),
+ ('aaaaampz', 's001', 't000'), ('aaaaalqa', 's001', 't000'), ('aaaaajoe', 's001', 't001'), ('aaaaamon', 's001', 't000'),
+ ('aaaaaovo', 's001', 't000'), ('aaaaapcr', 's006', 't004'), ('aaaaaovl', 's001', 't000'), ('aaaaallc', 's001', 't001'),
+ ('aaaaagqb', 's003', 't002'), ('aaaaanum', 's001', 't000'), ('aaaaaowf', 's001', 't000'), ('aaaaaezn', 's003', 't001'),
+ ('aaaaanxl', 's001', 't000'), ('aaaaaicc', 's004', 't000'), ('aaaaapks', 's008', 't000'), ('aaaaamhb', 's006', 't001'),
+ ('aaaaaiue', 's004', 't000'), ('aaaaamtj', 's001', 't000'), ('aaaaalvw', 's001', 't000'), ('aaaaaosh', 's001', 't000'),
+ ('aaaaajzm', 's004', 't000'), ('aaaaaezj', 's007', 't002'), ('aaaaajqb', 's001', 't000'), ('aaaaanhb', 's001', 't003'),
+ ('aaaaakfq', 's001', 't001'), ('aaaaaogk', 's001', 't002'), ('aaaaakcv', 's001', 't001'), ('aaaaanrc', 's004', 't001'),
+ ('aaaaajuh', 's001', 't000'), ('aaaaaogd', 's008', 't005'), ('aaaaahuy', 's002', 't000'), ('aaaaaohw', 's003', 't000'),
+ ('aaaaadao', 's001', 't004'), ('aaaaaiae', 's001', 't000'), ('aaaaalfj', 's006', 't008'), ('aaaaaimu', 's008', 't000'),
+ ('aaaaakft', 's001', 't000'), ('aaaaanyt', 's002', 't000'), ('aaaaajrf', 's003', 't002'), ('aaaaadjk', 's002', 't000'),
+ ('aaaaaoiv', 's001', 't000'), ('aaaaamqc', 's001', 't000'), ('aaaaafcf', 's006', 't002'), ('aaaaapnl', 's008', 't004'),
+ ('aaaaappv', 's002', 't000'), ('aaaaamxn', 's001', 't000'), ('aaaaaons', 's002', 't002'), ('aaaaakbz', 's001', 't000'),
+ ('aaaaajqu', 's013', 't016'), ('aaaaajns', 's007', 't001'), ('aaaaadao', 's001', 't003'), ('aaaaabms', 's001', 't001'),
+ ('aaaaalth', 's002', 't001'), ('aaaaaoxr', 's004', 't002'), ('aaaaaosa', 's008', 't007'), ('aaaaadsm', 's002', 't001'),
+ ('aaaaafsb', 's001', 't000'), ('aaaaajrj', 's004', 't004'), ('aaaaagcs', 's002', 't000'), ('aaaaanbq', 's001', 't000'),
+ ('aaaaajoo', 's002', 't001'), ('aaaaanhb', 's003', 't001'), ('aaaaajrj', 's004', 't008'), ('aaaaaobl', 's001', 't000'),
+ ('aaaaajqu', 's013', 't012'), ('aaaaajrf', 's001', 't000'), ('aaaaakdj', 's001', 't000'), ('aaaaanyb', 's001', 't001'),
+ ('aaaaamcr', 's003', 't001'), ('aaaaanro', 's001', 't000'), ('aaaaajqk', 's003', 't001'), ('aaaaadmi', 's012', 't005'),
+ ('aaaaanrc', 's004', 't007'), ('aaaaajqo', 's028', 't000'), ('aaaaalzg', 's006', 't001'), ('aaaaapas', 's003', 't002'),
+ ('aaaaapks', 's002', 't003'), ('aaaaakgp', 's001', 't001'), ('aaaaapas', 's004', 't001'), ('aaaaajns', 's002', 't000'),
+ ('aaaaapmb', 's002', 't001'), ('aaaaanhb', 's005', 't000'), ('aaaaamhj', 's004', 't005'), ('aaaaanvb', 's002', 't000'),
+ ('aaaaakxz', 's001', 't001'), ('aaaaanpr', 's001', 't002'), ('aaaaapxk', 's001', 't000'), ('aaaaapks', 's009', 't000'),
+ ('aaaaamyc', 's005', 't003'), ('aaaaajns', 's001', 't001'), ('aaaaaogd', 's010', 't000'), ('aaaaaloy', 's012', 't002'),
+ ('aaaaalid', 's001', 't001'), ('aaaaaoav', 's001', 't000'), ('aaaaakev', 's001', 't001'), ('aaaaamcr', 's003', 't002'),
+ ('aaaaajtu', 's001', 't000'), ('aaaaaogk', 's001', 't001'), ('aaaaaouk', 's008', 't002'), ('aaaaanqe', 's001', 't000'),
+ ('aaaaaltw', 's001', 't001'), ('aaaaaels', 's006', 't006'), ('aaaaamob', 's001', 't000'), ('aaaaamsc', 's001', 't000'),
+ ('aaaaamzf', 's001', 't001'), ('aaaaaprj', 's002', 't000'), ('aaaaammu', 's001', 't001'), ('aaaaakdo', 's001', 't000'),
+ ('aaaaafwz', 's001', 't001'), ('aaaaanxz', 's001', 't000'), ('aaaaapas', 's005', 't000'), ('aaaaapqh', 's004', 't000'),
+ ('aaaaalmh', 's001', 't000'), ('aaaaalnt', 's001', 't001'), ('aaaaalqs', 's001', 't001'), ('aaaaamzi', 's001', 't001'),
+ ('aaaaakbz', 's005', 't000'), ('aaaaajns', 's003', 't000'), ('aaaaankc', 's004', 't001'), ('aaaaajrj', 's004', 't005'),
+ ('aaaaanyf', 's001', 't001'), ('aaaaabnn', 's002', 't002'), ('aaaaappv', 's002', 't005'), ('aaaaamyb', 's001', 't001'),
+ ('aaaaanyw', 's001', 't000'), ('aaaaamhb', 's001', 't001'), ('aaaaakcy', 's005', 't001'), ('aaaaanrc', 's002', 't002'),
+ ('aaaaajso', 's001', 't000'), ('aaaaanbp', 's001', 't001'), ('aaaaaphs', 's001', 't000'), ('aaaaaibx', 's001', 't000'),
+ ('aaaaaenq', 's004', 't000'), ('aaaaahzs', 's001', 't001'), ('aaaaajah', 's002', 't001'), ('aaaaakeq', 's002', 't000'),
+ ('aaaaaeab', 's003', 't000'), ('aaaaaksu', 's001', 't001'), ('aaaaaora', 's002', 't000'), ('aaaaaout', 's001', 't000'),
+ ('aaaaahte', 's002', 't000'), ('aaaaafcf', 's006', 't009'), ('aaaaafcf', 's006', 't004'), ('aaaaadmi', 's014', 't008'),
+ ('aaaaamhb', 's006', 't004'), ('aaaaafhl', 's003', 't000'), ('aaaaapex', 's001', 't000'), ('aaaaakqr', 's001', 't000'),
+ ('aaaaajrf', 's004', 't000'), ('aaaaapas', 's003', 't001'), ('aaaaakcx', 's001', 't001'), ('aaaaakka', 's001', 't001'),
+ ('aaaaalzg', 's007', 't000'), ('aaaaanbp', 's001', 't002'), ('aaaaanrc', 's004', 't009'), ('aaaaanrc', 's004', 't004'),
+ ('aaaaaoxr', 's004', 't004'), ('aaaaaoda', 's001', 't000'), ('aaaaaelb', 's003', 't000'), ('aaaaapas', 's003', 't000'),
+ ('aaaaakeq', 's003', 't000'), ('aaaaalbt', 's002', 't000'), ('aaaaaovn', 's002', 't005'), ('aaaaajfk', 's002', 't001'),
+ ('aaaaagvx', 's003', 't001'), ('aaaaanyc', 's005', 't006'), ('aaaaamdq', 's001', 't000'), ('aaaaaoby', 's001', 't000'),
+ ('aaaaaktz', 's001', 't000'), ('aaaaaimu', 's003', 't000'), ('aaaaahte', 's003', 't000'), ('aaaaapar', 's001', 't000'),
+ ('aaaaalbt', 's001', 't001'), ('aaaaaksb', 's001', 't000'), ('aaaaanrc', 's004', 't006'), ('aaaaaobi', 's001', 't000'),
+ ('aaaaappv', 's002', 't003'), ('aaaaappv', 's001', 't001'), ('aaaaalox', 's001', 't001'), ('aaaaadmi', 's013', 't013'),
+ ('aaaaanrc', 's005', 't000'), ('aaaaaomy', 's001', 't000'), ('aaaaapkv', 's001', 't000'), ('aaaaalzg', 's006', 't000'),
+ ('aaaaapmp', 's001', 't000'), ('aaaaapre', 's001', 't002'), ('aaaaajrf', 's002', 't000'), ('aaaaafdh', 's004', 't001'),
+ ('aaaaaiby', 's001', 't000'), ('aaaaajqo', 's020', 't001'), ('aaaaanwj', 's002', 't000'), ('aaaaamoa', 's001', 't000'),
+ ('aaaaabnn', 's002', 't001'), ('aaaaaouk', 's001', 't000'), ('aaaaamcr', 's003', 't004'), ('aaaaakqg', 's001', 't001'),
+ ('aaaaamnq', 's001', 't000'), ('aaaaaljj', 's001', 't000'), ('aaaaahzm', 's001', 't001'), ('aaaaalaf', 's001', 't000'),
+ ('aaaaalth', 's003', 't000'), ('aaaaakck', 's001', 't001'), ('aaaaamyc', 's004', 't001'), ('aaaaamhb', 's012', 't006'),
+ ('aaaaajah', 's004', 't000'), ('aaaaamuc', 's001', 't000'), ('aaaaakxo', 's001', 't000'), ('aaaaamhb', 's006', 't005'),
+ ('aaaaaoav', 's002', 't000'), ('aaaaanta', 's001', 't000'), ('aaaaajjb', 's001', 't001'), ('aaaaagqb', 's001', 't000'),
+ ('aaaaaizu', 's001', 't001'), ('aaaaadmi', 's014', 't002'), ('aaaaangp', 's001', 't000'), ('aaaaakmg', 's001', 't000'),
+ ('aaaaajqo', 's033', 't000'), ('aaaaanji', 's001', 't000'), ('aaaaagsc', 's006', 't001'), ('aaaaanrc', 's001', 't001'),
+ ('aaaaajpf', 's001', 't000'), ('aaaaaozv', 's002', 't000'), ('aaaaamcr', 's003', 't010'), ('aaaaanrc', 's004', 't005'),
+ ('aaaaalfj', 's006', 't006'), ('aaaaafwz', 's001', 't000'), ('aaaaambs', 's010', 't006'), ('aaaaagqb', 's002', 't001'),
+ ('aaaaabnn', 's002', 't004'), ('aaaaaoeg', 's001', 't000'), ('aaaaalsq', 's001', 't000'), ('aaaaajns', 's005', 't001')}
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_mus
+cle  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiolog
+ical
+0          0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+1          1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+2          2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+3          3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+4          4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+5          5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+6          6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+7          7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+8          8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+9          9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+10        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+11        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+12         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+13         1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+14         2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+15         3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+16         4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+17         5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+18         6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+19         7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+20         8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+21         9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+22        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+23        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+24         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_non_
+physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean               0.687186                0.020910  ...
+           []                    []                       []                                  []            0
+1         1    eye blink                eye               0.007280                0.010427  ...
+           []                    []                       []                                  []            0
+2         2        brain              clean               0.994398                0.000273  ...
+           []                    []                       []                                  []            0
+3         3        other  non_physiological               0.253165                0.001824  ...
+           []                    []                       []                                  []            0
+4         4        brain              clean               0.999643                0.000023  ...
+           []                    []                       []                                  []            0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye'
+, 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_m
+ean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic
+_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_po
+wer', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy',
+ 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_
+energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'i
+c_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'i
+c_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic
+_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', '
+tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrenc
+e', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_
+non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positiv
+e']
+[INFO] Positive count:
+is_positive
+ 0    529525
+-1     21581
+ 1     18633
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    409749
+test      90119
+val       69871
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - muscle
+
+============================================================
+Modelo: rf_muscle_w1s0.5_6
+Train: 392350 (pos=15164) | Val: 66700 (pos = 2548) | Test: 90119 (pos=921)
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3615 | thr=0.307
+        params:{'n_estimators': 344, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.095
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log
+2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3505 | thr=0.832
+        params:{'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3830 | thr=0.585
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4866 | thr=0.944
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3481 | thr=0.532
+        params:{'n_estimators': 501, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3663 | thr=0.441
+        params:{'n_estimators': 395, 'max_depth': 16, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.058
+        params:{'n_estimators': 191, 'max_depth': 18, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3578 | thr=0.643
+        params:{'n_estimators': 536, 'max_depth': 25, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.137
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.089
+        params:{'n_estimators': 180, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.149
+        params:{'n_estimators': 455, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.090
+        params:{'n_estimators': 313, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.609
+        params:{'n_estimators': 395, 'max_depth': 8, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3547 | thr=0.764
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3504 | thr=0.257
+        params:{'n_estimators': 334, 'max_depth': 13, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3630 | thr=0.824
+        params:{'n_estimators': 184, 'max_depth': 16, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3725 | thr=0.732
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4819 | thr=0.938
+        params:{'n_estimators': 298, 'max_depth': 10, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4674 | thr=0.923
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3504 | thr=0.764
+        params:{'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3633 | thr=0.278
+        params:{'n_estimators': 495, 'max_depth': 25, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3719 | thr=0.647
+        params:{'n_estimators': 528, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3757 | thr=0.800
+        params:{'n_estimators': 257, 'max_depth': 22, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3468 | thr=0.101
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3669 | thr=0.962
+        params:{'n_estimators': 508, 'max_depth': 24, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.142
+        params:{'n_estimators': 362, 'max_depth': 22, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3686 | thr=0.507
+        params:{'n_estimators': 400, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3555 | thr=0.621
+        params:{'n_estimators': 166, 'max_depth': 8, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3,
+ 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4342 | thr=0.926
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3476 | thr=0.410
+        params:{'n_estimators': 534, 'max_depth': 19, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3536 | thr=0.632
+        params:{'n_estimators': 408, 'max_depth': 20, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.126
+        params:{'n_estimators': 190, 'max_depth': 18, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3512 | thr=0.572
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqr
+t', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3413 | thr=0.945
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.070
+        params:{'n_estimators': 596, 'max_depth': 26, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.084
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3468 | thr=0.515
+        params:{'n_estimators': 562, 'max_depth': 12, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3685 | thr=0.786
+        params:{'n_estimators': 206, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3512 | thr=0.828
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.460
+        params:{'n_estimators': 338, 'max_depth': 25, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.076
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log
+2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3560 | thr=0.917
+        params:{'n_estimators': 497, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.
+5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3466 | thr=0.190
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3933 | thr=0.947
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log
+2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3466 | thr=0.062
+        params:{'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3468 | thr=0.135
+        params:{'n_estimators': 257, 'max_depth': 12, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3468 | thr=0.269
+        params:{'n_estimators': 423, 'max_depth': 14, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3466 | thr=0.079
+        params:{'n_estimators': 304, 'max_depth': 7, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqr
+t', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3468 | thr=0.530
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3454 | thr=0.324
+        params:{'n_estimators': 355, 'max_depth': 11, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3945 | thr=0.866
+        params:{'n_estimators': 268, 'max_depth': 24, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3601 | thr=0.460
+        params:{'n_estimators': 505, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3741 | thr=0.755
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3,
+ 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3468 | thr=0.471
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3468 | thr=0.282
+        params:{'n_estimators': 474, 'max_depth': 12, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3468 | thr=0.306
+        params:{'n_estimators': 396, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'log
+2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3466 | thr=0.074
+        params:{'n_estimators': 158, 'max_depth': 23, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3466 | thr=0.103
+        params:{'n_estimators': 448, 'max_depth': 15, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3466 | thr=0.069
+            fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaabdo  1108  2426           0.014   78921.022
+aaaaabbn  1015  2465           0.014   71152.941
+aaaaaarq   778  2469           0.014   54450.547
+[INFO] Umbral (F1, validación, ventana): 0.9436 | F1(val)=0.4866
+[INFO] Best configuration found with validation: {'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_sam
+ples_leaf': 4, 'max_features': 0.5, 'sampling_strategy': 0.3} | F1(val)=0.4866
+Final report -------------------------
+                       precision    recall  f1-score   support
+
+no_rf_muscle_w1s0.5_6       0.97      0.58      0.73      6913
+   rf_muscle_w1s0.5_6       0.10      0.68      0.17       447
+
+             accuracy                           0.59      7360
+            macro avg       0.53      0.63      0.45      7360
+         weighted avg       0.91      0.59      0.69      7360
+
+Confusion matrix -------------------------
+[[4012 2901]
+ [ 142  305]]
+General metrics -------------------------
+model                 rf_muscle_w1s0.5_6
+sensitivity                       0.6823
+specificity                       0.5804
+precision                         0.0951
+accuracy                          0.5865
+f1_score                           0.167
+auc_roc                           0.7098
+false_alarm_rate                  0.4196
+fp_per_day                      68110.43
+covered_test_days                 0.0426
+TP                                   305
+FP                                  2901
+TN                                  4012
+FN                                   142
+n_test_windows                      7360
+covered_test_hours                  1.02
+threshold                         0.9436
+AP                                0.1286
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/rf_muscle_w1s0.5_6_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/rf_muscle_w1s0.5_6_and_analysis_random.job
+lib
+**************************************************
+>> muscle | patients:213 | windows: 5s (2s stride)
+
+************************************************************
+Generating windows...
+[NOTICE] windows_w5_s2_ua0.2_ub0.1_urTrue_dcd979_L6.parquet not found in current annotations
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  eye  muscle  non_phys
+iological is_ambiguous  sample_weight  distinguish  genuine_cooccurrence weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                      5       2      0    5             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+1  aaaaaaju    s005    t000  01_tcp_ar                      5       2      2    7             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+2  aaaaaaju    s005    t000  01_tcp_ar                      5       2      4    9             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+3  aaaaaaju    s005    t000  01_tcp_ar                      5       2      6   11             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+4  aaaaaaju    s005    t000  01_tcp_ar                      5       2      8   13             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 179257 -> sin ambiguas: 174396 | positivas: 48934
+['Patient', 'Session', 'Section', 'Start', 'muscle']
+[INFO]: Split for muscle|w5|s2|ua0.2|p213|v6 not found
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w5_s2_sw0.0_ua0.2
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w5_s2_sw0.3_ua0.2
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w5_s2_sw0.5_ua0.2
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w5_s2_sw0.7_ua0.2
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_muscle_w5_s2_sw1.0_ua0.2
+
+************************************************************
+
+[INFO] Sweep size weight results for muscle:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.0             0.2973      0.2722    0.3075       0.0353     0.7215   0.1369    0.1416    0.0215          0.0568
+0.3             0.3667      0.2468    0.4169       0.1701     0.7647   0.1117    0.1236    0.0647          0.2348
+1.0             0.3590      0.2326    0.4271       0.1945     0.7008   0.1491    0.1501    0.0009          0.1953
+0.5             0.3509      0.2435    0.4382       0.1947     0.7496   0.1169    0.1335    0.0496          0.2444
+0.7             0.3448      0.2407    0.4379       0.1971     0.7319   0.1284    0.1397    0.0319          0.2290
+[INFO] Best suggested size weight for muscle: 0.0
+[INFO] sw registrado: muscle|w5|s2|ua0.2|p213|v6 = 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v6_muscle_w5_s2_sw0.0_ua0.2 parquet and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     24691        7340       17351       0.297274
+train   125835       34254       91581       0.272214
+val      23870        7340       16530       0.307499
+Broken rules: 0 | splits per patient: {'train': 149, 'val': 35, 'test': 29}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  muscle  non_physiolog
+ical  is_ambiguous sample_weight  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                      5       2      0    5             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                      5       2      2    7             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                      5       2      4    9             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                      5       2      6   11             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                      5       2      8   13             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                      5       2     10   15             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                      5       2     12   17             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                      5       2     14   19             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                      5       2     16   21             ...       0
+   0             0         1.000            0                     0             0             0           0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                      5       2     18   23       eyem  ...       0
+   0             0         0.948            0                     0             0             0           0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[NOTICE] featured_muscle_w5_s2_bipFalse_icaTrue_23961c_v6.parquet no coincide: 284 keys faltantes en cache
+{('aaaaaimu', 's008', 't002'), ('aaaaanvw', 's001', 't000'), ('aaaaapcu', 's001', 't000'), ('aaaaaguk', 's002', 't001'),
+ ('aaaaaiat', 's003', 't000'), ('aaaaamzv', 's001', 't000'), ('aaaaanwc', 's001', 't001'), ('aaaaajqh', 's004', 't000'),
+ ('aaaaamrj', 's001', 't000'), ('aaaaanoz', 's001', 't000'), ('aaaaakbz', 's002', 't000'), ('aaaaajoa', 's001', 't001'),
+ ('aaaaapkx', 's001', 't001'), ('aaaaamyy', 's001', 't001'), ('aaaaaike', 's001', 't001'), ('aaaaapas', 's001', 't001'),
+ ('aaaaaogd', 's008', 't004'), ('aaaaagxr', 's017', 't000'), ('aaaaankf', 's001', 't000'), ('aaaaajrj', 's003', 't012'),
+ ('aaaaanzu', 's001', 't003'), ('aaaaanzh', 's001', 't000'), ('aaaaaijh', 's002', 't000'), ('aaaaanyw', 's002', 't000'),
+ ('aaaaamyc', 's004', 't006'), ('aaaaanvg', 's001', 't002'), ('aaaaaohr', 's002', 't001'), ('aaaaakeq', 's001', 't000'),
+ ('aaaaajam', 's001', 't000'), ('aaaaajys', 's001', 't001'), ('aaaaajqo', 's008', 't001'), ('aaaaaiyu', 's001', 't000'),
+ ('aaaaaprj', 's001', 't000'), ('aaaaalco', 's002', 't000'), ('aaaaamzl', 's001', 't000'), ('aaaaatjz', 's001', 't000'),
+ ('aaaaanlp', 's001', 't000'), ('aaaaapcr', 's006', 't000'), ('aaaaamdu', 's014', 't001'), ('aaaaajrj', 's006', 't007'),
+ ('aaaaamob', 's002', 't007'), ('aaaaajrj', 's006', 't006'), ('aaaaamyc', 's006', 't000'), ('aaaaanrc', 's004', 't008'),
+ ('aaaaamhb', 's013', 't001'), ('aaaaaofj', 's001', 't000'), ('aaaaajrj', 's005', 't007'), ('aaaaamhb', 's010', 't005'),
+ ('aaaaagsc', 's003', 't001'), ('aaaaaluz', 's001', 't001'), ('aaaaalxk', 's001', 't000'), ('aaaaansj', 's001', 't000'),
+ ('aaaaampz', 's001', 't000'), ('aaaaalqa', 's001', 't000'), ('aaaaajoe', 's001', 't001'), ('aaaaamon', 's001', 't000'),
+ ('aaaaaovo', 's001', 't000'), ('aaaaapcr', 's006', 't004'), ('aaaaaovl', 's001', 't000'), ('aaaaallc', 's001', 't001'),
+ ('aaaaagqb', 's003', 't002'), ('aaaaanum', 's001', 't000'), ('aaaaaowf', 's001', 't000'), ('aaaaaezn', 's003', 't001'),
+ ('aaaaanxl', 's001', 't000'), ('aaaaaicc', 's004', 't000'), ('aaaaapks', 's008', 't000'), ('aaaaamhb', 's006', 't001'),
+ ('aaaaaiue', 's004', 't000'), ('aaaaamtj', 's001', 't000'), ('aaaaalvw', 's001', 't000'), ('aaaaaosh', 's001', 't000'),
+ ('aaaaajzm', 's004', 't000'), ('aaaaaezj', 's007', 't002'), ('aaaaajqb', 's001', 't000'), ('aaaaanhb', 's001', 't003'),
+ ('aaaaakfq', 's001', 't001'), ('aaaaaogk', 's001', 't002'), ('aaaaakcv', 's001', 't001'), ('aaaaanrc', 's004', 't001'),
+ ('aaaaajuh', 's001', 't000'), ('aaaaaogd', 's008', 't005'), ('aaaaahuy', 's002', 't000'), ('aaaaaohw', 's003', 't000'),
+ ('aaaaadao', 's001', 't004'), ('aaaaaiae', 's001', 't000'), ('aaaaalfj', 's006', 't008'), ('aaaaaimu', 's008', 't000'),
+ ('aaaaakft', 's001', 't000'), ('aaaaanyt', 's002', 't000'), ('aaaaajrf', 's003', 't002'), ('aaaaadjk', 's002', 't000'),
+ ('aaaaaoiv', 's001', 't000'), ('aaaaamqc', 's001', 't000'), ('aaaaafcf', 's006', 't002'), ('aaaaapnl', 's008', 't004'),
+ ('aaaaappv', 's002', 't000'), ('aaaaamxn', 's001', 't000'), ('aaaaaons', 's002', 't002'), ('aaaaakbz', 's001', 't000'),
+ ('aaaaajqu', 's013', 't016'), ('aaaaajns', 's007', 't001'), ('aaaaadao', 's001', 't003'), ('aaaaabms', 's001', 't001'),
+ ('aaaaalth', 's002', 't001'), ('aaaaaoxr', 's004', 't002'), ('aaaaaosa', 's008', 't007'), ('aaaaadsm', 's002', 't001'),
+ ('aaaaafsb', 's001', 't000'), ('aaaaajrj', 's004', 't004'), ('aaaaagcs', 's002', 't000'), ('aaaaanbq', 's001', 't000'),
+ ('aaaaajoo', 's002', 't001'), ('aaaaanhb', 's003', 't001'), ('aaaaajrj', 's004', 't008'), ('aaaaaobl', 's001', 't000'),
+ ('aaaaajqu', 's013', 't012'), ('aaaaajrf', 's001', 't000'), ('aaaaakdj', 's001', 't000'), ('aaaaanyb', 's001', 't001'),
+ ('aaaaamcr', 's003', 't001'), ('aaaaanro', 's001', 't000'), ('aaaaajqk', 's003', 't001'), ('aaaaadmi', 's012', 't005'),
+ ('aaaaanrc', 's004', 't007'), ('aaaaajqo', 's028', 't000'), ('aaaaalzg', 's006', 't001'), ('aaaaapas', 's003', 't002'),
+ ('aaaaapks', 's002', 't003'), ('aaaaakgp', 's001', 't001'), ('aaaaapas', 's004', 't001'), ('aaaaajns', 's002', 't000'),
+ ('aaaaapmb', 's002', 't001'), ('aaaaanhb', 's005', 't000'), ('aaaaamhj', 's004', 't005'), ('aaaaanvb', 's002', 't000'),
+ ('aaaaakxz', 's001', 't001'), ('aaaaanpr', 's001', 't002'), ('aaaaapxk', 's001', 't000'), ('aaaaapks', 's009', 't000'),
+ ('aaaaamyc', 's005', 't003'), ('aaaaajns', 's001', 't001'), ('aaaaaogd', 's010', 't000'), ('aaaaaloy', 's012', 't002'),
+ ('aaaaalid', 's001', 't001'), ('aaaaaoav', 's001', 't000'), ('aaaaakev', 's001', 't001'), ('aaaaamcr', 's003', 't002'),
+ ('aaaaajtu', 's001', 't000'), ('aaaaaogk', 's001', 't001'), ('aaaaaouk', 's008', 't002'), ('aaaaanqe', 's001', 't000'),
+ ('aaaaaltw', 's001', 't001'), ('aaaaaels', 's006', 't006'), ('aaaaamob', 's001', 't000'), ('aaaaamsc', 's001', 't000'),
+ ('aaaaamzf', 's001', 't001'), ('aaaaaprj', 's002', 't000'), ('aaaaammu', 's001', 't001'), ('aaaaakdo', 's001', 't000'),
+ ('aaaaafwz', 's001', 't001'), ('aaaaanxz', 's001', 't000'), ('aaaaapas', 's005', 't000'), ('aaaaapqh', 's004', 't000'),
+ ('aaaaalmh', 's001', 't000'), ('aaaaalnt', 's001', 't001'), ('aaaaalqs', 's001', 't001'), ('aaaaamzi', 's001', 't001'),
+ ('aaaaakbz', 's005', 't000'), ('aaaaajns', 's003', 't000'), ('aaaaankc', 's004', 't001'), ('aaaaajrj', 's004', 't005'),
+ ('aaaaanyf', 's001', 't001'), ('aaaaabnn', 's002', 't002'), ('aaaaappv', 's002', 't005'), ('aaaaamyb', 's001', 't001'),
+ ('aaaaanyw', 's001', 't000'), ('aaaaamhb', 's001', 't001'), ('aaaaakcy', 's005', 't001'), ('aaaaanrc', 's002', 't002'),
+ ('aaaaajso', 's001', 't000'), ('aaaaanbp', 's001', 't001'), ('aaaaaphs', 's001', 't000'), ('aaaaaibx', 's001', 't000'),
+ ('aaaaaenq', 's004', 't000'), ('aaaaahzs', 's001', 't001'), ('aaaaajah', 's002', 't001'), ('aaaaakeq', 's002', 't000'),
+ ('aaaaaeab', 's003', 't000'), ('aaaaaksu', 's001', 't001'), ('aaaaaora', 's002', 't000'), ('aaaaaout', 's001', 't000'),
+ ('aaaaahte', 's002', 't000'), ('aaaaafcf', 's006', 't009'), ('aaaaafcf', 's006', 't004'), ('aaaaadmi', 's014', 't008'),
+ ('aaaaamhb', 's006', 't004'), ('aaaaafhl', 's003', 't000'), ('aaaaapex', 's001', 't000'), ('aaaaakqr', 's001', 't000'),
+ ('aaaaajrf', 's004', 't000'), ('aaaaapas', 's003', 't001'), ('aaaaakcx', 's001', 't001'), ('aaaaakka', 's001', 't001'),
+ ('aaaaalzg', 's007', 't000'), ('aaaaanbp', 's001', 't002'), ('aaaaanrc', 's004', 't009'), ('aaaaanrc', 's004', 't004'),
+ ('aaaaaoxr', 's004', 't004'), ('aaaaaoda', 's001', 't000'), ('aaaaaelb', 's003', 't000'), ('aaaaapas', 's003', 't000'),
+ ('aaaaakeq', 's003', 't000'), ('aaaaalbt', 's002', 't000'), ('aaaaaovn', 's002', 't005'), ('aaaaajfk', 's002', 't001'),
+ ('aaaaagvx', 's003', 't001'), ('aaaaanyc', 's005', 't006'), ('aaaaamdq', 's001', 't000'), ('aaaaaoby', 's001', 't000'),
+ ('aaaaaktz', 's001', 't000'), ('aaaaaimu', 's003', 't000'), ('aaaaahte', 's003', 't000'), ('aaaaapar', 's001', 't000'),
+ ('aaaaalbt', 's001', 't001'), ('aaaaaksb', 's001', 't000'), ('aaaaanrc', 's004', 't006'), ('aaaaaobi', 's001', 't000'),
+ ('aaaaappv', 's002', 't003'), ('aaaaappv', 's001', 't001'), ('aaaaalox', 's001', 't001'), ('aaaaadmi', 's013', 't013'),
+ ('aaaaanrc', 's005', 't000'), ('aaaaaomy', 's001', 't000'), ('aaaaapkv', 's001', 't000'), ('aaaaalzg', 's006', 't000'),
+ ('aaaaapmp', 's001', 't000'), ('aaaaapre', 's001', 't002'), ('aaaaajrf', 's002', 't000'), ('aaaaafdh', 's004', 't001'),
+ ('aaaaaiby', 's001', 't000'), ('aaaaajqo', 's020', 't001'), ('aaaaanwj', 's002', 't000'), ('aaaaamoa', 's001', 't000'),
+ ('aaaaabnn', 's002', 't001'), ('aaaaaouk', 's001', 't000'), ('aaaaamcr', 's003', 't004'), ('aaaaakqg', 's001', 't001'),
+ ('aaaaamnq', 's001', 't000'), ('aaaaaljj', 's001', 't000'), ('aaaaahzm', 's001', 't001'), ('aaaaalaf', 's001', 't000'),
+ ('aaaaalth', 's003', 't000'), ('aaaaakck', 's001', 't001'), ('aaaaamyc', 's004', 't001'), ('aaaaamhb', 's012', 't006'),
+ ('aaaaajah', 's004', 't000'), ('aaaaamuc', 's001', 't000'), ('aaaaakxo', 's001', 't000'), ('aaaaamhb', 's006', 't005'),
+ ('aaaaaoav', 's002', 't000'), ('aaaaanta', 's001', 't000'), ('aaaaajjb', 's001', 't001'), ('aaaaagqb', 's001', 't000'),
+ ('aaaaaizu', 's001', 't001'), ('aaaaadmi', 's014', 't002'), ('aaaaangp', 's001', 't000'), ('aaaaakmg', 's001', 't000'),
+ ('aaaaajqo', 's033', 't000'), ('aaaaanji', 's001', 't000'), ('aaaaagsc', 's006', 't001'), ('aaaaanrc', 's001', 't001'),
+ ('aaaaajpf', 's001', 't000'), ('aaaaaozv', 's002', 't000'), ('aaaaamcr', 's003', 't010'), ('aaaaanrc', 's004', 't005'),
+ ('aaaaalfj', 's006', 't006'), ('aaaaafwz', 's001', 't000'), ('aaaaambs', 's010', 't006'), ('aaaaagqb', 's002', 't001'),
+ ('aaaaabnn', 's002', 't004'), ('aaaaaoeg', 's001', 't000'), ('aaaaalsq', 's001', 't000'), ('aaaaajns', 's005', 't001')}
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_mus
+cle  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiolog
+ical
+0          0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+1          1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+2          2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+3          3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+4          4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+5          5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+6          6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+7          7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+8          8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+9          9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+10        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+11        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+12         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+13         1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+14         2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+15         3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+16         4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+17         5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+18         6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+19         7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+20         8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+21         9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+22        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+23        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+24         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_non_
+physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean               0.687186                0.020910  ...
+           []                    []                       []                                  []            0
+1         1    eye blink                eye               0.007280                0.010427  ...
+           []                    []                       []                                  []            0
+2         2        brain              clean               0.994398                0.000273  ...
+           []                    []                       []                                  []            0
+3         3        other  non_physiological               0.253165                0.001824  ...
+           []                    []                       []                                  []            0
+4         4        brain              clean               0.999643                0.000023  ...
+           []                    []                       []                                  []            0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye'
+, 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_m
+ean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic
+_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_po
+wer', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy',
+ 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_
+energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'i
+c_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'i
+c_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic
+_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', '
+tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrenc
+e', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_
+non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positiv
+e']
+[INFO] Positive count:
+is_positive
+ 0    127057
+-1      7212
+ 1      5878
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    100827
+test      23616
+val       15704
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - muscle
+
+============================================================
+Modelo: rf_muscle_w5s2_6
+Train: 95239 (pos=4567) | Val: 14663 (pos = 876) | Test: 23616 (pos=435)
+        params:{'n_estimators': 190, 'max_depth': 24, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4324 | thr=0.533
+        params:{'n_estimators': 344, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4211 | thr=0.350
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log
+2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5758 | thr=0.872
+        params:{'n_estimators': 481, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5223 | thr=0.541
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5655 | thr=0.932
+        params:{'n_estimators': 375, 'max_depth': 14, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4836 | thr=0.683
+        params:{'n_estimators': 501, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5549 | thr=0.632
+        params:{'n_estimators': 395, 'max_depth': 16, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4163 | thr=0.696
+        params:{'n_estimators': 191, 'max_depth': 18, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4190 | thr=0.470
+        params:{'n_estimators': 536, 'max_depth': 25, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4032 | thr=0.114
+        params:{'n_estimators': 224, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4656 | thr=0.608
+        params:{'n_estimators': 180, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4071 | thr=0.529
+        params:{'n_estimators': 455, 'max_depth': 24, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4067 | thr=0.330
+        params:{'n_estimators': 313, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4242 | thr=0.673
+        params:{'n_estimators': 395, 'max_depth': 8, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5552 | thr=0.829
+        params:{'n_estimators': 565, 'max_depth': 23, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4032 | thr=0.146
+        params:{'n_estimators': 334, 'max_depth': 13, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4677 | thr=0.922
+        params:{'n_estimators': 184, 'max_depth': 16, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3982 | thr=0.410
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5778 | thr=0.935
+        params:{'n_estimators': 298, 'max_depth': 10, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5647 | thr=0.912
+        params:{'n_estimators': 573, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4205 | thr=0.634
+        params:{'n_estimators': 433, 'max_depth': 22, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5068 | thr=0.480
+        params:{'n_estimators': 495, 'max_depth': 25, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5539 | thr=0.607
+        params:{'n_estimators': 528, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4039 | thr=0.473
+        params:{'n_estimators': 257, 'max_depth': 22, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4870 | thr=0.462
+        params:{'n_estimators': 524, 'max_depth': 9, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4260 | thr=0.866
+        params:{'n_estimators': 508, 'max_depth': 24, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4078 | thr=0.514
+        params:{'n_estimators': 362, 'max_depth': 22, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.5449 | thr=0.714
+        params:{'n_estimators': 400, 'max_depth': 16, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4099 | thr=0.502
+        params:{'n_estimators': 166, 'max_depth': 8, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3,
+ 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.6103 | thr=0.897
+        params:{'n_estimators': 347, 'max_depth': 21, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5346 | thr=0.615
+        params:{'n_estimators': 534, 'max_depth': 19, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.5385 | thr=0.758
+        params:{'n_estimators': 408, 'max_depth': 20, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4032 | thr=0.129
+        params:{'n_estimators': 190, 'max_depth': 18, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.5262 | thr=0.678
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqr
+t', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.6254 | thr=0.925
+        params:{'n_estimators': 592, 'max_depth': 10, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4986 | thr=0.857
+        params:{'n_estimators': 596, 'max_depth': 26, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.4032 | thr=0.091
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5952 | thr=0.904
+        params:{'n_estimators': 562, 'max_depth': 12, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4222 | thr=0.610
+        params:{'n_estimators': 206, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.4032 | thr=0.283
+        params:{'n_estimators': 598, 'max_depth': 21, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4078 | thr=0.417
+        params:{'n_estimators': 338, 'max_depth': 25, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4079 | thr=0.319
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log
+2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.6149 | thr=0.926
+        params:{'n_estimators': 497, 'max_depth': 23, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.
+5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.4032 | thr=0.149
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5756 | thr=0.943
+        params:{'n_estimators': 572, 'max_depth': 8, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log
+2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.5511 | thr=0.907
+        params:{'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4112 | thr=0.332
+        params:{'n_estimators': 257, 'max_depth': 12, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.5383 | thr=0.793
+        params:{'n_estimators': 423, 'max_depth': 14, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.4887 | thr=0.774
+        params:{'n_estimators': 304, 'max_depth': 7, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqr
+t', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.5718 | thr=0.930
+        params:{'n_estimators': 314, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.4032 | thr=0.146
+        params:{'n_estimators': 355, 'max_depth': 11, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4545 | thr=0.855
+        params:{'n_estimators': 268, 'max_depth': 24, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.5209 | thr=0.693
+        params:{'n_estimators': 505, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.4032 | thr=0.118
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3,
+ 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.5386 | thr=0.959
+        params:{'n_estimators': 207, 'max_depth': 16, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.4085 | thr=0.585
+        params:{'n_estimators': 474, 'max_depth': 12, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.5071 | thr=0.832
+        params:{'n_estimators': 396, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'log
+2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.5749 | thr=0.778
+        params:{'n_estimators': 158, 'max_depth': 23, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.4191 | thr=0.346
+        params:{'n_estimators': 448, 'max_depth': 15, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.5089 | thr=0.768
+           fp    n  dias_cubiertos  fp_por_dia
+Patient
+aaaaabbn  284  607           0.014   20212.191
+aaaaadeu  291  653           0.015   19251.455
+aaaaaarq  167  613           0.014   11769.005
+[INFO] Umbral (F1, validación, ventana): 0.9253 | F1(val)=0.6254
+[INFO] Best configuration found with validation: {'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samp
+les_leaf': 4, 'max_features': 'sqrt', 'sampling_strategy': 0.5} | F1(val)=0.6254
+Final report -------------------------
+                     precision    recall  f1-score   support
+
+no_rf_muscle_w5s2_6       0.97      0.56      0.71      1673
+   rf_muscle_w5s2_6       0.19      0.88      0.31       200
+
+           accuracy                           0.59      1873
+          macro avg       0.58      0.72      0.51      1873
+       weighted avg       0.89      0.59      0.67      1873
+
+Confusion matrix -------------------------
+[[931 742]
+ [ 24 176]]
+General metrics -------------------------
+model                 rf_muscle_w5s2_6
+sensitivity                       0.88
+specificity                     0.5565
+precision                       0.1917
+accuracy                         0.591
+f1_score                        0.3148
+auc_roc                         0.7994
+false_alarm_rate                0.4435
+fp_per_day                    17113.93
+covered_test_days               0.0434
+TP                                 176
+FP                                 742
+TN                                 931
+FN                                  24
+n_test_windows                    1873
+covered_test_hours                1.04
+threshold                       0.9253
+AP                              0.2774
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/rf_muscle_w5s2_6_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/rf_muscle_w5s2_6_and_analysis_random.jobli
+b
+
+==================================================
+ARTIFACT: non_physiological
+
+==================================================
+**************************************************
+>> non_physiological | patients:213 | windows: 1s (1s stride)
+
+************************************************************
+Generating windows...
+[NOTICE] windows_w1_s1_ua0.3_ub0.1_urTrue_dcd979_L6.parquet not found in current annotations
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  eye  muscle  non_phys
+iological is_ambiguous  sample_weight  distinguish  genuine_cooccurrence weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                      1       1      0    1             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+1  aaaaaaju    s005    t000  01_tcp_ar                      1       1      1    2             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+2  aaaaaaju    s005    t000  01_tcp_ar                      1       1      2    3             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+3  aaaaaaju    s005    t000  01_tcp_ar                      1       1      3    4             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+4  aaaaaaju    s005    t000  01_tcp_ar                      1       1      4    5             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 359626 -> sin ambiguas: 354592 | positivas: 50155
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO]: Split for non_physiological|w1|s1|ua0.3|p213|v6 not found
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w1_s1_sw0.0_ua0.3
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w1_s1_sw0.3_ua0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w1_s1_sw0.5_ua0.3
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w1_s1_sw0.7_ua0.3
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w1_s1_sw1.0_ua0.3
+
+************************************************************
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.0             0.1472      0.1437    0.1271       0.0202     0.6889   0.1670    0.1441    0.0170          0.0371
+0.3             0.1662      0.1342    0.1553       0.0320     0.7263   0.1403    0.1333    0.0263          0.0583
+0.7             0.1688      0.1344    0.1491       0.0344     0.7125   0.1461    0.1414    0.0125          0.0469
+0.5             0.1519      0.1338    0.1715       0.0377     0.7212   0.1344    0.1444    0.0212          0.0589
+1.0             0.1277      0.1359    0.1817       0.0540     0.7021   0.1481    0.1497    0.0021          0.0561
+[INFO] Best suggested size weight for non_physiological: 0.0
+[INFO] sw registrado: non_physiological|w1|s1|ua0.3|p213|v6 = 0.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w1_s1_sw0.0_ua0.3 parquet
+and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51097        7523       43574       0.147230
+train   244287       35109      209178       0.143720
+val      59208        7523       51685       0.127061
+Broken rules: 0 | splits per patient: {'train': 136, 'val': 44, 'test': 33}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  muscle  non_physiolog
+ical  is_ambiguous sample_weight  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                      1       1      0    1             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                      1       1      1    2             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                      1       1      2    3             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                      1       1      3    4             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                      1       1      4    5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                      1       1      5    6             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                      1       1      6    7             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                      1       1      7    8             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                      1       1      8    9             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                      1       1      9   10             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[NOTICE] featured_non_physiological_w1_s1_bipFalse_icaTrue_23961c_v6.parquet no coincide: 284 keys faltantes en cache
+{('aaaaaimu', 's008', 't002'), ('aaaaanvw', 's001', 't000'), ('aaaaapcu', 's001', 't000'), ('aaaaaguk', 's002', 't001'),
+ ('aaaaaiat', 's003', 't000'), ('aaaaamzv', 's001', 't000'), ('aaaaanwc', 's001', 't001'), ('aaaaajqh', 's004', 't000'),
+ ('aaaaamrj', 's001', 't000'), ('aaaaanoz', 's001', 't000'), ('aaaaakbz', 's002', 't000'), ('aaaaajoa', 's001', 't001'),
+ ('aaaaapkx', 's001', 't001'), ('aaaaamyy', 's001', 't001'), ('aaaaaike', 's001', 't001'), ('aaaaapas', 's001', 't001'),
+ ('aaaaaogd', 's008', 't004'), ('aaaaagxr', 's017', 't000'), ('aaaaankf', 's001', 't000'), ('aaaaajrj', 's003', 't012'),
+ ('aaaaanzu', 's001', 't003'), ('aaaaanzh', 's001', 't000'), ('aaaaaijh', 's002', 't000'), ('aaaaanyw', 's002', 't000'),
+ ('aaaaamyc', 's004', 't006'), ('aaaaanvg', 's001', 't002'), ('aaaaaohr', 's002', 't001'), ('aaaaakeq', 's001', 't000'),
+ ('aaaaajam', 's001', 't000'), ('aaaaajys', 's001', 't001'), ('aaaaajqo', 's008', 't001'), ('aaaaaiyu', 's001', 't000'),
+ ('aaaaaprj', 's001', 't000'), ('aaaaalco', 's002', 't000'), ('aaaaamzl', 's001', 't000'), ('aaaaatjz', 's001', 't000'),
+ ('aaaaanlp', 's001', 't000'), ('aaaaapcr', 's006', 't000'), ('aaaaamdu', 's014', 't001'), ('aaaaajrj', 's006', 't007'),
+ ('aaaaamob', 's002', 't007'), ('aaaaajrj', 's006', 't006'), ('aaaaamyc', 's006', 't000'), ('aaaaanrc', 's004', 't008'),
+ ('aaaaamhb', 's013', 't001'), ('aaaaaofj', 's001', 't000'), ('aaaaajrj', 's005', 't007'), ('aaaaamhb', 's010', 't005'),
+ ('aaaaagsc', 's003', 't001'), ('aaaaaluz', 's001', 't001'), ('aaaaalxk', 's001', 't000'), ('aaaaansj', 's001', 't000'),
+ ('aaaaampz', 's001', 't000'), ('aaaaalqa', 's001', 't000'), ('aaaaajoe', 's001', 't001'), ('aaaaamon', 's001', 't000'),
+ ('aaaaaovo', 's001', 't000'), ('aaaaapcr', 's006', 't004'), ('aaaaaovl', 's001', 't000'), ('aaaaallc', 's001', 't001'),
+ ('aaaaagqb', 's003', 't002'), ('aaaaanum', 's001', 't000'), ('aaaaaowf', 's001', 't000'), ('aaaaaezn', 's003', 't001'),
+ ('aaaaanxl', 's001', 't000'), ('aaaaaicc', 's004', 't000'), ('aaaaapks', 's008', 't000'), ('aaaaamhb', 's006', 't001'),
+ ('aaaaaiue', 's004', 't000'), ('aaaaamtj', 's001', 't000'), ('aaaaalvw', 's001', 't000'), ('aaaaaosh', 's001', 't000'),
+ ('aaaaajzm', 's004', 't000'), ('aaaaaezj', 's007', 't002'), ('aaaaajqb', 's001', 't000'), ('aaaaanhb', 's001', 't003'),
+ ('aaaaakfq', 's001', 't001'), ('aaaaaogk', 's001', 't002'), ('aaaaakcv', 's001', 't001'), ('aaaaanrc', 's004', 't001'),
+ ('aaaaajuh', 's001', 't000'), ('aaaaaogd', 's008', 't005'), ('aaaaahuy', 's002', 't000'), ('aaaaaohw', 's003', 't000'),
+ ('aaaaadao', 's001', 't004'), ('aaaaaiae', 's001', 't000'), ('aaaaalfj', 's006', 't008'), ('aaaaaimu', 's008', 't000'),
+ ('aaaaakft', 's001', 't000'), ('aaaaanyt', 's002', 't000'), ('aaaaajrf', 's003', 't002'), ('aaaaadjk', 's002', 't000'),
+ ('aaaaaoiv', 's001', 't000'), ('aaaaamqc', 's001', 't000'), ('aaaaafcf', 's006', 't002'), ('aaaaapnl', 's008', 't004'),
+ ('aaaaappv', 's002', 't000'), ('aaaaamxn', 's001', 't000'), ('aaaaaons', 's002', 't002'), ('aaaaakbz', 's001', 't000'),
+ ('aaaaajqu', 's013', 't016'), ('aaaaajns', 's007', 't001'), ('aaaaadao', 's001', 't003'), ('aaaaabms', 's001', 't001'),
+ ('aaaaalth', 's002', 't001'), ('aaaaaoxr', 's004', 't002'), ('aaaaaosa', 's008', 't007'), ('aaaaadsm', 's002', 't001'),
+ ('aaaaafsb', 's001', 't000'), ('aaaaajrj', 's004', 't004'), ('aaaaagcs', 's002', 't000'), ('aaaaanbq', 's001', 't000'),
+ ('aaaaajoo', 's002', 't001'), ('aaaaanhb', 's003', 't001'), ('aaaaajrj', 's004', 't008'), ('aaaaaobl', 's001', 't000'),
+ ('aaaaajqu', 's013', 't012'), ('aaaaajrf', 's001', 't000'), ('aaaaakdj', 's001', 't000'), ('aaaaanyb', 's001', 't001'),
+ ('aaaaamcr', 's003', 't001'), ('aaaaanro', 's001', 't000'), ('aaaaajqk', 's003', 't001'), ('aaaaadmi', 's012', 't005'),
+ ('aaaaanrc', 's004', 't007'), ('aaaaajqo', 's028', 't000'), ('aaaaalzg', 's006', 't001'), ('aaaaapas', 's003', 't002'),
+ ('aaaaapks', 's002', 't003'), ('aaaaakgp', 's001', 't001'), ('aaaaapas', 's004', 't001'), ('aaaaajns', 's002', 't000'),
+ ('aaaaapmb', 's002', 't001'), ('aaaaanhb', 's005', 't000'), ('aaaaamhj', 's004', 't005'), ('aaaaanvb', 's002', 't000'),
+ ('aaaaakxz', 's001', 't001'), ('aaaaanpr', 's001', 't002'), ('aaaaapxk', 's001', 't000'), ('aaaaapks', 's009', 't000'),
+ ('aaaaamyc', 's005', 't003'), ('aaaaajns', 's001', 't001'), ('aaaaaogd', 's010', 't000'), ('aaaaaloy', 's012', 't002'),
+ ('aaaaalid', 's001', 't001'), ('aaaaaoav', 's001', 't000'), ('aaaaakev', 's001', 't001'), ('aaaaamcr', 's003', 't002'),
+ ('aaaaajtu', 's001', 't000'), ('aaaaaogk', 's001', 't001'), ('aaaaaouk', 's008', 't002'), ('aaaaanqe', 's001', 't000'),
+ ('aaaaaltw', 's001', 't001'), ('aaaaaels', 's006', 't006'), ('aaaaamob', 's001', 't000'), ('aaaaamsc', 's001', 't000'),
+ ('aaaaamzf', 's001', 't001'), ('aaaaaprj', 's002', 't000'), ('aaaaammu', 's001', 't001'), ('aaaaakdo', 's001', 't000'),
+ ('aaaaafwz', 's001', 't001'), ('aaaaanxz', 's001', 't000'), ('aaaaapas', 's005', 't000'), ('aaaaapqh', 's004', 't000'),
+ ('aaaaalmh', 's001', 't000'), ('aaaaalnt', 's001', 't001'), ('aaaaalqs', 's001', 't001'), ('aaaaamzi', 's001', 't001'),
+ ('aaaaakbz', 's005', 't000'), ('aaaaajns', 's003', 't000'), ('aaaaankc', 's004', 't001'), ('aaaaajrj', 's004', 't005'),
+ ('aaaaanyf', 's001', 't001'), ('aaaaabnn', 's002', 't002'), ('aaaaappv', 's002', 't005'), ('aaaaamyb', 's001', 't001'),
+ ('aaaaanyw', 's001', 't000'), ('aaaaamhb', 's001', 't001'), ('aaaaakcy', 's005', 't001'), ('aaaaanrc', 's002', 't002'),
+ ('aaaaajso', 's001', 't000'), ('aaaaanbp', 's001', 't001'), ('aaaaaphs', 's001', 't000'), ('aaaaaibx', 's001', 't000'),
+ ('aaaaaenq', 's004', 't000'), ('aaaaahzs', 's001', 't001'), ('aaaaajah', 's002', 't001'), ('aaaaakeq', 's002', 't000'),
+ ('aaaaaeab', 's003', 't000'), ('aaaaaksu', 's001', 't001'), ('aaaaaora', 's002', 't000'), ('aaaaaout', 's001', 't000'),
+ ('aaaaahte', 's002', 't000'), ('aaaaafcf', 's006', 't009'), ('aaaaafcf', 's006', 't004'), ('aaaaadmi', 's014', 't008'),
+ ('aaaaamhb', 's006', 't004'), ('aaaaafhl', 's003', 't000'), ('aaaaapex', 's001', 't000'), ('aaaaakqr', 's001', 't000'),
+ ('aaaaajrf', 's004', 't000'), ('aaaaapas', 's003', 't001'), ('aaaaakcx', 's001', 't001'), ('aaaaakka', 's001', 't001'),
+ ('aaaaalzg', 's007', 't000'), ('aaaaanbp', 's001', 't002'), ('aaaaanrc', 's004', 't009'), ('aaaaanrc', 's004', 't004'),
+ ('aaaaaoxr', 's004', 't004'), ('aaaaaoda', 's001', 't000'), ('aaaaaelb', 's003', 't000'), ('aaaaapas', 's003', 't000'),
+ ('aaaaakeq', 's003', 't000'), ('aaaaalbt', 's002', 't000'), ('aaaaaovn', 's002', 't005'), ('aaaaajfk', 's002', 't001'),
+ ('aaaaagvx', 's003', 't001'), ('aaaaanyc', 's005', 't006'), ('aaaaamdq', 's001', 't000'), ('aaaaaoby', 's001', 't000'),
+ ('aaaaaktz', 's001', 't000'), ('aaaaaimu', 's003', 't000'), ('aaaaahte', 's003', 't000'), ('aaaaapar', 's001', 't000'),
+ ('aaaaalbt', 's001', 't001'), ('aaaaaksb', 's001', 't000'), ('aaaaanrc', 's004', 't006'), ('aaaaaobi', 's001', 't000'),
+ ('aaaaappv', 's002', 't003'), ('aaaaappv', 's001', 't001'), ('aaaaalox', 's001', 't001'), ('aaaaadmi', 's013', 't013'),
+ ('aaaaanrc', 's005', 't000'), ('aaaaaomy', 's001', 't000'), ('aaaaapkv', 's001', 't000'), ('aaaaalzg', 's006', 't000'),
+ ('aaaaapmp', 's001', 't000'), ('aaaaapre', 's001', 't002'), ('aaaaajrf', 's002', 't000'), ('aaaaafdh', 's004', 't001'),
+ ('aaaaaiby', 's001', 't000'), ('aaaaajqo', 's020', 't001'), ('aaaaanwj', 's002', 't000'), ('aaaaamoa', 's001', 't000'),
+ ('aaaaabnn', 's002', 't001'), ('aaaaaouk', 's001', 't000'), ('aaaaamcr', 's003', 't004'), ('aaaaakqg', 's001', 't001'),
+ ('aaaaamnq', 's001', 't000'), ('aaaaaljj', 's001', 't000'), ('aaaaahzm', 's001', 't001'), ('aaaaalaf', 's001', 't000'),
+ ('aaaaalth', 's003', 't000'), ('aaaaakck', 's001', 't001'), ('aaaaamyc', 's004', 't001'), ('aaaaamhb', 's012', 't006'),
+ ('aaaaajah', 's004', 't000'), ('aaaaamuc', 's001', 't000'), ('aaaaakxo', 's001', 't000'), ('aaaaamhb', 's006', 't005'),
+ ('aaaaaoav', 's002', 't000'), ('aaaaanta', 's001', 't000'), ('aaaaajjb', 's001', 't001'), ('aaaaagqb', 's001', 't000'),
+ ('aaaaaizu', 's001', 't001'), ('aaaaadmi', 's014', 't002'), ('aaaaangp', 's001', 't000'), ('aaaaakmg', 's001', 't000'),
+ ('aaaaajqo', 's033', 't000'), ('aaaaanji', 's001', 't000'), ('aaaaagsc', 's006', 't001'), ('aaaaanrc', 's001', 't001'),
+ ('aaaaajpf', 's001', 't000'), ('aaaaaozv', 's002', 't000'), ('aaaaamcr', 's003', 't010'), ('aaaaanrc', 's004', 't005'),
+ ('aaaaalfj', 's006', 't006'), ('aaaaafwz', 's001', 't000'), ('aaaaambs', 's010', 't006'), ('aaaaagqb', 's002', 't001'),
+ ('aaaaabnn', 's002', 't004'), ('aaaaaoeg', 's001', 't000'), ('aaaaalsq', 's001', 't000'), ('aaaaajns', 's005', 't001')}
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_mus
+cle  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiolog
+ical
+0          0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+1          1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+2          2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+3          3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+4          4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+5          5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+6          6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+7          7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+8          8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+9          9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+10        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+11        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+12         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+13         1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+14         2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+15         3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+16         4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+17         5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+18         6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+19         7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+20         8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+21         9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+22        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+23        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+24         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_non_
+physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean               0.687186                0.020910  ...
+           []                    []                       []                                  []            0
+1         1    eye blink                eye               0.007280                0.010427  ...
+           []                    []                       []                                  []            0
+2         2        brain              clean               0.994398                0.000273  ...
+           []                    []                       []                                  []            0
+3         3        other  non_physiological               0.253165                0.001824  ...
+           []                    []                       []                                  []            0
+4         4        brain              clean               0.999643                0.000023  ...
+           []                    []                       []                                  []            0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye'
+, 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_m
+ean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic
+_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_po
+wer', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy',
+ 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_
+energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'i
+c_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'i
+c_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic
+_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', '
+tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrenc
+e', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_
+non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positiv
+e']
+[INFO] Positive count:
+is_positive
+ 0    270392
+-1      7456
+ 1      6631
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    220784
+val       32902
+test      30793
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - non_physiological
+
+============================================================
+Modelo: rf_non_physiological_w1s1_6
+Train: 214147 (pos=5962) | Val: 32123 (pos = 560) | Test: 30793 (pos=109)
+        params:{'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1881 | thr=0.144
+        params:{'n_estimators': 344, 'max_depth': 30, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1873 | thr=0.159
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log
+2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1888 | thr=0.635
+        params:{'n_estimators': 481, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1872 | thr=0.064
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1874 | thr=0.298
+        params:{'n_estimators': 375, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1876 | thr=0.181
+        params:{'n_estimators': 501, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1878 | thr=0.137
+        params:{'n_estimators': 395, 'max_depth': 18, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1879 | thr=0.160
+        params:{'n_estimators': 191, 'max_depth': 21, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1874 | thr=0.130
+        params:{'n_estimators': 536, 'max_depth': 29, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1866 | thr=0.066
+        params:{'n_estimators': 224, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1876 | thr=0.119
+        params:{'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1876 | thr=0.110
+        params:{'n_estimators': 455, 'max_depth': 28, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1888 | thr=0.190
+        params:{'n_estimators': 313, 'max_depth': 19, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1879 | thr=0.120
+        params:{'n_estimators': 395, 'max_depth': 9, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1879 | thr=0.367
+        params:{'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1901 | thr=0.395
+        params:{'n_estimators': 334, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1883 | thr=0.262
+        params:{'n_estimators': 184, 'max_depth': 19, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1893 | thr=0.256
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1875 | thr=0.301
+        params:{'n_estimators': 298, 'max_depth': 11, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1882 | thr=0.118
+        params:{'n_estimators': 573, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1875 | thr=0.255
+        params:{'n_estimators': 433, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1872 | thr=0.127
+        params:{'n_estimators': 495, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1883 | thr=0.166
+        params:{'n_estimators': 528, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1879 | thr=0.243
+        params:{'n_estimators': 257, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1877 | thr=0.051
+        params:{'n_estimators': 524, 'max_depth': 10, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1888 | thr=0.516
+        params:{'n_estimators': 508, 'max_depth': 28, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1876 | thr=0.115
+        params:{'n_estimators': 362, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1877 | thr=0.106
+        params:{'n_estimators': 400, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1879 | thr=0.218
+        params:{'n_estimators': 166, 'max_depth': 9, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3,
+ 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1876 | thr=0.228
+        params:{'n_estimators': 347, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1876 | thr=0.122
+        params:{'n_estimators': 534, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1882 | thr=0.247
+        params:{'n_estimators': 408, 'max_depth': 24, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1870 | thr=0.236
+        params:{'n_estimators': 190, 'max_depth': 21, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1873 | thr=0.186
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqr
+t', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1880 | thr=0.737
+        params:{'n_estimators': 592, 'max_depth': 11, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1884 | thr=0.521
+        params:{'n_estimators': 596, 'max_depth': 30, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1878 | thr=0.159
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1879 | thr=0.442
+        params:{'n_estimators': 562, 'max_depth': 13, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1877 | thr=0.245
+        params:{'n_estimators': 206, 'max_depth': 21, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1879 | thr=0.382
+        params:{'n_estimators': 598, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1875 | thr=0.179
+        params:{'n_estimators': 338, 'max_depth': 29, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1880 | thr=0.145
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log
+2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1882 | thr=0.625
+        params:{'n_estimators': 497, 'max_depth': 26, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.
+5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1875 | thr=0.213
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1878 | thr=0.261
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log
+2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1890 | thr=0.710
+        params:{'n_estimators': 373, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1875 | thr=0.063
+        params:{'n_estimators': 257, 'max_depth': 14, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1880 | thr=0.183
+        params:{'n_estimators': 423, 'max_depth': 15, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1883 | thr=0.350
+        params:{'n_estimators': 304, 'max_depth': 8, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqr
+t', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1884 | thr=0.792
+        params:{'n_estimators': 314, 'max_depth': 32, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1870 | thr=0.092
+        params:{'n_estimators': 355, 'max_depth': 12, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1880 | thr=0.121
+        params:{'n_estimators': 268, 'max_depth': 28, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1872 | thr=0.099
+        params:{'n_estimators': 505, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1877 | thr=0.287
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3,
+ 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1883 | thr=0.805
+        params:{'n_estimators': 207, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1883 | thr=0.284
+        params:{'n_estimators': 474, 'max_depth': 14, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1878 | thr=0.384
+        params:{'n_estimators': 396, 'max_depth': 10, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1880 | thr=0.180
+        params:{'n_estimators': 158, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1875 | thr=0.163
+        params:{'n_estimators': 448, 'max_depth': 17, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1880 | thr=0.173
+           fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaaarq  331  1232           0.014   23212.987
+aaaaabsk  237  1421           0.016   14410.134
+[INFO] Umbral (F1, validación, ventana): 0.3952 | F1(val)=0.1901
+[INFO] Best configuration found with validation: {'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_sam
+ples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.3} | F1(val)=0.1901
+Final report -------------------------
+                                precision    recall  f1-score   support
+
+no_rf_non_physiological_w1s1_6       1.00      0.78      0.88      2588
+   rf_non_physiological_w1s1_6       0.10      1.00      0.19        65
+
+                      accuracy                           0.79      2653
+                     macro avg       0.55      0.89      0.53      2653
+                  weighted avg       0.98      0.79      0.86      2653
+
+Confusion matrix -------------------------
+[[2020  568]
+ [   0   65]]
+General metrics -------------------------
+model                 rf_non_physiological_w1s1_6
+sensitivity                                   1.0
+specificity                                0.7805
+precision                                  0.1027
+accuracy                                   0.7859
+f1_score                                   0.1862
+auc_roc                                    0.9479
+false_alarm_rate                           0.2195
+fp_per_day                                18498.0
+covered_test_days                          0.0307
+TP                                             65
+FP                                            568
+TN                                           2020
+FN                                              0
+n_test_windows                               2653
+covered_test_hours                           0.74
+threshold                                  0.3952
+AP                                         0.1798
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w1s1_6_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w1s1_6_and_analysis_r
+andom.joblib
+**************************************************
+>> non_physiological | patients:213 | windows: 2s (1s stride)
+
+************************************************************
+Generating windows...
+[NOTICE] windows_w2_s1_ua0.3_ub0.1_urTrue_dcd979_L6.parquet not found in current annotations
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  eye  muscle  non_phys
+iological is_ambiguous  sample_weight  distinguish  genuine_cooccurrence weak_overlap is_unreviewed  is_excluded
+0  aaaaaaju    s005    t000  01_tcp_ar                      2       1      0    2             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+1  aaaaaaju    s005    t000  01_tcp_ar                      2       1      1    3             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+2  aaaaaaju    s005    t000  01_tcp_ar                      2       1      2    4             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+3  aaaaaaju    s005    t000  01_tcp_ar                      2       1      3    5             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+4  aaaaaaju    s005    t000  01_tcp_ar                      2       1      4    6             ...    0       0
+        0            0            1.0            0                     0            0             0            0
+
+[5 rows x 36 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded']
+Ventanas: 359316 -> sin ambiguas: 350838 | positivas: 51351
+['Patient', 'Session', 'Section', 'Start', 'non_physiological']
+[INFO]: Split for non_physiological|w2|s1|ua0.3|p213|v6 not found
+
+************************************************************
+Size weight: 0.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w2_s1_sw0.0_ua0.3
+Size weight: 0.3
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w2_s1_sw0.3_ua0.3
+Size weight: 0.5
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w2_s1_sw0.5_ua0.3
+Size weight: 0.7
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w2_s1_sw0.7_ua0.3
+Size weight: 1.0
+[INFO] Existing split metadata does not match current configuration.
+[INFO] Computing and saving new split...
+[INFO] Saved new split to split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w2_s1_sw1.0_ua0.3
+
+************************************************************
+
+[INFO] Sweep size weight results for non_physiological:
+             test_rate  train_rate  val_rate  rate_spread  train_pct  val_pct  test_pct  size_dev  combined_score
+size_weight
+0.3             0.1652      0.1380    0.1730       0.0350     0.7299   0.1327    0.1375    0.0299          0.0648
+0.7             0.1733      0.1381    0.1608       0.0352     0.7135   0.1444    0.1421    0.0135          0.0487
+0.5             0.1763      0.1373    0.1638       0.0390     0.7234   0.1408    0.1358    0.0234          0.0624
+1.0             0.1445      0.1398    0.1791       0.0393     0.7032   0.1492    0.1476    0.0032          0.0425
+0.0             0.1685      0.1518    0.1127       0.0559     0.6749   0.1949    0.1303    0.0449          0.1007
+[INFO] Best suggested size weight for non_physiological: 1.0
+[INFO] sw registrado: non_physiological|w2|s1|ua0.3|p213|v6 = 1.0
+[INFO] Loading existing split from split_train70.0_val15.0_test15.0_p213_v6_non_physiological_w2_s1_sw1.0_ua0.3 parquet
+and json
+[DEBUG] Split balance (positive rate):
+        n_total  n_positive  n_negative  positive_rate
+split
+test     51778        7482       44296       0.144502
+train   246719       34496      212223       0.139819
+val      52341        9373       42968       0.179076
+Broken rules: 0 | splits per patient: {'train': 138, 'test': 39, 'val': 36}
+    Patient Session Section    Montage Partition  Window_size  stride  Start  end Raw_labels  ...  muscle  non_physiolog
+ical  is_ambiguous sample_weight  distinguish  genuine_cooccurrence  weak_overlap is_unreviewed is_excluded  split
+0  aaaaaaju    s005    t000  01_tcp_ar                      2       1      0    2             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+1  aaaaaaju    s005    t000  01_tcp_ar                      2       1      1    3             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+2  aaaaaaju    s005    t000  01_tcp_ar                      2       1      2    4             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+3  aaaaaaju    s005    t000  01_tcp_ar                      2       1      3    5             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+4  aaaaaaju    s005    t000  01_tcp_ar                      2       1      4    6             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+5  aaaaaaju    s005    t000  01_tcp_ar                      2       1      5    7             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+6  aaaaaaju    s005    t000  01_tcp_ar                      2       1      6    8             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+7  aaaaaaju    s005    t000  01_tcp_ar                      2       1      7    9             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+8  aaaaaaju    s005    t000  01_tcp_ar                      2       1      8   10             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+9  aaaaaaju    s005    t000  01_tcp_ar                      2       1      9   11             ...       0
+   0             0           1.0            0                     0             0             0           0  train
+
+[10 rows x 37 columns]
+['Patient', 'Session', 'Section', 'Montage', 'Partition', 'Window_size', 'stride', 'Start', 'end', 'Raw_labels', 'N_chan
+nels_annotated', 'No_channels', 'Session_duration', 'EDF_path', 'is_clean', 'is_excluded_unreviewed', 'coverage_eye', 'm
+onopolar_channels_eye', 'bipolar_channels_eye', 'coverage_muscle', 'monopolar_channels_muscle', 'bipolar_channels_muscle
+', 'coverage_non_physiological', 'monopolar_channels_non_physiological', 'bipolar_channels_non_physiological', 'is_clean
+_window', 'eye', 'muscle', 'non_physiological', 'is_ambiguous', 'sample_weight', 'distinguish', 'genuine_cooccurrence',
+'weak_overlap', 'is_unreviewed', 'is_excluded', 'split']
+
+Starting features extraction from channels and ICA components...
+[NOTICE] featured_non_physiological_w2_s1_bipFalse_icaTrue_23961c_v6.parquet no coincide: 284 keys faltantes en cache
+{('aaaaaimu', 's008', 't002'), ('aaaaanvw', 's001', 't000'), ('aaaaapcu', 's001', 't000'), ('aaaaaguk', 's002', 't001'),
+ ('aaaaaiat', 's003', 't000'), ('aaaaamzv', 's001', 't000'), ('aaaaanwc', 's001', 't001'), ('aaaaajqh', 's004', 't000'),
+ ('aaaaamrj', 's001', 't000'), ('aaaaanoz', 's001', 't000'), ('aaaaakbz', 's002', 't000'), ('aaaaajoa', 's001', 't001'),
+ ('aaaaapkx', 's001', 't001'), ('aaaaamyy', 's001', 't001'), ('aaaaaike', 's001', 't001'), ('aaaaapas', 's001', 't001'),
+ ('aaaaaogd', 's008', 't004'), ('aaaaagxr', 's017', 't000'), ('aaaaankf', 's001', 't000'), ('aaaaajrj', 's003', 't012'),
+ ('aaaaanzu', 's001', 't003'), ('aaaaanzh', 's001', 't000'), ('aaaaaijh', 's002', 't000'), ('aaaaanyw', 's002', 't000'),
+ ('aaaaamyc', 's004', 't006'), ('aaaaanvg', 's001', 't002'), ('aaaaaohr', 's002', 't001'), ('aaaaakeq', 's001', 't000'),
+ ('aaaaajam', 's001', 't000'), ('aaaaajys', 's001', 't001'), ('aaaaajqo', 's008', 't001'), ('aaaaaiyu', 's001', 't000'),
+ ('aaaaaprj', 's001', 't000'), ('aaaaalco', 's002', 't000'), ('aaaaamzl', 's001', 't000'), ('aaaaatjz', 's001', 't000'),
+ ('aaaaanlp', 's001', 't000'), ('aaaaapcr', 's006', 't000'), ('aaaaamdu', 's014', 't001'), ('aaaaajrj', 's006', 't007'),
+ ('aaaaamob', 's002', 't007'), ('aaaaajrj', 's006', 't006'), ('aaaaamyc', 's006', 't000'), ('aaaaanrc', 's004', 't008'),
+ ('aaaaamhb', 's013', 't001'), ('aaaaaofj', 's001', 't000'), ('aaaaajrj', 's005', 't007'), ('aaaaamhb', 's010', 't005'),
+ ('aaaaagsc', 's003', 't001'), ('aaaaaluz', 's001', 't001'), ('aaaaalxk', 's001', 't000'), ('aaaaansj', 's001', 't000'),
+ ('aaaaampz', 's001', 't000'), ('aaaaalqa', 's001', 't000'), ('aaaaajoe', 's001', 't001'), ('aaaaamon', 's001', 't000'),
+ ('aaaaaovo', 's001', 't000'), ('aaaaapcr', 's006', 't004'), ('aaaaaovl', 's001', 't000'), ('aaaaallc', 's001', 't001'),
+ ('aaaaagqb', 's003', 't002'), ('aaaaanum', 's001', 't000'), ('aaaaaowf', 's001', 't000'), ('aaaaaezn', 's003', 't001'),
+ ('aaaaanxl', 's001', 't000'), ('aaaaaicc', 's004', 't000'), ('aaaaapks', 's008', 't000'), ('aaaaamhb', 's006', 't001'),
+ ('aaaaaiue', 's004', 't000'), ('aaaaamtj', 's001', 't000'), ('aaaaalvw', 's001', 't000'), ('aaaaaosh', 's001', 't000'),
+ ('aaaaajzm', 's004', 't000'), ('aaaaaezj', 's007', 't002'), ('aaaaajqb', 's001', 't000'), ('aaaaanhb', 's001', 't003'),
+ ('aaaaakfq', 's001', 't001'), ('aaaaaogk', 's001', 't002'), ('aaaaakcv', 's001', 't001'), ('aaaaanrc', 's004', 't001'),
+ ('aaaaajuh', 's001', 't000'), ('aaaaaogd', 's008', 't005'), ('aaaaahuy', 's002', 't000'), ('aaaaaohw', 's003', 't000'),
+ ('aaaaadao', 's001', 't004'), ('aaaaaiae', 's001', 't000'), ('aaaaalfj', 's006', 't008'), ('aaaaaimu', 's008', 't000'),
+ ('aaaaakft', 's001', 't000'), ('aaaaanyt', 's002', 't000'), ('aaaaajrf', 's003', 't002'), ('aaaaadjk', 's002', 't000'),
+ ('aaaaaoiv', 's001', 't000'), ('aaaaamqc', 's001', 't000'), ('aaaaafcf', 's006', 't002'), ('aaaaapnl', 's008', 't004'),
+ ('aaaaappv', 's002', 't000'), ('aaaaamxn', 's001', 't000'), ('aaaaaons', 's002', 't002'), ('aaaaakbz', 's001', 't000'),
+ ('aaaaajqu', 's013', 't016'), ('aaaaajns', 's007', 't001'), ('aaaaadao', 's001', 't003'), ('aaaaabms', 's001', 't001'),
+ ('aaaaalth', 's002', 't001'), ('aaaaaoxr', 's004', 't002'), ('aaaaaosa', 's008', 't007'), ('aaaaadsm', 's002', 't001'),
+ ('aaaaafsb', 's001', 't000'), ('aaaaajrj', 's004', 't004'), ('aaaaagcs', 's002', 't000'), ('aaaaanbq', 's001', 't000'),
+ ('aaaaajoo', 's002', 't001'), ('aaaaanhb', 's003', 't001'), ('aaaaajrj', 's004', 't008'), ('aaaaaobl', 's001', 't000'),
+ ('aaaaajqu', 's013', 't012'), ('aaaaajrf', 's001', 't000'), ('aaaaakdj', 's001', 't000'), ('aaaaanyb', 's001', 't001'),
+ ('aaaaamcr', 's003', 't001'), ('aaaaanro', 's001', 't000'), ('aaaaajqk', 's003', 't001'), ('aaaaadmi', 's012', 't005'),
+ ('aaaaanrc', 's004', 't007'), ('aaaaajqo', 's028', 't000'), ('aaaaalzg', 's006', 't001'), ('aaaaapas', 's003', 't002'),
+ ('aaaaapks', 's002', 't003'), ('aaaaakgp', 's001', 't001'), ('aaaaapas', 's004', 't001'), ('aaaaajns', 's002', 't000'),
+ ('aaaaapmb', 's002', 't001'), ('aaaaanhb', 's005', 't000'), ('aaaaamhj', 's004', 't005'), ('aaaaanvb', 's002', 't000'),
+ ('aaaaakxz', 's001', 't001'), ('aaaaanpr', 's001', 't002'), ('aaaaapxk', 's001', 't000'), ('aaaaapks', 's009', 't000'),
+ ('aaaaamyc', 's005', 't003'), ('aaaaajns', 's001', 't001'), ('aaaaaogd', 's010', 't000'), ('aaaaaloy', 's012', 't002'),
+ ('aaaaalid', 's001', 't001'), ('aaaaaoav', 's001', 't000'), ('aaaaakev', 's001', 't001'), ('aaaaamcr', 's003', 't002'),
+ ('aaaaajtu', 's001', 't000'), ('aaaaaogk', 's001', 't001'), ('aaaaaouk', 's008', 't002'), ('aaaaanqe', 's001', 't000'),
+ ('aaaaaltw', 's001', 't001'), ('aaaaaels', 's006', 't006'), ('aaaaamob', 's001', 't000'), ('aaaaamsc', 's001', 't000'),
+ ('aaaaamzf', 's001', 't001'), ('aaaaaprj', 's002', 't000'), ('aaaaammu', 's001', 't001'), ('aaaaakdo', 's001', 't000'),
+ ('aaaaafwz', 's001', 't001'), ('aaaaanxz', 's001', 't000'), ('aaaaapas', 's005', 't000'), ('aaaaapqh', 's004', 't000'),
+ ('aaaaalmh', 's001', 't000'), ('aaaaalnt', 's001', 't001'), ('aaaaalqs', 's001', 't001'), ('aaaaamzi', 's001', 't001'),
+ ('aaaaakbz', 's005', 't000'), ('aaaaajns', 's003', 't000'), ('aaaaankc', 's004', 't001'), ('aaaaajrj', 's004', 't005'),
+ ('aaaaanyf', 's001', 't001'), ('aaaaabnn', 's002', 't002'), ('aaaaappv', 's002', 't005'), ('aaaaamyb', 's001', 't001'),
+ ('aaaaanyw', 's001', 't000'), ('aaaaamhb', 's001', 't001'), ('aaaaakcy', 's005', 't001'), ('aaaaanrc', 's002', 't002'),
+ ('aaaaajso', 's001', 't000'), ('aaaaanbp', 's001', 't001'), ('aaaaaphs', 's001', 't000'), ('aaaaaibx', 's001', 't000'),
+ ('aaaaaenq', 's004', 't000'), ('aaaaahzs', 's001', 't001'), ('aaaaajah', 's002', 't001'), ('aaaaakeq', 's002', 't000'),
+ ('aaaaaeab', 's003', 't000'), ('aaaaaksu', 's001', 't001'), ('aaaaaora', 's002', 't000'), ('aaaaaout', 's001', 't000'),
+ ('aaaaahte', 's002', 't000'), ('aaaaafcf', 's006', 't009'), ('aaaaafcf', 's006', 't004'), ('aaaaadmi', 's014', 't008'),
+ ('aaaaamhb', 's006', 't004'), ('aaaaafhl', 's003', 't000'), ('aaaaapex', 's001', 't000'), ('aaaaakqr', 's001', 't000'),
+ ('aaaaajrf', 's004', 't000'), ('aaaaapas', 's003', 't001'), ('aaaaakcx', 's001', 't001'), ('aaaaakka', 's001', 't001'),
+ ('aaaaalzg', 's007', 't000'), ('aaaaanbp', 's001', 't002'), ('aaaaanrc', 's004', 't009'), ('aaaaanrc', 's004', 't004'),
+ ('aaaaaoxr', 's004', 't004'), ('aaaaaoda', 's001', 't000'), ('aaaaaelb', 's003', 't000'), ('aaaaapas', 's003', 't000'),
+ ('aaaaakeq', 's003', 't000'), ('aaaaalbt', 's002', 't000'), ('aaaaaovn', 's002', 't005'), ('aaaaajfk', 's002', 't001'),
+ ('aaaaagvx', 's003', 't001'), ('aaaaanyc', 's005', 't006'), ('aaaaamdq', 's001', 't000'), ('aaaaaoby', 's001', 't000'),
+ ('aaaaaktz', 's001', 't000'), ('aaaaaimu', 's003', 't000'), ('aaaaahte', 's003', 't000'), ('aaaaapar', 's001', 't000'),
+ ('aaaaalbt', 's001', 't001'), ('aaaaaksb', 's001', 't000'), ('aaaaanrc', 's004', 't006'), ('aaaaaobi', 's001', 't000'),
+ ('aaaaappv', 's002', 't003'), ('aaaaappv', 's001', 't001'), ('aaaaalox', 's001', 't001'), ('aaaaadmi', 's013', 't013'),
+ ('aaaaanrc', 's005', 't000'), ('aaaaaomy', 's001', 't000'), ('aaaaapkv', 's001', 't000'), ('aaaaalzg', 's006', 't000'),
+ ('aaaaapmp', 's001', 't000'), ('aaaaapre', 's001', 't002'), ('aaaaajrf', 's002', 't000'), ('aaaaafdh', 's004', 't001'),
+ ('aaaaaiby', 's001', 't000'), ('aaaaajqo', 's020', 't001'), ('aaaaanwj', 's002', 't000'), ('aaaaamoa', 's001', 't000'),
+ ('aaaaabnn', 's002', 't001'), ('aaaaaouk', 's001', 't000'), ('aaaaamcr', 's003', 't004'), ('aaaaakqg', 's001', 't001'),
+ ('aaaaamnq', 's001', 't000'), ('aaaaaljj', 's001', 't000'), ('aaaaahzm', 's001', 't001'), ('aaaaalaf', 's001', 't000'),
+ ('aaaaalth', 's003', 't000'), ('aaaaakck', 's001', 't001'), ('aaaaamyc', 's004', 't001'), ('aaaaamhb', 's012', 't006'),
+ ('aaaaajah', 's004', 't000'), ('aaaaamuc', 's001', 't000'), ('aaaaakxo', 's001', 't000'), ('aaaaamhb', 's006', 't005'),
+ ('aaaaaoav', 's002', 't000'), ('aaaaanta', 's001', 't000'), ('aaaaajjb', 's001', 't001'), ('aaaaagqb', 's001', 't000'),
+ ('aaaaaizu', 's001', 't001'), ('aaaaadmi', 's014', 't002'), ('aaaaangp', 's001', 't000'), ('aaaaakmg', 's001', 't000'),
+ ('aaaaajqo', 's033', 't000'), ('aaaaanji', 's001', 't000'), ('aaaaagsc', 's006', 't001'), ('aaaaanrc', 's001', 't001'),
+ ('aaaaajpf', 's001', 't000'), ('aaaaaozv', 's002', 't000'), ('aaaaamcr', 's003', 't010'), ('aaaaanrc', 's004', 't005'),
+ ('aaaaalfj', 's006', 't006'), ('aaaaafwz', 's001', 't000'), ('aaaaambs', 's010', 't006'), ('aaaaagqb', 's002', 't001'),
+ ('aaaaabnn', 's002', 't004'), ('aaaaaoeg', 's001', 't000'), ('aaaaalsq', 's001', 't000'), ('aaaaajns', 's005', 't001')}
+    ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_mus
+cle  monopolar_channels_non_physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiolog
+ical
+0          0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+1          1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+2          2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+3          3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+4          4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+5          5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+6          6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+7          7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+8          8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+9          9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+10        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+11        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+12         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+13         1    eye blink                eye               0.007280                0.010427  ...
+ []                                    []                    []                       []
+  []
+14         2        brain              clean               0.994398                0.000273  ...
+ []                                    []                    []                       []
+  []
+15         3        other  non_physiological               0.253165                0.001824  ...
+ []                                    []                    []                       []
+  []
+16         4        brain              clean               0.999643                0.000023  ...
+ []                                    []                    []                       []
+  []
+17         5        brain              clean               0.993584                0.000250  ...
+ []                                    []                    []                       []
+  []
+18         6        brain              clean               0.999535                0.000017  ...
+ []                                    []                    []                       []
+  []
+19         7        brain              clean               0.978230                0.001602  ...
+ []                                    []                    []                       []
+  []
+20         8    eye blink                eye               0.146505                0.005749  ...
+ []                                    []                    []                       []
+  []
+21         9        brain              clean               0.773097                0.050208  ...
+ []                                    []                    []                       []
+  []
+22        10        brain              clean               0.919012                0.026848  ...
+ []                                    []                    []                       []
+  []
+23        11        brain              clean               0.936563                0.000830  ...
+ []                                    []                    []                       []
+  []
+24         0        brain              clean               0.687186                0.020910  ...
+ []                                    []                    []                       []
+  []
+
+[25 rows x 81 columns]
+[INFO] Successful features extraction
+   ic_index ic_raw_label    ic_target_label  ic_iclabel_prob_brain  ic_iclabel_prob_muscle  ...  monopolar_channels_non_
+physiological  bipolar_channels_eye  bipolar_channels_muscle  bipolar_channels_non_physiological  is_positive
+0         0        brain              clean               0.687186                0.020910  ...
+           []                    []                       []                                  []            0
+1         1    eye blink                eye               0.007280                0.010427  ...
+           []                    []                       []                                  []            0
+2         2        brain              clean               0.994398                0.000273  ...
+           []                    []                       []                                  []            0
+3         3        other  non_physiological               0.253165                0.001824  ...
+           []                    []                       []                                  []            0
+4         4        brain              clean               0.999643                0.000023  ...
+           []                    []                       []                                  []            0
+
+[5 rows x 82 columns]
+['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_muscle', 'ic_iclabel_prob_eye'
+, 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', 'ic_iclabel_prob_other', 'ic_m
+ean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility', 'ic_hjorth_complexity', 'ic
+_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_baseline_shift', 'ic_delta_po
+wer', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high_low', 'ic_spectral_entropy',
+ 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D3', 'ic_dwt_var_D3', 'ic_dwt_
+energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_contrib_F3', 'ic_contrib_C3', 'i
+c_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_contrib_F7', 'ic_contrib_T7', 'i
+c_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_contrib_CZ', 'ic_contrib_O1', 'ic
+_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'split', 'tuar_is_clean_window', '
+tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrenc
+e', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_muscle', 'monopolar_channels_
+non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_non_physiological', 'is_positiv
+e']
+[INFO] Positive count:
+is_positive
+ 0    266694
+-1      7987
+ 1      6933
+Name: count, dtype: int64
+[INFO] Split distribution:  split
+train    218471
+val       32415
+test      30728
+Name: count, dtype: int64
+
+==================================================
+Starting training of Random Forest - non_physiological
+
+============================================================
+Modelo: rf_non_physiological_w2s1_6
+Train: 211348 (pos=6222) | Val: 31606 (pos = 598) | Test: 30728 (pos=113)
+        params:{'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1945 | thr=0.045
+        params:{'n_estimators': 344, 'max_depth': 30, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1945 | thr=0.046
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log
+2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1958 | thr=0.456
+        params:{'n_estimators': 481, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1950 | thr=0.057
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1954 | thr=0.265
+        params:{'n_estimators': 375, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1952 | thr=0.092
+        params:{'n_estimators': 501, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1945 | thr=0.044
+        params:{'n_estimators': 395, 'max_depth': 18, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1952 | thr=0.079
+        params:{'n_estimators': 191, 'max_depth': 21, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1947 | thr=0.108
+        params:{'n_estimators': 536, 'max_depth': 29, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1947 | thr=0.065
+        params:{'n_estimators': 224, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1947 | thr=0.051
+        params:{'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1946 | thr=0.063
+        params:{'n_estimators': 455, 'max_depth': 28, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1945 | thr=0.044
+        params:{'n_estimators': 313, 'max_depth': 19, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1953 | thr=0.082
+        params:{'n_estimators': 395, 'max_depth': 9, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1954 | thr=0.178
+        params:{'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1949 | thr=0.064
+        params:{'n_estimators': 334, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1954 | thr=0.203
+        params:{'n_estimators': 184, 'max_depth': 19, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1952 | thr=0.073
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1952 | thr=0.340
+        params:{'n_estimators': 298, 'max_depth': 11, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1952 | thr=0.098
+        params:{'n_estimators': 573, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1952 | thr=0.126
+        params:{'n_estimators': 433, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1951 | thr=0.063
+        params:{'n_estimators': 495, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1951 | thr=0.058
+        params:{'n_estimators': 528, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1951 | thr=0.078
+        params:{'n_estimators': 257, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1954 | thr=0.064
+        params:{'n_estimators': 524, 'max_depth': 10, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1945 | thr=0.689
+        params:{'n_estimators': 508, 'max_depth': 28, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1947 | thr=0.063
+        params:{'n_estimators': 362, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1951 | thr=0.088
+        params:{'n_estimators': 400, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1952 | thr=0.080
+        params:{'n_estimators': 166, 'max_depth': 9, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3,
+ 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1958 | thr=0.308
+        params:{'n_estimators': 347, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1951 | thr=0.054
+        params:{'n_estimators': 534, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1952 | thr=0.124
+        params:{'n_estimators': 408, 'max_depth': 24, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1945 | thr=0.167
+        params:{'n_estimators': 190, 'max_depth': 21, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1954 | thr=0.117
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqr
+t', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1950 | thr=0.676
+        params:{'n_estimators': 592, 'max_depth': 11, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1957 | thr=0.257
+        params:{'n_estimators': 596, 'max_depth': 30, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1946 | thr=0.020
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1953 | thr=0.462
+        params:{'n_estimators': 562, 'max_depth': 13, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1954 | thr=0.143
+        params:{'n_estimators': 206, 'max_depth': 21, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1958 | thr=0.294
+        params:{'n_estimators': 598, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1951 | thr=0.050
+        params:{'n_estimators': 338, 'max_depth': 29, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1945 | thr=0.036
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log
+2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1958 | thr=0.770
+        params:{'n_estimators': 497, 'max_depth': 26, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.
+5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1960 | thr=0.240
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1948 | thr=0.339
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log
+2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1963 | thr=0.704
+        params:{'n_estimators': 373, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1948 | thr=0.054
+        params:{'n_estimators': 257, 'max_depth': 14, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1952 | thr=0.101
+        params:{'n_estimators': 423, 'max_depth': 15, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1958 | thr=0.240
+        params:{'n_estimators': 304, 'max_depth': 8, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqr
+t', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1958 | thr=0.781
+        params:{'n_estimators': 314, 'max_depth': 32, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1955 | thr=0.122
+        params:{'n_estimators': 355, 'max_depth': 12, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1952 | thr=0.115
+        params:{'n_estimators': 268, 'max_depth': 28, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1951 | thr=0.066
+        params:{'n_estimators': 505, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1954 | thr=0.079
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3,
+ 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1946 | thr=0.575
+        params:{'n_estimators': 207, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.1955 | thr=0.159
+        params:{'n_estimators': 474, 'max_depth': 14, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1954 | thr=0.162
+        params:{'n_estimators': 396, 'max_depth': 10, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.1954 | thr=0.180
+        params:{'n_estimators': 158, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.1949 | thr=0.057
+        params:{'n_estimators': 448, 'max_depth': 17, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.1952 | thr=0.111
+            fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaabsk  1406  1416           0.016   85789.831
+aaaaaarq  1136  1232           0.014   79667.532
+[INFO] Umbral (F1, validación, ventana): 0.7037 | F1(val)=0.1963
+[INFO] Best configuration found with validation: {'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samp
+les_leaf': 5, 'max_features': 'log2', 'sampling_strategy': 1.0} | F1(val)=0.1963
+Final report -------------------------
+                                precision    recall  f1-score   support
+
+no_rf_non_physiological_w2s1_6       1.00      0.01      0.03      2580
+   rf_non_physiological_w2s1_6       0.03      1.00      0.05        68
+
+                      accuracy                           0.04      2648
+                     macro avg       0.51      0.51      0.04      2648
+                  weighted avg       0.97      0.04      0.03      2648
+
+Confusion matrix -------------------------
+[[  38 2542]
+ [   0   68]]
+General metrics -------------------------
+model                 rf_non_physiological_w2s1_6
+sensitivity                                   1.0
+specificity                                0.0147
+precision                                  0.0261
+accuracy                                     0.04
+f1_score                                   0.0508
+auc_roc                                    0.9597
+false_alarm_rate                           0.9853
+fp_per_day                               82941.39
+covered_test_days                          0.0306
+TP                                             68
+FP                                           2542
+TN                                             38
+FN                                              0
+n_test_windows                               2648
+covered_test_hours                           0.74
+threshold                                  0.7037
+AP                                         0.2773
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w2s1_6_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w2s1_6_and_analysis_r
+andom.joblib
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- eye ----------
+                 F1(val)=0.7342
+                 best_params={'n_estimators': 448, 'max_depth': 15, 'min_samples_split': 12, 'min_samples_leaf': 10, 'ma
+x_features': 'log2', 'sampling_strategy': 0.7}
+                 Confusion matrix: [[14262  2320]
+ [ 2318  4532]]
+                 Metrics results: {'model': 'rf_eye_w5s2_6', 'sensitivity': 0.6616, 'specificity': np.float64(0.8601), '
+precision': 0.6614, 'accuracy': 0.8021, 'f1_score': 0.6615, 'auc_roc': 0.8394, 'false_alarm_rate': np.float64(0.1399), '
+fp_per_day': np.float64(4277.23), 'covered_test_days': 0.5424, 'TP': 4532, 'FP': 2320, 'TN': 14262, 'FN': 2318, 'n_test_
+windows': 23432, 'covered_test_hours': 13.02, 'threshold': 0.962, 'AP': 0.7413}
+                 F1(val)=0.3120
+                 best_params={'n_estimators': 373, 'max_depth': 16, 'min_samples_split': 9, 'min_samples_leaf': 6, 'max_
+features': 'sqrt', 'sampling_strategy': 0.3}
+                 Confusion matrix: [[ 736 2758]
+ [   0  322]]
+                 Metrics results: {'model': 'rf_eye_w2s1_6', 'sensitivity': 1.0, 'specificity': np.float64(0.2106), 'pre
+cision': 0.1045, 'accuracy': 0.2773, 'f1_score': 0.1893, 'auc_roc': 0.8595, 'false_alarm_rate': np.float64(0.7894), 'fp_
+per_day': np.float64(62445.28), 'covered_test_days': 0.0442, 'TP': 322, 'FP': 2758, 'TN': 736, 'FN': 0, 'n_test_windows'
+: 3816, 'covered_test_hours': 1.06, 'threshold': 0.1084, 'AP': 0.3967}
+---------- muscle ----------
+                 F1(val)=0.4866
+                 best_params={'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_
+features': 0.5, 'sampling_strategy': 0.3}
+                 Confusion matrix: [[4012 2901]
+ [ 142  305]]
+                 Metrics results: {'model': 'rf_muscle_w1s0.5_6', 'sensitivity': 0.6823, 'specificity': np.float64(0.580
+4), 'precision': 0.0951, 'accuracy': 0.5865, 'f1_score': 0.167, 'auc_roc': 0.7098, 'false_alarm_rate': np.float64(0.4196
+), 'fp_per_day': np.float64(68110.43), 'covered_test_days': 0.0426, 'TP': 305, 'FP': 2901, 'TN': 4012, 'FN': 142, 'n_tes
+t_windows': 7360, 'covered_test_hours': 1.02, 'threshold': 0.9436, 'AP': 0.1286}
+                 F1(val)=0.6254
+                 best_params={'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_f
+eatures': 'sqrt', 'sampling_strategy': 0.5}
+                 Confusion matrix: [[931 742]
+ [ 24 176]]
+                 Metrics results: {'model': 'rf_muscle_w5s2_6', 'sensitivity': 0.88, 'specificity': np.float64(0.5565),
+'precision': 0.1917, 'accuracy': 0.591, 'f1_score': 0.3148, 'auc_roc': 0.7994, 'false_alarm_rate': np.float64(0.4435), '
+fp_per_day': np.float64(17113.93), 'covered_test_days': 0.0434, 'TP': 176, 'FP': 742, 'TN': 931, 'FN': 24, 'n_test_windo
+ws': 1873, 'covered_test_hours': 1.04, 'threshold': 0.9253, 'AP': 0.2774}
+---------- non_physiological ----------
+                 F1(val)=0.1901
+                 best_params={'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_
+features': 0.5, 'sampling_strategy': 0.3}
+                 Confusion matrix: [[2020  568]
+ [   0   65]]
+                 Metrics results: {'model': 'rf_non_physiological_w1s1_6', 'sensitivity': 1.0, 'specificity': np.float64
+(0.7805), 'precision': 0.1027, 'accuracy': 0.7859, 'f1_score': 0.1862, 'auc_roc': 0.9479, 'false_alarm_rate': np.float64
+(0.2195), 'fp_per_day': np.float64(18498.0), 'covered_test_days': 0.0307, 'TP': 65, 'FP': 568, 'TN': 2020, 'FN': 0, 'n_t
+est_windows': 2653, 'covered_test_hours': 0.74, 'threshold': 0.3952, 'AP': 0.1798}
+                 F1(val)=0.1963
+                 best_params={'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_f
+eatures': 'log2', 'sampling_strategy': 1.0}
+                 Confusion matrix: [[  38 2542]
+ [   0   68]]
+                 Metrics results: {'model': 'rf_non_physiological_w2s1_6', 'sensitivity': 1.0, 'specificity': np.float64
+(0.0147), 'precision': 0.0261, 'accuracy': 0.04, 'f1_score': 0.0508, 'auc_roc': 0.9597, 'false_alarm_rate': np.float64(0
+.9853), 'fp_per_day': np.float64(82941.39), 'covered_test_days': 0.0306, 'TP': 68, 'FP': 2542, 'TN': 38, 'FN': 0, 'n_tes
+t_windows': 2648, 'covered_test_hours': 0.74, 'threshold': 0.7037, 'AP': 0.2773}
+root@bcd6ce83ba0a:/workspace/hybrid-ai-epilepsy-diagnosis#
+root@bcd6ce83ba0a:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -p -S -3000 > tmux_ica_machine.txt
+

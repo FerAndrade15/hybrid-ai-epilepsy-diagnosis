@@ -26,7 +26,7 @@ def build_rf_model(balanced=False, **overrides):
         "min_samples_split": 2,
         "max_features": "sqrt",
         "random_state": 42,
-        "n_jobs": -1,
+        "n_jobs": 4,
     }
 
     if balanced:

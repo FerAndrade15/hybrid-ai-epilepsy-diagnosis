@@ -1,0 +1,478 @@
+ _____                             _
+|  __ \                           | |
+| |__) |   _ _ __  _ __   ___   __| |
+|  _  / | | | '_ \| '_ \ / _ \ / _` |
+| | \ \ |_| | | | | |_) | (_) | (_| |
+|_|  \_\__,_|_| |_| .__/ \___/ \__,_|
+                  | |
+                  |_|
+For detailed documentation and guides, please visit:
+https://docs.runpod.io/ and https://blog.runpod.io/
+
+
+root@f2a744d8c910:/workspace/hybrid-ai-epilepsy-diagnosis# cd /workspace/hybrid-ai-epilepsy-diagnosis/
+root@f2a744d8c910:/workspace/hybrid-ai-epilepsy-diagnosis# uv run python -u -m pipelines.artifacts.ica_cnn_rf --no-force
+-retrain --artifacts non_physiological 2>&1 | tee full_cnn_non_phy_final_v2_artifacts.log
+
+Loading all dataset for training...
+  channel  ...                                                CSV
+0  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+1  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+2  FP1-F7  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+3   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+4   F7-T3  ...  /workspace/data/tuh_eeg_artifact/v3.0.1/edf/01...
+
+[5 rows x 14 columns]
+{'train': 67, 'test': 3, 'val': 1}
+
+==================================================
+ARTIFACT: non_physiological
+
+==================================================
+**************************************************
+>> non_physiological | patients:213 | windows: 1s (1s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_non_physiological_w1_s1_
+ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    2969974
+val       729130
+test      611037
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_m
+uscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', '
+ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility'
+, 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_
+baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high
+_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D
+3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_con
+trib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_con
+trib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_cont
+rib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'spli
+t', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiologica
+l', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_
+muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_no
+n_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar
+_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_cha
+nnels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channe
+ls_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - non_physiological
+[INFO] Pretrained model found, loading: /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w1s1_7_an
+d_analysis_random.joblib
+Final report -------------------------
+                                precision    recall  f1-score   support
+
+no_rf_non_physiological_w1s1_7       0.91      0.70      0.79     43574
+   rf_non_physiological_w1s1_7       0.26      0.60      0.36      7523
+
+                      accuracy                           0.69     51097
+                     macro avg       0.58      0.65      0.58     51097
+                  weighted avg       0.81      0.69      0.73     51097
+
+Confusion matrix -------------------------
+[[30534 13040]
+ [ 2988  4535]]
+General metrics -------------------------
+model                    rf_non_physiological_w1s1_7
+sensitivity                                   0.6028
+specificity                                   0.7007
+precision                                      0.258
+accuracy                                      0.6863
+f1_score                                      0.3614
+auc_roc                                       0.7165
+false_alarm_rate                              0.2993
+fp_per_day                                  22049.36
+covered_test_days                             0.5914
+TP                                              4535
+FP                                             13040
+TN                                             30534
+FN                                              2988
+n_test_windows                                 51097
+covered_test_hours                             14.19
+OVLP_Sensitivity                              0.8189
+OVLP_False_Alarms                               4562
+TAES_Score                                    0.6014
+MARGIN_5s_Onset                               0.7483
+MARGIN_5s_Offset                              0.7417
+threshold                                     0.7126
+AP                                            0.3417
+med_win_precision                              0.258
+med_win_recall                                0.6028
+med_win_AP                                    0.3417
+med_n_tp_windows                              4535.0
+med_ch_bip_hit@3                              0.8003
+med_ch_bip_iou                                0.2493
+med_n_tp_with_bip_gt                          4271.0
+med_ch_mono_hit@3                             0.7698
+med_n_tp_with_mono_gt                         4535.0
+med_ch_f1_micro                               0.2164
+med_ch_f1_macro                               0.2279
+med_ch_jaccard                                0.0753
+med_n_win_scored                             50654.0
+med_ch_tau                                      0.75
+**************************************************
+>> non_physiological | patients:213 | windows: 2s (1s stride)
+[INFO] Existing dataset, loading: /workspace/ml-outputs/artifact/dataset/_comparison/rf_dataset_non_physiological_w2_s1_
+ua0.3_p213_v7_pt0.5_it0.2_norm0.parquet
+[INFO] Split distribution:  split
+train    3010830
+val       653187
+test      601410
+Name: count, dtype: int64
+[INFO] Columnas del parquet: ['ic_index', 'ic_raw_label', 'ic_target_label', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_m
+uscle', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_channel_noise', '
+ic_iclabel_prob_other', 'ic_mean', 'ic_variance', 'ic_rms', 'ic_skewness', 'ic_kurtosis', 'ic_zcr', 'ic_hjorth_mobility'
+, 'ic_hjorth_complexity', 'ic_line_length', 'ic_peak_to_peak', 'ic_peak_to_mean', 'ic_peak_position', 'ic_n_peaks', 'ic_
+baseline_shift', 'ic_delta_power', 'ic_theta_power', 'ic_alpha_power', 'ic_beta_power', 'ic_gamma_power', 'ic_ratio_high
+_low', 'ic_spectral_entropy', 'ic_dwt_energy_A4', 'ic_dwt_var_A4', 'ic_dwt_energy_D4', 'ic_dwt_var_D4', 'ic_dwt_energy_D
+3', 'ic_dwt_var_D3', 'ic_dwt_energy_D2', 'ic_dwt_var_D2', 'ic_dwt_energy_D1', 'ic_dwt_var_D1', 'ic_contrib_FP1', 'ic_con
+trib_F3', 'ic_contrib_C3', 'ic_contrib_P3', 'ic_contrib_FP2', 'ic_contrib_F4', 'ic_contrib_C4', 'ic_contrib_P4', 'ic_con
+trib_F7', 'ic_contrib_T7', 'ic_contrib_P7', 'ic_contrib_F8', 'ic_contrib_T8', 'ic_contrib_P8', 'ic_contrib_FZ', 'ic_cont
+rib_CZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_PZ', 'Patient', 'Session', 'Section', 'Partition', 'Start', 'spli
+t', 'tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar_muscle', 'tuar_non_physiologica
+l', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_channels_eye', 'monopolar_channels_
+muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channels_muscle', 'bipolar_channels_no
+n_physiological', 'is_positive']
+[INFO] Columnas LEAKAGE_COLS ausentes en el dataset: []
+[INFO] Columnas médicas presentes: ['tuar_is_clean_window', 'tuar_is_ambiguous', 'tuar_sample_weight', 'tuar_eye', 'tuar
+_muscle', 'tuar_non_physiological', 'tuar_genuine_cooccurrence', 'tuar_weak_overlap', 'tuar_is_excluded', 'monopolar_cha
+nnels_eye', 'monopolar_channels_muscle', 'monopolar_channels_non_physiological', 'bipolar_channels_eye', 'bipolar_channe
+ls_muscle', 'bipolar_channels_non_physiological']
+
+==================================================
+Starting training of Random Forest - non_physiological
+
+[AUDIT:train] df=68 cols | X=57 features | target=y_med
+[AUDIT:train] EXCLUIDAS (11): ['Partition', 'Patient', 'Section', 'Session', 'Start', 'ic_index', 'ic_raw_label', 'ic_ta
+rget_label', 'is_positive', 'split', 'y_med']
+[AUDIT:train] FEATURES (57): ['ic_alpha_power', 'ic_baseline_shift', 'ic_beta_power', 'ic_contrib_C3', 'ic_contrib_C4',
+'ic_contrib_CZ', 'ic_contrib_F3', 'ic_contrib_F4', 'ic_contrib_F7', 'ic_contrib_F8', 'ic_contrib_FP1', 'ic_contrib_FP2',
+ 'ic_contrib_FZ', 'ic_contrib_O1', 'ic_contrib_O2', 'ic_contrib_P3', 'ic_contrib_P4', 'ic_contrib_P7', 'ic_contrib_P8',
+'ic_contrib_PZ', 'ic_contrib_T7', 'ic_contrib_T8', 'ic_delta_power', 'ic_dwt_energy_A4', 'ic_dwt_energy_D1', 'ic_dwt_ene
+rgy_D2', 'ic_dwt_energy_D3', 'ic_dwt_energy_D4', 'ic_dwt_var_A4', 'ic_dwt_var_D1', 'ic_dwt_var_D2', 'ic_dwt_var_D3', 'ic
+_dwt_var_D4', 'ic_gamma_power', 'ic_hjorth_complexity', 'ic_hjorth_mobility', 'ic_iclabel_prob_brain', 'ic_iclabel_prob_
+channel_noise', 'ic_iclabel_prob_eye', 'ic_iclabel_prob_heart', 'ic_iclabel_prob_line_noise', 'ic_iclabel_prob_muscle',
+'ic_iclabel_prob_other', 'ic_kurtosis', 'ic_line_length', 'ic_mean', 'ic_n_peaks', 'ic_peak_position', 'ic_peak_to_mean'
+, 'ic_peak_to_peak', 'ic_ratio_high_low', 'ic_rms', 'ic_skewness', 'ic_spectral_entropy', 'ic_theta_power', 'ic_variance
+', 'ic_zcr']
+
+============================================================
+Modelo: rf_non_physiological_w2s1_7
+Train: 2927941 (pos=81850) | Val: 630734 (pos = 20331) | Test: 601410 (pos=15367)
+        params:{'n_estimators': 190, 'max_depth': 28, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3510 | thr=nan
+        params:{'n_estimators': 344, 'max_depth': 30, 'min_samples_split': 3, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3578 | thr=nan
+        params:{'n_estimators': 240, 'max_depth': 7, 'min_samples_split': 8, 'min_samples_leaf': 7, 'max_features': 'log
+2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3215 | thr=nan
+        params:{'n_estimators': 481, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max_features': 's
+qrt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3714 | thr=nan
+        params:{'n_estimators': 380, 'max_depth': 8, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3643 | thr=nan
+        params:{'n_estimators': 375, 'max_depth': 16, 'min_samples_split': 4, 'min_samples_leaf': 7, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3412 | thr=nan
+        params:{'n_estimators': 501, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3541 | thr=nan
+        params:{'n_estimators': 395, 'max_depth': 18, 'min_samples_split': 7, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3108 | thr=nan
+        params:{'n_estimators': 191, 'max_depth': 21, 'min_samples_split': 13, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3348 | thr=nan
+        params:{'n_estimators': 536, 'max_depth': 29, 'min_samples_split': 5, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3468 | thr=nan
+        params:{'n_estimators': 224, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 3, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3414 | thr=nan
+        params:{'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3758 | thr=nan
+        params:{'n_estimators': 455, 'max_depth': 28, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3178 | thr=nan
+        params:{'n_estimators': 313, 'max_depth': 19, 'min_samples_split': 8, 'min_samples_leaf': 1, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.2896 | thr=nan
+        params:{'n_estimators': 395, 'max_depth': 9, 'min_samples_split': 11, 'min_samples_leaf': 5, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3415 | thr=nan
+        params:{'n_estimators': 565, 'max_depth': 27, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3526 | thr=nan
+        params:{'n_estimators': 334, 'max_depth': 14, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3376 | thr=nan
+        params:{'n_estimators': 184, 'max_depth': 19, 'min_samples_split': 12, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3232 | thr=nan
+        params:{'n_estimators': 358, 'max_depth': 8, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3657 | thr=nan
+        params:{'n_estimators': 298, 'max_depth': 11, 'min_samples_split': 9, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3612 | thr=nan
+        params:{'n_estimators': 573, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3348 | thr=nan
+        params:{'n_estimators': 433, 'max_depth': 26, 'min_samples_split': 3, 'min_samples_leaf': 3, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3408 | thr=nan
+        params:{'n_estimators': 495, 'max_depth': 29, 'min_samples_split': 7, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3681 | thr=nan
+        params:{'n_estimators': 528, 'max_depth': 16, 'min_samples_split': 13, 'min_samples_leaf': 3, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3447 | thr=nan
+        params:{'n_estimators': 257, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3209 | thr=nan
+        params:{'n_estimators': 524, 'max_depth': 10, 'min_samples_split': 12, 'min_samples_leaf': 1, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3499 | thr=nan
+        params:{'n_estimators': 508, 'max_depth': 28, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 0.
+5, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3458 | thr=nan
+        params:{'n_estimators': 362, 'max_depth': 26, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3579 | thr=nan
+        params:{'n_estimators': 400, 'max_depth': 18, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3266 | thr=nan
+        params:{'n_estimators': 166, 'max_depth': 9, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3,
+ 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3572 | thr=nan
+        params:{'n_estimators': 347, 'max_depth': 25, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'l
+og2', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3516 | thr=nan
+        params:{'n_estimators': 534, 'max_depth': 21, 'min_samples_split': 3, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3416 | thr=nan
+        params:{'n_estimators': 408, 'max_depth': 24, 'min_samples_split': 9, 'min_samples_leaf': 4, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3213 | thr=nan
+        params:{'n_estimators': 190, 'max_depth': 21, 'min_samples_split': 12, 'min_samples_leaf': 3, 'max_features': 'l
+og2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3248 | thr=nan
+        params:{'n_estimators': 421, 'max_depth': 5, 'min_samples_split': 6, 'min_samples_leaf': 4, 'max_features': 'sqr
+t', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3018 | thr=nan
+        params:{'n_estimators': 592, 'max_depth': 11, 'min_samples_split': 5, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3290 | thr=nan
+        params:{'n_estimators': 596, 'max_depth': 30, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 0.5
+, 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.2926 | thr=nan
+        params:{'n_estimators': 519, 'max_depth': 6, 'min_samples_split': 13, 'min_samples_leaf': 2, 'max_features': 'sq
+rt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3154 | thr=nan
+        params:{'n_estimators': 562, 'max_depth': 13, 'min_samples_split': 7, 'min_samples_leaf': 5, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3454 | thr=nan
+        params:{'n_estimators': 206, 'max_depth': 21, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3216 | thr=nan
+        params:{'n_estimators': 598, 'max_depth': 24, 'min_samples_split': 7, 'min_samples_leaf': 3, 'max_features': 0.5
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3124 | thr=nan
+        params:{'n_estimators': 338, 'max_depth': 29, 'min_samples_split': 6, 'min_samples_leaf': 2, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3090 | thr=nan
+        params:{'n_estimators': 300, 'max_depth': 5, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'log
+2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.2847 | thr=nan
+        params:{'n_estimators': 497, 'max_depth': 26, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 0.
+5, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3250 | thr=nan
+        params:{'n_estimators': 472, 'max_depth': 9, 'min_samples_split': 13, 'min_samples_leaf': 4, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3524 | thr=nan
+        params:{'n_estimators': 572, 'max_depth': 9, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 'log
+2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3267 | thr=nan
+        params:{'n_estimators': 373, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 3, 'max_features': 'sq
+rt', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3262 | thr=nan
+        params:{'n_estimators': 257, 'max_depth': 14, 'min_samples_split': 10, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3288 | thr=nan
+        params:{'n_estimators': 423, 'max_depth': 15, 'min_samples_split': 14, 'min_samples_leaf': 1, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.2903 | thr=nan
+        params:{'n_estimators': 304, 'max_depth': 8, 'min_samples_split': 6, 'min_samples_leaf': 7, 'max_features': 'sqr
+t', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3286 | thr=nan
+        params:{'n_estimators': 314, 'max_depth': 32, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_features': 0.5
+, 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3543 | thr=nan
+        params:{'n_estimators': 355, 'max_depth': 12, 'min_samples_split': 11, 'min_samples_leaf': 7, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3521 | thr=nan
+        params:{'n_estimators': 268, 'max_depth': 28, 'min_samples_split': 5, 'min_samples_leaf': 6, 'max_features': 'sq
+rt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3639 | thr=nan
+        params:{'n_estimators': 505, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 0.
+3, 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3389 | thr=nan
+        params:{'n_estimators': 185, 'max_depth': 7, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_features': 0.3,
+ 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3524 | thr=nan
+        params:{'n_estimators': 207, 'max_depth': 18, 'min_samples_split': 11, 'min_samples_leaf': 2, 'max_features': 'l
+og2', 'sampling_strategy': 1.0}
+        F1(val, ventana)=0.3053 | thr=nan
+        params:{'n_estimators': 474, 'max_depth': 14, 'min_samples_split': 12, 'min_samples_leaf': 5, 'max_features': 's
+qrt', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3255 | thr=nan
+        params:{'n_estimators': 396, 'max_depth': 10, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 'lo
+g2', 'sampling_strategy': 0.3}
+        F1(val, ventana)=0.3331 | thr=nan
+        params:{'n_estimators': 158, 'max_depth': 27, 'min_samples_split': 8, 'min_samples_leaf': 6, 'max_features': 0.3
+, 'sampling_strategy': 0.5}
+        F1(val, ventana)=0.3477 | thr=nan
+        params:{'n_estimators': 448, 'max_depth': 17, 'min_samples_split': 6, 'min_samples_leaf': 5, 'max_features': 'lo
+g2', 'sampling_strategy': 0.7}
+        F1(val, ventana)=0.3256 | thr=nan
+[INFO] t_bajo=0.4538 | recall(val)=0.900 | precision(val)=0.192
+[INFO] t_alto=0.9512 | recall(val)=0.235 | precision(val)=0.500
+            fp     n  dias_cubiertos  fp_por_dia
+Patient
+aaaaajam  1198  1221           0.014   84772.482
+aaaaamdq  1040  1208           0.014   74384.106
+aaaaapar   808  1213           0.014   57552.514
+aaaaaezj   359   585           0.007   53021.538
+aaaaamcr  1075  2364           0.027   39289.340
+aaaaanxl   515  1213           0.014   36682.605
+aaaaankf   483  1167           0.014   35759.383
+aaaaaarq   467  1232           0.014   32750.649
+aaaaanxz   585  1691           0.020   29890.006
+aaaaaluz   399  1171           0.014   29439.453
+aaaaalfj   716  2146           0.025   28826.841
+aaaaafcf   444  1419           0.016   27034.249
+aaaaaguk   359  1162           0.013   26693.287
+aaaaaels   169   619           0.007   23589.015
+aaaaakcx   296  1124           0.013   22753.025
+aaaaaphs   396  1517           0.018   22553.988
+aaaaakxz   264  1199           0.014   19023.853
+aaaaakcv   221  1086           0.013   17582.320
+aaaaamnq   220  1134           0.013   16761.905
+aaaaanpr   156   925           0.011   14571.243
+aaaaangp   196  1173           0.014   14436.829
+aaaaakka   176  1117           0.013   13613.608
+aaaaajoo   151  1183           0.014   11028.233
+aaaaanyw   342  2840           0.033   10404.507
+aaaaamzl   146  1255           0.015   10051.315
+aaaaamyb   154  1362           0.016    9769.163
+aaaaanzu    96   960           0.011    8640.000
+aaaaalaf   111  1135           0.013    8449.692
+aaaaaons   130  1432           0.017    7843.575
+aaaaaijh   150  2646           0.031    4897.959
+aaaaanzh    67  1284           0.015    4508.411
+aaaaamzv    81  1676           0.019    4175.656
+aaaaakft    63  1401           0.016    3885.225
+aaaaajfk    53  1182           0.014    3874.112
+aaaaamqc    53  1194           0.014    3835.176
+aaaaaloy    15   702           0.008    1846.154
+aaaaanyc    19  1287           0.015    1275.524
+aaaaalvw    10  1335           0.015     647.191
+aaaaanyt     0  1218           0.014       0.000
+[INFO] Umbral (F1, validación, ventana): 0.8385 | F1(val)=0.3778
+[INFO] Best configuration found with validation: {'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_sam
+ples_leaf': 7, 'max_features': 0.5, 'sampling_strategy': 0.7} | F1(val)=0.3758
+Final report -------------------------
+                                precision    recall  f1-score   support
+
+no_rf_non_physiological_w2s1_7       0.91      0.72      0.81     44296
+   rf_non_physiological_w2s1_7       0.27      0.59      0.37      7482
+
+                      accuracy                           0.71     51778
+                     macro avg       0.59      0.66      0.59     51778
+                  weighted avg       0.82      0.71      0.74     51778
+
+Confusion matrix -------------------------
+[[32113 12183]
+ [ 3063  4419]]
+General metrics -------------------------
+model                    rf_non_physiological_w2s1_7
+sensitivity                                   0.5906
+specificity                                    0.725
+precision                                     0.2662
+accuracy                                      0.7056
+f1_score                                       0.367
+auc_roc                                       0.7202
+false_alarm_rate                               0.275
+fp_per_day                                  20329.31
+covered_test_days                             0.5993
+TP                                              4419
+FP                                             12183
+TN                                             32113
+FN                                              3063
+n_test_windows                                 51778
+covered_test_hours                             14.38
+OVLP_Sensitivity                              0.7902
+OVLP_False_Alarms                               2783
+TAES_Score                                    0.5875
+MARGIN_5s_Onset                               0.7175
+MARGIN_5s_Offset                              0.6755
+threshold                                     0.8385
+AP                                            0.3758
+med_win_precision                             0.2662
+med_win_recall                                0.5906
+med_win_AP                                    0.3758
+med_n_tp_windows                              4419.0
+med_ch_bip_hit@3                              0.7554
+med_ch_bip_iou                                0.2334
+med_n_tp_with_bip_gt                          4175.0
+med_ch_mono_hit@3                             0.7712
+med_n_tp_with_mono_gt                         4419.0
+med_ch_f1_micro                               0.2037
+med_ch_f1_macro                               0.2158
+med_ch_jaccard                                0.0693
+med_n_win_scored                             51262.0
+med_ch_tau                                      0.85
+Model saved in /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w2s1_7_random.joblib
+Model with metrics saved in /workspace/ml-outputs/artifact/models/_comparison/rf_non_physiological_w2s1_7_and_analysis_r
+andom.joblib
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Final report
+---------- non_physiological ----------
+                 F1(val)=0.2824
+                 best_params={'n_estimators': 481, 'max_depth': 27, 'min_samples_split': 11, 'min_samples_leaf': 6, 'max
+_features': 'sqrt', 'sampling_strategy': 0.3}
+                 Confusion matrix: [[30534 13040]
+ [ 2988  4535]]
+                 Metrics results: {'model': 'rf_non_physiological_w1s1_7', 'sensitivity': 0.6028, 'specificity': np.floa
+t64(0.7007), 'precision': 0.258, 'accuracy': 0.6863, 'f1_score': 0.3614, 'auc_roc': 0.7165, 'false_alarm_rate': np.float
+64(0.2993), 'fp_per_day': np.float64(22049.36), 'covered_test_days': 0.5914, 'TP': 4535, 'FP': 13040, 'TN': 30534, 'FN':
+ 2988, 'n_test_windows': 51097, 'covered_test_hours': 14.19, 'OVLP_Sensitivity': 0.8189, 'OVLP_False_Alarms': 4562, 'TAE
+S_Score': np.float64(0.6014), 'MARGIN_5s_Onset': 0.7483, 'MARGIN_5s_Offset': 0.7417, 'threshold': 0.7126, 'AP': 0.3417,
+'med_win_precision': 0.258, 'med_win_recall': 0.6028, 'med_win_AP': 0.3417, 'med_n_tp_windows': 4535.0, 'med_ch_bip_hit@
+3': 0.8003, 'med_ch_bip_iou': 0.2493, 'med_n_tp_with_bip_gt': 4271.0, 'med_ch_mono_hit@3': 0.7698, 'med_n_tp_with_mono_g
+t': 4535.0, 'med_ch_f1_micro': 0.2164, 'med_ch_f1_macro': 0.2279, 'med_ch_jaccard': 0.0753, 'med_n_win_scored': 50654.0,
+ 'med_ch_tau': 0.75}
+                 F1(val)=0.3758
+                 best_params={'n_estimators': 180, 'max_depth': 34, 'min_samples_split': 7, 'min_samples_leaf': 7, 'max_
+features': 0.5, 'sampling_strategy': 0.7}
+                 Confusion matrix: [[32113 12183]
+ [ 3063  4419]]
+                 Metrics results: {'model': 'rf_non_physiological_w2s1_7', 'sensitivity': 0.5906, 'specificity': np.floa
+t64(0.725), 'precision': 0.2662, 'accuracy': 0.7056, 'f1_score': 0.367, 'auc_roc': 0.7202, 'false_alarm_rate': np.float6
+4(0.275), 'fp_per_day': np.float64(20329.31), 'covered_test_days': 0.5993, 'TP': 4419, 'FP': 12183, 'TN': 32113, 'FN': 3
+063, 'n_test_windows': 51778, 'covered_test_hours': 14.38, 'OVLP_Sensitivity': 0.7902, 'OVLP_False_Alarms': 2783, 'TAES_
+Score': np.float64(0.5875), 'MARGIN_5s_Onset': 0.7175, 'MARGIN_5s_Offset': 0.6755, 'threshold': 0.8385, 'AP': 0.3758, 'm
+ed_win_precision': 0.2662, 'med_win_recall': 0.5906, 'med_win_AP': 0.3758, 'med_n_tp_windows': 4419.0, 'med_ch_bip_hit@3
+': 0.7554, 'med_ch_bip_iou': 0.2334, 'med_n_tp_with_bip_gt': 4175.0, 'med_ch_mono_hit@3': 0.7712, 'med_n_tp_with_mono_gt
+': 4419.0, 'med_ch_f1_micro': 0.2037, 'med_ch_f1_macro': 0.2158, 'med_ch_jaccard': 0.0693, 'med_n_win_scored': 51262.0,
+'med_ch_tau': 0.85}
+root@f2a744d8c910:/workspace/hybrid-ai-epilepsy-diagnosis# tmux capture-pane -p -S -32768 > final_rf_non_phy.txt
+
